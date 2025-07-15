@@ -1,0 +1,1352 @@
+guiTypes = {
+	containerWindowType = {
+		name = "economy_factory_switch_button_window"
+		position = { x = 23 y = -290 }
+		orientation = lower_left
+		moveable = no
+
+		buttonType = {
+			name = "economy_factory_switch_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = monopolization 
+			clicksound = click_default
+			pdx_tooltip = monopolization_tt
+		}
+	} 
+
+	containerWindowType = {
+		name = "red_black_market_window"
+		position = { x = 23 y = -290 }
+		orientation = lower_left
+		moveable = no
+
+		buttonType = { 
+			name = "propoganda_button"
+			position = { x = 0 y = -10 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = rbm_propoganda 
+			clicksound = click_default
+			pdx_tooltip = rbm_propoganda_tt
+		}
+
+		buttonType = {
+			name = "strike_button" 
+			position = { x = 0 y = 25 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = rbm_strike 
+			clicksound = click_default
+			pdx_tooltip = rbm_strike_tt 
+		}
+   
+		buttonType = {
+			name = "expansions_button"
+			position = { x = 0 y = 60 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = rbm_expansions
+			clicksound = click_default
+			pdx_tooltip = rbm_expansions_tt
+		}
+	}
+
+	#
+	containerWindowType = {
+		name = "econ_variable_ui_progressbar"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 770 }
+
+		containerWindowType = {
+			name = "econ_industry_gui_field"
+			position = { x = 15 y = 260 }
+
+			instantTextboxType = {
+				name = "econ_total_gui_field_name"
+				position = { x = 140 y = -35 }
+				font = "hoi_24header"
+				text = econ_industry_gui_field_name_tt
+				maxWidth = 200
+				maxHeight = 100
+				format = centre
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eib_ui"
+				position = { x = 20 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eib"
+					quadTextureSprite = "GFX_variable_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eib_buff
+					pdx_tooltip_delayed = eib_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_eib"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_eib_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = eib_buff
+					pdx_tooltip_delayed = eib_detail
+				}
+			}
+			
+			containerWindowType = {
+				name = "ring_progressbar_eip_ui"
+				position = { x = 170 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eip"
+					quadTextureSprite = "GFX_variable_circle"
+					
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eip_buff
+					pdx_tooltip_delayed = eip_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_eip"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_eip_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = eip_buff
+					pdx_tooltip_delayed = eip_detail
+				}
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eia_ui"
+				position = { x = 320 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eia"
+					quadTextureSprite = "GFX_variable_circle"
+					
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eia_buff
+					pdx_tooltip_delayed = eia_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_eia"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_eia_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = eia_buff
+					pdx_tooltip_delayed = eia_detail
+				}
+			}
+		}
+		####
+		####
+		####
+		containerWindowType = {
+			name = "econ_agriculture_gui_field"
+			position = { x = 15 y = 440 }
+			
+			instantTextboxType = {
+				name = "econ_agriculture_gui_field_name"
+				position = { x = 140 y = -35 }
+				font = "hoi_24header"
+				text = econ_agriculture_gui_field_name_tt
+				maxWidth = 200
+				maxHeight = 100
+				format = centre
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eam_ui"
+				position = { x = 20 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eam"
+					quadTextureSprite = "GFX_variable_circle"
+					
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eam_buff
+					pdx_tooltip_delayed = eam_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_eam"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_eam_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = eam_buff
+					pdx_tooltip_delayed = eam_detail
+				}
+			}
+			
+			containerWindowType = {
+				name = "ring_progressbar_eae_ui"
+				position = { x = 170 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eae"
+					quadTextureSprite = "GFX_variable_circle"
+					
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eae_buff
+					pdx_tooltip_delayed = eae_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_eae"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_eae_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = eae_buff
+					pdx_tooltip_delayed = eae_detail
+				}
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eaa_ui"
+				position = { x = 320 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eaa"
+					quadTextureSprite = "GFX_variable_circle"
+					
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eaa_buff
+					pdx_tooltip_delayed = eaa_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_eaa"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_eaa_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = eaa_buff
+					pdx_tooltip_delayed = eaa_detail
+				}
+			}
+		}
+		####
+		####
+		####
+		containerWindowType = {
+			name = "econ_total_gui_field"
+			position = { x = 15 y = 620 }
+			
+			instantTextboxType = {
+				name = "econ_total_gui_field_name"
+				position = { x = 140 y = -35 }
+				font = "hoi_24header"
+				text = econ_total_gui_field_name_tt
+				maxWidth = 200
+				maxHeight = 100
+				format = centre
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eq_ui"
+				position = { x = 20 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eq"
+					quadTextureSprite = "GFX_variable_circle"
+					
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eq_buff
+					pdx_tooltip_delayed = eq_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_eq"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_eq_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = eq_buff
+					pdx_tooltip_delayed = eq_detail
+				}
+			}
+			
+			containerWindowType = {
+				name = "ring_progressbar_el_ui"
+				position = { x = 170 y = 0 }
+				iconType = {
+					name = "ring_progressbar_el"
+					quadTextureSprite = "GFX_variable_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = el_buff
+					pdx_tooltip_delayed = el_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_el"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_el_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = el_buff
+					pdx_tooltip_delayed = el_detail
+				}
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_ei_ui"
+				position = { x = 320 y = 0 }
+				iconType = {
+					name = "ring_progressbar_ei"
+					quadTextureSprite = "GFX_variable_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = ei_buff
+					pdx_tooltip_delayed = ei_detail
+				}
+
+				instantTextboxType = {
+					name = "ring_progressbar_num_ei"
+					position = { x = -7 y = 55 }
+					font = "hoi_18mbs"
+					text = gui_ei_circle
+					maxWidth = 150
+					maxHeight = 100
+					format = centre
+					pdx_tooltip = ei_buff
+					pdx_tooltip_delayed = ei_detail
+				}
+			}
+		}
+		####
+		####
+		####
+		containerWindowType = {
+			name = "economy_infulence_gui"
+			position = { x = 25 y = 0 }
+
+			containerWindowType = {
+				position = { x = 0 y = 0 }
+				iconType = {
+					name = "ring_progressbar_econ_sore"
+					quadTextureSprite = "GFX_variable_circle_sore"
+					frame = 0
+					position = { x = 8 y = 6 }
+				}
+
+				iconType = {
+					name = "ring_progressbar_econ_jaco"
+					quadTextureSprite = "GFX_variable_circle_jaco"
+					frame = 0
+					position = { x = 8 y = 6 }
+				}
+
+				iconType = {
+					name = "ring_progressbar_econ_oppo"
+					quadTextureSprite = "GFX_variable_circle_oppo"
+					frame = 0
+					position = { x = 8 y = 6 }
+				}
+
+				iconType = {
+					name = "ring_progressbar_econ_synd"
+					quadTextureSprite = "GFX_variable_circle_synd"
+					
+					frame = 0
+					position = { x = 8 y = 6 }
+				}
+
+				iconType = {
+					name = "ring_progressbar_faction_background"
+					quadTextureSprite = "GFX_econ_circle_white"
+					scale = 0.48
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = econ_influence_detail
+				}
+			}
+
+			instantTextboxType = {
+				name = "gui_economy_faction_detail_box"
+				position = { x = -10 y = 130 }
+				font = "hoi_16mbs"
+				text = gui_economy_faction_detail
+				maxWidth = 180
+				maxHeight = 80
+				format = left
+				pdx_tooltip = econ_influence_detail
+			}
+
+			instantTextboxType = {
+				name = "gui_economy_model_detail_box"
+				position = { x = 200 y = 130 }
+				font = "hoi_16mbs"
+				text = gui_economy_model_detail
+				maxWidth = 180
+				maxHeight = 80
+				format = left
+				pdx_tooltip = econ_model_buff
+				pdx_tooltip_delayed = econ_model_detail
+			}
+		}
+
+
+		iconType = {
+			name = "gui_econ_DEA_portrait"
+			position = { x = 140 y = -10 }
+			scale = 1.2
+			pdx_tooltip = CSP_DEA_name_text_long
+			pdx_tooltip_delayed = gui_economy_DEA_detail
+		}
+		
+		instantTextboxType = {
+			name = "gui_economy_DEA_box"
+			position = { x = 140 y = 70 }
+			font = "hoi_16mbs"
+			text = gui_economy_DEA
+			maxWidth = 300
+			maxHeight = 40
+			format = left
+			pdx_tooltip = gui_economy_DEA_detail
+		}
+		
+
+		containerWindowType = {
+			name = "ring_progressbar_ev_ui"
+			position = { x = 300 y = -30 }
+			iconType = {
+				name = "ring_progressbar_ev_good"
+				quadTextureSprite = "GFX_econ_variable_circle_good"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = evpchange_detail
+				pdx_tooltip_delayed = ev_detail
+			}
+
+			iconType = {
+				name = "ring_progressbar_ev_bad"
+				quadTextureSprite = "GFX_econ_variable_circle_bad"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = evpchange_detail
+				pdx_tooltip_delayed = ev_detail
+			}
+
+			instantTextboxType = {
+				name = "ring_progressbar_num_ev"
+				position = { x = 8 y = 60 }
+				font = "hoi_18mbs"
+				text = gui_ev_circle 
+				maxWidth = 150
+				maxHeight = 100
+				format = centre
+				pdx_tooltip = evpchange_detail
+				pdx_tooltip_delayed = ev_detail
+			}
+		}
+	}
+
+
+	containerWindowType = {
+		name = "society_variable_ui"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 400 }
+		scale = 0.98
+		containerWindowType = {
+			name = "pop_worker_ui"
+			position = { x = 18 y = 45 }
+		
+			iconType = {
+				name = "pop_worker_ui_sore"
+				quadTextureSprite = "GFX_variable_circle_pop_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_worker_ui_jaco"
+				quadTextureSprite = "GFX_variable_circle_pop_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_worker_ui_oppo"
+				quadTextureSprite = "GFX_variable_circle_pop_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_worker_ui_synd"
+				quadTextureSprite = "GFX_variable_circle_pop_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			
+			
+			iconType = {
+				name = "pop_worker_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -9 y = -9 }
+				pdx_tooltip = pop_worker_ui_text_tt
+				pdx_tooltip_delayed = popw_text 
+			}
+
+			iconType = {
+				name = "pop_worker_ui"
+				quadTextureSprite = "GFX_pop_worker_texticon"
+				frame = 0
+				position = { x = 50 y = 50 }
+				pdx_tooltip = pop_worker_ui_text_tt
+				pdx_tooltip_delayed = popw_text 
+			}
+		}
+		#####
+		#####
+		#####
+		containerWindowType = {
+			name = "pop_peasant_ui"
+			position = { x = 368 y = 45 }
+		
+			iconType = {
+				name = "pop_peasant_ui_sore"
+				quadTextureSprite = "GFX_variable_circle_pop_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_peasant_ui_jaco"
+				quadTextureSprite = "GFX_variable_circle_pop_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_peasant_ui_oppo"
+				quadTextureSprite = "GFX_variable_circle_pop_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_peasant_ui_synd"
+				quadTextureSprite = "GFX_variable_circle_pop_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			
+			iconType = {
+				name = "pop_peasant_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -9 y = -9 }
+				pdx_tooltip = pop_peasant_ui_text_tt
+				pdx_tooltip_delayed = popp_text
+			}
+
+			iconType = {
+				name = "pop_peasant_ui"
+				quadTextureSprite = "GFX_pop_peasant_texticon"
+				frame = 0
+				position = { x = 48 y = 50 }
+				pdx_tooltip = pop_peasant_ui_text_tt
+				pdx_tooltip_delayed = popp_text
+			}
+		}
+		#####
+		#####
+		#####
+		containerWindowType = {
+			name = "pop_merchant_ui"
+			position = { x = 98 y = 155 }
+		
+			iconType = {
+				name = "pop_merchant_ui_sore"
+				quadTextureSprite = "GFX_variable_circle_pop_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_merchant_ui_jaco"
+				quadTextureSprite = "GFX_variable_circle_pop_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_merchant_ui_oppo"
+				quadTextureSprite = "GFX_variable_circle_pop_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_merchant_ui_synd"
+				quadTextureSprite = "GFX_variable_circle_pop_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			
+			
+			iconType = {
+				name = "pop_merchant_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -9 y = -9 }
+				pdx_tooltip = pop_merchant_ui_text_tt
+				pdx_tooltip_delayed = popm_text
+			}
+
+			iconType = {
+				name = "pop_merchant_ui"
+				quadTextureSprite = "GFX_pop_merchant_texticon"
+				frame = 0
+				position = { x = 48 y = 50 }
+				pdx_tooltip = pop_merchant_ui_text_tt
+				pdx_tooltip_delayed = pop_text
+				pdx_tooltip_delayed = popm_text
+			}
+		}
+		#####
+		#####
+		#####
+		containerWindowType = {
+			name = "pop_scholar_ui"
+			position = { x = 288 y = 155 }
+		
+			iconType = {
+				name = "pop_scholar_ui_sore"
+				quadTextureSprite = "GFX_variable_circle_pop_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_scholar_ui_jaco"
+				quadTextureSprite = "GFX_variable_circle_pop_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_scholar_ui_oppo"
+				quadTextureSprite = "GFX_variable_circle_pop_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_scholar_ui_synd"
+				quadTextureSprite = "GFX_variable_circle_pop_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			
+			iconType = {
+				name = "pop_scholar_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -9 y = -9 }
+				pdx_tooltip = pop_scholar_ui_text_tt
+				pdx_tooltip_delayed = pops_text
+			}
+
+			iconType = {
+				name = "pop_scholar_ui"
+				quadTextureSprite = "GFX_pop_scholar_texticon"
+				frame = 0
+				position = { x = 47 y = 52 }
+				pdx_tooltip = pop_scholar_ui_text_tt
+				pdx_tooltip_delayed = pops_text
+			}
+		}
+		#####
+		#####
+		#####
+		containerWindowType = {
+			name = "pop_bureaucrat_ui"
+			position = { x = 18 y = 265 }
+		
+			iconType = {
+				name = "pop_bureaucrat_ui_sore"
+				quadTextureSprite = "GFX_variable_circle_pop_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_bureaucrat_ui_jaco"
+				quadTextureSprite = "GFX_variable_circle_pop_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_bureaucrat_ui_oppo"
+				quadTextureSprite = "GFX_variable_circle_pop_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_bureaucrat_ui_synd"
+				quadTextureSprite = "GFX_variable_circle_pop_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			
+			iconType = {
+				name = "pop_bureaucrat_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -9 y = -9 }
+				pdx_tooltip = pop_bureaucrat_ui_text_tt
+				pdx_tooltip_delayed = popb_text
+			}
+
+			iconType = {
+				name = "pop_bureaucrat_ui"
+				quadTextureSprite = "GFX_pop_bureaucrat_texticon"
+				frame = 0
+				position = { x = 48 y = 50 }
+				pdx_tooltip = pop_bureaucrat_ui_text_tt
+				pdx_tooltip_delayed = popb_text
+			}
+		}
+		#####
+		#####
+		#####
+		containerWindowType = {
+			name = "pop_army_ui"
+			position = { x = 368 y = 265 }
+		
+			iconType = {
+				name = "pop_army_ui_sore"
+				quadTextureSprite = "GFX_variable_circle_pop_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_army_ui_jaco"
+				quadTextureSprite = "GFX_variable_circle_pop_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_army_ui_oppo"
+				quadTextureSprite = "GFX_variable_circle_pop_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_army_ui_synd"
+				quadTextureSprite = "GFX_variable_circle_pop_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			
+			iconType = {
+				name = "pop_army_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -9 y = -9 }
+				pdx_tooltip = pop_army_ui_text_tt
+				pdx_tooltip_delayed = popa_text
+			}
+
+			iconType = {
+				name = "pop_army_ui"
+				quadTextureSprite = "GFX_pop_army_texticon"
+				frame = 0
+				position = { x = 48 y = 50 }
+				pdx_tooltip = pop_army_ui_text_tt
+				pdx_tooltip_delayed = popa_text
+			}
+		}
+
+
+		containerWindowType = {
+			name = "pop_total_ui"
+			position = { x = 176 y = 10 }
+			scale = 1.3
+			iconType = {
+				name = "pop_total_ui_army"
+				quadTextureSprite = "GFX_variable_circle_pop_army"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_bureaucrat"
+				quadTextureSprite = "GFX_variable_circle_pop_bureaucrat"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_scholar"
+				quadTextureSprite = "GFX_variable_circle_pop_scholar"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_merchant"
+				quadTextureSprite = "GFX_variable_circle_pop_merchant"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_peasant"
+				quadTextureSprite = "GFX_variable_circle_pop_peasant"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_worker"
+				quadTextureSprite = "GFX_variable_circle_pop_worker"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+
+			iconType = {
+				name = "pop_total_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -10 y = -10 }
+				pdx_tooltip = pop_total_text_tt
+				pdx_tooltip_delayed = pop_total_text_delayed
+			}
+		}
+
+		iconType = {
+			name = "gui_society_DIS_portrait"
+			position = { x = 225 y = 260 }
+			scale = 1.2
+			pdx_tooltip = CSP_DIS_name_text_long
+			pdx_tooltip_delayed = gui_society_DIS_detail
+		}
+		
+		instantTextboxType = {
+			name = "gui_society_DIS_box"
+			position = { x = 140 y = 340 }
+			font = "hoi_16mbs"
+			text = gui_society_DIS
+			maxWidth = 220
+			maxHeight = 40
+			format = centre
+			pdx_tooltip = gui_society_DIS_detail
+		}
+	}
+
+
+	#####
+	#####
+
+	containerWindowType = {
+		name = "military_variable_ui"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 460 }
+		
+		containerWindowType = {
+			name = "pop_army_pop_ui"
+			position = { x = 100 y = 105 }
+
+			containerWindowType = {
+				name = "pop_soldier_ui"
+				position = { x = 0 y = 0 }
+			
+				iconType = {
+					name = "pop_soldier_ui_sore"
+					quadTextureSprite = "GFX_variable_circle_soldier_sore"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_soldier_ui_jaco"
+					quadTextureSprite = "GFX_variable_circle_soldier_jaco"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_soldier_ui_oppo"
+					quadTextureSprite = "GFX_variable_circle_soldier_oppo"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_soldier_ui_synd"
+					quadTextureSprite = "GFX_variable_circle_soldier_synd"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+			}
+
+			containerWindowType = {
+				name = "pop_nco_ui"
+				position = { x = 0 y = 0 }
+			
+				iconType = {
+					name = "pop_nco_ui_sore"
+					quadTextureSprite = "GFX_variable_circle_nco_sore"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_nco_ui_jaco"
+					quadTextureSprite = "GFX_variable_circle_nco_jaco"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_nco_ui_oppo"
+					quadTextureSprite = "GFX_variable_circle_nco_oppo"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_nco_ui_synd"
+					quadTextureSprite = "GFX_variable_circle_nco_synd"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+			}
+
+			containerWindowType = {
+				name = "pop_officer_ui"
+				position = { x = 0 y = 0 }
+			
+				iconType = {
+					name = "pop_officer_ui_sore"
+					quadTextureSprite = "GFX_variable_circle_officer_sore"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_officer_ui_jaco"
+					quadTextureSprite = "GFX_variable_circle_officer_jaco"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_officer_ui_oppo"
+					quadTextureSprite = "GFX_variable_circle_officer_oppo"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_officer_ui_synd"
+					quadTextureSprite = "GFX_variable_circle_officer_synd"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = army_pop_text
+					pdx_tooltip_delayed = army_pop_text_delay
+				}
+			}
+
+			containerWindowType = {
+				name = "pop_army_pop_detail_ui"
+				position = { x = 117 y = 121.5 }
+			
+				iconType = {
+					name = "pop_soldier_ui"
+					quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_nco_ui"
+					quadTextureSprite = "GFX_variable_circle_pop_army_nco"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_officer_ui"
+					quadTextureSprite = "GFX_variable_circle_pop_army_officer"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = army_pop_text
+					pdx_tooltip_delayed = army_pop_text_delay
+				}
+			}
+		}
+
+		
+		iconType = {
+			name = "armyv_ui_bg1"
+			quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+			frame = 100
+			position = { x = 217 y = 46 }
+		}
+		iconType = {
+			name = "armyv_ui_bg2"
+			quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+			frame = 100
+			position = { x = 47 y = 176 }
+		}
+		iconType = {
+			name = "armyv_ui_bg3"
+			quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+			frame = 100
+			position = { x = 387 y = 176 }
+		}
+		iconType = {
+			name = "armyv_ui_bg4"
+			quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+			frame = 100
+			position = { x = 97 y = 356 }
+		}
+		iconType = {
+			name = "armyv_ui_bg5"
+			quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+			frame = 100
+			position = { x = 340 y = 358 }
+		}
+
+
+		iconType = {
+			name = "armyv_autonomy_ui"
+			quadTextureSprite = "GFX_variable_circle_army"
+			frame = 0
+			position = { x = 200 y = 30 }
+			pdx_tooltip = armyv_autonomy_ui_tt
+			pdx_tooltip_delayed = armyv_autonomy_ui_tt_delay
+		}
+		iconType = {
+			name = "armyv_autonomy_ui_icon"
+			quadTextureSprite = "GFX_army_autonomy_texticon"
+			alwaystransparent = yes
+			scale = 2
+			position = { x = 227 y = 60 }
+		}
+
+		iconType = {
+			name = "armyv_willing_ui"
+			quadTextureSprite = "GFX_variable_circle_army"
+			frame = 0
+			position = { x = 30 y = 160 }
+			pdx_tooltip = armyv_willing_ui_tt
+			pdx_tooltip_delayed = armyv_willing_ui_tt_delay
+		}
+		iconType = {
+			name = "armyv_willing_ui_icon"
+			quadTextureSprite = "GFX_army_willing_texticon"
+			alwaystransparent = yes
+			scale = 2
+			position = { x = 55 y = 190 }
+		}
+
+		iconType = {
+			name = "armyv_training_ui"
+			quadTextureSprite = "GFX_variable_circle_army"
+			frame = 0
+			position = { x = 370 y = 160 }
+			pdx_tooltip = armyv_training_ui_tt
+			pdx_tooltip_delayed = armyv_training_ui_tt_delay
+		}
+		iconType = {
+			name = "armyv_training_ui_icon"
+			quadTextureSprite = "GFX_army_training_texticon"
+			alwaystransparent = yes
+			scale = 2
+			position = { x = 395 y = 190 }
+		}
+
+		iconType = {
+			name = "armyv_equipment_ui"
+			quadTextureSprite = "GFX_variable_circle_army"
+			frame = 0
+			position = { x = 80 y = 340 }
+			pdx_tooltip = armyv_equipment_ui_tt
+			pdx_tooltip_delayed = armyv_equipment_ui_tt_delay
+		}
+		iconType = {
+			name = "armyv_equipment_ui_icon"
+			quadTextureSprite = "GFX_army_equipment_texticon"
+			alwaystransparent = yes
+			scale = 2
+			position = { x = 105 y = 370 }
+		}
+
+		iconType = {
+			name = "armyv_passionate_ui"
+			quadTextureSprite = "GFX_variable_circle_army"
+			frame = 0
+			position = { x = 320 y = 340 }
+			pdx_tooltip = armyv_passionate_ui_tt
+			pdx_tooltip_delayed = armyv_passionate_ui_tt_delay
+		}
+		iconType = {
+			name = "armyv_passionate_ui_icon"
+			quadTextureSprite = "GFX_army_passionate_texticon"
+			alwaystransparent = yes
+			scale = 2
+			position = { x = 345 y = 370 }
+		}
+
+		iconType = {
+			name = "gui_army_CGSC_portrait"
+			position = { x = 20 y = 10 }
+			scale = 1.2 
+			pdx_tooltip = CSP_CGSC_name_text_long
+			pdx_tooltip_delayed = gui_army_CGSC_detail
+		}
+		instantTextboxType = {
+			name = "gui_army_CGSC_box"
+			position = { x = 20 y = 90 }
+			font = "hoi_16mbs"
+			text = gui_army_CGSC
+			maxWidth = 180
+			maxHeight = 40
+			format = left
+			pdx_tooltip_delayed = gui_army_CGSC_detail
+		}
+
+		containerWindowType = {
+			name = "theory_gui"
+			position = { x = 320 y = 0 }
+			scale = 1.1
+			iconType = {
+				name = "theory_ui"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = theory_ui_text_tt
+				pdx_tooltip_delayed = theory_ui_text_detail
+			}
+
+			instantTextboxType = {
+				name = "theory_ui_box"
+				position = { x = -20 y = 45 }
+				font = "hoi_18mbs"
+				text = theory_ui_text
+				maxWidth = 180
+				maxHeight = 40
+				format = centre
+				pdx_tooltip = theory_ui_text_tt
+				pdx_tooltip_delayed = theory_ui_text_detail
+			}
+		}
+
+		containerWindowType = {
+			name = "pop_army_faction_ui"
+			position = { x = 20 y = 275 }
+		
+			iconType = {
+				name = "pop_faction_sore"
+				quadTextureSprite = "GFX_variable_circle_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_faction_jaco"
+				quadTextureSprite = "GFX_variable_circle_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_faction_oppo"
+				quadTextureSprite = "GFX_variable_circle_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_faction_synd"
+				quadTextureSprite = "GFX_variable_circle_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+
+			iconType = {
+				name = "ring_progressbar_faction_background"
+				quadTextureSprite = "GFX_econ_circle_white"
+				scale = 0.48
+				frame = 0
+				position = { x = -8 y = -7.5 }
+				pdx_tooltip = army_faction_tt
+				pdx_tooltip_delayed = army_faction_tt_delay
+			}
+		}
+	}
+
+
+	########
+	#######
+	#######
+
+	containerWindowType = {
+		name = "politics_ui"
+		size = { width = 100% height = 760 }
+		position = { x = 0 y = 300 }
+	
+		containerWindowType = {
+			name = "politics_bop_ui"
+			position = { x = 0 y = 0 }
+			iconType = {
+				name = "politics_ui_bgt_vs_csp_csp"
+				quadTextureSprite = "GFX_variable_bgt_vs_csp_csp"
+				frame = 0
+				position = { x = 10 y = 40 }
+				pdx_tooltip = bop_ui_text_tt
+				pdx_tooltip_delayed = bop_ui_tt_delay
+			}
+
+			iconType = {
+				name = "politics_ui_bgt_vs_csp_bgt"
+				quadTextureSprite = "GFX_variable_bgt_vs_csp_bgt"
+				frame = 0
+				position = { x = 10 y = 40 }
+				pdx_tooltip = bop_ui_text_tt
+				pdx_tooltip_delayed = bop_ui_tt_delay
+			}
+
+			instantTextboxType = {
+				name = "bop_ui_box"
+				position = { x = 150 y = 0 }
+				font = "hoi_24header"
+				text = bop_ui_text
+				maxWidth = 200
+				maxHeight = 200
+				format = centre
+				pdx_tooltip = bop_ui_text_tt
+				pdx_tooltip_delayed = bop_ui_tt_delay
+			}
+		}
+
+		
+
+		containerWindowType = {
+			name = "politics_faction_ui"
+			position = { x = 200 y = 200 }
+			scale = 1.2
+			iconType = {
+				name = "politics_faction_sore"
+				quadTextureSprite = "GFX_variable_circle_sore"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "politics_faction_jaco"
+				quadTextureSprite = "GFX_variable_circle_jaco"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "politics_faction_oppo"
+				quadTextureSprite = "GFX_variable_circle_oppo"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "politics_faction_synd"
+				quadTextureSprite = "GFX_variable_circle_synd"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+
+			iconType = {
+				name = "politics_ui_ios" 
+				quadTextureSprite = "GFX_variable_ios"
+				frame = 0
+				position = { x = -25.5 y = -25.5 }
+				pdx_tooltip = politics_ui_ios_text
+				pdx_tooltip_delayed = politics_ui_ios_text_delay
+			}
+		}
+
+		instantTextboxType = {
+			name = "bgt_ui_box"
+			position = { x = 15 y = 280 }
+			font = "hoi_16mbs"
+			text = bgt_ui_text
+			maxWidth = 200
+			maxHeight = 400
+			format = left
+			pdx_tooltip = bgt_ui_text_tt
+			pdx_tooltip_delayed = bgt_ui_text_ttd
+		}
+
+		instantTextboxType = {
+			name = "csp_ui_box"
+			position = { x = 290 y = 280 }
+			font = "hoi_16mbs"
+			text = csp_ui_text
+			maxWidth = 200
+			maxHeight = 400
+			format = right
+			pdx_tooltip = csp_ui_text_tt
+			pdx_tooltip_delayed = csp_ui_text_ttd
+		}
+
+		instantTextboxType = {
+			name = "ios_ui_box"
+			position = { x = 175 y = 330 }
+			font = "hoi_18mbs"
+			text = ios_ui_text
+			maxWidth = 150
+			maxHeight = 80
+			format = centre
+			pdx_tooltip = politics_ui_ios_text
+			pdx_tooltip_delayed = politics_ui_ios_text_delay
+		}
+
+		iconType = {
+			name = "politics_ui_detail" 
+			quadTextureSprite = "GFX_help_button"
+			scale = 1.3
+			position = { x = 430 y = 65 }
+			pdx_tooltip = politics_ui_detail_tt
+		}
+
+		buttonType = {
+			name = "open_bgt_windows"
+			position = { x = 20 y = 50 }
+			scale = 1.2
+			quadTextureSprite ="GFX_idea_government"
+			clicksound = click_default
+			pdx_tooltip = open_bgt_windows_tt
+		}
+
+		buttonType = {
+			name = "open_faction_desc_synd"
+			position = { x = 230 y = 430 }
+			scale = 0.7
+			quadTextureSprite ="GFX_idea_generic_investigation"
+			clicksound = click_default
+			pdx_tooltip = open_faction_desc_tt
+		}
+
+		buttonType = {
+			name = "open_faction_desc_oppo"
+			position = { x = 230 y = 505 }
+			scale = 0.7
+			quadTextureSprite ="GFX_idea_generic_investigation"
+			clicksound = click_default
+			pdx_tooltip = open_faction_desc_tt
+		}
+
+		buttonType = {
+			name = "open_faction_desc_jaco"
+			position = { x = 230 y = 575 }
+			scale = 0.7
+			quadTextureSprite ="GFX_idea_generic_investigation"
+			clicksound = click_default
+			pdx_tooltip = open_faction_desc_tt
+		}
+
+		buttonType = {
+			name = "open_faction_desc_sore"
+			position = { x = 230 y = 650 }
+			scale = 0.7
+			quadTextureSprite ="GFX_idea_generic_investigation"
+			clicksound = click_default
+			pdx_tooltip = open_faction_desc_tt
+		}
+	}
+}

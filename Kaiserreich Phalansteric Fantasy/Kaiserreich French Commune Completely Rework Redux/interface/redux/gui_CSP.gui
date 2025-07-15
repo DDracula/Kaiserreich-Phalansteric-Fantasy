@@ -1,0 +1,546 @@
+@council_member_container_y_1 = 300 #For top three members of council
+@council_member_container_y_2 = 500 #For bottom four possible members of council
+@council_member_container_width = 150
+@council_member_container_height = 120
+@council_member_text_x = -75 #Should be council_member_container_width / 2 * (-1)
+@council_member_text_y = 23
+
+@council_member_portrait_frame_x = 0
+@council_member_portrait_frame_y = 3
+
+@council_member_portrait_x = -1
+@council_member_portrait_y = -6
+
+guiTypes = {
+
+	containerWindowType = {
+		name = "FRA_CSP_gui_window"
+		orientation = center
+		position = { x = 0 y = 0 } 
+		size = { width = 650 height = 700 }
+		clipping = no
+ 
+		background = {
+			name = "background1"
+			quadTextureSprite= "GFX_tiled_bg"
+			alwaystransparent = yes 
+		}
+
+		background = {
+			name = "background2"
+			quadTextureSprite= "GFX_tiled_generic_overlay_bg1"
+			alwaystransparent = yes
+		}
+
+		background = {
+			name = "background3"
+			quadTextureSprite= "GFX_tiled_research_bg"
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "FRA_CSP_title"
+			orientation = center_up
+			position = { x = -300 y = 20 }
+			font = "hoi_36header"
+			text = FRA_CSP_title_text
+			format = center
+			maxWidth = 600
+			maxHeight = 30
+			context_aware_tooltip = CSP_intro_tt
+		}
+
+		containerWindowType = {
+			name = "CCSP_container"
+			orientation = center_up
+			position = { x = -100 y = 80 }
+			size = { width = 200 height = 161 }
+			clipping = no
+
+			containerWindowType = {
+				name = "CSP_CCSP_portrait_container"
+				orientation = center_up
+				position = { x = -62 y = 0 }
+				size = { width = 123 height = 161 }
+				clipping = no
+
+				#Portrait
+				iconType = {
+					name = "CSP_CCSP_portrait"
+					spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large" #Temp
+					orientation = upper_left
+					position = { x = 0 y = 0 }
+					scale = 0.75
+					alwaystransparent = yes
+				}
+
+				#Frame
+				iconType = {
+					name = "CSP_CCSP_frame"
+					spriteType = "GFX_rectangular_frame_councillor_prf"
+					orientation = center
+					position = { x = 0 y = 0 }
+					centerposition = yes
+					context_aware_tooltip = CSP_CCSP_name_text_long
+				}
+			}
+
+			#Council of Princes leader name box
+			iconType = {
+				name = "CSP_CCSP_name_box"
+				spriteType = "GFX_fuhrer_name_ribbon"
+				orientation = center
+				position = { x = 0 y = 95 }
+				scale = 1.2
+				centerposition = yes
+				context_aware_tooltip = CSP_CCSP_name_text_long
+			}
+
+			#Council of Princes leader name
+			instantTextBoxType = {
+				name = "CSP_CCSP_name"
+				orientation = center_down
+				position = { x = -100 y = 0 }
+				font = "hoi_20b" #"hoi_18mbs"
+				context_aware_text = CSP_CCSP_name_text
+				format = center
+				maxWidth = 200
+				alwaystransparent = yes
+			}
+
+			#Title Box
+			iconType = {
+				name = "CSP_CCSP_title_box"
+				spriteType = "GFX_trait_box_fuhrer"
+				orientation = center
+				position = { x = 0 y = 111 }
+				centerposition = yes
+				context_aware_tooltip = CSP_CCSP_title_text
+			}
+
+			#Council of Princes leader title
+			instantTextBoxType = {
+				name = "CSP_CCSP_title"
+				orientation = center_down
+				position = { x = -100 y = 20 }
+				font = "hoi_16mbs"
+				context_aware_text = CSP_CCSP_title_text
+				format = center
+				maxWidth = 200
+				alwaystransparent = yes
+			}
+		}
+
+		### Members of Council ###
+
+		### Top Three ###
+		containerWindowType = {
+			name = "CSP_DFA_container"
+			orientation = center_up
+			position = { x = -230 y = @council_member_container_y_1 }
+			size = { width = @council_member_container_width height = @council_member_container_height }
+			clipping = no
+
+			containerWindowType = {
+				name = "CSP_DFA_portrait_container"
+				orientation = center_up
+				position = { x = -46 y = 0 }
+				size = { width = 91 height = 119 }
+				clipping = no
+
+				#FRAME
+				iconType = {
+					name ="CSP_DFA_frame"
+					spriteType = "GFX_rectangular_frame_councillor_prf"
+					orientation = center
+					position = { x = @council_member_portrait_frame_x y = @council_member_portrait_frame_y }
+					centerPosition = yes
+					scale = 0.85
+					context_aware_tooltip = CSP_DFA_name_text_long
+				}
+
+				#PORTRAIT
+				iconType = {
+					name ="CSP_DFA_portrait"
+					spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+					orientation = upper_left
+					position = { x = @council_member_portrait_x y = @council_member_portrait_y }
+					scale = 0.6
+					alwaystransparent = yes
+				}
+			}
+
+			#Council Member name box
+			iconType = {
+				name ="CSP_DFA_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DFA_name_text_long
+			}
+
+			#ASCENDED ADVISOR NAME
+			instantTextBoxType = {
+				name ="CSP_DFA_name"
+				orientation = center_down
+				position = { x = @council_member_text_x y = 0 }
+				font = "hoi_20b"
+				context_aware_text = CSP_DFA_name_text_short
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+
+			#ASCENDED ADVISOR TRAIT BOX
+			iconType = {
+				name ="CSP_DFA_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DFA_trait_text_detail
+			}
+
+			#TRAIT
+			instantTextBoxType = {
+				name ="CSP_DFA_trait"
+				orientation = center_down
+				position = { x = @council_member_text_x y = @council_member_text_y }
+				font = "hoi_18mbs"
+				context_aware_text = CSP_DFA_trait_text
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+		}
+
+		containerWindowType = {
+			name = "CSP_DEA_container"
+			orientation = center_up
+			position = { x = -75 y = @council_member_container_y_1 }
+			size = { width = @council_member_container_width height = @council_member_container_height }
+			clipping = no
+
+			containerWindowType = {
+				name = "CSP_DEA_portrait_container"
+				orientation = center_up
+				position = { x = -46 y = 0 }
+				size = { width = 91 height = 119 }
+				clipping = no
+
+				#FRAME
+				iconType = {
+					name ="CSP_DEA_frame"
+					spriteType = "GFX_rectangular_frame_councillor_prf"
+					orientation = center
+					position = { x = @council_member_portrait_frame_x y = @council_member_portrait_frame_y }
+					centerPosition = yes
+					scale = 0.85
+					context_aware_tooltip = CSP_DEA_name_text_long
+				}
+
+				#PORTRAIT
+				iconType = {
+					name ="CSP_DEA_portrait"
+					spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+					orientation = upper_left
+					position = { x = @council_member_portrait_x y = @council_member_portrait_y }
+					scale = 0.6
+					alwaystransparent = yes
+				}
+			}
+
+			#Council Member name box
+			iconType = {
+				name ="CSP_DEA_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DEA_name_text_long
+			}
+
+			#NAME
+			instantTextBoxType = {
+				name ="CSP_DEA_name"
+				orientation = center_down
+				position = { x = @council_member_text_x y = 0 }
+				font = "hoi_20b"
+				context_aware_text = CSP_DEA_name_text_short
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+
+			#ASCENDED ADVISOR TRAIT BOX
+			iconType = {
+				name ="CSP_DEA_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DEA_trait_text_detail
+			}
+
+			#TRAIT
+			instantTextBoxType = {
+				name ="CSP_DEA_trait"
+				orientation = center_down
+				position = { x = @council_member_text_x y = @council_member_text_y }
+				font = "hoi_18mbs"
+				context_aware_text = CSP_DEA_trait_text
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+		}
+
+		containerWindowType = {
+			name = "CSP_DIS_container"
+			orientation = center_up
+			position = { x = 80 y = @council_member_container_y_1 }
+			size = { width = @council_member_container_width height = @council_member_container_height }
+			clipping = no
+
+			containerWindowType = {
+				name = "CSP_DIS_portrait_container"
+				orientation = center_up
+				position = { x = -46 y = 0 }
+				size = { width = 91 height = 119 }
+				clipping = no
+
+				#FRAME
+				iconType = {
+					name ="CSP_DIS_frame"
+					spriteType = "GFX_rectangular_frame_councillor_prf"
+					orientation = center
+					position = { x = @council_member_portrait_frame_x y = @council_member_portrait_frame_y }
+					centerPosition = yes
+					scale = 0.85
+					context_aware_tooltip = CSP_DIS_name_text_long
+				}
+
+				#PORTRAIT
+				iconType = {
+					name ="CSP_DIS_portrait"
+					spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+					orientation = upper_left
+					position = { x = @council_member_portrait_x y = @council_member_portrait_y }
+					scale = 0.6
+					alwaystransparent = yes
+				}
+			}
+
+			#Council Member name box
+			iconType = {
+				name ="CSP_DIS_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DIS_name_text_long
+			}
+
+			#NAME
+			instantTextBoxType = {
+				name ="CSP_DIS_name"
+				orientation = center_down
+				position = { x = @council_member_text_x y = 0 }
+				font = "hoi_20b"
+				context_aware_text = CSP_DIS_name_text_short
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+
+			#ASCENDED ADVISOR TRAIT BOX
+			iconType = {
+				name = "CSP_DIS_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DIS_trait_text_detail
+			}
+
+			#TRAIT
+			instantTextBoxType = {
+				name ="CSP_DIS_trait"
+				orientation = center_down
+				position = { x = @council_member_text_x y = @council_member_text_y }
+				font = "hoi_18mbs"
+				context_aware_text = CSP_DIS_trait_text
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+		}
+
+		### Bottom Four ###
+		# Travancore and Kolhapur both exist at game start
+		# Kashmir and Gwalior can appear later on via effect
+		
+		containerWindowType = {
+			name = "CSP_DSRG_container"
+			orientation = center_up
+			position = { x = -150 y = @council_member_container_y_2 }
+			size = { width = @council_member_container_width height = @council_member_container_height }
+			clipping = no
+
+			containerWindowType = {
+				name = "CSP_DSRG_portrait_container"
+				orientation = center_up
+				position = { x = -46 y = 0 }
+				size = { width = 91 height = 119 }
+				clipping = no
+
+				#FRAME
+				iconType = {
+					name ="CSP_DSRG_frame"
+					spriteType = "GFX_rectangular_frame_councillor_prf"
+					orientation = center
+					position = { x = @council_member_portrait_frame_x y = @council_member_portrait_frame_y }
+					centerPosition = yes
+					scale = 0.85
+					context_aware_tooltip = CSP_DSRG_name_text_long
+				}
+
+				#PORTRAIT
+				iconType = {
+					name = "CSP_DSRG_portrait"
+					spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+					orientation = upper_left
+					position = { x = @council_member_portrait_x y = @council_member_portrait_y }
+					scale = 0.6
+					alwaystransparent = yes
+				}
+			}
+
+			#Council Member name box
+			iconType = {
+				name ="CSP_DSRG_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0 y = 71 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DSRG_name_text_long
+			}
+
+			#NAME
+			instantTextBoxType = {
+				name ="CSP_DSRG_name"
+				orientation = center_down
+				position = { x = @council_member_text_x y = 0 }
+				font = "hoi_20b"
+				context_aware_text = CSP_DSRG_name_text_short
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+
+			#ASCENDED ADVISOR TRAIT BOX
+			iconType = {
+				name = "CSP_DSRG_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0 y = 102 }
+				centerposition = yes
+				context_aware_tooltip = CSP_DSRG_trait_text_detail
+			}
+
+			#TRAIT
+			instantTextBoxType = {
+				name ="CSP_DSRG_trait"
+				orientation = center_down
+				position = { x = @council_member_text_x y = @council_member_text_y }
+				font = "hoi_18mbs"
+				context_aware_text = CSP_DSRG_trait_text
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+		}
+
+		containerWindowType = {
+			name = "CSP_CGSC_container"
+			orientation = center_up
+			position = { x = 5 y = @council_member_container_y_2 }
+			size = { width = @council_member_container_width height = @council_member_container_height }
+			clipping = no
+
+			containerWindowType = {
+				name = "CSP_CGSC_portrait_container"
+				orientation = center_up
+				position = { x = -46 y = 0 }
+				size = { width = 91 height = 119 }
+				clipping = no
+
+				#FRAME
+				iconType = {
+					name ="CSP_CGSC_frame"
+					spriteType = "GFX_rectangular_frame_councillor_prf"
+					orientation = center
+					position = { x = @council_member_portrait_frame_x y = @council_member_portrait_frame_y }
+					centerPosition = yes
+					scale = 0.85
+					context_aware_tooltip = CSP_CGSC_name_text_long
+				}
+
+				#PORTRAIT
+				iconType = {
+					name ="CSP_CGSC_portrait"
+					spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+					orientation = upper_left
+					position = { x = @council_member_portrait_x y = @council_member_portrait_y }
+					scale = 0.6
+					alwaystransparent = yes
+				}
+			}
+
+			#Council Member name box
+			iconType = {
+				name ="CSP_CGSC_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0 y = 71 }
+				centerposition = yes
+				context_aware_tooltip = CSP_CGSC_name_text_long
+			}
+
+			#NAME
+			instantTextBoxType = {
+				name ="CSP_CGSC_name"
+				orientation = center_down
+				position = { x = @council_member_text_x y = 0 }
+				font = "hoi_20b"
+				context_aware_text = CSP_CGSC_name_text_short
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+
+			#ASCENDED ADVISOR TRAIT BOX
+			iconType = {
+				name = "CSP_CGSC_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0 y = 102 }
+				centerposition = yes
+				context_aware_tooltip = CSP_CGSC_trait_text_detail
+			}
+
+			#TRAIT
+			instantTextBoxType = {
+				name ="CSP_CGSC_trait"
+				orientation = center_down
+				position = { x = @council_member_text_x y = @council_member_text_y }
+				font = "hoi_18mbs"
+				context_aware_text = CSP_CGSC_trait_text
+				format = center
+				maxWidth = @council_member_container_width
+				alwaystransparent = yes
+			}
+		}
+	}
+}

@@ -1,0 +1,1303 @@
+ideas = {
+    hidden_ideas = {
+		#BGT
+		BGT_full_buff = {
+			name = FRA_BGT_buff5
+			modifier = {
+				political_power_factor = -0.1
+
+				stability_factor = 0.05
+				war_support_factor = 0.05
+
+				industrial_capacity_factory = -0.1
+				consumer_goods_factor = -0.3
+
+				production_speed_buildings_factor = -0.1
+				production_factory_max_efficiency_factor = 0.15
+
+				monthly_change_bgt_vs_csp = 3
+
+				monthly_change_popsw = 0.3
+				monthly_change_popsp = 0.3
+				monthly_change_popsm = 0.3
+				monthly_change_popss = 0.3
+				monthly_change_popsb = -0.3
+
+				monthly_change_ev = 0.7
+				monthly_change_eip = -0.5
+				monthly_change_eaa = -0.4
+				monthly_change_eq = 0.4
+				monthly_change_el = -0.5
+				monthly_change_ei = 0.3
+
+				monthly_change_aaotu = 0.1
+			}
+		}
+		#CSP
+		CSP_full_buff = {
+			name = FRA_CSP_buff5
+			modifier = {
+				political_power_factor = 0.2
+
+				stability_factor = 0.05
+				war_support_factor = 0.05
+
+				industrial_capacity_factory = 0.2
+				consumer_goods_factor = 0.2
+
+				production_speed_buildings_factor = 0.15
+				production_factory_max_efficiency_factor = -0.1
+
+				monthly_change_bgt_vs_csp = -3
+
+				monthly_change_popsb = 0.5
+
+				monthly_change_eib = 0.3
+				monthly_change_eip = 0.4
+				monthly_change_eam = 0.3
+				monthly_change_eae = 0.3
+				monthly_change_eaa = 0.2
+				monthly_change_eq = -0.5 
+				monthly_change_el = 0.5
+			}
+		}
+		#DFA
+		DFA_support = {
+			name = DFA
+			cancel = { 
+				NOT = {
+					check_variable = { DFA_attitude = 5 } 
+					check_variable = { DFA_attitude = 4 } 
+				}
+			}
+			modifier = {
+				opinion_gain_monthly_factor = 0.5
+				opinion_gain_monthly_same_ideology = 2.5
+				improve_relations_maintain_cost_factor = -0.5
+				research_sharing_per_country_bonus_factor = 0.15
+
+				weekly_change_ieu = 3
+				weekly_change_ias = 3
+				weekly_change_ime = 3
+				weekly_change_iaf = 3
+				weekly_change_iam = 3
+			}
+		}
+		DFA_cooperate= {
+			name = DFA
+			cancel = { 
+				NOT = {
+					check_variable = { DFA_attitude = 3 } 
+					check_variable = { DFA_attitude = 2 } 
+				}
+			}
+			modifier = {
+				opinion_gain_monthly_factor = 0.25
+				opinion_gain_monthly_same_ideology = 1
+				improve_relations_maintain_cost_factor = -0.25
+
+				weekly_change_ieu = 2
+				weekly_change_ias = 2
+				weekly_change_ime = 2
+				weekly_change_iaf = 2
+				weekly_change_iam = 2
+			}
+		}
+		DFA_neutrality= {
+			name = DFA
+			cancel = { 
+				NOT = {
+					check_variable = { DFA_attitude = 1 } 
+					check_variable = { DFA_attitude = 0 } 
+					check_variable = { DFA_attitude = -1 } 
+				}
+			}
+			modifier = {
+				opinion_gain_monthly_factor = 0.25
+
+				weekly_change_ieu = 1
+				weekly_change_ias = 1
+				weekly_change_ime = 1
+				weekly_change_iaf = 1
+				weekly_change_iam = 1
+			}
+		}
+		DFA_dissatisfaction= {
+			name = DFA
+			cancel = { 
+				NOT = {
+					check_variable = { DFA_attitude = -2 } 
+					check_variable = { DFA_attitude = -3 } 
+				}
+			}
+			modifier = {
+				improve_relations_maintain_cost_factor = 0.25
+			}
+		}
+		DFA_oppose= {
+			name = DFA
+			cancel = { 
+				NOT = {
+					check_variable = { DFA_attitude = -5 } 
+					check_variable = { DFA_attitude = -4 } 
+				}
+			}
+			modifier = {
+				opinion_gain_monthly_factor = -0.25
+				improve_relations_maintain_cost_factor = 0.5
+
+				weekly_change_ieu = -1
+				weekly_change_ias = -1
+				weekly_change_ime = -1
+				weekly_change_iaf = -1
+				weekly_change_iam = -1
+			}
+		}
+		#DEA
+		DEA_support = {
+			name = DEA
+			cancel = { 
+				NOT = {
+					check_variable = { DEA_attitude = 5 } 
+					check_variable = { DEA_attitude = 4 } 
+				}
+			}
+			modifier = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				production_speed_buildings_factor = 0.05
+				monthly_change_ev = 0.6
+			}
+		}
+		DEA_cooperate= {
+			name = DEA
+			cancel = { 
+				NOT = {
+					check_variable = { DEA_attitude = 3 } 
+					check_variable = { DEA_attitude = 2 } 
+				}
+			}
+			modifier = {
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				production_speed_buildings_factor = 0.025
+				monthly_change_ev = 0.3
+			}
+		}
+		DEA_neutrality= {
+			name = DEA
+			cancel = { 
+				NOT = {
+					check_variable = { DEA_attitude = 1 } 
+					check_variable = { DEA_attitude = 0 } 
+					check_variable = { DEA_attitude = -1 } 
+				}
+			}
+			modifier = {
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.01
+				production_speed_buildings_factor = 0.01
+				monthly_change_ev = 0.1
+			}
+		}
+		DEA_dissatisfaction= {
+			name = DEA
+			cancel = { 
+				NOT = {
+					check_variable = { DEA_attitude = -3 } 
+					check_variable = { DEA_attitude = -2 } 
+				}
+			}
+			modifier = {
+				industrial_capacity_factory = -0.025
+				industrial_capacity_dockyard = -0.025
+				production_speed_buildings_factor = -0.025
+				monthly_change_ev = -0.2
+			}
+		}
+		DEA_oppose= {
+			name = DEA
+			cancel = { 
+				NOT = {
+					check_variable = { DEA_attitude = -4 } 
+					check_variable = { DEA_attitude = -5 } 
+				}
+			}
+			modifier = {
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				production_speed_buildings_factor = -0.05
+				monthly_change_ev = -0.5
+			}
+		}
+		#DIS
+		DIS_support = {
+			name = DIS
+			cancel = { 
+				NOT = {
+					check_variable = { DIS_attitude = 5 } 
+					check_variable = { DIS_attitude = 4 } 
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.1
+				consumer_goods_factor = -0.05
+
+				monthly_change_popsw = 0.3
+				monthly_change_popsp = 0.3
+				monthly_change_popsm = 0.3
+				monthly_change_popss = 0.3
+				monthly_change_popsb = 0.3
+			}
+		}
+		DIS_cooperate= {
+			name = DIS
+			cancel = { 
+				NOT = {
+					check_variable = { DIS_attitude = 3 } 
+					check_variable = { DIS_attitude = 2 } 
+				}
+			}
+			modifier = {
+				stability_factor = 0.025
+				political_power_factor = 0.05
+				consumer_goods_factor = -0.025
+
+				monthly_change_popsw = 0.2
+				monthly_change_popsp = 0.2
+				monthly_change_popsm = 0.2
+				monthly_change_popss = 0.2
+				monthly_change_popsb = 0.2
+			}
+		}
+		DIS_neutrality= {
+			name = DIS
+			cancel = { 
+				NOT = {
+					check_variable = { DIS_attitude = 1 } 
+					check_variable = { DIS_attitude = 0 } 
+					check_variable = { DIS_attitude = -1 } 
+				}
+			}
+			modifier = {
+				stability_factor = 0.025
+				political_power_factor = 0.025
+
+				monthly_change_popsw = 0.1
+				monthly_change_popsp = 0.1
+				monthly_change_popsm = 0.1
+				monthly_change_popss = 0.1
+				monthly_change_popsb = 0.1
+			}
+		}
+		DIS_dissatisfaction= {
+			name = DIS
+			cancel = { 
+				NOT = {
+					check_variable = { DIS_attitude = -3 } 
+					check_variable = { DIS_attitude = -2 } 
+				}
+			}
+			modifier = {
+				stability_factor = -0.025
+				political_power_factor = -0.05
+				consumer_goods_factor = 0.025
+			}
+		}
+		DIS_oppose= {
+			name = DIS
+			cancel = { 
+				NOT = {
+					check_variable = { DIS_attitude = -4 } 
+					check_variable = { DIS_attitude = -5 } 
+				}
+			}
+			modifier = {
+				stability_factor = -0.05
+				political_power_factor = -0.1
+				consumer_goods_factor = 0.05
+
+				monthly_change_popsw = -0.1
+				monthly_change_popsp = -0.1
+				monthly_change_popsm = -0.1
+				monthly_change_popss = -0.1
+				monthly_change_popsb = -0.1
+			}
+		}
+		#DSRG
+		DSRG_support = {
+			name = DSRG
+			cancel = { 
+				NOT = {
+					check_variable = { DSRG_attitude = 4 } 
+					check_variable = { DSRG_attitude = 5 } 
+				}
+			}
+			modifier = {
+				agency_upgrade_time = -0.5
+				intelligence_agency_defense = 1
+				intel_network_gain_factor = 0.25
+				operative_slot = 1
+			}
+		}
+		DSRG_cooperate= {
+			name = DSRG
+			cancel = { 
+				NOT = {
+					check_variable = { DSRG_attitude = 3 } 
+					check_variable = { DSRG_attitude = 2 } 
+				}
+			}
+			modifier = {
+				agency_upgrade_time = -0.25
+				intelligence_agency_defense = 0.5
+				intel_network_gain_factor = 0.1
+				operative_slot = 1
+			}
+		}
+		DSRG_neutrality= {
+			name = DSRG
+			cancel = { 
+				NOT = {
+					check_variable = { DSRG_attitude = 1 } 
+					check_variable = { DSRG_attitude = 0 } 
+					check_variable = { DSRG_attitude = -1 } 
+				}
+			}
+			modifier = {
+				intelligence_agency_defense = 0.25
+				intel_network_gain_factor = 0.05
+			}
+		}
+		DSRG_dissatisfaction= {
+			name = DSRG
+			cancel = { 
+				NOT = {
+					check_variable = { DSRG_attitude = -2 } 
+					check_variable = { DSRG_attitude = -3 } 
+				}
+			}
+			modifier = {
+				agency_upgrade_time = 0.25
+				intel_network_gain_factor = -0.05
+			}
+		}
+		DSRG_oppose= {
+			name = DSRG
+			cancel = { 
+				NOT = {
+					check_variable = { DSRG_attitude = -4 } 
+					check_variable = { DSRG_attitude = -5 } 
+				}
+			}
+			modifier = {
+				agency_upgrade_time = 0.5
+				intelligence_agency_defense = -0.25
+				intel_network_gain_factor = -0.1
+			}
+		}
+		#CGSC
+		CGSC_support = {
+			name = CGSC
+			cancel = { 
+				NOT = {
+					check_variable = { CGSC_attitude = 4 } 
+					check_variable = { CGSC_attitude = 5 } 
+				}
+			}
+			modifier = {
+				war_support_factor = 0.05
+				experience_gain_army_factor = 0.1
+				mobilization_speed = 0.2
+				command_power_gain = 1
+
+				monthly_change_atrain = 0.3
+			}
+		}
+		CGSC_cooperate= {
+			name = CGSC
+			cancel = { 
+				NOT = {
+					check_variable = { CGSC_attitude = 3 } 
+					check_variable = { CGSC_attitude = 2 } 
+				}
+			}
+			modifier = {
+				war_support_factor = 0.025
+				experience_gain_army_factor = 0.05
+				mobilization_speed = 0.1
+				command_power_gain = 0.5
+
+				monthly_change_atrain = 0.2
+			}
+		}
+		CGSC_neutrality= {
+			name = CGSC
+			cancel = { 
+				NOT = {
+					check_variable = { CGSC_attitude = 1 } 
+					check_variable = { CGSC_attitude = 0 } 
+					check_variable = { CGSC_attitude = -1 } 
+				}
+			}
+			modifier = {
+				experience_gain_army_factor = 0.025
+				mobilization_speed = 0.05
+				command_power_gain = 0.25
+
+				monthly_change_atrain = 0.1
+			}
+		}
+		CGSC_dissatisfaction= {
+			name = CGSC
+			cancel = { 
+				NOT = {
+					check_variable = { CGSC_attitude = -2 } 
+					check_variable = { CGSC_attitude = -3 } 
+				}
+			}
+			modifier = {
+				war_support_factor = -0.025
+				experience_gain_army_factor = -0.05
+				mobilization_speed = -0.05
+				command_power_gain = -0.25
+			}
+		}
+		CGSC_oppose= {
+			name = CGSC
+			cancel = { 
+				NOT = {
+					check_variable = { CGSC_attitude = -4 } 
+					check_variable = { CGSC_attitude = -5 } 
+				}
+			}
+			modifier = {
+				war_support_factor = -0.05
+				experience_gain_army_factor = -0.1
+				mobilization_speed = -0.1
+				command_power_gain = -0.5
+
+				monthly_change_atrain = -0.1
+			}
+		}
+
+		#1
+        bill_CGT_leadership = {
+            modifier = {
+				political_power_factor = -0.1
+				consumer_goods_factor = 0.05
+				war_support_factor = -0.025
+				production_factory_start_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				stability_factor = 0.025
+
+				monthly_change_popsw = 0.3
+				monthly_change_popsp = -0.1
+				monthly_change_popsm = -0.1
+				monthly_change_popsb = -0.1
+
+				monthly_change_eib = 0.2
+				monthly_change_eip = 0.2
+				monthly_change_eq = -0.5
+			}
+        }
+
+		bill_CGT_depoliticized = {
+			modifier = {
+				political_power_factor = -0.05
+				consumer_goods_factor = 0.05
+				production_factory_start_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.01
+				stability_factor = 0.05
+
+				monthly_change_popsb = 0.2
+
+				monthly_change_eib = 0.1
+				monthly_change_eip = 0.1
+			}
+		}
+		bill_CGT_depoliticized_update = { 
+			name = bill_CGT_depoliticized
+			modifier = {
+				political_power_factor = -0.05
+				production_factory_start_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.01
+				industrial_capacity_dockyard = 0.01
+				stability_factor = 0.05
+
+				production_speed_industrial_complex_factor = 0.1
+
+				monthly_change_popsb = 0.2
+
+				monthly_change_eib = 0.1
+				monthly_change_eip = 0.1
+			}
+		}
+
+		bill_CGT_pluralistic = {
+			modifier = {
+				political_power_factor = -0.1
+				production_factory_start_efficiency_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				stability_factor = 0.05
+
+				monthly_change_popsw = 0.1
+				monthly_change_popsm = 0.1
+
+				monthly_change_eib = 0.1
+				monthly_change_eq = 0.2
+				monthly_change_el = 0.3
+			}
+		}
+		bill_CGT_pluralistic_agri = {
+			name = bill_CGT_pluralistic
+			modifier = {
+				political_power_factor = -0.1
+				production_factory_start_efficiency_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				stability_factor = 0.05
+
+				local_resources_factor = 0.1
+				supply_consumption_factor = -0.025
+
+				monthly_change_popsw = 0.1
+				monthly_change_popsp = 0.1
+				monthly_change_popsm = 0.1
+
+				monthly_change_eib = 0.1
+				monthly_change_eae = 0.1
+				monthly_change_eq = 0.2
+				monthly_change_el = 0.3
+			}
+		}
+		bill_CGT_pluralistic_culture = {
+			name = bill_CGT_pluralistic
+			modifier = {
+				political_power_factor = -0.1
+				production_factory_start_efficiency_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				stability_factor = 0.05
+
+				research_speed_factor = 0.05
+				research_sharing_per_country_bonus_factor = 0.25
+
+				monthly_change_popsw = 0.1
+				monthly_change_popsp = 0.1
+				monthly_change_popsm = 0.1
+				monthly_change_popss = 0.1
+
+				monthly_change_eib = 0.1
+				monthly_change_eq = 0.2
+				monthly_change_el = 0.3
+				monthly_change_ei = 0.1
+			}
+		}
+		bill_CGT_pluralistic_all = {
+			name = bill_CGT_pluralistic
+			modifier = {
+				political_power_factor = -0.1
+				production_factory_start_efficiency_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				stability_factor = 0.05
+
+				local_resources_factor = 0.1
+				supply_consumption_factor = -0.025
+
+				research_speed_factor = 0.05
+				research_sharing_per_country_bonus_factor = 0.25
+
+				monthly_change_popsw = 0.1
+				monthly_change_popsp = 0.1
+				monthly_change_popsm = 0.1
+				monthly_change_popss = 0.1
+
+				monthly_change_eib = 0.1
+				monthly_change_eae = 0.1
+				monthly_change_eq = 0.2
+				monthly_change_el = 0.3
+				monthly_change_ei = 0.1
+			}
+		}
+
+		bill_CGT_legitimacy = {
+            modifier = {
+				political_power_factor = -0.15
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.075
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+
+				monthly_change_popsw = 0.5
+				monthly_change_popsp = -0.3
+				monthly_change_popsm = -0.3
+				monthly_change_popss = -0.3
+
+				monthly_change_eib = 0.4
+				monthly_change_eip = 0.4
+				monthly_change_eq = -0.4
+				monthly_change_el = 0.4
+			}
+        }
+		bill_CGT_legitimacy_agri = {
+			name = bill_CGT_legitimacy
+            modifier = {
+				political_power_factor = -0.15
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.075
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+
+				local_resources_factor = 0.1
+				supply_consumption_factor = -0.025
+
+				monthly_change_popsw = 0.5
+				monthly_change_popsm = -0.3
+				monthly_change_popss = -0.3
+
+				monthly_change_eib = 0.4
+				monthly_change_eip = 0.4
+				monthly_change_eam = 0.2
+				monthly_change_eq = -0.3
+				monthly_change_el = 0.4
+			}
+        }
+		bill_CGT_legitimacy_culture = {
+			name = bill_CGT_legitimacy
+            modifier = {
+				political_power_factor = -0.15
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.075
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+
+				research_speed_factor = 0.05
+				research_sharing_per_country_bonus_factor = 0.25
+
+				monthly_change_popsw = 0.5
+				monthly_change_popsp = -0.3
+				monthly_change_popsm = -0.3
+
+				monthly_change_eib = 0.4
+				monthly_change_eip = 0.4
+				monthly_change_eq = -0.3
+				monthly_change_el = 0.4
+				monthly_change_ei = 0.2
+			}
+        }
+		bill_CGT_legitimacy_all = {
+			name = bill_CGT_legitimacy
+            modifier = {
+				political_power_factor = -0.15
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.075
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+
+				local_resources_factor = 0.1
+				supply_consumption_factor = -0.025
+
+				research_speed_factor = 0.05
+				research_sharing_per_country_bonus_factor = 0.25
+
+				monthly_change_popsw = 0.5
+
+				monthly_change_eib = 0.4
+				monthly_change_eip = 0.4
+				monthly_change_eam = 0.2
+				monthly_change_eq = -0.2
+				monthly_change_el = 0.4
+				monthly_change_ei = 0.2
+			}
+        }
+		bill_CGT_legitimacy2 = {
+			name = bill_CGT_legitimacy
+            modifier = {
+				political_power_factor = -0.25
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+
+				monthly_change_popsw = 0.7
+				monthly_change_popsp = -0.3
+				monthly_change_popsm = -0.3
+				monthly_change_popss = -0.3
+
+				monthly_change_eib = 0.5
+				monthly_change_eip = 0.5
+				monthly_change_eq = -0.4
+				monthly_change_el = 0.5
+			}
+        }
+		bill_CGT_legitimacy_agri2 = {
+			name = bill_CGT_legitimacy
+            modifier = {
+				political_power_factor = -0.25
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+
+				local_resources_factor = 0.1
+				supply_consumption_factor = -0.025
+
+				monthly_change_popsw = 0.7
+				monthly_change_popsm = -0.3
+				monthly_change_popss = -0.3
+
+				monthly_change_eib = 0.5
+				monthly_change_eip = 0.5
+				monthly_change_eam = 0.2
+				monthly_change_eq = -0.3
+				monthly_change_el = 0.5
+			}
+        }
+		bill_CGT_legitimacy_culture2 = {
+			name = bill_CGT_legitimacy
+            modifier = {
+				political_power_factor = -0.25
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+
+				research_speed_factor = 0.05
+				research_sharing_per_country_bonus_factor = 0.25
+
+				monthly_change_popsw = 0.7
+				monthly_change_popsp = -0.3
+				monthly_change_popsm = -0.3
+
+				monthly_change_eib = 0.5
+				monthly_change_eip = 0.5
+				monthly_change_eq = -0.3
+				monthly_change_el = 0.5
+				monthly_change_ei = 0.2
+			}
+        }
+		bill_CGT_legitimacy_all2 = {
+			name = bill_CGT_legitimacy
+            modifier = {
+				political_power_factor = -0.25
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.05
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_max_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.1
+				industrial_capacity_dockyard = 0.1
+
+				local_resources_factor = 0.1
+				supply_consumption_factor = -0.025
+
+				research_speed_factor = 0.05
+				research_sharing_per_country_bonus_factor = 0.25
+
+				monthly_change_popsw = 0.7
+
+				monthly_change_eib = 0.5
+				monthly_change_eip = 0.5
+				monthly_change_eam = 0.2
+				monthly_change_eq = -0.2
+				monthly_change_el = 0.5
+				monthly_change_ei = 0.2
+			}
+        }
+		#2
+		bill_basic_speech_freedom = {
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.025
+				research_speed_factor = 0.025
+				production_factory_max_efficiency_factor = 0.025 
+
+				monthly_change_ei = 0.3
+			}
+		}
+		#3
+		bill_limited_womens_rights = {
+			modifier = {
+				stability_factor = 0.025
+				political_power_factor = -0.05
+				conscription_factor = 0.05
+				consumer_goods_factor = -0.025
+				monthly_population = 0.2
+
+				monthly_change_eq = -0.3
+			}
+		}
+		bill_developing_womens_rights = {
+			modifier = {
+				stability_factor = 0.025
+				political_power_factor = -0.05
+				conscription_factor = 0.05
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.025
+				monthly_population = 0.15
+
+				monthly_change_eq = -0.2
+			}
+		}
+		#4
+		bill_freedom_of_religion = {
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = -0.05
+				drift_defence_factor = -0.15
+				consumer_goods_factor = -0.025
+
+				monthly_change_popsp = 0.4
+			}
+		}
+		#5
+		bill_free_immigration = {
+			modifier = {
+				custom_modifier_tooltip = bill_free_immigration_tt
+				political_power_factor = -0.05
+				stability_factor = -0.05
+				production_factory_start_efficiency_factor = 0.05
+				consumer_goods_factor = -0.1
+				weekly_manpower = 600
+
+				monthly_change_popsw = -0.2
+
+				monthly_change_ev = 0.3
+			}
+		}
+		#6
+		bill_rural_education_subsidy = {
+			modifier = {
+				political_power_factor = -0.05
+				research_speed_factor = 0.05
+
+				monthly_change_popsp = 0.3
+				monthly_change_ei = 0.5
+			}
+		}
+		bill_rural_education_subsidy2 = {
+			name = bill_rural_education_subsidy
+			modifier = {
+				research_speed_factor = 0.1
+				consumer_goods_factor = -0.1
+
+				monthly_change_popsp = 0.5
+				monthly_change_ei = 0.5
+			}
+		}
+		#7
+		bill_comprehensive_education_program = {
+			name = bill_comprehensive_education_program
+			modifier = {
+				political_power_factor = -0.1
+				research_speed_factor = 0.1
+				consumer_goods_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+
+				monthly_change_ei = 0.5
+				monthly_change_eq = -1
+			}
+		}
+
+		bill_comprehensive_education_program2 = {
+			name = bill_comprehensive_education_program
+			modifier = {
+				political_power_factor = -0.1
+				research_speed_factor = 0.15
+				consumer_goods_factor = 0.1
+				production_factory_max_efficiency_factor = 0.05
+
+				monthly_change_ei = 0.5
+				monthly_change_eq = -1
+			}
+		}
+		#8
+		bill_massive_tax_cuts = {
+			modifier = {
+				political_power_factor = -0.25
+				consumer_goods_factor = -0.1
+				production_speed_buildings_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.1
+
+				monthly_change_popsw = 0.2
+				monthly_change_popsp = 0.3
+				monthly_change_popsm = 0.4
+				monthly_change_popsb = -0.4
+
+				monthly_change_ev = 0.5
+			}
+		}
+		#9
+		bill_eight_hour_workdays = {
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.1
+				consumer_goods_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.025
+				production_factory_max_efficiency_factor = 0.025
+
+				monthly_change_popsw = 0.1
+				monthly_change_popsp = 0.1
+				monthly_change_popsm = 0.1
+				monthly_change_popss = 0.1
+				monthly_change_popsb = 0.1
+			}
+		}
+
+		bill_six_hour_workdays = {
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.15
+				consumer_goods_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.025
+
+				monthly_change_popsw = 0.2
+				monthly_change_popsp = 0.2
+				monthly_change_popsm = 0.2
+				monthly_change_popss = 0.2
+				monthly_change_popsb = 0.2
+			}
+		}
+		#10
+		bill_industrial_structure_optimization_act1 = {
+			name = bill_industrial_structure_optimization_act
+			modifier = {
+				political_power_factor = -0.15
+				consumer_goods_factor = 0.05
+				stability_factor = -0.2
+				global_building_slots_factor = 0.1
+				industrial_capacity_factory = 0.05
+				production_factory_max_efficiency_factor = 0.1
+
+				monthly_change_eq = -0.3
+				monthly_change_el = 0.5
+			}
+		}
+
+		bill_industrial_structure_optimization_act2 = {
+			name = bill_industrial_structure_optimization_act
+			modifier = {
+				political_power_factor = -0.1
+				consumer_goods_factor = 0.05
+				stability_factor = -0.1
+				global_building_slots_factor = 0.1
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_max_efficiency_factor = 0.1
+
+				monthly_change_eq = -0.3
+				monthly_change_el = 0.5
+			}
+		}
+
+		bill_national_industrial_synergy_act1 = {
+			name = bill_national_industrial_synergy_act
+			modifier = {
+				political_power_factor = -0.1
+				consumer_goods_factor = 0.05
+				stability_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.05
+				production_factory_start_efficiency_factor = 0.1
+
+				monthly_change_el = 0.3
+			}
+		}
+
+		bill_national_industrial_synergy_act2 = {
+			name = bill_national_industrial_synergy_act
+			modifier = {
+				political_power_factor = -0.05
+				consumer_goods_factor = 0.05
+				industry_free_repair_factor = 0.4
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_start_efficiency_factor = 0.1
+				production_factory_max_efficiency_factor = 0.025
+
+				monthly_change_el = 0.3
+			}
+		}
+		#11
+		bill_national_employment_platform = {
+			modifier = {
+				stability_factor = 0.1
+				political_power_cost = 0.5
+				production_factory_start_efficiency_factor = 0.075
+				production_factory_efficiency_gain_factor = 0.15
+
+				monthly_change_eq = 0.2
+			}
+		}
+		#12
+		bill_socio_economic_participation_promotion = {
+			modifier = {
+				stability_weekly = -0.005
+				production_speed_industrial_complex_factor = 0.25
+				consumer_goods_factor = -0.1
+				production_factory_efficiency_gain_factor = 0.15
+
+				monthly_change_ev = 0.5
+				monthly_change_eq = 0.2
+
+				custom_modifier_tooltip = bill_socio_economic_participation_promotion_tt
+			}
+		}
+		#13
+		bill_green_industry = {
+			modifier = {
+				industrial_capacity_factory = -0.1
+				monthly_population = 0.5
+				supply_consumption_factor = -0.025
+				no_supply_grace = 18
+
+				monthly_change_popsw = 0.2
+				monthly_change_popsp = 0.2
+				monthly_change_popsm = 0.2
+				monthly_change_popss = 0.2
+				monthly_change_popsb = 0.2
+
+				monthly_change_eib = -0.2
+				monthly_change_eq = 0.2
+			}
+		}
+		#14
+		bill_social_capacity_integration1 = {
+			name = bill_social_capacity_integration
+			modifier = {
+				political_power_factor = -0.1
+				stability_factor = -0.05
+				line_change_production_efficiency_factor = -0.1
+				production_factory_max_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.1
+
+				monthly_change_ev = 0.5
+				monthly_change_eq = -1
+			}
+		}
+
+		bill_social_capacity_integration2 = {
+			name = bill_social_capacity_integration
+			modifier = {
+				political_power_factor = -0.25
+				stability_factor = -0.1
+				line_change_production_efficiency_factor = -0.2
+				production_factory_efficiency_gain_factor = 0.15
+				production_factory_max_efficiency_factor = 0.15
+				industrial_capacity_factory = 0.15
+
+				monthly_change_ev = 0.5
+				monthly_change_eq = -1
+			}
+		}
+
+
+		bill_social_economic_equality = {
+			name = bill_social_economic_equality
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = 0.05
+				production_factory_max_efficiency_factor = -0.05
+				production_speed_infrastructure_factor = 0.25
+				production_speed_industrial_complex_factor = 0.2
+
+				monthly_change_eq = 0.5
+			}
+		}
+		#15
+		bill_commune_streamling = {
+			modifier = {
+				political_power_factor = -0.05
+				stability_factor = -0.1
+				consumer_goods_factor = 0.1
+				line_change_production_efficiency_factor = 0.1
+				production_factory_max_efficiency_factor = 0.075
+
+				monthly_change_eip = 0.3
+				monthly_change_eq = -0.4
+			}
+		}
+
+		bill_union_commune_integration = {
+			modifier = {
+				political_power_factor = -0.15
+				industrial_capacity_factory = 0.1
+				production_factory_efficiency_gain_factor = 0.05
+
+				monthly_change_eip = 0.2
+			}
+		}
+		bill_union_commune_integration2 = {
+			name = bill_union_commune_integration
+			modifier = {
+				political_power_factor = -0.1
+				industrial_capacity_factory = 0.15
+				production_factory_efficiency_gain_factor = 0.1
+				production_factory_start_efficiency_factor = 0.1
+
+				monthly_change_eip = 0.2
+			}
+		}
+
+		bill_free_economic_mutual_assistance = {
+			modifier = {
+				political_power_factor = -0.1
+				consumer_goods_factor = 0.1
+				production_factory_efficiency_gain_factor = 0.2
+				production_factory_start_efficiency_factor = 0.1
+
+				monthly_change_ev = 0.4
+				monthly_change_eip = -0.2
+			}
+		}
+		bill_free_economic_mutual_assistance2 = {
+			name = bill_free_economic_mutual_assistance
+			modifier = {
+				political_power_factor = -0.25
+				consumer_goods_factor = 0.3
+				production_factory_efficiency_gain_factor = 0.25
+				production_factory_start_efficiency_factor = 0.2
+				production_factory_max_efficiency_factor = 0.1
+
+				monthly_change_ev = 0.4
+				monthly_change_eip = -0.2
+
+				custom_modifier_tooltip = proud_to_be_human_being_extra
+			}
+		}
+		#16
+		bill_economic_relief_act1 = {
+			name = bill_economic_relief_act
+			modifier = {
+				political_power_cost = 0.5
+				stability_factor = 0.1
+				production_speed_industrial_complex_factor = 0.1
+
+				monthly_change_ev = 0.2
+				monthly_change_eq = 0.2
+			}
+		}
+		bill_economic_relief_act2 = {
+			name = bill_economic_relief_act
+			modifier = {
+				political_power_cost = 0.25
+				stability_factor = 0.2
+				consumer_goods_factor = -0.1
+				production_speed_industrial_complex_factor = 0.2
+
+				monthly_change_ev = 0.3
+				monthly_change_eq = 0.3
+			}
+		}
+		#17
+		bill_universal_basic_benefits1 = {
+			name = bill_universal_basic_benefits
+			modifier = {
+				political_power_cost = 1
+				consumer_goods_factor = 0.2
+				stability_factor = 0.2
+				war_support_factor = 0.1
+				production_factory_start_efficiency_factor = 0.15
+				production_factory_max_efficiency_factor = 0.1
+				industrial_capacity_factory = 0.2
+				
+				monthly_change_ev = -0.3
+				monthly_change_eib = -0.5
+				monthly_change_eq = 2
+			}
+		}
+		bill_universal_basic_benefits2 = {
+			name = bill_universal_basic_benefits
+			modifier = {
+				consumer_goods_factor = 0.05
+				stability_factor = 0.2
+				war_support_factor = 0.1
+				production_factory_start_efficiency_factor = 0.15
+				production_factory_max_efficiency_factor = 0.15
+				industrial_capacity_factory = 0.25
+				
+				monthly_change_ev = -0.3
+				monthly_change_eib = -0.5
+				monthly_change_eq = 2
+			}
+		}
+    }
+
+	trade_laws = {
+		law = yes
+		use_list_view = yes
+
+		pragmatic_foreign_trade = {
+			picture = free_trade
+			level = 6
+			removal_cost = -1
+			cancel_if_invalid = no
+
+			allowed = { 
+				tag = FRA 
+				has_completed_focus = FRA_pragmatic_foreign_trade
+			}
+
+			modifier = {
+				min_export = 0.5
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+				production_speed_buildings_factor = 0.1
+				research_speed_factor = 0.125
+				civilian_intel_to_others = 30.0
+				navy_intel_to_others = 15.0
+				cic_construction_boost_factor = 0.1
+
+				monthly_change_popsm = 0.3
+
+				monthly_change_ev = 0.5
+			}
+		}
+
+		self_sufficiency_program = {
+			picture = new_economic_policy
+			level = 6
+			removal_cost = -1
+			cancel_if_invalid = no
+
+			allowed = { 
+				tag = FRA 
+				has_completed_focus = FRA_self_sufficiency_program
+			}
+
+			modifier = {
+				min_export = 0.15
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				production_speed_buildings_factor = 0.05
+				research_speed_factor = 0.1
+				local_resources_factor = 0.3
+				production_lack_of_resource_penalty_factor = -0.1
+				production_oil_factor = 0.25
+
+				monthly_change_ev = -0.6
+				monthly_change_eib = 0.4
+				monthly_change_eae = 0.4
+				monthly_change_el = 0.3
+			}
+		}
+	}
+}

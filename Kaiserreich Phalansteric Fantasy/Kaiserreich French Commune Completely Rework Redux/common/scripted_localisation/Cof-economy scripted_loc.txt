@@ -1,0 +1,1201 @@
+
+
+###经济指标
+defined_text = {
+    name = cof_economy_situation
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < 100 } 
+                check_variable = { cof_econ_values < 100 } 
+            }
+            check_variable = { cof_econ_values > 90 } 
+        }
+		localization_key = cof_economy_situation_good5
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < 90 } 
+                check_variable = { cof_econ_values = 90 } 
+            }
+            check_variable = { cof_econ_values > 70 } 
+        }
+		localization_key = cof_economy_situation_good4
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < 70 } 
+                check_variable = { cof_econ_values = 70 } 
+            }
+            check_variable = { cof_econ_values > 50 } 
+        }
+		localization_key = cof_economy_situation_good3
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < 50 } 
+                check_variable = { cof_econ_values = 50 } 
+            }
+            check_variable = { cof_econ_values > 30 } 
+        }
+		localization_key = cof_economy_situation_good2
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < 30 } 
+                check_variable = { cof_econ_values = 30 } 
+            }
+            check_variable = { cof_econ_values > 10 } 
+        }
+		localization_key = cof_economy_situation_good1
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < 10 } 
+                check_variable = { cof_econ_values = 10 } 
+            }
+            check_variable = { cof_econ_values > -10 }
+        }
+		localization_key = cof_economy_situation_soso
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < -10 } 
+                check_variable = { cof_econ_values = -10 } 
+            }
+            check_variable = { cof_econ_values > -30 } 
+        }
+		localization_key = cof_economy_situation_bad1
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < -30 } 
+                check_variable = { cof_econ_values = -30 } 
+            }
+            check_variable = { cof_econ_values > -50 } 
+        }
+		localization_key = cof_economy_situation_bad2
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < -50 } 
+                check_variable = { cof_econ_values = -50 } 
+            }
+            check_variable = { cof_econ_values > -70 } 
+        }
+		localization_key = cof_economy_situation_bad3
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < -70 } 
+                check_variable = { cof_econ_values = -70 } 
+            }
+            check_variable = { cof_econ_values > -90 } 
+        }
+		localization_key = cof_economy_situation_bad4
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { cof_econ_values < -90 } 
+                check_variable = { cof_econ_values = -90 } 
+            }
+        }
+		localization_key = cof_economy_situation_bad5
+	}
+}
+
+defined_text = {
+    name = cof_econ_values_location_target
+    text = {
+		trigger = { check_variable = { target_t = 5 }  }
+		localization_key = cof_economy_situation_good5
+	}
+    text = {
+		trigger = { check_variable = { target_t = 4 }  }
+		localization_key = cof_economy_situation_good4
+	}
+    text = {
+		trigger = { check_variable = { target_t = 3 }  }
+		localization_key = cof_economy_situation_good3
+	}
+    text = {
+		trigger = { check_variable = { target_t = 2 }  }
+		localization_key = cof_economy_situation_good2
+	}
+    text = {
+		trigger = { check_variable = { target_t = 1 }  }
+		localization_key = cof_economy_situation_good1
+	}
+    text = {
+		trigger = { check_variable = { target_t = 0 }  }
+		localization_key = cof_economy_situation_soso
+	}
+    text = {
+		trigger = { check_variable = { target_t = -1 }  }
+		localization_key = cof_economy_situation_bad1
+	}
+    text = {
+		trigger = { check_variable = { target_t = -2 }  }
+		localization_key = cof_economy_situation_bad2
+	}
+    text = {
+		trigger = { check_variable = { target_t = -3 }  }
+		localization_key = cof_economy_situation_bad3
+	}
+    text = {
+		trigger = { check_variable = { target_t = -4 }  }
+		localization_key = cof_economy_situation_bad4
+	}
+    text = {
+		trigger = { check_variable = { target_t = -5 }  }
+		localization_key = cof_economy_situation_bad5
+	}
+}
+
+###经济模式
+defined_text = {
+    name = Cof_economy_model
+    text = {
+		trigger = {  Cof_economy_model_co_ops_advantage = yes }
+		localization_key = Cof_economy_model_co_ops
+	}
+    text = {
+		trigger = {  Cof_economy_model_market_advantage = yes }
+		localization_key = Cof_economy_model_market
+	}
+    text = {
+		trigger = {  Cof_economy_model_plan_advantage = yes }
+		localization_key = Cof_economy_model_plan
+	}
+    text = {
+		trigger = {  Cof_economy_model_order_advantage = yes }
+		localization_key = Cof_economy_model_order
+	}
+    text = {
+        localization_key = Cof_economy_model_mixed
+    }
+}
+
+defined_text = {
+    name = Cof_economy_model_buff
+    text = {
+		trigger = {  Cof_economy_model_co_ops_advantage = yes }
+		localization_key = Cof_economy_model_buff_co_ops
+	}
+    text = {
+		trigger = {  Cof_economy_model_market_advantage = yes }
+		localization_key = Cof_economy_model_buff_market
+	}
+    text = {
+		trigger = {  Cof_economy_model_plan_advantage = yes }
+		localization_key = Cof_economy_model_buff_plan
+	}
+    text = {
+		trigger = {  Cof_economy_model_order_advantage = yes }
+		localization_key = Cof_economy_model_buff_order
+	}
+    text = {
+        localization_key = Cof_economy_model_buff_mixed
+    }
+}
+
+defined_text = {
+    name = econ_target_variable
+    text = {
+		trigger = { check_variable = { target_t = 0 } }
+		localization_key = cof_econ_values
+	}
+    text = {
+		trigger = { check_variable = { target_t = 1 } }
+		localization_key = econ_industry_basic
+	}
+    text = {
+		trigger = { check_variable = { target_t = 2 } }
+		localization_key = econ_industry_process
+	}
+    text = {
+		trigger = { check_variable = { target_t = 3 } }
+		localization_key = econ_industry_arms
+	}
+    text = {
+		trigger = { check_variable = { target_t = 4 } }
+		localization_key = econ_agriculture_mechanized
+	}
+    text = {
+		trigger = { check_variable = { target_t = 5 } }
+		localization_key = econ_agriculture_chemical
+	}
+    text = {
+		trigger = { check_variable = { target_t = 6 } }
+		localization_key = econ_agriculture_chain
+	}
+    text = {
+		trigger = { check_variable = { target_t = 7 } }
+		localization_key = econ_equal
+	}
+    text = {
+		trigger = { check_variable = { target_t = 8 } }
+		localization_key = econ_link
+	}
+    text = {
+		trigger = { check_variable = { target_t = 9 } }
+		localization_key = econ_innovate
+	}
+
+    text = {
+		trigger = { check_variable = { target_t = 11 } }
+		localization_key = economy_synd
+	}
+    text = {
+		trigger = { check_variable = { target_t = 12 } }
+		localization_key = economy_oppo
+	}
+    text = {
+		trigger = { check_variable = { target_t = 13 } }
+		localization_key = economy_jaco
+	}
+    text = {
+		trigger = { check_variable = { target_t = 14 } }
+		localization_key = economy_sore
+	}
+}
+
+defined_text = {
+    name = symbol_unit
+    text = {
+		trigger = {
+            OR = {
+                check_variable = { target_t = 11 }
+                check_variable = { target_t = 12 }
+                check_variable = { target_t = 13 }
+                check_variable = { target_t = 14 }
+            }
+        }
+		localization_key = per_cent
+	}
+}
+
+defined_text = {
+    name = economy_period_extra_change
+    text = {
+		trigger = { 
+            OR = {
+                NOT = { check_variable = { evcost = 0 } } 
+
+                NOT = { check_variable = { eibcost = 0 } } 
+                NOT = { check_variable = { eipost = 0 } } 
+                NOT = { check_variable = { eiaost = 0 } } 
+
+                NOT = { check_variable = { eamost = 0 } } 
+                NOT = { check_variable = { eaeost = 0 } } 
+                NOT = { check_variable = { eaaost = 0 } } 
+
+                NOT = { check_variable = { eqcost = 0 } } 
+                NOT = { check_variable = { elcost = 0 } } 
+                NOT = { check_variable = { eicost = 0 } } 
+            }
+        }
+		localization_key = economy_period_extra_change_content
+	}
+}
+
+#额外buff
+defined_text = {
+    name = econ_rejecting_headless_co_ops
+    text = {
+        trigger = { has_completed_focus = FRA_rejecting_headless_co_ops }
+		localization_key = econ_rejecting_headless_co_ops_tt
+	}
+}
+
+defined_text = {
+    name = econ_dream_without_king_or_master
+    text = {
+        trigger = { has_completed_focus = FRA_dream_without_king_or_master }
+		localization_key = econ_dream_without_king_or_master_tt
+	}
+}
+
+defined_text = {
+    name = econ_centrally_planned_economy
+    text = {
+        trigger = { has_completed_focus = FRA_centrally_planned_economy }
+		localization_key = econ_centrally_planned_economy_tt
+	}
+}
+
+defined_text = {
+    name = econ_pioneer_model
+    text = {
+        trigger = { has_completed_focus = FRA_pioneer_model }
+		localization_key = econ_pioneer_model_tt
+	}
+}
+
+
+defined_text = {
+    name = economy_tewnty_four_hours_of_light
+    text = {
+        trigger = { has_completed_focus = FRA_tewnty_four_hours_of_light }
+		localization_key = economy_tewnty_four_hours_of_light_buff
+	}
+}
+
+defined_text = {
+    name = economy_entertainment_in_the_factory
+    text = {
+        trigger = { has_completed_focus = FRA_entertainment_in_the_factory }
+		localization_key = economy_entertainment_in_the_factory_buff
+	}
+}
+
+defined_text = {
+    name = economy_borrow_from_model
+    text = {
+        trigger = { has_completed_focus = FRA_borrow_from_model }
+		localization_key = economy_borrow_from_model_buff
+	}
+}
+
+defined_text = {
+    name = economy_material_communism
+    text = {
+        trigger = { has_completed_focus = FRA_material_communism }
+		localization_key = economy_material_communism_buff
+	}
+}
+
+defined_text = {
+    name = economy_mixed_agriculture
+    text = {
+        trigger = { has_completed_focus = FRA_mixed_agriculture }
+		localization_key = economy_mixed_agriculture_buff
+	}
+}
+
+defined_text = {
+    name = state_factory_mixed_agriculture
+    text = {
+        trigger = { has_completed_focus = FRA_mixed_agriculture }
+		localization_key = state_factory_mixed_agriculture_tt
+	}
+}
+
+#
+defined_text = {
+    name = state_target
+    text = {
+        trigger = { check_variable = { target_t = 0 } }
+		localization_key = state_factory_total
+	}
+    text = {
+        trigger = { check_variable = { target_t = 1 } }
+		localization_key = industrial_complex
+	}
+    text = {
+        trigger = { check_variable = { target_t = 2 } }
+		localization_key = arms_factory
+	}
+    text = {
+        trigger = { check_variable = { target_t = 3 } }
+		localization_key = dockyard
+	}
+}
+
+#城市法案
+defined_text = {
+    name = state_city_strategy
+    text = {
+		trigger = { has_state_flag = economy_strategy_yes }
+		localization_key = state_city_strategy_content
+	}
+    text = {
+        localization_key = state_strategy_no
+    }
+}
+
+defined_text = {
+    name = city_strategy_urban_renovation
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_urban_renovation } }
+		localization_key = city_urban_renovation_name
+	}
+}
+
+defined_text = {
+    name = city_strategy_semi_armed_factories
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_semi_armed_factories } }
+		localization_key = city_semi_armed_factories_name
+	}
+}
+
+defined_text = {
+    name = city_semi_armed_factories_enable
+    text = {
+		trigger = { 
+            FRA = { 
+                has_completed_focus = FRA_semi_armed_factories 
+                has_war_support > 0.4
+                check_variable = { econ_industry_arms > 50 }
+            } 
+        }
+		localization_key = city_semi_armed_factories_enable_yes
+	}
+    text = {
+		trigger = { 
+            FRA = { 
+                has_completed_focus = FRA_semi_armed_factories 
+                has_war_support < 0.4
+                OR = {
+                    check_variable = { econ_industry_arms = 50 }
+                    check_variable = { econ_industry_arms < 50 }
+                }
+            } 
+        }
+		localization_key = city_semi_armed_factories_enable_no
+	}
+}
+
+defined_text = {
+    name = city_strategy_night_school
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_night_school_for_skills } }
+		localization_key = city_night_school_name
+	}
+}
+
+#乡村法案
+defined_text = {
+    name = state_rural_strategy
+    text = {
+		trigger = { has_state_flag = economy_strategy_yes }
+		localization_key = state_rural_strategy_content
+	}
+    text = {
+        localization_key = state_strategy_no
+    }
+}
+
+defined_text = {
+    name = rural_strategy_ignore_the_country
+    text = {
+		trigger = { FRA = { has_country_flag = rural_ignore_the_country } }
+		localization_key = rural_ignore_the_country_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_back_to_the_country
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_back_to_the_country } }
+		localization_key = rural_back_to_the_country_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_robust_urbanization
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_robust_urbanization } }
+		localization_key = rural_robust_urbanization_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_focus_on_agricultural
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_focus_on_agricultural_functions } }
+		localization_key = rural_focus_on_agricultural_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_subsidizing_farmers
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_subsidizing_subsistence_farmers } }
+		localization_key = rural_subsidizing_farmers_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_expand_continuum
+    text = {
+		trigger = { 
+            FRA = { has_completed_focus = FRA_expand_urban_rural_continuum }
+            has_state_category = five
+        }
+		localization_key = rural_expand_continuum_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_infrastructure_development
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_rural_infrastructure_development } }
+		localization_key = rural_infrastructure_development_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_subsidizing_farmers
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_subsidizing_subsistence_farmers } }
+		localization_key = rural_subsidizing_farmers_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_new_frontier_program
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_new_frontier_program } }
+		localization_key = rural_new_frontier_program_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_get_out_of_field
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_get_out_of_the_field } }
+		localization_key = rural_get_out_of_field_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_commodity_agriculture
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_encouraging_commodity_agriculture } }
+		localization_key = rural_commodity_agriculture_name
+	}
+}
+
+defined_text = {
+    name = rural_strategy_intensive_agriculture
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_intensive_agriculture } }
+		localization_key = rural_intensive_agriculture_name
+	}
+}
+
+defined_text = {
+    name = rural_get_out_of_field_enable
+    text = {
+		trigger = { 
+            FRA = {
+                has_completed_focus = FRA_get_out_of_the_field 
+                check_variable = { econ_agriculture_mechanized > 40 }
+            }
+
+        }
+		localization_key = rural_get_out_of_field_enable_yes
+	}
+    text = {
+        trigger = { 
+            FRA = {
+                has_completed_focus = FRA_get_out_of_the_field 
+                OR = {
+                    check_variable = { econ_agriculture_mechanized = 40 }
+                    check_variable = { econ_agriculture_mechanized < 40 }
+                }
+            }
+        }
+        localization_key = rural_get_out_of_field_enable_no
+    }
+}
+
+defined_text = {
+    name = rural_strategy_decentralized_military_industries
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_decentralized_rural_military_industries } }
+		localization_key = rural_decentralized_military_industries_name
+	}
+}
+
+#全国法案
+defined_text = {
+    name = nation_strategy_french_national_railway
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_french_national_railway } }
+		localization_key = nation_french_national_railway_name
+	}
+}
+
+defined_text = {
+    name = nation_strategy_hydropower_development
+    text = {
+		trigger = { has_state_flag = state_economy_hydropower }
+		localization_key = nation_hydropower_development_name
+	}
+}
+
+defined_text = {
+    name = nation_strategy_block_model
+    text = {
+		trigger = { 
+            FRA = { has_completed_focus = FRA_block_development_model }
+            is_paris_calais_model_zone = yes
+        }
+		localization_key = nation_paris_calais_model_name
+	}
+    text = {
+		trigger = { 
+            FRA = { has_completed_focus = FRA_block_development_model }
+            is_bordaux_nantes_model_zone = yes
+        }
+		localization_key = nation_bordaux_nantes_model_name
+	}
+    text = {
+		trigger = { 
+            FRA = { has_completed_focus = FRA_block_development_model }
+            is_marse_lyon_model_zone = yes
+        }
+		localization_key = nation_marse_lyon_model_name
+	}
+}
+
+
+defined_text = {
+    name = nation_strategy_priority_industries
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_power_supply_for_priority_industries } }
+		localization_key = nation_priority_industries_name
+	}
+}
+
+defined_text = {
+    name = nation_priority_industries_enable
+    text = {
+		trigger = { 
+            FRA = {
+                has_completed_focus = FRA_power_supply_for_priority_industries 
+                check_variable = { econ_industry_basic > 60 }
+            }
+
+        }
+		localization_key = nation_priority_industries_enable_yes
+	}
+    text = {
+        trigger = { 
+            FRA = {
+                has_completed_focus = FRA_power_supply_for_priority_industries 
+                OR = {
+                    check_variable = { econ_industry_basic = 60 }
+                    check_variable = { econ_industry_basic < 60 }
+                }
+            }
+        }
+        localization_key = nation_priority_industries_enable_no
+    }
+}
+
+defined_text = {
+    name = nation_strategy_domestic_consumption
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_expansion_domestic_electricity_consumption } }
+		localization_key = nation_domestic_consumption_name
+	}
+}
+
+defined_text = {
+    name = nation_domestic_consumption_enable
+    text = {
+		trigger = { 
+            FRA = {
+                has_completed_focus = FRA_expansion_domestic_electricity_consumption 
+                check_variable = { econ_industry_basic > 60 }
+            } 
+        }
+		localization_key = nation_domestic_consumption_enable_yes
+	}
+    text = {
+        trigger = { 
+            FRA = {
+                has_completed_focus = FRA_expansion_domestic_electricity_consumption 
+                OR = {
+                    check_variable = { econ_industry_basic = 60 }
+                    check_variable = { econ_industry_basic < 60 }
+                }
+            }
+        }
+        localization_key = nation_domestic_consumption_enable_no
+    }
+}
+
+defined_text = {
+    name = nation_strategy_hydropower_development
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_expansion_domestic_electricity_consumption } }
+		localization_key = nation_hydropower_development_name
+	}
+}
+
+defined_text = {
+    name = nation_strategy_border_area_economic_reconstruction
+    text = {
+		trigger = { FRA = { has_completed_focus = FRA_border_area_economic_reconstruction } }
+		localization_key = nation_border_area_economic_reconstruction_name
+	}
+}
+
+#特殊地区法案
+defined_text = {
+    name = bourges_strategy_bourges_transportation_hub
+    text = {
+		trigger = { 
+            FRA = { has_completed_focus = FRA_transportation_hub_new_city } 
+            state = 33
+        }
+		localization_key = bourges_transportation_hub_name
+	}
+}
+
+defined_text = {
+    name = Cof_state_Brittany_culture
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { brittcul < 20 } 
+                check_variable = { brittcul = 20 } 
+            }
+        }
+		localization_key = Brittany_culture1_tt
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { brittcul < 40 } 
+                check_variable = { brittcul = 40 } 
+            }
+        }
+		localization_key = Brittany_culture2_tt
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { brittcul < 60 } 
+                check_variable = { brittcul = 60 } 
+            }
+        }
+		localization_key = Brittany_culture3_tt
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { brittcul < 80 } 
+                check_variable = { brittcul = 80 } 
+            }
+        }
+		localization_key = Brittany_culture4_tt
+	}
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { brittcul < 100 } 
+                check_variable = { brittcul = 100 } 
+            }
+        }
+		localization_key = Brittany_culture5_tt
+	}
+}
+
+defined_text = {
+    name = brittcul_target
+    text = {
+		trigger = { 
+            OR = {
+                check_variable = { target_num < 20 } 
+                check_variable = { target_num = 20 } 
+            }
+        }
+		localization_key = Brittany_culture1_tt
+	}
+    text = {
+		trigger = { 
+            check_variable = { target_num > 20 } 
+            OR = {
+                check_variable = { target_num < 40 } 
+                check_variable = { target_num = 40 } 
+            }
+        }
+		localization_key = Brittany_culture2_tt
+	}
+    text = {
+		trigger = { 
+            check_variable = { target_num > 40 } 
+            OR = {
+                check_variable = { target_num < 60 } 
+                check_variable = { target_num = 60 } 
+            }
+        }
+		localization_key = Brittany_culture3_tt
+	}
+    text = {
+		trigger = { 
+            check_variable = { target_num > 60 } 
+            OR = {
+                check_variable = { target_num < 80 } 
+                check_variable = { target_num = 80 } 
+            }
+        }
+		localization_key = Brittany_culture4_tt
+	}
+    text = {
+		trigger = { check_variable = { target_num > 80 } }
+		localization_key = Brittany_culture5_tt
+	}
+}
+
+defined_text = {
+    name = monopolization_tt_judge
+    text = {
+		trigger = {
+            FRA = { has_political_power > 30 }
+            industrial_complex > 1
+        }
+		localization_key = monopolization_tt_yes
+	}
+    text = {
+        trigger = {
+            FRA = { has_political_power > 30 }
+            industrial_complex < 2
+        }
+		localization_key = monopolization_tt_no1
+	}
+    text = {
+        trigger = {
+            FRA = { has_political_power < 30 }
+            industrial_complex > 1
+        }
+		localization_key = monopolization_tt_no2
+	}
+    text = {
+        trigger = {
+            FRA = { has_political_power < 30 }
+            industrial_complex < 2
+        }
+		localization_key = monopolization_tt_no3
+	}
+}
+
+defined_text = {
+    name = socialist_market_enable_tooltip
+    text = {
+        trigger = { FRA = { has_completed_focus = FRA_socialist_market } }
+        localization_key = socialist_market_enable_tt
+    }
+}
+
+
+defined_text = {
+    name = eibcfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 1 }
+			class_pop_the_most = yes
+        }
+        localization_key = eibcfeconomic_seminar_committee_tt
+    }
+}
+defined_text = {
+    name = eipcfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 1 }
+			class_pop_the_most = yes
+        }
+        localization_key = eipcfeconomic_seminar_committee_tt
+    }
+}
+
+defined_text = {
+    name = eamcfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 2 }
+			class_pop_the_most = yes
+        }
+        localization_key = eamcfeconomic_seminar_committee_tt
+    }
+}
+defined_text = {
+    name = eaecfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 2 }
+			class_pop_the_most = yes
+        }
+        localization_key = eaecfeconomic_seminar_committee_tt
+    }
+}
+
+
+defined_text = {
+    name = evcfeconomic_seminar_committee_m
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 3 }
+			class_pop_the_most = yes
+        }
+        localization_key = evcfeconomic_seminar_committee_m_tt
+    }
+}
+defined_text = {
+    name = eaacfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 3 }
+			class_pop_the_most = yes
+        }
+        localization_key = eaacfeconomic_seminar_committee_tt
+    }
+}
+
+defined_text = {
+    name = elcfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 4 }
+			class_pop_the_most = yes
+        }
+        localization_key = elcfeconomic_seminar_committee_tt
+    }
+}
+defined_text = {
+    name = eicfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 4 }
+			class_pop_the_most = yes
+        }
+        localization_key = eicfeconomic_seminar_committee_tt
+    }
+}
+
+defined_text = {
+    name = evcfeconomic_seminar_committee_b
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 5 }
+			class_pop_the_most = yes
+        }
+        localization_key = evcfeconomic_seminar_committee_b_tt
+    }
+}
+defined_text = {
+    name = eqcfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 5 }
+			class_pop_the_most = yes
+        }
+        localization_key = eqcfeconomic_seminar_committee_tt
+    }
+}
+
+defined_text = {
+    name = evcfeconomic_seminar_committee_a
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 6 }
+			class_pop_the_most = yes
+        }
+        localization_key = evcfeconomic_seminar_committee_a_tt
+    }
+}
+defined_text = {
+    name = eiacfeconomic_seminar_committee
+    text = {
+        trigger = {
+            has_completed_focus = FRA_economic_seminar_committee
+            set_temp_variable = { target_pop = 6 }
+			class_pop_the_most = yes
+        }
+        localization_key = eiacfeconomic_seminar_committee_tt
+    }
+}
+
+defined_text = {
+    name = escvar_target2
+    text = {
+        trigger = {
+            set_temp_variable = { target_pop = 1 }
+			class_pop_the_most = yes
+        }
+        localization_key = econ_industry_process
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { target_pop = 2 }
+			class_pop_the_most = yes
+        }
+        localization_key = econ_agriculture_chemical
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { target_pop = 3 }
+            class_pop_the_most = yes
+        }
+        localization_key = econ_agriculture_chain
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { target_pop = 4 }
+			class_pop_the_most = yes
+        }
+        localization_key = econ_innovate
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { target_pop = 5 }
+			class_pop_the_most = yes
+        }
+        localization_key = econ_equal
+    }
+    text = {
+        trigger = {
+            set_temp_variable = { target_pop = 6 }
+			class_pop_the_most = yes
+        }
+        localization_key = econ_industry_arms
+    }
+}
+
+defined_text = {
+    name = cgt_confidence_position
+    text = {
+        trigger = { check_variable = { cgt_confidence > 10 } }
+        localization_key = cgt_confidence6
+    }
+    text = {
+        trigger = { check_variable = { cgt_confidence > 6 } }
+        localization_key = cgt_confidence5
+    }
+    text = {
+        trigger = { check_variable = { cgt_confidence > 3 } }
+        localization_key = cgt_confidence4
+    }
+    text = {
+        trigger = { check_variable = { cgt_confidence > 0 } }
+        localization_key = cgt_confidence3
+    }
+    text = {
+        trigger = { check_variable = { cgt_confidence > -3 } }
+        localization_key = cgt_confidence2
+    }
+    text = {
+        trigger = { check_variable = { cgt_confidence > -6 } }
+        localization_key = cgt_confidence1
+    }
+    text = {
+        localization_key = cgt_confidence0
+    }
+} 
+
+defined_text = {
+    name = gui_econ_DEA_portrait_loc
+    text = {
+        trigger = { has_country_flag = DEA_1936 }
+        localization_key = "GFX_portrait_FRA_pierre_monatte_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_synd_mode }
+        localization_key = "GFX_portrait_FRA_robert_bothereau_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_synd_radi }
+        localization_key = "GFX_portrait_FRA_pierre_monatte_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_oppo_comm }
+        localization_key = "GFX_portrait_FRA_charles_tillon_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_oppo_anar }
+        localization_key = "GFX_portrait_FRA_fernand_despres_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_jaco_neos }
+        localization_key = "GFX_portrait_FRA_louis_vallon_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_jaco_revo }
+        localization_key = "GFX_portrait_FRA_pierre_celor_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_sore_oldl }
+        localization_key = "GFX_portrait_FRA_edouard_berth_civilian_small"
+    }
+    text = {
+        trigger = { has_country_flag = DEA_sore_yout }
+        localization_key = "GFX_portrait_FRA_edouard_berth_civilian_small"
+    }
+}
+ 
+defined_text = {
+    name = evpchange_detail_loc
+    text = {  localization_key = econ_values_change_detail_tips }
+}
+
+defined_text = {
+    name = econ_model_buff_loc
+    text = { localization_key = econ_model_buff_tt }
+}
+
+defined_text = {
+    name = eib_buff_loc
+    text = { localization_key = eib_buff_tt }
+}
+defined_text = {
+    name = eip_buff_loc
+    text = { localization_key = eip_buff_tt }
+}
+defined_text = {
+    name = eia_buff_loc
+    text = { localization_key = eia_buff_tt }
+}
+
+defined_text = {
+    name = eam_buff_loc
+    text = { localization_key = eam_buff_tt }
+}
+defined_text = {
+    name = eae_buff_loc
+    text = { localization_key = eae_buff_tt }
+}
+defined_text = {
+    name = eaa_buff_loc
+    text = { localization_key = eaa_buff_tt }
+}
+
+defined_text = {
+    name = eq_buff_loc
+    text = { localization_key = eq_buff_tt }
+}
+defined_text = {
+    name = el_buff_loc
+    text = { localization_key = el_buff_tt }
+}
+defined_text = { 
+    name = ei_buff_loc
+    text = { localization_key = ei_buff_tt }
+}

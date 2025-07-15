@@ -1,0 +1,782 @@
+scripted_gui = {
+    bgt_window_open_button = {
+        context_type = player_context
+        parent_window_name = raid_filter
+        window_name = bgt_open_window
+
+        visible = {
+			tag = FRA
+		}
+        effects = {
+            bgt_open_window_button_click = {
+                if = {
+                    limit = { has_country_flag = bgt_show }
+                    clr_country_flag = bgt_show
+                }
+                else = { set_country_flag = bgt_show }
+            }
+        }
+    }
+    bgt_window_button = {
+        context_type = player_context
+        window_name = bgt_window
+
+        visible = {
+			tag = FRA
+            has_country_flag = bgt_show
+		}
+        effects = {
+            bgt_change_model_button_click = {
+                if = {
+                    limit = { has_country_flag = show_bgt_voting }
+                    clr_country_flag = show_bgt_voting
+                    refresh_bgt_seat = yes
+                }
+                else = {
+                    set_country_flag = show_bgt_voting
+                    clr_country_flag = party_CNS_show
+                    clr_country_flag = party_PSF_show
+                    clr_country_flag = party_POU_show
+                    clr_country_flag = party_CSR_show
+                    clr_country_flag = party_PCOP_show
+                    clr_country_flag = party_AFA_show
+                    clr_country_flag = party_LJR_show
+                    clr_country_flag = party_FSR_show
+                    clr_country_flag = party_FNC_show
+                    clr_country_flag = party_FCF_show
+                    clr_country_flag = party_FP_show
+                    clr_country_flag = party_ETC_show
+                    refresh_bgt_seat = yes
+                }
+            }
+            bgt_window_esc_click = {
+                clr_country_flag = bgt_show
+            }
+            bgt_seat_icon_click = {
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_CNS_show }
+                        check_variable = { array_f_array^seat_idx = 1 } 
+                    }
+                    set_country_flag = party_CNS_show
+                }
+                else = { clr_country_flag = party_CNS_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_PSF_show }
+                        check_variable = { array_f_array^seat_idx = 2 } 
+                    }
+                    set_country_flag = party_PSF_show
+                }
+                else = { clr_country_flag = party_PSF_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_POU_show }
+                        check_variable = { array_f_array^seat_idx = 3 } 
+                    }
+                    set_country_flag = party_POU_show
+                }
+                else = { clr_country_flag = party_POU_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_CSR_show }
+                        check_variable = { array_f_array^seat_idx = 4 } 
+                    }
+                    set_country_flag = party_CSR_show
+                }
+                else = { clr_country_flag = party_CSR_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_PCOP_show }
+                        check_variable = { array_f_array^seat_idx = 5 } 
+                    }
+                    set_country_flag = party_PCOP_show
+                }
+                else = { clr_country_flag = party_PCOP_show }
+
+                if = {
+                    limit = {
+                        NOT = { has_country_flag = party_AFA_show }
+                        check_variable = { array_f_array^seat_idx = 6 } 
+                    }
+                    set_country_flag = party_AFA_show
+                }
+                else = { clr_country_flag = party_AFA_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_LJR_show }
+                        check_variable = { array_f_array^seat_idx = 7 } 
+                    }
+                    set_country_flag = party_LJR_show
+                }
+                else = { clr_country_flag = party_LJR_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_FSR_show }
+                        check_variable = { array_f_array^seat_idx = 8 } 
+                    }
+                    set_country_flag = party_FSR_show
+                }
+                else = { clr_country_flag = party_FSR_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_FNC_show }
+                        check_variable = { array_f_array^seat_idx = 9 } 
+                    }
+                    set_country_flag = party_FNC_show
+                }
+                else = { clr_country_flag = party_FNC_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_FCF_show }
+                        check_variable = { array_f_array^seat_idx = 10 } 
+                    }
+                    set_country_flag = party_FCF_show
+                }
+                else = { clr_country_flag = party_FCF_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_FP_show }
+                        check_variable = { array_f_array^seat_idx = 11 } 
+                    }
+                    set_country_flag = party_FP_show
+                }
+                else = { clr_country_flag = party_FP_show }
+
+                if = {
+                    limit = { 
+                        NOT = { has_country_flag = party_ETC_show }
+                        check_variable = { array_f_array^seat_idx = 12 } 
+                    }
+                    set_country_flag = party_ETC_show
+                }
+                else = { clr_country_flag = party_ETC_show }
+            }
+        }
+        dynamic_lists = {
+            parliament_diagram = {
+                array = array_f_array
+                change_scope = no
+                entry_container = bgt_seat_container
+                index = seat_idx
+            }
+        }
+        properties = {
+            bgt_seat_icon = {
+                x = seat_x_array^seat_idx
+                y = seat_y_array^seat_idx
+                frame = array_f_array^seat_idx
+            }
+        }
+    }
+    bgt_voting_party_choice_button = {
+        context_type = player_context
+        parent_window_name = bgt_window
+        window_name = bgt_voting_party_button
+
+        visible = {
+            NOT = { has_country_flag = show_bgt_voting }
+            OR = {
+                has_country_flag = party_CNS_show
+                has_country_flag = party_PSF_show
+                has_country_flag = party_POU_show
+                has_country_flag = party_CSR_show
+                has_country_flag = party_PCOP_show
+                has_country_flag = party_AFA_show
+                has_country_flag = party_LJR_show
+                has_country_flag = party_FSR_show
+                has_country_flag = party_FNC_show
+                has_country_flag = party_FCF_show
+                has_country_flag = party_FP_show
+                has_country_flag = party_ETC_show
+            }
+        }
+        triggers = {
+            bgt_voting_support_visible = {
+                NOT = { has_country_flag = party_choice_oppose }
+            }
+            bgt_voting_oppose_visible = {
+                NOT = { has_country_flag = party_choice_support }
+            }
+
+            bgt_voting_support_click_enabled = {
+                if = {
+                    limit = { has_country_flag = party_CNS_show }
+                    NOT = { has_country_flag = party_CNS_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_PSF_show }
+                    NOT = { has_country_flag = party_PSF_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_POU_show }
+                    NOT = { has_country_flag = party_POU_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_CSR_show }
+                    NOT = { has_country_flag = party_CSR_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_PCOP_show }
+                    NOT = { has_country_flag = party_PCOP_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_AFA_show }
+                    NOT = { has_country_flag = party_AFA_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_LJR_show }
+                    NOT = { has_country_flag = party_LJR_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FSR_show }
+                    NOT = { has_country_flag = party_FSR_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FNC_show }
+                    NOT = { has_country_flag = party_FNC_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FCF_show }
+                    NOT = { has_country_flag = party_FCF_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FP_show }
+                    NOT = { has_country_flag = party_FP_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_ETC_show }
+                    NOT = { has_country_flag = party_ETC_choice }
+                }
+            }
+            bgt_voting_oppose_click_enabled = {
+                if = {
+                    limit = { has_country_flag = party_CNS_show }
+                    NOT = { has_country_flag = party_CNS_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_PSF_show }
+                    NOT = { has_country_flag = party_PSF_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_POU_show }
+                    NOT = { has_country_flag = party_POU_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_CSR_show }
+                    NOT = { has_country_flag = party_CSR_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_PCOP_show }
+                    NOT = { has_country_flag = party_PCOP_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_AFA_show }
+                    NOT = { has_country_flag = party_AFA_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_LJR_show }
+                    NOT = { has_country_flag = party_LJR_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FSR_show }
+                    NOT = { has_country_flag = party_FSR_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FNC_show }
+                    NOT = { has_country_flag = party_FNC_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FCF_show }
+                    NOT = { has_country_flag = party_FCF_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_FP_show }
+                    NOT = { has_country_flag = party_FP_choice }
+                }
+                if = {
+                    limit = { has_country_flag = party_ETC_show }
+                    NOT = { has_country_flag = party_ETC_choice }
+                }
+            }
+
+            bgt_voting_cost_pp_visible = {
+                has_country_flag = voting_for_bill
+                OR = {
+                    has_country_flag = party_choice_support
+                    has_country_flag = party_choice_oppose
+                }
+            }
+            bgt_voting_cost_economy_visible = {
+                has_country_flag = voting_for_bill
+                OR = {
+                    has_country_flag = party_choice_support
+                    has_country_flag = party_choice_oppose
+                }
+            }
+            bgt_voting_cost_satisfation_visible = {
+                has_country_flag = voting_for_bill
+                OR = {
+                    has_country_flag = party_choice_support
+                    has_country_flag = party_choice_oppose
+                }
+            }
+        }
+        effects = {
+            bgt_voting_support_click = {
+                if = {
+                    limit = { has_country_flag = party_choice_support }
+                    clr_country_flag = party_choice_support
+                }
+                else = { set_country_flag = party_choice_support }
+            }
+            bgt_voting_oppose_click = {
+                if = {
+                    limit = { has_country_flag = party_choice_oppose }
+                    clr_country_flag = party_choice_oppose
+                }
+                else = { set_country_flag = party_choice_oppose }
+            }
+            bgt_voting_cost_pp_click = {
+                if = {
+                    limit = { has_country_flag = party_CNS_show }
+                    if = { limit = { has_country_flag = party_CNS_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_PSF_show }
+                    if = { limit = { has_country_flag = party_PSF_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_POU_show }
+                    if = { limit = { has_country_flag = party_POU_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_CSR_show }
+                    if = { limit = { has_country_flag = party_CSR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_PCOP_show }
+                    if = { limit = { has_country_flag = party_PCOP_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_AFA_show }
+                    if = { limit = { has_country_flag = party_AFA_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_LJR_show }
+                    if = { limit = { has_country_flag = party_LJR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FSR_show }
+                    if = { limit = { has_country_flag = party_FSR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FNC_show }
+                    if = { limit = { has_country_flag = party_FNC_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FCF_show }
+                    if = { limit = { has_country_flag = party_FCF_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FP_show }
+                    if = { limit = { has_country_flag = party_FP_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_ETC_show }
+                    if = { limit = { has_country_flag = party_ETC_choice } }
+                    else = { 
+                        set_country_flag = party_cost_pp
+                        country_event = cofpolitics.1001 
+                    }
+                }
+            }
+            bgt_voting_cost_economy_click = {
+                if = {
+                    limit = { has_country_flag = party_CNS_show }
+                    if = { limit = { has_country_flag = party_CNS_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_PSF_show }
+                    if = { limit = { has_country_flag = party_PSF_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_POU_show }
+                    if = { limit = { has_country_flag = party_POU_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_CSR_show }
+                    if = { limit = { has_country_flag = party_CSR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_PCOP_show }
+                    if = { limit = { has_country_flag = party_PCOP_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_AFA_show }
+                    if = { limit = { has_country_flag = party_AFA_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_LJR_show }
+                    if = { limit = { has_country_flag = party_LJR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FSR_show }
+                    if = { limit = { has_country_flag = party_FSR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FNC_show }
+                    if = { limit = { has_country_flag = party_FNC_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FCF_show }
+                    if = { limit = { has_country_flag = party_FCF_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FP_show }
+                    if = { limit = { has_country_flag = party_FP_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_ETC_show }
+                    if = { limit = { has_country_flag = party_ETC_choice } }
+                    else = { 
+                        set_country_flag = party_cost_economy
+                        country_event = cofpolitics.1001 
+                    }
+                }
+            }
+            bgt_voting_cost_satisfation_click = {
+                if = {
+                    limit = { has_country_flag = party_CNS_show }
+                    if = { limit = { has_country_flag = party_CNS_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_PSF_show }
+                    if = { limit = { has_country_flag = party_PSF_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_POU_show }
+                    if = { limit = { has_country_flag = party_POU_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_CSR_show }
+                    if = { limit = { has_country_flag = party_CSR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_PCOP_show }
+                    if = { limit = { has_country_flag = party_PCOP_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_AFA_show }
+                    if = { limit = { has_country_flag = party_AFA_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_LJR_show }
+                    if = { limit = { has_country_flag = party_LJR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FSR_show }
+                    if = { limit = { has_country_flag = party_FSR_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FNC_show }
+                    if = { limit = { has_country_flag = party_FNC_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FCF_show }
+                    if = { limit = { has_country_flag = party_FCF_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_FP_show }
+                    if = { limit = { has_country_flag = party_FP_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+                if = {
+                    limit = { has_country_flag = party_ETC_show }
+                    if = { limit = { has_country_flag = party_ETC_choice } }
+                    else = { 
+                        set_country_flag = party_cost_satisfation
+                        country_event = cofpolitics.1001 
+                    }
+                }
+            }
+        }
+    }
+    bgt_voting_parliament_choice_button = {
+        context_type = player_context
+        parent_window_name = bgt_window
+        window_name = bgt_voting_parliament_button
+
+        visible = {
+			tag = FRA
+            has_country_flag = show_bgt_voting 
+		}
+        triggers = {
+            bgt_voting_preach_visible = {
+                NOT = { has_country_flag = parilament_choice_argue }
+            }
+            bgt_voting_argue_visible = {
+                NOT = { has_country_flag = parilament_choice_preach }
+            }
+            bgt_voting_attitude_support_visible = {
+                OR = {
+                    has_country_flag = parilament_choice_argue
+                    has_country_flag = parilament_choice_preach
+                }
+            }
+            bgt_voting_attitude_anti_visible = {
+                OR = {
+                    has_country_flag = parilament_choice_argue
+                    has_country_flag = parilament_choice_preach
+                }
+            }
+
+            bgt_voting_attitude_support_click_enabled = {
+                if = {
+                    limit = { has_country_flag = parilament_choice_preach }
+                    NOT = { has_country_flag = has_preach_game }
+                }
+
+                if = {
+                    limit = { has_country_flag = parilament_choice_argue }
+                    NOT = { has_country_flag = has_argue_game }
+                }
+            }
+            bgt_voting_attitude_anti_click_enabled = {
+                if = {
+                    limit = { has_country_flag = parilament_choice_preach }
+                    NOT = { has_country_flag = has_preach_game }
+                }
+
+                if = {
+                    limit = { has_country_flag = parilament_choice_argue }
+                    NOT = { has_country_flag = has_argue_game }
+                }
+            }
+
+            bgt_parliament_choice_icon1_visible = {
+                OR = {
+                    has_country_flag = parilament_choice_preach
+                    has_country_flag = parilament_choice_argue
+                }
+            }
+            bgt_parliament_choice_icon2_visible = {
+                OR = {
+                    has_country_flag = parilament_choice_preach
+                    has_country_flag = parilament_choice_argue
+                }
+            }
+            bgt_parliament_choice_icon3_visible = {
+                OR = {
+                    has_country_flag = parilament_choice_preach
+                    has_country_flag = parilament_choice_argue
+                }
+            }
+        }
+        effects = {
+            bgt_voting_preach_click = {
+                if = { 
+                    limit = { has_country_flag = parilament_choice_preach }
+                    clr_country_flag = parilament_choice_preach
+                }
+                else = { set_country_flag = parilament_choice_preach }
+                parilament_choice_effect = yes
+            }
+            bgt_voting_argue_click = {
+                if = { 
+                    limit = { has_country_flag = parilament_choice_argue }
+                    clr_country_flag = parilament_choice_argue
+                }
+                else = { set_country_flag = parilament_choice_argue }
+                parilament_choice_effect = yes
+            }
+            bgt_voting_attitude_support_click = {
+                if = {
+                    limit = { 
+                        has_country_flag = voting_for_bill 
+                        has_country_flag = parilament_choice_argue
+                        NOT = { has_country_flag = has_argue_game }
+                    }
+                    set_country_flag = game_support
+                    country_event = cofpolitics.1002
+                }
+                if = {
+                    limit = { 
+                        has_country_flag = voting_for_bill 
+                        has_country_flag = parilament_choice_preach
+                        NOT = { has_country_flag = has_preach_game }
+                    }
+                    set_country_flag = game_support
+                    country_event = cofpolitics.1002
+                }
+                parilament_choice_effect = yes
+            }
+            bgt_voting_attitude_anti_click = {
+                if = {
+                    limit = { 
+                        has_country_flag = voting_for_bill 
+                        has_country_flag = parilament_choice_argue
+                        NOT = { has_country_flag = has_argue_game }
+                    }
+                    set_country_flag = game_anti
+                    country_event = cofpolitics.1002
+                }
+                if = {
+                    limit = { 
+                        has_country_flag = voting_for_bill 
+                        has_country_flag = parilament_choice_preach
+                        NOT = { has_country_flag = has_preach_game }
+                    }
+                    set_country_flag = game_anti
+                    country_event = cofpolitics.1002
+                }
+                parilament_choice_effect = yes
+            }
+        }
+        properties = {
+            bgt_parliament_choice_icon1 = { frame = parilament_choice^1 }
+            bgt_parliament_choice_icon2 = { frame = parilament_choice^2 }
+            bgt_parliament_choice_icon3 = { frame = parilament_choice^3 }
+        }
+    }
+}

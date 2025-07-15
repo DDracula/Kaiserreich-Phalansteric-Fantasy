@@ -1,0 +1,232 @@
+guiTypes = {
+	containerWindowType = {
+		name = "bgt_open_window"
+		position = { x = -2 y = -120 }
+		size = { width = 80 height = 80 }
+		moveable = no
+		clipping = yes
+  
+		background = { 
+			name = "background1"
+			quadTextureSprite= "GFX_tiled_paper_bg2"
+		}
+
+		background = { 
+			name = "background2"
+			quadTextureSprite= "GFX_tiled_research_bg"
+		} 
+
+		buttonType = {
+			name = "bgt_open_window_button"
+			position = { x = 6 y = 3 }
+			scale = 1.1
+			spriteType = "GFX_idea_government"
+			clicksound = click_default
+			pdx_tooltip = Cof_bgt_window_open
+		}
+	}
+
+	containerWindowType = {
+		name = "bgt_window"
+		orientation = upper_left
+		position = { x = 537 y = 120 }
+		size = { width = 750 height = 550 }
+		moveable = yes
+		clipping = no
+  
+		background = { 
+			name = "background1"
+			quadTextureSprite= "GFX_tiled_bg"
+		}
+
+		containerWindowType = {
+			name = "bgt_container_window"   
+			position = { x = 25 y = 30 }
+			size = { width = 600 height = 700 }
+
+			gridboxtype = {
+				name = "parliament_diagram"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 100%% height = 0 }
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+
+		buttonType = {
+			name = "bgt_window_esc"
+			position = { x = 705 y = 15 }
+			spriteType = "GFX_closebutton"
+			clicksound = click_default
+			shortcut = "ESCAPE"
+		}
+
+		buttonType = {
+			name = "bgt_change_model_button"
+			position = { x = 339 y = 313 }
+			scale = 1.2
+			spriteType = "GFX_idea_government"
+			clicksound = click_default
+			pdx_tooltip = bgt_change_model_tt
+		}
+
+		iconType = {
+			name = "bgt_party_detail_box"
+			spriteType = "GFX_fuhrer_name_ribbon"
+			orientation = center
+			position = { x = 0 y = 142 }
+			scale = 1.7
+			centerposition = yes
+		}
+
+		instantTextboxType = {
+			name = "bgt_party_detail"
+			format = center
+			position = { x = 175 y = 400 }
+			font = "hoi_24header"
+			text = bgt_party_detail
+			maxWidth = 400
+			maxHeight = 20
+		}
+
+		instantTextboxType = {
+			name = "bgt_party_detail_choice"
+			format = center
+			position = { x = 175 y = 430 }
+			font = "hoi_18mbs"
+			text = bgt_party_detail_choice
+			maxWidth = 400
+			maxHeight = 20
+		}
+	}
+
+	containerWindowType = {
+		name = "bgt_voting_party_button"
+		position = { x = 315 y = 400 }
+
+		buttonType = {
+			name = "bgt_voting_support"
+			position = { x = -220 y = 0 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = bgt_voting_support
+			clicksound = click_default
+		}
+
+		buttonType = { 
+			name = "bgt_voting_oppose"
+			position = { x = 220 y = 0 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = bgt_voting_oppose
+			clicksound = click_default
+		}
+
+		buttonType = { 
+			name = "bgt_voting_cost_pp"
+			position = { x = -180 y = 60 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			scale = 0.9
+			text = bgt_voting_cost_pp
+			clicksound = click_default
+		}
+
+		buttonType = { 
+			name = "bgt_voting_cost_economy"
+			position = { x = 0 y = 60 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			scale = 0.9
+			text = bgt_voting_cost_economy
+			clicksound = click_default
+		}
+
+		buttonType = {  
+			name = "bgt_voting_cost_satisfation"
+			position = { x = 180 y = 60 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			scale = 0.9
+			text = bgt_voting_cost_satisfation
+			clicksound = click_default
+		}
+	}
+
+	containerWindowType = {
+		name = "bgt_voting_parliament_button"
+		position = { x = 315 y = 400 }
+
+		buttonType = {
+			name = "bgt_voting_preach"
+			position = { x = -220 y = 0 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = bgt_voting_preach
+			clicksound = click_default
+		}
+
+		buttonType = { 
+			name = "bgt_voting_argue"
+			position = { x = 220 y = 0 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = bgt_voting_argue
+			clicksound = click_default
+		}
+
+		buttonType = { 
+			name = "bgt_voting_attitude_support"
+			position = { x = -180 y = 60 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			scale = 0.9
+			text = bgt_voting_attitude_support
+			clicksound = click_default
+		}
+
+		buttonType = {  
+			name = "bgt_voting_attitude_anti"
+			position = { x = 180 y = 60 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			scale = 0.9
+			text = bgt_voting_attitude_anti
+			clicksound = click_default
+		}
+
+		iconType = {
+			name = "bgt_parliament_choice_icon1"
+			position = { x = -20 y = 50 }
+			quadTextureSprite = "GFX_bgt_seat"
+			scale = 2
+		}
+
+		iconType = {
+			name = "bgt_parliament_choice_icon2"
+			position = { x = 37 y = 50 }
+			quadTextureSprite = "GFX_bgt_seat"
+			scale = 2
+		}
+
+		iconType = {
+			name = "bgt_parliament_choice_icon3"
+			position = { x = 94 y = 50 }
+			quadTextureSprite = "GFX_bgt_seat"
+			scale = 2
+		}
+	}
+
+	containerWindowType = {
+		name = "bgt_seat_container"
+		position = { x = 0 y = 0 }
+ 
+		buttonType = {  
+			name = "bgt_seat_icon"
+			quadTextureSprite = "GFX_bgt_seat"
+			pdx_tooltip = BGT_seat_intro   
+			pdx_tooltip_delayed = BGT_seat_intro_long
+		}	
+	}
+}

@@ -1,0 +1,2551 @@
+###		经济模式变化
+#		set_temp_variable = { ecc = 0 }
+#		set_temp_variable = { emc = 0 }
+#		set_temp_variable = { epc = 0 }
+#		set_temp_variable = { eoc = 0 }
+#		Cof_economy_model_change = yes
+Cof_economy_model_change = {
+    if = { limit = { check_variable = { ecc = 0 } } }
+	else = {
+		add_to_variable = { Cof_economy_model_co_ops = ecc }
+		custom_effect_tooltip = Cof_economy_model_co_ops_change_tips
+	}
+
+    if = { limit = { check_variable = { emc = 0 } } }
+	else = {
+		add_to_variable = { Cof_economy_model_market = emc }
+		custom_effect_tooltip = Cof_economy_model_market_change_tips
+	}
+
+    if = { limit = { check_variable = { epc = 0 } } }
+	else = {
+		add_to_variable = { Cof_economy_model_plan = epc }
+		custom_effect_tooltip = Cof_economy_model_plan_change_tips
+	}
+
+    if = { limit = { check_variable = { eoc = 0 } } }
+	else = {
+		add_to_variable = { Cof_economy_model_order = eoc }
+		custom_effect_tooltip = Cof_economy_model_order_change_tips
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_rejecting_headless_co_ops } }
+		set_variable = { Cof_economy_model_co_ops = 100 }
+		set_variable = { Cof_economy_model_market = 0 }
+		set_variable = { Cof_economy_model_plan = 0 }
+		set_variable = { Cof_economy_model_order = 0 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_dream_without_king_or_master } }
+		set_variable = { Cof_economy_model_co_ops = 0 }
+		set_variable = { Cof_economy_model_market = 100 }
+		set_variable = { Cof_economy_model_plan = 0 }
+		set_variable = { Cof_economy_model_order = 0 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_centrally_planned_economy } }
+		set_variable = { Cof_economy_model_co_ops = 0 }
+		set_variable = { Cof_economy_model_market = 0 }
+		set_variable = { Cof_economy_model_plan = 100 }
+		set_variable = { Cof_economy_model_order = 0 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_pioneer_model } }
+		set_variable = { Cof_economy_model_co_ops = 0 }
+		set_variable = { Cof_economy_model_market = 0 }
+		set_variable = { Cof_economy_model_plan = 0 }
+		set_variable = { Cof_economy_model_order = 100 }
+	}
+
+	Cof_economy_impact_count = yes
+}
+
+###		两端陡峭曲线函数辅助
+functions_two_steep_curve = {
+	if = {
+		limit = { 
+			check_variable = { endt > 10 } 
+			check_variable = { endt < 90 } 
+		}
+		add_to_temp_variable = { endt = -50 }
+		multiply_temp_variable = { endt = 0.01 }
+		multiply_temp_variable = { endt = 0.4 }
+	}
+	else = {
+		set_temp_variable = { temp = endt }
+		add_to_temp_variable = { temp = -50 }
+		if = {
+			limit = { check_variable = { temp < 0 } }
+			multiply_temp_variable = { temp = -1 }
+		}
+		multiply_temp_variable = { temp = 0.01 }
+		multiply_temp_variable = { temp = 0.5 }
+		multiply_temp_variable = { endt = 0.02 }
+		multiply_temp_variable = { endt = temp }
+		subtract_from_temp_variable = { endt = temp }
+	}
+}
+
+
+Cof_economy_impact_count = {
+	set_temp_variable = { ev = cof_econ_values }
+
+	set_temp_variable = { eib = econ_industry_basic }
+	set_temp_variable = { eip = econ_industry_process }
+	set_temp_variable = { eia = econ_industry_arms }
+
+	set_temp_variable = { eam = econ_agriculture_mechanized }
+	set_temp_variable = { eae = econ_agriculture_chemical }
+	set_temp_variable = { eaa = econ_agriculture_chain }
+
+	set_temp_variable = { eq = econ_equal }
+	set_temp_variable = { el = econ_link }
+	set_temp_variable = { ei = econ_innovate }
+
+	###经济模式
+	if = {
+		limit = { 
+			Cof_economy_model_co_ops_advantage = no
+			Cof_economy_model_market_advantage = no
+			Cof_economy_model_plan_advantage = no
+			Cof_economy_model_order_advantage = no
+		}
+		set_temp_variable = { ev1 = ev }
+		multiply_temp_variable = { ev1 = 0.01 }
+		multiply_temp_variable = { ev1 = 0.3 }
+		set_variable = { ev1_show = ev1 }
+		set_variable = { econ_production_speed_industrial_complex_factor = ev1 }
+
+		set_temp_variable = { ev2 = ev }
+		multiply_temp_variable = { ev2 = 0.01 }
+		multiply_temp_variable = { ev2 = 0.4 }
+		set_variable = { ev2_show = ev2 }
+		set_variable = { econ_production_speed_infrastructure_factor = ev2 }
+	}
+	else = {
+		set_variable = { econ_production_speed_industrial_complex_factor = 0 }
+		set_variable = { econ_production_speed_infrastructure_factor = 0 }
+	}
+
+	#合作社
+	if = {
+		limit = { Cof_economy_model_co_ops_advantage = yes }
+		set_temp_variable = { ev1 = ev }
+		multiply_temp_variable = { ev1 = 0.01 }
+		multiply_temp_variable = { ev1 = 0.3 }
+		set_variable = { ev1_show = ev1 }
+		set_variable = { econ_production_factory_start_efficiency_factor = ev1 }
+
+		set_temp_variable = { ev2 = ev }
+		multiply_temp_variable = { ev2 = 0.01 }
+		multiply_temp_variable = { ev2 = 0.25 }
+		set_variable = { ev2_show = ev2 }
+		set_variable = { econ_production_factory_efficiency_gain_factor = ev2 }
+	}
+	else = {
+		set_variable = { econ_production_factory_start_efficiency_factor = 0 }
+		set_variable = { econ_production_factory_efficiency_gain_factor = 0 }
+	}
+
+	#市场
+	if = {
+		limit = { Cof_economy_model_market_advantage = yes }
+		set_temp_variable = { ev1 = ev }
+		multiply_temp_variable = { ev1 = 0.01 }
+		multiply_temp_variable = { ev1 = -0.4 }
+		set_variable = { ev1_show = ev1 }
+		set_variable = { econ_consumer_goods_factor = ev1 }
+
+		set_temp_variable = { ev2 = ev }
+		multiply_temp_variable = { ev2 = 0.01 }
+		multiply_temp_variable = { ev2 = 0.3 }
+		set_variable = { ev2_show = ev2 }
+		set_variable = { econ_production_speed_industrial_complex_factor = ev2 }
+	}
+	else = {
+		set_variable = { econ_consumer_goods_factor = 0 }
+	}
+
+	#计划
+	if = {
+		limit = { Cof_economy_model_plan_advantage = yes }
+		set_temp_variable = { ev1 = ev }
+		multiply_temp_variable = { ev1 = 0.01 }
+		multiply_temp_variable = { ev1 = 0.25 }
+		set_variable = { ev1_show = ev1 }
+		set_variable = { econ_production_factory_max_efficiency_factor = ev1 }
+
+		set_temp_variable = { ev2 = ev }
+		multiply_temp_variable = { ev2 = 0.01 }
+		multiply_temp_variable = { ev2 = 0.25 }
+		set_variable = { ev2_show = ev2 }
+		set_variable = { econ_industrial_capacity_factory = ev2 }
+
+		set_temp_variable = { ev3 = ev }
+		add_to_temp_variable = { ev3 = -80 }
+		multiply_temp_variable = { ev3 = 0.01 }
+		multiply_temp_variable = { ev3 = 0.25 }
+		set_variable = { ev3_show = ev3 }
+		set_variable = { econ_production_factory_efficiency_gain_factor = ev3 }
+	}
+	else = {
+		set_variable = { econ_production_factory_max_efficiency_factor = 0 }
+		set_variable = { econ_industrial_capacity_factory = 0 }
+	}
+
+	#统制
+	if = {
+		limit = { Cof_economy_model_order_advantage = yes }
+		set_temp_variable = { ev1 = ev }
+		multiply_temp_variable = { ev1 = 0.01 }
+		multiply_temp_variable = { ev1 = 0.3 }
+		set_variable = { ev1_show = ev1 }
+		set_variable = { econ_production_speed_arms_factory_factor = ev1 }
+
+		set_temp_variable = { ev2 = ev }
+		multiply_temp_variable = { ev2 = 0.01 }
+		multiply_temp_variable = { ev2 = 0.4 }
+		set_variable = { ev2_show = ev2 }
+		set_variable = { econ_local_resources_factor = ev2 }
+	}
+	else = {
+		set_variable = { econ_production_speed_arms_factory_factor = 0 }
+		set_variable = { econ_local_resources_factor = 0 }
+	}
+
+	##工业
+	#基础
+	set_temp_variable = { eib1 = eib }
+	set_temp_variable = { endt = eib1 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eib1 = endt }
+	set_variable = { eib1_show = eib1 }
+	add_to_variable = { econ_production_factory_start_efficiency_factor = eib1 }
+
+	set_temp_variable = { eib2 = eib }
+	set_temp_variable = { endt = eib2 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eib2 = endt }
+	set_variable = { eib2_show = eib2 }
+	add_to_variable = { econ_production_speed_industrial_complex_factor = eib2 }
+
+	set_temp_variable = { eib3 = eib }
+	set_temp_variable = { endt = eib3 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eib3 = endt }
+	set_variable = { eib3_show = eib3 }
+	set_variable = { econ_local_resources_factor = eib3 }
+
+	#流程
+	set_temp_variable = { eip1 = eip }
+	set_temp_variable = { endt = eip1 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eip1 = endt }
+	set_variable = { eip1_show = eip1 }
+	set_variable = { econ_line_change_production_efficiency_factor = eip1 }
+
+	set_temp_variable = { eip2 = eip }
+	set_temp_variable = { endt = eip2 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eip2 = endt }
+	set_variable = { eip2_show = eip2 }
+	add_to_variable = { econ_production_factory_efficiency_gain_factor = eip2 }
+
+	#军工
+	set_temp_variable = { eia1 = eia }
+	set_temp_variable = { endt = eia1 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eia1 = endt }
+	set_variable = { eia1_show = eia1 }
+	add_to_variable = { econ_production_speed_arms_factory_factor = eia1 }
+
+	set_temp_variable = { eia2 = eia }
+	set_temp_variable = { endt = eia2 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eia2 = endt }
+	multiply_temp_variable = { eia2 = -1 }
+	set_variable = { eia2_show = eia2 }
+	set_variable = { econ_conversion_cost_civ_to_mil_factor = eia2 }
+
+	##农业
+	#机械化
+	set_temp_variable = { eam1 = eam }
+	set_temp_variable = { endt = eam1 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eam1 = endt }
+	set_variable = { eam1_show = eam1 }
+	set_variable = { econ_conscription_factor = eam1 }
+
+	#化工
+	set_temp_variable = { eae1 = eae }
+	set_temp_variable = { endt = eae1 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eae1 = endt }
+	multiply_temp_variable = { eae1 = -1 }
+	set_variable = { eae1_show = eae1 }
+	set_variable = { econ_supply_consumption_factor = eae1 }
+
+	#产业链
+	set_temp_variable = { eaa1 = eaa }
+	set_temp_variable = { endt = eaa1 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eaa1 = endt }
+	multiply_temp_variable = { eaa1 = -1.2 }
+	set_variable = { eaa1_show = eaa1 }
+	add_to_variable = { econ_consumer_goods_factor = eaa1 }
+
+	##其他
+	#平等
+	set_temp_variable = { eq1 = eq }
+	add_to_temp_variable = { eq1 = -80 }
+	multiply_temp_variable = { eq1 = 0.01 }
+	multiply_temp_variable = { eq1 = 0.25 }
+	set_variable = { eq1_show = eq1 }
+	set_variable = { econ_stability_factor = eq1 }
+
+	set_temp_variable = { eq2 = eq }
+	add_to_temp_variable = { eq2 = -80 }
+	multiply_temp_variable = { eq2 = -0.01 }
+	if = {
+		limit = { check_variable = { eq2 > 0 } }
+		multiply_temp_variable = { eq2 = 0.25 }
+	}
+	set_variable = { eq2_show = eq2 }
+	add_to_variable = { econ_consumer_goods_factor = eq2 }
+
+	set_temp_variable = { eq3 = eq }
+	add_to_temp_variable = { eq3 = -60 }
+	multiply_temp_variable = { eq3 = 0.01 }
+	multiply_temp_variable = { eq3 = 0.25 }
+	set_variable = { eq3_show = eq3 }
+	add_to_variable = { econ_production_factory_efficiency_gain_factor = eq3 }
+
+	#联系
+	set_temp_variable = { el1 = el }
+	if = {
+		limit = { check_variable = { el1 > 50 } }
+		set_temp_variable = { temp = el1 }
+		add_to_temp_variable = { temp = -50 }
+		multiply_temp_variable = { temp = 0.01 }
+		multiply_temp_variable = { temp = 0.5 }
+		multiply_temp_variable = { el1 = 0.02 }
+		multiply_temp_variable = { el1 = temp }
+		subtract_from_temp_variable = { el1 = temp }
+	}
+	else = {
+		add_to_temp_variable = { el1 = -50 }
+		multiply_temp_variable = { el1 = 0.01 }
+		multiply_temp_variable = { el1 = 0.4 }
+	}
+	set_variable = { el1_show = el1 }
+	add_to_variable = { econ_production_factory_max_efficiency_factor = el1 }
+
+	set_temp_variable = { el2 = el }
+	if = {
+		limit = { check_variable = { el2 > 50 } }
+		set_temp_variable = { temp = el2 }
+		add_to_temp_variable = { temp = -50 }
+		multiply_temp_variable = { temp = 0.01 }
+		multiply_temp_variable = { temp = 0.5 }
+		multiply_temp_variable = { el2 = 0.02 }
+		multiply_temp_variable = { el2 = temp }
+		subtract_from_temp_variable = { el2 = temp }
+	}
+	else = {
+		add_to_temp_variable = { el2 = -50 }
+		multiply_temp_variable = { el2 = 0.01 }
+		multiply_temp_variable = { el2 = 0.4 }
+	}
+	set_variable = { el2_show = el2 }
+	add_to_variable = { econ_production_factory_efficiency_gain_factor = el2 }
+
+	set_temp_variable = { el3 = el }
+	if = {
+		limit = { check_variable = { el3 > 50 } }
+		set_temp_variable = { temp = el3 }
+		add_to_temp_variable = { temp = -50 }
+		multiply_temp_variable = { temp = 0.01 }
+		multiply_temp_variable = { temp = 0.5 }
+		multiply_temp_variable = { el3 = 0.02 }
+		multiply_temp_variable = { el3 = temp }
+		subtract_from_temp_variable = { el3 = temp }
+	}
+	else = {
+		add_to_temp_variable = { el3 = -50 }
+		multiply_temp_variable = { el3 = 0.01 }
+		multiply_temp_variable = { el3 = 0.4 }
+	}
+	set_variable = { el3_show = el3 }
+	add_to_variable = { econ_production_factory_start_efficiency_factor = el3 }
+
+	#创新
+	set_temp_variable = { ei1 = ei }
+	add_to_temp_variable = { ei1 = -50 }
+	multiply_temp_variable = { ei1 = 0.01 }
+	multiply_temp_variable = { ei1 = 0.4 }
+	set_variable = { ei1_show = ei1 }
+	set_variable = { econ_research_speed_factor = ei1 }
+
+	#extra
+	#合作社
+	if = {
+		limit = { 
+			has_completed_focus = FRA_rejecting_headless_co_ops
+			Cof_economy_model_co_ops_advantage = yes
+		}
+		set_temp_variable = { ev3 = ev }
+		multiply_temp_variable = { ev3 = 0.01 }
+		multiply_temp_variable = { ev3 = 0.3 }
+		set_variable = { ev3_show = ev3 }
+		add_to_variable = { econ_production_factory_max_efficiency_factor = ev3 }
+	}
+	#市场
+	if = {
+		limit = { 
+			has_completed_focus = FRA_dream_without_king_or_master
+			Cof_economy_model_market_advantage = yes
+		}
+		set_temp_variable = { ev3 = ev }
+		multiply_temp_variable = { ev3 = 0.01 }
+		multiply_temp_variable = { ev3 = 0.3 }
+		set_variable = { ev3_show = ev3 }
+		add_to_variable = { econ_industrial_capacity_factory = ev3 }
+	}
+
+	#计划
+	if = {
+		limit = { 
+			has_completed_focus = FRA_centrally_planned_economy
+			Cof_economy_model_plan_advantage = yes
+		}
+		set_temp_variable = { ev4 = ev }
+		multiply_temp_variable = { ev4 = 0.01 }
+		multiply_temp_variable = { ev4 = 0.3 }
+		set_variable = { ev3_show = ev4 }
+		set_variable = { econ_global_building_slots_factor = ev4 }
+	}
+	else = { set_variable = { econ_global_building_slots_factor = 0 } }
+
+	#统制
+	if = {
+		limit = { 
+			has_completed_focus = FRA_pioneer_model
+			Cof_economy_model_order_advantage = yes
+		}
+		set_temp_variable = { ev3 = ev }
+		multiply_temp_variable = { ev3 = 0.01 }
+		multiply_temp_variable = { ev3 = 0.3 }
+		set_variable = { ev3_show = ev3 }
+		add_to_variable = { econ_production_factory_start_efficiency_factor = ev3 }
+	}
+
+	
+	#基础
+	if = {
+		limit = { has_completed_focus = FRA_tewnty_four_hours_of_light }
+		set_temp_variable = { eib4 = eib }
+		set_temp_variable = { endt = eib4 }
+		functions_two_steep_curve = yes
+		set_temp_variable = { eib4 = endt }
+		set_variable = { eib4_show = eib4 }
+		add_to_variable = { econ_production_speed_infrastructure_factor = eib4 }
+	}
+
+	if = {
+		limit = { has_completed_focus = FRA_material_communism }
+		set_temp_variable = { eib5 = eib }
+		set_temp_variable = { endt = eib5 }
+		functions_two_steep_curve = yes
+		set_temp_variable = { eib5 = endt }
+		set_variable = { eib5_show = eib5 }
+		add_to_variable = { econ_industrial_capacity_factory = eib5 }
+	}
+
+	#流程
+	if = {
+		limit = { has_completed_focus = FRA_entertainment_in_the_factory }
+		set_temp_variable = { eip3 = eib }
+		set_temp_variable = { endt = eip3 }
+		functions_two_steep_curve = yes
+		set_temp_variable = { eip3 = endt }
+		set_variable = { eip3_show = eip3 }
+		add_to_variable = { econ_consumer_goods_factor = eip3 }
+	}
+
+	if = {
+		limit = { has_completed_focus = FRA_borrow_from_model }
+		set_temp_variable = { eip4 = eib }
+		set_temp_variable = { endt = eip4 }
+		functions_two_steep_curve = yes
+		set_temp_variable = { eip4 = endt }
+		set_variable = { eip4_show = eip4 }
+		add_to_variable = { econ_production_factory_max_efficiency_factor = eip4 }
+	}
+	#军工
+
+
+	#机械化
+	if = {
+		limit = { has_completed_focus = FRA_mixed_agriculture }
+		set_temp_variable = { eam2 = eam }
+		set_temp_variable = { endt = eam2 }
+		functions_two_steep_curve = yes
+		set_temp_variable = { eam2 = endt }
+		set_variable = { eam2_show = eam2 }
+		add_to_variable = { econ_production_factory_efficiency_gain_factor = eam2 }
+	}
+
+	#化工
+
+	#产业链
+
+
+	#平等
+
+	#联系
+
+	#创新
+
+	force_update_dynamic_modifier = yes
+}
+
+###		经济数值改变
+#		set_temp_variable = { evc = 0 }
+#		set_temp_variable = { eibc = 0 }
+#		set_temp_variable = { eipc = 0 }
+#		set_temp_variable = { eiac = 0 }
+#		set_temp_variable = { eamc = 0 }
+#		set_temp_variable = { eaec = 0 }
+#		set_temp_variable = { eaac = 0 }
+#		set_temp_variable = { eqc = 0 }
+#		set_temp_variable = { elc = 0 }
+#		set_temp_variable = { eic = 0 }
+#		cof_econ_target_change = yes
+cof_econ_target_change = {
+	if = { limit = { check_variable = { evc = 0 } } }
+	else = {
+		add_to_variable = { cof_econ_values = evc }
+		custom_effect_tooltip = econ_values_change_tips
+	}
+
+	if = { limit = { check_variable = { eibc = 0 } } }
+	else = {
+		add_to_variable = { econ_industry_basic = eibc }
+		custom_effect_tooltip = econ_industry_basic_change_tips
+	}
+
+	if = {
+		limit = { 
+			has_completed_focus = FRA_material_communism 
+			check_variable = { econ_industry_basic < 55 }
+		}
+		set_variable = { econ_industry_basic = 55 }
+	}
+
+	if = { limit = { check_variable = { eipc = 0 } } }
+	else = {
+		add_to_variable = { econ_industry_process = eipc }
+		custom_effect_tooltip = econ_industry_process_change_tips
+	}
+
+	if = {
+		limit = {
+			has_completed_focus = FRA_borrow_from_model
+			check_variable = { econ_industry_process < 55 }
+		}
+		set_variable = { econ_industry_process = 55 }
+	}
+
+	if = { limit = { check_variable = { eiac = 0 } } }
+	else = {
+		add_to_variable = { econ_industry_arms = eiac }
+		custom_effect_tooltip = econ_industry_arms_change_tips
+	}
+
+	if = { limit = { check_variable = { eamc = 0 } } }
+	else = {
+		add_to_variable = { econ_agriculture_mechanized = eamc }
+		custom_effect_tooltip = econ_agriculture_mechanized_change_tips
+	}
+	
+	if = { limit = { check_variable = { eaec = 0 } } }
+	else = {
+		add_to_variable = { econ_agriculture_chemical = eaec }
+		custom_effect_tooltip = econ_agriculture_chemical_change_tips
+	}
+
+	if = { limit = { check_variable = { eaac = 0 } } }
+	else = {
+		add_to_variable = { econ_agriculture_chain = eaac }
+		custom_effect_tooltip = econ_agriculture_chain_change_tips
+	}
+
+	if = {
+		limit = { 
+			has_completed_focus = FRA_industrialized_rural 
+			check_variable = { econ_agriculture_chain < 55 }
+		}
+		set_variable = { econ_agriculture_chain = 55 }
+	}
+
+	if = { limit = { check_variable = { eqc = 0 } } }
+	else = {
+		add_to_variable = { econ_equal = eqc }
+		custom_effect_tooltip = econ_equal_change_tips
+	}
+
+	if = { limit = { check_variable = { elc = 0 } } }
+	else = {
+		add_to_variable = { econ_link = elc }
+		custom_effect_tooltip = econ_link_change_tips
+	}
+
+	if = { limit = { check_variable = { eic = 0 } } }
+	else = {
+		add_to_variable = { econ_innovate = eic }
+		custom_effect_tooltip = econ_innovate_change_tips
+	}
+
+	if = {
+		limit = { 
+			has_completed_focus = FRA_all_rounder 
+			check_variable = { econ_innovate < 55 }
+		}
+		set_variable = { econ_innovate = 55 }
+	}
+
+	clamp_variable = {
+        var = cof_econ_values
+        max = 100
+        min = -100
+    }
+	if = {
+		limit = { check_variable = { cof_econ_values < 0 } }
+		set_variable = { cof_econ_values_bad = cof_econ_values }
+		add_to_variable = { cof_econ_values_bad = 100 }
+	}
+	clamp_variable = {
+        var = econ_industry_basic
+        max = 100
+        min = 0
+    }
+	clamp_variable = {
+        var = econ_industry_process
+        max = 100
+        min = 0
+    }
+	clamp_variable = {
+        var = econ_industry_arms
+        max = 100
+        min = 0
+    }
+
+	clamp_variable = {
+        var = econ_agriculture_mechanized
+        max = 100
+        min = 0
+    }
+	clamp_variable = {
+        var = econ_agriculture_chemical
+        max = 100
+        min = 0
+    }
+	clamp_variable = {
+        var = econ_agriculture_chain
+        max = 100
+        min = 0
+    }
+
+	clamp_variable = {
+        var = econ_equal
+        max = 100
+        min = 0
+    }
+	clamp_variable = {
+        var = econ_link
+        max = 100
+        min = 0
+    }
+	clamp_variable = {
+        var = econ_agriculture_chain
+        max = 100
+        min = 0
+    }
+
+	economy_period_change_judge = yes
+	Cof_economy_impact_count = yes
+}
+
+###		派系经济影响力变化
+#		set_temp_variable = { esyndc = 0 }
+#		set_temp_variable = { eoppoc = 0 }
+#		set_temp_variable = { ejacoc = 0 }
+#		set_temp_variable = { esorec = 0 }
+#		econ_faction_influence_change = yes
+econ_faction_influence_change = {
+	if = { limit = { check_variable = { esyndc = 0 } } }
+	else = {
+		add_to_variable = { economy_synd = esyndc }
+		custom_effect_tooltip = economy_synd_change_tips
+	}
+
+	if = { limit = { check_variable = { eoppoc = 0 } } }
+	else = {
+		add_to_variable = { economy_oppo = eoppoc }
+		custom_effect_tooltip = economy_oppo_change_tips
+	}
+
+
+	if = { limit = { check_variable = { ejacoc = 0 } } }
+	else = {
+		add_to_variable = { economy_jaco = ejacoc }
+		custom_effect_tooltip = economy_jaco_change_tips
+	}
+
+
+	if = { limit = { check_variable = { esorec = 0 } } }
+	else = {
+		add_to_variable = { economy_sore = esorec }
+		custom_effect_tooltip = economy_sore_change_tips
+	}
+
+
+	while_loop_effect = {
+		limit = {
+			OR = {
+				check_variable = { FRA.economy_synd < 0 }
+				check_variable = { FRA.economy_oppo < 0 }
+				check_variable = { FRA.economy_jaco < 0 }
+				check_variable = { FRA.economy_sore < 0 }
+			}
+		}
+
+		if = {
+			limit = { check_variable = { FRA.economy_synd < 0 } }
+			add_to_variable = { FRA.economy_synd = 0.3 }
+			add_to_variable = { FRA.economy_oppo = -0.1 }
+			add_to_variable = { FRA.economy_jaco = -0.1 }
+			add_to_variable = { FRA.economy_sore = -0.1 }
+		}
+	
+		if = {
+			limit = { check_variable = { FRA.economy_oppo < 0 } }
+			add_to_variable = { FRA.economy_synd = -0.1 }
+			add_to_variable = { FRA.economy_oppo = -0.3 }
+			add_to_variable = { FRA.economy_jaco = -0.1 }
+			add_to_variable = { FRA.economy_sore = -0.1 }
+		}
+	
+		if = {
+			limit = { check_variable = { FRA.economy_jaco < 0 } }
+			add_to_variable = { FRA.economy_synd = -0.1 }
+			add_to_variable = { FRA.economy_oppo = -0.1 }
+			add_to_variable = { FRA.economy_jaco = 0.3 }
+			add_to_variable = { FRA.economy_sore = -0.1 }
+		}
+	
+		if = {
+			limit = { check_variable = { FRA.economy_sore < 0 } }
+			add_to_variable = { FRA.economy_synd = -0.1 }
+			add_to_variable = { FRA.economy_oppo = -0.1 }
+			add_to_variable = { FRA.economy_jaco = -0.1 }
+			add_to_variable = { FRA.economy_sore = 0.3 }
+		}
+	}
+
+	set_variable = { gui_econ_synd = economy_synd }
+
+	set_variable = { gui_econ_oppo = gui_econ_synd }
+	add_to_variable = { gui_econ_oppo = economy_oppo }
+
+	set_variable = { gui_econ_jaco = gui_econ_oppo }
+	add_to_variable = { gui_econ_jaco = economy_jaco }
+
+	set_variable = { gui_econ_sore = gui_econ_jaco }
+	add_to_variable = { gui_econ_sore = economy_sore }
+
+	economy_period_change_judge = yes
+	faction_infulences_count = yes
+}
+
+economy_period_change_judge = {
+	set_variable = { monthly_change_evc = 0 }
+	
+	set_variable = { monthly_change_eibc = 0 }
+	set_variable = { monthly_change_eipc = 0 }
+	set_variable = { monthly_change_eiac = 0 }
+
+	set_variable = { monthly_change_eamc = 0 }
+	set_variable = { monthly_change_eaec = 0 }
+	set_variable = { monthly_change_eaac = 0 }
+
+	set_variable = { monthly_change_eqc = 0 }
+	set_variable = { monthly_change_elc = 0 }
+	set_variable = { monthly_change_eic = 0 }
+
+	#自然衰退
+	set_temp_variable = { slowk1 = econ_equal }
+	multiply_temp_variable = { slowk1 = 0.01 }
+	multiply_temp_variable = { slowk1 = 0.3 }
+
+	set_temp_variable = { slowk2 = econ_link }
+	multiply_temp_variable = { slowk2 = 0.01 }
+	multiply_temp_variable = { slowk2 = 0.4 }
+
+	set_temp_variable = { slowk3 = econ_innovate }
+	multiply_temp_variable = { slowk3 = 0.01 }
+	multiply_temp_variable = { slowk3 = 0.3 }
+
+	set_temp_variable = { slowk = slowk1 }
+	add_to_temp_variable = { slowk = slowk2 }
+	add_to_temp_variable = { slowk = slowk3 }
+	multiply_temp_variable = { slowk = -1 }
+	add_to_temp_variable = { slowk = 1.5 }
+
+	set_variable = { evcfade = cof_econ_values }
+	divide_variable = { evcfade = 7.5 }
+	multiply_variable = { evcfade = slowk }
+	round_variable = evcfade
+	multiply_variable = { evcfade = -0.1 }
+	add_to_variable = { evcfade = -0.3 }
+	add_to_variable = { monthly_change_evc = evcfade }
+
+	set_variable = { eibcfade = econ_industry_basic }
+	divide_variable = { eibcfade = 7.5 }
+	multiply_variable = { eibcfade = slowk }
+	round_variable = eibcfade
+	multiply_variable = { eibcfade = -0.1 }
+	add_to_variable = { monthly_change_eibc = eibcfade }
+	set_variable = { eipcfade = econ_industry_process }
+	divide_variable = { eipcfade = 7.5 }
+	multiply_variable = { eipcfade = slowk }
+	round_variable = eipcfade
+	multiply_variable = { eipcfade = -0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfade }
+	set_variable = { eiacfade = econ_industry_arms }
+	divide_variable = { eiacfade = 7.5 }
+	multiply_variable = { eiacfade = slowk }
+	round_variable = eiacfade
+	multiply_variable = { eiacfade = -0.1 }
+	add_to_variable = { monthly_change_eiac = eiacfade }
+
+	set_variable = { eamcfade = econ_agriculture_mechanized }
+	divide_variable = { eamcfade = 7.5 }
+	multiply_variable = { eamcfade = slowk }
+	round_variable = eamcfade
+	multiply_variable = { eamcfade = -0.1 }
+	add_to_variable = { monthly_change_eamc = eamcfade }
+	set_variable = { eaecfade = econ_agriculture_chemical }
+	divide_variable = { eaecfade = 7.5 }
+	multiply_variable = { eaecfade = slowk }
+	round_variable = eaecfade
+	multiply_variable = { eaecfade = -0.1 }
+	add_to_variable = { monthly_change_eaec = eaecfade }
+	set_variable = { eaacfade = econ_agriculture_chain }
+	divide_variable = { eaacfade = 7.5 }
+	multiply_variable = { eaacfade = slowk }
+	round_variable = eaacfade
+	multiply_variable = { eaacfade = -0.1 }
+	add_to_variable = { monthly_change_eaac = eaacfade }
+
+	set_variable = { eqcfade = econ_equal }
+	divide_variable = { eqcfade = 7.5 }
+	multiply_variable = { eqcfade = slowk }
+	round_variable = eqcfade
+	multiply_variable = { eqcfade = -0.1 }
+	add_to_variable = { monthly_change_eqc = eqcfade }
+	set_variable = { elcfade = econ_link }
+	divide_variable = { elcfade = 7.5 }
+	multiply_variable = { elcfade = slowk }
+	round_variable = elcfade
+	multiply_variable = { elcfade = -0.1 }
+	add_to_variable = { monthly_change_elc = elcfade }
+	set_variable = { eicfade = econ_innovate }
+	divide_variable = { eicfade = 7.5 }
+	multiply_variable = { eicfade = slowk }
+	round_variable = eicfade
+	multiply_variable = { eicfade = -0.1 }
+	add_to_variable = { monthly_change_eic = eicfade }
+
+	###ev
+	#modifier_tooltip
+	if = {
+		limit = { 
+			OR = {
+				check_variable = { DEA_attitude = 5 } 
+				check_variable = { DEA_attitude = 4 } 
+			}
+		}
+		set_variable = { ebcfdea = 0.6 }
+	}
+	else_if = {
+		limit = { 
+			OR = {
+				check_variable = { DEA_attitude = 3 } 
+				check_variable = { DEA_attitude = 2 } 
+			}
+		}
+		set_variable = { ebcfdea = 0.3 }
+	}
+	else_if = {
+		limit = { 
+			OR = {
+				check_variable = { DEA_attitude = 1 } 
+				check_variable = { DEA_attitude = 0 }
+				check_variable = { DEA_attitude = -1 } 
+			}
+		}
+		set_variable = { ebcfdea = 0.1 }
+	}
+	else_if = {
+		limit = { 
+			OR = {
+				check_variable = { DEA_attitude = -2 } 
+				check_variable = { DEA_attitude = -3 } 
+			}
+		}
+		set_variable = { ebcfdea = -0.2 }
+	}
+	else_if = {
+		limit = { 
+			OR = {
+				check_variable = { DEA_attitude = -4 } 
+				check_variable = { DEA_attitude = -5 } 
+			}
+		}
+		set_variable = { ebcfdea = -0.5 }
+	}
+
+
+	#
+	set_variable = { evcfeib = econ_industry_basic }
+	add_to_variable = { evcfeib = -40 }
+	multiply_variable = { evcfeib = 0.25 }
+	round_variable = evcfeib
+	multiply_variable = { evcfeib = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfeib }
+
+	set_variable = { evcfeip = econ_industry_process }
+	add_to_variable = { evcfeip = -40 }
+	multiply_variable = { evcfeip = 0.25 }
+	round_variable = evcfeip
+	multiply_variable = { evcfeip = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfeip }
+
+	set_variable = { evcfeia = econ_industry_arms }
+	add_to_variable = { evcfeia = -30 }
+	multiply_variable = { evcfeia = 0.25 }
+	round_variable = evcfeia
+	multiply_variable = { evcfeia = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfeia }
+
+	#
+	set_variable = { evcfeam = econ_agriculture_mechanized }
+	add_to_variable = { evcfeam = -40 }
+	multiply_variable = { evcfeam = 0.25 }
+	round_variable = evcfeam
+	multiply_variable = { evcfeam = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfeam }
+
+	set_variable = { evcfeae = econ_agriculture_chemical }
+	add_to_variable = { evcfeae = -40 }
+	multiply_variable = { evcfeae = 0.25 }
+	round_variable = evcfeae
+	multiply_variable = { evcfeae = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfeae }
+
+	set_variable = { evcfeaa = econ_agriculture_chain }
+	add_to_variable = { evcfeaa = -40 }
+	multiply_variable = { evcfeaa = 0.25 }
+	round_variable = evcfeaa
+	multiply_variable = { evcfeaa = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfeaa }
+
+	#
+	set_variable = { evcfeq = econ_equal }
+	add_to_variable = { evcfeq = -60 }
+	multiply_variable = { evcfeq = 0.25 }
+	round_variable = evcfeq
+	multiply_variable = { evcfeq = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfeq }
+
+	set_variable = { evcfel = econ_link }
+	add_to_variable = { evcfel = -40 }
+	multiply_variable = { evcfel = 0.25 }
+	round_variable = evcfel
+	multiply_variable = { evcfel = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfel }
+
+	set_variable = { evcfei = econ_innovate }
+	add_to_variable = { evcfei = -40 }
+	multiply_variable = { evcfei = 0.25 }
+	round_variable = evcfei
+	multiply_variable = { evcfei = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfei }
+
+	#
+	set_variable = { evcfpopw = pop_satisfaction_workers }
+	add_to_variable = { evcfpopw = -50 }
+	multiply_variable = { evcfpopw = 0.01 }
+	multiply_variable = { evcfpopw = pop_workers }
+	multiply_variable = { evcfpopw = 2 }
+	round_variable = evcfpopw
+	multiply_variable = { evcfpopw = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfpopw }
+
+	set_variable = { evcfpopp = pop_satisfaction_peasants }
+	add_to_variable = { evcfpopp = -50 }
+	multiply_variable = { evcfpopp = 0.01 }
+	multiply_variable = { evcfpopp = pop_peasants }
+	multiply_variable = { evcfpopp = 2 }
+	round_variable = evcfpopp
+	multiply_variable = { evcfpopp = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfpopp }
+
+	set_variable = { evcfpopm = pop_satisfaction_merchants }
+	add_to_variable = { evcfpopm = -50 }
+	multiply_variable = { evcfpopm = 0.01 }
+	multiply_variable = { evcfpopm = pop_merchants }
+	multiply_variable = { evcfpopm = 2 }
+	round_variable = evcfpopm
+	multiply_variable = { evcfpopm = 0.1 }
+	add_to_variable = { monthly_change_evc = evcfpopm }
+
+	##eib
+	set_variable = { eibcfev = cof_econ_values }
+	multiply_variable = { eibcfev = 0.25 }
+	multiply_variable = { eibcfev = 1 }
+	round_variable = eibcfev
+	multiply_variable = { eibcfev = 0.1 }
+	add_to_variable = { monthly_change_eibc = eibcfev }
+
+	#
+	set_variable = { eibcfeip = econ_industry_process }
+	add_to_variable = { eibcfeip = -40 }
+	multiply_variable = { eibcfeip = 0.25 }
+	multiply_variable = { eibcfeip = 1.3 }
+	round_variable = eibcfeip
+	multiply_variable = { eibcfeip = 0.1 }
+	add_to_variable = { monthly_change_eibc = eibcfeip }
+
+	set_variable = { eibcfeae = econ_agriculture_chemical }
+	add_to_variable = { eibcfeae = -40 }
+	multiply_variable = { eibcfeae = 0.25 }
+	multiply_variable = { eibcfeae = 0.9 }
+	round_variable = eibcfeae
+	multiply_variable = { eibcfeae = 0.1 }
+	add_to_variable = { monthly_change_eibc = eibcfeae }
+
+	set_variable = { eibcfel = econ_link }
+	add_to_variable = { eibcfel = -40 }
+	multiply_variable = { eibcfel = 0.25 }
+	multiply_variable = { eibcfel = 1.2 }
+	round_variable = eibcfel
+	multiply_variable = { eibcfel = 0.1 }
+	add_to_variable = { monthly_change_eibc = eibcfel }
+
+	#
+	set_variable = { eibcfpopw = pop_satisfaction_workers }
+	add_to_variable = { eibcfpopw = -50 }
+	multiply_variable = { eibcfpopw = pop_workers }
+	multiply_variable = { eibcfpopw = 0.01 }
+	multiply_variable = { eibcfpopw = 1.3 }
+	round_variable = eibcfpopw
+	multiply_variable = { eibcfpopw = 0.1 }
+	add_to_variable = { monthly_change_eibc = eibcfpopw }
+
+	#
+	set_variable = { eibcfsynd = economy_synd }
+	multiply_variable = { eibcfsynd = 0.4 }
+	multiply_variable = { eibcfsynd = 1 }
+	round_variable = eibcfsynd
+	multiply_variable = { eibcfsynd = 0.1 }
+	add_to_variable = { monthly_change_eibc = eibcfsynd }
+
+	
+
+	##eip
+	set_variable = { eipcfev = cof_econ_values }
+	multiply_variable = { eipcfev = 0.25 }
+	multiply_variable = { eipcfev = 0.6 }
+	round_variable = eipcfev
+	multiply_variable = { eipcfev = 0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfev }
+
+	#
+	set_variable = { eipcfel = econ_link }
+	add_to_variable = { eipcfel = -40 }
+	multiply_variable = { eipcfel = 0.25 }
+	multiply_variable = { eipcfel = 1.3 }
+	round_variable = eipcfel
+	multiply_variable = { eipcfel = 0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfel }
+
+	set_variable = { eipcfei = econ_innovate }
+	add_to_variable = { eipcfei = -40 }
+	multiply_variable = { eipcfei = 0.25 }
+	multiply_variable = { eipcfei = 0.8 }
+	round_variable = eipcfei
+	multiply_variable = { eipcfei = 0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfei }
+
+	#
+	set_variable = { eipcfpopw = pop_satisfaction_workers }
+	add_to_variable = { eipcfpopw = -50 }
+	multiply_variable = { eipcfpopw = pop_workers }
+	multiply_variable = { eipcfpopw = 0.01 }
+	multiply_variable = { eipcfpopw = 1.2 }
+	round_variable = eipcfpopw
+	multiply_variable = { eipcfpopw = 0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfpopw }
+
+	set_variable = { eipcfpopb = pop_satisfaction_bureaucrats }
+	add_to_variable = { eipcfpopb = -50 }
+	multiply_variable = { eipcfpopb = pop_bureaucrats }
+	multiply_variable = { eipcfpopb = 0.01 }
+	multiply_variable = { eipcfpopb = 1.2 }
+	round_variable = eipcfpopb
+	multiply_variable = { eipcfpopb = 0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfpopb }
+
+	#
+	set_variable = { eipcfsynd = economy_synd }
+	multiply_variable = { eipcfsynd = 0.4 }
+	multiply_variable = { eipcfsynd = 1 }
+	round_variable = eipcfsynd
+	multiply_variable = { eipcfsynd = 0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfsynd }
+
+	set_variable = { eipcfjaco = economy_jaco }
+	multiply_variable = { eipcfjaco = 0.4 }
+	multiply_variable = { eipcfjaco = 1.2 }
+	round_variable = eipcfjaco
+	multiply_variable = { eipcfjaco = 0.1 }
+	add_to_variable = { monthly_change_eipc = eipcfjaco }
+
+	
+
+	##eia
+	set_variable = { eiacfev = cof_econ_values }
+	multiply_variable = { eiacfev = 0.25 }
+	multiply_variable = { eiacfev = 0.8 }
+	round_variable = eiacfev
+	multiply_variable = { eiacfev = 0.1 }
+	add_to_variable = { monthly_change_eiac = eiacfev }
+
+	#
+	set_variable = { eiacfeib = econ_industry_basic }
+	add_to_variable = { eiacfeib = -40 }
+	multiply_variable = { eiacfeib = 0.25 }
+	multiply_variable = { eiacfeib = 1 }
+	round_variable = eiacfeib
+	multiply_variable = { eiacfeib = 0.1 }
+	add_to_variable = { monthly_change_eiac = eiacfeib }
+
+	set_variable = { eiacfeae = econ_agriculture_chemical }
+	add_to_variable = { eiacfeae = -40 }
+	multiply_variable = { eiacfeae = 0.25 }
+	multiply_variable = { eiacfeae = 0.9 }
+	round_variable = eiacfeae
+	multiply_variable = { eiacfeae = 0.1 }
+	add_to_variable = { monthly_change_eiac = eiacfeae }
+
+	set_variable = { eiacfei = econ_innovate }
+	add_to_variable = { eiacfei = -40 }
+	multiply_variable = { eiacfei = 0.25 }
+	multiply_variable = { eiacfei = 0.8 }
+	round_variable = eiacfei
+	multiply_variable = { eiacfei = 0.1 }
+	add_to_variable = { monthly_change_eiac = eiacfei }
+
+	#
+	set_variable = { eiacfpopa = pop_satisfaction_army }
+	add_to_variable = { eiacfpopa = -50 }
+	multiply_variable = { eiacfpopa = pop_army }
+	multiply_variable = { eiacfpopa = 0.01 }
+	multiply_variable = { eiacfpopa = 2 }
+	round_variable = eiacfpopa
+	multiply_variable = { eiacfpopa = 0.1 }
+	add_to_variable = { monthly_change_eiac = eiacfpopa }
+
+	#
+	set_variable = { eiacfsore = economy_sore }
+	multiply_variable = { eiacfsore = 0.4 }
+	multiply_variable = { eiacfsore = 1.5 }
+	round_variable = eiacfsore
+	multiply_variable = { eiacfsore = 0.1 }
+	add_to_variable = { monthly_change_eiac = eiacfsore }
+
+	
+
+	##eam
+	set_variable = { eamcfev = cof_econ_values }
+	multiply_variable = { eamcfev = 0.25 }
+	multiply_variable = { eamcfev = 1.2 }
+	round_variable = eamcfev
+	multiply_variable = { eamcfev = 0.1 }
+	add_to_variable = { monthly_change_eamc = eamcfev }
+
+	#
+	set_variable = { eamcfeaa = econ_agriculture_chain }
+	add_to_variable = { eamcfeaa = -40 }
+	multiply_variable = { eamcfeaa = 0.25 }
+	multiply_variable = { eamcfeaa = 0.7 }
+	round_variable = eamcfeaa
+	multiply_variable = { eamcfeaa = 0.1 }
+	add_to_variable = { monthly_change_eamc = eamcfeaa }
+
+	set_variable = { eamcfei = econ_innovate }
+	add_to_variable = { eamcfei = -40 }
+	multiply_variable = { eamcfei = 0.25 }
+	multiply_variable = { eamcfei = 0.8 }
+	round_variable = eamcfei
+	multiply_variable = { eamcfei = 0.1 }
+	add_to_variable = { monthly_change_eamc = eamcfei }
+
+	#
+	set_variable = { eamcfpopp = pop_satisfaction_peasants }
+	add_to_variable = { eamcfpopp = -50 }
+	multiply_variable = { eamcfpopp = pop_peasants }
+	multiply_variable = { eamcfpopp = 0.01 }
+	multiply_variable = { eamcfpopp = 1.2 }
+	round_variable = eamcfpopp
+	multiply_variable = { eamcfpopp = 0.1 }
+	add_to_variable = { monthly_change_eamc = eamcfpopp }
+
+	#
+	set_variable = { eamcfsynd = economy_synd }
+	multiply_variable = { eamcfsynd = 0.4 }
+	multiply_variable = { eamcfsynd = 0.6 }
+	round_variable = eamcfsynd
+	multiply_variable = { eamcfsynd = 0.1 }
+	add_to_variable = { monthly_change_eamc = eamcfsynd }
+
+	set_variable = { eamcfsore = economy_sore }
+	multiply_variable = { eamcfsore = 0.4 }
+	multiply_variable = { eamcfsynd = 1.1 }
+	round_variable = eamcfsore
+	multiply_variable = { eamcfsore = 0.1 }
+	add_to_variable = { monthly_change_eamc = eamcfsore }
+
+	
+	##eae
+	set_variable = { eaecfev = cof_econ_values }
+	multiply_variable = { eaecfev = 0.25 }
+	multiply_variable = { eaecfev = 1 }
+	round_variable = eaecfev
+	multiply_variable = { eaecfev = 0.1 }
+	add_to_variable = { monthly_change_eaec = eaecfev }
+
+	#
+	set_variable = { eaecfeib = econ_industry_basic }
+	add_to_variable = { eaecfeib = -40 }
+	multiply_variable = { eaecfeib = 0.25 }
+	multiply_variable = { eaecfeib = 0.8 }
+	round_variable = eaecfeib
+	multiply_variable = { eaecfeib = 0.1 }
+	add_to_variable = { monthly_change_eaec = eaecfeib }
+
+	set_variable = { eaecfei = econ_innovate }
+	add_to_variable = { eaecfei = -40 }
+	multiply_variable = { eaecfei = 0.25 }
+	multiply_variable = { eaecfei = 1 }
+	round_variable = eaecfei
+	multiply_variable = { eaecfei = 0.1 }
+	add_to_variable = { monthly_change_eaec = eaecfei }
+
+	#
+	set_variable = { eaecfsore = economy_sore }
+	multiply_variable = { eaecfsore = 0.4 }
+	multiply_variable = { eaecfsore = 1.2 }
+	round_variable = eaecfsore
+	multiply_variable = { eaecfsore = 0.1 }
+	add_to_variable = { monthly_change_eaec = eaecfsore }
+
+	##eaa
+	set_variable = { eaacfev = cof_econ_values }
+	multiply_variable = { eaacfev = 0.25 }
+	multiply_variable = { eaacfev = 1 }
+	round_variable = eaacfev
+	multiply_variable = { eaacfev = 0.1 }
+	add_to_variable = { monthly_change_eaac = eaacfev }
+
+	#
+	set_variable = { eaacfeam = econ_agriculture_mechanized }
+	add_to_variable = { eaacfeam = -40 }
+	multiply_variable = { eaacfeam = 0.25 }
+	multiply_variable = { eaacfeam = 1 }
+	round_variable = eaacfeam
+	multiply_variable = { eaacfeam = 0.1 }
+	add_to_variable = { monthly_change_eaac = eaacfeam }
+
+	set_variable = { eaacfeae = econ_agriculture_chemical }
+	add_to_variable = { eaacfeae = -40 }
+	multiply_variable = { eaacfeae = 0.25 }
+	multiply_variable = { eaacfeae = 1 }
+	round_variable = eaacfeae
+	multiply_variable = { eaacfeae = 0.1 }
+	add_to_variable = { monthly_change_eaac = eaacfeae }
+
+	#
+	set_variable = { eaacfpopp = pop_satisfaction_peasants }
+	add_to_variable = { eaacfpopp = -50 }
+	multiply_variable = { eaacfpopp = pop_peasants }
+	multiply_variable = { eaacfpopp = 0.01 }
+	multiply_variable = { eaacfpopp = 1.2 }
+	round_variable = eaacfpopp
+	multiply_variable = { eaacfpopp = 0.1 }
+	add_to_variable = { monthly_change_eaac = eaacfpopp }
+
+	set_variable = { eaacfpopm = pop_satisfaction_merchants }
+	add_to_variable = { eaacfpopm = -50 }
+	multiply_variable = { eaacfpopm = pop_merchants }
+	multiply_variable = { eaacfpopm = 0.01 }
+	multiply_variable = { eaacfpopm = 1.3 }
+	round_variable = eaacfpopm
+	multiply_variable = { eaacfpopm = 0.1 }
+	add_to_variable = { monthly_change_eaac = eaacfpopm }
+
+	#
+	set_variable = { eaacfoppo = economy_oppo }
+	multiply_variable = { eaacfoppo = 0.4 }
+	multiply_variable = { eaacfoppo = 0.9 }
+	round_variable = eaacfoppo
+	multiply_variable = { eaacfoppo = 0.1 }
+	add_to_variable = { monthly_change_eaac = eaacfoppo }
+
+	
+
+	##eq
+	set_variable = { eqcfev = cof_econ_values }
+	multiply_variable = { eqcfev = 0.25 }
+	multiply_variable = { eqcfev = 1.2 }
+	round_variable = eqcfev
+	multiply_variable = { eqcfev = 0.1 }
+	add_to_variable = { monthly_change_eqc = eqcfev }
+
+	#
+	set_variable = { eqcfeaa = econ_agriculture_chain }
+	add_to_variable = { eqcfeaa = -40 }
+	multiply_variable = { eqcfeaa = 0.25 }
+	multiply_variable = { eqcfeaa = 0.9 }
+	round_variable = eqcfeaa
+	multiply_variable = { eqcfeaa = 0.1 }
+	add_to_variable = { monthly_change_eqc = eqcfeaa }
+
+	set_variable = { eqcfei = econ_innovate }
+	add_to_variable = { eqcfei = -40 }
+	multiply_variable = { eqcfei = 0.25 }
+	multiply_variable = { eqcfei = 0.7 }
+	round_variable = eqcfei
+	multiply_variable = { eqcfei = 0.1 }
+	add_to_variable = { monthly_change_eqc = eqcfei }
+
+	#
+	set_variable = { eqcfpopb = pop_satisfaction_bureaucrats }
+	add_to_variable = { eqcfpopb = -50 }
+	multiply_variable = { eqcfpopb = pop_bureaucrats }
+	multiply_variable = { eqcfpopb = 0.01 }
+	multiply_variable = { eqcfpopb = 1.2 }
+	round_variable = eqcfpopb
+	multiply_variable = { eqcfpopb = 0.1 }
+	add_to_variable = { monthly_change_eqc = eqcfpopb }
+
+	#
+	set_variable = { eqcfoppo = economy_oppo }
+	multiply_variable = { eqcfoppo = 0.4 }
+	multiply_variable = { eqcfoppo = 1.2 }
+	round_variable = eqcfoppo
+	multiply_variable = { eqcfoppo = 0.1 }
+	add_to_variable = { monthly_change_eqc = eqcfoppo }
+
+	
+
+
+	##el
+	set_variable = { elcfev = cof_econ_values }
+	multiply_variable = { elcfev = 0.25 }
+	multiply_variable = { elcfev = 1.5 }
+	round_variable = elcfev
+	multiply_variable = { elcfev = 0.1 }
+	add_to_variable = { monthly_change_elc = elcfev }
+
+	#
+	set_variable = { elcfeib = econ_industry_basic }
+	add_to_variable = { elcfeib = -40 }
+	multiply_variable = { elcfeib = 0.25 }
+	multiply_variable = { elcfeib = 0.8 }
+	round_variable = elcfeib
+	multiply_variable = { elcfeib = 0.1 }
+	add_to_variable = { monthly_change_elc = elcfeib }
+
+	set_variable = { elcfeip = econ_industry_process }
+	add_to_variable = { elcfeip = -40 }
+	multiply_variable = { elcfeip = 0.25 }
+	multiply_variable = { elcfeip = 1.1 }
+	round_variable = elcfeip
+	multiply_variable = { elcfeip = 0.1 }
+	add_to_variable = { monthly_change_elc = elcfeip }
+
+	set_variable = { elcfei = econ_innovate }
+	add_to_variable = { elcfei = -40 }
+	multiply_variable = { elcfei = 0.25 }
+	multiply_variable = { elcfei = 1.3 }
+	round_variable = elcfei
+	multiply_variable = { elcfei = 0.1 }
+	add_to_variable = { monthly_change_elc = elcfei }
+
+	#
+	set_variable = { elcfpops = pop_satisfaction_scholars }
+	add_to_variable = { elcfpops = -50 }
+	multiply_variable = { elcfpops = pop_scholars }
+	multiply_variable = { elcfpops = 0.01 }
+	multiply_variable = { elcfpops = 0.9 }
+	round_variable = elcfpops
+	multiply_variable = { elcfpops = 0.1 }
+	add_to_variable = { monthly_change_elc = elcfpops }
+
+	#
+	set_variable = { elcfjaco = economy_jaco }
+	multiply_variable = { elcfjaco = 0.4 }
+	multiply_variable = { elcfjaco = 1 }
+	round_variable = elcfjaco
+	multiply_variable = { elcfjaco = 0.1 }
+	add_to_variable = { monthly_change_elc = elcfjaco }
+
+	
+
+	##ei
+	set_variable = { eicfev = cof_econ_values }
+	multiply_variable = { eicfev = 0.25 }
+	multiply_variable = { eicfev = 2 }
+	round_variable = eicfev
+	multiply_variable = { eicfev = 0.1 }
+	add_to_variable = { monthly_change_eic = eicfev }
+
+	#
+	set_variable = { eicfeia = econ_industry_arms }
+	add_to_variable = { eicfeia = -40 }
+	multiply_variable = { eicfeia = 0.25 }
+	multiply_variable = { eicfeia = 1.2 }
+	round_variable = eicfeia
+	multiply_variable = { eicfeia = 0.1 }
+	add_to_variable = { monthly_change_eic = eicfeia }
+
+	set_variable = { eicfeam = econ_agriculture_mechanized }
+	add_to_variable = { eicfeam = -40 }
+	multiply_variable = { eicfeam = 0.25 }
+	multiply_variable = { eicfeam = 1 }
+	round_variable = eicfeam
+	multiply_variable = { eicfeam = 0.1 }
+	add_to_variable = { monthly_change_eic = eicfeam }
+
+	#
+	set_variable = { eicfpopm = pop_satisfaction_merchants }
+	add_to_variable = { eicfpopm = -50 }
+	multiply_variable = { eicfpopm = pop_merchants }
+	multiply_variable = { eicfpopm = 0.01 }
+	multiply_variable = { eicfpopm = 1.2 }
+	round_variable = eicfpopm
+	multiply_variable = { eicfpopm = 0.1 }
+	add_to_variable = { monthly_change_eic = eicfpopm }
+
+	set_variable = { eicfpops = pop_satisfaction_scholars }
+	add_to_variable = { eicfpops = -50 }
+	multiply_variable = { eicfpops = pop_scholars }
+	multiply_variable = { eicfpops = 0.01 }
+	multiply_variable = { eicfpops = 2 }
+	round_variable = eicfpops
+	multiply_variable = { eicfpops = 0.1 }
+	add_to_variable = { monthly_change_eic = eicfpops }
+
+	#
+	set_variable = { eicfoppo = economy_oppo }
+	multiply_variable = { eicfoppo = 0.4 }
+	multiply_variable = { eicfoppo = 0.6 }
+	round_variable = eicfoppo
+	multiply_variable = { eicfoppo = 0.1 }
+	add_to_variable = { monthly_change_eic = eicfoppo }
+
+	set_variable = { eicfjaco = economy_jaco }
+	multiply_variable = { eicfjaco = 0.4 }
+	multiply_variable = { eicfjaco = 0.6 }
+	round_variable = eicfjaco
+	multiply_variable = { eicfjaco = 0.1 }
+	add_to_variable = { monthly_change_eic = eicfjaco }
+
+	#
+
+	#fromstate
+	add_to_variable = { monthly_change_evc = evcost }
+
+	add_to_variable = { monthly_change_eibc = eibcost }
+	add_to_variable = { monthly_change_eipc = eipcost }
+	add_to_variable = { monthly_change_eiac = eiacost }
+
+	add_to_variable = { monthly_change_eamc = eamcost }
+	add_to_variable = { monthly_change_eaec = eaecost }
+	add_to_variable = { monthly_change_eaac = eaacost }
+
+	add_to_variable = { monthly_change_eqc = eqcost }
+	add_to_variable = { monthly_change_elc = elcost }
+	add_to_variable = { monthly_change_eic = eicost }
+
+	##经济探讨委员会
+	if = {
+		limit = { has_completed_focus = FRA_economic_seminar_committee }
+		set_variable = { ecfesc = 0.3 }
+		if = {
+			limit = {
+				set_temp_variable = { target_pop = 1 }
+				class_pop_the_most = yes
+			}
+			add_to_variable = { monthly_change_eibc = ecfesc }
+			add_to_variable = { monthly_change_eipc = ecfesc }
+		}
+		else_if = {
+			limit = {
+				set_temp_variable = { target_pop = 2 }
+				class_pop_the_most = yes
+			}
+			add_to_variable = { monthly_change_eamc = ecfesc }
+			add_to_variable = { monthly_change_eaec = ecfesc }
+		}
+		else_if = {
+			limit = {
+				set_temp_variable = { target_pop = 3 }
+				class_pop_the_most = yes
+			}
+			add_to_variable = { monthly_change_evc = ecfesc }
+			add_to_variable = { monthly_change_eaac = ecfesc }
+		}
+		else_if = {
+			limit = {
+				set_temp_variable = { target_pop = ecfesc }
+				class_pop_the_most = yes
+			}
+			add_to_variable = { monthly_change_elc = ecfesc }
+			add_to_variable = { monthly_change_eic = ecfesc }
+		}
+		else_if = {
+			limit = {
+				set_temp_variable = { target_pop = 5 }
+				class_pop_the_most = yes
+			}
+			add_to_variable = { monthly_change_evc = ecfesc }
+			add_to_variable = { monthly_change_eqc = ecfesc }
+		}
+		else_if = {
+			limit = {
+				set_temp_variable = { target_pop = 6 }
+				class_pop_the_most = yes
+			}
+			add_to_variable = { monthly_change_evc = ecfesc }
+			add_to_variable = { monthly_change_eiac = ecfesc }
+		}
+	}
+
+	##满溢效应
+	if = {
+		limit = { has_completed_focus = FRA_spillover_effect }
+		if = {
+			limit = { check_variable = { econ_industry_basic > 70 } }
+			set_variable = { ecfse = econ_industry_basic }
+			add_to_variable = { ecfse = 70 }
+			multiply_variable = { ecfse = 0.1 }
+
+			add_to_variable = { monthly_change_eipc = ecfse }
+			add_to_variable = { monthly_change_eiac = ecfse }
+
+			add_to_variable = { monthly_change_eamc = ecfse }
+			add_to_variable = { monthly_change_eaec = ecfse }
+			add_to_variable = { monthly_change_eamc = ecfse }
+
+			add_to_variable = { monthly_change_eqc = ecfse }
+			add_to_variable = { monthly_change_elc = ecfse }
+			add_to_variable = { monthly_change_eic = ecfse }
+		}
+		else = {
+			set_variable = { ecfse = 0 }
+		}
+	}
+
+	set_variable = { billevc = modifier@monthly_change_ev }
+	subtract_from_variable = { billevc = ebcfdea }
+	subtract_from_variable = { billevc = monthly_change_evc }
+
+	set_variable = { billeibc = modifier@monthly_change_eib }
+	subtract_from_variable = { billeibc = monthly_change_eibc }
+	set_variable = { billeipc = modifier@monthly_change_eip }
+	subtract_from_variable = { billeipc = monthly_change_eipc }
+	set_variable = { billeiac = modifier@monthly_change_eia }
+	subtract_from_variable = { billeiac = monthly_change_eiac }
+
+	set_variable = { billeamc = modifier@monthly_change_eam }
+	subtract_from_variable = { billeamc = monthly_change_eamc }
+	set_variable = { billeaec = modifier@monthly_change_eae }
+	subtract_from_variable = { billeaec = monthly_change_eaec }
+	set_variable = { billeaac = modifier@monthly_change_eaa }
+	subtract_from_variable = { billeaac = monthly_change_eaac }
+
+	set_variable = { billeqc = modifier@monthly_change_eq }
+	subtract_from_variable = { billeqc = monthly_change_eqc }
+	set_variable = { billelc = modifier@monthly_change_el }
+	subtract_from_variable = { billelc = monthly_change_elc }
+	set_variable = { billeic = modifier@monthly_change_ei }
+	subtract_from_variable = { billeic = monthly_change_eic }
+}
+
+###		地方经济发展
+#		set_temp_variable = { sesic = 0 }
+#		set_temp_variable = { sesac = 0 }
+#		set_temp_variable = { sesdc = 0 }
+#		Cof_state_economy_situation_change = yes
+Cof_state_economy_situation_change = {
+	if = { limit = { check_variable = { sesic = 0 } } }
+	else = {
+		add_to_variable = { state_economy_industry = sesic }
+		custom_effect_tooltip = Cof_state_economy_situation_change_industry
+		FRA = { 
+			hidden_effect = { 
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 0.5 }
+				set_temp_variable = { eipc = 0 }
+				set_temp_variable = { eiac = 0 }
+				if = { 
+					limit = { FRA = { has_completed_focus = FRA_mixed_agriculture } } 
+					set_temp_variable = { eamc = 0.5 }
+				}
+				else = { set_temp_variable = { eamc = 0 } }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = 0 }
+				cof_econ_target_change = yes
+			} 
+		}	
+	}
+
+	if = { limit = { check_variable = { sesac = 0 } } }
+	else = {
+		add_to_variable = { state_economy_arms = sesac }
+		custom_effect_tooltip = Cof_state_economy_situation_change_arms
+		FRA = { 
+			hidden_effect = { 
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 0 }
+				set_temp_variable = { eipc = 0 }
+				set_temp_variable = { eiac = 1 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = 0 }
+				cof_econ_target_change = yes
+			} 
+		}
+	}
+
+	if = { limit = { check_variable = { sesdc = 0 } } }
+	else = {
+		add_to_variable = { state_economy_dockyard = sesdc }
+		custom_effect_tooltip = Cof_state_economy_situation_change_dockyard
+		FRA = { 
+			hidden_effect = { 
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 0.5 }
+				set_temp_variable = { eipc = 0 }
+				set_temp_variable = { eiac = 0 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = 0 }
+				cof_econ_target_change = yes
+			} 
+		}
+	}
+
+	set_variable = { state_factory = state_economy_industry }
+	add_to_variable = { state_factory = state_economy_arms }
+	add_to_variable = { state_factory = state_economy_dockyard }
+
+	force_update_dynamic_modifier = yes
+}
+
+###		自动转化
+Cof_state_economy_situation_max_switch = {
+	if = {
+		limit = { 
+			NOT = { can_construct_building = industrial_complex } 
+			industrial_complex > 1
+		}
+		remove_building = { type = industrial_complex level = 1 }
+		set_temp_variable = { sesic = 1 }
+		set_temp_variable = { sesac = 0 }
+		set_temp_variable = { sesdc = 0 }
+		Cof_state_economy_situation_change = yes
+		
+		if = {
+			limit = { has_completed_focus = FRA_street_economy }
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+	}
+
+	if = {
+		limit = { 
+			NOT = { can_construct_building = arms_factory } 
+			arms_factory > 1
+		}
+		remove_building = { type = arms_factory level = 1 }
+		set_temp_variable = { sesic = 0 }
+		set_temp_variable = { sesac = 1 }
+
+		if = {
+			limit = { has_dynamic_modifier = { modifier = Cof_state_lyon } }
+			add_to_temp_variable = { sesac = 1 }
+		}
+		set_temp_variable = { sesdc = 0 }
+		Cof_state_economy_situation_change = yes
+	}
+
+	if = {
+		limit = { 
+			NOT = { can_construct_building = dockyard } 
+			dockyard > 1
+		}
+		remove_building = { type = dockyard level = 1 }
+		set_temp_variable = { sesic = 0 }
+		set_temp_variable = { sesac = 0 }
+		set_temp_variable = { sesdc = 1 }
+		Cof_state_economy_situation_change = yes
+		
+
+	}
+}
+
+###		随机x个地方 获得1个地方工厂
+#		set_temp_variable = { target_num = 0 }
+#		set_temp_variable = { target_type = 0 } #1民 2军 3船
+#		Cof_state_economy_random_get_state_factory = yes
+Cof_state_economy_random_get_state_factory = {
+	if = {
+		limit = { check_variable = { target_type = 0 } }
+		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_tt
+	}
+	else_if = {
+		limit = { check_variable = { target_type = 1 } }
+		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_industry_tt
+	}
+	else_if = {
+		limit = { check_variable = { target_type = 2 } }
+		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_arms_tt
+	}
+	else_if = {
+		limit = { check_variable = { target_type = 3 } }
+		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_dockyard_tt
+	}
+	
+	for_loop_effect = {
+		end = target_num
+		every_core_state = {
+			limit = { has_dynamic_modifier = { modifier = Cof_state_economy_situation scope = THIS.id } }
+			hidden_effect = {
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							check_variable = { target_type = 1 } 
+						}
+						set_temp_variable = { sesic = 1 }
+						set_temp_variable = { sesac = 0 }
+						set_temp_variable = { sesdc = 0 }
+						Cof_state_economy_situation_change = yes
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							check_variable = { target_type = 2 } 
+						}
+						set_temp_variable = { sesic = 0 }
+						set_temp_variable = { sesac = 1 }
+						set_temp_variable = { sesdc = 0 }
+						Cof_state_economy_situation_change = yes
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							is_coastal = no
+						}
+						modifier = {
+							factor = 0
+							check_variable = { target_type = 3 } 
+						}
+						set_temp_variable = { sesic = 0 }
+						set_temp_variable = { sesac = 0 }
+						set_temp_variable = { sesdc = 1 }
+						Cof_state_economy_situation_change = yes
+					}
+				}
+			}
+		}		
+	}
+}
+
+### 	布列塔尼文艺复兴运动
+Cof_brittcul_buff_count = {
+	set_temp_variable = { btct1 = brittcul }
+	multiply_temp_variable = { btct1 = 0.01 }
+	multiply_temp_variable = { btct1 = -0.25 }
+	set_variable = { core_state_resources_factor = btct1 }
+	
+	set_temp_variable = { btct2 = brittcul }
+	multiply_temp_variable = { btct2 = 0.01 }
+	multiply_temp_variable = { btct2 = -0.25 }
+	set_variable = { core_recruitable_population_factor = btct2 }
+
+	force_update_dynamic_modifier = yes
+}
+
+###		布列塔尼文艺复兴改变
+#		set_temp_variable = { brittculc = 0 }
+#		Cof_brittcul_change = yes
+Cof_brittcul_change = {
+	if = {
+		limit = { check_variable = { brittculc < -9.9 } }
+		custom_effect_tooltip = Cof_brittcul_change1_tt
+	}
+	else_if = {
+		limit = { check_variable = { brittculc < -4.9 } }
+		custom_effect_tooltip = Cof_brittcul_change2_tt
+	}
+	else_if = {
+		limit = { check_variable = { brittculc < 0.1 } }
+		custom_effect_tooltip = Cof_brittcul_change3_tt
+	}
+	else_if = {
+		limit = { check_variable = { brittculc < 5.1 } }
+		custom_effect_tooltip = Cof_brittcul_change4_tt
+	}
+	else_if = {
+		limit = { check_variable = { brittculc < 10.1 } }
+		custom_effect_tooltip = Cof_brittcul_change5_tt
+	}
+	else = { custom_effect_tooltip = Cof_brittcul_change6_tt }
+
+	hidden_effect = {
+		14 = { add_to_variable = { brittcul = brittculc } }
+		983 = { add_to_variable = { brittcul = brittculc } }
+	}
+	
+	Cof_brittcul_buff_count = yes
+}
+
+###		地区政策效果
+Cof_state_general_buff_get = {
+	set_variable = { all_state_economy_industry = 0 }
+    set_variable = { all_state_economy_arms = 0 }
+    set_variable = { all_state_economy_dockyard = 0 }
+
+	set_variable = { all_state_stability_factor = 0 }
+	set_variable = { all_state_war_support_factor = 0 }
+
+	set_variable = { all_state_political_power_factor = 0 }
+	set_variable = { all_state_research_speed_factor = 0 }
+
+	set_variable = { all_state_industrial_capacity_factory = 0 }
+	set_variable = { all_state_industrial_capacity_dockyard = 0 }
+
+	set_variable = { all_state_consumer_goods_factor = 0 }
+
+	set_variable = { all_state_supply_consumption_factor = 0 }
+	set_variable = { all_state_monthly_population = 0 }
+
+	set_variable = { all_state_weekly_manpower = 0 }
+	set_variable = { all_state_army_org_factor = 0 }
+
+	set_variable = { all_state_production_factory_max_efficiency_factor = 0 }
+	set_variable = { all_state_production_factory_efficiency_gain_factor = 0 }
+
+	set_variable = { all_state_local_resources_factor = 0 }
+	
+	every_core_state = {
+		add_to_variable = { FRA.all_state_economy_industry = state_economy_industry }
+		add_to_variable = { FRA.all_state_economy_arms = state_economy_arms }
+		add_to_variable = { FRA.all_state_economy_dockyard = state_economy_dockyard }
+
+		if = {
+			limit = { FRA = { has_completed_focus = FRA_one_plus_one_equals_three } }
+			add_to_variable = { FRA.all_state_economy_arms = state_economy_industry }
+			add_to_variable = { FRA.all_state_economy_industry = state_economy_arms }
+		}
+
+		add_to_variable = { FRA.all_state_consumer_goods_factor = state_economy_consumer_goods_factor }
+		add_to_variable = { FRA.all_state_industrial_capacity_factory = state_economy_industrial_capacity_factory }
+		add_to_variable = { FRA.all_state_industrial_capacity_dockyard = state_economy_industrial_capacity_dockyard }
+
+		if = {
+			limit = {
+				OR = {
+					has_dynamic_modifier = { modifier = Cof_state_Paris }
+					has_dynamic_modifier = { modifier = Cof_state_Calais }
+					has_dynamic_modifier = { modifier = Cof_state_Bordeaux }
+					has_dynamic_modifier = { modifier = Cof_state_Massay }
+					has_dynamic_modifier = { modifier = Cof_state_lyon }
+					has_dynamic_modifier = { modifier = Cof_state_Brittany scope = THIS.id }
+				}
+			}
+				
+			add_to_variable = { FRA.all_state_stability_factor = core_stability_factor }
+			add_to_variable = { FRA.all_state_war_support_factor = core_war_support_factor }
+			add_to_variable = { FRA.all_state_political_power_factor = core_political_power_factor }
+			add_to_variable = { FRA.all_state_research_speed_factor = core_research_speed_factor }
+			add_to_variable = { FRA.all_state_industrial_capacity_factory = core_industrial_capacity_factory }
+			add_to_variable = { FRA.all_state_consumer_goods_factor = core_consumer_goods_factor }
+			add_to_variable = { FRA.all_state_supply_consumption_factor = core_supply_consumption_factor }
+			add_to_variable = { FRA.all_state_monthly_population = core_monthly_population }
+			add_to_variable = { FRA.all_state_weekly_manpower = core_weekly_manpower }
+			add_to_variable = { FRA.all_state_army_org_factor = core_army_org_factor }
+			add_to_variable = { FRA.all_state_production_factory_max_efficiency_factor = core_production_factory_max_efficiency_factor }
+			add_to_variable = { FRA.all_state_production_factory_efficiency_gain_factor = core_production_factory_efficiency_gain_factor }
+			add_to_variable = { FRA.all_state_local_resources_factor = core_local_resources_factor }
+		}
+
+		if = {
+			limit = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+			add_to_variable = { FRA.all_state_stability_factor = city_stability_factor }
+			add_to_variable = { FRA.all_state_war_support_factor = city_war_support_factor }
+			add_to_variable = { FRA.all_state_political_power_factor = city_political_power_factor }
+			add_to_variable = { FRA.all_state_research_speed_factor = city_research_speed_factor }
+			add_to_variable = { FRA.all_state_industrial_capacity_factory = city_industrial_capacity_factory }
+			add_to_variable = { FRA.all_state_consumer_goods_factor = city_consumer_goods_factor }
+			add_to_variable = { FRA.all_state_supply_consumption_factor = city_supply_consumption_factor }
+			add_to_variable = { FRA.all_state_monthly_population = city_monthly_population }
+			add_to_variable = { FRA.all_state_weekly_manpower = city_weekly_manpower }
+			add_to_variable = { FRA.all_state_army_org_factor = city_army_org_factor }
+			add_to_variable = { FRA.all_state_production_factory_max_efficiency_factor = city_production_factory_max_efficiency_factor }
+			add_to_variable = { FRA.all_state_production_factory_efficiency_gain_factor = city_production_factory_efficiency_gain_factor }
+			add_to_variable = { FRA.all_state_local_resources_factor = city_local_resources_factor }
+		}
+				
+		if = {
+			limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+			add_to_variable = { FRA.all_state_stability_factor = rural_stability_factor }
+			add_to_variable = { FRA.all_state_war_support_factor = rural_war_support_factor }
+			add_to_variable = { FRA.all_state_political_power_factor = rural_political_power_factor }
+			add_to_variable = { FRA.all_state_research_speed_factor = rural_research_speed_factor }
+			add_to_variable = { FRA.all_state_industrial_capacity_factory = rural_industrial_capacity_factory }
+			add_to_variable = { FRA.all_state_consumer_goods_factor = rural_consumer_goods_factor }
+			add_to_variable = { FRA.all_state_supply_consumption_factor = rural_supply_consumption_factor }
+			add_to_variable = { FRA.all_state_monthly_population = rural_monthly_population }
+			add_to_variable = { FRA.all_state_weekly_manpower = rural_weekly_manpower }
+			add_to_variable = { FRA.all_state_army_org_factor = rural_army_org_factor }
+			add_to_variable = { FRA.all_state_production_factory_max_efficiency_factor = rural_production_factory_max_efficiency_factor }
+			add_to_variable = { FRA.all_state_production_factory_efficiency_gain_factor = rural_production_factory_efficiency_gain_factor }
+			add_to_variable = { FRA.all_state_local_resources_factor = rural_local_resources_factor }
+		}
+	}
+
+
+	force_update_dynamic_modifier = yes
+}
+
+### 	地区政策
+state_city_buff_count = {
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_urban_renovation } }
+		set_variable = { city_state_production_speed_infrastructure_factor = 0.1 }
+		set_variable = { city_state_production_speed_industrial_complex_factor = 0.05 }
+	}
+	else = {
+		set_variable = { city_state_production_speed_infrastructure_factor = 0 }
+		set_variable = { city_state_production_speed_industrial_complex_factor = 0 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_french_national_railway } }
+		set_variable = { city_state_production_speed_rail_way_factor = 0.25 }
+	}
+	else = { set_variable = { city_state_production_speed_rail_way_factor = 0 } }
+
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_block_development_model } 
+			is_paris_calais_model_zone = yes
+		}
+		set_variable = { city_state_production_speed_buildings_factor = 0.025 }
+		set_variable = { city_local_building_slots_factor = 0.05 }
+	}
+	else = { 
+		set_variable = { city_local_building_slots_factor = 0 } 
+		set_variable = { city_state_production_speed_buildings_factor = 0 } 
+	}
+
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_block_development_model }
+			is_bordaux_nantes_model_zone = yes 
+		}
+		add_to_variable = { city_state_production_speed_buildings_factor = 0.025 }
+		set_variable = { city_consumer_goods_factor = -0.01 }
+	}
+	else = { set_variable = { city_consumer_goods_factor = 0 } }
+
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_block_development_model }
+			is_marse_lyon_model_zone = yes 
+		}
+		add_to_variable = { city_state_production_speed_buildings_factor = 0.025 }
+		set_variable = { city_state_production_speed_arms_factory_factor = 0.05 }
+	}
+	else = { set_variable = { city_state_production_speed_arms_factory_factor = 0 } }
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_power_supply_for_priority_industries
+				check_variable = { econ_industry_basic > 60 }
+			}
+		}
+		add_to_variable = { city_state_production_speed_buildings_factor = 0.1 }
+	}
+	
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_semi_armed_factories
+				check_variable = { econ_industry_arms > 50 }
+				has_war_support > 0.4
+			}
+		}
+		set_variable = { city_war_support_factor = 0.005 }
+		add_to_variable = { city_state_production_speed_arms_factory_factor = 0.15 }
+		set_variable = { city_recruitable_population_factor = -0.1 }
+
+		set_variable = { city_army_org_factor = arms_factory_level }
+		add_to_variable = { city_army_org_factor = state_economy_arms }
+		multiply_variable = { city_army_org_factor = 0.001 }
+	}
+	else = { 
+		set_variable = { city_war_support_factor = 0 }
+		set_variable = { city_recruitable_population_factor = 0 }
+		set_variable = { city_army_org_factor = 0 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_night_school_for_skills } }
+		set_variable = { city_research_speed_factor = 0.005 }
+		set_variable = { city_production_factory_max_efficiency_factor = 0.005 }
+		add_to_variable = { city_consumer_goods_factor = 0.01 }
+	}
+	else = {
+		set_variable = { city_research_speed_factor = 0 }
+		set_variable = { city_production_factory_max_efficiency_factor = 0 }
+	}
+
+	if = {
+		limit = { 
+			FRA = { 
+				has_completed_focus = FRA_industrial_to_consumer_goods 
+				check_variable = { econ_industry_basic > 60 }
+			} 
+		}
+		set_temp_variable = { tt = state_economy_industry }
+		multiply_temp_variable = { tt = 0.01 }
+		multiply_temp_variable = { tt = -0.5 }
+		add_to_variable = { city_consumer_goods_factor = tt }
+	}
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_expansion_domestic_electricity_consumption
+				check_variable = { econ_industry_basic > 60 }
+			}
+		}
+		add_to_variable = { city_consumer_goods_factor = -0.015 }
+	}
+
+	if = {
+		limit = { has_state_flag = state_economy_hydropower }
+		add_to_variable = { city_state_production_speed_buildings_factor = 0.1 }
+		add_to_variable = { city_local_building_slots_factor = 0.05 }
+		set_variable = { city_state_resources_factor = 0.1 }
+	}
+	else = { set_variable = { city_state_resources_factor = 0 } }
+
+	if = {
+		limit = {
+			FRA = { has_completed_focus = FRA_from_survival_to_living }
+			check_variable = { state_factory > 3 }
+		}
+		set_variable = { city_industrial_capacity_factory = 0.01 }
+		add_to_variable = { city_consumer_goods_factor = -0.01 }
+	}
+	else = { set_variable = { city_industrial_capacity_factory = 0 } }
+
+	force_update_dynamic_modifier = yes
+}
+
+state_rural_buff_count = {
+	if = {
+		limit = { FRA = { has_country_flag = rural_ignore_the_country } }
+		set_variable = { rural_state_resources_factor = -0.5 }
+		set_variable = { rural_state_production_speed_buildings_factor = -0.15 }
+		set_variable = { rural_recruitable_population_factor = -0.3 }
+	}
+	else = {
+		set_variable = { rural_state_resources_factor = 0 }
+		set_variable = { rural_state_production_speed_buildings_factor = 0 }
+		set_variable = { rural_recruitable_population_factor = 0 }		
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_robust_urbanization } }
+		add_to_variable = { rural_state_resources_factor = -0.35 }
+		add_to_variable = { rural_recruitable_population_factor = -0.2 }
+		set_variable = { rural_state_production_speed_infrastructure_factor = 0.25 }
+	}
+	else = {
+		set_variable = { rural_state_production_speed_infrastructure_factor = 0 }
+	}
+
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_expand_urban_rural_continuum } 
+			has_state_category = five
+		}
+		add_to_variable = { rural_state_resources_factor = 0.05 }
+		add_to_variable = { rural_recruitable_population_factor = 0.05 }
+		set_variable = { rural_local_supplies = 0.1 }
+	}
+	else = { set_variable = { rural_local_supplies = 0 } }
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_back_to_the_country } }
+		add_to_variable = { rural_state_resources_factor = -0.25 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = -0.1 }
+		add_to_variable = { rural_recruitable_population_factor = -0.15 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_focus_on_agricultural_functions } }
+		add_to_variable = { rural_state_resources_factor = 0.05 }
+		add_to_variable = { rural_local_supplies = 0.1 }
+		set_variable = { rural_supply_consumption_factor = -0.005 }
+	}
+	else = { set_variable = { rural_supply_consumption_factor = 0 } }
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_rural_infrastructure_development } }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_subsidizing_subsistence_farmers } }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+		set_variable = { rural_consumer_goods_factor = -0.01 }
+	}
+	else = { set_variable = { rural_consumer_goods_factor = 0 } }
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_new_frontier_program } }
+		add_to_variable = { rural_political_power_factor = -0.02 }
+	}
+	else = { set_variable = { rural_political_power_factor = 0 } }
+
+	if = {
+		limit = { FRA = { has_country_flag = rural_new_frontier_rank_one } }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
+		set_variable = { rural_state_production_speed_industrial_complex_factor = 0.2 }
+	}
+	else = { set_variable = { rural_state_production_speed_industrial_complex_factor = 0 } }
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_subsidizing_subsistence_farmers
+				has_completed_focus = FRA_encouraging_commodity_agriculture
+			}
+		}
+		add_to_variable = { rural_consumer_goods_factor = -0.005 }
+	}
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_subsidizing_subsistence_farmers
+				has_completed_focus = FRA_get_out_of_the_field
+			}
+		}
+		add_to_variable = { rural_recruitable_population_factor = 0.15 }
+		add_to_variable = { rural_state_production_speed_industrial_complex_factor = 0.1 }
+	}
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_new_frontier_program
+				has_completed_focus = FRA_encouraging_commodity_agriculture
+			}
+		}
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.025 }
+		add_to_variable = { rural_state_production_speed_industrial_complex_factor = 0.05 }
+	}
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_new_frontier_program
+				has_completed_focus = FRA_get_out_of_the_field
+			}
+		}
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+		set_variable = { rural_local_building_slots_factor = 0.1 }
+	}
+	else = { set_variable = { rural_local_building_slots_factor = 0 } }
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_fresh_supply_in_all_seasons } }
+		set_variable = { rural_monthly_population = 0.02 }
+		add_to_variable = { rural_consumer_goods_factor = -0.01 }
+		set_variable = { rural_weekly_manpower = 10 }
+	}
+	else = { 
+		set_variable = { rural_weekly_manpower = 0 }
+		set_variable = { rural_monthly_population = 0 } 
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_large_scale_mechanized_agriculture } }
+		add_to_variable = { rural_recruitable_population_factor = 0.15 }
+		add_to_variable = { rural_monthly_population = 0.01 }
+		add_to_variable = { rural_local_building_slots_factor = 0.15 }
+	}
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_intensive_agriculture } }
+		add_to_variable = { rural_local_supplies = 0.15 }
+		add_to_variable = { rural_supply_consumption_factor = -0.005 }
+		set_variable = { rural_state_production_speed_arms_factory_factor = 0.15 }
+	}
+	else = { set_variable = { rural_state_production_speed_arms_factory_factor = 0 } }
+
+    if = {
+		limit = { FRA = { has_completed_focus = FRA_decentralized_rural_military_industries } }
+		set_variable = { rural_war_support_factor = 0.005 }
+		add_to_variable = { rural_state_production_speed_arms_factory_factor = 0.3 }
+		add_to_variable = { rural_recruitable_population_factor = 0.05 }
+	}
+	else = { set_variable = { rural_war_support_factor = 0 } }
+
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_french_national_railway } }
+		set_variable = { rural_state_production_speed_rail_way_factor = 0.15 }
+	}
+	else = { set_variable = { rural_state_production_speed_rail_way_factor = 0 } }
+
+	if = {
+		limit = {
+			FRA = { has_completed_focus = FRA_block_development_model }
+			is_paris_calais_model_zone = yes 
+		}
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.025 }
+		add_to_variable = { rural_local_building_slots_factor = 0.05 }
+	}
+
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_block_development_model }
+			is_bordaux_nantes_model_zone = yes 
+		}
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.025 }
+		add_to_variable = { rural_consumer_goods_factor = -0.01 }
+	}
+	
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_block_development_model }
+			is_marse_lyon_model_zone = yes 
+		}
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.025 }
+		add_to_variable = { rural_state_production_speed_arms_factory_factor = 0.05 }
+	}
+	
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_power_supply_for_priority_industries
+				check_variable = { econ_industry_basic > 60 }
+			}
+		}
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+	}
+
+	if = {
+		limit = { 
+			FRA = { 
+				has_completed_focus = FRA_industrial_to_consumer_goods 
+				check_variable = { econ_industry_basic > 60 }
+			} 
+		}
+		set_temp_variable = { tt = state_economy_industry }
+		multiply_temp_variable = { tt = 0.01 }
+		multiply_temp_variable = { tt = -0.5 }
+		add_to_variable = { rural_consumer_goods_factor = tt }
+	}
+
+	if = {
+		limit = {
+			FRA = {
+				has_completed_focus = FRA_expansion_domestic_electricity_consumption
+				check_variable = { econ_industry_basic > 60 }
+			}
+		}
+		add_to_variable = { rural_consumer_goods_factor = -0.01 }
+	}
+	
+	if = {
+		limit = {
+			FRA = { has_completed_focus = FRA_transportation_hub_new_city }
+			state = 33
+		}
+		add_to_variable = { rural_political_power_factor = 0.05 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.15 }
+		add_to_variable = { rural_local_building_slots_factor = 0.1 }
+	}
+
+	if = {
+		limit = {
+			FRA = { has_completed_focus = FRA_central_city }
+			state = 33
+		}
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
+		add_to_variable = { rural_local_building_slots_factor = 0.05 }
+	}
+
+	if = {
+		limit = { has_state_flag = state_economy_hydropower }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
+		add_to_variable = { rural_local_building_slots_factor = 0.05 }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+	}
+
+	if = {
+		limit = {
+			FRA = { has_completed_focus = FRA_from_survival_to_living }
+			check_variable = { state_factory > 3 }
+		}
+		set_variable = { rural_industrial_capacity_factory = 0.01 }
+		add_to_variable = { rural_consumer_goods_factor = -0.01 }
+	}
+	else = { set_variable = { rural_industrial_capacity_factory = 0 } }
+
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_border_area_economic_reconstruction } 
+			OR = {
+				state = 779
+				state = 984
+				state = 817
+				state = 763
+				state = 736
+				state = 943
+			}
+		}
+		add_to_variable = { rural_state_production_speed_infrastructure_factor = 0.25 }
+		add_to_variable = { rural_state_production_speed_rail_way_factor = 0.25 }
+		add_to_variable = {	rural_state_production_speed_industrial_complex_factor = 0.15 }
+	}
+
+	force_update_dynamic_modifier = yes
+}
+
+state_strategy_judge = {
+	if = { limit = { has_state_flag = economy_strategy_yes } }
+	else = { set_state_flag = economy_strategy_yes }
+}
+
+state_core_buff_count = {
+	16 = {
+		if = {
+			limit = { FRA = { has_completed_focus = FRA_rearmament_of_the_capital } }
+			set_variable = { core_state_resource_steel = arms_factory_level }
+			add_to_variable = { core_state_resource_steel = state_economy_arms }
+			multiply_variable = { core_state_resource_steel = 5 }
+
+			set_variable = { core_state_resource_chromium = arms_factory_level }
+			add_to_variable = { core_state_resource_chromium = state_economy_arms }
+			multiply_variable = { core_state_resource_chromium = 3 }
+		}
+		else = {
+			set_variable = { core_state_resource_steel = 0 }
+			set_variable = { core_state_resource_chromium = 0 }
+		}
+	}
+
+	20 = {
+		if = {
+			limit = { FRA = { has_completed_focus = FRA_lyon_arsenal } }
+			set_variable = { core_war_support_factor = 0.025 }
+			set_variable = { core_state_production_speed_arms_factory_factor = 0.25 }
+		}
+		else = {
+			set_variable = { core_war_support_factor = 0 }
+			set_variable = { core_state_production_speed_arms_factory_factor = 0 }
+		}
+	}
+
+	19 = {
+		if = {
+			limit = { FRA = { has_completed_focus = FRA_bordeaux_model } }
+			set_variable = { core_production_factory_max_efficiency_factor = state_factory }
+			multiply_variable = { core_production_factory_max_efficiency_factor = 0.01 }
+			multiply_variable = { core_production_factory_max_efficiency_factor = 0.5 }
+		}
+		else = { set_variable = { core_production_factory_max_efficiency_factor = 0 } }
+	}
+}
+
+idea_call_for_economic_reform_change = {
+	if = {
+		limit = { has_idea = Cof_call_for_economic_reform0 }
+		swap_ideas = {
+			remove_idea = Cof_call_for_economic_reform0
+			add_idea = Cof_call_for_economic_reform1
+		}
+	}
+	else_if = {
+		limit = { has_idea = Cof_call_for_economic_reform1 } 
+		swap_ideas = {
+			remove_idea = Cof_call_for_economic_reform1
+			add_idea = Cof_call_for_economic_reform2
+		}
+	}
+	else_if = {
+		limit = { has_idea = Cof_call_for_economic_reform2 } 
+		swap_ideas = {
+			remove_idea = Cof_call_for_economic_reform2
+			add_idea = Cof_call_for_economic_reform3
+		}
+	}
+	else_if = {
+		limit = { has_idea = Cof_call_for_economic_reform3 } 
+		swap_ideas = {
+			remove_idea = Cof_call_for_economic_reform3
+			add_idea = Cof_call_for_economic_reform4
+		}
+	}
+	else_if = {  
+		limit = { has_idea = Cof_call_for_economic_reform4 }
+		remove_ideas = Cof_call_for_economic_reform4
+	}
+	else = {
+		add_political_power = 50
+		add_stability = 0.01
+	}
+}
+
+idea_supply_chain_crisis_change = {
+	if = {
+		limit = { has_idea = Cof_supply_chain_crisis1 } 
+		swap_ideas = {
+			remove_idea = Cof_supply_chain_crisis1
+			add_idea = Cof_supply_chain_crisis2
+		}
+	}
+	else_if = {
+		limit = { has_idea = Cof_supply_chain_crisis2 } 
+		swap_ideas = {
+			remove_idea = Cof_supply_chain_crisis2
+			add_idea = Cof_supply_chain_crisis3
+		}
+	}
+	else_if = {
+		limit = { has_idea = Cof_supply_chain_crisis3 } 
+		remove_ideas = Cof_call_for_economic_reform3
+	}
+	else = {
+		custom_effect_tooltip = idea_supply_chain_crisis_change_tt
+	}
+}
+
+Cof_CGT_expand_update = {
+	if = {
+		limit = { has_idea = Cof_CGT_expand0 }
+		swap_ideas = {
+			remove_idea = Cof_CGT_expand0
+			add_idea = Cof_CGT_expand1
+		}
+	}
+	else_if = {
+		limit = { has_idea = Cof_CGT_expand1 }
+		swap_ideas = {
+			remove_idea = Cof_CGT_expand1
+			add_idea = Cof_CGT_expand2
+		}
+	}
+	else_if = {
+		limit = { has_idea = Cof_CGT_expand2 }
+		swap_ideas = {
+			remove_idea = Cof_CGT_expand2
+			add_idea = Cof_CGT_expand3
+		}
+	}
+}
+
+Cof_CGT_weaken_update = {
+	if = {
+		limit = { 
+			has_idea = Cof_CGT_weaken0 
+			check_variable = { cgt_monopolization < 80 }
+		}
+		swap_ideas = {
+			remove_idea = Cof_CGT_weaken0
+			add_idea = Cof_CGT_weaken1
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = Cof_CGT_weaken1 
+			check_variable = { cgt_monopolization < 60 }
+		}
+		swap_ideas = {
+			remove_idea = Cof_CGT_weaken1
+			add_idea = Cof_CGT_weaken2
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = Cof_CGT_weaken2 
+			check_variable = { cgt_monopolization < 40 }
+		}
+		swap_ideas = {
+			remove_idea = Cof_CGT_weaken2
+			add_idea = Cof_CGT_weaken3
+		}
+	}
+	else_if = {
+		limit = { 
+			has_idea = Cof_CGT_weaken3 
+			check_variable = { cgt_monopolization < 20 }
+		}
+		swap_ideas = {
+			remove_idea = Cof_CGT_weaken3
+			add_idea = Cof_CGT_weaken4
+		}
+	}
+}

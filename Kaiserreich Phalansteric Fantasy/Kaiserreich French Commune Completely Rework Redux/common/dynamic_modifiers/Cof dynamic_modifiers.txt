@@ -1,0 +1,950 @@
+### +意味增益 -意味减益 与后续buff数值增减无关
+Cof_politics_pop_impact = {
+    icon = "GFX_dynamic_modifier_Cof_politics_pop_impact"
+    custom_modifier_tooltip = Cof_politics_pop_impact_tt
+    #平均 +稳定
+    stability_factor = pop_stability_factor
+    #工人 +生产基础 +效率增长 35%+工厂产出
+    production_factory_start_efficiency_factor = pop_production_factory_start_efficiency_factor
+    production_factory_efficiency_gain_factor = pop_production_factory_efficiency_gain_factor
+    industrial_capacity_factory = pop_industrial_capacity_factory #影响>35%
+    #农民 +资源获取 +适役人口 35%+补给消耗
+    local_resources_factor = pop_local_resources_factor
+    conscription_factor = pop_conscription_factor
+    supply_consumption_factor = pop_supply_consumption_factor #影响>35%
+    #小资产阶级 +民工建设 +基建建设 35%+生活消费品
+    production_speed_industrial_complex_factor = pop_production_speed_industrial_complex_factor
+    production_speed_infrastructure_factor = pop_production_speed_infrastructure_factor
+    consumer_goods_factor = pop_consumer_goods_factor #影响>35%
+    #知识分子 +研究速度 +合作度增长 35%+效率上限
+    research_speed_factor = pop_research_speed_factor
+    compliance_gain = pop_compliance_gain
+    production_factory_max_efficiency_factor = pop_production_factory_max_efficiency_factor #影响>35%
+    #官僚 +政治点百分比获取 +政治顾问消耗 35%+政治点增长
+    political_power_factor = pop_political_power_factor
+    political_advisor_cost_factor = pop_political_advisor_cost_factor
+    political_power_gain = pop_political_power_gain #影响>35%
+    #军队 军官+最大计划 士官+组织度 士兵+移动组织度损失 35%+陆军攻击
+    max_planning = pop_max_planning #军官
+    army_org_factor = pop_army_org_factor #士官
+    org_loss_when_moving = pop_org_loss_when_moving #士兵
+    army_attack_factor = pop_army_attack_factor #影响>35%
+
+    #额外
+    production_speed_buildings_factor = pop_production_speed_buildings_factor
+    global_building_slots_factor = pop_global_building_slots_factor
+}
+
+Cof_economy_impact = {
+    icon = "GFX_dynamic_modifier_Cof_economy_impact"
+    custom_modifier_tooltip = Cof_economy_impact_tt
+    ##经济模式
+    #混合经济 +基建建设 +民工建设
+    production_speed_infrastructure_factor = econ_production_speed_infrastructure_factor
+
+    #合作社经济 +基础生产 +生产增长 
+    production_factory_start_efficiency_factor = econ_production_factory_start_efficiency_factor
+    production_factory_efficiency_gain_factor = econ_production_factory_efficiency_gain_factor
+
+    #市场经济 +生活消费品 +民工建设
+    consumer_goods_factor = econ_consumer_goods_factor
+    production_speed_industrial_complex_factor = econ_production_speed_industrial_complex_factor
+
+    #计划经济 +生产上限 +工厂产出 -生产增长
+    production_factory_max_efficiency_factor = econ_production_factory_max_efficiency_factor
+    industrial_capacity_factory = econ_industrial_capacity_factory
+
+    #统制经济 +军工建设 +资源效率
+    production_speed_arms_factory_factor = econ_production_speed_arms_factory_factor
+    local_resources_factor = econ_local_resources_factor
+
+    ##工业指标
+    #工业基础 +生产基础 +民工建设 +资源获取 
+
+    #流程标准化 +生产保持 +生产增长
+    line_change_production_efficiency_factor = econ_line_change_production_efficiency_factor
+    
+    #军事工业 +军工建设 +转换速度
+    conversion_cost_civ_to_mil_factor = econ_conversion_cost_civ_to_mil_factor
+
+    ##农业指标
+    #机械化 +人口修正
+    conscription_factor = econ_conscription_factor
+    #化工生产 +补给消耗
+    supply_consumption_factor = econ_supply_consumption_factor
+    #农副产业链 +生活消费品
+
+    ##其他指标
+    #经济平等 +稳定度 +生产上限 +生活消费品
+    stability_factor = econ_stability_factor
+    #产业协作 +生产上限 +生产增长 +基础生产
+
+    #创新能力 +科研速度
+    research_speed_factor = econ_research_speed_factor
+
+    #extra
+    global_building_slots_factor = econ_global_building_slots_factor
+}
+
+Cof_military_reform_impact = {
+    icon = "GFX_dynamic_modifier_Cof_military_reform_impact"
+    custom_modifier_tooltip = Cof_military_reform_impact_tt
+    ##军事理论
+    #综合学说 +陆军xp +训练时间 +核心攻击
+    experience_gain_army_factor = mili_experience_gain_army_factor
+    training_time_factor = mili_training_time_factor
+    army_core_attack_factor = mili_army_core_attack_factor
+    army_core_defence_factor = mili_army_core_defence_factor
+    #装甲集群 -装甲攻击 +装甲防御
+    army_armor_attack_factor = mili_army_armor_attack_factor
+    army_armor_defence_factor = mili_army_armor_defence_factor
+    #精锐闪电战 +装甲速度 +突破
+    army_armor_speed_factor = mili_army_armor_speed_factor
+    breakthrough_factor = mili_breakthrough_factor
+    #机动摩托化 +陆军速度 -补给消耗 -损耗
+    army_speed_factor= mili_army_speed_factor
+    attrition = mili_attrition
+    supply_consumption_factor= mili_supply_consumption_factor
+    #步火协同 +步防 +火攻
+    army_infantry_attack_factor = mili_army_infantry_attack_factor
+    army_infantry_defence_factor = mili_army_infantry_defence_factor
+    army_artillery_attack_factor = mili_army_artillery_attack_factor
+    army_artillery_defence_factor = mili_army_artillery_defence_factor
+    #集中化指挥部 +计划上限 +计划速度
+    max_planning = mili_max_planning
+    planning_speed = mili_planning_speed
+    #防守反击 +堑壕上限 +堑壕速度
+    max_dig_in = mili_max_dig_in
+    max_dig_in_factor = mili_max_dig_in_factor
+    dig_in_speed_factor = mili_dig_in_speed_factor
+    #士官主动性 +组织度 +主动性
+    army_org_factor = mili_army_org_factor
+    army_org_regain = mili_army_org_regain
+    org_loss_when_moving = mili_org_loss_when_moving
+    initiative_factor = mili_initiative_factor
+    #小兵团作战 -宽度 -地形惩罚
+    combat_width_factor = mili_combat_width_factor
+    terrain_penalty_reduction = mili_terrain_penalty_reduction
+
+    ##军事数据
+    #军队自主性 +稳定 +战支
+    stability_factor = mili_stability_factor
+    war_support_factor = mili_war_support_factor
+    #战斗意愿 +增援率
+    land_reinforce_rate = mili_land_reinforce_rate
+    #训练质量 +包围惩罚
+    pocket_penalty = mili_pocket_penalty
+    #军事装备 +步枪生产
+
+    #参军热情 +适役人口修正 +动员速度
+    conscription_factor = mili_conscription_factor
+    mobilization_speed = mili_mobilization_speed
+}
+
+Cof_phalanstere = {
+    icon = "GFX_dynamic_modifier_Cof_phalanstere"
+    remove_trigger = { has_socialist_government = no }
+    custom_modifier_tooltip = Cof_phalanstere_buff_tt
+	###政治 
+    political_power_gain = INT_political_power_gain
+    political_power_cost = INT_political_power_cost
+	political_power_factor = INT_political_power_factor
+	stability_factor = INT_stability_factor 
+	war_support_factor = INT_war_support_factor 
+
+	syndicalist_drift = INT_syndicalist_drift
+	totalist_drift = INT_totalist_drift
+	radical_socialist_drift = INT_radical_socialist_drift
+
+    ###科技
+	research_speed_factor = INT_research_speed_factor
+
+	###经济
+	global_building_slots_factor = INT_global_building_slots_factor
+	production_speed_buildings_factor = INT_production_speed_buildings_factor
+	production_speed_infrastructure_factor = INT_production_speed_infrastructure_factor
+	production_speed_industrial_complex_factor = INT_production_speed_industrial_complex_factor
+	production_speed_rail_way_factor = INT_production_speed_rail_way_factor
+
+	production_factory_start_efficiency_factor = INT_production_factory_start_efficiency_factor
+	production_factory_max_efficiency_factor = INT_production_factory_max_efficiency_factor 
+	production_factory_efficiency_gain_factor = INT_production_factory_efficiency_gain_factor 
+    line_change_production_efficiency_factor = INT_line_change_production_efficiency_factor
+
+	industrial_capacity_factory = INT_industrial_capacity_factory
+    industrial_capacity_dockyard = INT_industrial_capacity_dockyard
+
+	consumer_goods_factor = INT_consumer_goods_factor 
+	local_resources_factor = INT_local_resources_factor
+
+    production_speed_arms_factory_factor = INT_production_speed_arms_factory_factor
+    production_speed_dockyard_factor = INT_production_speed_dockyard_factor
+
+	###陆军
+	send_volunteer_size = INT_send_volunteer_size
+	weekly_manpower = INT_weekly_manpower
+	experience_gain_army_factor = INT_experience_gain_army_factor
+
+	###海军
+	experience_gain_navy_factor = INT_experience_gain_navy_factor
+	
+	###空军
+	experience_gain_air_factor = INT_experience_gain_air_factor
+
+    custom_modifier_tooltip = INT_targeted_modifier_tt
+}
+
+
+
+
+
+
+
+
+
+
+
+
+Cof_state_general_buff = {
+    industrial_factory_donations = all_state_economy_industry
+    military_factory_donations = all_state_economy_arms
+    dockyard_donations = all_state_economy_dockyard
+
+    stability_factor = all_state_stability_factor
+    war_support_factor = all_state_war_support_factor
+
+    political_power_factor = all_state_political_power_factor
+
+    research_speed_factor = all_state_research_speed_factor
+
+    industrial_capacity_factory = all_state_industrial_capacity_factory
+    industrial_capacity_dockyard = all_state_industrial_capacity_dockyard
+
+    consumer_goods_factor = all_state_consumer_goods_factor   
+
+    supply_consumption_factor = all_state_supply_consumption_factor
+    weekly_manpower = all_state_weekly_manpower
+    monthly_population = all_state_monthly_population
+    army_org_factor = all_state_army_org_factor
+
+    local_resources_factor = all_state_local_resources_factor
+    
+    production_factory_max_efficiency_factor = all_state_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = all_state_production_factory_efficiency_gain_factor
+}
+
+Cof_state_economy_situation = {
+	icon = "GFX_decision_gre_paying_ifc_debt"
+	enable = { is_controlled_by = FRA }
+    remove_trigger = { NOT = { is_fully_controlled_by = FRA } }
+
+	custom_modifier_tooltip = Cof_state_economy_situation_tt
+
+    industrial_factory_donations = state_economy_industry
+    military_factory_donations = state_economy_arms
+    dockyard_donations = state_economy_dockyard
+
+    consumer_goods_factor = state_economoy_consumer_goods_factor
+    industrial_capacity_factory = state_economy_industrial_capacity_factory
+    industrial_capacity_dockyard = state_economy_industrial_capacity_factory
+
+    custom_modifier_tooltip = socialist_market_tooltip
+}
+
+Cof_state_city_zone = {
+    icon = "GFX_state_Cof_state_city_zone"
+    remove_trigger = { cof_is_city_zone = no }
+    enable = { is_controlled_by = FRA }
+    custom_modifier_tooltip = Cof_state_city_zone_tt
+
+    stability_factor = city_stability_factor
+    war_support_factor = city_war_support_factor
+    political_power_factor = city_political_power_factor
+    research_speed_factor = city_research_speed_factor
+
+    industrial_capacity_factory = city_industrial_capacity_factory
+    consumer_goods_factor = city_consumer_goods_factor
+    supply_consumption_factor = city_supply_consumption_factor
+    weekly_manpower = city_weekly_manpower
+    monthly_population = city_monthly_population
+
+    production_factory_max_efficiency_factor = city_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = city_production_factory_efficiency_gain_factor
+
+    army_org_factor = city_army_org_factor
+
+    state_production_speed_buildings_factor = city_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = city_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = city_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = city_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = city_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = city_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = city_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = city_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = city_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = city_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = city_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = city_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = city_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = city_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = city_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = city_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = city_local_building_slots
+    local_building_slots_factor = city_local_building_slots_factor
+
+    local_factories = city_local_factories
+    local_supplies = city_local_supplies
+    
+    recruitable_population_factor = city_recruitable_population_factor
+
+    state_resources_factor = city_state_resources_factor
+    local_resources_factor = city_local_resources_factor
+
+    state_resource_aluminium = city_state_resource_aluminium
+    state_resource_chromium = city_state_resource_chromium
+    state_resource_oil = city_state_resource_oil
+    state_resource_rubber = city_state_resource_rubber
+    state_resource_steel = city_state_resource_steel
+    state_resource_tungsten = city_state_resource_tungsten
+}
+
+Cof_state_rural_zone = {
+    icon = "GFX_state_Cof_state_rural_zone"
+    remove_trigger = { cof_is_rural_zone = no }
+    enable = { is_controlled_by = FRA }
+    custom_modifier_tooltip = Cof_state_rural_zone_tt
+
+    stability_factor = rural_stability_factor
+    war_support_factor = rural_war_support_factor
+    political_power_factor = rural_political_power_factor
+    research_speed_factor = rural_research_speed_factor
+
+    industrial_capacity_factory = rural_industrial_capacity_factory
+    consumer_goods_factor = rural_consumer_goods_factor
+    supply_consumption_factor = rural_supply_consumption_factor
+    weekly_manpower = rural_weekly_manpower
+    monthly_population = rural_monthly_population
+
+    production_factory_max_efficiency_factor = rural_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = rural_production_factory_efficiency_gain_factor
+
+    army_org_factor = rural_army_org_factor
+
+    state_production_speed_buildings_factor = rural_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = rural_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = rural_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = rural_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = rural_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = rural_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = rural_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = rural_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = rural_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = rural_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = rural_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = rural_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = rural_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = rural_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = rural_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = rural_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = rural_local_building_slots
+    local_building_slots_factor = rural_local_building_slots_factor
+
+    local_factories = rural_local_factories
+    local_supplies = rural_local_supplies
+    
+    recruitable_population_factor = rural_recruitable_population_factor
+
+    state_resources_factor = rural_state_resources_factor
+    local_resources_factor = rural_local_resources_factor
+
+    state_resource_aluminium = rural_state_resource_aluminium
+    state_resource_chromium = rural_state_resource_chromium
+    state_resource_oil = rural_state_resource_oil
+    state_resource_rubber = rural_state_resource_rubber
+    state_resource_steel = rural_state_resource_steel
+    state_resource_tungsten = rural_state_resource_tungsten
+}
+
+Cof_state_Paris = {
+    icon = "GFX_decision_hol_draw_up_staff_plans"
+    enable = { is_controlled_by = FRA }
+    custom_modifier_tooltip = Cof_state_Paris_tt
+
+    stability_factor = core_stability_factor
+    war_support_factor = core_war_support_factor
+    political_power_factor = core_political_power_factor
+    research_speed_factor = core_research_speed_factor
+
+    industrial_capacity_factory = core_industrial_capacity_factory
+    consumer_goods_factor = core_consumer_goods_factor
+    supply_consumption_factor = core_supply_consumption_factor
+    weekly_manpower = core_weekly_manpower
+    monthly_population = core_monthly_population
+
+    production_factory_max_efficiency_factor = core_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = core_production_factory_efficiency_gain_factor
+    
+    army_org_factor = core_army_org_factor
+
+    state_production_speed_buildings_factor = core_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = core_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = core_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = core_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = core_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = core_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = core_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = core_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = core_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = core_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = core_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = core_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = core_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = core_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = core_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = core_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = core_local_building_slots
+    local_building_slots_factor = core_local_building_slots_factor
+
+    local_factories = core_local_factories
+    local_supplies = core_local_supplies
+    
+    recruitable_population_factor = core_recruitable_population_factor
+
+    state_resources_factor = core_state_resources_factor
+    local_resources_factor = core_local_resources_factor
+
+    state_resource_aluminium = core_state_resource_aluminium
+    state_resource_chromium = core_state_resource_chromium
+    state_resource_oil = core_state_resource_oil
+    state_resource_rubber = core_state_resource_rubber
+    state_resource_steel = core_state_resource_steel
+    state_resource_tungsten = core_state_resource_tungsten
+}
+
+Cof_state_Calais = {
+    icon = "GFX_state_Cof_state_Calais"
+    enable = { is_controlled_by = FRA }
+    custom_modifier_tooltip = Cof_state_Calais_tt
+
+    stability_factor = core_stability_factor
+    war_support_factor = core_war_support_factor
+    political_power_factor = core_political_power_factor
+    research_speed_factor = core_research_speed_factor
+
+    industrial_capacity_factory = core_industrial_capacity_factory
+    consumer_goods_factor = core_consumer_goods_factor
+    supply_consumption_factor = core_supply_consumption_factor
+    weekly_manpower = core_weekly_manpower
+    monthly_population = core_monthly_population
+
+    production_factory_max_efficiency_factor = core_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = core_production_factory_efficiency_gain_factor
+
+    army_org_factor = core_army_org_factor
+
+    state_production_speed_buildings_factor = core_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = core_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = core_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = core_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = core_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = core_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = core_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = core_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = core_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = core_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = core_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = core_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = core_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = core_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = core_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = core_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = core_local_building_slots
+    local_building_slots_factor = core_local_building_slots_factor
+
+    local_factories = core_local_factories
+    local_supplies = core_local_supplies
+    
+    recruitable_population_factor = core_recruitable_population_factor
+
+    state_resources_factor = core_state_resources_factor
+    local_resources_factor = core_local_resources_factor
+
+    state_resource_aluminium = core_state_resource_aluminium
+    state_resource_chromium = core_state_resource_chromium
+    state_resource_oil = core_state_resource_oil
+    state_resource_rubber = core_state_resource_rubber
+    state_resource_steel = core_state_resource_steel
+    state_resource_tungsten = core_state_resource_tungsten
+}
+
+Cof_state_Bordeaux = {
+    icon = "GFX_decision_generic_wreckers"
+    enable = { is_controlled_by = FRA }
+    custom_modifier_tooltip = Cof_state_Bordeaux_tt
+
+    stability_factor = core_stability_factor
+    war_support_factor = core_war_support_factor
+    political_power_factor = core_political_power_factor
+    research_speed_factor = core_research_speed_factor
+
+    industrial_capacity_factory = core_industrial_capacity_factory
+    consumer_goods_factor = core_consumer_goods_factor
+    supply_consumption_factor = core_supply_consumption_factor
+    weekly_manpower = core_weekly_manpower
+    monthly_population = core_monthly_population
+
+    production_factory_max_efficiency_factor = core_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = core_production_factory_efficiency_gain_factor
+
+    army_org_factor = core_army_org_factor
+
+    state_production_speed_buildings_factor = core_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = core_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = core_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = core_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = core_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = core_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = core_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = core_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = core_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = core_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = core_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = core_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = core_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = core_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = core_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = core_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = core_local_building_slots
+    local_building_slots_factor = core_local_building_slots_factor
+
+    local_factories = core_local_factories
+    local_supplies = core_local_supplies
+    
+    recruitable_population_factor = core_recruitable_population_factor
+
+    state_resources_factor = core_state_resources_factor
+    local_resources_factor = core_local_resources_factor
+
+    state_resource_aluminium = core_state_resource_aluminium
+    state_resource_chromium = core_state_resource_chromium
+    state_resource_oil = core_state_resource_oil
+    state_resource_rubber = core_state_resource_rubber
+    state_resource_steel = core_state_resource_steel
+    state_resource_tungsten = core_state_resource_tungsten
+}
+
+Cof_state_Massay = {
+    icon = "GFX_decision_generic_nationalism"
+    enable = { is_controlled_by = FRA }
+    custom_modifier_tooltip = Cof_state_Massay_tt
+
+    stability_factor = core_stability_factor
+    war_support_factor = core_war_support_factor
+    political_power_factor = core_political_power_factor
+    research_speed_factor = core_research_speed_factor
+
+    industrial_capacity_factory = core_industrial_capacity_factory
+    consumer_goods_factor = core_consumer_goods_factor
+    supply_consumption_factor = core_supply_consumption_factor
+    weekly_manpower = core_weekly_manpower
+    monthly_population = core_monthly_population
+
+    production_factory_max_efficiency_factor = core_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = core_production_factory_efficiency_gain_factor
+
+    army_org_factor = core_army_org_factor
+
+    state_production_speed_buildings_factor = core_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = core_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = core_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = core_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = core_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = core_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = core_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = core_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = core_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = core_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = core_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = core_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = core_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = core_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = core_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = core_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = core_local_building_slots
+    local_building_slots_factor = core_local_building_slots_factor
+
+    local_factories = core_local_factories
+    local_supplies = core_local_supplies
+    
+    recruitable_population_factor = core_recruitable_population_factor
+
+    state_resources_factor = core_state_resources_factor
+    local_resources_factor = core_local_resources_factor
+
+    state_resource_aluminium = core_state_resource_aluminium
+    state_resource_chromium = core_state_resource_chromium
+    state_resource_oil = core_state_resource_oil
+    state_resource_rubber = core_state_resource_rubber
+    state_resource_steel = core_state_resource_steel
+    state_resource_tungsten = core_state_resource_tungsten
+}
+
+Cof_state_lyon = {
+    icon = "GFX_decision_generic_merge_plant_tank"
+    enable = { is_controlled_by = FRA }
+
+    stability_factor = core_stability_factor
+    war_support_factor = core_war_support_factor
+    political_power_factor = core_political_power_factor
+    research_speed_factor = core_research_speed_factor
+
+    industrial_capacity_factory = core_industrial_capacity_factory
+    consumer_goods_factor = core_consumer_goods_factor
+    supply_consumption_factor = core_supply_consumption_factor
+    weekly_manpower = core_weekly_manpower
+    monthly_population = core_monthly_population
+
+    production_factory_max_efficiency_factor = core_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = core_production_factory_efficiency_gain_factor
+
+    army_org_factor = core_army_org_factor
+
+    state_production_speed_buildings_factor = core_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = core_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = core_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = core_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = core_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = core_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = core_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = core_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = core_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = core_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = core_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = core_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = core_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = core_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = core_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = core_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = core_local_building_slots
+    local_building_slots_factor = core_local_building_slots_factor
+
+    local_factories = core_local_factories
+    local_supplies = core_local_supplies
+    
+    recruitable_population_factor = core_recruitable_population_factor
+
+    state_resources_factor = core_state_resources_factor
+    local_resources_factor = core_local_resources_factor
+
+    state_resource_aluminium = core_state_resource_aluminium
+    state_resource_chromium = core_state_resource_chromium
+    state_resource_oil = core_state_resource_oil
+    state_resource_rubber = core_state_resource_rubber
+    state_resource_steel = core_state_resource_steel
+    state_resource_tungsten = core_state_resource_tungsten
+
+    specialization_land_speed_factor = core_specialization_land_speed_factor
+
+    custom_modifier_tooltip = Cof_state_lyon_effect
+}
+
+Cof_state_Brittany = {
+    icon = "GFX_state_Cof_state_Brittany"
+    enable = { is_controlled_by = FRA }
+    custom_modifier_tooltip = Cof_state_Brittany_tt
+
+    stability_factor = core_stability_factor
+    war_support_factor = core_war_support_factor
+    political_power_factor = core_political_power_factor
+    research_speed_factor = core_research_speed_factor
+
+    industrial_capacity_factory = core_industrial_capacity_factory
+    consumer_goods_factor = core_consumer_goods_factor
+    supply_consumption_factor = core_supply_consumption_factor
+    weekly_manpower = core_weekly_manpower
+    monthly_population = core_monthly_population
+
+    production_factory_max_efficiency_factor = core_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = core_production_factory_efficiency_gain_factor
+
+    army_org_factor = core_army_org_factor
+
+    state_production_speed_buildings_factor = core_state_production_speed_buildings_factor
+
+    state_production_speed_infrastructure_factor = core_state_production_speed_infrastructure_factor
+    state_production_speed_rail_way_factor = core_state_production_speed_rail_way_factor
+
+    state_production_speed_industrial_complex_factor = core_state_production_speed_industrial_complex_factor
+    state_production_speed_arms_factory_factor = core_state_production_speed_arms_factory_factor
+
+    state_production_speed_dockyard_factor = core_state_production_speed_dockyard_factor
+    state_production_speed_naval_base_factor = core_state_production_speed_naval_base_factor
+    state_production_speed_coastal_bunker_factor = core_state_production_speed_coastal_bunker_factor
+
+    state_production_speed_bunker_factor = core_state_production_speed_bunker_factor
+
+    state_production_speed_fuel_silo_factor = core_state_production_speed_fuel_silo_factor
+    state_production_speed_synthetic_refinery_factor = core_state_production_speed_synthetic_refinery_factor
+    
+    state_production_speed_air_base_factor = core_state_production_speed_air_base_factor
+    state_production_speed_anti_air_building_factor = core_state_production_speed_anti_air_building_factor
+    
+    state_production_speed_radar_station_factor = core_state_production_speed_radar_station_factor
+    state_production_speed_rocket_site_factor = core_state_production_speed_rocket_site_factor
+    state_production_speed_nuclear_reactor_factor = core_state_production_speed_nuclear_reactor_factor
+
+    local_building_slots = core_local_building_slots
+    local_building_slots_factor = core_local_building_slots_factor
+
+    local_factories = core_local_factories
+    local_supplies = core_local_supplies
+    
+    recruitable_population_factor = core_recruitable_population_factor
+
+    state_resources_factor = core_state_resources_factor
+    local_resources_factor = core_local_resources_factor
+
+    state_resource_aluminium = core_state_resource_aluminium
+    state_resource_chromium = core_state_resource_chromium
+    state_resource_oil = core_state_resource_oil
+    state_resource_rubber = core_state_resource_rubber
+    state_resource_steel = core_state_resource_steel
+    state_resource_tungsten = core_state_resource_tungsten    
+}
+
+Cof_bill_number_cost = {
+    political_power_factor = bills_cost
+}
+
+Cof_revolutionary_bases = {
+    icon = "GFX_modifiers_SOV_invaders_must_die"
+    enable = { owner = { has_socialist_government = yes } }
+    remove_trigger = { is_capital = no }
+    training_time_factor = -0.1
+    send_volunteer_size = 2
+    custom_modifier_tooltip = Cof_revolutionary_bases_tt
+}
+
+Cof_french_roit = {
+    icon = "GFX_decision_SWI_consolidate_council_power"
+    remove_trigger = { is_owned_by = FRA }
+    local_factories = -0.25
+    local_supplies = -0.5
+    state_resources_factor = -0.25
+    recruitable_population_factor = -0.4
+}
+
+Cof_state_red_black_market = {
+    icon = "GFX_decision_generic_wreckers"
+    remove_trigger = {
+        owner = {
+            OR = {
+                has_socialist_government = yes
+                AND = {
+                    has_stability > 0.5
+                    set_temp_variable = { ck = var:THIS.party_popularity@totalist }
+                    add_to_temp_variable = { ck = var:THIS.party_popularity@syndicalist }
+                    add_to_temp_variable = { ck = var:THIS.party_popularity@radical_socialist }
+                    check_variable = { ck < 0.05 }
+                }
+            }
+        }
+    }
+    custom_modifier_tooltip = Cof_state_red_black_market_tt
+
+    local_factories = rbm_local_factories
+    state_resource_aluminium = rbm_state_resource_aluminium
+    state_resource_chromium = rbm_state_resource_chromium
+    state_resource_oil = rbm_state_resource_oil
+    state_resource_rubber = rbm_state_resource_rubber
+    state_resource_steel = rbm_state_resource_steel
+    state_resource_tungsten = rbm_state_resource_tungsten    
+}
+
+Cof_red_black_market = {
+    icon = "GFX_idea_generic_coins"
+
+    industrial_factory_donations = rbm_industrial
+    military_factory_donations = rbm_arms
+    dockyard_donations = rbm_dockyard
+
+    country_resource_aluminium = rbm_aluminium
+    country_resource_chromium = rbm_chromium
+    country_resource_oil = rbm_oil
+    country_resource_rubber = rbm_rubber
+    country_resource_steel = rbm_steel
+    country_resource_tungsten = rbm_tungsten
+}
+
+#边境走私
+Cof_border_smuggling_ger = {
+    icon = "GFX_dynamic_modifier_Cof_border_smuggling"
+    remove_trigger = {
+        OR = {  
+            has_stability > 0.6
+            set_temp_variable = { ck = var:THIS.party_popularity@totalist }
+            add_to_temp_variable = { ck = var:THIS.party_popularity@syndicalist }
+            add_to_temp_variable = { ck = var:THIS.party_popularity@radical_socialist }
+            check_variable = { ck < 0.05 }
+        }
+    }
+    custom_modifier_tooltip = Cof_border_smuggling_ger_tt
+    civilian_factory_use = bsg_civilian_factory_use
+    consumer_goods_factor = bsg_consumer_goods_factor
+    
+    country_resource_aluminium = bsg_aluminium
+    country_resource_chromium = bsg_chromium
+    country_resource_oil = bsg_oil
+    country_resource_rubber = bsg_rubber
+    country_resource_steel = bsg_steel
+    country_resource_tungsten = bsg_tungsten
+}
+
+Cof_border_smuggling_fra = {
+    icon = "GFX_dynamic_modifier_Cof_border_smuggling"
+    remove_trigger = { GER = { NOT = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } } } }
+    industrial_factory_donations = bsf_industrial_factory_donations
+    consumer_goods_factor = bsf_consumer_goods_factor
+    
+    country_resource_aluminium = bsf_aluminium
+    country_resource_chromium = bsf_chromium
+    country_resource_oil = bsf_oil
+    country_resource_rubber = bsf_rubber
+    country_resource_steel = bsf_steel
+    country_resource_tungsten = bsf_tungsten
+}
+
+Cof_piece_rate_economy_buff = {
+    enable = { FRA = { check_variable = { econ_industry_basic > 50 } } }
+    industrial_capacity_factory = pren_industrial_capacity_factory
+    production_factory_max_efficiency_factor = pren_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = pren_production_factory_efficiency_gain_factor
+    monthly_change_eib = pren_monthly_change_eib
+}
+
+Cof_each_takes_what_needs = {
+    icon = "GFX_dynamic_modifier_Cof_centrally_planned_economy"
+    consumer_goods_factor = 0.3
+    custom_modifier_tooltip = Cof_each_takes_what_needs_tt
+    industrial_capacity_factory = factory_used_in_consumer
+}
+
+Cof_great_leap_forward = {
+    icon = "GFX_dynamic_modifier_Cof_centrally_planned_economy"
+    consumer_goods_factor = 0.3
+    custom_modifier_tooltip = great_leap_forward_tt
+    production_speed_buildings_factor = factory_used_in_consumer
+}
+
+Cof_more_than_just_the_future = {
+    icon = "GFX_dynamic_modifier_Cof_centrally_planned_economy"
+    consumer_goods_factor = 0.3
+    custom_modifier_tooltip = Cof_more_than_just_the_future_tt
+    research_speed_factor = factory_used_in_consumer
+}
+
+Cof_total_variable_change = {
+    monthly_change_bgt_vs_csp = monthly_change_bgt_vs_cspc
+    monthly_change_ios = monthly_change_iosc
+
+    monthly_change_popsw = monthly_change_popswc
+    monthly_change_popsp = monthly_change_popspc
+    monthly_change_popsm = monthly_change_popsmc
+    monthly_change_popss = monthly_change_popssc
+    monthly_change_popsb = monthly_change_popsbc
+    monthly_change_popsa = monthly_change_popsac
+
+    monthly_change_ev = monthly_change_evc
+
+    monthly_change_eib = monthly_change_eibc
+    monthly_change_eip = monthly_change_eipc
+    monthly_change_eia = monthly_change_eiac
+
+    monthly_change_eam = monthly_change_eamc
+    monthly_change_eae = monthly_change_eaec
+    monthly_change_eaa = monthly_change_eaac
+
+    monthly_change_eq = monthly_change_eqc
+    monthly_change_el = monthly_change_elc
+    monthly_change_ei = monthly_change_eic
+
+
+    monthly_change_atheory1 = monthly_change_atheory1c
+    monthly_change_atheory2 = monthly_change_atheory2c
+    monthly_change_atheory3 = monthly_change_atheory3c
+    monthly_change_atheory4 = monthly_change_atheory4c
+    monthly_change_atheory5 = monthly_change_atheory5c
+    monthly_change_atheory6 = monthly_change_atheory6c
+    monthly_change_atheory7 = monthly_change_atheory7c
+    monthly_change_atheory8 = monthly_change_atheory8c
+
+
+    monthly_change_aauto = monthly_change_aautoc
+    monthly_change_awill = monthly_change_awillc
+    monthly_change_atrain = monthly_change_atrainc
+    monthly_change_aequip = monthly_change_aequipc
+    monthly_change_apassion = monthly_change_apassionc
+
+
+    weekly_change_ieu = weekly_change_ieuc
+    weekly_change_ias = weekly_change_iasc
+    weekly_change_ime = weekly_change_imec
+    weekly_change_iaf = weekly_change_iafc
+    weekly_change_iam = weekly_change_iamc
+}

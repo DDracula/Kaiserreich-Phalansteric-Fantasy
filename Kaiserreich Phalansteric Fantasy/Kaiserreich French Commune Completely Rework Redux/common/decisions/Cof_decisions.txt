@@ -1,0 +1,2240 @@
+#### 公社政治 ####
+Cof_politics = { 
+	Cof_voting_time_for_bill = {
+		icon = ger_mefo_bills
+		activation = { has_country_flag = voting_for_bill }
+		available = { always = no }
+		is_good = yes
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		timeout_effect = {
+			custom_effect_tooltip = bill_agree_vote_count
+			bill_to_judge = yes
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = current_bill_content
+			bill_effect_tooltips = yes
+		}
+	}
+
+	Cof_election = {
+		icon = ger_mefo_bills
+		activation = { has_country_flag = election_time }
+		available = { always = no }
+		is_good = yes
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		timeout_effect = {
+			custom_effect_tooltip = Cof_election_tt
+			clr_country_flag = election_time
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { seat_synd > seat_jaco }
+						check_variable = { seat_synd > seat_oppo }
+						check_variable = { seat_synd > seat_sore }
+					}
+					country_event = cofpolitics.121
+				}
+				
+				if = {
+					limit = {
+						check_variable = { seat_oppo > seat_jaco }
+						check_variable = { seat_oppo > seat_synd }
+						check_variable = { seat_oppo > seat_sore }
+					}
+					country_event = cofpolitics.122
+				}
+
+				if = {
+					limit = {
+						check_variable = { seat_jaco > seat_synd }
+						check_variable = { seat_jaco > seat_oppo }
+						check_variable = { seat_jaco > seat_sore }
+					}
+					country_event = cofpolitics.123
+				}
+
+				if = {
+					limit = {
+						check_variable = { seat_sore > seat_jaco }
+						check_variable = { seat_sore > seat_oppo }
+						check_variable = { seat_sore > seat_synd }
+					}
+					country_event = cofpolitics.124
+				}
+			}
+		}
+	}
+
+}
+
+#### 社会阶层 ####
+Cof_social_class = {
+
+
+	#cgt改革
+	Cof_economy_re_co_ordination = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { has_completed_focus = FRA_re_co_ordination }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { 
+			political_power_factor = -0.8
+			stability_factor = -0.1
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 10 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#新劳动革命
+	Cof_cgt_reform_decision_show = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = FRA }
+		visible = { has_completed_focus = FRA_new_labor_revolution }
+		ai_will_do = { factor = 0 }
+		days_re_enable = 0
+		complete_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = FRA_cgt_refrom_show } }
+				set_country_flag = FRA_cgt_refrom_show
+			}
+			else = { clr_country_flag = FRA_cgt_refrom_show }
+		}
+	}
+	#增强
+	Cof_expand_cgt_decision1 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_expand_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 30
+		days_re_enable = 30
+		fixed_random_seed = no
+		cost = 30
+		modifier = {
+			syndicalist_drift = 0.01
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+       		set_temp_variable = { pc = 0 } 
+	        set_temp_variable = { mc = 0 }
+    		set_temp_variable = { sc = 0 }
+        	set_temp_variable = { bc = 0 }
+        	set_temp_variable = { ac = 0 }
+	        class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_target = 1 }   
+			set_temp_variable = { pop_syndc = 0.6 }
+			set_temp_variable = { pop_oppoc = -0.2 }
+			set_temp_variable = { pop_jacoc = -0.2 }
+			set_temp_variable = { pop_sorec = -0.2 }
+			class_pop_faction_tendency_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				cgt_confidence = 1
+				tooltip = cgt_confidence_add
+			}
+			random = {
+				chance = 20
+				add_to_variable = {
+					cgt_confidence = 1
+					tooltip = cgt_confidence_add
+				}
+			}
+		}
+	}
+
+	Cof_expand_cgt_decision2 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_expand_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 90
+		days_re_enable = 60
+		fixed_random_seed = no
+		cost = 50
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.05
+			research_speed_factor = 0.025
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1.5 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				cgt_confidence = 1
+				tooltip = cgt_confidence_add
+			}
+			random = {
+				chance = 20
+				add_to_variable = {
+					cgt_confidence = 1
+					tooltip = cgt_confidence_add
+				}	
+			}
+		}
+	}
+
+	Cof_expand_cgt_decision3 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_expand_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 7
+		days_re_enable = 30
+		fixed_random_seed = no
+		cost = 10
+		complete_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = -1 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = Cof_expand_cgt_decision3_tt1
+			effect_tooltip = {
+				add_political_power = 30
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = 0 }
+				set_temp_variable = { pc = 0 } 
+				set_temp_variable = { mc = 0 }
+				set_temp_variable = { sc = 0 }
+				set_temp_variable = { bc = 1 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					cgt_confidence = 2
+					tooltip = cgt_confidence_add2
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = Cof_expand_cgt_decision3_tt2
+			effect_tooltip = {
+				add_political_power = -15
+				add_stability = -0.025
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -0.5 }
+				set_temp_variable = { pc = -0.5 } 
+				set_temp_variable = { mc = -0.5 }
+				set_temp_variable = { sc = -0.5 }
+				set_temp_variable = { bc = -1 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					cgt_confidence = -2
+					tooltip = cgt_confidence_reduce
+				}
+			}
+			
+			hidden_effect = {
+				random = {
+					chance = 30
+					set_country_flag = wrong_bills
+				}
+				country_event = cofeconomy.18
+			}
+		}
+	}
+
+	Cof_expand_cgt_decision4 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_expand_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		fire_only_once = yes
+		fixed_random_seed = no
+		cost = 50
+		complete_effect = {
+			custom_effect_tooltip = Cof_expand_cgt_decision4_tt1
+			effect_tooltip = {
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = 3 }
+				set_temp_variable = { pc = 0 } 
+				set_temp_variable = { mc = 0 }
+				set_temp_variable = { sc = 0 }
+				set_temp_variable = { bc = 0 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { pop_target = 1 }   
+				set_temp_variable = { pop_syndc = 3 }
+				set_temp_variable = { pop_oppoc = -1 }
+				set_temp_variable = { pop_jacoc = -1 }
+				set_temp_variable = { pop_sorec = -1 }
+				class_pop_faction_tendency_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					cgt_confidence = 2
+					tooltip = cgt_confidence_add2
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = Cof_expand_cgt_decision4_tt2
+			effect_tooltip = {
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -2 }
+				set_temp_variable = { pc = -0.5 } 
+				set_temp_variable = { mc = -0.5 }
+				set_temp_variable = { sc = -0.5 }
+				set_temp_variable = { bc = -1 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { pop_target = 1 }   
+				set_temp_variable = { pop_syndc = -3 }
+				set_temp_variable = { pop_oppoc = 1 }
+				set_temp_variable = { pop_jacoc = 1 }
+				set_temp_variable = { pop_sorec = 1 }
+				class_pop_faction_tendency_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					cgt_confidence = -2
+					tooltip = cgt_confidence_reduce
+				}
+			}
+			
+			hidden_effect = {
+				random = {
+					chance = 30
+					set_country_flag = cgt_acceptance_of_settlement
+				}
+				country_event = cofeconomy.19
+			}
+		}
+	}
+
+	Cof_expand_cgt_decision5 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_expand_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 30
+		days_re_enable = 60
+		fixed_random_seed = no
+		cost = 30
+		modifier = {
+			political_power_factor = -0.1
+			stability_factor = 0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -0.5 }
+			set_temp_variable = { pc = 0 } 
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -0.5 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 1 } 
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				cgt_confidence = 1
+				tooltip = cgt_confidence_add
+			}
+		}
+	}
+
+	Cof_expand_cgt_decision6 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_expand_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+			NOT = { has_idea = Cof_CGT_expand3 }
+		}
+		days_re_enable = 90
+		fixed_random_seed = no
+		cost = 75
+		complete_effect = {
+			Cof_CGT_expand_update = yes
+
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = 1 }
+       		set_temp_variable = { pop_pc = -0.5 }
+	        set_temp_variable = { pop_mc = -0.5 }
+    		set_temp_variable = { pop_sc = 0 }
+        	set_temp_variable = { pop_bc = 0 }
+        	set_temp_variable = { pop_ac = 0 }
+    	    set_temp_variable = { pop_aoc = 0 }
+    	    set_temp_variable = { pop_anc = 0 }
+    		set_temp_variable = { pop_asc = 0 }
+	        class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				cgt_confidence = -2
+				tooltip = cgt_confidence_reduce
+			}
+		}
+	}
+
+	#削弱
+	Cof_weaken_cgt_decision1 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_weaken_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		available = {
+			num_of_civilian_factories_available_for_projects > 0
+		}
+		days_remove = 60
+		days_re_enable = 60
+		fixed_random_seed = no
+		cost = 25
+		modifier = {
+			civilian_factory_use = 1
+			political_power_factor = -0.1
+			production_speed_industrial_complex_factor = 0.15
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_target = 1 }   
+			set_temp_variable = { pop_syndc = -3 }
+			set_temp_variable = { pop_oppoc = 1 }
+			set_temp_variable = { pop_jacoc = 1 }
+			set_temp_variable = { pop_sorec = 1 }
+			class_pop_faction_tendency_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				cgt_monopolization = -10
+				tooltip = cgt_monopolization_change_tt
+			}
+			Cof_CGT_weaken_update = yes
+		}
+	}
+
+	Cof_weaken_cgt_decision2 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_weaken_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 90
+		fire_only_once = yes
+		fixed_random_seed = no
+		cost = 60
+		modifier = {
+			political_power_factor = 0.15
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -4 }
+       		set_temp_variable = { pop_pc = 1.5 }
+	        set_temp_variable = { pop_mc = 2.5 }
+    		set_temp_variable = { pop_sc = 0 }
+        	set_temp_variable = { pop_bc = 0 }
+        	set_temp_variable = { pop_ac = 0 }
+    	    set_temp_variable = { pop_aoc = 0 }
+    	    set_temp_variable = { pop_anc = 0 }
+    		set_temp_variable = { pop_asc = 0 }
+	        class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_target = 1 }   
+			set_temp_variable = { pop_syndc = -3 }
+			set_temp_variable = { pop_oppoc = 1 }
+			set_temp_variable = { pop_jacoc = 1 }
+			set_temp_variable = { pop_sorec = 1 }
+			class_pop_faction_tendency_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { ecc = 0 }
+			set_temp_variable = { emc = 1 }
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { eoc = 0 }
+			Cof_economy_model_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { evc = 3 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = -1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = -2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				cgt_monopolization = -20
+				tooltip = cgt_monopolization_change_tt
+			}
+			Cof_CGT_weaken_update = yes
+		}
+	}
+
+	Cof_weaken_cgt_decision3 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_weaken_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 180
+		days_re_enable = 90
+		fixed_random_seed = no
+		cost = 50
+		modifier = {
+			consumer_goods_factor = -0.2
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -2 }
+			set_temp_variable = { pc = 0 } 
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 1.5 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_to_variable = {
+				cgt_monopolization = -20
+				tooltip = cgt_monopolization_change_tt
+			}
+			Cof_CGT_weaken_update = yes
+		}
+	}
+
+	Cof_weaken_cgt_decision4 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_weaken_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		fire_only_once = yes
+		fixed_random_seed = no
+		cost = 100
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_target = 1 }   
+			set_temp_variable = { pop_syndc = -6 }
+			set_temp_variable = { pop_oppoc = 2 }
+			set_temp_variable = { pop_jacoc = 2 }
+			set_temp_variable = { pop_sorec = 2 }
+			class_pop_faction_tendency_change = yes
+
+			add_to_variable = {
+				cgt_monopolization = -10
+				tooltip = cgt_monopolization_change_tt
+			}
+			Cof_CGT_weaken_update = yes
+		}
+	}
+
+	Cof_weaken_cgt_decision5 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_weaken_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 60
+		days_re_enable = 60
+		fixed_random_seed = no
+		cost = 50
+		modifier = {
+			political_power_factor = -0.1
+			stability_factor = -0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -3 }
+			set_temp_variable = { pc = 0 } 
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { esyndc = -3 }
+			set_temp_variable = { eoppoc = 1 }
+			set_temp_variable = { ejacoc = 1 }
+			set_temp_variable = { esorec = 1 }
+			econ_faction_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				cgt_monopolization = -15
+				tooltip = cgt_monopolization_change_tt
+			}
+			Cof_CGT_weaken_update = yes
+		}
+	}
+
+	Cof_weaken_cgt_decision6 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = FRA_cgt_refrom_show
+			has_completed_focus = FRA_weaken_CGT
+			has_completed_focus = FRA_new_labor_revolution 
+		}
+		days_remove = 7
+		days_re_enable = 14
+		fixed_random_seed = no
+		cost = 20
+		remove_effect = {
+			custom_effect_tooltip = Cof_weaken_cgt_decision6_tt1
+			effect_tooltip = {
+				add_to_variable = {
+					cgt_monopolization = -5
+					tooltip = cgt_monopolization_change_tt
+				}
+				Cof_CGT_weaken_update = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = Cof_weaken_cgt_decision6_tt2
+			effect_tooltip = {
+				add_to_variable = {
+					cgt_monopolization = 10
+					tooltip = cgt_monopolization_change_tt
+				}
+			}
+		}
+	}
+
+	#女权
+	Cof_women_rights_reform1 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { has_completed_focus = FRA_removal_of_labor_restrictions_for_women }
+		available = {
+			set_temp_variable = { target_t = 20 }
+			set_temp_variable = { target_num = 50 }
+			cof_politics_more_than_x = yes
+		}
+		days_remove = 90
+		days_re_enable = 60
+		fixed_random_seed = no
+		cost = 30
+		modifier = {
+			production_speed_buildings_factor = 0.5
+			industrial_capacity_factory = 0.025
+			industrial_capacity_dockyard = 0.03
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -2 }
+			set_temp_variable = { pc = -1 } 
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+
+	Cof_women_rights_reform2 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { has_completed_focus = FRA_removal_of_labor_restrictions_for_women }
+		days_remove = 90
+		days_re_enable = 60
+		fixed_random_seed = no
+		cost = 30
+		modifier = {
+			political_power_factor = -0.1
+			monthly_population = 0.4
+			stability_factor = 0.05
+			consumer_goods_factor = -0.1
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -2 }
+			set_temp_variable = { pc = -1 } 
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### 公社经济 ####
+Cof_economy = {
+    Cof_base_focus_on_industry = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = has_econ_focus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		cost = 25
+		modifier = {
+			monthly_change_eib = 0.5
+			monthly_change_eae = 0.3
+			monthly_change_eq = -0.4
+			monthly_change_el = 0.3
+		}
+		complete_effect = {
+			set_country_flag = has_econ_focus
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = -1 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			clr_country_flag = has_econ_focus
+		}
+	}
+
+	Cof_base_focus_on_economy = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = has_econ_focus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		cost = 30
+		modifier = {
+			monthly_change_ev = 0.4
+			monthly_change_eaa = 0.4
+			monthly_change_eq = 0.2
+		}
+		complete_effect = {
+			set_country_flag = has_econ_focus
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -1 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			clr_country_flag = has_econ_focus
+		}
+	}
+
+	Cof_base_focus_on_rural = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = has_econ_focus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		cost = 35
+		modifier = {
+			monthly_change_eam = 0.5
+			monthly_change_eae = 0.3
+			monthly_change_eq = 0.2
+			monthly_change_el = 0.3
+		}
+		complete_effect = {
+			set_country_flag = has_econ_focus
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0.5 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 0.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -1 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			clr_country_flag = has_econ_focus
+		}
+	}
+
+	#
+	Cof_economy_paris_big_paris = {
+		icon = factories
+		allowed = { original_tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		available = {
+			set_temp_variable = { target_t = 1 }
+			set_temp_variable = { target_num = 55 }
+			cof_econ_target_more_than_x = yes
+		}
+		cost = 30
+		days_remove = 120
+		modifier = { 
+			civilian_factory_use = 5 
+			monthly_change_ev = -0.5
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = -3 }
+			set_temp_variable = { mc = 0.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 1 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			16 = {
+				add_victory_points = {
+					province = 11506
+					value = 5
+				}
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.2
+					tooltip = local_building_slots_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { esyndc = 2 }
+			set_temp_variable = { eoppoc = -1 }
+			set_temp_variable = { ejacoc = -0.5 }
+			set_temp_variable = { esorec = -0.5 }
+			econ_faction_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = -5 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_paris_underground = {
+		icon = factories
+		allowed = { original_tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		cost = 15
+		days_remove = 90
+		modifier = { 
+			civilian_factory_use = 2
+			monthly_change_eib = -0.3
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			build_railway = {
+				path = { 11506 11491 6949 11518 9561 9534 9523 9725 11491 }
+				level = 5
+			}
+
+			16 = {
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_supplies = 0.1
+					tooltip = local_supplies_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_state_production_speed_buildings_factor = 0.1
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2.5 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_paris_exurb_vitry_ivry = {
+		icon = factories
+		allowed = { original_tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		cost = 15
+		days_remove = 90
+		modifier = { 
+			civilian_factory_use = 2
+			monthly_change_eib = -0.3
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = -3 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			16 = {
+				add_victory_points = {
+					province = 9725
+					value = 10
+				}
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.1
+					tooltip = local_building_slots_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_paris_exurb_nanterre = {
+		icon = factories
+		allowed = { original_tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		cost = 15
+		days_remove = 90
+		modifier = { 
+			civilian_factory_use = 2
+			monthly_change_eib = -0.3
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = -3 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			16 = {
+				add_victory_points = {
+					province = 9534
+					value = 10
+				}
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.1
+					tooltip = local_building_slots_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#交通建设                 
+	Cof_economy_coastal_railroad_construction = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			OR = {
+				has_country_flag = coastal_railroad_construction1
+				has_country_flag = coastal_railroad_construction2
+				has_country_flag = coastal_railroad_construction3
+			}
+		}
+		days_remove = 90
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = coastal_railroad_construction1 }
+				build_railway = {
+					path = { 9909 13497 3928 911 11834 11849 11877 9898 6960 3946 9853 }
+					level = 1
+				}
+				clr_country_flag = coastal_railroad_construction1
+			}
+
+			if = {
+				limit = { has_country_flag = coastal_railroad_construction2 }
+				build_railway = {
+					path = { 11548 9500 11420 485 9434 6599 11535 3579 6449 9550 11508 9525 6572 3552 }
+					level = 1
+				}
+				clr_country_flag = coastal_railroad_construction2
+			}
+
+			if = {
+				limit = { has_country_flag = coastal_railroad_construction3 }
+				build_railway = {
+					path = { 743 9710 6777 6621 9737 11565 9597 6657 11600 11616 11465 9510 6536 542 3552 }
+					level = 1
+				}
+				clr_country_flag = coastal_railroad_construction3
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2.5 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#工厂建设
+	Cof_economy_maritime_industry = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { 
+			OR = {
+				has_country_flag = maritime_industry1
+				has_country_flag = maritime_industry2
+			}
+		}
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 10 }
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 500
+				producer = FRA
+			}
+
+			if = {
+				limit = { has_country_flag = maritime_industry1 }
+				19 = {
+					set_temp_variable = { sesic = 0 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 2 }
+					Cof_state_economy_situation_change = yes
+
+					custom_effect_tooltip = {
+						localization_key = tooltip_modify_dynmod
+						DYNMOD = Cof_state_Bordeaux
+					}
+					custom_effect_tooltip = tooltip_white_line
+					add_to_variable = {
+						core_consumer_goods_factor = -0.025
+						tooltip = consumer_goods_factor_tooltip
+					}
+				}
+				clr_country_flag = maritime_industry1
+			}
+
+			if = {
+				limit = { has_country_flag = maritime_industry2 }
+				21 = {
+					set_temp_variable = { sesic = 0 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 2 }
+					Cof_state_economy_situation_change = yes
+
+					custom_effect_tooltip = {
+						localization_key = tooltip_modify_dynmod
+						DYNMOD = Cof_state_Massay
+					}
+					custom_effect_tooltip = tooltip_white_line
+					add_to_variable = {
+						core_consumer_goods_factor = -0.025
+						tooltip = consumer_goods_factor_tooltip
+					}
+				}
+				clr_country_flag = maritime_industry2
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 5 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	
+
+	#乡村建设
+	Cof_economy_rural_develop_start = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = FRA }
+		visible = {  
+			has_completed_focus = FRA_back_to_the_country
+		}
+		ai_will_do = { factor = 0 }
+		fire_only_once = yes
+		available = {
+			set_temp_variable = { current_num = 0 }
+			hidden_trigger = {
+				all_core_state = {
+					if = {
+						limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+						add_to_temp_variable = { FRA.current_num = industrial_complex_level }
+					}
+				}
+			}		
+			set_temp_variable = { target_num = rural_develop_back_to_the_country }
+			add_to_temp_variable = { target_num = 3 }
+			custom_trigger_tooltip = {
+				tooltip = Cof_economy_rural_develop_start_trigger
+				check_variable = { current_num > target_num }
+			}
+		}
+		cost = 50
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2.5 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 2.5 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2.5 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_back_to_the_country_name
+			}
+			set_country_flag = rural_back_to_the_country_develop1
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_local_resources_factor = 0.1
+					tooltip = local_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.05
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_recruitable_population_factor = 0.05
+					tooltip = recruitable_population_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = Cof_economy_rural_develop_start_rewards
+			hidden_effect = {	
+				random_core_state = {
+					limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+					set_temp_variable = { sesic = 1 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 0 }
+					Cof_state_economy_situation_change = yes					
+				}
+			}
+		}
+	}
+
+	Cof_economy_rural_new_frontier1 = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = FRA }
+		visible = {  
+			has_completed_focus = FRA_new_frontier_program
+		}
+		ai_will_do = { factor = 0 }
+		days_remove = 270
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 10 }
+		remove_effect = {
+			set_country_flag = rural_new_frontier_rank_one
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_new_frontier_program_name
+			}
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.1
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_state_production_speed_industrial_complex_factor = 0.2
+					tooltip = state_production_speed_industrial_complex_factor_tooltip
+				}
+			}
+
+			set_temp_variable = { cost_num = 0.1 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_cost
+				ECONVAR = econ_industry_basic
+			}
+			add_to_variable = { eibcost = -0.1 }
+
+			set_temp_variable = { gain_num = 0.1 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_gain
+				ECONVAR = econ_equal
+			}
+			add_to_variable = { eqcost = 0.1 }
+			
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 5 }
+			set_temp_variable = { eaec = 2.5 }
+			set_temp_variable = { eaac = 2.5 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#水电建设
+	Cof_economy_hydropower = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = FRA }
+		visible = {  
+			has_completed_focus = FRA_hydropower_development
+		}
+		ai_will_do = { factor = 0 }
+		days_remove = 360
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 15 }
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 10 }
+			set_temp_variable = { eibc = 5 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 2.5 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2.5 }
+			set_temp_variable = { eic = 2.5 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = {
+				localization_key = state_strategy_take_what
+				ZONE = rhone_river_state
+				STATE_STRATEGY = nation_hydropower_development_name
+			}
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 20
+						state = 32
+						state = 763
+						state = 735
+						state = 27
+						state = 760
+						state = 943
+					}
+				}
+				set_state_flag = state_economy_hydropower
+				custom_effect_tooltip = local_state_modifier_tt
+				if = {
+					limit = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+					add_to_variable = {
+						city_state_production_speed_buildings_factor = 0.1
+						tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+					}
+					add_to_variable = {
+						city_local_building_slots_factor = 0.05
+						tooltip = local_building_slots_factor_tooltip
+					}
+					add_to_variable = {
+						city_state_resources_factor = 0.1
+						tooltip = state_resources_factor_tooltip
+					}
+				}
+				else = {
+					add_to_variable = {
+						rural_state_production_speed_buildings_factor = 0.1
+						tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+					}
+					add_to_variable = {
+						rural_local_building_slots_factor = 0.05
+						tooltip = local_building_slots_factor_tooltip
+					}
+					add_to_variable = {
+						rural_state_resources_factor = 0.1
+						tooltip = state_resources_factor_tooltip
+					}
+				}
+			}
+
+			set_temp_variable = { gain_num = 0.1 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_gain
+				ECONVAR = econ_industry_basic
+			}
+			add_to_variable = { eibcost = 0.1 }
+		}
+	}
+
+	#改造自然计划
+	Cof_nature_modifier_plan = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = FRA }
+		visible = { has_completed_focus = FRA_nature_modifier_plan }
+		ai_will_do = { factor = 0 }
+		days_remove = 360
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 15 }
+		remove_effect = {
+			every_core_state = {
+				limit = {
+					OR = {
+						has_state_category = one
+						has_state_category = two
+						has_state_category = three
+						has_state_category = four
+					}
+				}
+				increase_state_category_by_one_level = yes
+				if = {
+					limit = { infrastructure < 4 }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+
+				set_temp_variable = { sesic = 1 } 
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 5 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 5 }
+			set_temp_variable = { elc = 2.5 }
+			set_temp_variable = { eic = 2.5 }
+			cof_econ_target_change = yes
+		}
+	}
+}
+
+#### 军事改革 ####
+Cof_militray_reform = {
+	Cof_army_routine_training = {
+		icon = ger_mefo_bills 
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = has_mili_focus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		modifier = {
+			monthly_change_atrain = 0.3
+		}
+		complete_effect = {
+			set_country_flag = has_mili_focus
+		}
+		remove_effect = {
+			clr_country_flag = has_mili_focus
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#国际干涉
+FRA_BoP_category = {
+#全局
+	#武器出口
+	FRA_global_weapons_trade_show = {
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_excess_arms_trade
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			clr_all_flag = yes
+			if = {
+				limit = { has_country_flag = show_weapons_trade }
+				clr_country_flag = show_weapons_trade
+			}
+			else = { set_country_flag = show_weapons_trade }
+		}
+	}
+	FRA_global_weapons_trade = {
+		allowed = { original_tag = FRA }
+		visible = { has_country_flag = show_weapons_trade }
+		available = {
+			OR = {
+				has_equipment = { infantry_equipment > 10000 }
+				has_equipment = { artillery_equipment > 5000 }
+				has_equipment = { medium_tank_chassis > 2500 }
+			}
+		}
+		target_trigger = {
+			FROM = {
+				NOT = { has_country_flag = weapons_trade_receive }
+				NOT = { is_embargoing = FRA }
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			effect_tooltip = { country_event = cofintern.2 }
+			hidden_effect = { FROM = { FRA = { country_event = cofintern.2 } } }
+		}
+	}
+	#建立黑市
+	FRA_set_red_black_market_show = {
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_government_is_not_people
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			clr_all_flag = yes
+			if = {
+				limit = { has_country_flag = show_set_red_black_market }
+				clr_country_flag = show_set_red_black_market
+			}
+			else = { set_country_flag = show_set_red_black_market }
+		}
+	}
+	FRA_set_red_black_market = {
+		allowed = { original_tag = FRA }
+		visible = { has_country_flag = show_set_red_black_market }
+		target_trigger = {
+			FROM = {
+				has_stability < 0.25
+				has_socialist_government = no
+				set_temp_variable = { ck = var:THIS.party_popularity@totalist }
+				add_to_temp_variable = { ck = var:THIS.party_popularity@syndicalist }
+				add_to_temp_variable = { ck = var:THIS.party_popularity@radical_socialist }
+				check_variable = { ck > 0.1 }   
+				capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } } }
+			}
+		}
+		cost = 50
+		complete_effect = {
+			FROM = {
+				country_event = cofintern.11
+				capital_scope = {
+					add_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id }
+				}
+			}
+		}
+	}
+
+#欧洲
+	iri_eu_expand = {
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_eu_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+ #西欧
+	iri_euw_por_organize_workers = {
+		allowed = { original_tag = FRA }
+		visible = { has_country_flag = iri_euw_show }
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				original_tag = POR
+				exists = yes
+				has_socialist_government = no
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_text = cost_iri_eui_10
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		days_re_enable = 50
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -10 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_stability = -0.05
+				add_popularity = { ideology = syndicalist popularity = 0.05 }
+				random_list = {
+					1 = { add_popularity = { ideology = authoritarian_democrat popularity = -0.05 } }
+					1 = { add_popularity = { ideology = paternal_autocrat popularity = -0.05 } }
+					1 = { add_popularity = { ideology = national_populist popularity = -0.05 } }
+					1 = {
+						add_popularity = { ideology = authoritarian_democrat popularity = -0.025 }
+						add_popularity = { ideology = paternal_autocrat popularity = -0.025	}
+						add_popularity = { ideology = national_populist popularity = -0.025	}
+					}
+				}
+			}
+		}
+	}
+ #中欧
+	iri_eum_ger_organize_smugglers = {
+		allowed = { original_tag = FRA }
+		visible = { 
+			has_country_flag = iri_eum_show 
+			has_completed_focus = FRA_acquiescence_to_german_smugglers
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				original_tag = GER
+				exists = yes
+				has_socialist_government = no
+			}
+		}
+		available = {
+			GER = { 
+				has_stability < 0.6
+				set_temp_variable = { target_num = 0.05 }
+				custom_trigger_tooltip = {
+					tooltip = socialist_like_ideology_more_than_x
+					set_temp_variable = { t = var:THIS.party_popularity@totalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+					check_variable = { t > target_num }
+				}
+				NOT = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } } 
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_text = cost_iri_eui_15
+		ai_will_do = { base = 0	}
+		complete_effect = {
+			add_political_power = -50
+
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			GER = { country_event = cofintern.13 }
+			custom_effect_tooltip = event_effect_tooltip
+			effect_tooltip = {
+				GER = {
+					add_stability = -0.025
+					add_popularity = { ideology = syndicalist popularity = 0.01 }
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+				
+					set_temp_variable = { t = var:THIS.party_popularity@totalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+					multiply_temp_variable = { t = 20 }
+					round_temp_variable = t
+
+					set_temp_variable = { tt = 0.6 }
+					subtract_from_temp_variable = { tt = THIS.stability }
+					multiply_temp_variable = { tt = 10 }
+					round_temp_variable = tt
+
+					add_to_temp_variable = { t = tt }
+					set_temp_variable = { bsg_civilian_factory_use = t }
+					
+					set_temp_variable = { rt = t }
+					multiply_temp_variable = { rt = 3 }
+					
+					if = {
+						limit = { aluminium > rt }
+						set_temp_variable = { bsg_aluminium = rt }
+					}
+					else = { set_temp_variable = { bsg_aluminium = THIS.resource_produced@aluminium } }
+					if = {
+						limit = { chromium > rt }
+						set_temp_variable = { bsg_chromium = rt }
+					}
+					else = { set_temp_variable = { bsg_chromium = THIS.resource_produced@chromium } }
+					if = {
+						limit = { oil > rt }
+						set_temp_variable = { bsg_oil = rt }
+					}
+					else = { set_temp_variable = { bsg_oil = THIS.resource_produced@oil } }
+					if = {
+						limit = { rubber > rt }
+						set_temp_variable = { bsg_rubber = rt }
+					}
+					else = { set_temp_variable = { bsg_rubber = THIS.resource_produced@rubber } }
+					if = {
+						limit = { steel > rt }
+						set_temp_variable = { bsg_steel = rt }
+					}
+					else = { set_temp_variable = { bsg_steel = THIS.resource_produced@steel } }
+					if = {
+						limit = { tungsten > rt }
+						set_temp_variable = { bsg_tungsten = rt }
+					}
+					else = { set_temp_variable = { bsg_tungsten = THIS.resource_produced@tungsten } }
+					multiply_temp_variable = { bsg_aluminium = -1 }
+					multiply_temp_variable = { bsg_chromium = -1 }
+					multiply_temp_variable = { bsg_oil = -1 }
+					multiply_temp_variable = { bsg_rubber = -1 }
+					multiply_temp_variable = { bsg_steel = -1 }
+					multiply_temp_variable = { bsg_tungsten = -1 }
+
+					add_dynamic_modifier = { modifier = Cof_border_smuggling_ger days = 90 }
+				}
+				custom_effect_tooltip = tooltip_white_line
+				FRA = {
+					set_temp_variable = { bsf_industrial_factory_donations = GER.t }
+					set_temp_variable = { bsf_aluminium = GER.bsg_aluminium }
+					set_temp_variable = { bsf_chromium = GER.bsg_chromium }
+					set_temp_variable = { bsf_oil = GER.bsg_oil }
+					set_temp_variable = { bsf_rubber = GER.bsg_rubber }
+					set_temp_variable = { bsf_steel = GER.bsg_steel }
+					set_temp_variable = { bsf_tungsten = GER.bsg_tungsten }
+					multiply_temp_variable = { bsf_aluminium = -1 }
+					multiply_temp_variable = { bsf_chromium = -1 }
+					multiply_temp_variable = { bsf_oil = -1 }
+					multiply_temp_variable = { bsf_rubber = -1 }
+					multiply_temp_variable = { bsf_steel = -1 }
+					multiply_temp_variable = { bsf_tungsten = -1 }
+
+					add_dynamic_modifier = { modifier = Cof_border_smuggling_fra days = 90 }	
+				}
+			}
+			hidden_effect = { add_dynamic_modifier = { modifier = Cof_border_smuggling_fra days = 90 } }
+		}
+	}
+
+#亚洲
+	iri_as_expand = {
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_as_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 15 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+
+#中东
+	iri_me_expand = {
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_me_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 15 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+
+#非洲
+	iri_af_expand = {
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_af_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 15 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+
+#美洲
+	iri_am_expand = {
+		allowed = { original_tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_am_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 15 }
+			iri_influence_change = yes
+		}
+	}
+
+#法伦施泰尔
+	phalanstere_congress_enable = {
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_found_the_phalanstere_international
+			has_country_flag = phalanstere_show
+			NOT = { has_country_flag = phalanstere_congress_adjournment }
+			NOT = { has_country_flag = phalanstere_congress_in_progress }
+		}
+		icon = generic_operation
+		cost = 10
+		complete_effect = { 
+			set_country_flag = phalanstere_congress_in_progress
+			country_event = int.2
+		}
+	}
+	phalanstere_congress_in_progress = {
+		icon = aluminium
+		activation = { has_country_flag = phalanstere_congress_in_progress }
+		available = { has_country_flag = phalanstere_congress_end_ahead }
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		complete_effect = {
+			clr_country_flag = phalanstere_congress_end_ahead
+			clr_country_flag = phalanstere_congress_in_progress
+			set_country_flag = phalanstere_congress_adjournment
+			country_event = int.3
+		}
+		timeout_effect = {
+			clr_country_flag = phalanstere_congress_in_progress
+			set_country_flag = phalanstere_congress_adjournment
+			country_event = int.3
+		}
+	}
+	phalanstere_congress_end_ahead = {
+		allowed = { original_tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			NOT = { has_country_flag = phalanstere_congress_adjournment }
+			has_country_flag = phalanstere_congress_in_progress
+		}
+		icon = generic_operation
+		custom_cost_trigger = { check_variable = { phalanstere_unity > 9 } }
+		custom_cost_text = cost_phalanstere_unity_10
+		complete_effect = { 
+			set_temp_variable = { phauc = -10 }
+			phalanstere_unity_change = yes
+			set_country_flag = phalanstere_congress_end_ahead
+		}
+	}
+	phalanstere_congress_adjournment = {
+		icon = aluminium
+		activation = { has_country_flag = phalanstere_congress_adjournment }
+		available = { has_country_flag = phalanstere_congress_start_ahead }
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 60
+		complete_effect = {
+			clr_country_flag = phalanstere_congress_start_ahead
+			clr_country_flag = phalanstere_congress_adjournment
+		}
+		timeout_effect = {
+			clr_country_flag = phalanstere_congress_adjournment
+			set_temp_variable = { phauc = 1 }
+			phalanstere_unity_change = yes
+		}
+	}
+	phalanstere_congress_start_ahead = {
+		allowed = { original_tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			has_country_flag = phalanstere_congress_adjournment 
+			NOT = { has_country_flag = phalanstere_congress_in_progress }
+		}
+		icon = generic_operation
+		custom_cost_trigger = { check_variable = { phalanstere_unity > 4 } }
+		custom_cost_text = cost_phalanstere_unity_5
+		complete_effect = { 
+			set_temp_variable = { phauc = -5 }
+			phalanstere_unity_change = yes
+			set_country_flag = phalanstere_congress_start_ahead
+		}
+	}
+
+	#国际革命根据地
+	Cof_set_revolutionary_bases_show = {
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_revolutionary_bases_abroad
+			has_country_flag = phalanstere_show
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = set_revolutionary_bases_show }
+				clr_country_flag = set_revolutionary_bases_show
+			}
+			else = { set_country_flag = set_revolutionary_bases_show }
+		}
+	}
+	Cof_set_revolutionary_bases = {
+		allowed = { original_tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			has_country_flag = set_revolutionary_bases_show
+		}
+		target_trigger = {
+			FROM = {
+				has_socialist_government = yes
+				has_war = no
+				capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } }
+			}
+		}
+		icon = generic_operation
+		fire_only_once = yes
+		custom_cost_trigger = { num_of_civilian_factories_available_for_projects > 0 }
+		custom_cost_text = cost_civ_factory_1
+		complete_effect = { 
+			random_core_state = {
+				limit = { industrial_complex > 0 }
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			FROM = { 
+				capital_scope = { 
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } 
+				} 
+				hidden_effect = { add_ideas = Cof_revolutionary_bases_buff }
+			}
+
+			custom_effect_tooltip = effect_internation
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_europe = yes } } }
+				set_temp_variable = { iri_euic = 5 }
+			}
+			else = { set_temp_variable = { iri_euic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_asia = yes } } }
+				set_temp_variable = { iri_asic = 5 }
+			}
+			else = { set_temp_variable = { iri_asic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_middle_east = yes } } }
+				set_temp_variable = { iri_meic = 5 }
+			}
+			else = { set_temp_variable = { iri_meic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_africa = yes } } }
+				set_temp_variable = { iri_afic = 5 }
+			}
+			else = { set_temp_variable = { iri_afic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_america = yes } } }
+				set_temp_variable = { iri_amic = 5 }
+			}
+			else = { set_temp_variable = { iri_amic = 0 } }
+			iri_influence_change = yes
+
+			if = {
+				limit = { has_completed_focus = FRA_found_the_phalanstere_international }
+				set_temp_variable = { phauc = 0.5 }
+				phalanstere_unity_change = yes
+			}
+		}
+	}
+}

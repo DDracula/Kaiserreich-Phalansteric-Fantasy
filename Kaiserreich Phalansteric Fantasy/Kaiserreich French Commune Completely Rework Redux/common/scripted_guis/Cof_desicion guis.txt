@@ -1,0 +1,450 @@
+scripted_gui = {
+    factory_switch_button = {
+        context_type = selected_state_context
+        parent_window_name = state_info_window
+        window_name = economy_factory_switch_button_window
+
+        visible = {
+			ROOT = { tag = FRA }
+			is_owned_by = ROOT
+			is_core_of = ROOT
+            ROOT = { has_completed_focus = FRA_monopolization_of_justice }
+		}
+        triggers = {
+            economy_factory_switch_button_click_enabled = {
+                FRA = { has_political_power > 30 }
+                industrial_complex > 1
+            }
+        }
+        effects = {
+            economy_factory_switch_button_click = {
+                remove_building = { type = industrial_complex level = 1 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+            }
+        }
+    }
+
+    rbm_action_button = {
+        context_type = selected_state_context
+        parent_window_name = state_info_window
+        window_name = red_black_market_window
+
+        visible = {
+			ROOT = { tag = FRA }
+            FRA = { has_completed_focus = FRA_cake_for_everyone }
+            THIS = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } }
+		}
+        triggers = {
+            propoganda_button_click_enabled = {
+                owner = { NOT = { has_country_flag = rbm_action } }
+                FRA = { has_political_power > 25 }
+            }
+            strike_button_click_enabled = {
+                owner = { NOT = { has_country_flag = rbm_action } }
+                FRA = { has_political_power > 25 }
+            }
+            expansions_button_click_enabled = {
+                owner = { 
+                    NOT = { has_country_flag = rbm_action } 
+                    has_stability < 0.25
+                    set_temp_variable = { t = var:THIS.party_popularity@totalist }
+                    add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+                    add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+                    check_variable = { t > 0.15 }
+                }
+                FRA = { has_political_power > 50 }
+                any_neighbor_state = { 
+                    is_core_of = PREV.owner
+                    is_owned_by = PREV.owner
+                    NOT = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } } 
+                }
+            }
+        }
+        effects = {
+            propoganda_button_click = {
+                FRA = { add_political_power = -25 }
+                owner = { 
+                    set_country_flag = rbm_action_propoganda
+                    country_event = cofintern.12
+                }
+            }
+            strike_button_click = {
+                FRA = { add_political_power = -25 }
+                set_state_flag = rbm_damage
+                owner = { 
+                    set_country_flag = rbm_action_strike
+                    country_event = cofintern.12
+                }
+            }
+            expansions_button_click = {
+                FRA = { add_political_power = -50 }
+                set_state_flag = rbm_base
+                owner = { 
+                    set_country_flag = rbm_action_expansions
+                    country_event = cofintern.12
+                }
+            }
+        }
+    }
+
+    #
+    econ_circle_value = {
+        context_type = decision_category
+        window_name = econ_variable_ui_progressbar
+
+        triggers = {
+            ring_progressbar_ev_good_visible = {
+                OR = {
+                    check_variable = { cof_econ_values > 0 }
+                    check_variable = { cof_econ_values = 0 }
+                }
+            }
+            ring_progressbar_ev_bad_visible = {
+                check_variable = { cof_econ_values < 0 }
+            }
+        }
+        properties = {
+            ring_progressbar_eib = {
+                frame = econ_industry_basic
+            }
+            ring_progressbar_eip = {
+                frame = econ_industry_process
+            }
+            ring_progressbar_eia = {
+                frame = econ_industry_arms
+            }
+
+            ring_progressbar_eam = {
+                frame = econ_agriculture_mechanized
+            }
+            ring_progressbar_eae = {
+                frame = econ_agriculture_chemical
+            }
+            ring_progressbar_eaa = {
+                frame = econ_agriculture_chain
+            }
+
+            ring_progressbar_eq = {
+                frame = econ_equal
+            }
+            ring_progressbar_el = {
+                frame = econ_link
+            }
+            ring_progressbar_ei = {
+                frame = econ_innovate
+            }
+
+            ring_progressbar_econ_synd = {
+                frame = gui_econ_synd
+            }
+            ring_progressbar_econ_oppo = {
+                frame = gui_econ_oppo 
+            }
+            ring_progressbar_econ_jaco = {
+                frame = gui_econ_jaco
+            }
+            ring_progressbar_econ_sore = {
+                frame = gui_econ_sore
+            }
+
+            gui_econ_DEA_portrait = {
+                image = "[gui_econ_DEA_portrait_loc]"
+            }
+            ring_progressbar_ev_good = {
+                frame = cof_econ_values
+            }
+            ring_progressbar_ev_bad = {
+                frame = cof_econ_values_bad
+            }
+        }
+    }
+
+    pop_circle_value = {
+        context_type = decision_category
+        window_name = society_variable_ui
+
+        properties = {
+            pop_worker_ui_s = {
+                frame = pop_satisfaction_workers
+            }
+            pop_worker_ui_synd = {
+                frame = gui_popw_synd
+            }
+            pop_worker_ui_oppo = {
+                frame = gui_popw_oppo
+            }
+            pop_worker_ui_jaco = {
+                frame = gui_popw_jaco
+            }
+            pop_worker_ui_sore = {
+                frame = gui_popw_sore
+            }
+
+            pop_peasant_ui_s = {
+                frame = pop_satisfaction_peasants
+            }
+            pop_peasant_ui_synd = {
+                frame = gui_popp_synd
+            }
+            pop_peasant_ui_oppo = {
+                frame = gui_popp_oppo
+            }
+            pop_peasant_ui_jaco = {
+                frame = gui_popp_jaco
+            }
+            pop_peasant_ui_sore = {
+                frame = gui_popp_sore
+            }
+
+            pop_merchant_ui_s = {
+                frame = pop_satisfaction_merchants
+            }
+            pop_merchant_ui_synd = {
+                frame = gui_popm_synd
+            }
+            pop_merchant_ui_oppo = {
+                frame = gui_popm_oppo
+            }
+            pop_merchant_ui_jaco = {
+                frame = gui_popm_jaco
+            }
+            pop_merchant_ui_sore = {
+                frame = gui_popm_sore
+            }
+
+            pop_scholar_ui_s = {
+                frame = pop_satisfaction_scholars
+            }
+            pop_scholar_ui_synd = {
+                frame = gui_pops_synd
+            }
+            pop_scholar_ui_oppo = {
+                frame = gui_pops_oppo
+            }
+            pop_scholar_ui_jaco = {
+                frame = gui_pops_jaco
+            }
+            pop_scholar_ui_sore = {
+                frame = gui_pops_sore
+            }
+
+            pop_bureaucrat_ui_s = {
+                frame = pop_satisfaction_bureaucrats
+            }
+            pop_bureaucrat_ui_synd = {
+                frame = gui_popb_synd
+            }
+            pop_bureaucrat_ui_oppo = {
+                frame = gui_popb_oppo
+            }
+            pop_bureaucrat_ui_jaco = {
+                frame = gui_popb_jaco
+            }
+            pop_bureaucrat_ui_sore = {
+                frame = gui_popb_sore
+            }
+
+            pop_army_ui_s = {
+                frame = pop_satisfaction_army
+            }
+            pop_army_ui_synd = {
+                frame = gui_popa_synd
+            }
+            pop_army_ui_oppo = {
+                frame = gui_popa_oppo
+            }
+            pop_army_ui_jaco = {
+                frame = gui_popa_jaco
+            }
+            pop_army_ui_sore = {
+                frame = gui_popa_sore
+            }
+
+            pop_total_ui_worker = {
+                frame = gui_popw
+            }
+            pop_total_ui_peasant = {
+                frame = gui_popp
+            }
+            pop_total_ui_merchant = {
+                frame = gui_popm
+            }
+            pop_total_ui_scholar = {
+                frame = gui_pops
+            }
+            pop_total_ui_bureaucrat = {
+                frame = gui_popb
+            }
+            pop_total_ui_army = {
+                frame = gui_popa
+            }
+            pop_total_ui_s = {
+                frame = pop_satisfaction
+            }
+
+            gui_society_DIS_portrait = {
+                image = "[gui_society_DIS_portrait_loc]"
+            }
+        }
+    }
+
+    
+    army_circle_value = {
+        context_type = decision_category
+        window_name = military_variable_ui
+
+        properties = {
+            pop_officer_ui = {
+                frame = gui_popao
+            }
+            pop_nco_ui = {
+                frame = gui_popan
+            }
+            pop_soldier_ui = {
+                frame = gui_popas
+            }
+
+            pop_officer_ui_synd = {
+                frame = gui_popao_synd
+            }
+            pop_officer_ui_oppo = {
+                frame = gui_popao_oppo
+            }
+            pop_officer_ui_jaco = {
+                frame = gui_popao_jaco
+            }
+            pop_officer_ui_sore = {
+                frame = gui_popao_sore
+            }
+
+            pop_nco_ui_synd = {
+                frame = gui_popan_synd
+            }
+            pop_nco_ui_oppo = {
+                frame = gui_popan_oppo
+            }
+            pop_nco_ui_jaco = {
+                frame = gui_popan_jaco
+            }
+            pop_nco_ui_sore = {
+                frame = gui_popan_sore
+            }
+
+            pop_soldier_ui_synd = {
+                frame = gui_popas_synd
+            }
+            pop_soldier_ui_oppo = {
+                frame = gui_popas_oppo
+            }
+            pop_soldier_ui_jaco = {
+                frame = gui_popas_jaco
+            }
+            pop_soldier_ui_sore = {
+                frame = gui_popas_sore
+            }
+
+            armyv_autonomy_ui = {
+                frame = Cof_army_autonomy
+            }
+            armyv_willing_ui = {
+                frame = Cof_army_willing
+            }
+            armyv_training_ui = {
+                frame = Cof_army_training
+            }
+            armyv_equipment_ui = {
+                frame = Cof_army_equipment
+            }
+            armyv_passionate_ui = {
+                frame = Cof_army_passionate
+            }
+
+            gui_army_CGSC_portrait = {
+                image = "[gui_army_CGSC_portrait_loc]"
+            }
+            theory_ui = {
+                frame = Cof_army_theory_implementation
+            }
+
+            pop_faction_synd = {
+                frame = gui_msynd
+            }
+            pop_faction_oppo = {
+                frame = gui_moppo
+            }
+            pop_faction_jaco = {
+                frame = gui_mjaco
+            }
+            pop_faction_sore = {
+                frame = gui_msore  
+            }
+        }
+    }
+
+
+    politics_circle_value = {
+        context_type = decision_category
+        window_name = politics_ui
+
+        triggers = {
+            politics_ui_bgt_vs_csp_csp_visible = {
+                OR = {
+                    check_variable = { Cof_BGT_vs_CSP_value > 0 }
+                    check_variable = { Cof_BGT_vs_CSP_value = 0 }
+                }
+            }
+            politics_ui_bgt_vs_csp_bgt_visible = {
+                check_variable = { Cof_BGT_vs_CSP_value < 0 }
+            }
+        }
+        effects = {
+            open_bgt_windows_click = {
+                if = {        
+                    limit = { has_country_flag = bgt_show }
+                    clr_country_flag = bgt_show
+                }
+                else = { set_country_flag = bgt_show }
+            }
+            open_faction_desc_synd_click = {
+                country_event = cofpolitics.2
+            }
+            open_faction_desc_oppo_click = {
+                country_event = cofpolitics.5
+            }
+            open_faction_desc_jaco_click = {
+                country_event = cofpolitics.8
+            }
+            open_faction_desc_sore_click = {
+                country_event = cofpolitics.11
+            }
+        }
+        properties = {
+            politics_ui_bgt_vs_csp_csp = {
+                frame = gui_csp
+            }
+            politics_ui_bgt_vs_csp_bgt = {
+                frame = gui_bgt
+            }
+            politics_ui_ios = {
+                frame = gui_ios
+            }
+
+            politics_faction_synd = {
+                frame = gui_posynd
+            }
+            politics_faction_oppo = {
+                frame = gui_pooppo
+            }
+            politics_faction_jaco = {
+                frame = gui_pojaco
+            }
+            politics_faction_sore = {
+                frame = gui_posore
+            }
+        }
+    }
+
+}

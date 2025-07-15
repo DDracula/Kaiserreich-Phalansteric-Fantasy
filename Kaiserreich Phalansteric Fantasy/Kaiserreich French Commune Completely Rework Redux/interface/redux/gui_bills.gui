@@ -1,0 +1,154 @@
+guiTypes = {
+	containerWindowType = {
+		name = "socialbills_window_button"
+		position = { x = 400 y = 408 }
+		size = { width = 10 height = 55 }
+		origo = upper_left
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "background"
+			spriteType = "GFX_show_power_balance_button"
+		}
+
+		iconType = {
+			name = "bills_icon"
+			spriteType = "GFX_decision_ger_mefo_bills"
+			position = { x = 10 y = 5 }
+			scale = 1.5
+			pdx_tooltip = social_bills_number
+		}
+
+		buttonType = {
+			name = "socialbills_window_button_hidden"
+			position = { x = 75 y = 10 }
+			scale = 1.2
+			spriteType = "GFX_production_line_arrow_left"
+			clicksound = click_default
+			pdx_tooltip = hidden_social_bills
+		}
+		 
+		buttonType = {
+			name = "socialbills_window_button_show"
+			position = { x = 75 y = 10 }
+			scale = 1.2
+			spriteType = "GFX_production_line_arrow_right"
+			clicksound = click_default
+			pdx_tooltip = show_social_bills
+		}
+	
+
+		
+	}
+
+	
+
+	containerWindowType = {
+		name = "socialbills_window"
+		position = { x = 538 y = 85 }
+		size = { width = 380 height = 700 }
+		origo = upper_left
+		moveable = yes
+		clipping = yes
+
+		fade_time = 300
+		fade_type = linear
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_window2_1b_border"
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite ="GFX_tiled_generic_overlay_bg1_small"				
+		}
+
+		containerWindowType = {
+			name = "socialbills_detail_window"
+			position = { x = 10 y = 30 }
+			size = { width = 362 height = 662 }
+
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+
+			verticalScrollbar = "right_vertical_slider"
+
+			gridboxtype = {
+				name = socialbills_context
+				position = { x = 10 y = 8 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 1 }
+				add_horizontal = no
+			}
+		}
+
+		iconType = {
+			name = "header_title"
+			spriteType = "GFX_category_header"
+			position = { x = 5 y = -6 }
+			Orientation = "upper_left"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "header_icon"
+			spriteType = "GFX_decision_category_ger_mefo_bills"
+			scale = 0.9
+			position = { x = 5 y = 0 }
+			Orientation = "upper_left"
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "socialbills_window_esc"
+			position = { x = 345 y = 0 }
+			spriteType = "GFX_closebutton"
+			clicksound = click_default
+			shortcut = "ESCAPE"
+		}
+
+		instantTextboxType = {
+			name = "title"
+			position = { x = -55 y = 3 }
+			font = "hoi_24header"
+			text = socialbills_desc
+			maxWidth = 300
+			maxHeight = 20
+			format = center
+		}
+		
+	}
+
+	containerWindowType = {
+		name = "social_bill_window"
+		size = { width = 328 height = 80 }
+
+		clipping = yes
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_paper_w_frame_bg"
+		}
+
+		instantTextboxType = {
+			name = "bill_title"
+			position = { x = 16 y = 28 }
+			font = "hoi_24header"
+			text = bill_name
+			maxWidth = 300
+			maxHeight = 40
+			format = center
+			pdx_tooltip = bill_buff
+			pdx_tooltip_delayed = bill_delayed
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_research_bg"
+		}
+	}
+}

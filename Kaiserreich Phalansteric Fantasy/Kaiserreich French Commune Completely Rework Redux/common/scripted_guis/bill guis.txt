@@ -1,0 +1,51 @@
+scripted_gui = {
+    socialbills_button = {
+        context_type = player_context
+        parent_window_name = countrypoliticsview
+        window_name = socialbills_window_button
+
+        visible = {
+			tag = FRA
+		}
+        triggers = {
+            socialbills_window_button_show_visible = {
+                NOT = { has_country_flag = show_socialbills } 
+            }
+            socialbills_window_button_hidden_visible = { 
+                has_country_flag = show_socialbills 
+            }
+        }
+        effects = {
+            socialbills_window_button_show_click = { 
+                set_country_flag = show_socialbills 
+            }
+            socialbills_window_button_hidden_click = { 
+                clr_country_flag = show_socialbills 
+            }
+        }
+    } 
+    
+    socialbills_show = {
+        context_type = player_context
+        window_name = socialbills_window
+
+        visible = {
+			tag = FRA
+            has_country_flag = show_socialbills
+		}
+        effects = {
+            socialbills_window_esc_click = {
+                clr_country_flag = show_socialbills
+            }
+        }
+        dynamic_lists = {
+            socialbills_context = {
+                array = cof_social_bills
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = social_bill_window
+            }
+        }
+    }
+}

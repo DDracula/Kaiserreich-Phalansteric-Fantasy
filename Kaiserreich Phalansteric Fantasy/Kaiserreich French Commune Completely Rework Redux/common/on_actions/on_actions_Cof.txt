@@ -1,0 +1,1041 @@
+on_actions = {
+    on_startup = {
+        effect = {
+            FRA = {
+                country_event = cofpolitics.1
+                country_event = { id = cofeconomy.2 days = 132 random_hours = 18 }
+                country_event = { id = cofeconomy.6 days = 60 random_days = 30 }
+                country_event = { id = cofeconomy.14 days = 140 random_days = 30 }
+                country_event = { id = cofpolitics.14 days = 180 random_days = 30 }
+
+                set_variable = { cgt_confidence = -4 }
+                set_variable = { cgt_monopolization = 87 }
+
+                set_country_flag = CCSP_synd
+                set_country_flag = DEA_synd
+                set_country_flag = DFA_synd
+                set_country_flag = DIS_oppo
+                set_country_flag = DSRG_oppo
+                set_country_flag = CGSC_synd
+
+                set_country_flag = CBGT_1936
+                set_country_flag = CCSP_1936
+                set_country_flag = DFA_1936
+                set_country_flag = DEA_1936
+                set_country_flag = DIS_1936
+                set_country_flag = DSRG_1936
+                set_country_flag = CGSC_1936
+
+                csp_position_change = yes
+
+                set_variable = { DFA_attitude = -2 }
+                set_variable = { DEA_attitude = -2 }
+                set_variable = { DIS_attitude = 3 }
+                set_variable = { DSRG_attitude = 0 }
+                set_variable = { CGSC_attitude = 2 }
+                CSP_attitude_change = yes
+
+                set_country_flag = bill_impeachment_marceau_pivert
+                set_country_flag = voting_for_bill
+                activate_mission = Cof_voting_time_for_bill
+                add_days_mission_timeout = {
+                    mission = Cof_voting_time_for_bill
+                    days = -23
+                }
+                set_variable = { agree_synd_mode = 18 }
+              	set_variable = { agree_synd_radi = 21 }
+            	set_variable = { agree_oppo_comm = 89 }
+              	set_variable = { agree_oppo_anar = 76 }
+               	set_variable = { agree_jaco_neos = 64 }
+            	set_variable = { agree_jaco_revo = 38 }
+	            set_variable = { agree_sore_oldl = 82 }
+	            set_variable = { agree_sore_yout = 26 }
+                Cof_politics_voting_for_bill_agree_count = yes
+
+                set_variable = { seat_CNS = 67 }
+                set_variable = { seat_PSF = 52 }
+                set_variable = { seat_POU = 78 }
+                set_variable = { seat_CSR = 143 }
+                set_variable = { seat_PCOP = 75 }
+                set_variable = { seat_AFA = 57 }
+                set_variable = { seat_LJR = 21 }
+                set_variable = { seat_FSR = 28 }
+                set_variable = { seat_FNC = 7 }
+                set_variable = { seat_FCF = 17 }
+                set_variable = { seat_FP = 27 }
+                set_variable = { seat_ETC = 78 }
+                refresh_bgt_seat = yes
+
+                set_country_flag = party_CNS_choice
+                set_country_flag = party_PSF_choice
+                set_country_flag = party_POU_choice
+                set_country_flag = party_CSR_choice
+                set_country_flag = party_PCOP_choice
+                set_country_flag = party_AFA_choice
+                set_country_flag = party_LJR_choice
+                set_country_flag = party_FSR_choice
+                set_country_flag = party_FNC_choice
+                set_country_flag = party_FCF_choice
+                set_country_flag = party_FP_choice
+                set_country_flag = party_ETC_choice
+
+                set_variable = { CNS_faction^1 = 0 }
+                set_variable = { CNS_faction^2 = 0 }
+                set_variable = { CNS_faction^3 = 0 }
+                set_variable = { CNS_faction^4 = 0 }
+                set_variable = { CNS_faction^5 = 0 }
+                set_variable = { CNS_faction^6 = 0 }
+                set_variable = { CNS_faction^7 = 58 }
+                set_variable = { CNS_faction^8 = 14 }
+
+                set_variable = { PSF_faction^1 = 0 }
+                set_variable = { PSF_faction^2 = 0 }
+                set_variable = { PSF_faction^3 = 0 }
+                set_variable = { PSF_faction^4 = 0 }
+                set_variable = { PSF_faction^5 = 29 }
+                set_variable = { PSF_faction^6 = 23 }
+                set_variable = { PSF_faction^7 = 0 }
+                set_variable = { PSF_faction^8 = 0 }
+
+                set_variable = { POU_faction^1 = 62 }
+                set_variable = { POU_faction^2 = 16 }
+                set_variable = { POU_faction^3 = 0 }
+                set_variable = { POU_faction^4 = 0 }
+                set_variable = { POU_faction^5 = 0 }
+                set_variable = { POU_faction^6 = 0 }
+                set_variable = { POU_faction^7 = 0 }
+                set_variable = { POU_faction^8 = 0 }
+
+                set_variable = { CSR_faction^1 = 44 }
+                set_variable = { CSR_faction^2 = 99 }
+                set_variable = { CSR_faction^3 = 0 }
+                set_variable = { CSR_faction^4 = 0 }
+                set_variable = { CSR_faction^5 = 0 }
+                set_variable = { CSR_faction^6 = 0 }
+                set_variable = { CSR_faction^7 = 0 }
+                set_variable = { CSR_faction^8 = 0 }
+
+                set_variable = { PCOP_faction^1 = 0 }
+                set_variable = { PCOP_faction^2 = 0 }
+                set_variable = { PCOP_faction^3 = 75 }
+                set_variable = { PCOP_faction^4 = 0 }
+                set_variable = { PCOP_faction^5 = 0 }
+                set_variable = { PCOP_faction^6 = 0 }
+                set_variable = { PCOP_faction^7 = 0 }
+                set_variable = { PCOP_faction^8 = 0 }
+
+                set_variable = { AFA_faction^1 = 0 }
+                set_variable = { AFA_faction^2 = 0 }
+                set_variable = { AFA_faction^3 = 0 }
+                set_variable = { AFA_faction^4 = 57 }
+                set_variable = { AFA_faction^5 = 0 }
+                set_variable = { AFA_faction^6 = 0 }
+                set_variable = { AFA_faction^7 = 0 }
+                set_variable = { AFA_faction^8 = 0 }
+
+                set_variable = { LJR_faction^1 = 11 }
+                set_variable = { LJR_faction^2 = 0 }
+                set_variable = { LJR_faction^3 = 2 }
+                set_variable = { LJR_faction^4 = 3 }
+                set_variable = { LJR_faction^5 = 5 }
+                set_variable = { LJR_faction^6 = 0 }
+                set_variable = { LJR_faction^7 = 0 }
+                set_variable = { LJR_faction^8 = 0 }
+
+                set_variable = { FSR_faction^1 = 12 }
+                set_variable = { FSR_faction^2 = 0 }
+                set_variable = { FSR_faction^3 = 0 }
+                set_variable = { FSR_faction^4 = 0 }
+                set_variable = { FSR_faction^5 = 16 }
+                set_variable = { FSR_faction^6 = 0 }
+                set_variable = { FSR_faction^7 = 0 }
+                set_variable = { FSR_faction^8 = 0 }
+
+                set_variable = { FNC_faction^1 = 0 }
+                set_variable = { FNC_faction^2 = 0 }
+                set_variable = { FNC_faction^3 = 0 }
+                set_variable = { FNC_faction^4 = 0 }
+                set_variable = { FNC_faction^5 = 7 }
+                set_variable = { FNC_faction^6 = 0 }
+                set_variable = { FNC_faction^7 = 0 }
+                set_variable = { FNC_faction^8 = 0 }
+
+                set_variable = { FCF_faction^1 = 0 }
+                set_variable = { FCF_faction^2 = 0 }
+                set_variable = { FCF_faction^3 = 0 }
+                set_variable = { FCF_faction^4 = 0 }
+                set_variable = { FCF_faction^5 = 3 }
+                set_variable = { FCF_faction^6 = 0 }
+                set_variable = { FCF_faction^7 = 14 }
+                set_variable = { FCF_faction^8 = 0 }
+
+                set_variable = { FP_faction^1 = 4 }
+                set_variable = { FP_faction^2 = 0 }
+                set_variable = { FP_faction^3 = 6 }
+                set_variable = { FP_faction^4 = 0 }
+                set_variable = { FP_faction^5 = 0 }
+                set_variable = { FP_faction^6 = 15 }
+                set_variable = { FP_faction^7 = 2 }
+                set_variable = { FP_faction^8 = 0 }
+
+                set_variable = { ETC_faction^1 = 4 }
+                set_variable = { ETC_faction^2 = 8 }
+                set_variable = { ETC_faction^3 = 9 }
+                set_variable = { ETC_faction^4 = 28 }
+                set_variable = { ETC_faction^5 = 4 }
+                set_variable = { ETC_faction^6 = 0 }
+                set_variable = { ETC_faction^7 = 13 }
+                set_variable = { ETC_faction^8 = 12 }
+
+                set_variable = { parilament_choice^1 = 14 }
+                set_variable = { parilament_choice^2 = 14 }
+                set_variable = { parilament_choice^3 = 14 }
+
+                set_variable = { seat_synd_mode = 137 }
+                set_variable = { seat_synd_radi = 127 }
+                set_variable = { seat_synd = 264 }
+                set_variable = { seat_oppo_comm = 92 }
+                set_variable = { seat_oppo_anar = 84 }
+                set_variable = { seat_oppo = 176 }
+                set_variable = { seat_jaco_neos = 64 }
+                set_variable = { seat_jaco_revo = 38 }
+                set_variable = { seat_jaco = 102 }
+                set_variable = { seat_sore_oldl = 82 }
+                set_variable = { seat_sore_yout = 26 }
+                set_variable = { seat_sore = 108 }
+                
+                set_variable = { pop_workers = 27 }
+                set_variable = { pop_satisfaction_workers = 42 }
+                set_variable = { pop_workers_synd = 43 }
+                set_variable = { pop_workers_oppo = 29 }
+                set_variable = { pop_workers_jaco = 11 }
+                set_variable = { pop_workers_sore = 17 }
+                
+                set_variable = { pop_peasants = 19 }
+                set_variable = { pop_satisfaction_peasants = 35 }
+                set_variable = { pop_peasants_synd = 6 }
+                set_variable = { pop_peasants_oppo = 52 }
+                set_variable = { pop_peasants_jaco = 3 }
+                set_variable = { pop_peasants_sore = 39 }
+                
+                set_variable = { pop_merchants = 17 }
+                set_variable = { pop_satisfaction_merchants = 34 }
+                set_variable = { pop_merchants_synd = 26 }
+                set_variable = { pop_merchants_oppo = 28 }
+                set_variable = { pop_merchants_jaco = 24 }
+                set_variable = { pop_merchants_sore = 22 }
+                
+                set_variable = { pop_scholars = 12 }
+                set_variable = { pop_satisfaction_scholars = 51 }
+                set_variable = { pop_scholars_synd = 24 }
+                set_variable = { pop_scholars_oppo = 31 }
+                set_variable = { pop_scholars_jaco = 17 }
+                set_variable = { pop_scholars_sore = 28 }
+                
+                set_variable = { pop_bureaucrats = 16 }
+                set_variable = { pop_satisfaction_bureaucrats = 47 }
+                set_variable = { pop_bureaucrats_synd = 20 }
+                set_variable = { pop_bureaucrats_oppo = 14 }
+                set_variable = { pop_bureaucrats_jaco = 42 }
+                set_variable = { pop_bureaucrats_sore = 24 }
+                
+                set_variable = { pop_army = 9 }
+                set_variable = { pop_satisfaction_army = 57 }
+                
+                set_variable = { pop_army_officers = 45 }
+                set_variable = { pop_officers_synd = 18 }
+                set_variable = { pop_officers_oppo = 44 }
+                set_variable = { pop_officers_jaco = 4 }
+                set_variable = { pop_officers_sore = 34 }
+                
+                set_variable = { pop_army_ncos = 38 }
+                set_variable = { pop_ncos_synd = 20 }
+                set_variable = { pop_ncos_oppo = 35 }
+                set_variable = { pop_ncos_jaco = 6 }
+                set_variable = { pop_ncos_sore = 39 }
+                
+                set_variable = { pop_army_soldiers = 17 }
+                set_variable = { pop_soldiers_synd = 22 }
+                set_variable = { pop_soldiers_oppo = 20 }
+                set_variable = { pop_soldiers_jaco = 8 }
+                set_variable = { pop_soldiers_sore = 50 }
+
+                set_variable = { Cof_BGT_vs_CSP_value = 18 }
+                set_variable = { Cof_politics_intensity_of_struggle = 27 }
+
+                set_variable = { gui_csp = Cof_BGT_vs_CSP_value }
+                multiply_variable = { gui_csp = -0.25 }
+                add_to_variable = { gui_csp = 25 }
+
+                set_variable = { gui_ios = Cof_politics_intensity_of_struggle }
+                multiply_variable = { gui_ios = 0.5 }
+                add_to_variable = { gui_ios = 50 }
+
+                army_faction_tendency_change = yes
+                class_pop_faction_tendency_change = yes
+                class_pop_change = yes
+                class_pop_satisfactions_change = yes
+                add_dynamic_modifier = { modifier = Cof_politics_pop_impact }
+                politics_pop_impact_count = yes
+
+                #economy
+                set_variable = { economy_synd = 28 }
+                set_variable = { economy_oppo = 24 }
+                set_variable = { economy_jaco = 26 }
+                set_variable = { economy_sore = 22 }
+
+                set_variable = { gui_econ_synd = 28 }
+                set_variable = { gui_econ_oppo = 52 }
+                set_variable = { gui_econ_jaco = 78 }
+                set_variable = { gui_econ_sore = 100 }
+
+                set_variable = { Cof_economy_model_co_ops = 0 }
+                set_variable = { Cof_economy_model_market = 0 }
+                set_variable = { Cof_economy_model_plan = 0 }
+                set_variable = { Cof_economy_model_order = 0 }
+
+                set_variable = { cof_econ_values = 24 }
+                set_variable = { econ_industry_basic = 43 }
+                set_variable = { econ_industry_process = 35 }
+                set_variable = { econ_industry_arms = 27 }
+                set_variable = { econ_agriculture_mechanized = 9 }
+                set_variable = { econ_agriculture_chemical = 21 }
+                set_variable = { econ_agriculture_chain = 6 }
+                set_variable = { econ_equal = 49 }
+                set_variable = { econ_link = 23 }
+                set_variable = { econ_innovate = 36 }
+                
+                add_dynamic_modifier = { modifier = Cof_economy_impact }
+                Cof_economy_impact_count = yes
+
+                    #state
+                set_country_flag = rural_ignore_the_country
+
+                every_core_state = {
+                    limit = { is_fully_controlled_by = FRA }
+                    set_variable = { state_economy_industry = 0 }
+                    set_variable = { state_economy_arms = 0 }
+                    if = {
+                        limit = { is_coastal = yes }
+                        set_variable = { state_economy_dockyard = 0 }
+                    }
+                    add_dynamic_modifier = { 
+                        modifier = Cof_state_economy_situation 
+                        scope = THIS.id
+                    }
+
+                    if = {
+                        limit = { cof_is_city_zone = yes }
+                        state_city_buff_count = yes
+                        add_dynamic_modifier = { 
+                            modifier = Cof_state_city_zone 
+                            scope = THIS.id
+                        }
+                    }
+
+                    if = {
+                        limit = { cof_is_rural_zone = yes }
+                        set_state_flag = economy_strategy_yes
+                        state_rural_buff_count = yes
+                        add_dynamic_modifier = { 
+                            modifier = Cof_state_rural_zone 
+                            scope = THIS.id
+                        }
+                    }
+                }
+
+                14 = {
+                    Cof_brittcul_change = yes
+                    add_dynamic_modifier = { modifier = Cof_state_Brittany scope = THIS.id }
+                    set_variable = { brittcul = 28 }
+                }
+                983 = { 
+                    Cof_brittcul_change = yes
+                    add_dynamic_modifier = { modifier = Cof_state_Brittany scope = THIS.id }
+                    set_variable = { brittcul = 28 }
+                }
+
+                16 = { add_dynamic_modifier = { modifier = Cof_state_Paris } }
+                17 = { add_dynamic_modifier = { modifier = Cof_state_Calais } }
+                19 = { add_dynamic_modifier = { modifier = Cof_state_Bordeaux } }
+                21 = { add_dynamic_modifier = { modifier = Cof_state_Massay } }
+
+                add_dynamic_modifier = { modifier = Cof_state_general_buff }
+
+                #military
+                set_variable = { military_synd = 22 }
+                set_variable = { military_oppo = 26 }
+                set_variable = { military_jaco = 14 }
+                set_variable = { military_sore = 38 }
+
+                set_variable = { Cof_army_theory_panzer_group = 0 }
+                set_variable = { Cof_army_theory_blitz_delite = 0 }
+                set_variable = { Cof_army_theory_motorization = 0 }
+                set_variable = { Cof_army_theory_infanty_artillery = 0 }
+                set_variable = { Cof_army_theory_centrailed_command = 0 }
+                set_variable = { Cof_army_theory_defensive_countattack = 0 }
+                set_variable = { Cof_army_theory_nco_initiative = 0 }
+                set_variable = { Cof_army_theory_small_combat = 0 }
+
+                set_variable = { Cof_army_autonomy = 57 }
+                set_variable = { Cof_army_willing = 62 }
+                set_variable = { Cof_army_training = 31 }
+                set_variable = { Cof_army_equipment = 44 }
+                set_variable = { Cof_army_passionate = 28 }
+
+                set_variable = { Cof_army_theory_implementation = 40 }
+                set_variable = { atimp0 = 40 }
+                set_variable = { atimp1 = 0 }
+                set_variable = { atimp2 = 0 }
+                set_variable = { atimp3 = 0 }
+                set_variable = { atimp4 = 0 }
+                set_variable = { atimp5 = 0 }
+                set_variable = { atimp6 = 0 }
+                set_variable = { atimp7 = 0 }
+                set_variable = { atimp8 = 0 }
+
+                add_dynamic_modifier = { modifier = Cof_military_reform_impact }
+                Cof_military_reform_impact_count = yes
+                mili_faction_influence_change = yes
+                faction_infulences_count = yes
+
+                #bills
+                add_to_array = { array = FRA.cof_social_bills value = 1 }
+                add_to_array = { array = FRA.cof_social_bills value = 2 }
+                add_to_array = { array = FRA.cof_social_bills value = 3 }
+                add_to_array = { array = FRA.cof_social_bills value = 4 }
+                add_to_array = { array = FRA.cof_social_bills value = 5 }
+                add_to_array = { array = FRA.cof_social_bills value = 9 }
+                set_variable = { bills_cost = -0.06 }
+                add_dynamic_modifier = { modifier = Cof_bill_number_cost }
+
+                #international
+                set_power_balance = { id = BoP_Decisions_FRA }
+                set_variable = { iri_eui = 60 }
+                set_variable = { iri_asi = 50 }
+                set_variable = { iri_mei = 20 }
+                set_variable = { iri_afi = 20 }
+                set_variable = { iri_ami = 40 }
+
+                #
+                add_dynamic_modifier = { modifier = Cof_total_variable_change }
+
+                society_period_change_judge = yes
+                economy_period_change_judge = yes
+                military_period_change_judge = yes
+            }
+        }
+    }
+    on_daily_FRA = {
+        effect = {
+            faction_infulences_count = yes
+            society_period_change_judge = yes
+
+            intensity_of_struggle_period_change = yes
+
+            politics_pop_impact_count = yes
+            economy_period_change_judge = yes
+            Cof_economy_impact_count = yes
+
+            military_period_change_judge = yes
+            Cof_military_reform_impact_count = yes
+
+
+            set_variable = { bills_cost = cof_social_bills^num }
+            multiply_variable = { bills_cost = -0.01 }
+
+            every_core_state = {
+                if = {
+                    limit = { 
+                        is_controlled_by = FRA
+                        has_dynamic_modifier = { modifier = Cof_state_economy_situation scope = THIS.id } 
+                    }
+                    Cof_state_economy_situation_max_switch = yes
+
+                    if = {
+                        limit = { FRA = { has_completed_focus = FRA_socialist_market } }
+                        set_variable = { state_economoy_consumer_goods_factor = state_economy_industry }
+                        multiply_variable = { state_economoy_consumer_goods_factor = -0.005 }
+                        set_variable = { state_economy_industrial_capacity_factory = state_economy_arms }
+                        multiply_variable = { state_economy_industrial_capacity_factory = 0.005 }
+                        set_variable = { state_economy_industrial_capacity_dockyard = state_economy_dockyard }
+                        multiply_variable = { state_economy_industrial_capacity_dockyard = 0.005 }
+                    }
+                }
+               
+                if = {
+                    limit = {
+                        is_fully_controlled_by = FRA
+                        NOT = { has_dynamic_modifier = { modifier = Cof_state_economy_situation scope = THIS.id }  }
+                    }
+                    add_dynamic_modifier = { modifier = Cof_state_economy_situation scope = THIS.id }
+                }
+
+                if = {
+                    limit = { has_dynamic_modifier = { modifier = Cof_state_Brittany scope = THIS.id } }
+                    Cof_brittcul_change = yes
+                }
+
+                if = {
+                    limit = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+                    state_city_buff_count = yes
+                }
+
+                if = {
+                    limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+                    state_rural_buff_count = yes
+                }
+
+                if = {
+                    limit = {
+                        is_fully_controlled_by = FRA
+                        cof_is_city_zone = yes
+                        NOT = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+                    }
+                    state_city_buff_count = yes
+                    add_dynamic_modifier = { 
+                        modifier = Cof_state_city_zone 
+                        scope = THIS.id
+                    }
+                }
+
+                if = {
+                    limit = {
+                        is_fully_controlled_by = FRA
+                        cof_is_rural_zone = yes
+                        NOT = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+                    }
+                    state_rural_buff_count = yes
+                    add_dynamic_modifier = { 
+                        modifier = Cof_state_rural_zone 
+                        scope = THIS.id
+                    }
+                }
+            }
+            state_core_buff_count = yes
+            Cof_state_general_buff_get = yes
+
+            cof_politics_BGT_vs_CSP_values_sic_change = yes
+
+            if = {
+                limit = { has_completed_focus = FRA_proud_to_be_human_being }
+                if = {
+                    limit = { check_variable = { pop_satisfaction > 60 } }
+                    if = { limit = { has_country_flag = proud_to_be_human_being_enabled } }
+                    else = {
+                        set_country_flag = proud_to_be_human_being_enabled
+                        add_to_variable = { eibcost = 1 }
+                        add_to_variable = { eipcost = 1 }
+                        add_to_variable = { eiacost = 1 }
+                        add_to_variable = { eamcost = 1 }
+                        add_to_variable = { eaecost = 1 }
+                        add_to_variable = { eaacost = 1 }
+                        add_to_variable = { eqcost = 1 }
+                        add_to_variable = { elcost = 1 }
+                        add_to_variable = { eicost = 1 }
+                    }
+                }
+                else = {
+                    if = {
+                        limit = { has_country_flag = proud_to_be_human_being_enabled }
+                        clr_country_flag = proud_to_be_human_being_enabled
+                        add_to_variable = { eibcost = -1 }
+                        add_to_variable = { eipcost = -1 }
+                        add_to_variable = { eiacost = -1 }
+                        add_to_variable = { eamcost = -1 }
+                        add_to_variable = { eaecost = -1 }
+                        add_to_variable = { eaacost = -1 }
+                        add_to_variable = { eqcost = -1 }
+                        add_to_variable = { elcost = -1 }
+                        add_to_variable = { eicost = -1 }
+                    }
+                }
+            }
+
+            if = {
+                limit = { 
+                    has_idea = Cof_abundance_rationing 
+                    has_war = no
+                }
+                remove_ideas =  Cof_abundance_rationing
+            }
+
+            if = {
+                limit = { 
+                    has_idea = Cof_economics_of_war 
+                    has_war = no
+                }
+                remove_ideas = Cof_economics_of_war
+            }
+
+            if = {
+                limit = { has_completed_focus = FRA_piece_rate_economy }
+
+                set_variable = { pren_monthly_change_eib = THIS.num_of_civilian_factories }
+                multiply_variable = { pren_monthly_change_eib = -1 }
+
+                set_temp_variable = { prent = THIS.num_of_civilian_factories }
+                multiply_temp_variable = { prent = 0.001 }
+                set_variable = { pren_production_factory_max_efficiency_factor = prent }
+                multiply_temp_variable = { prent = 2 }
+                set_variable = { pren_industrial_capacity_factory = prent }
+                set_variable = { pren_production_factory_efficiency_gain_factor = prent }
+            }
+
+            if = {
+                limit = {
+                    OR = {
+                        has_dynamic_modifier = { modifier = Cof_each_takes_what_needs }
+                        has_dynamic_modifier = { modifier = Cof_great_leap_forward }
+                        has_dynamic_modifier = { modifier = Cof_more_than_just_the_future }
+                    }
+                }
+                set_variable = { factory_used_in_consumer = num_of_civilian_factories }
+                subtract_from_variable = { factory_used_in_consumer = var:FRA.modifier@civilian_factory_use }
+                subtract_from_variable = { factory_used_in_consumer = num_of_civilian_factories_available_for_projects }
+                round_variable = factory_used_in_consumer
+                multiply_variable = { factory_used_in_consumer = 0.005 }	
+            }
+
+            #internatonale
+            phalanstere_buff_judge = yes
+
+            if = {
+                limit = { FRA = { has_completed_focus = FRA_found_the_phalanstere_international } }
+                clear_array = global.phalanstere_member
+                add_to_array = { global.phalanstere_member = THIS.id }
+                every_other_country = {
+                    limit = { FRA_is_phalanstere_member = yes }
+                    add_to_array = { global.phalanstere_member = THIS.id }
+                }
+            }
+
+            if = {
+                limit = { FRA = { has_completed_focus = FRA_inner_circle_of_socialism } }
+                every_country = {
+                    limit = { FRA_is_phalanstere_member = yes }
+                    remove_ideas = { INT_trade_cost_25_tag0 INT_trade_cost_25_tag1 INT_trade_cost_25_tag2 INT_trade_cost_25_tag3 INT_trade_cost_25_tag4 INT_trade_cost_25_tag5 INT_trade_cost_25_tag6 INT_trade_cost_25_tag7 INT_trade_cost_25_tag8 INT_trade_cost_25_tag9 INT_trade_cost_25_tag10 INT_trade_cost_25_tag11 INT_trade_cost_25_tag12 INT_trade_cost_25_tag13 INT_trade_cost_25_tag14 INT_trade_cost_25_tag15 INT_trade_cost_25_tag16 INT_trade_cost_25_tag17 INT_trade_cost_25_tag18 INT_trade_cost_25_tag19 INT_trade_cost_25_tag20 INT_trade_cost_25_tag21 INT_trade_cost_25_tag22 INT_trade_cost_25_tag23 INT_trade_cost_25_tag24 INT_trade_cost_25_tag25 INT_trade_cost_25_tag26 INT_trade_cost_25_tag27 INT_trade_cost_25_tag28 INT_trade_cost_25_tag29 INT_trade_cost_25_tag30 INT_trade_cost_25_tag31 INT_trade_cost_25_tag32 INT_trade_cost_25_tag33 INT_trade_cost_25_tag34 INT_trade_cost_25_tag35 INT_trade_cost_25_tag36 INT_trade_cost_25_tag37 INT_trade_cost_25_tag38 INT_trade_cost_25_tag39 INT_trade_cost_25_tag40 INT_trade_cost_25_tag41 INT_trade_cost_25_tag42 INT_trade_cost_25_tag43 INT_trade_cost_25_tag44 INT_trade_cost_25_tag45 INT_trade_cost_25_tag46 INT_trade_cost_25_tag47 INT_trade_cost_25_tag48 INT_trade_cost_25_tag49 }
+                }
+                INT_trade_cost_idea_get = yes 
+            }
+
+            every_other_country = {
+                limit = { has_socialist_government = yes }
+                if = {
+                    limit = { 
+                        capital_scope = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } 
+                        NOT = { has_idea = Cof_revolutionary_bases_buff }
+                    }
+                    remove_ideas = Cof_revolutionary_bases_buff
+                    add_ideas = Cof_revolutionary_bases_buff
+                }
+
+                if = {
+                    limit = { capital_scope = { NOT = { is_controlled_by = THIS } } }
+                    remove_ideas = Cof_revolutionary_bases_buff
+                }
+
+                if = {
+                    limit = { 
+                        has_idea = Cof_revolutionary_bases_buff 
+                        capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } }
+                    }
+                }
+            }
+
+
+            set_variable = { rbm_industrial = 0 }
+            set_variable = { rbm_arms = 0 }
+            set_variable = { rbm_dockyard = 0 }
+
+            set_variable = { rbm_aluminium = 0 }
+            set_variable = { rbm_chromium = 0 }
+            set_variable = { rbm_oil = 0 }
+            set_variable = { rbm_rubber = 0 }
+            set_variable = { rbm_steel = 0 }
+            set_variable = { rbm_tungsten = 0 }
+            every_other_country = {
+                limit = { any_owned_state = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } } }
+                set_temp_variable = { t = var:THIS.party_popularity@totalist }
+                add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+                add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+                if = {
+                    limit = { FRA = { has_completed_focus = FRA_cake_for_everyone } }
+                    multiply_temp_variable = { t = 0.75 }
+                }
+                if = {
+                    limit = { has_stability > 0.25 }
+                    multiply_temp_variable = { t = 0.8 }
+                }
+                if = {
+                    limit = { check_variable = { t < 0.1 } }
+                    multiply_temp_variable = { t = 0.8 }
+                }
+
+                every_owned_state = {
+                    limit = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } }
+                    set_temp_variable = { tt = owner.t }
+                    set_variable = { rbm_local_factories = tt }
+                    multiply_variable = { rbm_local_factories = -1 } 
+
+                    set_temp_variable = { ttt = THIS.industrial_complex_level }
+                    multiply_temp_variable = { ttt = tt }
+                    add_to_variable = { FRA.rbm_industrial = ttt }
+
+                    set_temp_variable = { ttt = THIS.arms_factory_level }
+                    multiply_temp_variable = { ttt = tt }
+                    add_to_variable = { FRA.rbm_arms = ttt }
+
+                    set_temp_variable = { ttt = THIS.building_level@dockyard }
+                    multiply_temp_variable = { ttt = tt }
+                    add_to_variable = { FRA.rbm_dockyard = ttt }
+                
+                    if = {
+                        limit = {
+                            has_resources_amount = {
+                                resource = aluminium
+                                amount > 0
+                            }
+                        }
+                        set_variable = { rbm_state_resource_aluminium = resource@aluminium }
+                        multiply_variable = { rbm_state_resource_aluminium = tt }
+                        multiply_variable = { rbm_state_resource_aluminium = -1 }
+                    }
+                    set_temp_variable = { ttt = rbm_state_resource_aluminium }
+                    multiply_temp_variable = { ttt = -1 }
+                    add_to_variable = { FRA.rbm_aluminium = ttt }
+
+                    if = {
+                        limit = {
+                            has_resources_amount = {
+                                resource = chromium
+                                amount > 0
+                            }
+                        }
+                        set_variable = { rbm_state_resource_chromium = resource@chromium }
+                        multiply_variable = { rbm_state_resource_chromium = tt }
+                        multiply_variable = { rbm_state_resource_chromium = -1 }
+                    }
+                    set_temp_variable = { ttt = rbm_state_resource_chromium }
+                    multiply_temp_variable = { ttt = -1 }
+                    add_to_variable = { FRA.rbm_chromium = ttt }
+
+                    if = {
+                        limit = {
+                            has_resources_amount = {
+                                resource = oil
+                                amount > 0
+                            }
+                        }
+                        set_variable = { rbm_state_resource_oil = resource@oil }
+                        multiply_variable = { rbm_state_resource_oil = tt }
+                        multiply_variable = { rbm_state_resource_oil = -1 }                        
+                    }
+                    set_temp_variable = { ttt = rbm_state_resource_oil }
+                    multiply_temp_variable = { ttt = -1 }
+                    add_to_variable = { FRA.rbm_oil = ttt }
+
+                    if = {
+                        limit = {
+                            has_resources_amount = {
+                                resource = rubber
+                                amount > 0
+                            }
+                        }
+                        set_variable = { rbm_state_resource_rubber = resource@rubber }
+                        multiply_variable = { rbm_state_resource_rubber = tt }
+                        multiply_variable = { rbm_state_resource_rubber = -1 }
+                    }
+                    set_temp_variable = { ttt = rbm_state_resource_rubber }
+                    multiply_temp_variable = { ttt = -1 }
+                    add_to_variable = { FRA.rbm_rubber = ttt }
+
+                    if = {
+                        limit = {
+                            has_resources_amount = {
+                                resource = steel
+                                amount > 0
+                            }
+                        }
+                        set_variable = { rbm_state_resource_steel = resource@steel }
+                        multiply_variable = { rbm_state_resource_steel = tt }
+                        multiply_variable = { rbm_state_resource_steel = -1 } 
+                    }
+                    set_temp_variable = { ttt = rbm_state_resource_steel }
+                    multiply_temp_variable = { ttt = -1 }
+                    add_to_variable = { FRA.rbm_steel = ttt }
+
+                    if = {
+                        limit = {
+                            has_resources_amount = {
+                                resource = tungsten
+                                amount > 0
+                            }
+                        }
+                        set_variable = { rbm_state_resource_tungsten = resource@tungsten }
+                        multiply_variable = { rbm_state_resource_tungsten = tt }
+                        multiply_variable = { rbm_state_resource_tungsten = -1 } 
+                    }
+                    set_temp_variable = { ttt = rbm_state_resource_tungsten }
+                    multiply_temp_variable = { ttt = -1 }
+                    add_to_variable = { FRA.rbm_tungsten = ttt }
+                }
+            }
+
+
+
+            if = {
+                limit = { GER = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } } }
+                GER = {
+                    set_temp_variable = { t = var:THIS.party_popularity@totalist }
+                    add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+                    add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+                    multiply_temp_variable = { t = 20 }
+					round_temp_variable = t
+
+					set_temp_variable = { tt = 0.6 }
+					subtract_from_temp_variable = { tt = THIS.stability }
+					multiply_temp_variable = { tt = 10 }
+					round_temp_variable = tt
+
+					add_to_temp_variable = { t = tt }
+                    set_variable = { bsg_civilian_factory_use = t }
+                    
+                    set_temp_variable = { rt = t }
+                    multiply_temp_variable = { rt = 3 }
+                    
+                    if = {
+                        limit = { aluminium > rt }
+                        set_variable = { bsg_aluminium = rt }
+                    }
+                    else = { set_variable = { bsg_aluminium = THIS.resource_produced@aluminium } }
+                    if = {
+                        limit = { chromium > rt }
+                        set_variable = { bsg_chromium = rt }
+                    }
+                    else = { set_variable = { bsg_chromium = THIS.resource_produced@chromium } }
+                    if = {
+                        limit = { oil > rt }
+                        set_variable = { bsg_oil = rt }
+                    }
+                    else = { set_variable = { bsg_oil = THIS.resource_produced@oil } }
+                    if = {
+                        limit = { rubber > rt }
+                        set_variable = { bsg_rubber = rt }
+                    }
+                    else = { set_variable = { bsg_rubber = THIS.resource_produced@rubber } }
+                    if = {
+                        limit = { steel > rt }
+                        set_variable = { bsg_steel = rt }
+                    }
+                    else = { set_variable = { bsg_steel = THIS.resource_produced@steel } }
+                    if = {
+                        limit = { tungsten > rt }
+                        set_variable = { bsg_tungsten = rt }
+                    }
+                    else = { set_variable = { bsg_tungsten = THIS.resource_produced@tungsten } }
+                    multiply_variable = { bsg_aluminium = -1 }
+                    multiply_variable = { bsg_chromium = -1 }
+                    multiply_variable = { bsg_oil = -1 }
+                    multiply_variable = { bsg_rubber = -1 }
+                    multiply_variable = { bsg_steel = -1 }
+                    multiply_variable = { bsg_tungsten = -1 }
+                }
+                set_variable = { bsf_industrial_factory_donations = GER.t }
+                set_variable = { bsf_aluminium = GER.bsg_aluminium }
+                set_variable = { bsf_chromium = GER.bsg_chromium }
+                set_variable = { bsf_oil = GER.bsg_oil }
+                set_variable = { bsf_rubber = GER.bsg_rubber }
+                set_variable = { bsf_steel = GER.bsg_steel }
+                set_variable = { bsf_tungsten = GER.bsg_tungsten }
+                multiply_variable = { bsf_aluminium = -1 }
+                multiply_variable = { bsf_chromium = -1 }
+                multiply_variable = { bsf_oil = -1 }
+                multiply_variable = { bsf_rubber = -1 }
+                multiply_variable = { bsf_steel = -1 }
+                multiply_variable = { bsf_tungsten = -1 }
+            }
+        }
+    }
+    on_weekly_FRA = {
+        effect = {
+            set_temp_variable = { iri_euic = modifier@weekly_change_ieu }
+            set_temp_variable = { iri_asic = modifier@weekly_change_ias }
+            set_temp_variable = { iri_meic = modifier@weekly_change_ime }
+            set_temp_variable = { iri_afic = modifier@weekly_change_iaf }
+            set_temp_variable = { iri_amic = modifier@weekly_change_iam }
+            iri_influence_change = yes
+        }
+    }
+    on_monthly_FRA = {
+        effect = {
+            set_temp_variable = { evc = modifier@monthly_change_ev }
+            set_temp_variable = { eibc = modifier@monthly_change_eib }
+            set_temp_variable = { eipc = modifier@monthly_change_eip }
+            set_temp_variable = { eiac = modifier@monthly_change_eia }
+            set_temp_variable = { eam = modifier@monthly_change_eam }
+            set_temp_variable = { eae = modifier@monthly_change_eae }
+            set_temp_variable = { eaa = modifier@monthly_change_eaa }
+            set_temp_variable = { eq = modifier@monthly_change_eq }
+            set_temp_variable = { el = modifier@monthly_change_el }
+            set_temp_variable = { ei = modifier@monthly_change_ei }
+            cof_econ_target_change = yes
+
+            set_temp_variable = { atimpc = 0 }
+            set_temp_variable = { atimp1c = modifier@monthly_change_atheory1 }
+            set_temp_variable = { atimp2c = modifier@monthly_change_atheory2 }
+            set_temp_variable = { atimp3c = modifier@monthly_change_atheory3 }
+            set_temp_variable = { atimp4c = modifier@monthly_change_atheory4 }
+            set_temp_variable = { atimp5c = modifier@monthly_change_atheory5 }
+            set_temp_variable = { atimp6c = modifier@monthly_change_atheory6 }
+            set_temp_variable = { atimp7c = modifier@monthly_change_atheory7 }
+            set_temp_variable = { atimp8c = modifier@monthly_change_atheory8 }
+            Cof_army_theory_implementation_change = yes
+
+            set_temp_variable = { aac = modifier@monthly_change_aauto }
+            set_temp_variable = { awc = modifier@monthly_change_awill }
+            set_temp_variable = { atc = modifier@monthly_change_atrain }
+            set_temp_variable = { aec = modifier@monthly_change_aequip }
+            set_temp_variable = { apc = modifier@monthly_change_apassion }
+            Cof_army_reform_values_change = yes
+
+            add_to_variable = { Cof_politics_intensity_of_struggle = modifier@monthly_change_iosc }
+            add_stability = stabilitycfios
+            add_political_power = ppcfios
+
+            add_to_variable = {  }
+
+            phalanstere_unity_change_monthly = yes
+            set_temp_variable = { phauc = phauc_monthly }
+            phalanstere_unity_change = yes
+
+            if = {
+                limit = { has_completed_focus = FRA_co_ops_more_than_just_workplaces }
+                set_temp_variable = { t = modifier@industrial_capacity_factory }
+                multiply_temp_variable = { t = 10 }
+                modulo_temp_variable = { t = 10 }
+                round_temp_variable = t
+                multiply_temp_variable = { t = 0.3 }
+                set_temp_variable = { wc = t }
+				set_temp_variable = { pc = t }
+				set_temp_variable = { mc = t }
+				set_temp_variable = { sc = t }
+				set_temp_variable = { bc = t }
+				set_temp_variable = { ac = t }
+				class_pop_satisfactions_change = yes
+            }
+        }
+    }
+    on_war = {
+        effect = {
+            FRA = {
+                if = {
+                    limit = {
+                        has_completed_focus = FRA_abundance_rationing
+                        NOT = { has_idea = Cof_abundance_rationing }
+                    }
+                    add_ideas = Cof_abundance_rationing
+                }
+
+                if = {
+                    limit = {
+                        has_completed_focus = FRA_economics_of_war
+                        NOT = { has_idea = Cof_economics_of_war }
+                    }
+                    add_ideas = Cof_economics_of_war
+                }
+            }
+
+            if = {
+                limit = { 
+                    has_idea = Cof_revolutionary_bases_buff
+                    capital_scope = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } 
+                    NOT = { has_country_flag = Cof_revolutionary_bases_buff_has }
+                }
+               
+                division_template = {
+                    name = "International Column"
+                    is_locked = no
+                    regiments = {
+                        militia = { x = 0 y = 0 }
+                        militia = { x = 0 y = 1 }
+                        militia = { x = 0 y = 2 }
+                        militia = { x = 1 y = 0 }
+                        militia = { x = 1 y = 1 }
+                        militia = { x = 1 y = 2 }
+                        artillery_brigade = { x = 2 y = 0 }
+                    }
+                    support = {
+                        recon = { x = 0 y = 0 }
+                        engineer = { x = 0 y = 1 }
+                        signal_company = { x = 0 y = 2 }
+                    }
+                }
+                capital_scope = {
+                    create_unit = {
+                        division = "division_template = \"International Column\" start_experience_factor = 0.8"
+                        owner = PREV
+                        count = 3
+                    }
+                }
+                set_country_flag = Cof_revolutionary_bases_buff_has
+            }
+
+
+            SWF = {
+                if = {
+                    limit = { 
+                        OR = {
+                            has_war_with = SPA
+                            has_war_with = SPR
+                            has_civil_war = yes
+                        }
+                    }
+                    country_event = cofintern.5
+                }
+            }
+
+            SRI = {
+                if = {
+                    limit = { 
+                        has_country_flag = Cof_italy_volunteer 
+                        OR = {
+                            has_war_with = ITA
+                            has_war_with = LOM
+                            has_war_with = VNC
+                            has_war_with = SRD
+                            has_war_with = SIC
+                            has_war_with = PAP
+                        }
+                    }
+                    clr_country_flag = Cof_italy_volunteer
+                    division_template = {
+                        name = "Italian Volunteers"
+                        is_locked = no
+                        regiments = {
+                            infantry = { x = 0 y = 0 }
+                            infantry = { x = 0 y = 1 }
+                            infantry = { x = 0 y = 2 }
+                            infantry = { x = 1 y = 0 }
+                            infantry = { x = 1 y = 1 }
+                            infantry = { x = 1 y = 2 }
+                            artillery_brigade = { x = 2 y = 0 }
+                        }
+                        support = {
+                            recon = { x = 0 y = 0 }
+                            engineer = { x = 0 y = 1 }
+                            field_hospital = { x = 0 y = 2 }
+                        }
+                    }
+                    capital_scope = {
+                        create_unit = {
+                            division = "division_template = \"Italian Volunteers\" start_experience_factor = 0.8"
+                            owner = SRI
+                            count = 3
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

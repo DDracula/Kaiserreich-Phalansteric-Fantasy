@@ -1,0 +1,595 @@
+scripted_gui = {
+    international_show = {
+        context_type = player_context
+        window_name = international_icon
+        parent_window_name = power_balance_button
+
+        visible = {
+			tag = FRA
+		}
+    }
+
+    interational_target_choose = {
+        context_type = player_context
+        window_name = international_title
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+		}
+        effects = {
+            international_europe_show_click = {
+                if = {
+                    limit = { has_country_flag = iri_eu_show }
+                    clr_tag_flag = yes
+                    clr_country_flag = iri_eu_show
+                }
+                else = {
+                    clr_all_flag = yes
+                    set_country_flag = iri_eu_show
+                }
+            }
+
+            international_asia_show_click = {
+                if = {
+                    limit = { has_country_flag = iri_as_show }
+                    clr_tag_flag = yes
+                    clr_country_flag = iri_as_show
+                }
+                else = {
+                    clr_all_flag = yes
+                    set_country_flag = iri_as_show
+                }
+            }
+
+            international_middle_east_show_click = {
+                if = {
+                    limit = { has_country_flag = iri_me_show }
+                    clr_tag_flag = yes
+                    clr_country_flag = iri_me_show
+                }
+                else = {
+                    clr_all_flag = yes
+                    set_country_flag = iri_me_show
+                }
+            }
+
+            international_africa_show_click = {
+                if = {
+                    limit = { has_country_flag = iri_af_show }
+                    clr_tag_flag = yes
+                    clr_country_flag = iri_af_show
+                }
+                else = {
+                    clr_all_flag = yes
+                    set_country_flag = iri_af_show
+                }
+            }
+
+            international_america_show_click = {
+                if = {
+                    limit = { has_country_flag = iri_am_show }
+                    clr_tag_flag = yes
+                    clr_country_flag = iri_am_show
+                }
+                else = {
+                    clr_all_flag = yes
+                    set_country_flag = iri_am_show
+                }
+            }
+
+            phalanstere_show_click = {
+                if = {
+                    limit = { has_country_flag = phalanstere_show }
+                    clr_tag_flag = yes
+                    clr_country_flag = phalanstere_show
+                }
+                else = {
+                    clr_all_flag = yes
+                    set_country_flag = phalanstere_show 
+                }
+            }
+        }
+    }
+
+    phalanstere_window_display = {
+        context_type = player_context
+        window_name = phalanstere_window
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = phalanstere_show
+		}
+        effects = {
+            phalanstere_ideology_icon_totalist_click = { 
+                clr_country_flag = phalanstere_member_list_social_democrat
+                clr_country_flag = phalanstere_member_list_syndicalist
+                clr_country_flag = phalanstere_member_list_radical_socialist
+                clr_country_flag = phalanstere_member_list_agree
+                clr_country_flag = phalanstere_member_list_oppose
+                clr_country_flag = phalanstere_member_list_waiver
+
+                if = { 
+                    limit = { has_country_flag = phalanstere_member_list_totalist }
+                    clr_country_flag = phalanstere_member_list_totalist
+                }
+                else = { set_country_flag = phalanstere_member_list_totalist }
+                
+                phalanstere_member_list_choose = yes
+            }
+            phalanstere_ideology_icon_syndicalist_click = { 
+                clr_country_flag = phalanstere_member_list_totalist
+                clr_country_flag = phalanstere_member_list_social_democrat
+                clr_country_flag = phalanstere_member_list_radical_socialist
+                clr_country_flag = phalanstere_member_list_agree
+                clr_country_flag = phalanstere_member_list_oppose
+                clr_country_flag = phalanstere_member_list_waiver
+
+                if = { 
+                    limit = { has_country_flag = phalanstere_member_list_syndicalist }
+                    clr_country_flag = phalanstere_member_list_syndicalist
+                }
+                else = { set_country_flag = phalanstere_member_list_syndicalist }
+
+                phalanstere_member_list_choose = yes
+            }
+            phalanstere_ideology_icon_radical_socialist_click = { 
+                clr_country_flag = phalanstere_member_list_totalist
+                clr_country_flag = phalanstere_member_list_syndicalist
+                clr_country_flag = phalanstere_member_list_social_democrat
+                clr_country_flag = phalanstere_member_list_agree
+                clr_country_flag = phalanstere_member_list_oppose
+                clr_country_flag = phalanstere_member_list_waiver
+
+                if = { 
+                    limit = { has_country_flag = phalanstere_member_list_radical_socialist }
+                    clr_country_flag = phalanstere_member_list_radical_socialist
+                }
+                else = { set_country_flag = phalanstere_member_list_radical_socialist }
+
+                phalanstere_member_list_choose = yes
+            }
+            phalanstere_ideology_icon_social_democrat_click = { 
+                clr_country_flag = phalanstere_member_list_totalist
+                clr_country_flag = phalanstere_member_list_syndicalist
+                clr_country_flag = phalanstere_member_list_radical_socialist
+                clr_country_flag = phalanstere_member_list_agree
+                clr_country_flag = phalanstere_member_list_oppose
+                clr_country_flag = phalanstere_member_list_waiver
+
+                if = { 
+                    limit = { has_country_flag = phalanstere_member_list_social_democrat }
+                    clr_country_flag = phalanstere_member_list_social_democrat
+                }
+                else = { set_country_flag = phalanstere_member_list_social_democrat }
+
+                phalanstere_member_list_choose = yes
+            }
+            phalanstere_agree_count_icon_click = {
+                clr_country_flag = phalanstere_member_list_totalist
+                clr_country_flag = phalanstere_member_list_syndicalist
+                clr_country_flag = phalanstere_member_list_radical_socialist
+                clr_country_flag = phalanstere_member_list_social_democrat
+                clr_country_flag = phalanstere_member_list_oppose
+                clr_country_flag = phalanstere_member_list_waiver
+
+                if = { 
+                    limit = { has_country_flag = phalanstere_member_list_agree }
+                    clr_country_flag = phalanstere_member_list_agree
+                }
+                else = { set_country_flag = phalanstere_member_list_agree }
+
+                phalanstere_member_list_choose = yes
+            }
+            phalanstere_oppose_count_icon_click = {
+                clr_country_flag = phalanstere_member_list_totalist
+                clr_country_flag = phalanstere_member_list_syndicalist
+                clr_country_flag = phalanstere_member_list_radical_socialist
+                clr_country_flag = phalanstere_member_list_social_democrat
+                clr_country_flag = phalanstere_member_list_agree
+                clr_country_flag = phalanstere_member_list_waiver
+
+                if = { 
+                    limit = { has_country_flag = phalanstere_member_list_oppose }
+                    clr_country_flag = phalanstere_member_list_oppose
+                }
+                else = { set_country_flag = phalanstere_member_list_oppose }
+
+                phalanstere_member_list_choose = yes
+            }
+            phalanstere_waiver_count_icon_click = {
+                clr_country_flag = phalanstere_member_list_totalist
+                clr_country_flag = phalanstere_member_list_syndicalist
+                clr_country_flag = phalanstere_member_list_radical_socialist
+                clr_country_flag = phalanstere_member_list_social_democrat
+                clr_country_flag = phalanstere_member_list_oppose
+                clr_country_flag = phalanstere_member_list_agree
+
+                if = { 
+                    limit = { has_country_flag = phalanstere_member_list_waiver }
+                    clr_country_flag = phalanstere_member_list_waiver
+                }
+                else = { set_country_flag = phalanstere_member_list_waiver }
+
+                phalanstere_member_list_choose = yes
+            }
+
+            phalanstere_vote_agree_button_click = {
+                if = { 
+                    limit = { has_country_flag = phalanstere_attitude_agree } 
+                    clr_vote_all = yes
+                }
+                else = { 
+                    clr_vote_all = yes
+                    set_country_flag = phalanstere_attitude_agree 
+                    add_to_array = {
+                        array = global.phalanstere_vote_agree
+                        value = THIS.id
+                    }
+                }
+            }
+            phalanstere_vote_oppose_button_click = {
+                if = { 
+                    limit = { has_country_flag = phalanstere_attitude_oppose }
+                    clr_vote_all = yes
+                }
+                else = { 
+                    clr_vote_all = yes
+                    set_country_flag = phalanstere_attitude_oppose 
+                    add_to_array = {
+                        array = global.phalanstere_vote_oppose
+                        value = THIS.id
+                    }
+                }
+            }
+            phalanstere_vote_waiver_button_click = {
+                if = { 
+                    limit = { has_country_flag = phalanstere_attitude_waiver } 
+                    clr_vote_all = yes
+                }
+                else = { 
+                    clr_vote_all = yes
+                    set_country_flag = phalanstere_attitude_waiver 
+                    add_to_array = {
+                        array = global.phalanstere_vote_waiver
+                        value = THIS.id
+                    }
+                }
+            }
+        }
+    }
+
+    phalanstere_member_list_show = {
+        context_type = player_context
+        window_name = phalanstere_member_window
+        parent_window_name = powerbalanceview
+        
+        visible = {
+            tag = FRA
+            has_country_flag = phalanstere_show
+        }
+
+        dynamic_lists = {
+            phalanstere_member_list = {
+                array = global.phalanstere_member_list
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = phalanstere_member_position
+            }
+        }
+
+        properties = {
+			country_flag = {
+				image = "[?v.GetFlag]"
+			}
+		}
+    }
+
+    interational_target_show_eu1 = {
+        context_type = player_context
+        window_name = international_europe_western
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_eu_show
+		}
+        effects = {
+            international_europe_western_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_euw_show
+            }
+        }
+    }
+
+    interational_target_show_eu2 = {
+        context_type = player_context
+        window_name = international_europe_middle
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_eu_show
+		}
+        effects = {
+            international_europe_middle_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_eum_show
+            }
+        }
+    }
+
+    interational_target_show_eu3 = {
+        context_type = player_context
+        window_name = international_europe_eastern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_eu_show
+		}
+        effects = {
+            international_europe_eastern_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_eue_show
+            }
+        }
+    }
+
+    interational_target_show_eu4 = {
+        context_type = player_context
+        window_name = international_europe_northern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_eu_show
+		}
+        effects = {
+            international_europe_northern_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_eun_show
+            }
+        }
+    }
+
+    interational_target_show_as1 = {
+        context_type = player_context
+        window_name = international_asia_eastern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_as_show
+		}
+        effects = {
+            international_asia_eastern_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_ase_show
+            }
+        }
+    }
+
+    interational_target_show_as2 = {
+        context_type = player_context
+        window_name = international_asia_southern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_as_show
+		}
+        effects = {
+            international_asia_southern_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_ass_show
+            }
+        }
+    }
+
+    interational_target_show_as3 = {
+        context_type = player_context
+        window_name = international_asia_india
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_as_show
+		}
+        effects = {
+            international_asia_india_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_asi_show
+            }
+        }
+    }
+
+    interational_target_show_me1 = {
+        context_type = player_context
+        window_name = international_me_iran
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_me_show
+		}
+        effects = {
+            international_me_iran_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_mei_show
+            }
+        }
+    }
+
+    interational_target_show_me2 = {
+        context_type = player_context
+        window_name = international_me_arab
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_me_show
+		}
+        effects = {
+            international_me_arab_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_mea_show
+            }
+        }
+    }
+
+    interational_target_show_me3 = {
+        context_type = player_context
+        window_name = international_me_ottoman
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_me_show
+		}
+        effects = {
+            international_me_ottoman_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_meo_show
+            }
+        }
+    }
+
+    interational_target_show_me4 = {
+        context_type = player_context
+        window_name = international_me_egypt
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_me_show
+		}
+        effects = {
+            international_me_egypt_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_mee_show
+            }
+        }
+    }
+
+    interational_target_show_af1 = {
+        context_type = player_context
+        window_name = international_africa_western
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_af_show
+		}
+        effects = {
+            international_africa_western_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_afw_show
+            }
+        }
+    }
+
+    interational_target_show_af2 = {
+        context_type = player_context
+        window_name = international_africa_eastern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_af_show
+		}
+        effects = {
+            international_africa_eastern_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_afe_show
+            }
+        }
+    }
+
+    interational_target_show_af3 = {
+        context_type = player_context
+        window_name = international_africa_middle
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_af_show
+		}
+        effects = {
+            international_africa_middle_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_afm_show
+            }
+        }
+    }
+
+    interational_target_show_af4 = {
+        context_type = player_context
+        window_name = international_africa_southern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_af_show
+		}
+        effects = {
+            international_africa_south_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_afs_show
+            }
+        }
+    }
+
+    interational_target_show_am1 = {
+        context_type = player_context
+        window_name = international_america_northern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_am_show
+		}
+        effects = {
+            international_america_northern_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_amn_show
+            }
+        }
+    }
+
+    interational_target_show_am2 = {
+        context_type = player_context
+        window_name = international_america_middle
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_am_show
+		}
+        effects = {
+            international_america_middle_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_amm_show
+            }
+        }
+    }
+
+    interational_target_show_am3 = {
+        context_type = player_context
+        window_name = international_america_southern
+        parent_window_name = powerbalanceview
+
+        visible = {
+			tag = FRA
+            has_country_flag = iri_am_show
+		}
+        effects = {
+            international_america_southern_show_click = {
+                clr_tag_flag = yes
+                set_country_flag = iri_ams_show
+            }
+        }
+    }
+}
