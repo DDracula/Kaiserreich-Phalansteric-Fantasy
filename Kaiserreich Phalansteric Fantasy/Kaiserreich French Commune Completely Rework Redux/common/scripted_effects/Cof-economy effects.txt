@@ -5,61 +5,92 @@
 #		set_temp_variable = { eoc = 0 }
 #		Cof_economy_model_change = yes
 Cof_economy_model_change = {
-    if = { limit = { check_variable = { ecc = 0 } } }
+    if = { 
+		limit = { 
+			OR = {
+				check_variable = { ecc = 0 } 
+				has_completed_focus = FRA_rejecting_headless_co_ops
+				has_completed_focus = FRA_dream_without_king_or_master
+				has_completed_focus = FRA_centrally_planned_economy
+				has_completed_focus = FRA_pioneer_model
+			}
+		} 
+	}
 	else = {
 		add_to_variable = { Cof_economy_model_co_ops = ecc }
 		custom_effect_tooltip = Cof_economy_model_co_ops_change_tips
 	}
 
-    if = { limit = { check_variable = { emc = 0 } } }
+    if = { 
+		limit = { 
+			OR = {
+				check_variable = { emc = 0 } 
+				has_completed_focus = FRA_rejecting_headless_co_ops
+				has_completed_focus = FRA_dream_without_king_or_master
+				has_completed_focus = FRA_centrally_planned_economy
+				has_completed_focus = FRA_pioneer_model
+			}
+		} 
+	}
 	else = {
 		add_to_variable = { Cof_economy_model_market = emc }
 		custom_effect_tooltip = Cof_economy_model_market_change_tips
 	}
 
-    if = { limit = { check_variable = { epc = 0 } } }
+    if = { 
+		limit = { 
+			OR = {
+				check_variable = { epc = 0 } 
+				has_completed_focus = FRA_rejecting_headless_co_ops
+				has_completed_focus = FRA_dream_without_king_or_master
+				has_completed_focus = FRA_centrally_planned_economy
+				has_completed_focus = FRA_pioneer_model
+			}
+		} 
+	}
 	else = {
 		add_to_variable = { Cof_economy_model_plan = epc }
 		custom_effect_tooltip = Cof_economy_model_plan_change_tips
 	}
 
-    if = { limit = { check_variable = { eoc = 0 } } }
+    if = { 
+		limit = { 
+			OR = {
+				check_variable = { eoc = 0 } 
+				has_completed_focus = FRA_rejecting_headless_co_ops
+				has_completed_focus = FRA_dream_without_king_or_master
+				has_completed_focus = FRA_centrally_planned_economy
+				has_completed_focus = FRA_pioneer_model
+			}
+		} 
+	}
 	else = {
 		add_to_variable = { Cof_economy_model_order = eoc }
 		custom_effect_tooltip = Cof_economy_model_order_change_tips
 	}
 
-	if = {
-		limit = { FRA = { has_completed_focus = FRA_rejecting_headless_co_ops } }
-		set_variable = { Cof_economy_model_co_ops = 100 }
-		set_variable = { Cof_economy_model_market = 0 }
-		set_variable = { Cof_economy_model_plan = 0 }
-		set_variable = { Cof_economy_model_order = 0 }
-	}
+	set_variable = { maxeconfocus = 1 }
+	clear_temp_array = FRA.ta
+	add_to_temp_array = { FRA.ta = Cof_economy_model_co_ops }
+	add_to_temp_array = { FRA.ta = Cof_economy_model_market }
+	add_to_temp_array = { FRA.ta = Cof_economy_model_plan }
+	add_to_temp_array = { FRA.ta = Cof_economy_model_order }
 
-	if = {
-		limit = { FRA = { has_completed_focus = FRA_dream_without_king_or_master } }
-		set_variable = { Cof_economy_model_co_ops = 0 }
-		set_variable = { Cof_economy_model_market = 100 }
-		set_variable = { Cof_economy_model_plan = 0 }
-		set_variable = { Cof_economy_model_order = 0 }
+	find_highest_in_array = {
+		array = FRA.ta
+		value = nt
+		index = t
 	}
-
-	if = {
-		limit = { FRA = { has_completed_focus = FRA_centrally_planned_economy } }
-		set_variable = { Cof_economy_model_co_ops = 0 }
-		set_variable = { Cof_economy_model_market = 0 }
-		set_variable = { Cof_economy_model_plan = 100 }
-		set_variable = { Cof_economy_model_order = 0 }
+	add_to_variable = { maxeconfocus = nt }
+	remove_from_temp_array = {
+		array = FRA.ta
+		index = t
 	}
-
-	if = {
-		limit = { FRA = { has_completed_focus = FRA_pioneer_model } }
-		set_variable = { Cof_economy_model_co_ops = 0 }
-		set_variable = { Cof_economy_model_market = 0 }
-		set_variable = { Cof_economy_model_plan = 0 }
-		set_variable = { Cof_economy_model_order = 100 }
+	find_highest_in_array = {
+		array = FRA.ta
+		value = nt
 	}
+	subtract_from_variable = { maxeconfocus = nt }
 
 	Cof_economy_impact_count = yes
 }
@@ -2095,6 +2126,51 @@ state_city_buff_count = {
 	}
 	else = { set_variable = { city_industrial_capacity_factory = 0 } }
 
+	if = {
+		limit = { has_state_flag = nation_strategy_garonne_canal_yes }
+		add_to_variable = { city_state_resources_factor = 0.25 }
+		set_variable = { city_local_supplies = 0.25 }
+	}
+	else = { set_variable = { city_local_supplies = 0 } }
+
+	if = {
+		limit = { has_state_flag = nation_strategy_massay_industrcomplex_yes }
+		set_variable = { city_local_factories = 0.1 }
+		add_to_variable = { city_state_production_speed_buildings_factor = 0.15 }
+	}
+	else = { set_variable = { city_local_factories = 0 } }
+
+	if = {
+		limit = { has_state_flag = nice_strategy_ciudad_libre_de_nice_yes }
+		set_variable = { city_weekly_manpower = 100 }
+		set_variable = { city_monthly_population = 0.05 }
+		set_variable = { city_stability_factor = -0.025 }
+	}
+	else = { 
+		set_variable = { city_weekly_manpower = 0 } 
+		set_variable = { city_monthly_population = 0 }
+		set_variable = { city_stability_factor = 0 }
+	}
+
+	if = {
+		limit = { has_state_flag = french_national_railway_build1 }
+		add_to_variable = { city_local_supplies = 0.1 }
+		set_variable = { city_army_speed_factor_for_controller = 0.2 }
+	}
+	else = { set_variable = { city_army_speed_factor_for_controller = 0 } }
+
+	if = {
+		limit = { has_state_flag = french_national_railway_build2 }
+		add_to_variable = { city_local_supplies = 0.1 }
+		add_to_variable = { city_army_speed_factor_for_controller = 0.2 }
+	}
+
+	if = {
+		limit = { has_state_flag = french_national_railway_build3 }
+		add_to_variable = { city_local_supplies = 0.1 }
+		add_to_variable = { city_army_speed_factor_for_controller = 0.2 }
+	}
+
 	force_update_dynamic_modifier = yes
 }
 
@@ -2115,11 +2191,34 @@ state_rural_buff_count = {
 		limit = { FRA = { has_completed_focus = FRA_robust_urbanization } }
 		add_to_variable = { rural_state_resources_factor = -0.35 }
 		add_to_variable = { rural_recruitable_population_factor = -0.2 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = -0.15 }
 		set_variable = { rural_state_production_speed_infrastructure_factor = 0.25 }
 	}
 	else = {
 		set_variable = { rural_state_production_speed_infrastructure_factor = 0 }
 	}
+
+	if = {
+		limit = { FRA = { has_country_flag = rural_electrification_campaign } }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
+		set_variable = { rural_state_production_speed_industrial_complex_factor = 0.1 }
+	}
+	else = { set_variable = { rural_state_production_speed_industrial_complex_factor = 0 } }
+
+	
+	if = {
+		limit = { FRA = { has_country_flag = promote_forestry_coops } }
+		add_to_variable = { rural_state_resources_factor = 0.15 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+	}
+
+	if = {
+		limit = { FRA = { has_country_flag = workers_housing_construction } }
+		add_to_variable = { rural_recruitable_population_factor = 0.1 }
+		set_variable = { rural_monthly_population = 0.01 }
+	}
+	else = { set_variable = { rural_monthly_population = 0 } }
 
 	if = {
 		limit = { 
@@ -2137,6 +2236,25 @@ state_rural_buff_count = {
 		add_to_variable = { rural_state_resources_factor = -0.25 }
 		add_to_variable = { rural_state_production_speed_buildings_factor = -0.1 }
 		add_to_variable = { rural_recruitable_population_factor = -0.15 }
+	}
+
+	if = {
+		limit = { FRA = { has_country_flag = rural_back_to_the_country_develop1 } }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+		add_to_variable = { rural_recruitable_population_factor = 0.05 }
+	}
+	if = {
+		limit = { FRA = { has_country_flag = rural_back_to_the_country_develop2 } }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+		add_to_variable = { rural_recruitable_population_factor = 0.05 }
+	}
+	if = {
+		limit = { FRA = { has_country_flag = rural_back_to_the_country_develop3 } }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+		add_to_variable = { rural_recruitable_population_factor = 0.05 }
 	}
 
 	if = {
@@ -2169,9 +2287,8 @@ state_rural_buff_count = {
 	if = {
 		limit = { FRA = { has_country_flag = rural_new_frontier_rank_one } }
 		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
-		set_variable = { rural_state_production_speed_industrial_complex_factor = 0.2 }
+		add_to_variable = { rural_state_production_speed_industrial_complex_factor = 0.2 }
 	}
-	else = { set_variable = { rural_state_production_speed_industrial_complex_factor = 0 } }
 
 	if = {
 		limit = {
@@ -2219,13 +2336,12 @@ state_rural_buff_count = {
 
 	if = {
 		limit = { FRA = { has_completed_focus = FRA_fresh_supply_in_all_seasons } }
-		set_variable = { rural_monthly_population = 0.02 }
+		add_to_variable = { rural_monthly_population = 0.02 }
 		add_to_variable = { rural_consumer_goods_factor = -0.01 }
 		set_variable = { rural_weekly_manpower = 10 }
 	}
 	else = { 
 		set_variable = { rural_weekly_manpower = 0 }
-		set_variable = { rural_monthly_population = 0 } 
 	}
 
 	if = {
@@ -2369,6 +2485,25 @@ state_rural_buff_count = {
 		add_to_variable = { rural_state_production_speed_infrastructure_factor = 0.25 }
 		add_to_variable = { rural_state_production_speed_rail_way_factor = 0.25 }
 		add_to_variable = {	rural_state_production_speed_industrial_complex_factor = 0.15 }
+	}
+
+	if = {
+		limit = { has_state_flag = french_national_railway_build1 }
+		add_to_variable = { rural_local_supplies = 0.1 }
+		set_variable = { rural_army_speed_factor_for_controller = 0.2 }
+	}
+	else = { set_variable = { rural_army_speed_factor_for_controller = 0 } }
+
+	if = {
+		limit = { has_state_flag = french_national_railway_build2 }
+		add_to_variable = { rural_local_supplies = 0.1 }
+		add_to_variable = { rural_army_speed_factor_for_controller = 0.2 }
+	}
+
+	if = {
+		limit = { has_state_flag = french_national_railway_build3 }
+		add_to_variable = { rural_local_supplies = 0.1 }
+		add_to_variable = { rural_army_speed_factor_for_controller = 0.2 }
 	}
 
 	force_update_dynamic_modifier = yes
