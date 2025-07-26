@@ -1,0 +1,244 @@
+#####基建，工厂建筑，补给点建设等#####
+
+###通用运营###
+
+#来种点面包吧#
+civilian_buildup = {
+	enable = {
+		has_war = no
+        date < 1938.1.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = -99
+	}
+}
+military_buildup = {
+	enable = {
+		has_war = no
+                date > 1938.1.1
+                date < 1940.7.1
+	}
+	abort_when_not_enabled = yes
+        ai_strategy = {
+		type = building_target
+		id = arms_factory
+		value = 200
+	}
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 99
+	}
+}
+#后期多军工
+mil_buildup = {
+	enable = {
+		has_war_with_major = yes
+                date > 1942.7.1
+	}
+	abort_when_not_enabled = yes
+
+	ai_strategy = {
+		type = added_military_to_civilian_factory_ratio
+		value = 30
+	}
+        ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = -20  #aim for a 2-1 ratio on naval factories
+	}
+}
+#海军军备竞赛
+doc_buildup = {
+	enable = {
+		has_tech = improved_ship_hull_cruiser
+                num_of_civilian_factories > 100 
+                num_of_military_factories > 100 
+                num_of_naval_factories < 15
+                any_enemy_country = {
+                        naval_strength_ratio = {
+			tag = ROOT
+  			ratio > 1
+  		        }
+                }
+	}
+	abort_when_not_enabled = yes
+        ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 50  #aim for a 2-1 ratio on naval factories
+	}
+}
+#来点海军船坞2
+doc_buildup2 = {
+	enable = {
+		has_tech = improved_ship_hull_cruiser
+                num_of_civilian_factories > 150 
+                num_of_military_factories > 150 
+                num_of_naval_factories < 25
+                any_enemy_country = {
+                        naval_strength_ratio = {
+			tag = ROOT
+  			ratio > 1
+  		        }
+                }
+	}
+	abort_when_not_enabled = yes
+        ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 50  #aim for a 2-1 ratio on naval factories
+	}
+}
+#来点海军船坞3
+doc_buildup3 = {
+	enable = {
+		has_tech = improved_ship_hull_cruiser
+                num_of_civilian_factories > 200 
+                num_of_military_factories > 200 
+                num_of_naval_factories < 40
+                any_enemy_country = {
+                        naval_strength_ratio = {
+			tag = ROOT
+  			ratio > 1
+  		        }
+                }
+	}
+	abort_when_not_enabled = yes
+         ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = 50  #aim for a 2-1 ratio on naval factories
+	}
+}
+#不要船坞了
+doc_buildup3 = {
+	enable = {
+                num_of_naval_factories > 60
+          }
+	 abort_when_not_enabled = yes
+         ai_strategy = {
+		type = dockyard_to_military_factory_ratio
+		value = -999  #aim for a 2-1 ratio on naval factories
+	}
+}
+#军事设施#
+GER_FC = {
+	allowed = { original_tag = GER }
+	enable = {
+		original_tag = GER
+		date> 1936.1.1 
+	}
+
+	abort_when_not_enabled = yes 
+        ai_strategy = {
+		type = build_building
+                target = 9517
+		id = air_facility
+		value = 999
+	}
+}
+FRA_FC = {
+	allowed = { original_tag = FRA }
+	enable = {
+		original_tag = FRA
+		date> 1938.5.1 
+	}
+
+	abort_when_not_enabled = yes 
+        ai_strategy = {
+		type = build_building
+                target = 6613
+		id = air_facility
+		value = 999
+	}
+}
+ENG_FC_LAND = {
+	enable = {
+		ENG = { has_socialist_government = yes }
+		date> 1936.2.1 
+	}
+
+	 abort_when_not_enabled = yes 
+         ai_strategy = {
+		type = build_building
+                target = 9297
+		id = land_facility
+		value = 999
+	}
+}
+AUS_FC = {
+	allowed = { original_tag = AUS }
+	enable = {
+		original_tag = AUS
+		date> 1938.1.1 
+	}
+
+	abort_when_not_enabled = yes 
+         ai_strategy = {
+		type = build_building
+                target = 11666
+		id = land_facility
+		value = 999
+	}
+        ai_strategy = {
+		type = build_building
+                target = 13575
+		id = air_facility
+		value = 999
+	}
+}
+RUS_FC = {
+	allowed = { original_tag = RUS }
+	enable = {
+		original_tag = RUS
+		date> 1938.1.1 
+	}
+
+	abort_when_not_enabled = yes 
+        ai_strategy = {
+		type = build_building
+                target = 3529
+		id = air_facility
+		value = 999
+	}
+}
+JAP_FC = {
+	allowed = { original_tag = JAP }
+	enable = {
+		original_tag = JAP
+		date> 1938.1.1 
+	}
+
+	abort_when_not_enabled = yes 
+         ai_strategy = {
+		type = build_building
+                target = 11960
+		id = land_facility
+		value = 999
+	}
+        ai_strategy = {
+		type = build_building
+                target = 1182
+		id = air_facility
+		value = 999
+	}
+}
+USA_FC = {
+	allowed = { OR = { tag = USA tag = WCA tag = APG tag = ACC }}
+	enable = {
+		date> 1936.1.1 
+	}
+
+	abort_when_not_enabled = yes 
+         ai_strategy = {
+		type = build_building
+                target = 6845
+		id = land_facility
+		value = 999
+	}
+        ai_strategy = {
+		type = build_building
+                target = 3878
+		id = air_facility
+		value = 999
+	}
+}

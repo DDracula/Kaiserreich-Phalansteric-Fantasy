@@ -1,4 +1,4 @@
-###########################
+﻿###########################
 # Commune of France Events
 ###########################
 # By Nijato
@@ -12,637 +12,1184 @@ add_namespace = comfrance
 
 country_event = {
 	id = comfrance.1
-	title = comfrance.1.t
+	title = comfrance.1.title
 	desc = comfrance.1.desc
 	picture = GFX_red_flag
 
 	is_triggered_only = yes
-
-	trigger = {
-		OR = {
-			is_ai = no
-			has_game_rule = { rule = FRA_flag option = DEFAULT }
-		}
-	}
+	trigger = { has_game_rule = { rule = FRA_flag option = DEFAULT } }
 
 	option = {
-		log = "[GetLogInfo]: event comfrance.1 option comfrance.1.a"
 		name = comfrance.1.a
 		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				NOT = { has_country_leader = { character = FRA_benoit_frachon } }
-			}
+			base = 1	
 		}
-		hidden_effect = {
-			set_cosmetic_tag = FRA_alternate
-			FRA_conseil_de_defense_federal = {
-				set_portraits = {
-					civilian = { large = GFX_portrait_FRA_conseil_de_defense_federal_civilian_large_alternate }
-				}
-			}
-		}
+		hidden_effect = { set_cosmetic_tag = FRA_alternate }
 	}
 
 	option = {
-		log = "[GetLogInfo]: event comfrance.1 option comfrance.1.b"
 		name = comfrance.1.b
 		ai_chance = {
 			base = 1
-			modifier = {
-				factor = 0
-				NOT = { has_country_leader = { character = FRA_pierre_monatte } }
-				NOT = { has_country_leader = { character = FRA_conseil_de_defense_federal } }
-			}
 		}
-		hidden_effect = {
-			set_cosmetic_tag = FRA_red
+		hidden_effect = { set_cosmetic_tag = FRA_red }
+	}
+
+	option = {
+		name = comfrance.1.c
+		ai_chance = {
+			base = 1
+		}
+		if = {
+			limit = {
+				OR = {
+					has_cosmetic_tag = FRA_alternate
+					has_cosmetic_tag = FRA_red
+				}
+			}
+			drop_cosmetic_tag = yes
 		}
 	}
 
 	option = {
-		log = "[GetLogInfo]: event comfrance.1 option comfrance.1.c"
-		name = comfrance.1.c
+		name = comfrance.1.d
 		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 0
-				NOT = { has_country_leader = { character = FRA_leon_jouhaux } }
-				NOT = { has_country_leader = { character = FRA_georges_valois } }
-			}
+			base = 1	
 		}
-		hidden_effect = {
-			if = {
-				limit = {
-					OR = {
-						has_cosmetic_tag = FRA_alternate
-						has_cosmetic_tag = FRA_red
-					}
-				}
-				drop_cosmetic_tag = yes
-			}
-			FRA_conseil_de_defense_federal = {
-				set_portraits = {
-					civilian = { large = GFX_portrait_FRA_conseil_de_defense_federal_civilian_large }
-				}
-			}
+		trigger = {
+			has_country_flag = jaco_won_first_election_flag
 		}
+		hidden_effect = { set_cosmetic_tag = FRA_neosocialist }
+	}
+
+	option = {
+		name = comfrance.1.e
+		ai_chance = {
+			base = 1	
+		}
+		trigger = {
+			has_country_flag = sore_won_first_election_flag
+		}
+		hidden_effect = { set_cosmetic_tag = FRA_sorelian }
 	}
 }
 
 #####################
-### CSP Elections ###
+### BGT Elections ###
 #####################
 
 country_event = {
 	id = comfrance.5
-	title = comfrance.5.t
+	title = comfrance.5.title
 	desc = comfrance.5.desc
 	picture = GFX_report_event_worker_protests
 
 	is_triggered_only = yes
-	after = { 
-		hidden_effect = { 
-			country_event = { id = comfrance.6 days = 7 } 
-			country_event = { id = comfrance.7 days = 10 } 
-			country_event = { id = comfrance.8 days = 13 } 
-			country_event = { id = comfrance.9 days = 16 } 
-			country_event = { id = comfrance.10 days = 19 } 
-			country_event = { id = cofpolitics.99 days = 22 }
-			country_event = { id = cofpolitics.100 days = 25 }
-		}
-	}
 
 	option = {
-		name = comfrance.5.a
-		add_stability = -0.2
-		
+		log = "[GetLogInfo]: event comfrance.5 option comfrance.5.a"
+		name = comfrance.5.a  
+		ai_chance = {
+			base = 100
+		}
+		add_stability = -0.15
+		hidden_effect = {
+			country_event = { id = comfrance.6 days = 7 }
+		}
+		# set 1936 election flags
+		set_country_flag = { flag = FRA_ANAR value = 0 }
+		set_country_flag = { flag = FRA_JACO value = 0 }
+		set_country_flag = { flag = FRA_SORE value = 0 }
+		set_country_flag = { flag = FRA_TRAV value = 0 }
+
+		set_temp_variable = { wc = -1 }
+		set_temp_variable = { pc = -1 }
+		set_temp_variable = { mc = -1 }
+		set_temp_variable = { sc = -1 }
+		set_temp_variable = { fc = -1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 }
 
 country_event = {
 	id = comfrance.6
-	title = comfrance.6.t
+	title = comfrance.6.title
 	desc = comfrance.6.desc
 	picture = GFX_report_event_communists_cheer
 
 	is_triggered_only = yes
 
 	option = {
-		name = comfrance.6.a 
-		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.6 option comfrance.6.az"
+		name = comfrance.6.az #Paul Le Gentilhomme (Travailleur) - Tank proponent
+		ai_chance = {
+			base = 25
+		}
+		add_stability = -0.05
+		set_country_flag = ARMY_TRAV
+		modify_country_flag = {
+			flag = FRA_TRAV
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.7 days = 3 }
+		}
+		clr_country_flag = original_CGSC_leader
+		set_country_flag = y1936_CGSC_leader_synd
 
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_synd_radi
+		set_temp_variable = { fc = -4 }
+		FRA_social_politic_situation_change = yes
 
-		custom_effect_tooltip = CGSC_synd_radi_elect_tips
+		set_temp_variable = { syndc = 3 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { atsynd1c = 1 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 0 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 0 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 0 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 20 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 0 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 0 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 0 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.6.b
-		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.6 option comfrance.6.bz"
+		name = comfrance.6.bz #Jacques Duclos (Jacobin) - Centralized High Command
+		ai_chance = {
+			base = 25
+		}
+		add_stability = 0.02
+		set_country_flag = ARMY_JACO
+		modify_country_flag = {
+			flag = FRA_JACO
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.7 days = 3 }
+		}
 
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_oppo_comm
+		clr_country_flag = original_CGSC_leader
+		set_country_flag = y1936_CGSC_leader_jaco
 
-		clr_country_flag = CGSC_synd
-		set_country_flag = CGSC_oppo
-		csp_position_change = yes
+		set_temp_variable = { fc = 2 }
+		FRA_social_politic_situation_change = yes
 
-		custom_effect_tooltip = CGSC_oppo_comm_elect_tips
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = 3 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { msyndc = -2.5 }
-		set_temp_variable = { moppoc = 2.5 }
-		set_temp_variable = { mjacoc = 0 }
-		set_temp_variable = { msorec = 0 }
-		mili_faction_influence_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atsynd1c = 0 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 1 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 0 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 0 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 0 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 20 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 0 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 0 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.6.c
-		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.6 option comfrance.6.cz"
+		name = comfrance.6.cz #Jacques Doriot (Sorelian) - Officers' initiative
+		ai_chance = {
+			base = 25
+		}
+		add_stability = 0.02
+		set_country_flag = ARMY_SORE
+		modify_country_flag = {
+			flag = FRA_SORE
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.7 days = 3 }
+		}
 
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_jaco_neos
+		clr_country_flag = original_CGSC_leader
+		set_country_flag = y1936_CGSC_leader_sore
 
-		clr_country_flag = CGSC_synd
-		set_country_flag = CGSC_jaco
-		csp_position_change = yes
+		set_temp_variable = { fc = 3 }
+		FRA_social_politic_situation_change = yes
 
-		custom_effect_tooltip = CGSC_jaco_neos_elect_tips
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = 3 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { msyndc = -2.5 }
-		set_temp_variable = { moppoc = 0 }
-		set_temp_variable = { mjacoc = 2.5 }
-		set_temp_variable = { msorec = 0 }
-		mili_faction_influence_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atsynd1c = 0 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 0 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 1 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 0 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 0 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 0 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 20 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 0 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.6.d
-		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.6 option comfrance.6.e"
+		name = comfrance.6.dz #Henri Tanguy (Anarchiste) - Mass conscription
+		ai_chance = {
+			base = 25
+		}
+		add_stability = -0.02
+		set_country_flag = ARMY_ANAR
+		modify_country_flag = {
+			flag = FRA_ANAR
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.7 days = 3 }
+		}
 
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_sore_oldl
+		clr_country_flag = original_CGSC_leader
+		set_country_flag = y1936_CGSC_leader_anar
 
-		clr_country_flag = CGSC_synd
-		set_country_flag = CGSC_sore
-		csp_position_change = yes
+		set_temp_variable = { fc = 1 }
+		FRA_social_politic_situation_change = yes
 
-		custom_effect_tooltip = CGSC_sore_oldl_elect_tips
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = 3 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { msyndc = -2.5 }
-		set_temp_variable = { moppoc = 0 }
-		set_temp_variable = { mjacoc = 0 }
-		set_temp_variable = { msorec = 2.5 }
-		mili_faction_influence_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atsynd1c = 0 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 0 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 0 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 1 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 0 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 0 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 0 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 20 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		FRA_govern_leader_change = yes
 	}
 }
 
 country_event = {
 	id = comfrance.7
-	title = comfrance.7.t
+	title = comfrance.7.title
 	desc = comfrance.7.desc
 	picture = GFX_report_event_communists_cheer
 
 	is_triggered_only = yes
-	
+
 	option = {
-		name = comfrance.7.a 
-		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.7 option comfrance.7.az"
+		name = comfrance.7.az #Roger Salengro (Travailleur)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = 0.02
+		modify_country_flag = {
+			flag = FRA_TRAV
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.8 days = 3 }
+		}
 
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_synd_mode
+		clr_country_flag = original_DSRG_leader
+		set_country_flag = y1936_DSRG_leader_synd
 
-		clr_country_flag = DSRG_oppo
-		set_country_flag = DSRG_synd
-		csp_position_change = yes
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = -1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = 2 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
+
 	}
 
 	option = {
-		name = comfrance.7.b
-		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.7 option comfrance.7.bz"
+		name = comfrance.7.bz #Waldeck Rochet (Jacobin)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = -0.05
+		modify_country_flag = {
+			flag = FRA_JACO
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.8 days = 3 }
+		}
 
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_oppo_comm
+		clr_country_flag = original_DSRG_leader
+		set_country_flag = y1936_DSRG_leader_jaco
+
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = -1 }
+		set_temp_variable = { mc = -1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { bc = 1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = 2 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.7.c
-		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.7 option comfrance.7.cz"
+		name = comfrance.7.cz #Pierre Villon (Sorelian)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = -0.02
+		modify_country_flag = {
+			flag = FRA_SORE
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.8 days = 3 }
+		}
+		clr_country_flag = original_DSRG_leader
+		set_country_flag = y1936_DSRG_leader_sore
 
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_jaco_revo
+		set_temp_variable = { wc = -1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
 
-		clr_country_flag = DSRG_oppo
-		set_country_flag = DSRG_jaco
-		csp_position_change = yes
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = 2 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.7.d
-		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.7 option comfrance.7.e"
+		name = comfrance.7.dz #Devolve the position to the militias (Anarchiste)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = 0.05
+		modify_country_flag = {
+			flag = FRA_ANAR
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.8 days = 3 }
+		}
+		clr_country_flag = original_DSRG_leader
+		set_country_flag = y1936_DSRG_leader_anar
 
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_sore_oldl
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = -1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
 
-		clr_country_flag = DSRG_oppo
-		set_country_flag = DSRG_sore
-		csp_position_change = yes
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = 2 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 }
 
 country_event = {
 	id = comfrance.8
-	title = comfrance.8.t
+	title = comfrance.8.title
 	desc = comfrance.8.desc
 	picture = GFX_report_event_communists_cheer
 
 	is_triggered_only = yes
 
 	option = {
-		name = comfrance.8.a 
-		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.8 option comfrance.8.az"
+		name = comfrance.8.az #Marceau Pivert (Travailleur)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = -0.05
+		modify_country_flag = {
+			flag = FRA_TRAV
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.9 days = 3 }
+		}
 
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_synd_mode
+		clr_country_flag = original_DIS_leader
+		set_country_flag = y1936_DIS_leader_synd
 
-		clr_country_flag = DIS_oppo
-		set_country_flag = DIS_synd
-		csp_position_change = yes
+		set_temp_variable = { wc = -1 }
+		set_temp_variable = { pc = -1 }
+		set_temp_variable = { mc = -1 }
+		set_temp_variable = { sc = -1 }
+		set_temp_variable = { fc = -1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = 2 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.8.b
-		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.8 option comfrance.8.bz"
+		name = comfrance.8.bz #Maurice Thorez (Jacobin)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = 0.05
+		modify_country_flag = {
+			flag = FRA_JACO
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.9 days = 3 }
+		}
 
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_oppo_comm
+		clr_country_flag = original_DIS_leader
+		set_country_flag = y1936_DIS_leader_jaco
+
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = -1 }
+		set_temp_variable = { mc = -1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { bc = 1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = 2 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.8.c
-		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.8 option comfrance.8.cz"
+		name = comfrance.8.cz #Jean Marie Clamamus (Sorelian)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = -0.05
+		modify_country_flag = {
+			flag = FRA_SORE
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.9 days = 3 }
+		}
 
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_jaco_revo
+		clr_country_flag = original_DIS_leader
+		set_country_flag = y1936_DIS_leader_sore
 
-		clr_country_flag = DIS_oppo
-		set_country_flag = DIS_jaco
-		csp_position_change = yes
+		set_temp_variable = { wc = -1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = -1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = 2 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.8.d
-		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.8 option comfrance.8.e"
+		name = comfrance.8.dz #Maurice Joyeux (Anarchiste)
+		ai_chance = {
+			base = 25
+		}
+		add_stability = 0.05
+		modify_country_flag = {
+			flag = FRA_ANAR
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.9 days = 3 }
+		}
 
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_sore_oldl
+		clr_country_flag = original_DIS_leader
+		set_country_flag = y1936_DIS_leader_anar
 
-		clr_country_flag = DIS_oppo
-		set_country_flag = DIS_sore
-		csp_position_change = yes
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = -1 }
+		set_temp_variable = { fc = -1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = 2 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 }
 
 country_event = {
 	id = comfrance.9
-	title = comfrance.9.t
+	title = comfrance.9.title
 	desc = comfrance.9.desc
 	picture = GFX_report_event_communists_cheer
 
 	is_triggered_only = yes
-	after = { hidden_effect = { country_event = { id = cofeconomy.1 days = 60 random_days = 30 } } }
+
 	option = {
-		name = comfrance.9.a 
-		ai_chance = { base = 25 }
+		log = "[GetLogInfo]: event comfrance.9 option comfrance.9.az"
+		name = comfrance.9.az #Benoît Frachon (Travailleur) - Orthodox Syndicalism
+		ai_chance = {
+			base = 25
+		}
+		set_country_flag = ECO_TRAV
+		modify_country_flag = {
+			flag = FRA_TRAV
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.10 days = 3 }
+		}
 
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		clr_country_flag = original_DED_leader
+		set_country_flag = y1936_DED_leader_synd
 
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_synd_mode
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = -1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
 
-		custom_effect_tooltip = DEA_synd_mode_elect_tips
+		set_temp_variable = { syndc = 2 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 1 }
-		set_temp_variable = { emc = 0 }
-		set_temp_variable = { epc = 0 }
-		set_temp_variable = { eoc = 0 }
-		Cof_economy_model_change = yes
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.9.b
-		ai_chance = { base = 25 }
+		log = "[GetLogInfo]: event comfrance.9 option comfrance.9.bz"
+		name = comfrance.9.bz #Ambroise Croizat (Jacobin) - Industrialisation
+		ai_chance = {
+			base = 25
+		}
+		set_country_flag = ECO_JACO
+		modify_country_flag = {
+			flag = FRA_JACO
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.10 days = 3 }
+		}
 
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		clr_country_flag = original_DED_leader
+		set_country_flag = y1936_DED_leader_jaco
 
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_oppo_anar
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = -1 }
+		set_temp_variable = { mc = -1 }
+		set_temp_variable = { bc = 1 }
+		FRA_social_politic_situation_change = yes
 
-		clr_country_flag = DEA_synd
-		set_country_flag = DEA_oppo
-		csp_position_change = yes
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = 2 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = DEA_oppo_anar_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 0 }
-		set_temp_variable = { emc = 1 }
-		set_temp_variable = { epc = 0 }
-		set_temp_variable = { eoc = 0 }
-		Cof_economy_model_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { esyndc = -2.5 }
-		set_temp_variable = { eoppoc = 2.5 }
-		set_temp_variable = { ejacoc = 0 }
-		set_temp_variable = { esorec = 0 }
-		econ_faction_influence_change = yes
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.9.c
-		ai_chance = { base = 25 }
+		log = "[GetLogInfo]: event comfrance.9 option comfrance.9.cz"
+		name = comfrance.9.cz #Jacques Doriot (Sorelian) - War economy and agriculture
+		ai_chance = {
+			base = 25
+		}
+		set_country_flag = ECO_SORE
+		modify_country_flag = {
+			flag = FRA_SORE
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.10 days = 3 }
+		}
 
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		clr_country_flag = original_DED_leader
+		set_country_flag = y1936_DED_leader_sore
 
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_jaco_neos
+		set_temp_variable = { wc = -1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
 
-		clr_country_flag = DEA_synd
-		set_country_flag = DEA_jaco
-		csp_position_change = yes
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = 2 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = DEA_jaco_neos_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 0 }
-		set_temp_variable = { emc = 0 }
-		set_temp_variable = { epc = 1 }
-		set_temp_variable = { eoc = 0 }
-		Cof_economy_model_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { esyndc = -2.5 }
-		set_temp_variable = { eoppoc = 0 }
-		set_temp_variable = { ejacoc = 2.5 }
-		set_temp_variable = { esorec = 0 }
-		econ_faction_influence_change = yes
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.9.d
-		ai_chance = { base = 25 }
+		log = "[GetLogInfo]: event comfrance.9 option comfrance.9.e"
+		name = comfrance.9.dz  #Daniel Guérin (Anarchiste) - Cooperatives
+		ai_chance = {
+			base = 25
+		}
+		set_country_flag = ECO_ANAR
+		modify_country_flag = {
+			flag = FRA_ANAR
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.10 days = 3 }
+		}
 
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		clr_country_flag = original_DED_leader
+		set_country_flag = y1936_DED_leader_anar
 
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_sore_oldl
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { bc = -1 }
+		FRA_social_politic_situation_change = yes
 
-		clr_country_flag = DEA_synd
-		set_country_flag = DEA_sore
-		csp_position_change = yes
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = 2 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
 
-		custom_effect_tooltip = DEA_sore_oldl_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 0 }
-		set_temp_variable = { emc = 0 }
-		set_temp_variable = { epc = 0 }
-		set_temp_variable = { eoc = 1 }
-		Cof_economy_model_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { esyndc = -2.5 }
-		set_temp_variable = { eoppoc = 0 }
-		set_temp_variable = { ejacoc = 0 }
-		set_temp_variable = { esorec = 2.5 }
-		econ_faction_influence_change = yes
+		FRA_govern_leader_change = yes
 	}
 }
 
 country_event = {
 	id = comfrance.10
-	title = comfrance.10.t
+	title = comfrance.10.title
 	desc = comfrance.10.desc
 	picture = GFX_report_event_communists_cheer
 
 	is_triggered_only = yes
 
 	option = {
-		name = comfrance.10.a 
-		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.10 option comfrance.10.az"
+		name = comfrance.10.az #Charles Rappoport (Travailleur)-Internationalism
+		ai_chance = {
+			base = 25
+		}
+		modify_country_flag = {
+			flag = FRA_TRAV
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = frapoc.900 days = 3 }
+		}
 
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_synd_radi
+		clr_country_flag = original_DFA_leader
+		set_country_flag = y1936_DFA_leader_synd
+
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { bc = 1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = 2 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.10.b
-		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.10 option comfrance.10.bz"
+		name = comfrance.10.bz #Marcel Cachin (Jacobin)-World revolution
+		ai_chance = {
+			base = 25
+		}
+		modify_country_flag = {
+			flag = FRA_JACO
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = frapoc.900 days = 3 }
+		}
 
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_oppo_comm
+		clr_country_flag = original_DFA_leader
+		set_country_flag = y1936_DFA_leader_jaco
 
-		clr_country_flag = DFA_synd
-		set_country_flag = DFA_oppo
-		csp_position_change = yes
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { bc = 1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = 2 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.10.c
-		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
+		log = "[GetLogInfo]: event comfrance.10 option comfrance.10.cz"
+		name = comfrance.10.cz #Pierre Comert (Sorelian)-Revenge against Germany
+		ai_chance = {
+			base = 25
+		}
+		modify_country_flag = {
+			flag = FRA_SORE
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = frapoc.900 days = 3 }
+		}
 
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_jaco_neos
+		clr_country_flag = original_DFA_leader
+		set_country_flag = y1936_DFA_leader_sore
 
-		clr_country_flag = DFA_synd
-		set_country_flag = DFA_jaco
-		csp_position_change = yes
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { bc = 1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = -1 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = 2 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
 	}
 
 	option = {
-		name = comfrance.10.d
-		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-		
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_sore_oldl
+		log = "[GetLogInfo]: event comfrance.10 option comfrance.10.e"
+		name = comfrance.10.dz #Fernand Desprès (Anarchiste)- European Socialism
+		ai_chance = {
+			base = 25
+		}
+		modify_country_flag = {
+			flag = FRA_ANAR
+			value = 1
+		}
+		hidden_effect = {
+			country_event = { id = frapoc.900 days = 3 }
+		}
 
-		clr_country_flag = DFA_synd
-		set_country_flag = DFA_sore
-		csp_position_change = yes
+		clr_country_flag = original_DFA_leader
+		set_country_flag = y1936_DFA_leader_anar
+
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { fc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { bc = 1 }
+		FRA_social_politic_situation_change = yes
+
+		set_temp_variable = { syndc = -1 }
+		set_temp_variable = { anarc = 2 }
+		set_temp_variable = { jacoc = -1 }
+		set_temp_variable = { sorec = -1 }
+		FRA_politic_faction_change = yes
+
+		FRA_govern_leader_change = yes
+	}
+}
+
+country_event = {
+	id = comfrance.12
+	title = comfrance.12.title
+	desc = comfrance.12.desc
+	picture = GFX_report_event_communists_cheer
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = travailleur_majority_1936
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.12 option comfrance.12.a"
+		name = comfrance.12.a #Souvarine
+		effect_tooltip = {
+			set_politics = {
+				ruling_party = syndicalist
+				elections_allowed = yes
+			}
+		}
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_politics = {
+						ruling_party = syndicalist
+						last_election = "[CURRENT_DATE]"
+						elections_allowed = yes
+					}
+				}
+				CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			}
+			country_event = { id = comfrance.19 days = 7 }
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.20
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.145
+	title = comfrance.19.title
+	desc = comfrance.19.desc
+	picture = GFX_report_event_communists_cheer
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.19 option comfrance.19.a"
+		name = comfrance.19.a #Jouhaux
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = FRA_path option = FRA_PATH_FRACHON_SYNDIE }
+			}
+		}
+		promote_character = FRA_leon_jouhaux
+		hidden_effect = {
+			news_event = { id = comfrance.1031 days = 1 }
+			country_event = { id = comfrance.1 days = 10 }
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.19 option comfrance.19.b"
+		name = comfrance.19.b #Frachon
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = FRA_path option = FRA_PATH_JOUHAUX_SYNDIE }
+			}
+		}
+		promote_character = FRA_benoit_frachon
+		hidden_effect = {
+			news_event = { id = comfrance.1031 days = 1 }
+			country_event = { id = comfrance.1 days = 10 }
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.13
+	title = comfrance.13.title
+	desc = comfrance.13.desc
+	picture = GFX_report_event_communists_cheer
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = jacobin_majority_1936
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.13 option comfrance.13.a"
+		name = comfrance.13.a #Cachin
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = FRA_path option = FRA_PATH_MARQUET_RADICAL_TOTALIST }
+					has_game_rule = { rule = FRA_path option = FRA_PATH_MARQUET_GRADUAL_TOTALIST }
+				}
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.20
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.130 days = 15 }
+			country_event = { id = comfrance.14 days = 7 }
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.13 option comfrance.13.b"
+		name = comfrance.13.b #Duclos
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = FRA_path option = FRA_PATH_DEAT_RADICAL_TOTALIST }
+					has_game_rule = { rule = FRA_path option = FRA_PATH_DEAT_GRADUAL_TOTALIST }
+				}
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.20
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.130 days = 15 }
+			country_event = { id = comfrance.14 days = 7 }
+			set_country_flag = FRA_deat_sic_chosen
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.14
+	title = comfrance.14.title
+	desc = comfrance.14.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.14 option comfrance.14.a"
+		name = comfrance.14.a #Vive la Revolution!
+		if = {
+			limit = { has_country_flag = FRA_deat_sic_chosen }
+			promote_character = FRA_adrien_marquet
+		}
+		else = {
+			promote_character = FRA_marcel_deat
+		}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = totalist
+					last_election = "[CURRENT_DATE]"
+					elections_allowed = yes
+					name = FRA_jacobins
+					long_name = FRA_jacobins_long
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		hidden_effect = {
+			news_event = { id = comfrance.1033 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.15
+	title = comfrance.15.title
+	desc = comfrance.15.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = sorelian_majority_1936
+		hidden_effect = {
+			news_event = { id = comfrance.1034 days = 1 }
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.15 option comfrance.15.b"
+		name = comfrance.15.b #Valois
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.20
+		}
+		hidden_effect = {
+			country_event = { id = comfrance.16 days = 7 }
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.16
+	title = comfrance.16.title
+	desc = comfrance.16.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.16 option comfrance.16.a"
+		name = comfrance.16.a #Merge position of chairman
+		promote_character = FRA_georges_valois
+		effect_tooltip = {
+			set_politics = {
+				ruling_party = totalist
+				elections_allowed = yes
+				name = FRA_sorelians
+				long_name = FRA_sorelians_long
+			}
+		}
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_politics = {
+						ruling_party = totalist
+						last_election = "[CURRENT_DATE]"
+						elections_allowed = yes
+						name = FRA_sorelians
+						long_name = FRA_sorelians_long
+					}
+				}
+				CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			}
+			country_event = { id = comfrance.1 days = 10 }
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.17
+	title = comfrance.17.title
+	desc = comfrance.17.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = anarchiste_majority_1936
+		hidden_effect = {
+			news_event = {
+				id = comfrance.1035
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.17 option comfrance.17.a"
+		name = comfrance.17.a
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_politics = {
+						ruling_party = radical_socialist
+						last_election = "[CURRENT_DATE]"
+						elections_allowed = yes
+					}
+				}
+				CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			}
+			country_event = { id = comfrance.18 days = 7 }
+		}
+		effect_tooltip = {
+			set_politics = {
+				ruling_party = radical_socialist
+				elections_allowed = yes
+			}
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.20
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.18
+	title = comfrance.18.title
+	desc = comfrance.18.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.18 option comfrance.18.a"
+		name = comfrance.18.a
+		promote_character = FRA_conseil_de_defense_federal
+		hidden_effect = {
+			country_event = { id = comfrance.1 days = 10 }
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.20
+	title = comfrance.20.title
+	desc = comfrance.20.desc
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = FRA_no_majority_1936
+		hidden_effect = {
+			news_event = { id = comfrance.1036 days = 1 }
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.20 option comfrance.20.c"
+		name = comfrance.20.c #Pivert
+		add_stability = -0.1
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.10
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.10
+		}
+		hidden_effect = {
+			meta_effect = {
+				text = {
+					set_politics = {
+						ruling_party = syndicalist
+						last_election = "[CURRENT_DATE]"
+						elections_allowed = yes
+					}
+				}
+				CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			}
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
 	}
 }
 
 country_event = {
 	id = comfrance.22
-	title = comfrance.22.t
+	title = comfrance.22.title
 	desc = comfrance.22.desc
 	picture = GFX_report_event_SPA_CNT_FAI
 
@@ -662,7 +1209,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.25
-	title = comfrance.25.t
+	title = comfrance.25.title
 	desc = comfrance.25.desc
 
 	picture = GFX_report_event_generic_diplomacy3
@@ -672,13 +1219,18 @@ country_event = {
 	option = { #Establish the Damocles Project !
 		log = "[GetLogInfo]: event comfrance.25 option comfrance.25.a"
 		name = comfrance.25.a
-		set_global_flag = damocles_project_active
-		add_political_power = -80
-		FRA_damocles_effect = yes
-		FROM = {
-			effect_tooltip = { FRA_damocles_effect = yes }
-			custom_effect_tooltip = tooltip_white_line
+		ai_chance = { base = 100 }
+		#german counter event, maybe make it focus
+		FRA = {
 			country_event = comfrance.26
+		}
+		set_global_flag = damocles_project_active
+		add_political_power = -40
+		add_tech_bonus = {
+			name = comfrance.25.title
+			bonus = 1
+			uses = 2
+			category = nuclear
 		}
 	}
 
@@ -686,13 +1238,16 @@ country_event = {
 		log = "[GetLogInfo]: event comfrance.25 option comfrance.25.b"
 		name = comfrance.25.b
 		ai_chance = { base = 0 }
-		FROM = { country_event = comfrance.27 }
+		add_political_power = 40
+		FRA = {
+			country_event = comfrance.27
+		}
 	}
 }
 
 country_event = {
 	id = comfrance.26
-	title = comfrance.26.t
+	title = comfrance.26.title
 	desc = comfrance.26.desc
 	picture = GFX_report_event_generic_diplomacy1
 
@@ -701,7 +1256,12 @@ country_event = {
 	option = { #Excellent
 		log = "[GetLogInfo]: event comfrance.26 option comfrance.26.a"
 		name = comfrance.26.a
-		FRA_damocles_effect = yes
+		add_tech_bonus = {
+			name = comfrance.26.title
+			bonus = 1
+			uses = 2
+			category = nuclear
+		}
 		hidden_effect = {
 			news_event = { id = comfrance.200 days = 30 }
 		}
@@ -710,7 +1270,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.27
-	title = comfrance.27.t
+	title = comfrance.27.title
 	desc = comfrance.27.desc
 	picture = GFX_report_event_ENG_uobflag
 
@@ -719,6 +1279,7 @@ country_event = {
 	option = { #Dammit!
 		log = "[GetLogInfo]: event comfrance.27 option comfrance.27.a"
 		name = comfrance.27.a
+		set_country_flag = FRA_damocles_refused
 	}
 }
 
@@ -728,7 +1289,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.28
-	title = comfrance.28.t
+	title = comfrance.28.title
 	desc = comfrance.28.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -816,7 +1377,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.29
-	title = comfrance.29.t
+	title = comfrance.29.title
 	desc = comfrance.29.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -837,7 +1398,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.30
-	title = comfrance.30.t
+	title = comfrance.30.title
 	desc = comfrance.30.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -855,7 +1416,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.41
-	title = comfrance.41.t
+	title = comfrance.41.title
 	desc = comfrance.41.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -902,7 +1463,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.42
-	title = comfrance.42.t
+	title = comfrance.42.title
 	desc = comfrance.42.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -969,7 +1530,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.43
-	title = comfrance.43.t
+	title = comfrance.43.title
 	desc = comfrance.43.desc
 	picture = GFX_report_event_SPA_civwar2
 
@@ -1001,7 +1562,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.45
-	title = comfrance.45.t
+	title = comfrance.45.title
 	desc = comfrance.45.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -1020,7 +1581,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.47
-	title = comfrance.47.t
+	title = comfrance.47.title
 	desc = comfrance.47.desc
 	picture = GFX_report_event_USA_reed
 
@@ -1043,10 +1604,6 @@ country_event = {
 		reverse_add_opinion_modifier = {
 			target = USA
 			modifier = KR_hates_govt
-		}
-		if = {
-			limit = { tag = FRA }
-			complete_national_focus = FRA_the_new_world
 		}
 	}
 
@@ -1081,7 +1638,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.50
-	title = comfrance.50.t
+	title = comfrance.50.title
 	desc = comfrance.50.desc
 	picture = GFX_report_event_ARG_car51
 
@@ -1100,7 +1657,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.51
-	title = comfrance.51.t
+	title = comfrance.51.title
 
 	desc = {
 		text = comfrance.51.desc.FRA
@@ -1153,7 +1710,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.52
-	title = comfrance.52.t
+	title = comfrance.52.title
 	desc = comfrance.52.desc
 	picture = GFX_report_event_french_resistance_01
 
@@ -1168,7 +1725,7 @@ country_event = {
 
 country_event = { # The socialist Risorgimento
 	id = comfrance.53
-	title = comfrance.53.t
+	title = comfrance.53.title
 	desc = comfrance.53.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -1185,7 +1742,7 @@ country_event = { # The socialist Risorgimento
 
 country_event = { # The socialist Risorgimento
 	id = comfrance.54
-	title = comfrance.54.t
+	title = comfrance.54.title
 	desc = comfrance.54.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -1219,7 +1776,7 @@ country_event = { # The socialist Risorgimento
 
 country_event = {
 	id = comfrance.55
-	title = comfrance.55.t
+	title = comfrance.55.title
 	desc = comfrance.55.desc
 	picture = GFX_report_event_generic_run_on_the_banks
 
@@ -1238,7 +1795,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.56
-	title = comfrance.56.t
+	title = comfrance.56.title
 	desc = comfrance.56.desc
 	picture = GFX_report_event_HND_speech
 
@@ -1266,7 +1823,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.57
-	title = comfrance.57.t
+	title = comfrance.57.title
 	desc = comfrance.57.desc
 	picture = GFX_report_event_HND_speech
 
@@ -1301,7 +1858,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.58
-	title = comfrance.58.t
+	title = comfrance.58.title
 	desc = comfrance.58.desc
 	picture = GFX_report_event_generic_conference2
 	is_triggered_only = yes
@@ -1319,7 +1876,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.59
-	title = comfrance.59.t
+	title = comfrance.59.title
 	desc = comfrance.59.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -1335,7 +1892,7 @@ country_event = {
 		name = comfrance.59.a
 		if = {
 			limit = { tag = FRA }
-			add_political_power = 30
+			add_stability = 0.06
 			complete_national_focus = FRA_the_congress_of_the_internationale
 		}
 		else_if = {
@@ -1347,7 +1904,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.62
-	title = comfrance.62.t
+	title = comfrance.62.title
 	desc = comfrance.62.desc
 	picture = GFX_report_event_soviet_soldiers_tank
 
@@ -1357,13 +1914,13 @@ country_event = {
 		log = "[GetLogInfo]: event comfrance.62 option comfrance.62.a"
 		name = comfrance.62.a
 		add_doctrine_cost_reduction = {
-			name = comfrance.62.t
+			name = comfrance.62.title
 			cost_reduction = 0.5
 			uses = 1
 			category = land_doctrine
 		}
 		add_tech_bonus = {
-			name = comfrance.62.t
+			name = comfrance.62.title
 			bonus = 1
 			uses = 1
 			category = infantry_weapons
@@ -1374,7 +1931,7 @@ country_event = {
 
 country_event = { #The Rise of the Socialist Anti-Colonial Committee
 	id = comfrance.63
-	title = comfrance.63.t
+	title = comfrance.63.title
 
 	desc = {
 		text = comfrance.63.desc.NFA
@@ -1416,7 +1973,7 @@ country_event = { #The Rise of the Socialist Anti-Colonial Committee
 
 country_event = { #The Creation of the Socialist Anti-Colonial Committee
 	id = comfrance.64
-	title = comfrance.64.t
+	title = comfrance.64.title
 	desc = comfrance.64.desc
 	picture = GFX_report_event_NFA_event_flavor18
 
@@ -1436,7 +1993,7 @@ country_event = { #The Creation of the Socialist Anti-Colonial Committee
 
 country_event = { #What should the Committee focus on?
 	id = comfrance.65
-	title = comfrance.65.t
+	title = comfrance.65.title
 	desc = {
 		text = comfrance.65.desc.default
 		trigger = {
@@ -1506,7 +2063,7 @@ country_event = { #What should the Committee focus on?
 
 country_event = { #Wave of Sabotage
 	id = comfrance.66
-	title = comfrance.66.t
+	title = comfrance.66.title
 	desc = comfrance.66.desc
 	picture = GFX_report_event_generic_reporters
 
@@ -1560,7 +2117,7 @@ country_event = { #Wave of Sabotage
 
 country_event = { #Syndicalists Foment Rebellion
 	id = comfrance.67
-	title = comfrance.67.t
+	title = comfrance.67.title
 	desc = comfrance.67.desc
 	picture = GFX_report_event_generic_workers
 
@@ -1602,7 +2159,7 @@ country_event = { #Syndicalists Foment Rebellion
 
 country_event = { #Campaign of Dissent
 	id = comfrance.68
-	title = comfrance.68.t
+	title = comfrance.68.title
 	desc = comfrance.68.desc
 	picture = GFX_report_event_soviet_soldiers_tank
 
@@ -1765,7 +2322,7 @@ country_event = { #Campaign of Dissent
 
 country_event = {
 	id = comfrance.71
-	title = comfrance.71.t
+	title = comfrance.71.title
 	desc = comfrance.71.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -1790,7 +2347,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.72
-	title = comfrance.72.t
+	title = comfrance.72.title
 	desc = comfrance.72.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -1810,7 +2367,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.86
-	title = comfrance.86.t
+	title = comfrance.86.title
 	desc = comfrance.86.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -1849,8 +2406,8 @@ country_event = {
 					WCA = {
 						OR = {
 							has_war_with = USA
-							has_war_with = TEX
-							has_war_with = PSA
+							has_war_with = APG
+							has_war_with = ACC
 						}
 					}
 				}
@@ -1866,7 +2423,7 @@ country_event = {
 			}
 			### Hemingway's Speech
 			country_event = { id = comfrance.97 days = 2 }
-			### USA/TEX/PSA reaction event
+			### USA/APG/ACC reaction event
 			every_other_country = {
 				limit = {
 					is_american_tag = yes
@@ -1895,7 +2452,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.87
-	title = comfrance.87.t
+	title = comfrance.87.title
 	desc = comfrance.87.desc
 	picture = GFX_report_event_WCA_militia
 
@@ -1951,7 +2508,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.90
-	title = comfrance.90.t
+	title = comfrance.90.title
 	desc = comfrance.90.desc
 	picture = GFX_report_event_generic_map_france
 
@@ -1966,7 +2523,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.91
-	title = comfrance.91.t
+	title = comfrance.91.title
 	desc = comfrance.91.desc
 	picture = GFX_report_event_generic_map_brit
 
@@ -2001,7 +2558,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.94
-	title = comfrance.94.t
+	title = comfrance.94.title
 	desc = comfrance.94.desc
 	picture = GFX_report_event_generic_economy_growth
 
@@ -2022,7 +2579,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.97
-	title = comfrance.97.t
+	title = comfrance.97.title
 	desc = comfrance.97.desc
 	picture = GFX_report_event_generic_diplomacy4
 
@@ -2091,7 +2648,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.98
-	title = comfrance.98.t
+	title = comfrance.98.title
 	desc = comfrance.98.desc
 	picture = GFX_report_event_generic_diplomacy4
 
@@ -2106,7 +2663,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.99
-	title = comfrance.99.t
+	title = comfrance.99.title
 	desc = comfrance.99.desc
 	picture = GFX_report_event_generic_conference2
 	is_triggered_only = yes
@@ -2128,7 +2685,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.100
-	title = comfrance.100.t
+	title = comfrance.100.title
 	desc = comfrance.100.desc
 	picture = GFX_report_event_ARG_car51
 
@@ -2148,7 +2705,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.101
-	title = comfrance.101.t
+	title = comfrance.101.title
 	desc = comfrance.101.desc
 	picture = GFX_report_event_ARG_car51
 
@@ -2192,7 +2749,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.102
-	title = comfrance.102.t
+	title = comfrance.102.title
 	desc = comfrance.102.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -2206,7 +2763,7 @@ country_event = {
 
 country_event = { #FRA/ENG Agreed to Help!
 	id = comfrance.103
-	title = comfrance.103.t
+	title = comfrance.103.title
 	desc = comfrance.103.desc
 	picture = GFX_report_event_generic_conference2
 
@@ -2221,7 +2778,7 @@ country_event = { #FRA/ENG Agreed to Help!
 
 country_event = { #FRA/ENG Aid Arrives
 	id = comfrance.104
-	title = comfrance.104.t
+	title = comfrance.104.title
 	desc = comfrance.104.desc
 	picture = GFX_report_event_french_resistance_01
 
@@ -2240,7 +2797,7 @@ country_event = { #FRA/ENG Aid Arrives
 
 country_event = { #Final Act of the Second Congress
 	id = comfrance.110
-	title = comfrance.110.t
+	title = comfrance.110.title
 	desc = comfrance.110.desc
 	picture = GFX_vive
 
@@ -2270,7 +2827,7 @@ country_event = { #Final Act of the Second Congress
 ### Congress focuses
 country_event = {
 	id = comfrance.124
-	title = comfrance.124.t
+	title = comfrance.124.title
 	desc = comfrance.124.desc
 	picture = GFX_report_event_generic_happy_crowd
 
@@ -2292,7 +2849,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.125
-	title = comfrance.125.t
+	title = comfrance.125.title
 	desc = comfrance.125.desc
 	picture = GFX_report_event_generic_happy_crowd
 
@@ -2303,7 +2860,7 @@ country_event = {
 		name = comfrance.125.a
 		ai_chance = { base = 50 }
 		add_tech_bonus = {
-			name = comfrance.125.t
+			name = comfrance.125.title
 			bonus = 2
 			uses = 1
 			category = infantry_weapons
@@ -2320,7 +2877,7 @@ country_event = {
 		name = comfrance.125.b
 		ai_chance = { base = 50 }
 		add_tech_bonus = {
-			name = comfrance.125.t
+			name = comfrance.125.title
 			bonus = 1
 			uses = 1
 			category = industry
@@ -2331,7 +2888,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.127
-	title = comfrance.127.t
+	title = comfrance.127.title
 	desc = comfrance.127.desc
 	picture = GFX_report_event_generic_diplomacy2
 	is_triggered_only = yes
@@ -2345,7 +2902,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.128
-	title = comfrance.128.t
+	title = comfrance.128.title
 	desc = comfrance.128.desc
 	picture = GFX_report_event_generic_diplomacy2
 
@@ -2360,7 +2917,7 @@ country_event = {
 		log = "[GetLogInfo]: event comfrance.128 option comfrance.128.a"
 		name = comfrance.128.a
 		add_tech_bonus = {
-			name = comfrance.128.t
+			name = comfrance.128.title
 			bonus = 1
 			uses = 1
 			category = construction_tech
@@ -2370,7 +2927,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.129
-	title = comfrance.129.t
+	title = comfrance.129.title
 	desc = comfrance.129.desc
 	picture = GFX_report_event_generic_economic_policy
 
@@ -2379,11 +2936,8 @@ country_event = {
 	option = { #Excellent!
 		log = "[GetLogInfo]: event comfrance.129 option comfrance.129.a"
 		name = comfrance.129.a
-		meta_effect = {
-			text = { set_temp_variable = { FRA_num_target_states = [VALUE] } }
-			VALUE = "[target_value.GetId]"
-		}
 		FRA_phalanstere_effect = yes
+		clear_variable = FRA_num_target_states
 	}
 
 	option = { #We don't want their help.
@@ -2397,6 +2951,7 @@ country_event = {
 				modifier = KR_disapproves_of_govt
 			}
 		}
+		clear_variable = FRA_num_target_states
 	}
 }
 
@@ -2404,7 +2959,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.130
-	title = comfrance.130.t
+	title = comfrance.130.title
 	desc = comfrance.130.desc
 	picture = GFX_red_flag
 
@@ -2415,26 +2970,8 @@ country_event = {
 		name = comfrance.130.a
 		ai_chance = {
 			base = 55
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = FRA_path option = FRA_PATH_DEAT_GRADUAL_TOTALIST }
-					has_game_rule = { rule = FRA_path option = FRA_PATH_MARQUET_GRADUAL_TOTALIST }
-				}
-			}
 		}
-		add_political_power = -50
-		add_stability = -0.05
 		hidden_effect = { set_cosmetic_tag = FRA_neosocialist }
-		set_politics = {
-			ruling_party = totalist
-			elections_allowed = no
-			long_name = FRA_parti_unique_long
-			name = FRA_parti_unique
-		}
-		hidden_effect = {
-			country_event = { id = comfrance.131 days = 7 }
-		}
 	}
 
 	option = { #We shall reform Syndicalism from within.
@@ -2442,22 +2979,14 @@ country_event = {
 		name = comfrance.130.b
 		ai_chance = {
 			base = 45
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = { rule = FRA_path option = FRA_PATH_DEAT_RADICAL_TOTALIST }
-					has_game_rule = { rule = FRA_path option = FRA_PATH_MARQUET_RADICAL_TOTALIST }
-					has_game_rule = { rule = FRA_path option = FRA_PATH_GAMELIN_SYNDIE }
-				}
-			}
 		}
-		add_stability = -0.1
+		add_stability = 0.02
 	}
 }
 
 country_event = {
 	id = comfrance.131
-	title = comfrance.131.t
+	title = comfrance.131.title
 	desc = comfrance.131.desc
 	picture = GFX_report_event_generic_diplomacy1
 	is_triggered_only = yes
@@ -2478,7 +3007,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.132
-	title = comfrance.132.t
+	title = comfrance.132.title
 	desc = comfrance.132.desc
 	picture = GFX_report_event_generic_diplomacy1
 
@@ -2492,7 +3021,7 @@ country_event = {
 			retire_character = FRA_confederation_general_du_travail
 		}
 		if = {
-			limit = { has_country_leader = { character = FRA_adrien_marquet } }
+			limit = { has_country_flag = FRA_deat_sic_chosen }
 			activate_advisor = FRA_marcel_deat_sic
 		}
 		else = {
@@ -2506,9 +3035,9 @@ country_event = {
 
 country_event = {
 	id = comfrance.133
-	title = comfrance.133.t
+	title = comfrance.133.title
 	desc = comfrance.133.desc
-	picture = GFX_report_event_NFA_event_NFA_Soldiers
+	picture = GFX_report_event_NFA_event_NFA_soldiers
 
 	is_triggered_only = yes
 
@@ -2524,7 +3053,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.134
-	title = comfrance.134.t
+	title = comfrance.134.title
 	desc = comfrance.134.desc
 	picture = GFX_report_event_generic_scandal
 	is_triggered_only = yes
@@ -2570,7 +3099,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.135
-	title = comfrance.135.t
+	title = comfrance.135.title
 	desc = comfrance.135.desc
 	picture = GFX_report_event_generic_trial_big
 
@@ -2580,9 +3109,8 @@ country_event = {
 		log = "[GetLogInfo]: event comfrance.135 option comfrance.135.a"
 		name = comfrance.135.a
 		ai_chance = { base = 50 }
-		add_stability = -0.15
-		FRA_maurice_gamelin = { kill_character = yes }
-		FRA_leon_blum = { kill_character = yes }
+		add_stability = -0.05
+		retire_character = FRA_maurice_gamelin
 		hidden_effect = { country_event = comfrance.136 }
 	}
 
@@ -2608,7 +3136,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.136
-	title = comfrance.136.t
+	title = comfrance.136.title
 	desc = comfrance.136.desc
 	picture = GFX_report_event_ITA_riot
 
@@ -2662,7 +3190,7 @@ country_event = {
 
 country_event = { #Gamelin Coup
 	id = comfrance.137
-	title = comfrance.137.t
+	title = comfrance.137.title
 	desc = comfrance.137.desc
 	picture = GFX_report_event_french_tanks
 
@@ -2683,7 +3211,7 @@ country_event = { #Gamelin Coup
 
 country_event = {
 	id = comfrance.138
-	title = comfrance.138.t
+	title = comfrance.138.title
 	desc = comfrance.138.desc
 	picture = GFX_vive
 
@@ -2777,7 +3305,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.144
-	title = comfrance.144.t
+	title = comfrance.144.title
 	desc = comfrance.144.desc
 	picture = GFX_report_event_worker_protests
 
@@ -2791,55 +3319,27 @@ country_event = {
 	fire_only_once = yes
 
 	option = {
-		log = "[GetLogInfo]: event comfrance.144 option comfrance.144.a"
 		name = comfrance.144.a
-		add_stability = 0.02
+		add_stability = -0.01
 		ai_chance = {
-			base = 45
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = FRA_path option = FRA_PATH_VALOIS_WAR_TOTALIST }
-			}
+			base = 50
 		}
-		hidden_effect = {
-			country_event = { id = comfrance.145 days = 2 }
-		}
-		# set 1941 election counters
-		set_country_flag = { flag = FRA_ANAR value = 0 }
-		set_country_flag = { flag = FRA_JACO value = 0 }
-		set_country_flag = { flag = FRA_SORE value = 0 }
-		set_country_flag = { flag = FRA_TRAV value = 0 }
+		add_war_support = 0.02
+		add_political_power = 25
 	}
 	option = {
-		log = "[GetLogInfo]: event comfrance.144 option comfrance.144.b"
 		name = comfrance.144.b
+		add_stability = 0.01
 		ai_chance = {
-			base = 55
-			modifier = {
-				factor = 0
-				has_game_rule = { rule = FRA_path option = FRA_PATH_VALOIS_TOTALIST }
-			}
+			base = 50
 		}
-		trigger = {
-			has_war_with = GER
-			has_country_leader = { character = FRA_georges_valois }
-		}
-		set_politics = {
-			ruling_party = totalist
-			elections_allowed = no
-		}
-		add_stability = -0.1
-		add_war_support = 0.2
-		hidden_effect = {
-			country_event = { id = comfrance.157 days = 2 }
-		}
-		# set no more elections
+		custom_effect_tooltip = y1941elections_tips
 	}
 }
 
 country_event = {
 	id = comfrance.145
-	title = comfrance.145.t
+	title = comfrance.145.title
 	desc = comfrance.145.desc
 	picture = GFX_report_event_worker_protests
 
@@ -2863,12 +3363,12 @@ country_event = {
 		modify_country_flag = {
 			flag = FRA_TRAV
 			value = 1
-		}
+		} 
 		hidden_effect = {
 			country_event = { id = comfrance.146 days = 3 }
 		}
 		add_tech_bonus = {
-			name = comfrance.145.t
+			name = comfrance.145.title
 			bonus = 1
 			uses = 1
 			category = infantry_weapons
@@ -2941,7 +3441,7 @@ country_event = {
 			country_event = { id = comfrance.146 days = 3 }
 		}
 		add_doctrine_cost_reduction = {
-			name = comfrance.145.t
+			name = comfrance.145.title
 			cost_reduction = 0.5
 			uses = 1
 			category = land_doctrine
@@ -2983,7 +3483,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.146
-	title = comfrance.146.t
+	title = comfrance.146.title
 	desc = comfrance.146.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3037,7 +3537,6 @@ country_event = {
 			}
 		}
 		add_stability = -0.06
-		add_manpower = 50000
 		modify_country_flag = {
 			flag = FRA_JACO
 			value = 1
@@ -3045,6 +3544,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = comfrance.147 days = 3 }
 		}
+		add_ideas = FRA_paramilitary_gendarmes
 		add_popularity = {
 			ideology = totalist
 			popularity = 0.05
@@ -3070,9 +3570,7 @@ country_event = {
 				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_NO_MAJORITY_SYNDIE } }
 			}
 		}
-		add_political_power = -100
-		add_stability = 0.05
-		add_war_support = 0.05
+		add_stability = -0.1
 		modify_country_flag = {
 			flag = FRA_SORE
 			value = 1
@@ -3080,6 +3578,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = comfrance.147 days = 3 }
 		}
+		add_ideas = FRA_secret_police
 		add_popularity = {
 			ideology = totalist
 			popularity = 0.05
@@ -3100,7 +3599,6 @@ country_event = {
 			}
 		}
 		add_stability = 0.05
-		add_political_power = 100
 		modify_country_flag = {
 			flag = FRA_ANAR
 			value = 1
@@ -3108,6 +3606,7 @@ country_event = {
 		hidden_effect = {
 			country_event = { id = comfrance.147 days = 3 }
 		}
+		add_ideas = FRA_demo_surete
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.05
@@ -3117,7 +3616,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.147
-	title = comfrance.147.t
+	title = comfrance.147.title
 	desc = comfrance.147.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3279,7 +3778,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.148
-	title = comfrance.148.t
+	title = comfrance.148.title
 	desc = comfrance.148.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3361,7 +3860,7 @@ country_event = {
 			}
 		}
 		add_tech_bonus = {
-			name = comfrance.148.t
+			name = comfrance.148.title
 			bonus = 1
 			uses = 1
 			category = construction_tech
@@ -3455,7 +3954,7 @@ country_event = {
 			}
 		}
 		add_tech_bonus = {
-			name = comfrance.148.t
+			name = comfrance.148.title
 			bonus = 1
 			uses = 1
 			category = industry
@@ -3477,7 +3976,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.149
-	title = comfrance.149.t
+	title = comfrance.149.title
 	desc = comfrance.149.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3637,7 +4136,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.150
-	title = comfrance.150.t
+	title = comfrance.150.title
 	desc = comfrance.150.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3690,7 +4189,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.151
-	title = comfrance.151.t
+	title = comfrance.151.title
 	desc = comfrance.151.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3716,7 +4215,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.152
-	title = comfrance.152.t
+	title = comfrance.152.title
 	desc = comfrance.152.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3742,7 +4241,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.153
-	title = comfrance.153.t
+	title = comfrance.153.title
 	desc = comfrance.153.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3751,12 +4250,6 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event comfrance.153 option comfrance.153.a"
 		name = comfrance.153.a #Council
-		if = {
-			limit = {
-				NOT = { has_global_flag = anarchiste_majority_1936 }
-			}
-			set_country_flag = FRA_elected_41_radsocs
-		}
 		add_stability = 0.06
 		set_politics = {
 			ruling_party = radical_socialist
@@ -3767,16 +4260,12 @@ country_event = {
 			ideology = radical_socialist
 			popularity = 0.20
 		}
-		if = {
-			limit = { has_country_flag = FRA_elected_41_radsocs }
-			set_country_leader_description = { desc = FRA_conseil_de_defense_federal_41_leader_desc }
-		}
 	}
 }
 
 country_event = {
 	id = comfrance.154
-	title = comfrance.154.t
+	title = comfrance.154.title
 	desc = comfrance.154.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3863,7 +4352,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.155
-	title = comfrance.155.t
+	title = comfrance.155.title
 	desc = comfrance.155.desc
 	picture = GFX_report_event_worker_protests
 
@@ -3941,13 +4430,6 @@ country_event = {
 				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_RADSOC } }
 			}
 		}
-		if = {
-			limit = {
-				NOT = { has_global_flag = anarchiste_majority_1936 }
-				NOT = { has_country_flag = FRA_elected_41_radsocs }
-			}
-			set_country_flag = FRA_elected_46_radsocs
-		}
 		add_stability = 0.04
 		set_politics = {
 			ruling_party = radical_socialist
@@ -3957,10 +4439,6 @@ country_event = {
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.30
-		}
-		if = {
-			limit = { has_country_flag = FRA_elected_46_radsocs }
-			set_country_leader_description = { desc = FRA_conseil_de_defense_federal_46_leader_desc }
 		}
 	}
 
@@ -3995,13 +4473,182 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = comfrance.156
+	title = comfrance.156.title
+	desc = comfrance.156.desc
+	picture = GFX_report_event_worker_protests
+
+	trigger = {
+		is_subject = no
+		date > 1951.1.1
+		date < 1956.1.1
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.156 option comfrance.156.a"
+		name = comfrance.156.a #Travailleur majority - Democratisation of the Commune should be gradual
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = FRA_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_FRACHON_SYNDIE } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_JOUHAUX_SYNDIE } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_GAMELIN_SYNDIE } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_NO_MAJORITY_SYNDIE } }
+			}
+		}
+		add_stability = 0.02
+		set_politics = {
+			ruling_party = syndicalist
+			elections_allowed = yes
+		}
+		promote_character = FRA_vincent_auriol
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.3
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.156 option comfrance.156.b"
+		name = comfrance.156.b #Sorelian majority - Totalism shall stand triumphant
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = FRA_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_VALOIS_TOTALIST } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_VALOIS_WAR_TOTALIST } }
+			}
+		}
+		trigger = {
+			NOT = { has_global_flag = jacobin_majority_1936 }
+		}
+		add_stability = -0.1
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+			name = FRA_sorelians
+			long_name = FRA_sorelians_long
+		}
+		promote_character = FRA_georges_valois
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.30
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.156 option comfrance.156.c"
+		name = comfrance.156.c #Anarchiste majority - The stateless soceity awaits!
+		ai_chance = {
+			base = 40
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = FRA_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_RADSOC } }
+			}
+		}
+		add_stability = 0.02
+		set_politics = {
+			ruling_party = radical_socialist
+			elections_allowed = yes
+		}
+		promote_character = FRA_conseil_de_defense_federal
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.30
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.156 option comfrance.156.e"
+		name = comfrance.156.e #Jacobin majority - We are true Communards
+		trigger = {
+			NOT = { has_global_flag = sorelian_majority_1936 }
+			has_character = FRA_marcel_deat
+		}
+		ai_chance = {
+			base = 5
+			modifier = {
+				factor = 0
+				NOT = { has_game_rule = { rule = FRA_path option = DEFAULT } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_DEAT_GRADUAL_TOTALIST } }
+				NOT = { has_game_rule = { rule = FRA_path option = FRA_PATH_MARQUET_GRADUAL_TOTALIST } }
+			}
+		}
+		add_stability = -0.2
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+			name = FRA_jacobins
+			long_name = FRA_jacobins_long
+		}
+		promote_character = FRA_marcel_deat
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.30
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.157
+	title = comfrance.157.title
+	desc = comfrance.157.desc
+	picture = GFX_red_flag
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.157 option comfrance.157.a"
+		name = comfrance.157.a
+
+		hidden_effect = {
+			country_event = { id = comfrance.158 days = 3 }
+		}
+		add_stability = 0.02
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
+	}
+}
+
+country_event = {
+	id = comfrance.158
+	title = comfrance.158.title
+	desc = comfrance.158.desc
+	picture = GFX_red_flag
+
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.158 option comfrance.158.a"
+		name = comfrance.158.a
+		ai_chance = { base = 0 }
+		add_stability = 0.02
+	}
+
+	option = {
+		log = "[GetLogInfo]: event comfrance.158 option comfrance.158.b"
+		name = comfrance.158.b
+		ai_chance = { base = 100 }
+		hidden_effect = { set_cosmetic_tag = FRA_sorelian }
+	}
+}
+
 ###########
 ## END OF THE ELECTIONS
 ##########
 
 country_event = {
 	id = comfrance.159
-	title = comfrance.159.t
+	title = comfrance.159.title
 	desc = comfrance.159.desc
 	picture = GFX_report_event_GER_march
 
@@ -4023,7 +4670,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.160
-	title = comfrance.160.t
+	title = comfrance.160.title
 	desc = comfrance.160.desc
 	picture = GFX_red_flag
 
@@ -4047,7 +4694,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.161
-	title = comfrance.161.t
+	title = comfrance.161.title
 	desc = comfrance.161.desc
 	picture = GFX_vive
 
@@ -4068,7 +4715,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.163
-	title = comfrance.163.t
+	title = comfrance.163.title
 	desc = comfrance.163.desc
 	picture = GFX_report_event_worker_protests
 
@@ -4089,7 +4736,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.164
-	title = comfrance.164.t
+	title = comfrance.164.title
 	desc = comfrance.164.desc
 	picture = GFX_report_event_worker_protests
 
@@ -4104,7 +4751,7 @@ country_event = {
 
 country_event = {
 	id = comfrance.165
-	title = comfrance.165.t
+	title = comfrance.165.title
 	desc = comfrance.165.desc
 
 	is_triggered_only = yes
@@ -4125,7 +4772,7 @@ country_event = {
 
 country_event = { #France offers us an alliance
 	id = comfrance.170
-	title = comfrance.170.t
+	title = comfrance.170.title
 	desc = comfrance.170.desc
 	picture = GFX_report_event_generic_diplomacy1
 
@@ -4209,7 +4856,7 @@ country_event = { #France offers us an alliance
 
 country_event = { #Country accepts
 	id = comfrance.171
-	title = comfrance.171.t
+	title = comfrance.171.title
 	desc = comfrance.171.desc
 	picture = GFX_report_event_generic_diplomacy1
 
@@ -4224,7 +4871,7 @@ country_event = { #Country accepts
 
 country_event = { #Country refuses
 	id = comfrance.172
-	title = comfrance.172.t
+	title = comfrance.172.title
 	desc = comfrance.172.desc
 	picture = GFX_report_event_generic_diplomacy1
 
@@ -4244,7 +4891,7 @@ country_event = { #Country refuses
 news_event = {
 	id = comfrance.200
 	immediate = { log = "[GetLogInfo]: event comfrance.200" }
-	title = comfrance.200.t
+	title = comfrance.200.title
 	desc = comfrance.200.desc
 	picture = GFX_news_event_FRA_damocles_project
 
@@ -4271,7 +4918,7 @@ news_event = {
 
 country_event = { #Inform former faction members of peace
 	id = comfrance.301
-	title = comfrance.301.t
+	title = comfrance.301.title
 	desc = comfrance.301.desc
 	picture = GFX_report_event_french_liberation
 
@@ -4289,7 +4936,7 @@ country_event = { #Inform former faction members of peace
 news_event = {
 	id = comfrance.302
 	immediate = { log = "[GetLogInfo]: event comfrance.302" }
-	title = comfrance.302.t
+	title = comfrance.302.title
 	picture = GFX_news_event_polish_resistance_warsaw
 
 	desc = {
@@ -4383,7 +5030,7 @@ news_event = {
 		}
 	}
 	option = {
-		name = comfrance.302.d
+		name = comfrance.302.desc
 		trigger = {
 			is_ally_with = ENT
 			if = {
@@ -4438,11 +5085,126 @@ news_event = {
 	}
 }
 
+# date > 1936.2.6 ?
+# 1936 election result decision
+country_event = {
+	id = comfrance.900
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_TRAV
+					value > 2
+				}
+			}
+			country_event = comfrance.12
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_JACO
+					value > 2
+				}
+			}
+			country_event = comfrance.13
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_SORE
+					value > 2
+				}
+			}
+			country_event = comfrance.15
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_ANAR
+					value > 2
+				}
+			}
+			country_event = comfrance.17
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_ANAR
+					value < 3
+				}
+				has_country_flag = {
+					flag = FRA_JACO
+					value < 3
+				}
+				has_country_flag = {
+					flag = FRA_SORE
+					value < 3
+				}
+				has_country_flag = {
+					flag = FRA_TRAV
+					value < 3
+				}
+			}
+			country_event = comfrance.20
+		}
+	}
+}
+
 # 1941 election result decision
+country_event = {
+	id = comfrance.901
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_TRAV
+					value > 2
+				}
+			}
+			country_event = comfrance.150
+		}
+		else_if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_JACO
+					value > 2
+				}
+			}
+			country_event = comfrance.151
+		}
+		else_if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_SORE
+					value > 2
+				}
+			}
+			country_event = comfrance.152
+		}
+		else_if = {
+			limit = {
+				has_country_flag = {
+					flag = FRA_ANAR
+					value > 2
+				}
+			}
+			country_event = comfrance.153
+		}
+		else = {
+			country_event = comfrance.154
+		}
+	}
+}
 
 country_event = { #Capitalist Economies colapse - by Omanisch
 	id = comfrance.999
-	title = comfrance.999.t
+	title = comfrance.999.title
 	desc = comfrance.999.desc
 	picture = GFX_report_event_SWI_socialist2
 
@@ -4463,12 +5225,39 @@ country_event = { #Capitalist Economies colapse - by Omanisch
 	}
 }
 
+# Gamelin Coup
+news_event = {
+	id = comfrance.1000
+	immediate = { log = "[GetLogInfo]: event comfrance.1000" }
+	title = comfrance.1000.title
+	desc = comfrance.1000.desc
+	picture = GFX_news_event_FRA_gamelin_coup
 
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
 
+	trigger = {
+		wants_world_news = yes
+	}
+
+	show_major = {
+		OR = {
+			regional_north_america_news = yes
+			regional_europe_news = yes
+		}
+	}
+
+	option = {
+		name = comfrance.1000.a
+	}
+}
+
+# French elections - Travailleur
 news_event = {
 	id = comfrance.1031
 	immediate = { log = "[GetLogInfo]: event comfrance.1031" }
-	title = comfrance.1031.t
+	title = comfrance.1031.title
 	desc = comfrance.1031.desc
 	picture = GFX_news_event_FRA_election
 
@@ -4488,59 +5277,15 @@ news_event = {
 	}
 
 	option = {
-		trigger = { has_socialist_government = yes }
-		name = comfrance.1030.a
-	}
-	option = {
-		trigger = { has_elected_government = yes }
-		name = comfrance.1030.b
-	}
-	option = {
-		trigger = { has_authoritarian_government = yes }
-		name = comfrance.1030.c
+		name = comfrance.1031.a
 	}
 }
 
-news_event = {
-	id = comfrance.1032
-	immediate = { log = "[GetLogInfo]: event comfrance.1035" }
-	title = comfrance.1032.t
-	desc = comfrance.1032.desc
-	picture = GFX_news_event_FRA_election
-
-	major = yes
-	fire_for_sender = no
-	is_triggered_only = yes
-
-	trigger = {
-		wants_world_news = yes
-	}
-
-	show_major = {
-		OR = {
-			regional_europe_news = yes
-			is_ally_with = FRA
-		}
-	}
-
-	option = {
-		trigger = { has_socialist_government = yes }
-		name = comfrance.1030.a
-	}
-	option = {
-		trigger = { has_elected_government = yes }
-		name = comfrance.1030.b
-	}
-	option = {
-		trigger = { has_authoritarian_government = yes }
-		name = comfrance.1030.c
-	}
-}
-
+# French elections - Jacobin
 news_event = {
 	id = comfrance.1033
 	immediate = { log = "[GetLogInfo]: event comfrance.1033" }
-	title = comfrance.1033.t
+	title = comfrance.1033.title
 	desc = comfrance.1033.desc
 	picture = GFX_news_event_FRA_jacobin
 
@@ -4560,23 +5305,15 @@ news_event = {
 	}
 
 	option = {
-		trigger = { has_socialist_government = yes }
-		name = comfrance.1030.a
-	}
-	option = {
-		trigger = { has_elected_government = yes }
-		name = comfrance.1030.b
-	}
-	option = {
-		trigger = { has_authoritarian_government = yes }
-		name = comfrance.1030.c
+		name = comfrance.1033.a
 	}
 }
 
+# French elections - Sorelian
 news_event = {
 	id = comfrance.1034
 	immediate = { log = "[GetLogInfo]: event comfrance.1034" }
-	title = comfrance.1034.t
+	title = comfrance.1034.title
 	desc = comfrance.1034.desc
 	picture = GFX_news_event_FRA_sorelian
 
@@ -4596,16 +5333,63 @@ news_event = {
 	}
 
 	option = {
-		trigger = { has_socialist_government = yes }
-		name = comfrance.1030.a
+		name = comfrance.1034.a
 	}
-	option = {
-		trigger = { has_elected_government = yes }
-		name = comfrance.1030.b
+}
+
+# French elections - Anarchiste
+news_event = {
+	id = comfrance.1035
+	immediate = { log = "[GetLogInfo]: event comfrance.1035" }
+	title = comfrance.1035.title
+	desc = comfrance.1035.desc
+	picture = GFX_news_event_FRA_election
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = {
+		wants_world_news = yes
 	}
+
+	show_major = {
+		OR = {
+			regional_europe_news = yes
+			is_ally_with = FRA
+		}
+	}
+
 	option = {
-		trigger = { has_authoritarian_government = yes }
-		name = comfrance.1030.c
+		name = comfrance.1035.a
+	}
+}
+
+# French elections - No majority
+news_event = {
+	id = comfrance.1036
+	immediate = { log = "[GetLogInfo]: event comfrance.1036" }
+	title = comfrance.1036.title
+	desc = comfrance.1036.desc
+	picture = GFX_news_event_FRA_no_majority
+
+	major = yes
+	fire_for_sender = no
+	is_triggered_only = yes
+
+	trigger = {
+		wants_world_news = yes
+	}
+
+	show_major = {
+		OR = {
+			regional_europe_news = yes
+			is_ally_with = FRA
+		}
+	}
+
+	option = {
+		name = comfrance.1036.a
 	}
 }
 
@@ -4613,7 +5397,7 @@ news_event = {
 news_event = {
 	id = comfrance.1037
 	immediate = { log = "[GetLogInfo]: event comfrance.1037" }
-	title = comfrance.1037.t
+	title = comfrance.1037.title
 	desc = comfrance.1037.desc
 	picture = GFX_news_event_internationale
 
@@ -4634,7 +5418,7 @@ news_event = {
 news_event = {
 	id = comfrance.1038
 	immediate = { log = "[GetLogInfo]: event comfrance.1038" }
-	title = comfrance.1038.t
+	title = comfrance.1038.title
 	desc = comfrance.1038.desc
 	picture = GFX_news_event_internationale
 
@@ -4655,7 +5439,7 @@ news_event = {
 news_event = {
 	id = comfrance.1039
 	immediate = { log = "[GetLogInfo]: event comfrance.1039" }
-	title = comfrance.1039.t
+	title = comfrance.1039.title
 	desc = comfrance.1039.desc
 	picture = GFX_news_event_FRA_avantgarde
 

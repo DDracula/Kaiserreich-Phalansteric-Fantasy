@@ -1,0 +1,320 @@
+FRA_Paris_techn = {
+	icon = "GFX_state_FRA_Paris_techn"
+	remove_trigger = { NOT = { is_controlled_by = FRA } }
+	state_production_speed_buildings_factor = 0.15
+	local_building_slots_factor = 0.25
+}
+
+FRA_masrseille_revolution = {
+	icon = "GFX_state_FRA_masrseille_revolution"
+	remove_trigger = { NOT = { is_controlled_by = FRA } }
+	state_production_speed_buildings_factor = 0.1
+	war_support_factor = 0.025
+}
+
+FRA_free_people_commie = {
+	icon = "GFX_state_FRA_free_people_dynamic"
+	remove_trigger = { NOT = { is_controlled_by = FRA } }
+	stability_factor = 0.02
+	political_power_factor = 0.02
+	state_production_speed_buildings_factor = 0.05
+}
+
+FRA_free_market_commie = {
+	icon = "GFX_state_FRA_free_market_dynamic"
+	remove_trigger = { NOT = { is_controlled_by = FRA } }
+	consumer_goods_factor = -0.025
+	state_production_speed_buildings_factor = 0.05
+	local_building_slots_factor = 0.15
+}
+
+FRA_national_road_network_system = {
+	icon = "GFX_state_FRA_national_road_network_dynamic"
+	remove_trigger = { NOT = { is_controlled_by = FRA } }
+	production_speed_supply_node_factor = 0.25
+	production_speed_rail_way_factor = 0.25
+	local_supplies = 0.15
+}
+
+FRA_social_politic_situation = {
+	icon = "FRA_social_politic_situation_pic"
+	stability_factor = frasoc_stability_factor
+	political_power_factor = frasoc_political_power_factor
+	industrial_capacity_factory = frasoc_industrial_capacity_factory
+	consumer_goods_factor = frasoc_consumer_goods_factor
+	production_factory_max_efficiency_factor = frasoc_production_factory_max_efficiency_factor
+	research_speed_factor = frasoc_research_speed_factor
+	war_support_factor = frasoc_war_support_factor
+}
+
+FRA_politics_bill_effects = {
+	icon = "FRA_politics_bill_efferts_pic"
+	political_power_gain = allbill_political_power_gain							#每日获得的政治点数
+	political_power_cost = allbill_political_power_cost							#每日消耗的政治点数
+	political_power_factor = allbill_political_power_factor							#政治点数
+	stability_factor = allbill_stability_factor								#稳定度
+	stability_weekly = allbill_stability_weekly								#每周稳定度
+	stability_weekly_factor = allbill_stability_weekly_factor						#每周稳定度增长
+	war_support_factor = allbill_war_support_factor							#战争支持度
+	war_support_weekly = allbill_war_support_weekly								#每周战争支持度
+	war_support_weekly_factor = allbill_war_support_weekly_factor						#每周战争支持度增长
+	command_power_gain = allbill_command_power_gain								#每日指挥点数增长
+	max_command_power = allbill_max_command_power								#最大指挥点数提高
+	research_speed_factor = allbill_research_speed_factor							#研究速度
+	monthly_population = allbill_monthly_population
+	consumer_goods_factor = allbill_consumer_goods_factor							#生活消费品
+	local_manpower = allbill_local_manpower									#当地人力
+	conscription = allbill_conscription									#可征召人口
+	local_non_core_manpower = allbill_local_non_core_manpower		#本地非核心人力
+	conscription_factor = allbill_conscription_factor					#适役人口修正
+	local_supplies = allbill_local_supplies									#当地补给能力
+	local_factories = allbill_local_factories								#当地工业值
+	global_building_slots_factor = allbill_global_building_slots_factor					#地区最大工业值
+	production_speed_buildings_factor = allbill_production_speed_buildings_factor				#建造速度
+	production_speed_nuclear_reactor_factor = allbill_production_speed_nuclear_reactor_factor #核反应堆建造速度
+	production_speed_arms_factory_factor = allbill_production_speed_arms_factory_factor #军用工厂建造速度
+	production_speed_industrial_complex_factor = allbill_production_speed_industrial_complex_factor #民用工厂建造速度
+	production_speed_synthetic_refinery_factor = allbill_production_speed_synthetic_refinery_factor #化学合成厂建造速度
+	production_speed_dockyard_factor = allbill_production_speed_dockyard_factor #海军船坞建造速度
+	production_speed_bunker_factor = allbill_production_speed_bunker_factor #堡垒建造速度
+	production_speed_naval_base_factor = allbill_production_speed_naval_base_factor
+	production_speed_infrastructure_factor = allbill_production_speed_infrastructure_factor   #基础设施建造速度
+	production_speed_fuel_silo_factor = allbill_production_speed_fuel_silo_factor
+	production_factory_start_efficiency_factor = allbill_production_factory_start_efficiency_factor		#基础生产效率
+	production_factory_max_efficiency_factor = allbill_production_factory_max_efficiency_factor		#生产效率上限
+	line_change_production_efficiency_factor = allbill_line_change_production_efficiency_factor		#生产效率保持
+	production_factory_efficiency_gain_factor = allbill_production_factory_efficiency_gain_factor		#生产效率增长
+	industrial_capacity_factory = allbill_industrial_capacity_factory						#工厂产出
+	industrial_capacity_dockyard = allbill_industrial_capacity_dockyard					#海军船坞产出
+	industry_air_damage_factor = allbill_industry_air_damage_factor						#工厂受轰炸易损性
+	industry_repair_factor = allbill_industry_repair_factor							#工厂修复速度
+	industry_free_repair_factor = allbill_industry_free_repair_factor						#免费维修
+	production_oil_factor = allbill_production_oil_factor							#合成油
+	nuclear_production_factor = allbill_nuclear_production_factor						#核弹生产
+	local_resources = allbill_local_resources								#当地资源
+	local_resources_factor = allbill_local_resources_factor							#战略资源获取率
+	production_lack_of_resource_penalty_factor = allbill_production_lack_of_resource_penalty_factor		#缺乏战略资源惩罚	
+	experience_gain_army_factor = allbill_experience_gain_army_factor		
+	experience_gain_army = allbill_experience_gain_army							#陆军经验每日获得
+	org_loss_when_moving = allbill_org_loss_when_moving							#移动中组织度损失
+	local_org_regain = allbill_local_org_regain								#组织度恢复
+	army_org_regain = allbill_army_org_regain									#陆军组织度回复
+	army_speed_factor = allbill_army_speed_factor								#陆军师速度
+	army_org_factor = allbill_army_org_factor									#陆军组织度=百分比
+	planning_speed = allbill_planning_speed									#计划速度
+	max_planning = allbill_max_planning									#计划加成上限
+	dig_in_speed_factor = allbill_dig_in_speed_factor								#堑壕速度
+	max_dig_in_factor = allbill_max_dig_in_factor								#堑壕上限
+	army_morale_factor = allbill_army_morale_factor								#陆军组织度恢复
+	army_attack_factor = allbill_army_attack_factor								#单位攻击
+	army_defence_factor = allbill_army_defence_factor								#单位防御
+	army_core_attack_factor = allbill_army_core_attack_factor						#核心领土单位攻击
+	army_core_defence_factor = allbill_army_core_defence_factor						#核心领土单位防御
+	terrain_penalty_reduction = allbill_terrain_penalty_reduction					#地形惩罚降低
+	sickness_chance = allbill_sickness_chance									#伤病几率
+	training_time_factor = allbill_training_time_factor							#训练时间
+	minimum_training_level = allbill_minimum_training_level							#最小训练程度
+	land_reinforce_rate = allbill_land_reinforce_rate								#增援率
+	land_night_attack = allbill_land_night_attack								#陆战夜战攻击
+	pocket_penalty = allbill_pocket_penalty								#包围惩罚
+	recon_factor = allbill_recon_factor									#侦查
+	combat_width_factor = allbill_combat_width_factor								#己方战场宽度
+	attrition = allbill_attrition										#陆军损耗
+	winter_attrition_factor = allbill_winter_attrition_factor						#冬季损耗
+	heat_attrition_factor = allbill_heat_attrition_factor							#炎热损耗
+	acclimatization_cold_climate_gain_factor = allbill_acclimatization_cold_climate_gain_factor		#寒冷适应度增长速度
+	acclimatization_hot_climate_gain_factor = allbill_acclimatization_hot_climate_gain_factor		#酷热适应度增长速度
+	max_fuel_factor = allbill_max_fuel_factor
+	fuel_gain_factor = allbill_fuel_gain_factor
+	no_supply_grace = allbill_no_supply_grace								#携行补给
+	out_of_supply_factor = allbill_out_of_supply_factor							#补给耗尽
+	supply_consumption_factor = allbill_supply_consumption_factor						#补给使用
+	reassignment_duration_factor = allbill_reassignment_duration_factor					#军队重新分配持续时间
+	experience_loss_factor = allbill_experience_loss_factor							#有经验的士兵的损失
+	encryption_factor = allbill_encryption_factor								#加密
+	decryption_factor = allbill_decryption_factor							#解密学	
+	agency_upgrade_time = allbill_agency_upgrade_time							#情报机构升级时
+	resistance_target = allbill_resistance_target								#抵抗目标
+	compliance_gain = allbill_compliance_gain									#每日顺从度增长
+	operation_cost = allbill_operation_cost									#行动花费
+	operation_infiltrate_outcome = allbill_operation_infiltrate_outcome						#渗透效率
+	operation_outcome = allbill_operation_outcome								#行动效率
+	operative_slot = allbill_operative_slot										#特工位
+	new_operative_slot_bonus = allbill_new_operative_slot_bonus							#特工招募选项
+	own_operative_detection_chance_factor = allbill_own_operative_detection_chance_factor			#特工被发现几率
+	enemy_operative_detection_chance_factor = allbill_enemy_operative_detection_chance_factor			#敌方特工被发现几率
+	own_operative_capture_chance_factor = allbill_own_operative_capture_chance_factor			#我方特工被捕几率
+	enemy_operative_capture_chance_factor = allbill_enemy_operative_capture_chance_factor			#敌方特工被捕几率	
+	own_operative_intel_extraction_rate = allbill_own_operative_intel_extraction_rate				#情报获取率
+	enemy_operative_intel_extraction_rate = allbill_enemy_operative_intel_extraction_rate			#敌方特工情报获取率
+	resistance_decay = allbill_resistance_decay								#抵抗下降速度
+	resistance_growth = allbill_resistance_growth								#抵抗增长速度
+	compliance_growth = allbill_compliance_growth								#顺从度增长速度
+	required_garrison_factor = allbill_required_garrison_factor							#驻军需求
+	intelligence_agency_defense = allbill_intelligence_agency_defense						#反间谍
+	intel_network_gain_factor = allbill_intel_network_gain_factor							#情报网强度增长
+	radical_socialist_drift = allbill_radical_socialist_drift
+	syndicalist_drift = allbill_syndicalist_drift
+	totalist_drift = allbill_totalist_drift
+}
+
+FRA_anar_parl_buff = {
+	icon = "GFX_idea_HOL_workplace_democracy"
+	industrial_capacity_factory = parl_industrial_capacity_factory
+	production_factory_max_efficiency_factor = parl_production_factory_max_efficiency_factor
+	stability_factor = parl_stability_factor
+	consumer_goods_factor = parl_consumer_goods_factor
+	radical_socialist_drift = -0.01
+}
+
+FRA_jaco_neos_technocrats_end_buff = {
+	icon = "FRA_jaco_neos_technocrats_end_buff_pic"
+	research_speed_factor = research_speed_factor_techn
+	industrial_capacity_factory = industrial_capacity_factory_techn
+	consumer_goods_factor = consumer_goods_factor_techn
+}
+
+FRA_jaco_lenin_revolution_buff = {
+	icon = "FRA_jaco_lenin_revolution_buff_pic"
+	stability_factor = jlta
+	war_support_factor = jlta
+	army_attack_factor = jlta					
+	army_defence_factor = jlta	
+	land_reinforce_rate = jltb		
+	pocket_penalty = jltc				
+	experience_loss_factor = jltc
+}
+
+FRA_jaco_lenin_vanguard_buff = {
+	icon = "FRA_jaco_lenin_vanguard_buff_pic"
+	production_factory_max_efficiency_factor = jlpfmec
+	industrial_capacity_factory = jlicfc
+	army_org_factor = jlaofc
+	army_core_defence_factor = jladfc
+	consumer_goods_factor = jlenincc
+}
+
+FRA_sore_oldl_propoganda_buff = {
+	icon = "FRA_sore_oldl_propoganda_buff_pic" 
+	political_power_factor = sont1
+	army_core_defence_factor = 	sont2					
+	army_attack_factor = somt1
+	army_speed_factor = somt2
+	send_volunteer_size = soit1
+	air_volunteer_cap = soit2
+	experience_loss_factor = soit3
+	terrain_penalty_reduction = soit4
+	industrial_capacity_factory = sost1 
+	industrial_capacity_dockyard = sost2
+}
+
+FRA_sore_oldl_flame_fire_buff = {
+	icon = "FRA_sore_oldl_flame_fire_buff_pic"
+	remove_trigger = { FRA = { has_country_flag = sore_oldl_war_engine_closed } }
+	army_attack_factor = militart1				
+	army_defence_factor = militart2			
+	army_speed_factor = intert1
+	max_planning = intert2
+	consumer_goods_factor = nationt1
+	conscription_factor = nationt2
+	industrial_capacity_factory = socialt1
+	industrial_capacity_dockyard = socialt2			
+}
+
+FRA_politics_sore_yout_Typhon = {
+	icon = "FRA_politics_sore_yout_Typhon_pic"
+	stability_factor = typhon_stability_factor
+	war_support_factor = typhon_war_support_factor
+	political_power_factor = typhon_political_power_factor
+	army_attack_factor = typhon_army_attack_factor
+	army_defence_factor = typhon_army_defence_factor
+	production_speed_nuclear_reactor_factor = typhon_production_speed_nuclear_reactor_factor
+	nuclear_production_factor = typhon_nuclear_production_factor
+	terrain_penalty_reduction = typhon_terrain_penalty_reduction
+}
+
+FRA_politics_sore_yout_Icarus = {
+	icon = "FRA_politics_sore_yout_Icarus_pic"
+	stability_factor = Icarus_stability_factor
+	war_support_factor = Icarus_war_support_factor
+	political_power_factor = Icarus_political_power_factor
+	air_ace_generation_chance_factor = Icarus_air_ace_generation_chance_factor
+	rocket_attack_factor = Icarus_rocket_attack_factor
+	air_accidents_factor = Icarus_air_accidents_factor
+	air_detection = Icarus_air_detection
+	air_attack_factor = Icarus_air_attack_factor					
+	air_defence_factor = Icarus_air_defence_factor					
+	air_agility_factor = Icarus_air_agility_factor						
+	air_range_factor = Icarus_air_range_factor
+	air_maximum_speed_factor = Icarus_air_maximum_speed_factor	
+	army_bonus_air_superiority_factor = Icarus_army_bonus_air_superiority_factor			
+	air_strategic_bomber_attack_factor = Icarus_air_strategic_bomber_attack_factor	
+	air_strategic_bomber_defence_factor = Icarus_air_strategic_bomber_defence_factor	
+	air_strategic_bomber_agility_factor = Icarus_air_strategic_bomber_agility_factor	
+	air_strategic_bomber_bombing_factor = Icarus_air_strategic_bomber_bombing_factor	
+	air_strategic_bomber_night_penalty = Icarus_air_strategic_bomber_night_penalty
+	strategic_bomb_visibility = Icarus_strategic_bomb_visibility
+}
+
+FRA_politics_sore_yout_Hermes = {
+	icon = "FRA_politics_sore_yout_Hermes_pic"
+	stability_factor = Hermes_stability_factor
+	war_support_factor = Hermes_war_support_factor
+	political_power_factor = Hermes_political_power_factor
+	army_speed_factor = Hermes_army_speed_factor
+	research_speed_factor = Hermes_research_speed_factor
+	specialization_air_speed_factor = Hermes_specialization_air_speed_factor
+	specialization_land_speed_factor = Hermes_specialization_land_speed_factor
+	specialization_naval_speed_factor = Hermes_specialization_naval_speed_factor
+	specialization_nuclear_speed_factor = Hermes_specialization_nuclear_speed_factor
+	army_org_factor = Hermes_army_org_factor					
+	planning_speed = Hermes_planning_speed								
+	max_planning = Hermes_max_planning							
+	out_of_supply_factor = Hermes_out_of_supply_factor						
+	supply_consumption_factor = Hermes_supply_consumption_factor	
+	encryption_factor = Hermes_encryption_factor											
+	decryption_factor = Hermes_decryption_factor
+}
+
+FRA_politics_sore_yout_Isis = {
+	icon = "FRA_politics_sore_yout_Isis_pic"
+	stability_factor = Isis_stability_factor
+	war_support_factor = Isis_war_support_factor
+	political_power_factor = Isis_political_power_factor
+	consumer_goods_factor = Isis_consumer_goods_factor
+	conscription_factor = Isis_conscription_factor
+	production_oil_factor = Isis_production_oil_factor	
+	local_resources_factor = Isis_local_resources_factor							
+	production_lack_of_resource_penalty_factor = Isis_production_lack_of_resource_penalty_factor
+	attrition = Isis_attrition									
+	winter_attrition_factor = Isis_winter_attrition_factor							
+	heat_attrition_factor = Isis_heat_attrition_factor	
+	production_speed_buildings_factor = Isis_production_speed_buildings_factor				
+	industrial_capacity_factory = Isis_industrial_capacity_factory					
+	local_supplies = Isis_local_supplies				
+	monthly_population = Isis_monthly_population
+}
+
+FRA_objectives_of_red_flame_of_the_north = {
+	icon = "GFX_decision_generic_intelligence_operation"
+	remove_trigger = { NOT = { is_controlled_by = GER } }
+	local_intel_to_enemies = 0.8
+	enemy_army_speed_factor = 0.3 
+	amphibious_invasion_defence = -0.3
+}
+
+FRA_gersoc_revo_state = {
+	icon = "GFX_state_FRA_gersoc_revo_state"
+	remove_trigger = { 
+		OR = {
+			NOT = {  is_controlled_by = GER }
+			NOT = { has_state_flag = gersoc_revo }
+		}
+	}
+	stability_factor = -0.025
+	war_support_factor = -0.025
+	local_factories = -0.5
+	local_manpower = -0.55
+	local_resources = -0.45
+	mobilization_speed = -0.6
+}

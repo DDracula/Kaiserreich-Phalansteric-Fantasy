@@ -1,0 +1,117 @@
+
+naval_submarine = {
+	category = naval
+	roles = { submarine }
+	priority = { base = 10 }
+
+	submarine_cruiser_dummy = {
+		role_icon_index = 6
+
+		priority = { base = 0 }
+		target_variant = {
+			type = ship_hull_cruiser_submarine
+		}
+	}
+   	submarine_1936 = {
+		role_icon_index = 6
+
+		priority = {
+			base = 20
+                        modifier = { factor = 0 has_tech = improved_ship_hull_submarine }
+		}
+
+		target_variant = {
+			match_value = 2000.0
+
+			type = ship_hull_submarine_2
+			modules = {
+				fixed_ship_engine_slot = sub_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_sub_2
+				rear_1_custom_slot = ship_torpedo_sub_2
+			}
+		}
+                allowed_modules = {
+			sub_ship_engine
+			ship_torpedo_sub
+		}
+	}
+
+	submarine_1940 = {
+		role_icon_index = 6
+
+		priority = {
+			base = 35
+                        modifier = { factor = 0 has_tech = advanced_ship_hull_submarine }
+                        modifier = { factor = 0 NOT = { has_tech = improved_ship_hull_submarine } }
+                }
+
+		target_variant = {
+			match_value = 3500.0
+
+			type = ship_hull_submarine_3
+			modules = {
+				mid_1_custom_slot = ship_anechoic_tile
+				fixed_ship_engine_slot = sub_ship_engine_3
+				fixed_ship_torpedo_slot = ship_torpedo_sub_3
+				front_1_custom_slot = ship_torpedo_sub_3
+				rear_1_custom_slot = ship_torpedo_sub_3
+			}
+		 }
+                 allowed_modules = {
+                        ship_anechoic_tile
+			sub_ship_engine
+			ship_torpedo_sub
+		}
+	}
+        submarine_1940_fleet = {
+		role_icon_index = 6
+
+		priority = {
+			base = 100
+                }
+
+		target_variant = {
+			match_value = 6000.0
+
+			type = ship_hull_fleet_submarine
+			modules = {
+				mid_1_custom_slot = ship_anechoic_tile
+				fixed_ship_engine_slot = sub_ship_engine_3
+				fixed_ship_torpedo_slot = ship_torpedo_sub
+				front_1_custom_slot = ship_torpedo_sub
+				rear_1_custom_slot = ship_torpedo_sub
+			}
+		 }
+                 allowed_modules = {
+                        ship_anechoic_tile
+			sub_ship_engine
+			ship_torpedo_sub
+		}
+	}
+	submarine_1944 = {
+		role_icon_index = 6
+		priority = {
+			base = 50
+                        modifier = { factor = 0 NOT = { has_tech = advanced_ship_hull_submarine } }
+                }
+
+		target_variant = {
+			type = ship_hull_submarine_4
+			match_value = 5000.0
+
+			modules = {
+				mid_1_custom_slot = ship_anechoic_tile
+				fixed_ship_engine_slot = sub_ship_engine_4
+				fixed_ship_torpedo_slot = ship_torpedo_sub_4
+				front_1_custom_slot = ship_torpedo_sub_4
+				rear_1_custom_slot = ship_torpedo_sub_4
+			}
+		}
+                allowed_modules = {
+                        ship_anechoic_tile
+			sub_ship_engine
+			ship_torpedo_sub
+		}
+	}
+}
+

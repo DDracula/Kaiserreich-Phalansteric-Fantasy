@@ -1,0 +1,1572 @@
+INT_get_the_effects = {
+	set_country_flag = INT_has_the_effects
+	add_dynamic_modifier = { modifier = INT_internationale_commie }
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_found_the_phalanstere_international } }
+		INT_political_gain = yes
+	}
+	#econ
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_econ_cop } }
+		INT_econ_coop = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_keep_national_market } }
+		INT_keep_national_market = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_mainland_first } }
+		INT_mainland_first = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_ensure_self_sufficiency } }
+		INT_ensure_self_sufficiency = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_specialize_national_econ } }
+		INT_specialize_national_econ_all = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_made_in_france } }
+		INT_made_in_france = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_open_the_limited_door } }
+		INT_open_the_limited_door = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_integrate_national_econ } }
+		INT_integrate_national_econ = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_land_link } }
+		INT_land_link = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_world_passage } }
+		INT_world_passage = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_commodity_in_circulation } }
+		INT_commodity_in_circulation = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_each_does_its_best } }
+		INT_each_does_its_best = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_each_takes_what_it_needs } }
+		INT_each_takes_what_it_needs = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_happiness_of_the_people } }
+		INT_happiness_of_the_people = yes
+	}
+	#mili
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_mili_industrial_cop } }
+		INT_mili_industrial_cop = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_intern_arsenal } }
+		add_offsite_building = { type = arms_factory level = 3 }
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_revoary_assembly_line } }
+		add_ideas = INTE_revoary_assembly_line 
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_revoary_quality_depart } }
+		add_ideas = INTE_revoary_quality_depart
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_amrymili_cop } }
+		INT_milit_coop = yes
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_form_intern_red_army } 
+			NOT = { FRA = { has_completed_focus = FRA_career_officer_corps } }
+		}
+		add_ideas = INTE_army_coop_r1
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_career_officer_corps } 
+			NOT = { FRA = { has_completed_focus =FRA_all_in_one } }
+		}
+		add_ideas = INTE_army_coop_r2
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_all_in_one } 
+			NOT = { FRA = { has_completed_focus = FRA_the_true_army } }
+		}
+		add_ideas = INTE_army_coop_r3
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_form_revoary_guard } 
+			NOT = { FRA = { has_completed_focus = FRA_mobilize_the_masses } }
+		}
+		add_ideas = INTE_army_coop_g1
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_mobilize_the_masses } 
+			NOT = { FRA = { has_completed_focus = FRA_thousands_of_torches } }
+		}
+		add_ideas = INTE_army_coop_g2
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_thousands_of_torches } 
+			NOT = { FRA = { has_completed_focus = FRA_the_true_army } }
+		}
+		add_ideas = INTE_army_coop_g3
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_thousands_of_torches } 
+			FRA = { has_completed_focus = FRA_the_true_army } 
+		}
+		add_ideas = INTE_army_coop_g4
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_all_in_one } 
+			FRA = { has_completed_focus = FRA_the_true_army } 
+		}
+		add_ideas = INTE_army_coop_r4
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_multicountry_military_exercises } }
+		add_ideas = INTE_multicountry_miliexercises
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_set_international_standards } }
+		add_ideas = INTE_unify_mili_commands
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_same_the_military_language } }
+		add_ideas = INTE_experimental_esperanto
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_airmili_cop } }
+		INT_air_milit_coop = yes
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_red_sky_fighter } 
+			NOT = { FRA = { has_completed_focus = FRA_from_paris_to_far_away } }
+		}
+		add_ideas = INTE_air_coop1
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_from_paris_to_far_away } }
+		add_ideas = INTE_air_coop2
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_seamili_cop } }
+		INT_seamili_cop = yes
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_united_sea_rad_army } 
+			NOT = { FRA = { has_completed_focus = FRA_red_noahs_ark } }
+		}
+		add_ideas = INTE_navy_coop1
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_red_noahs_ark } }
+		add_ideas = INTE_navy_coop2
+	}
+	#techn
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_techn_cop } }
+		INT_techn_cop = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_socialism_education } }
+		INT_socedu = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_diamond_cut_diamond } }
+		INT_techn_cop = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_international_public_university } }
+		INT_techn_cop = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_global_student } }
+		INT_global_student = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_brother_from_aaa } }
+		INT_brother_from_aaa = yes
+	}
+	if = {
+		limit = { FRA = { has_completed_focus =  FRA_europa_and_the_world } }
+		INT_techn_cop_w = yes
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_mili_research_cop } 
+			NOT = { FRA = { has_completed_focus = FRA_revoary_military_laboratory } }
+		}
+		add_ideas = INTE_mili_research_cop1
+	}
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_revoary_military_laboratory } 
+			NOT = {  FRA = { has_completed_focus = FRA_revoary_army_looks_forwards } }
+		}
+		add_ideas = INTE_mili_research_cop2
+		add_research_slot = 1
+	}
+	if = {
+		limit = { FRA = { has_completed_focus = FRA_revoary_army_looks_forwards } }
+		add_ideas = INTE_mili_research_cop3
+	}
+}
+INT_political_gain = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_political_power_factor = 0.025
+		tooltip = INT_political_power_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+####econ
+INT_econ_coop = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_buildings_factor = 0.05
+		tooltip = INT_production_speed_buildings_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_keep_national_market = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_min_export = -0.1
+		tooltip = INT_min_export_tooltip
+	}
+	add_to_variable = {
+		INT_PRODUCTION_FACTORY_START_EFFICIENCY_FACTOR = 0.15
+		tooltip = INT_PRODUCTION_FACTORY_START_EFFICIENCY_FACTOR_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_mainland_first = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_min_export = -0.1
+		tooltip = INT_min_export_tooltip
+	}
+	add_to_variable = {
+		INT_consumer_goods_factor = -0.15
+		tooltip = INT_consumer_goods_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_ensure_self_sufficiency = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_local_resources_factor = 0.1
+		tooltip = INT_local_resources_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_made_in_france = {
+	custom_effect_tooltip = INT_internationale_commie_modifier
+	if = {
+		limit = { tag = FRA }
+		add_to_variable = {
+			INT_industrial_capacity_factory = 0.05
+			tooltip = INT_industrial_capacity_factory_tooltip
+		}
+	}
+	else = {
+		add_to_variable = {
+			INT_consumer_goods_factor = -0.15
+		tooltip = INT_consumer_goods_factor_tooltip
+		}
+	}	
+	force_update_dynamic_modifier = yes
+}
+
+INT_specialize_national_econ_fra = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_global_building_slots_factor = 0.25
+		tooltip = INT_global_building_slots_factor_tooltip
+	}
+	add_to_variable = {
+		INT_industrial_capacity_factory = 0.05
+		tooltip = INT_industrial_capacity_factory_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_specialize_national_econ_eng = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_dockyard_factor = 0.1
+		tooltip = INT_production_speed_dockyard_factor_tooltip
+	}
+	add_to_variable = {
+		INT_industrial_capacity_dockyard = 0.1
+		tooltip = INT_industrial_capacity_dockyard_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_specialize_national_econ_eup = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_buildings_factor = 0.05
+		tooltip = INT_production_speed_buildings_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+	
+INT_specialize_national_econ_asia = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_industrial_complex_factor = 0.1
+		tooltip = INT_production_speed_industrial_complex_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_specialize_national_econ_afr = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_infrastructure_factor = 0.15
+		tooltip = INT_production_speed_infrastructure_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+	
+INT_specialize_national_econ_ame = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_arms_factory_factor = 0.1
+		tooltip = INT_production_speed_arms_factory_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+	
+INT_specialize_national_econ_aus = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_dockyard_factor = 0.15
+		tooltip = INT_production_speed_dockyard_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_specialize_national_econ_all = {
+	if = {
+		limit = { 
+			capital_scope = {
+				is_on_continent = europe
+			}
+			NOT = { tag = FRA }
+			NOT = { tag = ENG }
+		}
+		INT_specialize_national_econ_eup = yes
+	}
+	
+	if = {
+		limit = { 
+			capital_scope = {
+				OR = {
+					is_on_continent = asia
+					is_on_continent = india
+					is_on_continent = middle_east
+				}
+			}
+		}
+		INT_specialize_national_econ_asia = yes
+	}
+	
+	if = {
+		limit = { 
+			capital_scope = {
+				is_on_continent = africa	
+			}
+		}
+		INT_specialize_national_econ_afr = yes
+	}
+	
+	if = {
+		limit = { 
+			capital_scope = {
+				OR = {
+					is_on_continent = north_america
+					is_on_continent = central_america
+					is_on_continent = south_america
+				}
+			}
+		}
+		INT_specialize_national_econ_ame = yes
+	}
+	
+	if = {
+		limit = { 
+			capital_scope = {
+				is_on_continent = australia
+			}
+		}
+		INT_specialize_national_econ_aus = yes
+	}
+}
+
+
+INT_open_the_limited_door = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_min_export = 0.1
+		tooltip = INT_min_export_tooltip
+	}
+	add_to_variable = {
+		INT_production_factory_max_efficiency_factor = 0.05
+		tooltip = INT_production_factory_max_efficiency_factor_tooltip
+	}
+	add_to_variable = {
+		INT_trade_laws_cost_factor = -0.15
+		tooltip = INT_trade_laws_cost_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_integrate_national_econ = {
+	custom_effect_tooltip = INT_internationale_commie_modifier
+	add_to_variable = {
+		INT_faction_trade_opinion_factor  = 0.2
+		tooltip = INT_faction_trade_opinion_factor_tooltip
+	}
+	add_to_variable = {
+		INT_cic_construction_boost_factor  = 1
+		tooltip = INT_cic_construction_boost_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_land_link = {
+	custom_effect_tooltip = INT_internationale_commie_modifier
+	add_to_variable = {
+		INT_production_speed_rail_way_factor  = 0.15
+		tooltip = INT_production_speed_rail_way_factor_tooltip
+	}
+	add_to_variable = {
+		INT_production_speed_infrastructure_factor = 0.1
+		tooltip = INT_production_speed_infrastructure_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_world_passage = {
+	custom_effect_tooltip = INT_internationale_commie_modifier
+	add_to_variable = {
+		INT_mission_convoy_escort_efficiency  = 0.15
+		tooltip = INT_mission_convoy_escort_efficiency_tooltip
+	}
+	add_to_variable = {
+		INT_industrial_capacity_dockyard = 0.05
+		tooltip = INT_industrial_capacity_dockyard_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_commodity_in_circulation = {
+	custom_effect_tooltip = INT_internationale_commie_modifier
+	add_to_variable = {
+		INT_consumer_goods_factor = -0.05
+		tooltip = INT_consumer_goods_factor_tooltip
+	}
+	add_to_variable = {
+		INT_industrial_capacity_factory = 0.05
+		tooltip = INT_industrial_capacity_factory_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_each_does_its_best = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_industrial_capacity_factory = 0.05
+		tooltip = INT_industrial_capacity_factory_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_each_takes_what_it_needs = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_consumer_goods_factor = -0.05
+		tooltip = INT_consumer_goods_factor_tooltip
+	}
+	add_to_variable = {
+		INT_production_factory_efficiency_gain_factor = 0.05
+		tooltip = INT_production_factory_efficiency_gain_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_happiness_of_the_people = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_consumer_goods_factor = -0.1
+		tooltip = INT_consumer_goods_factor_tooltip
+	}
+	add_to_variable = {
+		INT_production_factory_efficiency_gain_factor = 0.025
+		tooltip = INT_production_factory_efficiency_gain_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+####mili
+INT_mili_industrial_cop = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_max_fuel_factor = 0.1
+		tooltip = INT_max_fuel_factor_tooltip
+	}
+	add_to_variable = {
+		INT_fuel_gain_factor = 0.1
+		tooltip = INT_fuel_gain_factor_tooltip
+	}
+	add_to_variable = {
+		INT_production_speed_synthetic_refinery_factor = 0.05
+		tooltip = INT_production_speed_synthetic_refinery_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_milit_coop = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_experience_gain_army_factor = 0.05
+		tooltip = INT_experience_gain_army_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_air_milit_coop = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_experience_gain_air_factor = 0.1
+		tooltip = INT_experience_gain_air_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_seamili_cop = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_experience_gain_navy_factor = 0.1
+		tooltip = INT_experience_gain_navy_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+####techn
+INT_techn_cop = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_research_speed_factor = 0.05
+		tooltip = INT_research_speed_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_techn_cop_e = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_industrial_capacity_factory = 0.1
+		tooltip = INT_industrial_capacity_factory_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_techn_cop_s = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_industrial_capacity_dockyard  = 0.1
+		tooltip = INT_industrial_capacity_dockyard_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_techn_cop_i = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_factory_max_efficiency_factor  = 0.05
+		tooltip = INT_production_factory_max_efficiency_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_techn_cop_w = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_production_speed_buildings_factor = 0.1
+		tooltip = INT_production_speed_buildings_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_socedu = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_research_speed_factor = 0.025
+		tooltip = INT_research_speed_factor_tooltip
+	}
+	add_to_variable = {
+		INT_syndicalist_drift = 0.01
+		tooltip = INT_syndicalist_drift_tooltip
+	}
+	add_to_variable = {
+		INT_totalist_drift = 0.01
+		tooltip = INT_totalist_drift_tooltip
+	}
+	add_to_variable = {
+		INT_radical_socialist_drift = 0.01
+		tooltip = INT_radical_socialist_drift_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_global_student = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_weekly_manpower = 400
+		tooltip = INT_weekly_manpower_tooltip
+	}
+	add_to_variable = {
+		INT_consumer_goods_factor = 0.025
+		tooltip = INT_consumer_goods_factor_tooltip
+	}
+	add_to_variable = {
+		INT_research_speed_factor = 0.025
+		tooltip = INT_research_speed_factor_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_brother_from_aaa = {
+	custom_effect_tooltip = INT_internationale_commie_modifier	
+	add_to_variable = {
+		INT_send_volunteer_size = 1
+		tooltip = INT_send_volunteer_size_tooltip
+	}
+	force_update_dynamic_modifier = yes
+}
+
+INT_coop_pp_cost = { 
+	if = { 
+		limit = {
+			OR = {
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_eco }
+					check_variable = { FRA.Pha_completed_eco_coop < 1 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_tech }
+					check_variable = { FRA.Pha_completed_tech_coop < 1 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_army }
+					check_variable = { FRA.Pha_completed_army_coop < 1 }
+				}
+			}
+		}
+		set_variable = { INT_coop_cost = 25 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				FRA = { 
+					has_country_flag = FRA_pha_discuss_about_air 
+					NOT = { has_country_flag = Pha_air_coop_level1 }
+					NOT = { has_country_flag = Pha_air_coop_level2 }
+				}	
+				FRA = { 
+					has_country_flag = FRA_pha_discuss_about_sea 
+					NOT = { has_country_flag = Pha_sea_coop_level1 }
+					NOT = { has_country_flag = Pha_sea_coop_level2 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_ind }
+					check_variable = { FRA.Pha_completed_ind_coop < 1 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_res }
+					check_variable = { FRA.Pha_completed_res_coop < 1 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_eco }
+					check_variable = { FRA.Pha_completed_eco_coop > 0 }
+					check_variable = { FRA.Pha_completed_eco_coop < 3 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_tech }
+					check_variable = { FRA.Pha_completed_tech_coop > 2 }
+					check_variable = { FRA.Pha_completed_tech_coop < 6 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_army }
+					check_variable = { FRA.Pha_completed_army_coop > 0 }
+					check_variable = { FRA.Pha_completed_army_coop < 3 }
+				}
+			}
+		}
+		set_variable = { INT_coop_cost = 50 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_eco }
+					check_variable = { FRA.Pha_completed_eco_coop > 2 }
+					check_variable = { FRA.Pha_completed_eco_coop < 5 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_tech }
+					check_variable = { FRA.Pha_completed_tech_coop > 5 }
+					check_variable = { FRA.Pha_completed_tech_coop < 9 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_army }
+					check_variable = { FRA.Pha_completed_army_coop > 2 }
+					check_variable = { FRA.Pha_completed_army_coop < 5 }
+				}
+			}
+		}
+		set_variable = { INT_coop_cost = 75 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				FRA = { 
+					has_country_flag = FRA_pha_discuss_about_air 
+					has_country_flag = Pha_air_coop_level1
+					NOT = { has_country_flag = Pha_air_coop_level2 }
+				}	
+				FRA = { 
+					has_country_flag = FRA_pha_discuss_about_sea 
+					has_country_flag = Pha_sea_coop_level1
+					NOT = { has_country_flag = Pha_sea_coop_level2 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_ind }
+					check_variable = { FRA.Pha_completed_ind_coop > 0 }
+					check_variable = { FRA.Pha_completed_ind_coop < 2 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_res }
+					check_variable = { FRA.Pha_completed_res_coop > 0 }
+					check_variable = { FRA.Pha_completed_res_coop < 2 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_eco }
+					check_variable = { FRA.Pha_completed_eco_coop > 4 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_tech }
+					check_variable = { FRA.Pha_completed_tech_coop > 8 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_army }
+					check_variable = { FRA.Pha_completed_army_coop > 4 }
+					check_variable = { FRA.Pha_completed_army_coop < 7 }
+				}
+			}
+		}
+		set_variable = { INT_coop_cost = 100 }
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_ind }
+					check_variable = { FRA.Pha_completed_ind_coop > 1 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_res }
+					check_variable = { FRA.Pha_completed_res_coop > 1 }
+				}
+				AND = {
+					FRA = { has_country_flag = FRA_pha_discuss_about_army }
+					check_variable = { FRA.Pha_completed_army_coop > 6 }
+				}
+			}
+		}
+		set_variable = { INT_coop_cost = 150 }
+	}
+}
+
+INT_pass_the_coop_level_eco = {
+	if = {
+		limit = { 
+			check_variable = { Pha_completed_eco_coop < 1 }
+		}
+		set_country_flag = Pha_eco_coop_level1
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_eco_coop > 0 }
+			check_variable = { Pha_completed_eco_coop < 3 }
+		}
+		set_country_flag = Pha_eco_coop_level2
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_eco_coop > 2 }
+			check_variable = { Pha_completed_eco_coop < 5 }
+		}
+		set_country_flag = Pha_eco_coop_level3
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_eco_coop > 4 }
+			check_variable = { Pha_completed_eco_coop < 7 }
+		}
+		set_country_flag = Pha_eco_coop_level4
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_eco_coop > 6 }
+		}
+		set_country_flag = Pha_eco_coop_level5
+	}
+}
+
+INT_pass_the_coop_level_tech = {
+	if = {
+		limit = { 
+			check_variable = { Pha_completed_tech_coop < 3 }
+		}
+		set_country_flag = Pha_tech_coop_level1
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_tech_coop > 2 }
+			check_variable = { Pha_completed_tech_coop < 6 }
+		}
+		set_country_flag = Pha_tech_coop_level2
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_tech_coop > 5 }
+			check_variable = { Pha_completed_tech_coop < 9 }
+		}
+		set_country_flag = Pha_tech_coop_level3
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_tech_coop > 8 }
+		}
+		set_country_flag = Pha_tech_coop_level4
+	}
+}
+
+INT_pass_the_coop_level_ind = {
+	if = {
+		limit = { 
+			check_variable = { Pha_completed_ind_coop < 1 }
+		}
+		set_country_flag = Pha_ind_coop_level1
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_ind_coop > 0 }
+			check_variable = { Pha_completed_ind_coop < 2 }
+		}
+		set_country_flag = Pha_ind_coop_level2
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_ind_coop > 1 }
+		}
+		set_country_flag = Pha_ind_coop_level3
+	}
+}
+
+INT_pass_the_coop_level_res = {
+	if = {
+		limit = { 
+			check_variable = { Pha_completed_res_coop < 1 }
+		}
+		set_country_flag = Pha_res_coop_level1
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_res_coop > 0 }
+			check_variable = { Pha_completed_res_coop < 2 }
+		}
+		set_country_flag = Pha_res_coop_level2
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_res_coop > 1 }
+		}
+		set_country_flag = Pha_res_coop_level3
+	}
+}
+
+INT_pass_the_coop_level_air = {
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_airmili_cop }
+			NOT = { FRA = { has_completed_focus = FRA_red_sky_fighter } }
+		}
+		set_country_flag = Pha_air_coop_level1
+	}
+	else_if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_red_sky_fighter }
+		}
+		set_country_flag = Pha_air_coop_level2
+	}
+}
+
+INT_pass_the_coop_level_sea = {
+	if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_seamili_cop }
+			NOT = { FRA = { has_completed_focus = FRA_united_sea_rad_army } }
+		}
+		set_country_flag = Pha_sea_coop_level1
+	}
+	else_if = {
+		limit = { 
+			FRA = { has_completed_focus = FRA_united_sea_rad_army }
+		}
+		set_country_flag = Pha_sea_coop_level2
+	}
+}
+
+INT_pass_the_coop_level_army = {
+	if = {
+		limit = { 
+			check_variable = { Pha_completed_army_coop < 1 }
+		}
+		set_country_flag = Pha_army_coop_level1
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_army_coop > 0 }
+			check_variable = { Pha_completed_army_coop < 3 }
+		}
+		set_country_flag = Pha_army_coop_level2
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_army_coop > 2 }
+			check_variable = { Pha_completed_army_coop < 5 }
+		}
+		set_country_flag = Pha_army_coop_level3
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_army_coop > 4 }
+			check_variable = { Pha_completed_army_coop < 7 }
+		}
+		set_country_flag = Pha_army_coop_level4
+	}
+	else_if = {
+		limit = { 
+			check_variable = { Pha_completed_army_coop > 6 }
+		}
+		set_country_flag = Pha_army_coop_level5
+	}
+}
+
+INT_pass_the_coop = {
+	if = {
+		limit = { has_country_flag = FRA_pha_coop_eco }
+		INT_pass_the_coop_level_eco = yes
+	}
+	if = {
+		limit = { has_country_flag = FRA_pha_coop_tech }
+		INT_pass_the_coop_level_tech = yes
+	}
+	if = {
+		limit = { has_country_flag = FRA_pha_coop_ind }
+		INT_pass_the_coop_level_ind = yes
+	}
+	if = {
+		limit = { has_country_flag = FRA_pha_coop_res }
+		INT_pass_the_coop_level_res = yes
+	}
+	if = {
+		limit = { has_country_flag = FRA_pha_coop_air }
+		INT_pass_the_coop_level_air = yes
+	}
+	if = {
+		limit = { has_country_flag = FRA_pha_coop_sea }
+		INT_pass_the_coop_level_sea = yes
+	}
+	if = {
+		limit = { has_country_flag = FRA_pha_coop_army }
+		INT_pass_the_coop_level_army = yes
+	}
+}
+
+INT_end_the_meeting = {
+	clr_country_flag = FRA_pha_in_progress
+	clr_country_flag = FRA_pha_ahead_end
+	clear_array = global.pha_coop_disagree_tag 
+	clear_array = global.pha_coop_agree_tag 
+	clear_array = global.pha_coop_abstain_tag 
+
+	clr_country_flag = FRA_pha_coop_eco
+	clr_country_flag = FRA_pha_discuss_about_eco
+	clr_country_flag = FRA_pha_coop_tech
+	clr_country_flag = FRA_pha_discuss_about_tech
+	clr_country_flag = FRA_pha_coop_ind
+	clr_country_flag = FRA_pha_discuss_about_ind
+	clr_country_flag = FRA_pha_coop_res
+	clr_country_flag = FRA_pha_discuss_about_res
+	clr_country_flag = FRA_pha_coop_air
+	clr_country_flag = FRA_pha_discuss_about_air
+	clr_country_flag = FRA_pha_coop_sea
+	clr_country_flag = FRA_pha_discuss_about_sea
+	clr_country_flag = FRA_pha_coop_army
+	clr_country_flag = FRA_pha_discuss_about_army
+}
+
+FRA_world_invention_clean = {
+	clr_country_flag = FRA_western_eup_enable_once
+	clr_country_flag = FRA_middle_eup_enable_once
+	clr_country_flag = FRA_north_eup_enable_once
+	clr_country_flag = FRA_russia_enable_once
+	clr_country_flag = FRA_eastern_asia_enable_once
+	clr_country_flag = FRA_southern_asia_enable_once
+	clr_country_flag = FRA_southeast_asia_enable_once
+	clr_country_flag = FRA_mideast_iran_enable_once
+	clr_country_flag = FRA_mideast_ottoman_enable_once
+	clr_country_flag = FRA_mideast_egypt_enable_once
+	clr_country_flag = FRA_mideast_arab_enable_once
+	clr_country_flag = FRA_mideast_ethiopia_enable_once
+	clr_country_flag = FRA_northern_afr_enable_once
+	clr_country_flag = FRA_middle_afr_enable_once
+	clr_country_flag = FRA_southern_afr_enable_once
+	clr_country_flag = FRA_northern_amer_enable_once
+	clr_country_flag = FRA_middle_amer_enable_once
+	clr_country_flag = FRA_southern_amer_enable_once
+}
+
+FRA_invention_auto_complete_set_eu = {
+		random_list = {
+			1 = {
+				modifier = {
+					factor = 0
+					has_completed_focus = FRA_memorandum_of_lberia
+				}
+				activate_shine_on_focus = FRA_memorandum_of_lberia
+				set_country_flag = auto_FRA_memorandum_of_lberia
+				country_event = { id = frapha.101 days = 14 }
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_completed_focus = FRA_memorandum_of_apennine
+				}
+				activate_shine_on_focus = FRA_memorandum_of_apennine
+				set_country_flag = auto_FRA_memorandum_of_apennine
+				country_event = { id = frapha.101 days = 14 }
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_completed_focus = FRA_memorandum_of_britain
+				}
+				activate_shine_on_focus = FRA_memorandum_of_britain
+				set_country_flag = auto_FRA_memorandum_of_britain
+				country_event = { id = frapha.101 days = 14 }
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_completed_focus = FRA_people_under_the_kaiser
+				}
+				if = {
+					limit = { NOT = { has_completed_focus = FRA_memorandum_of_kaiser } }
+					activate_shine_on_focus = FRA_memorandum_of_kaiser
+					set_country_flag = auto_FRA_memorandum_of_kaiser
+					country_event = { id = frapha.101 days = 14 }
+				}
+				else_if = {
+					limit = { NOT = { has_completed_focus = FRA_people_under_the_kaiser } }
+					activate_shine_on_focus = FRA_people_under_the_kaiser
+					set_country_flag = auto_FRA_people_under_the_kaiser
+					country_event = { id = frapha.101 days = 14 }
+				}		
+			}
+		}
+	
+}
+
+FRA_invention_auto_complete_set_as = {
+	
+	if = {
+		limit = { NOT = { has_completed_focus = FRA_one_night_in_zhejiang } }
+		activate_shine_on_focus = FRA_one_night_in_zhejiang
+		set_country_flag = auto_FRA_one_night_in_zhejiang
+		country_event = { id = frapha.102 days = 14 }
+	}
+	else_if = {
+		limit = { NOT = { has_completed_focus = FRA_our_indian_friends } }
+		activate_shine_on_focus = FRA_our_indian_friends
+		set_country_flag = auto_FRA_our_indian_friends
+		country_event = { id = frapha.102 days = 14 }
+	}
+	else_if = {
+		limit = { NOT = { has_completed_focus = FRA_archipelagic_dream } }
+		activate_shine_on_focus = FRA_archipelagic_dream
+		set_country_flag = auto_FRA_archipelagic_dream
+		country_event = { id = frapha.102 days = 14 }
+	}
+}
+
+FRA_invention_auto_complete_set_me = {
+	random_list = {
+		1 = {
+			modifier = {
+				factor = 0
+				has_completed_focus = FRA_under_the_sudan
+			}
+			activate_shine_on_focus = FRA_under_the_sudan
+			set_country_flag = auto_FRA_under_the_sudan
+			country_event = { id = frapha.103 days = 14 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_completed_focus = FRA_on_the_side_of_shah
+			}
+			activate_shine_on_focus = FRA_on_the_side_of_shah
+			set_country_flag = auto_FRA_on_the_side_of_shah
+			country_event = { id = frapha.103 days = 14 }
+		}
+	}
+	if = {
+		limit = { 
+			has_completed_focus = FRA_under_the_sudan
+			has_completed_focus = FRA_on_the_side_of_shah
+			NOT = { has_completed_focus = FRA_lonely_boat_in_the_desert } 
+		}
+		activate_shine_on_focus = FRA_lonely_boat_in_the_desert
+		set_country_flag = auto_FRA_lonely_boat_in_the_desert
+		country_event = { id = frapha.103 days = 14 }
+	}
+}
+
+FRA_invention_auto_complete_set_am = {
+	if = {
+		limit = { NOT = { has_completed_focus = FRA_chicago_fellowship } }
+		activate_shine_on_focus = FRA_chicago_fellowship
+		set_country_flag = auto_FRA_chicago_fellowship
+		country_event = { id = frapha.104 days = 14 }
+	}
+	else_if = {
+			limit = { NOT = { has_completed_focus = FRA_southern_cone_revolution } }
+			activate_shine_on_focus = FRA_southern_cone_revolution
+			set_country_flag = auto_FRA_southern_cone_revolution
+			country_event = { id = frapha.104 days = 14 }
+		
+	}
+	else_if = {
+			limit = { NOT = { has_completed_focus = FRA_another_meterorite_strike } }
+			activate_shine_on_focus = FRA_another_meterorite_strike
+			set_country_flag = auto_FRA_another_meterorite_strike
+			country_event = { id = frapha.104 days = 14 }
+	}
+}
+
+FRA_invention_auto_complete_set_af = {
+	random_list = {
+		1 = {
+			modifier = {
+				factor = 0
+				has_completed_focus = FRA_tratior_to_the_motherland
+			}
+			activate_shine_on_focus = FRA_tratior_to_the_motherland
+			set_country_flag = auto_FRA_tratior_to_the_motherland
+			country_event = { id = frapha.105 days = 14 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_completed_focus = FRA_sinful_legacy_of_victoria
+			}
+			activate_shine_on_focus = FRA_sinful_legacy_of_victoria
+			set_country_flag = auto_FRA_sinful_legacy_of_victoria
+			country_event = { id = frapha.105 days = 14 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_completed_focus = FRA_the_huge_cage_in_the_sun
+			}
+			activate_shine_on_focus = FRA_the_huge_cage_in_the_sun
+			set_country_flag = auto_FRA_the_huge_cage_in_the_sun
+			country_event = { id = frapha.105 days = 14 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_completed_focus = FRA_red_horn_of_africa
+			}
+			activate_shine_on_focus = FRA_red_horn_of_africa
+			set_country_flag = auto_FRA_red_horn_of_africa
+			country_event = { id = frapha.105 days = 14 }
+		}
+		1 = {
+			modifier = {
+				factor = 0
+				has_completed_focus = FRA_the_break_of_south_africa
+			}
+			activate_shine_on_focus = FRA_the_break_of_south_africa
+			set_country_flag = auto_FRA_the_break_of_south_africa
+			country_event = { id = frapha.105 days = 14 }
+		}
+	}
+	if = {
+		limit = { 
+			has_completed_focus = FRA_tratior_to_the_motherland
+			has_completed_focus = FRA_sinful_legacy_of_victoria
+			has_completed_focus = FRA_red_horn_of_africa
+			has_completed_focus = FRA_the_break_of_south_africa
+			NOT = { has_completed_focus = FRA_back_to_the_birthplace_of_mankind } 
+		}
+		activate_shine_on_focus = FRA_back_to_the_birthplace_of_mankind
+		set_country_flag = auto_FRA_back_to_the_birthplace_of_mankind
+		country_event = { id = frapha.105 days = 14 }
+	}
+}
+
+GRU_gersoc_revolution_start = {
+	hidden_effect = {
+		GER = {
+			set_political_party = { ideology = totalist popularity = 0 }
+			set_political_party = { ideology = syndicalist popularity = 0 }
+			set_political_party = { ideology = radical_socialist popularity = 0 }
+			every_core_state = {
+				limit = { NOT =  { state = 28 } }
+				add_core_of = GRU
+			}
+		}
+	}
+	every_state = {
+		limit = { has_state_flag = gersoc_revo }
+		transfer_state_to = GRU
+	}
+	GRU = {
+		set_politics = {
+			ruling_party = syndicalist
+			elections_allowed = no
+		}
+		declare_war_on = {
+			target = GER
+			type = annex_everything
+		}
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = gersoc_revo_working_with_republicans }
+				set_popularities = {
+					totalist = 9
+					radical_socialist = 22
+					syndicalist = 36
+					social_democrat = 21
+					social_liberal = 9
+					market_liberal = 2
+					social_conservative = 1
+					authoritarian_democrat = 0
+					paternal_autocrat = 0
+					national_populist = 0
+				}
+			}
+			else = {
+				set_popularities = {
+					totalist = 24
+					radical_socialist = 22
+					syndicalist = 54
+					social_democrat = 0
+					social_liberal = 0
+					market_liberal = 0
+					social_conservative = 0
+					authoritarian_democrat = 0
+					paternal_autocrat = 0
+					national_populist = 0
+				}
+			}
+			add_political_power = 300
+			add_ideas = FRA_gersoc_revo
+			add_ideas = war_economy
+			add_ideas = limited_conscription
+			set_stability = 0.7
+			set_war_support = 0.8
+			division_template = {
+				name = "Millita"
+				division_names_group = MIL
+				template_counter = 68
+				role = infantry
+				regiments = {
+					militia = { x = 0 y = 0 }
+					militia = { x = 0 y = 1 }
+					militia = { x = 0 y = 2 }
+					militia = { x = 1 y = 0 }
+					militia = { x = 1 y = 1 }
+					militia = { x = 1 y = 2 }
+				}
+			}
+			if = {
+				limit = { GER = { has_country_flag = gersoc_revo_help_more } }
+				every_owned_state = {
+					create_unit = {
+						division = "division_template = \"Millita\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 6
+					}
+				}
+			}
+			else = {
+				every_owned_state = {
+					create_unit = {
+						division = "division_template = \"Millita\" start_experience_factor = 0.8 start_equipment_factor = 1.0"
+						owner = PREV
+						count = 4
+					}
+				}
+			}
+		}
+		FRA = {
+			add_to_faction = GRU
+		}
+	}
+}
+
+kur_ideology_change = {
+	add_to_variable = { kur_socialism = kursc }
+	set_variable = { kur_nationalism = 100 }
+	subtract_from_variable = { kur_nationalism = kur_socialism }
+}
+
+EUP_member_numbers = {
+	set_variable = { eup_member_numbers = 0 }
+	set_variable = { eup_member_govern_totalist = 0 }
+	set_variable = { eup_member_govern_syndicalist = 0 }
+	set_variable = { eup_member_govern_radical_socialist = 0 }
+	set_variable = { eup_member_govern_not_socialist= 0 }
+	for_each_loop = {
+		array = global.europe_member
+		if = {
+			limit = { has_government = totalist }
+			add_to_variable = { FRA.eup_member_govern_totalist = 1 } 
+		}
+		else_if = {
+			limit = { has_government = syndicalist }
+			add_to_variable = { FRA.eup_member_govern_syndicalist = 1 } 
+		}
+		else_if = {
+			limit = { has_government = radical_socialist }
+			add_to_variable = { FRA.eup_member_govern_radical_socialist = 1 } 
+		}
+		else_if = {
+			limit = { has_socialist_government = no }
+			add_to_variable = { FRA.eup_member_govern_not_socialist = 1 } 
+		}
+		add_to_temp_variable = { FRA.eup_member_numbers = 1 }
+	}
+
+	for_loop_effect = {
+		end = FRA.eup_member_numbers
+		EUP_rank = yes
+	}
+}
+
+EUP_rank = {
+	find_highest_in_array = {
+		array = global.temp_rank
+		value = temp_value
+		index = temp_index
+	}
+	add_to_array = {
+		array = global.europe_member_econ
+		value = global.europe_member_econ^temp_index
+	}
+	remove_from_array = {
+		array = global.europe_member_econ
+		index = temp_index
+	}
+	add_to_array = {
+		array = global.europe_member
+		value = global.europe_member^temp_index
+	}
+	remove_from_array = {
+		array = global.europe_member
+		index = temp_index
+	}
+	remove_from_array = {
+		array = global.temp_rank
+		index = temp_index
+	}
+}
+
+EUP_vote = {
+	if = {
+		limit = { has_country_flag = EUP_focus_union }
+		set_temp_variable = { compare_value = eup_union }
+	}
+	if = {
+		limit = { has_country_flag = EUP_focus_econ }
+		set_temp_variable = { compare_value = eup_eco_receive }
+	}
+	if = {
+		limit = { has_country_flag = EUP_focus_tech }
+		set_temp_variable = { compare_value = eup_tech_receive }
+	}
+	if = {
+		limit = { has_country_flag = EUP_focus_mili }
+		set_temp_variable = { compare_value = eup_mili_receive }
+	}
+	set_variable = { EUP_discuss_agree = 0 }
+	set_variable = { EUP_discuss_disagree = 0 }
+	for_each_loop = {
+		array = global.europe_member
+		index = ti
+		set_temp_variable = { tpossible = 50 }
+		if = {
+			limit = { tag = FRA }
+			add_to_variable = { FRA.EUP_discuss_agree = global.europe_member_econ^ti }
+		}
+		else = {
+			if = {
+				limit = { FRA = { has_government = THIS } }
+				add_to_temp_variable = { tpossible = 20 }
+			}
+			multiply_temp_variable = { FRA.compare_value = -0.8 }
+			add_to_temp_variable = { FRA.compare_value = 48 }
+			add_to_temp_variable = { tpossible = FRA.compare_value }
+			random_list = {
+				tpossible = {
+					add_to_variable = { FRA.EUP_discuss_agree = global.europe_member_econ^ti }
+				}
+				100 = {
+					modifier = {
+						set_temp_variable = { t = tpossible }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					add_to_variable = { FRA.EUP_discuss_disagree = global.europe_member_econ^ti }
+				}
+			}
+		}
+	}
+}
+
+EUP_variable_change = {
+	if = {
+		limit = { check_variable = { eup_unionc = 0 } }
+	}
+	else = {
+		add_to_variable = {
+			eup_union = eup_unionc
+			tooltip = eup_unionc_tips
+		}
+	}
+	subtract_from_variable = { EUP_political_power_factor = union_EUP_buff }
+	set_temp_variable = { ut = eup_union }
+	multiply_temp_variable = { ut = 0.01 }
+	multiply_temp_variable = { ut = 0.2 }
+	set_variable = { union_EUP_buff = ut }
+	add_to_variable = { EUP_political_power_factor = union_EUP_buff }
+
+	if = {
+		limit = { check_variable = { eup_eco_receivec = 0 } }
+	}
+	else = {
+		add_to_variable = {
+			eup_eco_receive = eup_eco_receivec
+			tooltip = eup_eco_receivec_tips
+		}
+	}
+	subtract_from_variable = { EUP_production_factory_max_efficiency_factor = econ_EUP_buff }
+	set_temp_variable = { et = eup_eco_receive }
+	multiply_temp_variable = { et = 0.01 }
+	multiply_temp_variable = { et = 0.2 }
+	set_variable = { econ_EUP_buff = et }
+	add_to_variable = { EUP_production_factory_max_efficiency_factor = econ_EUP_buff }
+
+	if = {
+		limit = { check_variable = { eup_tech_receivec = 0 } }
+	}
+	else = {
+		add_to_variable = {
+			eup_tech_receive = eup_tech_receivec
+			tooltip = eup_tech_receivec_tips
+		}
+	}
+	subtract_from_variable = { EUP_research_speed_factor = tech_EUP_buff }
+	set_temp_variable = { tt = eup_tech_receive }
+	multiply_temp_variable = { tt = 0.01 }
+	multiply_temp_variable = { tt = 0.25 }
+	set_variable = { tech_EUP_buff = tt }
+	add_to_variable = { EUP_research_speed_factor = tech_EUP_buff }
+
+	if = {
+		limit = { check_variable = { eup_mili_receivec = 0 } }
+	}
+	else = {
+		add_to_variable = {
+			eup_mili_receive = eup_mili_receivec
+			tooltip = eup_mili_receivec_tips
+		}
+	}
+	subtract_from_variable = { EUP_army_org_factor = mili_EUP_buff }
+	set_temp_variable = { mt = eup_mili_receive }
+	multiply_temp_variable = { mt = 0.01 }
+	multiply_temp_variable = { mt = 0.25 }
+	set_variable = { mili_EUP_buff = mt }
+	add_to_variable = { EUP_army_org_factor = mili_EUP_buff }
+
+	hidden_effect = {
+		every_other_country = {
+			limit = { has_dynamic_modifier = { modifier = EUP_member_buff } }
+			set_variable = { EUP_political_power_cost = FRA.EUP_political_power_cost }
+			set_variable = { EUP_army_core_defence_factor = FRA.EUP_army_core_defence_factor }
+			set_variable = { EUP_stability_factor = FRA.EUP_stability_factor }
+			set_variable = { EUP_consumer_goods_factor = FRA.EUP_consumer_goods_factor }
+			set_variable = { EUP_production_factory_start_efficiency_factor = FRA.EUP_production_factory_start_efficiency_factor }
+			set_variable = { EUP_production_factory_efficiency_gain_factor = FRA.EUP_production_factory_efficiency_gain_factor }
+			set_variable = { EUP_research_speed_factor = FRA.EUP_research_speed_factor }
+			set_variable = { EUP_production_factory_max_efficiency_factor = FRA.EUP_production_factory_max_efficiency_factor }
+			set_variable = { EUP_production_speed_infrastructure_factor = FRA.EUP_production_speed_infrastructure_factor }
+			set_variable = { EUP_industry_repair_factor = FRA.EUP_industry_repair_factor }
+			set_variable = { EUP_local_resources_factor = FRA.EUP_local_resources_factor }
+			set_variable = { EUP_global_building_slots_factor = FRA.EUP_global_building_slots_factor }
+			set_variable = { EUP_war_support_factor = FRA.EUP_war_support_factor }
+			set_variable = { EUP_local_non_core_manpower = FRA.EUP_local_non_core_manpower }
+			set_variable = { EUP_monthly_population = FRA.EUP_monthly_population }
+			set_variable = { EUP_conscription_factor = FRA.EUP_conscription_factor }
+			set_variable = { EUP_intelligence_agency_defense = FRA.EUP_intelligence_agency_defense }
+			set_variable = { EUP_line_change_production_efficiency_factor = FRA.EUP_line_change_production_efficiency_factor }
+			set_variable = { EUP_production_speed_buildings_factor = FRA.EUP_production_speed_buildings_factor }
+			set_variable = { EUP_stability_weekly = FRA.EUP_stability_weekly }
+			set_variable = { EUP_war_support_weekly = FRA.EUP_war_support_weekly }
+			set_variable = { EUP_army_org_factor = FRA.EUP_army_org_factor }
+			set_variable = { EUP_land_reinforce_rate = FRA.EUP_land_reinforce_rate }
+			set_variable = { EUP_experience_loss_factor = FRA.EUP_experience_loss_factor }
+		}
+	}
+}
