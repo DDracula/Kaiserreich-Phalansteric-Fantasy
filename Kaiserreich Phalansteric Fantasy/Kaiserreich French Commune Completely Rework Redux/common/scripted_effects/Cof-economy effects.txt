@@ -711,6 +711,38 @@ cof_econ_target_change = {
 	Cof_economy_impact_count = yes
 }
 
+###每日经济点数
+economy_power_judge = {
+	set_variable = { economy_power_change = 0.5 }
+
+	set_variable = { epcfc = num_of_civilian_factories }
+	multiply_variable = { epcfc = 0.03 }
+	add_to_variable = { economy_power_change = epcfc }
+
+	set_variable = { epcfm = num_of_military_factories }
+	multiply_variable = { epcfm = 0.01 }
+	add_to_variable = { economy_power_change = epcfm }
+
+	set_variable = { epcfn = num_of_naval_factories }
+	multiply_variable = { epcfn = 0.02 }
+	add_to_variable = { economy_power_change = epcfn }
+
+	add_to_variable = { economy_power_change = modifier@economy_power_gain }
+
+	set_variable = { epfcfev = cof_econ_values }
+	multiply_variable = { epfcfev = 0.5 }
+
+	set_variable = { epf = modifier@economy_power_factor }
+	add_to_variable = { epf = epfcfev }
+	multiply_variable = { epf = 0.01 }
+	
+	set_temp_variable = { epft = 1 }
+	add_to_temp_variable = { epft = epf }
+
+	multiply_variable = { economy_power_change = epft }
+
+}
+
 ###		派系经济影响力变化
 #		set_temp_variable = { esyndc = 0 }
 #		set_temp_variable = { eoppoc = 0 }
@@ -1765,74 +1797,6 @@ Cof_state_economy_situation_max_switch = {
 	}
 }
 
-###		随机x个地方 获得1个地方工厂
-#		set_temp_variable = { target_num = 0 }
-#		set_temp_variable = { target_type = 0 } #1民 2军 3船
-#		Cof_state_economy_random_get_state_factory = yes
-Cof_state_economy_random_get_state_factory = {
-	if = {
-		limit = { check_variable = { target_type = 0 } }
-		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_tt
-	}
-	else_if = {
-		limit = { check_variable = { target_type = 1 } }
-		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_industry_tt
-	}
-	else_if = {
-		limit = { check_variable = { target_type = 2 } }
-		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_arms_tt
-	}
-	else_if = {
-		limit = { check_variable = { target_type = 3 } }
-		custom_effect_tooltip = Cof_state_economy_random_get_state_factory_dockyard_tt
-	}
-	
-	for_loop_effect = {
-		end = target_num
-		every_core_state = {
-			limit = { has_dynamic_modifier = { modifier = Cof_state_economy_situation scope = THIS.id } }
-			hidden_effect = {
-				random_list = {
-					1 = {
-						modifier = {
-							factor = 0
-							check_variable = { target_type = 1 } 
-						}
-						set_temp_variable = { sesic = 1 }
-						set_temp_variable = { sesac = 0 }
-						set_temp_variable = { sesdc = 0 }
-						Cof_state_economy_situation_change = yes
-					}
-					1 = {
-						modifier = {
-							factor = 0
-							check_variable = { target_type = 2 } 
-						}
-						set_temp_variable = { sesic = 0 }
-						set_temp_variable = { sesac = 1 }
-						set_temp_variable = { sesdc = 0 }
-						Cof_state_economy_situation_change = yes
-					}
-					1 = {
-						modifier = {
-							factor = 0
-							is_coastal = no
-						}
-						modifier = {
-							factor = 0
-							check_variable = { target_type = 3 } 
-						}
-						set_temp_variable = { sesic = 0 }
-						set_temp_variable = { sesac = 0 }
-						set_temp_variable = { sesdc = 1 }
-						Cof_state_economy_situation_change = yes
-					}
-				}
-			}
-		}		
-	}
-}
-
 ### 	布列塔尼文艺复兴运动
 Cof_brittcul_buff_count = {
 	set_temp_variable = { btct1 = brittcul }
@@ -2004,6 +1968,35 @@ state_city_buff_count = {
 	}
 
 	if = {
+		limit = { FRA = { has_country_flag = rezoning_of_city } }
+		set_variable = { city_local_building_slots_factor = 0.1 }
+		set_variable = { city_state_production_speed_buildings_factor = 0.05 }
+		set_variable = { city_local_factories = 0.025 }
+	}
+	else = {
+		set_variable = { city_local_building_slots_factor = 0 }
+		set_variable = { city_state_production_speed_buildings_factor = 0 }
+		set_variable = { city_local_factories = 0 }
+	}
+
+	if = {
+		limit = { FRA = { has_country_flag = solve_housing_problem_of_urban_residents } }
+		set_variable = { city_recruitable_population_factor = 0.1 }
+		set_variable = { city_monthly_population = 0.01 }
+	}
+	else = {
+		set_variable = { city_recruitable_population_factor = 0 }
+		set_variable = { city_monthly_population = 0 }
+	}
+
+	if = {
+		limit = { FRA = { has_country_flag = build_urban_frontier_zone } }
+		add_to_variable = { city_state_production_speed_industrial_complex_factor = 0.15 }
+		set_variable = { city_state_production_speed_arms_factory_factor = 0.05 }
+	}
+	else = { set_variable = { city_state_production_speed_arms_factory_factor = 0 } }
+
+	if = {
 		limit = { FRA = { has_completed_focus = FRA_french_national_railway } }
 		set_variable = { city_state_production_speed_rail_way_factor = 0.25 }
 	}
@@ -2014,12 +2007,8 @@ state_city_buff_count = {
 			FRA = { has_completed_focus = FRA_block_development_model } 
 			is_paris_calais_model_zone = yes
 		}
-		set_variable = { city_state_production_speed_buildings_factor = 0.025 }
-		set_variable = { city_local_building_slots_factor = 0.05 }
-	}
-	else = { 
-		set_variable = { city_local_building_slots_factor = 0 } 
-		set_variable = { city_state_production_speed_buildings_factor = 0 } 
+		add_to_variable = { city_state_production_speed_buildings_factor = 0.025 }
+		add_to_variable = { city_local_building_slots_factor = 0.05 }
 	}
 
 	if = {
@@ -2038,9 +2027,8 @@ state_city_buff_count = {
 			is_marse_lyon_model_zone = yes 
 		}
 		add_to_variable = { city_state_production_speed_buildings_factor = 0.025 }
-		set_variable = { city_state_production_speed_arms_factory_factor = 0.05 }
+		add_to_variable = { city_state_production_speed_arms_factory_factor = 0.05 }
 	}
-	else = { set_variable = { city_state_production_speed_arms_factory_factor = 0 } }
 
 	if = {
 		limit = {
@@ -2062,7 +2050,7 @@ state_city_buff_count = {
 		}
 		set_variable = { city_war_support_factor = 0.005 }
 		add_to_variable = { city_state_production_speed_arms_factory_factor = 0.15 }
-		set_variable = { city_recruitable_population_factor = -0.1 }
+		add_to_variable = { city_recruitable_population_factor = -0.1 }
 
 		set_variable = { city_army_org_factor = arms_factory_level }
 		add_to_variable = { city_army_org_factor = state_economy_arms }
@@ -2070,7 +2058,6 @@ state_city_buff_count = {
 	}
 	else = { 
 		set_variable = { city_war_support_factor = 0 }
-		set_variable = { city_recruitable_population_factor = 0 }
 		set_variable = { city_army_org_factor = 0 }
 	}
 
@@ -2135,20 +2122,18 @@ state_city_buff_count = {
 
 	if = {
 		limit = { has_state_flag = nation_strategy_massay_industrcomplex_yes }
-		set_variable = { city_local_factories = 0.1 }
+		add_to_variable = { city_local_factories = 0.1 }
 		add_to_variable = { city_state_production_speed_buildings_factor = 0.15 }
 	}
-	else = { set_variable = { city_local_factories = 0 } }
 
 	if = {
 		limit = { has_state_flag = nice_strategy_ciudad_libre_de_nice_yes }
 		set_variable = { city_weekly_manpower = 100 }
-		set_variable = { city_monthly_population = 0.05 }
+		add_to_variable = { city_monthly_population = 0.05 }
 		set_variable = { city_stability_factor = -0.025 }
 	}
 	else = { 
 		set_variable = { city_weekly_manpower = 0 } 
-		set_variable = { city_monthly_population = 0 }
 		set_variable = { city_stability_factor = 0 }
 	}
 
@@ -2185,6 +2170,13 @@ state_rural_buff_count = {
 		set_variable = { rural_state_resources_factor = 0 }
 		set_variable = { rural_state_production_speed_buildings_factor = 0 }
 		set_variable = { rural_recruitable_population_factor = 0 }		
+	}
+
+	if = {
+		limit = { FRA = { has_country_flag = patterns_of_urbanrural_linkages } }
+		add_to_variable = { rural_state_resources_factor = 0.2 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
+		add_to_variable = { rural_recruitable_population_factor = 0.1 }
 	}
 
 	if = {
@@ -2266,6 +2258,12 @@ state_rural_buff_count = {
 	else = { set_variable = { rural_supply_consumption_factor = 0 } }
 
 	if = {
+		limit = { FRA = { has_country_flag = national_cereal_industry_office } }
+		add_to_variable = { rural_local_supplies = 0.1 }
+		add_to_variable = {	rural_supply_consumption_factor = -0.002 }
+	}
+
+	if = {
 		limit = { FRA = { has_completed_focus = FRA_rural_infrastructure_development } }
 		add_to_variable = { rural_state_resources_factor = 0.1 }
 		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
@@ -2286,8 +2284,20 @@ state_rural_buff_count = {
 
 	if = {
 		limit = { FRA = { has_country_flag = rural_new_frontier_rank_one } }
-		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
-		add_to_variable = { rural_state_production_speed_industrial_complex_factor = 0.2 }
+		add_to_variable = { rural_state_production_speed_buildings_factor = 0.05 }
+		add_to_variable = { rural_state_production_speed_industrial_complex_factor = 0.1 }
+	}
+
+	if = {
+		limit = { FRA = { has_country_flag = rural_new_frontier_rank_two } }
+		add_to_variable = { rural_state_production_speed_industrial_complex_factor = 0.1 }
+		add_to_variable = { rural_state_production_speed_arms_factory_factor = 0.05 }
+	}
+
+	if = {
+		limit = { FRA = { has_country_flag = rural_new_frontier_rank_three } }
+		add_to_variable = { rural_state_resources_factor = 0.1 }
+		add_to_variable = { rural_local_supplies = 0.1 }
 	}
 
 	if = {

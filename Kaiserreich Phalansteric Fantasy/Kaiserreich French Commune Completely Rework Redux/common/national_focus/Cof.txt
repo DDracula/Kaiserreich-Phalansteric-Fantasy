@@ -1495,6 +1495,7 @@ focus_tree = {
 				set_temp_variable = { sesdc = 0 }
 				Cof_state_economy_situation_change = yes
 
+				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = Cof_state_Paris
@@ -1559,6 +1560,7 @@ focus_tree = {
 				set_temp_variable = { sesdc = 1 }
 				Cof_state_economy_situation_change = yes
 
+				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = Cof_state_Calais
@@ -1628,6 +1630,7 @@ focus_tree = {
 				set_temp_variable = { sesdc = 1 }
 				Cof_state_economy_situation_change = yes
 
+				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = Cof_state_Bordeaux
@@ -1635,7 +1638,7 @@ focus_tree = {
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
 					core_consumer_goods_factor = -0.05
-					tooltip = consumer_goods_factor_tooltip
+					tooltip = consumer_goods_factor_tooltip  
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -1688,6 +1691,7 @@ focus_tree = {
 				set_temp_variable = { sesdc = 0 }
 				Cof_state_economy_situation_change = yes
 
+				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
 					DYNMOD = Cof_state_Massay
@@ -2842,6 +2846,13 @@ focus_tree = {
 					tooltip = state_production_speed_industrial_complex_factor_tooltip
 				}
 			}
+
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_economy_rezoning_of_city
+			unlock_decision_tooltip = Cof_economy_solve_housing_problem_of_urban_residents
+			unlock_decision_tooltip = Cof_economy_build_urban_frontier_zone
+			unlock_decision_tooltip = Cof_economy_patterns_of_urbanrural_linkages
+			custom_effect_tooltip = unlock_in_economy
 		}
 	}
 
@@ -3215,6 +3226,13 @@ focus_tree = {
 					tooltip = supply_consumption_factor_tooltip
 				}
 			}
+
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_economy_national_cereal_industry_office
+			unlock_decision_tooltip = Cof_economy_vilmorin_seed_coops
+			unlock_decision_tooltip = Cof_economy_champignons_de_paris_saumur
+			unlock_decision_tooltip = Cof_economy_pruneau_dagen
+			custom_effect_tooltip = unlock_in_economy
 		}
 	}
 
@@ -3319,7 +3337,7 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			unlock_decision_tooltip = Cof_economy_le_guerandais
 			unlock_decision_tooltip = Cof_economy_les_ardoisieres_dangers
-			custom_effect_tooltip = unlock_in_eocnomy
+			custom_effect_tooltip = unlock_in_economy
 		}
 	}
 
@@ -3973,11 +3991,11 @@ focus_tree = {
 						DYNMOD = Cof_state_rural_zone
 					}
 					add_to_variable = {
-						rural_state_production_speed_buildings_factor = 0.1
+						rural_state_production_speed_buildings_factor = 0.05
 						tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
 					}
 					add_to_variable = {
-						rural_state_production_speed_industrial_complex_factor = 0.2
+						rural_state_production_speed_industrial_complex_factor = 0.1
 						tooltip = state_production_speed_industrial_complex_factor_tooltip
 					}
 				}
@@ -3997,20 +4015,24 @@ focus_tree = {
 				add_to_variable = { eqcost = 0.6 }
 
 				custom_effect_tooltip = tooltip_white_line
-
 				custom_effect_tooltip = effect_economy
 				set_temp_variable = { evc = 0 }
 				set_temp_variable = { eibc = 0 }
 				set_temp_variable = { eipc = 0 }
 				set_temp_variable = { eiac = 0 }
-				set_temp_variable = { eamc = 5 }
-				set_temp_variable = { eaec = 2.5 }
-				set_temp_variable = { eaac = 2.5 }
-				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { eamc = 3 }
+				set_temp_variable = { eaec = 2 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 1 }
 				set_temp_variable = { elc = 0 }
 				set_temp_variable = { eic = 0 }
 				cof_econ_target_change = yes
 			}
+
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_economy_rural_new_frontier2
+			unlock_decision_tooltip = Cof_economy_rural_new_frontier3
+			custom_effect_tooltip = unlock_in_economy
 		}
 	}
 
@@ -4039,7 +4061,6 @@ focus_tree = {
 			has_country_flag = rural_new_frontier_rank_one
 			has_country_flag = rural_new_frontier_rank_two
 			has_country_flag = rural_new_frontier_rank_three
-			has_country_flag = rural_new_frontier_rank_four
 		}
 		x = 7
 		y = 6
@@ -7101,7 +7122,6 @@ focus_tree = {
 		completion_reward = {
 			set_temp_variable = { t = modifier@industrial_capacity_factory }
 			multiply_temp_variable = { t = 10 }
-			modulo_temp_variable = { t = 10 }
 			round_temp_variable = t
 			multiply_temp_variable = { t = 0.3 }
 			set_temp_variable = { wc = t }
@@ -8314,6 +8334,10 @@ focus_tree = {
 			set_temp_variable = { aec = 0 }
 			set_temp_variable = { apc = 5 }
 			Cof_army_reform_values_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_economy_focus_on_war_prouduce
+			custom_effect_tooltip = unlock_in_economy
 		}
 	}
 
@@ -8579,9 +8603,28 @@ focus_tree = {
 			set_temp_variable = { target_num = 1 }
 			set_temp_variable = { target_type = 2 }
 			Cof_state_economy_random_get_state_factory = yes
+			custom_effect_tooltip = {
+				localization_key = random_get_state_factory
+				ZONE = STATE_OWNER_CORE
+				STATENUM = 1
+				GETNUM = 1
+				TYPE = arms_factory
+			}
+			hidden_effect = {
+				random_core_state = {
+					set_temp_variable = { sesic = 0 }
+					set_temp_variable = { sesac = 1 }
+					set_temp_variable = { sesdc = 0 }
+					Cof_state_economy_situation_change = yes
+				}
+			}
 
 			custom_effect_tooltip = tooltip_white_line
 			unlock_decision_tooltip = Cof_economy_verne_caron_shotgun_coops
+			unlock_decision_tooltip = Cof_economy_cartoucherie_de_alence
+			unlock_decision_tooltip = Cof_economy_ateliers_de_construction_de_tarbes
+			unlock_decision_tooltip = Cof_economy_manufacture_darmes_de_chatellerault
+			unlock_decision_tooltip = Cof_economy_groupe_boussac
 			custom_effect_tooltip = unlock_in_economy
 		}
 	}
@@ -9187,6 +9230,16 @@ focus_tree = {
 				category = land_doctrine
 			}
 
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_military
 			set_temp_variable = { atimpc = 10 }
 			set_temp_variable = { atimp1c = 0 }
@@ -9637,7 +9690,14 @@ focus_tree = {
 		y = 5
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 		}
 	}
 
@@ -10094,7 +10154,14 @@ focus_tree = {
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 		}
 	}
 
@@ -10936,12 +11003,39 @@ focus_tree = {
 		icon = GFX_focus_FRA_socialist_iberia
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_barcelona_revolutionary_movement }
-		
+		available = {
+			SWF = {
+				exists = yes
+				has_war = no
+				is_in_faction_with = FRA
+			}
+		}
 		x = -5
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = if_portugal_is_socialist
+			effect_tooltip = {
+				SWF = { country_event = cofintern.16 }
+				POR = { country_event = cofintern.16 }
+			}
+			custom_effect_tooltip = event_effect_tooltip
+			custom_effect_tooltip = if_socialist_iberia_accept
 
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_portugal_not_socialist
+			effect_tooltip = {
+				POR = { country_event = cofintern.17 }
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { POR = { has_socialist_government = yes } }
+					SWF = { country_event = cofintern.16 }
+					POR = { country_event = cofintern.16 }
+				}
+				else = { POR = { country_event = cofintern.17 } }
+			}
 		}
 	}
  
@@ -10964,12 +11058,89 @@ focus_tree = {
 		icon = GFX_focus_FRA_kangaroos_also_want_revolution
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_white_paper_on_world_revolution }
-		
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 30 }
+			international_influence_judge = yes
+
+			AST = { has_country_flag = AST_had_1936_election }
+		}
+		bypass = {
+			AST = { 
+				has_socialist_government = yes 
+				OR = {
+					has_completed_focus = AST_syndicalist_congress
+					has_completed_focus = AST_totalist_congress
+				}
+			}
+		}
 		x = 2
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -30 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_AST_1936_socialist_win_and_has_war
+			effect_tooltip = {
+				send_equipment = {
+					target = AST
+					type = infantry_equipment
+					amount = 3000
+				}
+				send_equipment = {
+					target = AST
+					type = artillery_equipment
+					amount = 300
+				}
+				AST = {
+					add_popularity = { ideology = syndicalist popularity = 0.05 }
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+					add_ideas = Cof_french_military_support
+					country_event = cofintern.14
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_AST_socialist_not_win
+			effect_tooltip = { 	AST = { country_event = cofintern.15 } }
+			custom_effect_tooltip = event_effect_tooltip
+			effect_tooltip = {
+				AST = {
+					add_stability = -0.1
+					add_popularity = { ideology = syndicalist popularity = 0.05 }
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+				}
+			}
+
+			hidden_effect = {
+				if = {
+					limit = {
+						AST = {
+							has_socialist_government = yes
+							has_war_with = IMP
+						}
+					}
+					send_equipment = {
+						target = AST
+						type = infantry_equipment
+						amount = 3000
+					}
+					send_equipment = {
+						target = AST
+						type = artillery_equipment
+						amount = 300
+					}
+					AST = { country_event = cofintern.14 }
+				}
+				else = { AST = { country_event = cofintern.15 } }
+			}
 		}
 	}
 
@@ -12236,11 +12407,22 @@ focus_tree = {
 		id = FRA_toulon_naval_declaration
 		icon = GFX_focus_FRA_toulon_naval_declaration
 		relative_position_id = FRA_commune_army_council
+		available = { always = no }
 		x = 22
 		y = 0
-		cost = 2
+		cost = 0
 		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+			navy_experience = 25
 
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 		}
 	}
 
@@ -12596,7 +12778,14 @@ focus_tree = {
 		y = 0
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 		}
 	}
 
@@ -12914,6 +13103,9 @@ focus_tree = {
 		cost = 0
 		completion_reward = {
 			custom_effect_tooltip = unlock_focuses
+			hidden_effect = {
+				country_event = { id = cofpolitics.129 days = 14 }
+			}
 		}
 	}
 
@@ -12923,11 +13115,23 @@ focus_tree = {
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_another_victory_for_syndicalists }
 		mutually_exclusive = { focus = FRA_to_be_change_unity_first }
+		available = {
+			has_country_flag = syndicalist_congress_finish
+			custom_trigger_tooltip = {
+				tooltip = seat_radi_more_than_mode
+				check_variable = { seat_synd_radi > seat_synd_mode }
+			}
+		}
 		x = -6
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { iosc = 5 }
+	        intensity_of_struggle_change = yes 
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = FRA_to_unite_sacrifice_first_tt
 		}
 	}
 
@@ -13093,6 +13297,13 @@ focus_tree = {
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_another_victory_for_syndicalists }
 		mutually_exclusive = { focus = FRA_to_unite_sacrifice_first }
+		available = {
+			has_country_flag = syndicalist_congress_finish
+			custom_trigger_tooltip = {
+				tooltip = seat_mode_more_than_radi
+				check_variable = { seat_synd_mode > seat_synd_radi }
+			}
+		}
 		x = -1
 		y = 1
 		cost = 2
@@ -13100,6 +13311,9 @@ focus_tree = {
 			custom_effect_tooltip = effect_politics
 			set_temp_variable = { iosc = -15 }
 	        intensity_of_struggle_change = yes 
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = FRA_to_be_change_unity_first_tt
 		}
 	}
 
@@ -13112,7 +13326,9 @@ focus_tree = {
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			country_event = cofpolitics.132
+			country_event = cofpolitics.134
+			country_event = cofpolitics.136
 		}
 	}
 
@@ -13166,6 +13382,9 @@ focus_tree = {
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_revolutionary_tents }
 		prerequisite = { focus = FRA_old_alliance }
+		available = {
+			has_country_flag = sorelian_accpet_syndicalist
+		}
 		x = 0
 		y = 3
 		cost = 2
@@ -13195,11 +13414,62 @@ focus_tree = {
 			focus = FRA_another_victory_for_syndicalists 
 			focus = FRA_purer_model_of_revolution 
 		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = Cof_politics_intensity_of_struggle
+					JUDGE = less_than
+					TAGNUM = "30.0"
+				}
+				check_variable = { Cof_politics_intensity_of_struggle < 30 }
+			}
+
+			OR = {
+				has_completed_focus = FRA_to_be_change_unity_first
+				has_country_flag = sorelian_forgive_syndicalist
+			}
+		}
 		x = 1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_if_focus_completed
+				FOCUS = FRA_another_victory_for_syndicalists
+			}
+			effect_tooltip = { country_event = cofpolitics.130 }
+			custom_effect_tooltip = event_effect_tooltip
+			custom_effect_tooltip = if_sorelian_accept
+			effect_tooltip = {
+				add_political_power = 50
+				set_temp_variable = { coalition_partner_var = token:totalist }
+				add_to_coalition = yes
+			}
 
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_if_focus_completed
+				FOCUS = FRA_purer_model_of_revolution
+			}
+			effect_tooltip = {
+				add_political_power = 50
+				set_temp_variable = { coalition_partner_var = token:syndicalist }
+				add_to_coalition = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { has_government = syndicalist }
+					country_event = cofpolitics.130
+				}
+				else_if = {
+					limit = { has_government = totalist }
+					add_political_power = 50
+					set_temp_variable = { coalition_partner_var = token:syndicalist }
+					add_to_coalition = yes
+				}
+			}
 		}
 	}
 
@@ -13886,11 +14156,18 @@ focus_tree = {
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_old_alliance }
 		prerequisite = { focus = FRA_real_revolutionary_labor_unionists }
+		available = {
+			has_completed_focus = FRA_reaffirmation_of_freedom_of_religion
+			has_country_flag = valois_choose_unit_older
+		}
 		x = 1
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			set_temp_variable = { coalition_partner_var = token:social_conservative }
+			add_to_coalition = yes
+			set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+			add_to_coalition = yes
 		}
 	}
 
@@ -13965,6 +14242,17 @@ focus_tree = {
 		relative_position_id = FRA_purer_model_of_revolution
 		prerequisite = { focus = FRA_radical_cultural_propaganda }
 		mutually_exclusive = { focus = FRA_a_real_revolution }
+		available = {
+			OR = {
+				set_temp_variable = { bgt_seat_target = 90 }
+				custom_trigger_tooltip = {
+					tooltip	= sore_yout_seat_greater_than_x
+					check_variable = { seat_sore_yout > bgt_seat_target }
+				}
+
+				has_country_flag = valois_choose_unit_youth
+			}
+		}
 		x = -1
 		y = 6
 		cost = 2
@@ -14222,7 +14510,10 @@ focus_tree = {
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			swap_ideas = {
+				remove_idea = bill_freedom_of_religion
+				add_idea = bill_freedom_of_religion_amendment
+			}
 		}
 	}
 

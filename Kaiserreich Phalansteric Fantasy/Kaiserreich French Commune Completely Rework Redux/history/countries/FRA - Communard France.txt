@@ -1,9 +1,9 @@
-﻿capital = 16
+capital = 16
 oob = "FRA"
 set_naval_oob = "FRA_naval"
 set_convoys = 300
 set_stability = 0.5
-set_war_support = 0.15
+set_war_support = 0.1
 set_research_slots = 4
 starting_train_buffer = 2
 set_fuel_ratio = 0.8
@@ -183,27 +183,33 @@ set_politics = {
 	elections_allowed = yes
 }
 set_popularities = {
-	totalist = 34
-	radical_socialist = 22
-	syndicalist = 42
-	social_democrat = 2
-	social_liberal = 0
-	market_liberal = 0
-	social_conservative = 0
-	authoritarian_democrat = 0
+	totalist = 21
+	syndicalist = 28
+	radical_socialist = 24
+	social_democrat = 8
+	social_liberal = 5
+	market_liberal = 1
+	social_conservative = 4
+	authoritarian_democrat = 9
 	paternal_autocrat = 0
 	national_populist = 0
 }
-add_ideas = FRA_communard_spirit
 
-### Events ###
-#country_event = { id = comfrance.1 days = 1 }
+add_ideas = {
+	Cof_communard_spirit 
+	Cof_CGT_contested
+	Cof_weak_central_government
+	#bills
+	bill_CGT_leadership
+	bill_basic_speech_freedom
+	bill_limited_womens_rights
+	bill_freedom_of_religion
+	bill_free_immigration
+	bill_eight_hour_workdays
+}
+
 country_event = { id = comfrance.28 days = 77 }
 country_event = { id = iwo.23 days = 90 }
-country_event = { id = comfrance.163 days = 121 }
-country_event = { id = comfrance.161 days = 194 }
-country_event = { id = comfrance.164 days = 963 }
-#country_event = { id = uob.363 days = 345 }
 
 ### Integration ###
 ROOT = {
@@ -214,12 +220,6 @@ ROOT = {
 	735 = { enable_state_integration_50_compliance = yes } #Savoy
 	943 = { enable_state_integration_50_compliance = yes } #Upper Savoy
 	980 = { enable_state_integration_50_compliance = yes } #Lille
-
-	8 = { enable_state_integration_80_compliance = yes } #Luxembourg
-	34 = { enable_state_integration_80_compliance = yes } #Hainaut
-	741 = { enable_state_integration_80_compliance = yes } #Verviers
-	760 = { enable_state_integration_80_compliance = yes } #Romandy
-	948 = { enable_state_integration_80_compliance = yes } #Liège
 }
 
 ### Diplomacy ###
@@ -230,103 +230,122 @@ add_to_faction = ENG
 add_opinion_modifier = { target = NFA modifier = KR_hostile }
 reverse_add_opinion_modifier = { target = NFA modifier = KR_hostile }
 
-### Country Leaders ###
-recruit_character = FRA_marcel_deat
-recruit_character = FRA_adrien_marquet
-recruit_character = FRA_marcel_cachin
-recruit_character = FRA_georges_valois
 recruit_character = FRA_pierre_monatte
+
 recruit_character = FRA_leon_jouhaux
-recruit_character = FRA_benoit_frachon
-recruit_character = FRA_jacques_doriot
-recruit_character = FRA_vincent_auriol
-recruit_character = FRA_conseil_de_defense_federal
-
-### Field Marshals ###
+recruit_character = FRA_robert_bothereau
+recruit_character = FRA_leon_blum
+recruit_character = FRA_louis_lecoin
+recruit_character = FRA_louis_saillant
 recruit_character = FRA_maurice_gamelin
-recruit_character = FRA_georges_catroux
+recruit_character = FRA_vincent_auriol
+recruit_character = FRA_joseph_putz
+recruit_character = FRA_edouard_peisson
 
-### Generals ###
-recruit_character = FRA_gaston_billotte
+
+recruit_character = FRA_benoit_frachon
+
+recruit_character = FRA_jean_baptiste_lebas
+recruit_character = FRA_alphonse_merrheim
+recruit_character = FRA_roger_salengro
 recruit_character = FRA_charles_delestraint
-recruit_character = FRA_marie_pierre_koenig
-recruit_character = FRA_ernest_petit
+recruit_character = FRA_marceau_pivert
+
+
+recruit_character = FRA_marcel_cachin
+recruit_character = FRA_charles_tillon
+recruit_character = FRA_maurice_thorez
+recruit_character = FRA_boris_souvarine
 recruit_character = FRA_henri_tanguy
+recruit_character = FRA_charles_rappoport
+recruit_character = FRA_andre_marty
+recruit_character = FRA_pierre_jules_cot
+recruit_character = FRA_georges_marrane
+recruit_character = FRA_ernest_petit
+recruit_character = FRA_jacques_sadoul
+recruit_character = FRA_irene_and_frederic_joliot_curie
+recruit_character = FRA_jean_zyromski
+recruit_character = FRA_suzanne_girault
+recruit_character = FRA_florimond_bonte
+
+
+recruit_character = FRA_maurice_joyeux
+recruit_character = FRA_fernand_despres
+recruit_character = FRA_may_picqueray
+recruit_character = FRA_andre_prudhommeaux
+recruit_character = FRA_rene_fremont
+recruit_character = FRA_gaston_leval
+recruit_character = FRA_emile_armand
+recruit_character = FRA_nestor_makhno
+recruit_character = FRA_daniel_guerin
+
+
+recruit_character = FRA_marcel_deat
+recruit_character = FRA_louis_vallon
+recruit_character = FRA_pierre_renaudel
+recruit_character = FRA_adrien_marquet
+recruit_character = FRA_georges_albertini
+recruit_character = FRA_ernest_pezet
+recruit_character = FRA_marcel_mauss
+recruit_character = FRA_georges_catroux
 recruit_character = FRA_rene_olry
+recruit_character = FRA_henri_frenay
+recruit_character = FRA_gabriel_lafaye
+recruit_character = FRA_joseph_paul_boncour
+
+
+recruit_character = FRA_jacques_doriot
+recruit_character = FRA_pierre_celor
+recruit_character = FRA_jean_fontenoy
+recruit_character = FRA_henri_barbe
+recruit_character = FRA_simon_sabiani
+recruit_character = FRA_victor_barthelemy
+
+
+recruit_character = FRA_georges_valois
+recruit_character = FRA_edouard_berth
+recruit_character = FRA_hubert_bourgin
+recruit_character = FRA_marcel_bucar
+recruit_character = FRA_gustave_herve
 recruit_character = FRA_diego_brosset
+recruit_character = FRA_marie_pierre_koenig
+recruit_character = FRA_francois_darlan
+recruit_character = FRA_gabriel_auphan
+recruit_character = FRA_philippe_auboyneau
+
+
+recruit_character = FRA_georges_bataille
+recruit_character = FRA_michel_leiris
+recruit_character = FRA_alphonse_laurencic
+recruit_character = FRA_georges_malraux
+recruit_character = FRA_maurice_duclos
+recruit_character = FRA_andre_breton
+recruit_character = FRA_joseph_vuillemin
+recruit_character = FRA_jacques_lacan
+
+recruit_character = FRA_bourse_generale_du_travail
+recruit_character = FRA_comite_de_salut_public
+activate_advisor = FRA_comite_de_salut_public_sic
+
+recruit_character = FRA_gaston_billotte
 recruit_character = FRA_jean_edouard_verneau
 recruit_character = FRA_georges_revers
 recruit_character = FRA_andre_boris
 recruit_character = FRA_raoul_magrin_vernerey
 recruit_character = FRA_henri_adeline
 recruit_character = FRA_aime_doumenc
-recruit_character = FRA_joseph_putz
-recruit_character = FRA_andre_marty
 recruit_character = FRA_georges_blanchard
 recruit_character = FRA_clement_blanc
 recruit_character = FRA_paul_legentilhomme
-recruit_character = FRA_florimond_bonte
 recruit_character = FRA_aubert_frere
-recruit_character = FRA_henri_frenay
 recruit_character = FRA_louis_buisson
-recruit_character = FRA_nestor_makhno
-recruit_character = FRA_robert_bothereau
-recruit_character = FRA_louis_lecoin
-recruit_character = FRA_jean_baptiste_lebas
-recruit_character = FRA_marcel_mauss
-recruit_character = FRA_boris_souvarine
-recruit_character = FRA_maurice_joyeux
-recruit_character = FRA_fernand_despres
-recruit_character = FRA_andre_prudhommeaux
-recruit_character = FRA_may_picqueray
-recruit_character = FRA_louis_vallon
-recruit_character = FRA_georges_albertini
-recruit_character = FRA_andre_breton
-recruit_character = FRA_georges_marrane
-recruit_character = FRA_charles_tillon
-recruit_character = FRA_edouard_berth
-recruit_character = FRA_marcel_bucar
-recruit_character = FRA_hubert_bourgin
-recruit_character = FRA_militarist_agitator
-recruit_character = FRA_gustave_herve
-recruit_character = FRA_georges_bataille
-recruit_character = FRA_alphonse_laurencic
-recruit_character = FRA_michel_leiris
-recruit_character = FRA_georges_malraux
-
 FRA_nestor_makhno = { set_nationality = FOP }
-
-### Admirals ###
-recruit_character = FRA_francois_darlan
 recruit_character = FRA_raoul_castex
 recruit_character = FRA_andre_georges_lemmonier
-recruit_character = FRA_gabriel_auphan
-recruit_character = FRA_philippe_auboyneau
 recruit_character = FRA_marcel_gensoul
-recruit_character = FRA_edouard_peisson
-
-### Advisors ###
-recruit_character = FRA_confederation_general_du_travail
-
-recruit_character = FRA_leon_blum
-recruit_character = FRA_daniel_guerin
-recruit_character = FRA_maurice_thorez
-recruit_character = FRA_charles_rappoport
-recruit_character = FRA_henri_barbe
-recruit_character = FRA_gabriel_lafaye
-recruit_character = FRA_joseph_paul_boncour
 recruit_character = FRA_jacques_duclos
-recruit_character = FRA_jean_zyromski
-recruit_character = FRA_pierre_jules_cot
-recruit_character = FRA_jacques_sadoul
-recruit_character = FRA_suzanne_girault
 
-recruit_character = FRA_irene_and_frederic_joliot_curie
-recruit_character = FRA_robert_esnault_pelterie
 
-recruit_character = FRA_louis_lazare_kahn
-
-recruit_character = FRA_joseph_vuillemin
 recruit_character = FRA_martial_henri_valin
 recruit_character = FRA_maryse_bastie
 recruit_character = FRA_jean_francois_jannekeyn
@@ -334,6 +353,7 @@ recruit_character = FRA_alfred_heurtaux
 recruit_character = FRA_georges_guynemer
 recruit_character = FRA_victor_leon_ernest_denain
 
+### Scientists ###
 recruit_character = FRA_irene_joliot_curie
 recruit_character = FRA_frederic_joliot_curie
 recruit_character = FRA_robert_esnault_pelterie
@@ -364,10 +384,6 @@ if = {
 		skill = 2
 	}
 }
-
-activate_advisor = FRA_confederation_general_du_travail_sic
-
-FRA_nestor_makhno = { set_nationality = FOP }
 
 ################
 ### Variants ###

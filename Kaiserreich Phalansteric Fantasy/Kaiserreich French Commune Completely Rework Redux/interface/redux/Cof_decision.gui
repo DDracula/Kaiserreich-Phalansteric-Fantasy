@@ -1219,10 +1219,10 @@ guiTypes = {
 
 			instantTextboxType = {
 				name = "bop_ui_box"
-				position = { x = 150 y = 0 }
+				position = { x = 100 y = 0 }
 				font = "hoi_24header"
 				text = bop_ui_text
-				maxWidth = 200
+				maxWidth = 300
 				maxHeight = 200
 				format = centre
 				pdx_tooltip = bop_ui_text_tt
@@ -1359,5 +1359,49 @@ guiTypes = {
 			clicksound = click_default
 			pdx_tooltip = open_faction_desc_tt
 		}
+	}
+
+	containerWindowType = {
+		name = "ep_show_window"
+		position = { x = 1100 y = 5 }
+		size = { width = 70 height = 65 }
+		origo = upper_left
+		moveable = no
+		clipping = no
+		
+		iconType ={
+			name ="economy_power_value_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 0 y = 0 }
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = economy_power_gain_daily_tt    
+		}
+
+		iconType = {
+			name = "epicon"
+			spriteType = "GFX_economy_power_texticon"
+			position = { x = 2 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		instantTextBoxType = {
+			name ="econ_power"
+			position = { x = 18 y = 2 }
+			font = "hoi_18mbs"
+			text = "[?economy_power|.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 50
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType = {
+			name = "add_ep_with_pp"
+			position = { x = 72 y = 2 }
+			quadTextureSprite ="GFX_boost_building_button"
+			clicksound = click_default
+			pdx_tooltip = add_ep_with_pp_tt
+		} 
 	}
 }

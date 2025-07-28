@@ -1,4 +1,4 @@
-version="1.27"
+version="2.00"
 tags={
 	"Alternative History"
 	"National Focuses"
@@ -7,7 +7,6 @@ tags={
 dependencies={
 	"Kaiserreich"
 }
-name="Kaiserreich French Commune Completely Rework Redux v1.27"
+name="Kaiserreich French Commune Completely Rework Redux"
 picture="Thumbnail.png"
 supported_version="1.16.*"
-remote_file_id="3338590425"

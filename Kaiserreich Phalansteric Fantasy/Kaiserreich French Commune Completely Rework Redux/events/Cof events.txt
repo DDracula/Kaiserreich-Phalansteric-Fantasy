@@ -290,6 +290,20 @@ country_event = {
 }
 
 country_event = {
+	id = cofpolitics.15
+	title = cofpolitics.15.title
+	desc = cofpolitics.15.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.15.a
+        add_stability = -0.1
+		add_political_power = -50
+		complete_national_focus = FRA_womens_day_parade
+	}
+}
+
+country_event = {
 	id = cofpolitics.99
 	title = cofpolitics.99.title
 	desc = cofpolitics.99.desc
@@ -1898,6 +1912,256 @@ country_event = {
 		name = cofpolitics.128.a
 		ai_chance = { base = 50 }
 		add_stability = 0.01
+	}	
+}
+
+country_event = {
+	id = cofpolitics.129
+	title = cofpolitics.129.title
+	desc = cofpolitics.129.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	after = { set_country_flag = syndicalist_congress_finish }
+	option = {
+		name = cofpolitics.129.a
+		trigger = { check_variable = { seat_synd_mode > seat_synd_radi } }
+	}	
+	option = {
+		name = cofpolitics.129.b
+		trigger = { check_variable = { seat_synd_radi > seat_synd_mode } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.130
+	title = cofpolitics.130.title
+	desc = cofpolitics.130.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.130.a
+		
+		hidden_effect = {
+			random_list = {
+				100 = {
+					modifier = {
+						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					set_country_flag = sorelian_accpet_syndicalist 
+				}
+				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
+			}
+			country_event = cofpolitics.131
+		}
+	}	
+}
+
+country_event = {
+	id = cofpolitics.131
+	title = {
+		text = cofpolitics.131.title.a
+		trigger = { has_country_flag = sorelian_accpet_syndicalist }
+	}
+	title = {
+		text = cofpolitics.131.title.b
+		trigger = { NOT = { has_country_flag = sorelian_accpet_syndicalist } }
+	}
+	desc = {
+		text = cofpolitics.131.desc.a
+		trigger = { has_country_flag = sorelian_accpet_syndicalist }
+	}
+	desc = {
+		text = cofpolitics.131.desc.b
+		trigger = { NOT = { has_country_flag = sorelian_accpet_syndicalist } }
+	}
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.131.a
+		trigger = { has_country_flag = sorelian_accpet_syndicalist }
+		add_political_power = 50
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+	}	
+	option = {
+		name = cofpolitics.131.b
+		trigger = { NOT = { has_country_flag = sorelian_accpet_syndicalist } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.132
+	title = cofpolitics.132.title
+	desc = cofpolitics.132.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.132.a
+		
+		hidden_effect = {
+			random_list = {
+				100 = {
+					modifier = {
+						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					set_country_flag = anarchist_accpet_syndicalist 
+				}
+				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
+			}
+			country_event = cofpolitics.133
+		}
+	}	
+}
+
+country_event = {
+	id = cofpolitics.133
+	title = {
+		text = cofpolitics.133.title.a
+		trigger = { has_country_flag = anarchist_accpet_syndicalist }
+	}
+	title = {
+		text = cofpolitics.133.title.b
+		trigger = { NOT = { has_country_flag = anarchist_accpet_syndicalist } }
+	}
+	desc = {
+		text = cofpolitics.133.desc.a
+		trigger = { has_country_flag = anarchist_accpet_syndicalist }
+	}
+	desc = {
+		text = cofpolitics.133.desc.b
+		trigger = { NOT = { has_country_flag = anarchist_accpet_syndicalist } }
+	}
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.133.a
+		trigger = { has_country_flag = anarchist_accpet_syndicalist }
+		add_political_power = 50
+		
+	}	
+	option = {
+		name = cofpolitics.133.b
+		trigger = { NOT = { has_country_flag = anarchist_accpet_syndicalist } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.134
+	title = cofpolitics.134.title
+	desc = cofpolitics.134.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.134.a
+		
+		hidden_effect = {
+			random_list = {
+				100 = {
+					modifier = {
+						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					set_country_flag = communist_accpet_syndicalist 
+				}
+				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
+			}
+			country_event = cofpolitics.135
+		}
+	}	
+}
+
+country_event = {
+	id = cofpolitics.135
+	title = {
+		text = cofpolitics.135.title.a
+		trigger = { has_country_flag = communist_accpet_syndicalist }
+	}
+	title = {
+		text = cofpolitics.135.title.b
+		trigger = { NOT = { has_country_flag = communist_accpet_syndicalist } }
+	}
+	desc = {
+		text = cofpolitics.135.desc.a
+		trigger = { has_country_flag = communist_accpet_syndicalist }
+	}
+	desc = {
+		text = cofpolitics.135.desc.b
+		trigger = { NOT = { has_country_flag = communist_accpet_syndicalist } }
+	}
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.135.a
+		trigger = { has_country_flag = communist_accpet_syndicalist }
+		add_political_power = 50
+		
+	}	
+	option = {
+		name = cofpolitics.135.b
+		trigger = { NOT = { has_country_flag = communist_accpet_syndicalist } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.136
+	title = cofpolitics.136.title
+	desc = cofpolitics.136.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.136.a
+		
+		hidden_effect = {
+			random_list = {
+				100 = {
+					modifier = {
+						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					set_country_flag = technocrat_accpet_syndicalist 
+				}
+				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
+			}
+			country_event = cofpolitics.137
+		}
+	}	
+}
+
+country_event = {
+	id = cofpolitics.137
+	title = {
+		text = cofpolitics.137.title.a
+		trigger = { has_country_flag = technocrat_accpet_syndicalist }
+	}
+	title = {
+		text = cofpolitics.137.title.b
+		trigger = { NOT = { has_country_flag = technocrat_accpet_syndicalist } }
+	}
+	desc = {
+		text = cofpolitics.137.desc.a
+		trigger = { has_country_flag = technocrat_accpet_syndicalist }
+	}
+	desc = {
+		text = cofpolitics.137.desc.b
+		trigger = { NOT = { has_country_flag = technocrat_accpet_syndicalist } }
+	}
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.137.a
+		trigger = { has_country_flag = technocrat_accpet_syndicalist }
+		add_political_power = 50
+		
+	}	
+	option = {
+		name = cofpolitics.137.b
+		trigger = { NOT = { has_country_flag = technocrat_accpet_syndicalist } }
 	}	
 }
 
@@ -4169,13 +4433,16 @@ country_event = {
 		set_temp_variable = { t = var:THIS.party_popularity@totalist }
 		add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
 		add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
-		modulo_temp_variable = { t = 0.05 }
-		
+		multiply_temp_variable = { t = 20 }
+		round_temp_variable = t
+
 		set_temp_variable = { tt = 0.6 }
 		subtract_from_temp_variable = { tt = THIS.stability }
-		modulo_temp_variable = { tt = 0.1 }
+		multiply_temp_variable = { tt = 10 }
+		round_temp_variable = tt
 
 		add_to_temp_variable = { t = tt }
+
 		set_temp_variable = { bsg_civilian_factory_use = t }
 		
 		set_temp_variable = { rt = t }
@@ -4221,6 +4488,188 @@ country_event = {
 		add_dynamic_modifier = { modifier = Cof_border_smuggling_ger days = 90 }
 	}
 }
+
+country_event = {
+	id = cofintern.14
+	title = cofintern.14.title
+	desc = cofintern.14.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.14.a
+		add_ideas = Cof_french_military_support
+		add_popularity = { ideology = syndicalist popularity = 0.05 }
+		add_popularity = { ideology = radicial_socialist popularity = 0.025 }
+
+		effect_tooltip = {
+			FRA = {
+				send_equipment = {
+					target = AST
+					type = infantry_equipment
+					amount = 3000
+				}
+				send_equipment = {
+					target = AST
+					type = artillery_equipment
+					amount = 300
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.15
+	title = cofintern.15.title
+	desc = cofintern.15.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.15.a
+		add_stability = -0.1
+		add_popularity = { ideology = syndicalist popularity = 0.05 }
+		add_popularity = { ideology = radicial_socialist popularity = 0.025 }
+	}
+}
+
+country_event = {
+	id = cofintern.16
+	title = cofintern.16.title
+	desc = cofintern.16.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.16.a
+	
+	}
+	option = {
+		name = cofintern.16.b
+	
+	}
+}
+
+country_event = {
+	id = cofintern.17
+	title = cofintern.17.title
+	desc = cofintern.17.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.17.a
+	
+	}
+	option = {
+		name = cofintern.17.b
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#军事
+country_event = {
+	id = cofmilitary.1
+	title = cofmilitary.1.title
+	desc = cofmilitary.1.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofmilitary.1.a
+		add_war_support = 0.025
+		complete_national_focus = FRA_toulon_naval_declaration
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

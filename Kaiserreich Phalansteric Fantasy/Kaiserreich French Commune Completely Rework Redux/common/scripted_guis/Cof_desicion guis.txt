@@ -447,4 +447,19 @@ scripted_gui = {
         }
     }
 
+    economy_power_show = {
+        context_type = player_context
+        window_name = ep_show_window
+        triggers = {
+            add_ep_with_pp_click_enabled = {
+                has_political_power > 9.9
+            }
+        }
+        effects = {
+            add_ep_with_pp_click = {
+                add_political_power = -10
+                add_to_variable = { economy_power = 10 }
+            }
+        }
+    }
 }

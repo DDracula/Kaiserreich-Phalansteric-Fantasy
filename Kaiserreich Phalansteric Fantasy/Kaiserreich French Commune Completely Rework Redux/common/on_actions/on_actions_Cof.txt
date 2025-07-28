@@ -2,11 +2,43 @@ on_actions = {
     on_startup = {
         effect = {
             FRA = {
+                add_victory_points = { province = 9644 value = 1 }
+                add_victory_points = { province = 3594 value = 1 }
+                add_victory_points = { province = 11576 value = 1 }
+                add_victory_points = { province = 3666 value = 1 }
+                add_victory_points = { province = 655 value = 1 }
+                add_victory_points = { province = 625 value = 1 }
+                add_victory_points = { province = 9505 value = 1 }
+                add_victory_points = { province = 9510 value = 1 }
+                add_victory_points = { province = 929 value = 1 }
+                add_victory_points = { province = 11875 value = 1 }
+                add_victory_points = { province = 9550 value = 1 }
+                add_victory_points = { province = 11732 value = 1 }
+                add_victory_points = { province = 9629 value = 1 }
+                add_victory_points = { province = 6917 value = 1 }
+                add_victory_points = { province = 11709 value = 1 }
+                add_victory_points = { province = 11697 value = 1 }
+                add_victory_points = { province = 9725 value = 1 }
+                add_victory_points = { province = 9534 value = 1 }
+                add_victory_points = { province = 13497 value = 1 }
+                add_victory_points = { province = 3771 value = 1 }
+                add_victory_points = { province = 3770 value = 1 }
+                add_victory_points = { province = 9884 value = 1 }
+                add_victory_points = { province = 11596 value = 1 }
+                add_victory_points = { province = 11628 value = 1 }
+                add_victory_points = { province = 9492 value = 1 }
+                add_victory_points = { province = 11613 value = 1 }
+                add_victory_points = { province = 6775 value = 1 }
+
                 country_event = cofpolitics.1
+                country_event = { id = cofpolitics.14 days = 180 random_days = 30 }
+                country_event = { id = cofpolitics.15 days = 797 random_hours = 12 }
+
                 country_event = { id = cofeconomy.2 days = 132 random_hours = 18 }
                 country_event = { id = cofeconomy.6 days = 60 random_days = 30 }
                 country_event = { id = cofeconomy.14 days = 140 random_days = 30 }
-                country_event = { id = cofpolitics.14 days = 180 random_days = 30 }
+
+                country_event = { if = cofmilitary.1 days = 445 random_hours = 12 }
 
                 set_variable = { cgt_confidence = -4 }
                 set_variable = { cgt_monopolization = 87 }
@@ -279,6 +311,8 @@ on_actions = {
                 politics_pop_impact_count = yes
 
                 #economy
+                set_variable = { economy_power = 50 }
+
                 set_variable = { economy_synd = 28 }
                 set_variable = { economy_oppo = 24 }
                 set_variable = { economy_jaco = 26 }
@@ -295,14 +329,14 @@ on_actions = {
                 set_variable = { Cof_economy_model_order = 0 }
                 set_variable = { maxeconfocus = 1 }
 
-                set_variable = { cof_econ_values = 24 }
+                set_variable = { cof_econ_values = 27 }
                 set_variable = { econ_industry_basic = 43 }
                 set_variable = { econ_industry_process = 35 }
                 set_variable = { econ_industry_arms = 27 }
-                set_variable = { econ_agriculture_mechanized = 9 }
+                set_variable = { econ_agriculture_mechanized = 19 }
                 set_variable = { econ_agriculture_chemical = 21 }
-                set_variable = { econ_agriculture_chain = 6 }
-                set_variable = { econ_equal = 49 }
+                set_variable = { econ_agriculture_chain = 16 }
+                set_variable = { econ_equal = 32 }
                 set_variable = { econ_link = 23 }
                 set_variable = { econ_innovate = 36 }
                 
@@ -429,6 +463,9 @@ on_actions = {
     }
     on_daily_FRA = {
         effect = {
+            economy_power_judge = yes
+            add_to_variable = { economy_power = economy_power_change }
+
             faction_infulences_count = yes
             society_period_change_judge = yes
 
@@ -870,6 +907,14 @@ on_actions = {
     }
     on_monthly_FRA = {
         effect = {
+            set_temp_variable = { wc = modifier@monthly_change_popsw }
+            set_temp_variable = { pc = modifier@monthly_change_popsp }
+            set_temp_variable = { mc = modifier@monthly_change_popsm }
+            set_temp_variable = { sc = modifier@monthly_change_popss }
+            set_temp_variable = { bc = modifier@monthly_change_popsb }
+            set_temp_variable = { ac = modifier@monthly_change_popsa }
+            class_pop_satisfactions_change = yes
+
             set_temp_variable = { evc = modifier@monthly_change_ev }
             set_temp_variable = { eibc = modifier@monthly_change_eib }
             set_temp_variable = { eipc = modifier@monthly_change_eip }
@@ -900,11 +945,12 @@ on_actions = {
             set_temp_variable = { apc = modifier@monthly_change_apassion }
             Cof_army_reform_values_change = yes
 
-            add_to_variable = { Cof_politics_intensity_of_struggle = modifier@monthly_change_iosc }
+            add_to_variable = { Cof_politics_intensity_of_struggle = modifier@monthly_change_ios }
             add_stability = stabilitycfios
             add_political_power = ppcfios
 
-            add_to_variable = {  }
+            set_temp_variable = { ppvc = modifier@monthly_change_bgt_vs_csp }
+            cof_politics_BGT_vs_CSP_values_change = yes
 
             phalanstere_unity_change_monthly = yes
             set_temp_variable = { phauc = phauc_monthly }
@@ -914,7 +960,6 @@ on_actions = {
                 limit = { has_completed_focus = FRA_co_ops_more_than_just_workplaces }
                 set_temp_variable = { t = modifier@industrial_capacity_factory }
                 multiply_temp_variable = { t = 10 }
-                modulo_temp_variable = { t = 10 }
                 round_temp_variable = t
                 multiply_temp_variable = { t = 0.3 }
                 set_temp_variable = { wc = t }
