@@ -13314,6 +13314,8 @@ focus_tree = {
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = FRA_to_be_change_unity_first_tt
+
+			set_variable = { sorelian_sincerity = 0 }
 		}
 	}
 
@@ -13337,6 +13339,7 @@ focus_tree = {
 		icon = GFX_focus_FRA_midway_society
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_revolutionary_tents }
+		prerequisite = { focus = FRA_cutting_dangerous_people }
 		prerequisite = { 
 			focus = FRA_workers_direct_administration 
 			focus = FRA_workers_picket_system 
@@ -13427,7 +13430,10 @@ focus_tree = {
 
 			OR = {
 				has_completed_focus = FRA_to_be_change_unity_first
-				has_country_flag = sorelian_forgive_syndicalist
+				custom_trigger_tooltip = {
+					tooltip = sore_oldl_govenment
+					has_country_flag = CBGT_sore_oldl
+				}
 			}
 		}
 		x = 1
@@ -13439,35 +13445,17 @@ focus_tree = {
 				FOCUS = FRA_another_victory_for_syndicalists
 			}
 			effect_tooltip = { country_event = cofpolitics.130 }
-			custom_effect_tooltip = event_effect_tooltip
-			custom_effect_tooltip = if_sorelian_accept
-			effect_tooltip = {
-				add_political_power = 50
-				set_temp_variable = { coalition_partner_var = token:totalist }
-				add_to_coalition = yes
-			}
 
 			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = {
 				localization_key = tooltip_if_focus_completed
 				FOCUS = FRA_purer_model_of_revolution
 			}
-			effect_tooltip = {
-				add_political_power = 50
-				set_temp_variable = { coalition_partner_var = token:syndicalist }
-				add_to_coalition = yes
-			}
-
+			
 			hidden_effect = {
 				if = {
-					limit = { has_government = syndicalist }
+					limit = { has_completed_focus = FRA_to_be_change_unity_first }
 					country_event = cofpolitics.130
-				}
-				else_if = {
-					limit = { has_government = totalist }
-					add_political_power = 50
-					set_temp_variable = { coalition_partner_var = token:syndicalist }
-					add_to_coalition = yes
 				}
 			}
 		}

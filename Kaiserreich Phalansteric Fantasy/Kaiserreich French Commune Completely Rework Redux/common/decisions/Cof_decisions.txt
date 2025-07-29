@@ -66,6 +66,132 @@ Cof_politics = {
 		}
 	}
 
+	#温和派议程
+	Cof_syndmode_bring_in_sorelian_test_of_sincerity = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = sorelian_test_of_sincerity_trigger
+				OR = {
+					check_variable = { sorelian_sincerity = sorelian_target_sincerity }
+					check_variable = { sorelian_sincerity > sorelian_target_sincerity }
+				}
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 180
+		complete_effect = {
+			country_event = cofpolitics.137
+		}
+		remove_effect = {
+			country_event = cofpolitics.138
+		}
+	}
+
+	Cof_syndmode_bring_in_sorelian_youth_corps = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_war_support = 0.025
+			add_popularity = { ideology = totalist popularity = 0.03 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = sorelain_yes_but_anarchist_technocrat_no
+			add_to_variable = { sorelian_sincerity = 3 } 
+			add_to_variable = { anarchist_sincerity = -2 } 
+			add_to_variable = { technocrat_sincerity = -2 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -0.5 }
+       		set_temp_variable = { pop_pc = -0.5 }
+	        set_temp_variable = { pop_mc = -0.5 }
+    		set_temp_variable = { pop_sc = -0.5 }
+        	set_temp_variable = { pop_bc = -1 }
+        	set_temp_variable = { pop_ac = 3 }
+    	    set_temp_variable = { pop_aoc = 0 }
+    	    set_temp_variable = { pop_anc = 0 }
+    		set_temp_variable = { pop_asc = 0 }
+	        class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 0 }
+       		set_temp_variable = { pc = 0 } 
+	        set_temp_variable = { mc = 0 }
+    		set_temp_variable = { sc = -2 }
+        	set_temp_variable = { bc = -2 }
+        	set_temp_variable = { ac = 3 }
+	        class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_target = 8 }   
+			set_temp_variable = { pop_syndc = -2 }
+			set_temp_variable = { pop_oppoc = -2 }
+			set_temp_variable = { pop_jacoc = -2 }
+			set_temp_variable = { pop_sorec = 6 }
+			class_pop_faction_tendency_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = -3 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 3 }
+			Cof_army_reform_values_change = yes
+			hidden_effect = {  } 
+		}
+	}
+
+	Cof_syndmode_bring_in_sorelian_increase_military_budgets = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		days_re_enable = 30
+		days_remove = 30
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		modifier = { 
+			economy_power_factor = -10 
+			production_speed_arms_factory_factor = 0.15
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = sorelain_yes_but_anarchist_technocrat_no
+			add_to_variable = { sorelian_sincerity = 2 } 
+			add_to_variable = { anarchist_sincerity = -1 } 
+			add_to_variable = { technocrat_sincerity = -1 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+       		set_temp_variable = { pc = 0 } 
+	        set_temp_variable = { mc = 0 }
+    		set_temp_variable = { sc = 0 }
+        	set_temp_variable = { bc = 0 }
+        	set_temp_variable = { ac = 1 }
+	        class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 3 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
 }
 
 #### 社会阶层 ####

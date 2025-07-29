@@ -1918,7 +1918,14 @@ country_event = {
 country_event = {
 	id = cofpolitics.129
 	title = cofpolitics.129.title
-	desc = cofpolitics.129.desc
+	desc = {
+		text = cofpolitics.129.desc.a
+		trigger = { check_variable = { seat_synd_mode > seat_synd_radi } }
+	}
+	desc = {
+		text = cofpolitics.129.desc.b
+		trigger = { check_variable = { seat_synd_radi > seat_synd_mode } }
+	}
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
 	after = { set_country_flag = syndicalist_congress_finish }
@@ -1940,54 +1947,27 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.130.a
-		
-		hidden_effect = {
-			random_list = {
-				100 = {
-					modifier = {
-						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
-						multiply_temp_variable = { t = -1 }
-						add = t
-					}
-					set_country_flag = sorelian_accpet_syndicalist 
-				}
-				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
-			}
-			country_event = cofpolitics.131
-		}
+		hidden_effect = { country_event = cofpolitics.131 }
 	}	
 }
 
 country_event = {
 	id = cofpolitics.131
-	title = {
-		text = cofpolitics.131.title.a
-		trigger = { has_country_flag = sorelian_accpet_syndicalist }
-	}
-	title = {
-		text = cofpolitics.131.title.b
-		trigger = { NOT = { has_country_flag = sorelian_accpet_syndicalist } }
-	}
-	desc = {
-		text = cofpolitics.131.desc.a
-		trigger = { has_country_flag = sorelian_accpet_syndicalist }
-	}
-	desc = {
-		text = cofpolitics.131.desc.b
-		trigger = { NOT = { has_country_flag = sorelian_accpet_syndicalist } }
-	}
+	title = cofpolitics.131.title
+	desc = cofpolitics.131.desc
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.131.a
-		trigger = { has_country_flag = sorelian_accpet_syndicalist }
-		add_political_power = 50
-		set_temp_variable = { coalition_partner_var = token:totalist }
-		add_to_coalition = yes
+		hidden_effect = { country_event = cofpolitics.132 }
 	}	
 	option = {
 		name = cofpolitics.131.b
-		trigger = { NOT = { has_country_flag = sorelian_accpet_syndicalist } }
+		hidden_effect = { country_event = cofpolitics.134 }
+	}	
+	option = {
+		name = cofpolitics.131.c
+		hidden_effect = { country_event = cofpolitics.133 }
 	}	
 }
 
@@ -1999,53 +1979,21 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.132.a
+		activate_mission = Cof_syndmode_bring_in_sorelian_test_of_sincerity
+		set_variable = { sorelian_target_sincerity = 6 }
 		
-		hidden_effect = {
-			random_list = {
-				100 = {
-					modifier = {
-						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
-						multiply_temp_variable = { t = -1 }
-						add = t
-					}
-					set_country_flag = anarchist_accpet_syndicalist 
-				}
-				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
-			}
-			country_event = cofpolitics.133
-		}
 	}	
 }
 
 country_event = {
 	id = cofpolitics.133
-	title = {
-		text = cofpolitics.133.title.a
-		trigger = { has_country_flag = anarchist_accpet_syndicalist }
-	}
-	title = {
-		text = cofpolitics.133.title.b
-		trigger = { NOT = { has_country_flag = anarchist_accpet_syndicalist } }
-	}
-	desc = {
-		text = cofpolitics.133.desc.a
-		trigger = { has_country_flag = anarchist_accpet_syndicalist }
-	}
-	desc = {
-		text = cofpolitics.133.desc.b
-		trigger = { NOT = { has_country_flag = anarchist_accpet_syndicalist } }
-	}
+	title = cofpolitics.133.title
+	desc = cofpolitics.133.desc
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.133.a
-		trigger = { has_country_flag = anarchist_accpet_syndicalist }
-		add_political_power = 50
 		
-	}	
-	option = {
-		name = cofpolitics.133.b
-		trigger = { NOT = { has_country_flag = anarchist_accpet_syndicalist } }
 	}	
 }
 
@@ -2057,53 +2005,23 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.134.a
-		
-		hidden_effect = {
-			random_list = {
-				100 = {
-					modifier = {
-						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
-						multiply_temp_variable = { t = -1 }
-						add = t
-					}
-					set_country_flag = communist_accpet_syndicalist 
-				}
-				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
-			}
-			country_event = cofpolitics.135
-		}
+		hidden_effect = { country_event = cofpolitics.135 }
+	}	
+	option = {
+		name = cofpolitics.134.b
+		hidden_effect = { country_event = cofpolitics.136 }
 	}	
 }
 
 country_event = {
 	id = cofpolitics.135
-	title = {
-		text = cofpolitics.135.title.a
-		trigger = { has_country_flag = communist_accpet_syndicalist }
-	}
-	title = {
-		text = cofpolitics.135.title.b
-		trigger = { NOT = { has_country_flag = communist_accpet_syndicalist } }
-	}
-	desc = {
-		text = cofpolitics.135.desc.a
-		trigger = { has_country_flag = communist_accpet_syndicalist }
-	}
-	desc = {
-		text = cofpolitics.135.desc.b
-		trigger = { NOT = { has_country_flag = communist_accpet_syndicalist } }
-	}
+	title = cofpolitics.135.title
+	desc = cofpolitics.135.desc
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.135.a
-		trigger = { has_country_flag = communist_accpet_syndicalist }
-		add_political_power = 50
 		
-	}	
-	option = {
-		name = cofpolitics.135.b
-		trigger = { NOT = { has_country_flag = communist_accpet_syndicalist } }
 	}	
 }
 
@@ -2116,54 +2034,39 @@ country_event = {
 	option = {
 		name = cofpolitics.136.a
 		
-		hidden_effect = {
-			random_list = {
-				100 = {
-					modifier = {
-						set_temp_variable = { t = Cof_politics_intensity_of_struggle }
-						multiply_temp_variable = { t = -1 }
-						add = t
-					}
-					set_country_flag = technocrat_accpet_syndicalist 
-				}
-				0 = { modifier = { add = Cof_politics_intensity_of_struggle } }
-			}
-			country_event = cofpolitics.137
-		}
 	}	
 }
 
 country_event = {
 	id = cofpolitics.137
-	title = {
-		text = cofpolitics.137.title.a
-		trigger = { has_country_flag = technocrat_accpet_syndicalist }
-	}
-	title = {
-		text = cofpolitics.137.title.b
-		trigger = { NOT = { has_country_flag = technocrat_accpet_syndicalist } }
-	}
-	desc = {
-		text = cofpolitics.137.desc.a
-		trigger = { has_country_flag = technocrat_accpet_syndicalist }
-	}
-	desc = {
-		text = cofpolitics.137.desc.b
-		trigger = { NOT = { has_country_flag = technocrat_accpet_syndicalist } }
-	}
+	title = cofpolitics.137.title
+	desc = cofpolitics.137.desc
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.137.a
-		trigger = { has_country_flag = technocrat_accpet_syndicalist }
-		add_political_power = 50
 		
 	}	
+}
+
+country_event = {
+	id = cofpolitics.138
+	title = cofpolitics.138.title
+	desc = cofpolitics.138.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
 	option = {
-		name = cofpolitics.137.b
-		trigger = { NOT = { has_country_flag = technocrat_accpet_syndicalist } }
+		name = cofpolitics.138.a
+		
 	}	
 }
+
+
+
+
+
+
+
 
 country_event = {
 	id = cofpolitics.1000
