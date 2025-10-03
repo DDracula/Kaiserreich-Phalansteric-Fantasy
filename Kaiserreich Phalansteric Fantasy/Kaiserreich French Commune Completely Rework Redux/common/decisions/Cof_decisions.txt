@@ -107,6 +107,16 @@ Cof_politics = {
 			add_to_variable = { technocrat_sincerity = -2 }
 
 			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_society
 			set_temp_variable = { pop_wc = -0.5 }
        		set_temp_variable = { pop_pc = -0.5 }
@@ -144,7 +154,7 @@ Cof_politics = {
 			set_temp_variable = { aec = 0 }
 			set_temp_variable = { apc = 3 }
 			Cof_army_reform_values_change = yes
-			hidden_effect = {  } 
+			hidden_effect = { country_event = { id = cofpolitics.139 days = 7 random_days = 3 } } 
 		}
 	}
 
@@ -166,6 +176,16 @@ Cof_politics = {
 			add_to_variable = { sorelian_sincerity = 2 } 
 			add_to_variable = { anarchist_sincerity = -1 } 
 			add_to_variable = { technocrat_sincerity = -1 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_society
@@ -192,6 +212,86 @@ Cof_politics = {
 			cof_econ_target_change = yes
 		}
 	}
+
+	Cof_syndmode_bring_in_sorelian_diplomatic_assertion1 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		fire_only_once = yes
+		cost = 40
+		complete_effect = {
+			add_war_support = 0.025
+			add_named_threat = {
+				threat = 2.5
+				name = Cof_syndmode_bring_in_sorelian_diplomatic_assertion1
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = sorelain_yes_but_anarchist_technocrat_no
+			add_to_variable = { sorelian_sincerity = 2 } 
+			add_to_variable = { anarchist_sincerity = -1 } 
+			add_to_variable = { technocrat_sincerity = -1 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 1 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = -1.5 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 1.5 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+
+	Cof_syndmode_bring_in_sorelian_diplomatic_assertion2 = {
+		icon = ger_mefo_bills
+		allowed = { original_tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		fire_only_once = yes
+		cost = 40
+		complete_effect = {
+			add_war_support = 0.025
+			add_named_threat = {
+				threat = 2.5
+				name = Cof_syndmode_bring_in_sorelian_diplomatic_assertion2
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = sorelain_yes_but_anarchist_technocrat_no
+			add_to_variable = { sorelian_sincerity = 2 } 
+			add_to_variable = { anarchist_sincerity = -1 } 
+			add_to_variable = { technocrat_sincerity = -1 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 1 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+		
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = -1.5 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 1.5 }
+			Cof_army_reform_values_change = yes
+		}
+	}       
 }
 
 #### 社会阶层 ####

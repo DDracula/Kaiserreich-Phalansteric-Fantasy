@@ -725,7 +725,19 @@ Cof_military_reform_impact_count = {
     multiply_temp_variable = { ap2 = 0.01 }
     multiply_temp_variable = { ap2 = 0.5 }
     set_variable = { ap2_show = ap2 }
-    set_variable = { mili_mobilization_speed = ap2 }     
+    set_variable = { mili_mobilization_speed = ap2 }    
+    
+    ####其他改革
+    if = {
+        limit = { has_completed_focus = FRA_reform_promotion_mechanism }
+        add_to_variable = { mili_army_org_factor = 0.05 }
+        set_variable = { mili_army_morale_factor = 0.05 }
+        set_variable = { mili_monthly_change_awill = 0.3 }
+    }
+    else = { 
+        set_variable = { mili_army_morale_factor = 0 } 
+        set_variable = { mili_monthly_change_awill = 0 }
+    }
 
     ####
     force_update_dynamic_modifier = yes
