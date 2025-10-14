@@ -726,18 +726,30 @@ Cof_military_reform_impact_count = {
     multiply_temp_variable = { ap2 = 0.5 }
     set_variable = { ap2_show = ap2 }
     set_variable = { mili_mobilization_speed = ap2 }    
-    
-    ####其他改革
+
+    #extra
+    #军队自主
     if = {
-        limit = { has_completed_focus = FRA_reform_promotion_mechanism }
-        add_to_variable = { mili_army_org_factor = 0.05 }
-        set_variable = { mili_army_morale_factor = 0.05 }
-        set_variable = { mili_monthly_change_awill = 0.3 }
+        limit = { has_completed_focus = FRA_strike_wherever_one_points }
+        set_temp_variable = { aa3 = aa }
+        add_to_temp_variable = { aa3 = -40 }
+        multiply_temp_variable = { aa3 = 0.01 }
+        multiply_temp_variable = { aa3 = 0.02 }
+        set_variable = { aa3_show = aa3 }
+        add_to_variable = { mili_max_planning = aa3 } 
     }
-    else = { 
-        set_variable = { mili_army_morale_factor = 0 } 
-        set_variable = { mili_monthly_change_awill = 0 }
+    
+    #战斗意愿
+    if = {
+        limit = { has_completed_focus = FRA_break_up_the_whole_into_pieces }
+        set_temp_variable = { aw2 = aw }
+        add_to_temp_variable = { aw2 = -40 }
+        multiply_temp_variable = { aw2 = 0.01 }
+        multiply_temp_variable = { aw2 = -0.02 }
+        set_variable = { aw2_show = aw2 }
+        add_to_variable = { mili_combat_width_factor = aw2 } 
     }
+
 
     ####
     force_update_dynamic_modifier = yes
@@ -882,4 +894,475 @@ military_period_change_judge = {
 
     set_variable = { billapc = modifier@monthly_change_apassion }
     subtract_from_variable = { billapc = monthly_change_apassionc }
+}
+
+#军事改革倾向
+ard_change = {
+    
+    add_to_variable = { ard1 = ard1c }
+    if = {
+        limit = { check_variable = { ard1c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard1
+            SARD = military_nationalization
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard1c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard1
+            SARD = military_politicization
+        }
+    }
+    #1
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard1c > 0 } }
+            if = {
+                limit = { check_variable = { ard1 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_unbiased
+                    add_idea = Cof_ard1_nationalization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard1 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_nationalization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard1c < 0 } }
+            if = {
+                limit = { check_variable = { ard1 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_unbiased
+                    add_idea = Cof_ard1_politicization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard1 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_politicization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+        }
+    }
+    
+    
+    ####
+    add_to_variable = { ard2 = ard2c }
+    if = {
+        limit = { check_variable = { ard2c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard2
+            SARD = military_centralization 
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard2c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard2
+            SARD = military_deneutralization
+        }
+    }
+    #2
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard2c > 0 } }
+            if = {
+                limit = { check_variable = { ard2 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_unbiased
+                    add_idea = Cof_ard2_centralization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard2 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_centralization
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard2c < 0 } }
+            if = {
+                limit = { check_variable = { ard2 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_unbiased
+                    add_idea = Cof_ard2_deneutralization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard2 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_deneutralization
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+        }
+    }
+
+    ####
+    add_to_variable = { ard3 = ard3c }
+    if = {
+        limit = { check_variable = { ard3c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard3
+            SARD = military_dpecialization
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard3c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard3
+            SARD = military_militarization
+        }
+    }
+    #3
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard3c > 0 } }
+            if = {
+                limit = { check_variable = { ard3 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_unbiased
+                    add_idea = Cof_ard3_dpecialization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard3 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_dpecialization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard3c < 0 } }
+            if = {
+                limit = { check_variable = { ard3 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_unbiased
+                    add_idea = Cof_ard3_militarization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard3 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_militarization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+        }
+    }
+
+    ####
+    add_to_variable = { ard4 = ard4c }
+    if = {
+        limit = { check_variable = { ard4c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard4
+            SARD = military_srmorization
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard4c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard4
+            SARD = military_lightweighting
+        }
+    }
+    #4
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard4c > 0 } }
+            if = {
+                limit = { check_variable = { ard4 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_unbiased
+                    add_idea = Cof_ard4_srmorization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard4 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_srmorization
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard4c < 0 } }
+            if = {
+                limit = { check_variable = { ard4 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_unbiased
+                    add_idea = Cof_ard4_lightweighting
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard4 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_lightweighting
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+        }
+    }
+
+    ####
+    add_to_variable = { ard5 = ard5c }
+    if = {
+        limit = { check_variable = { ard5c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard5
+            SARD = military_motorization
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard5c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard5
+            SARD = military_positionization
+        }
+    }
+    #5
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard5c > 0 } }
+            if = {
+                limit = { check_variable = { ard5 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_unbiased
+                    add_idea = Cof_ard5_motorization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard5 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_motorization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard5c < 0 } }
+            if = {
+                limit = { check_variable = { ard5 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_unbiased
+                    add_idea = Cof_ard5_positionization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard5 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_positionization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+        }
+    }
+
+    hidden_effect = {
+        if = {
+            limit = { check_variable = { ard1 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard1_nationalization }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_nationalization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard1_politicization }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_politicization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard1_unbiased }
+                if = {
+                    limit = { check_variable = { ard1 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard1_unbiased
+                        add_idea = Cof_ard1_nationalization
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard1 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard1_unbiased
+                        add_idea = Cof_ard1_politicization
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard2 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard2_centralization }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_centralization
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard2_deneutralization }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_deneutralization
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard2_unbiased }
+                if = {
+                    limit = { check_variable = { ard2 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard2_unbiased
+                        add_idea = Cof_ard2_centralization
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard2 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard2_unbiased
+                        add_idea = Cof_ard2_deneutralization
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard3 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard3_dpecialization }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_dpecialization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard3_militarization }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_militarization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard3_unbiased }
+                if = {
+                    limit = { check_variable = { ard3 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard3_unbiased
+                        add_idea = Cof_ard3_dpecialization
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard3 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard3_unbiased
+                        add_idea = Cof_ard3_militarization
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard4 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard4_srmorization }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_srmorization
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard4_lightweighting }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_lightweighting
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard4_unbiased }
+                if = {
+                    limit = { check_variable = { ard4 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard4_unbiased
+                        add_idea = Cof_ard4_srmorization
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard4 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard4_unbiased
+                        add_idea = Cof_ard4_lightweighting
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard5 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard5_motorization }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_motorization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard5_positionization }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_positionization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard5_unbiased }
+                if = {
+                    limit = { check_variable = { ard5 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard5_unbiased
+                        add_idea = Cof_ard5_motorization
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard5 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard5_unbiased
+                        add_idea = Cof_ard5_positionization
+                    }
+                }
+            }
+        }
+    }
 }

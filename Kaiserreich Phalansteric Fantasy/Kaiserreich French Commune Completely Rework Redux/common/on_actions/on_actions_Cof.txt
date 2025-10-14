@@ -38,7 +38,7 @@ on_actions = {
                 country_event = { id = cofeconomy.6 days = 60 random_days = 30 }
                 country_event = { id = cofeconomy.14 days = 140 random_days = 30 }
 
-                country_event = { if = cofmilitary.1 days = 445 random_hours = 12 }
+                country_event = { id = cofmilitary.1 days = 445 random_hours = 12 }
 
                 set_variable = { cgt_confidence = -4 }
                 set_variable = { cgt_monopolization = 87 }
@@ -398,6 +398,8 @@ on_actions = {
                 add_dynamic_modifier = { modifier = Cof_state_general_buff }
 
                 #military
+                enable_tech_militias = yes
+                
                 set_variable = { military_synd = 22 }
                 set_variable = { military_oppo = 26 }
                 set_variable = { military_jaco = 14 }
@@ -428,6 +430,23 @@ on_actions = {
                 set_variable = { atimp6 = 0 }
                 set_variable = { atimp7 = 0 }
                 set_variable = { atimp8 = 0 }
+
+                set_variable = { ard1 = 0 }
+                set_variable = { ard2 = 0 }
+                set_variable = { ard3 = 0 }
+                set_variable = { ard4 = 0 }
+                set_variable = { ard5 = 0 }
+
+                add_ideas =  Cof_ard1_unbiased
+                add_ideas =  Cof_ard2_unbiased
+                add_ideas =  Cof_ard3_unbiased
+                add_ideas =  Cof_ard4_unbiased
+                add_ideas =  Cof_ard5_unbiased
+                add_to_array = { array = FRA.cof_ar_bills value = 1 }
+                add_to_array = { array = FRA.cof_ar_bills value = 2 }
+                add_to_array = { array = FRA.cof_ar_bills value = 3 }
+                add_to_array = { array = FRA.cof_ar_bills value = 4 }
+                add_to_array = { array = FRA.cof_ar_bills value = 5 }
 
                 add_dynamic_modifier = { modifier = Cof_military_reform_impact }
                 Cof_military_reform_impact_count = yes
@@ -478,6 +497,8 @@ on_actions = {
             military_period_change_judge = yes
             Cof_military_reform_impact_count = yes
 
+            set_variable = { arsnum = array:FRA.cof_ar_bills^num }
+            add_to_variable = { arsnum = -6 }
 
             set_variable = { bills_cost = cof_social_bills^num }
             multiply_variable = { bills_cost = -0.01 }

@@ -346,19 +346,19 @@ scripted_gui = {
                 frame = gui_popas_sore
             }
 
-            armyv_autonomy_ui = {
+            army_autonomy_ui = {
                 frame = Cof_army_autonomy
             }
-            armyv_willing_ui = {
+            army_willing_ui = {
                 frame = Cof_army_willing
             }
-            armyv_training_ui = {
+            army_training_ui = {
                 frame = Cof_army_training
             }
-            armyv_equipment_ui = {
+            army_equipment_ui = {
                 frame = Cof_army_equipment
             }
-            armyv_passionate_ui = {
+            army_passionate_ui = {
                 frame = Cof_army_passionate
             }
 
@@ -380,6 +380,39 @@ scripted_gui = {
             }
             pop_faction_sore = {
                 frame = gui_msore  
+            }
+        }
+        effects = {
+            army_reform_buff_icon_click = {
+                if = {
+                    limit = { has_country_flag = show_ar_windows }
+                    clr_country_flag = show_ar_windows
+                }
+                else = { set_country_flag = show_ar_windows }
+            }
+        }
+    }
+
+    armyreform_show = {
+        context_type = player_context
+        window_name = armyreform_window
+
+        visible = {
+			tag = FRA
+            has_country_flag = show_ar_windows
+		}
+        effects = {
+            armyreform_window_esc_click = {
+                clr_country_flag = show_ar_windows
+            }
+        }
+        dynamic_lists = {
+            army_reform_context = {
+                array = cof_ar_bills
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = army_reform_window
             }
         }
     }

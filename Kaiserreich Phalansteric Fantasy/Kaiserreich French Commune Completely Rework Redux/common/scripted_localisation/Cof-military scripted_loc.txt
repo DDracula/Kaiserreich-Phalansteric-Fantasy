@@ -115,6 +115,8 @@ defined_text = {
 	}
 }
 
+
+
 defined_text = {
     name = Cof_army_equipment_buff_infantry_equipment
     text = {
@@ -157,6 +159,22 @@ defined_text = {
 		trigger = { has_idea = Cof_army_equipment_buff10 }
 		localization_key = Cof_army_equipment_buff_infantry_equipment10
 	}
+}
+
+defined_text = {
+    name = army_strike_wherever_one_points
+    text = {
+        trigger = { FRA = { has_completed_focus = FRA_strike_wherever_one_points } }
+        localization_key = army_strike_wherever_one_points_buff
+    }
+}
+
+defined_text = {
+    name = army_break_up_the_whole_into_pieces
+    text = {
+        trigger = { FRA = { has_completed_focus = FRA_break_up_the_whole_into_pieces } }
+        localization_key = army_break_up_the_whole_into_pieces_buff
+    }
 }
 
 defined_text = {
@@ -221,24 +239,24 @@ defined_text = {
 }
 
 defined_text = {
-    name = armyv_autonomy_ui_tt_loc
-    text = { localization_key = armyv_autonomy_ui_tt_loc_tt }
+    name = army_autonomy_ui_tt_loc
+    text = { localization_key = army_autonomy_ui_tt_loc_tt }
 }
 defined_text = {
-    name = armyv_willing_ui_tt_loc
-    text = { localization_key = armyv_willing_ui_tt_loc_tt }
+    name = army_willing_ui_tt_loc
+    text = { localization_key = army_willing_ui_tt_loc_tt }
 }
 defined_text = {
-    name = armyv_training_ui_tt_loc
-    text = { localization_key = armyv_training_ui_tt_loc_tt }
+    name = army_training_ui_tt_loc
+    text = { localization_key = army_training_ui_tt_loc_tt }
 }
 defined_text = {
-    name = armyv_equipment_ui_tt_loc
-    text = { localization_key = armyv_equipment_ui_tt_loc_tt }
+    name = army_equipment_ui_tt_loc
+    text = { localization_key = army_equipment_ui_tt_loc_tt }
 }
 defined_text = {
-    name = armyv_passionate_ui_tt_loc
-    text = { localization_key = armyv_passionate_ui_tt_loc_tt }
+    name = army_passionate_ui_tt_loc
+    text = { localization_key = army_passionate_ui_tt_loc_tt }
 }
 
 defined_text = {
@@ -247,6 +265,399 @@ defined_text = {
 }
 
 defined_text = {
-    name = army_refrom_buff_tt_loc
-    text = { localization_key = army_refrom_buff }
+    name = army_reform_buff_tt_loc
+    text = { localization_key = army_reform_buff }
+}
+
+defined_text = {
+    name = army_reform_direction1
+    text = {
+        trigger = { check_variable = { ard1 > 0 } }
+        localization_key = military_nationalization
+    }
+    text = {
+        trigger = { check_variable = { ard1 < 0 } }
+        localization_key = military_politicization
+    }
+    text = { localization_key = ard_unbiased }
+}
+
+defined_text = {
+    name = army_reform_direction2
+    text = {
+        trigger = { check_variable = { ard2 > 0 } }
+        localization_key = military_centralization
+    }
+    text = {
+        trigger = { check_variable = { ard2 < 0 } }
+        localization_key = military_deneutralization
+    }
+    text = { localization_key = ard_unbiased }
+}
+
+defined_text = {
+    name = army_reform_direction3
+    text = {
+        trigger = { check_variable = { ard3 > 0 } }
+        localization_key = military_dpecialization
+    }
+    text = {
+        trigger = { check_variable = { ard3 < 0 } }
+        localization_key = military_militarization
+    }
+    text = { localization_key = ard_unbiased }
+}
+
+defined_text = {
+    name = army_reform_direction4
+    text = {
+        trigger = { check_variable = { ard4 > 0 } }
+        localization_key = military_srmorization
+    }
+    text = {
+        trigger = { check_variable = { ard4 < 0 } }
+        localization_key = military_lightweighting
+    }
+    text = { localization_key = ard_unbiased }
+}
+
+defined_text = {
+    name = army_reform_direction5
+    text = {
+        trigger = { check_variable = { ard5 > 0 } }
+        localization_key = military_motorization
+    }
+    text = {
+        trigger = { check_variable = { ard5 < 0 } }
+        localization_key = military_positionization
+    }
+    text = { localization_key = ard_unbiased }
+}
+
+defined_text = {
+    name = scripted_ar_name
+
+    text = {
+        trigger = { 
+            check_variable = { v = 1 }
+            FRA = { has_idea = Cof_ard1_unbiased }
+        }
+        localization_key = Cof_ard1_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 1 }
+            FRA = { has_idea = Cof_ard1_nationalization }
+        }
+        localization_key = Cof_ard1_nationalization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 1 }
+            FRA = { has_idea = Cof_ard1_politicization }
+        }
+        localization_key = Cof_ard1_politicization
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 2 }
+            FRA = { has_idea = Cof_ard2_unbiased }
+        }
+        localization_key = Cof_ard2_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 2 }
+            FRA = { has_idea = Cof_ard2_centralization }
+        }
+        localization_key = Cof_ard2_centralization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 2 }
+            FRA = { has_idea = Cof_ard2_deneutralization }
+        }
+        localization_key = Cof_ard2_deneutralization
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 3 }
+            FRA = { has_idea = Cof_ard3_unbiased }
+        }
+        localization_key = Cof_ard3_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 3 }
+            FRA = { has_idea = Cof_ard3_dpecialization }
+        }
+        localization_key = Cof_ard3_dpecialization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 3 }
+            FRA = { has_idea = Cof_ard3_militarization }
+        }
+        localization_key = Cof_ard3_militarization
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 4 }
+            FRA = { has_idea = Cof_ard4_unbiased }
+        }
+        localization_key = Cof_ard4_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 4 }
+            FRA = { has_idea = Cof_ard4_srmorization }
+        }
+        localization_key = Cof_ard4_srmorization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 4 }
+            FRA = { has_idea = Cof_ard4_lightweighting }
+        }
+        localization_key = Cof_ard4_lightweighting
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 5 }
+            FRA = { has_idea = Cof_ard5_unbiased }
+        }
+        localization_key = Cof_ard5_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 5 }
+            FRA = { has_idea = Cof_ard5_motorization }
+        }
+        localization_key = Cof_ard5_motorization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 5 }
+            FRA = { has_idea = Cof_ard5_positionization }
+        }
+        localization_key = Cof_ard5_positionization
+    }
+    
+    text = {
+        trigger = { check_variable = { v = 6 } }
+        localization_key = Cof_new_promotion_mechanism
+    }
+    text = {
+        trigger = { check_variable = { v = 7 } }
+        localization_key = Cof_rejecting_bullying
+    }
+    text = {
+        trigger = { check_variable = { v = 8 } }
+        localization_key = Cof_decentralized_chain_of_command
+    }
+    text = {
+        trigger = { check_variable = { v = 9 } }
+        localization_key = Cof_organic_army
+    }
+    text = {
+        trigger = { check_variable = { v = 10 } }
+        localization_key = Cof_take_over_command
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 11 }
+            FRA = { has_idea = Cof_operating_table_war_diagnose }
+        }
+        localization_key = Cof_operating_table_war_diagnose
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 11 }
+            FRA = { has_idea = Cof_operating_table_war_operate }
+        }
+        localization_key = Cof_operating_table_war_operate
+    }
+
+    text = {
+        trigger = { check_variable = { v = 12 } }
+        localization_key = Cof_world_army
+    }
+    text = {
+        trigger = { check_variable = { v = 13 } }
+        localization_key = Cof_cultivating_comradeship
+    }
+}
+
+defined_text = {
+    name = scripted_ar_buff
+
+    text = {
+        trigger = { 
+            check_variable = { v = 1 }
+            FRA = { has_idea = Cof_ard1_unbiased }
+        }
+        localization_key = idea_desc|Cof_ard1_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 1 }
+            FRA = { has_idea = Cof_ard1_nationalization }
+        }
+        localization_key = idea_desc|Cof_ard1_nationalization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 1 }
+            FRA = { has_idea = Cof_ard1_politicization }
+        }
+        localization_key = idea_desc|Cof_ard1_politicization
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 2 }
+            FRA = { has_idea = Cof_ard2_unbiased }
+        }
+        localization_key = idea_desc|Cof_ard2_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 2 }
+            FRA = { has_idea = Cof_ard2_centralization }
+        }
+        localization_key = idea_desc|Cof_ard2_centralization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 2 }
+            FRA = { has_idea = Cof_ard2_deneutralization }
+        }
+        localization_key = idea_desc|Cof_ard2_deneutralization
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 3 }
+            FRA = { has_idea = Cof_ard3_unbiased }
+        }
+        localization_key = idea_desc|Cof_ard3_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 3 }
+            FRA = { has_idea = Cof_ard3_dpecialization }
+        }
+        localization_key = idea_desc|Cof_ard3_dpecialization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 3 }
+            FRA = { has_idea = Cof_ard3_militarization }
+        }
+        localization_key = idea_desc|Cof_ard3_militarization
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 4 }
+            FRA = { has_idea = Cof_ard4_unbiased }
+        }
+        localization_key = idea_desc|Cof_ard4_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 4 }
+            FRA = { has_idea = Cof_ard4_srmorization }
+        }
+        localization_key = idea_desc|Cof_ard4_srmorization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 4 }
+            FRA = { has_idea = Cof_ard4_lightweighting }
+        }
+        localization_key = idea_desc|Cof_ard4_lightweighting
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 5 }
+            FRA = { has_idea = Cof_ard5_unbiased }
+        }
+        localization_key = idea_desc|Cof_ard5_unbiased
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 5 }
+            FRA = { has_idea = Cof_ard5_motorization }
+        }
+        localization_key = idea_desc|Cof_ard5_motorization
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 5 }
+            FRA = { has_idea = Cof_ard5_positionization }
+        }
+        localization_key = idea_desc|Cof_ard5_positionization
+    }
+    
+    text = {
+        trigger = { check_variable = { v = 6 } }
+        localization_key = idea_desc|Cof_new_promotion_mechanism
+    }
+    text = {
+        trigger = { check_variable = { v = 7 } }
+        localization_key = idea_desc|Cof_rejecting_bullying
+    }
+    text = {
+        trigger = { check_variable = { v = 8 } }
+        localization_key = idea_desc|Cof_decentralized_chain_of_command
+    }
+    text = {
+        trigger = { check_variable = { v = 9 } }
+        localization_key = idea_desc|Cof_organic_army
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 10 } 
+            FRA = { has_idea = Cof_take_over_command }
+        }
+        localization_key = idea_desc|Cof_take_over_command
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 10 } 
+            FRA = { has_idea = Cof_take_over_command2 }
+        }
+        localization_key = idea_desc|Cof_take_over_command2
+    }
+
+    text = {
+        trigger = { 
+            check_variable = { v = 11 }
+            FRA = { has_idea = Cof_operating_table_war_diagnose }
+        }
+        localization_key = idea_desc|Cof_operating_table_war_diagnose
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 11 }
+            FRA = { has_idea = Cof_operating_table_war_operate }
+        }
+        localization_key = idea_desc|Cof_operating_table_war_operate
+    }
+
+    text = {
+        trigger = { check_variable = { v = 12 } }
+        localization_key = idea_desc|Cof_world_army
+    }
+    text = {
+         trigger = { check_variable = { v = 13 } }
+        localization_key = idea_desc|Cof_cultivating_comradeship
+    }
 }

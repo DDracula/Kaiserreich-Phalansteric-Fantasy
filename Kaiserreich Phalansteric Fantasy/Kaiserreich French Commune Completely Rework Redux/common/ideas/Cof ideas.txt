@@ -907,8 +907,25 @@ ideas = {
             }
         }
 
-       
-
+        #军事科技窃取
+        Cof_theft_tech_from_germany = {
+            picture = generic_research_bonus
+            cancel = { num_researched_technologies > GER.num_researched_technologies }
+            on_remove = { add_research_slot = -1 }
+            modifier = {
+                custom_modifier_tooltip = Cof_theft_tech_from_germany_remove
+            }
+            research_bonus = {
+				infantry_weapons = 0.33
+                motorized_equipment = 0.33
+                naval_equipment = 0.33
+                armor = 0.33
+                artillery = 0.33
+                light_air = 0.33
+                medium_air = 0.33
+                heavy_air = 0.33
+			}
+        }
 
 
 

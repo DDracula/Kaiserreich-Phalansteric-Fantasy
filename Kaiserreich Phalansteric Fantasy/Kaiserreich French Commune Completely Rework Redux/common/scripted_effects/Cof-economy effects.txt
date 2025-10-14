@@ -517,7 +517,17 @@ Cof_economy_impact_count = {
 		add_to_variable = { econ_production_factory_max_efficiency_factor = eip4 }
 	}
 	#军工
-
+	if = {
+		limit = { has_completed_focus = FRA_battlefield_lifeline }
+		set_temp_variable = { eia3 = eia }
+		set_temp_variable = { endt = eia3 }
+		functions_two_steep_curve = yes
+		set_temp_variable = { eia3 = endt }
+		multiply_temp_variable = { eia3 = -1 }
+		set_variable = { eia3_show = eia3 }
+		set_variable = { attrition = eia3 }
+	}
+	else = { set_variable = { attrition = 0 } }
 
 	#机械化
 	if = {

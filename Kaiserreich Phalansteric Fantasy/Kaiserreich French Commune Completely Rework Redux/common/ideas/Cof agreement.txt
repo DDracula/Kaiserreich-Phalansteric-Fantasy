@@ -483,6 +483,119 @@ ideas = {
 		}
 
 		####军事改革
+		#1
+		Cof_ard1_unbiased = {
+			modifier = {
+				political_power_factor = -0.05
+				army_org_factor = -0.05
+				monthly_change_aauto = 0.1
+			} 
+		}
+		Cof_ard1_nationalization = {
+			modifier = { 
+				political_power_factor = 0.1
+				army_org_factor = -0.1 
+				monthly_change_aauto = 0.3
+			}
+		}
+		Cof_ard1_politicization = {
+			modifier = {
+				political_power_factor = -0.1
+				army_org_factor = 0.1
+				monthly_change_aauto = -0.3
+			}
+		}
+
+		#2
+		Cof_ard2_unbiased = {
+			modifier = {
+				max_planning = -0.05
+				army_strength_factor = -0.05
+				monthly_change_awill = -0.1
+			}
+		}
+		Cof_ard2_centralization = {
+			modifier = {
+				max_planning = 0.1
+				army_strength_factor = -0.1
+				monthly_change_awill = -0.3
+			}
+		}
+		Cof_ard2_deneutralization = {
+			modifier = {
+				max_planning = -0.1
+				army_strength_factor = 0.1
+				monthly_change_awill = 0.3
+			}
+		}
+
+		#3
+		Cof_ard3_unbiased = {
+			modifier = {
+				army_defence_factor = -0.05
+				attrition = 0.05
+				monthly_change_atrain = -0.1
+			}
+		}
+		Cof_ard3_dpecialization = {
+			modifier = {
+				army_defence_factor = 0.1
+				attrition = 0.1
+				monthly_change_atrain = 0.3
+			}
+		}
+		Cof_ard3_militarization = {
+			modifier = {
+				army_defence_factor = -0.1
+				attrition = -0.1
+				monthly_change_atrain = -0.3
+			}
+		}
+
+		#4
+		Cof_ard4_unbiased = {
+			modifier = {
+				army_armor_defence_factor = -0.05
+				supply_consumption_factor = 0.05
+				monthly_change_aequip = -0.1
+			}
+		}
+		Cof_ard4_srmorization = {
+			modifier = {
+				army_armor_defence_factor = 0.1
+				supply_consumption_factor = -0.1
+				monthly_change_aequip = 0.3
+			}
+		}
+		Cof_ard4_lightweighting = {
+			modifier = {
+				army_armor_defence_factor = -0.1
+				supply_consumption_factor = -0.1
+				monthly_change_aequip = -0.3
+			}
+		}
+
+		#5
+		Cof_ard5_unbiased = {  
+			modifier = {
+				army_speed_factor = -0.05
+				max_dig_in_factor = -0.05
+			}
+		}
+		Cof_ard5_motorization = {
+			modifier = {
+				army_speed_factor = 0.1
+				max_dig_in_factor = -0.1
+			}
+		}
+		Cof_ard5_positionization = {
+			modifier = {
+				army_speed_factor = -0.1
+				max_dig_in_factor = 0.1
+			}
+		}
+
+		#6
 		Cof_new_promotion_mechanism = {
 			modifier = {
 				army_org_factor = 0.05
@@ -490,7 +603,105 @@ ideas = {
 				monthly_change_awill = 0.3
 			}
 		}
+		#7
+		Cof_rejecting_bullying = {
+			modifier = {
+				political_power_factor = -0.1
+				monthly_change_atrain = -0.2
+				monthly_change_awill = 0.2
+				pocket_penalty = -0.15
+				army_strength_factor = 0.05
+			}
+		} 
+		#8
+		Cof_decentralized_chain_of_command = {
+			modifier = {
+				political_power_factor = -0.2
+				max_planning_factor = 0.1
+				army_advisor_cost_factor = -0.33
+				experience_gain_army_unit_factor = 0.1
+			}
+		}
+		#9
+		Cof_organic_army = {
+			modifier = {
+				experience_gain_army_factor = 0.15
+				army_strength_factor = 0.05
+				terrain_penalty_reduction = 0.1
+				org_loss_when_moving = -0.1
+				supply_consumption_factor = -0.05
+			}
+		}
+		#10
+		Cof_take_over_command = {
+			modifier = {
+				max_planning_factor = 0.25
+				experience_gain_army_factor = -0.05
+				army_org_factor = -0.2
+				pocket_penalty = 0.25
+			}
+		}
+		Cof_take_over_command2 = {
+			name = Cof_take_over_command
+			modifier = {
+				command_power_gain = 0.5
+				max_planning_factor = 0.3
+				coordination_bonus = 0.1
+				planning_speed = 0.2 
+				experience_gain_army_factor = -0.15
+				army_org_factor = -0.3
+				pocket_penalty = 0.25
+				monthly_change_awill = -0.3
+			}
+		}
 
+		#11
+		Cof_operating_table_war_diagnose = {
+			modifier = {
+				custom_modifier_tooltip = Cof_operating_table_war_tt
+				planning_speed = 0.25
+				max_planning = 0.15
+				max_planning_factor = 0.1
+				army_speed_factor = -0.75
+				army_attack_factor = -0.75
+				army_defence_factor = 0.15
+			}
+		}
+		Cof_operating_table_war_operate = {
+			modifier = {
+				custom_modifier_tooltip = Cof_operating_table_war_tt
+				planning_speed = -0.75
+				max_planning = -0.3
+				max_planning_factor = -0.4
+				army_speed_factor = 0.2
+				army_attack_factor = 0.2
+				breakthrough_factor = 0.3
+				army_defence_factor = -0.1
+			}
+		}
+ 
+		#12
+		Cof_world_army = { 
+			modifier = {
+				custom_modifier_tooltip = Cof_world_army_tt
+				stability_factor = -0.2
+				political_power_cost = 0.25
+				conscription_factor = 0.2
+				weekly_manpower = 2000
+				monthly_change_atrain = -0.6
+			}
+		}
+		#13
+		Cof_cultivating_comradeship = {
+			modifier = {
+				experience_gain_army_factor = -0.15
+				training_time_army_factor = 0.15
+				experience_gain_army_unit_factor = 0.2
+				land_reinforce_rate = 0.1
+				coordination_bonus = 0.1
+				army_org_factor = 0.1
+			}
+		}
 
 		#### 社会法案
 		#1
@@ -1318,6 +1529,33 @@ ideas = {
 				monthly_change_eib = 0.4
 				monthly_change_eae = 0.4
 				monthly_change_el = 0.3
+			}
+		}
+	}
+
+	mobilization_laws = {
+		law = yes
+		use_list_view = yes
+
+		construction_corps = {
+			picture = extensive_conscription 
+			level = 6
+			removal_cost = -1
+			cancel_if_invalid = no
+
+			allowed = { 
+				tag = FRA 
+				has_completed_focus = FRA_construction_corps
+			}
+
+			modifier = { 
+				conscription = 0.05
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.05
+				production_speed_buildings_factor = 0.025
+				training_time_factor = 0.15
+				monthly_change_eib = 0.3
+				monthly_change_atrain = 0.2
 			}
 		}
 	}
