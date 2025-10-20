@@ -99,34 +99,50 @@ Cof_military_reform_impact = {
     #装甲集群 -装甲攻击 +装甲防御
     army_armor_attack_factor = mili_army_armor_attack_factor
     army_armor_defence_factor = mili_army_armor_defence_factor
+
+    army_fuel_consumption_factor = mili_army_fuel_consumption_factor
     #精锐闪电战 +装甲速度 +突破
     army_armor_speed_factor = mili_army_armor_speed_factor
     breakthrough_factor = mili_breakthrough_factor
+
+
     #机动摩托化 +陆军速度 -补给消耗 -损耗
     army_speed_factor= mili_army_speed_factor
     attrition = mili_attrition
     supply_consumption_factor= mili_supply_consumption_factor
+
+    mechanized_attack_factor = mili_mechanized_attack_factor
+    mechanized_defence_factor = mili_mechanized_defence_factor
     #步火协同 +步防 +火攻
     army_infantry_attack_factor = mili_army_infantry_attack_factor
     army_infantry_defence_factor = mili_army_infantry_defence_factor
     army_artillery_attack_factor = mili_army_artillery_attack_factor
     army_artillery_defence_factor = mili_army_artillery_defence_factor
+
+
     #集中化指挥部 +计划上限 +计划速度
     max_planning = mili_max_planning
     planning_speed = mili_planning_speed
+
+    max_planning_factor = mili_max_planning_factor
+    command_power_gain = mili_command_power_gain
     #防守反击 +堑壕上限 +堑壕速度
     max_dig_in = mili_max_dig_in
     max_dig_in_factor = mili_max_dig_in_factor
     dig_in_speed_factor = mili_dig_in_speed_factor
+
     #士官主动性 +组织度 +主动性
     army_org_factor = mili_army_org_factor
     army_org_regain = mili_army_org_regain
     org_loss_when_moving = mili_org_loss_when_moving
     initiative_factor = mili_initiative_factor
+
+    army_attack_speed_factor = mili_army_attack_speed_factor
     #小兵团作战 -宽度 -地形惩罚
     combat_width_factor = mili_combat_width_factor
     terrain_penalty_reduction = mili_terrain_penalty_reduction
 
+    army_attack_factor = mili_army_attack_factor
     ##军事数据
     #军队自主性 +稳定 +战支
     stability_factor = mili_stability_factor
@@ -159,6 +175,9 @@ Cof_military_reform_impact = {
 
 Cof_naval_buff = {
     icon = "GFX_idea_AUS_naval_efficiency_idea"
+    experience_gain_navy = fnavy_experience_gain_navy
+    industrial_capacity_dockyard = fnavy_industrial_capacity_dockyard
+    naval_equipment_upgrade_xp_cost = fnavy_naval_equipment_upgrade_xp_cost
 
 	naval_has_potf_in_combat_attack = fnavy_naval_has_potf_in_combat_attack
 
@@ -166,73 +185,143 @@ Cof_naval_buff = {
 	refit_speed = fnavy_refit_speed
 	repair_speed_factor = fnavy_repair_speed_factor
 
+    naval_damage_factor = fnavy_naval_damage_factor
+    naval_defense_factor = fnavy_naval_defense_factor
+
+    navy_max_range_factor = fnavy_navy_max_range_factor
+
+    #对岸炮击
+    shore_bombardment_bonus = fnavy_shore_bombardment_bonus
+
+    #主力舰攻击
 	navy_capital_ship_attack_factor = fnavy_navy_capital_ship_attack_factor
 
+    #对海轰炸
 	naval_strike_attack_factor = fnavy_naval_strike_attack_factor
 
+    #潜艇攻击
 	navy_submarine_attack_factor = fnavy_navy_submarine_attack_factor
-	naval_critical_score_chance_factor = fnavy_naval_critical_score_chance_factor
-	positioning = fnavy_positioning
+    #潜艇防御
+    navy_submarine_defence_factor = fnavy_navy_submarine_defence_factor
+	#打出致命一击的几率
+    naval_critical_score_chance_factor = fnavy_naval_critical_score_chance_factor
+	#阵位
+    positioning = fnavy_positioning
 
+    #袭击运输船任务效率
 	convoy_raiding_efficiency_factor = fnavy_convoy_raiding_efficiency_factor
 
+    #海军命中率
 	naval_hit_chance = fnavy_naval_hit_chance
+    #海军对空攻击
 	navy_anti_air_attack_factor = fnavy_navy_anti_air_attack_factor
 
+    #两栖登陆速度
 	amphibious_invasion = fnavy_amphibious_invasion
+    #登陆作战上限
 	naval_invasion_capacity = fnavy_naval_invasion_capacity
+    #登陆准备时间
 	invasion_preparation = fnavy_invasion_preparation
 
+    #海军组织度恢复速率
 	naval_morale_factor = fnavy_naval_morale_factor
+    #打击舰队组织度损失
 	strike_force_movement_org_loss = fnavy_strike_force_movement_org_loss
 
+    #屏卫效率
 	screening_efficiency = fnavy_screening_efficiency
+    #屏卫进攻
+    navy_screen_attack_factor = fnavy_navy_screen_attack_factor
 
+    #海军情报
 	navy_intel_factor = fnavy_navy_intel_factor
+    #海军探测
 	naval_detection = fnavy_naval_detection
 
+    #布雷效率
 	mines_planting_by_fleets_factor = fnavy_mines_planting_by_fleets_factor
-	mines_sweeping_by_fleets_factor = fnavy_mines_sweeping_by_fleets_factor
-	naval_mine_hit_chance = fnavy_naval_mine_hit_chance
-	naval_mines_damage_factor = fnavy_naval_mines_damage_factor
+	#扫雷效率
+    mines_sweeping_by_fleets_factor = fnavy_mines_sweeping_by_fleets_factor
+	#水雷触发率
+    naval_mine_hit_chance = fnavy_naval_mine_hit_chance
+	#水雷伤害
+    naval_mines_damage_factor = fnavy_naval_mines_damage_factor
 
+    #舰队协同性
 	naval_coordination = fnavy_naval_coordination
-	spotting_chance = fnavy_spotting_chance
+	#夜间索敌
+    spotting_chance = fnavy_spotting_chance
 
+    #鱼雷穿透屏卫舰
 	naval_torpedo_screen_penetration_factor = fnavy_naval_torpedo_screen_penetration_factor
-	naval_torpedo_hit_chance_factor = fnavy_naval_torpedo_hit_chance_factor
+    #鱼类命中几率
+    naval_torpedo_hit_chance_factor = fnavy_naval_torpedo_hit_chance_factor
+
+    ships_at_battle_start = fnavy_ships_at_battle_start
+    #航母
+    carrier_traffic = fnavy_carrier_traffic
+    sortie_efficiency = fnavy_sortie_efficiency
+    fighter_sortie_efficiency = fnavy_fighter_sortie_efficiency
+    carrier_capacity_penalty_reduction = fnavy_carrier_capacity_penalty_reduction
+    navy_carrier_air_attack_factor = fnavy_navy_carrier_air_attack_factor
+    navy_carrier_air_targetting_factor = fnavy_navy_carrier_air_targetting_factor
+    navy_carrier_air_agility_factor = fnavy_navy_carrier_air_agility_factor
 }
 
 Cof_air_buff = {
     icon = "GFX_idea_generic_air_fighter"
+    experience_gain_air_factor = fair_experience_gain_air_factor
 
+    air_max_speed_factor = fair_air_max_speed_factor
+    air_attack_factor = fair_air_attack_factor
+    air_defence_factor = fair_air_defence_factor
+
+    air_bombing_targetting = fair_air_bombing_targetting
+    air_power_projection_factor = fair_air_power_projection_factor
+
+    air_superiority_efficiency  = fair_air_superiority_efficiency
+    air_strategic_bomber_bombing_factor = fair_air_strategic_bomber_bombing_factor
+    
+    #本地空域防卫修正系数
 	air_home_defence_factor = fair_air_home_defence_factor
 
+    #恶劣天气惩罚
 	air_weather_penalty = fair_air_weather_penalty
+    #空军事故几率
 	air_accidents_factor = fair_air_accidents_factor
 
+    #对海机动
 	naval_strike_agility_factor = fair_naval_strike_agility_factor
-
+    #对海轰炸
 	naval_strike_attack_factor = fair_naval_strike_attack_factor
 
+    #空军航程
 	air_range_factor = fair_air_range_factor
+
 	air_agility_factor = fair_air_agility_factor
+    #空军燃料消耗
 	air_fuel_consumption_factor = fair_air_fuel_consumption_factor
 
+    #王牌飞行员产生几率
 	air_ace_generation_chance_factor = fair_air_ace_generation_chance_factor
-	air_mission_xp_gain_factor = fair_air_mission_xp_gain_factor
+	#空军联队任务经验增长
+    air_mission_xp_gain_factor = fair_air_mission_xp_gain_factor
+    #空军联队训练经验增长
 	air_training_xp_gain_factor = fair_air_training_xp_gain_factor
 
+    #夜间行动惩罚
 	air_night_penalty = fair_air_night_penalty
+    #夜间战略轰炸惩罚
 	air_strategic_bomber_night_penalty = fair_air_strategic_bomber_night_penalty
 
 	strategic_bomb_visibility = fair_strategic_bomb_visibility
 	air_strategic_bomber_bombing_factor = fair_air_strategic_bomber_bombing_factor
 
+    #战斗中空优加成
 	air_superiority_bonus_in_combat = fair_air_superiority_bonus_in_combat
-
+    #对地攻击系数
 	ground_attack_factor = fair_ground_attack_factor
-
+    #空军任务效率
 	air_mission_efficiency = fair_air_mission_efficiency
 }
 

@@ -9,8 +9,8 @@ country_event = {
 	id = int.0
 	is_triggered_only = yes
 	option = {
-		
-	}
+
+	} 
 }
  
 #政治
@@ -4535,7 +4535,935 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = cofmilitary.2
+	title = cofmilitary.2.title
+	desc = cofmilitary.2.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofmilitary.2.a
+		trigger = { 
+			check_variable = { Cof_army_theory_panzer_group > 0 } 
+			NOT = { check_variable = { atencourage1 = 3 } }
+		}
+		
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage1 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 1 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 10 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage1 = 1 } }
+				add_to_variable = { atencourage1 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 1 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 10 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage1 = 2 } }
+				add_to_variable = { atencourage1 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 1 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 10 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_theory_panzer_group
+					BUFF = MODIFIER_ARMY_FUEL_CONSUMPTION_FACTOR
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage2 = 3 } } }
+				else = { set_variable = { atencourage2 = 0 } }
+				if = { limit = { check_variable = { atencourage3 = 3 } } }
+				else = { set_variable = { atencourage3 = 0 } }
+				if = { limit = { check_variable = { atencourage4 = 3 } } }
+				else = { set_variable = { atencourage4 = 0 } }
+				if = { limit = { check_variable = { atencourage5 = 3 } } }
+				else = { set_variable = { atencourage5 = 0 } }
+				if = { limit = { check_variable = { atencourage6 = 3 } } }
+				else = { set_variable = { atencourage6 = 0 } }
+				if = { limit = { check_variable = { atencourage7 = 3 } } }
+				else = { set_variable = { atencourage7 = 0 } }
+				if = { limit = { check_variable = { atencourage8 = 3 } } }
+				else = { set_variable = { atencourage8 = 0 } }
+			}
+		}
+	}
+	option = {
+		name = cofmilitary.2.b
+		trigger = { 
+			check_variable = { Cof_army_theory_blitz_delite > 0 } 
+			NOT = { check_variable = { atencourage2 = 3 } }
+		}
+	
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage2 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 1 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 10 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage2 = 1 } }
+				add_to_variable = { atencourage2 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 1 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 10 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage2 = 2 } }
+				add_to_variable = { atencourage2 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 1 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 10 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_theory_blitz_delite
+					BUFF = MODIFIERS_ARMY_ARMOR_ATTACK_FACTOR
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage1 = 3 } } }
+				else = { set_variable = { atencourage1 = 0 } }
+				if = { limit = { check_variable = { atencourage3 = 3 } } }
+				else = { set_variable = { atencourage3 = 0 } }
+				if = { limit = { check_variable = { atencourage4 = 3 } } }
+				else = { set_variable = { atencourage4 = 0 } }
+				if = { limit = { check_variable = { atencourage5 = 3 } } }
+				else = { set_variable = { atencourage5 = 0 } }
+				if = { limit = { check_variable = { atencourage6 = 3 } } }
+				else = { set_variable = { atencourage6 = 0 } }
+				if = { limit = { check_variable = { atencourage7 = 3 } } }
+				else = { set_variable = { atencourage7 = 0 } }
+				if = { limit = { check_variable = { atencourage8 = 3 } } }
+				else = { set_variable = { atencourage8 = 0 } }
+			}
+		}
+	}
+	option = {
+		name = cofmilitary.2.c
+		trigger = { 
+			check_variable = { Cof_army_theory_motorization > 0 } 
+			NOT = { check_variable = { atencourage3 = 3 } }
+		}
+	
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage3 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 1 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 10 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage3 = 1 } }
+				add_to_variable = { atencourage3 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 1 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 10 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage3 = 2 } }
+				add_to_variable = { atencourage3 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 1 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 10 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_theory_motorization
+					BUFF = MODIFIER_MECHANIZED_ATTACK_FACTOR
+				}	
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_theory_motorization
+					BUFF = MODIFIER_MECHANIZED_DEFENCE_FACTOR
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage1 = 3 } } }
+				else = { set_variable = { atencourage1 = 0 } }
+				if = { limit = { check_variable = { atencourage2 = 3 } } }
+				else = { set_variable = { atencourage2 = 0 } }
+				if = { limit = { check_variable = { atencourage4 = 3 } } }
+				else = { set_variable = { atencourage4 = 0 } }
+				if = { limit = { check_variable = { atencourage5 = 3 } } }
+				else = { set_variable = { atencourage5 = 0 } }
+				if = { limit = { check_variable = { atencourage6 = 3 } } }
+				else = { set_variable = { atencourage6 = 0 } }
+				if = { limit = { check_variable = { atencourage7 = 3 } } }
+				else = { set_variable = { atencourage7 = 0 } }
+				if = { limit = { check_variable = { atencourage8 = 3 } } }
+				else = { set_variable = { atencourage8 = 0 } }
+			}
+		}
+	}
+	option = {
+		name = cofmilitary.2.d
+		trigger = { 
+			check_variable = { Cof_army_theory_infanty_artillery > 0 } 
+			NOT = { check_variable = { atencourage4 = 3 } }
+		}
+	
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage4 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 1 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 10 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage4 = 1 } }
+				add_to_variable = { atencourage4 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 1 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 10 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage4 = 2 } }
+				add_to_variable = { atencourage4 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 1 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 10 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_infanty_artillery
+					BUFF = MODIFIER_BREAKTHROUGH
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage1 = 3 } } }
+				else = { set_variable = { atencourage1 = 0 } }
+				if = { limit = { check_variable = { atencourage2 = 3 } } }
+				else = { set_variable = { atencourage2 = 0 } }
+				if = { limit = { check_variable = { atencourage3 = 3 } } }
+				else = { set_variable = { atencourage3 = 0 } }
+				if = { limit = { check_variable = { atencourage5 = 3 } } }
+				else = { set_variable = { atencourage5 = 0 } }
+				if = { limit = { check_variable = { atencourage6 = 3 } } }
+				else = { set_variable = { atencourage6 = 0 } }
+				if = { limit = { check_variable = { atencourage7 = 3 } } }
+				else = { set_variable = { atencourage7 = 0 } }
+				if = { limit = { check_variable = { atencourage8 = 3 } } }
+				else = { set_variable = { atencourage8 = 0 } }
+			}
+		}
+	}
+	option = {
+		name = cofmilitary.2.e
+		trigger = { 
+			check_variable = { Cof_army_theory_centrailed_command > 0 } 
+			NOT = { check_variable = { atencourage5 = 3 } }
+		}
+	
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage5 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 1 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 10 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage5 = 1 } }
+				add_to_variable = { atencourage5 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 1 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 10 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage5 = 2 } }
+				add_to_variable = { atencourage5 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 1 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 10 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_centrailed_command
+					BUFF = MODIFIER_MAX_PLANNING_FACTOR
+				}	
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_centrailed_command
+					BUFF = MODIFIER_COMMAND_POWER_GAIN
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage1 = 3 } } }
+				else = { set_variable = { atencourage1 = 0 } }
+				if = { limit = { check_variable = { atencourage2 = 3 } } }
+				else = { set_variable = { atencourage2 = 0 } }
+				if = { limit = { check_variable = { atencourage3 = 3 } } }
+				else = { set_variable = { atencourage3 = 0 } }
+				if = { limit = { check_variable = { atencourage4 = 3 } } }
+				else = { set_variable = { atencourage4 = 0 } }
+				if = { limit = { check_variable = { atencourage6 = 3 } } }
+				else = { set_variable = { atencourage6 = 0 } }
+				if = { limit = { check_variable = { atencourage7 = 3 } } }
+				else = { set_variable = { atencourage7 = 0 } }
+				if = { limit = { check_variable = { atencourage8 = 3 } } }
+				else = { set_variable = { atencourage8 = 0 } }
+			}
+		}
+	}
+	option = {
+		name = cofmilitary.2.f
+		trigger = { 
+			check_variable = { Cof_army_theory_defensive_countattack > 0 } 
+			NOT = { check_variable = { atencourage6 = 3 } }
+		}
+	
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage6 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 1 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 10 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage6 = 1 } }
+				add_to_variable = { atencourage6 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 1 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 10 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage6 = 2 } }
+				add_to_variable = { atencourage6 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 1 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 10 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_defensive_countattack
+					BUFF = MODIFIER_LAND_REINFORCE_RATE
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage1 = 3 } } }
+				else = { set_variable = { atencourage1 = 0 } }
+				if = { limit = { check_variable = { atencourage2 = 3 } } }
+				else = { set_variable = { atencourage2 = 0 } }
+				if = { limit = { check_variable = { atencourage3 = 3 } } }
+				else = { set_variable = { atencourage3 = 0 } }
+				if = { limit = { check_variable = { atencourage4 = 3 } } }
+				else = { set_variable = { atencourage4 = 0 } }
+				if = { limit = { check_variable = { atencourage5 = 3 } } }
+				else = { set_variable = { atencourage5 = 0 } }
+				if = { limit = { check_variable = { atencourage7 = 3 } } }
+				else = { set_variable = { atencourage7 = 0 } }
+				if = { limit = { check_variable = { atencourage8 = 3 } } }
+				else = { set_variable = { atencourage8 = 0 } }
+			}
+		}
+	}
+	option = {
+		name = cofmilitary.2.g
+		trigger = { 
+			check_variable = { Cof_army_theory_nco_initiative > 0 } 
+			NOT = { check_variable = { atencourage7 = 3 } }
+		}
+	
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage7 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 1 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 10 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage7 = 1 } }
+				add_to_variable = { atencourage7 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 1 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 10 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage7 = 2 } }
+				add_to_variable = { atencourage7 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 1 }
+				set_temp_variable = { atsore2c = 0 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 10 }
+				set_temp_variable = { atimp8c = 0 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_nco_initiative
+					BUFF = MODIFIER_ARMY_ATTACK_SPEED_FACTOR
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage1 = 3 } } }
+				else = { set_variable = { atencourage1 = 0 } }
+				if = { limit = { check_variable = { atencourage2 = 3 } } }
+				else = { set_variable = { atencourage2 = 0 } }
+				if = { limit = { check_variable = { atencourage3 = 3 } } }
+				else = { set_variable = { atencourage3 = 0 } }
+				if = { limit = { check_variable = { atencourage4 = 3 } } }
+				else = { set_variable = { atencourage4 = 0 } }
+				if = { limit = { check_variable = { atencourage5 = 3 } } }
+				else = { set_variable = { atencourage5 = 0 } }
+				if = { limit = { check_variable = { atencourage6 = 3 } } }
+				else = { set_variable = { atencourage6 = 0 } }
+				if = { limit = { check_variable = { atencourage8 = 3 } } }
+				else = { set_variable = { atencourage8 = 0 } }
+			}
+		}
+	}
+	option = {
+		name = cofmilitary.2.h
+		trigger = { 
+			check_variable = { Cof_army_theory_small_combat > 0 } 
+			NOT = { check_variable = { atencourage8 = 3 } }
+		}
+	
+		if = {
+			limit = { atencourage_no_progess = yes }
+			add_to_variable = { atencourage8 = 1 }
+			army_experience = 25
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 1 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 10 }
+			Cof_army_theory_implementation_change = yes
+		}
+		else = {
+			if = {
+				limit = { check_variable = { atencourage8 = 1 } }
+				add_to_variable = { atencourage8 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 1 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 10 }
+				Cof_army_theory_implementation_change = yes
+			}
+			else_if = {
+				limit = { check_variable = { atencourage8 = 2 } }
+				add_to_variable = { atencourage8 = 1 }
+				army_experience = 25
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atsynd1c = 0 }
+				set_temp_variable = { atsynd2c = 0 }
+				set_temp_variable = { atoppo1c = 0 }
+				set_temp_variable = { atoppo2c = 0 }
+				set_temp_variable = { atjaco1c = 0 }
+				set_temp_variable = { atjaco2c = 0 }
+				set_temp_variable = { atsore1c = 0 }
+				set_temp_variable = { atsore2c = 1 }
+				Cof_army_theory_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { atimpc = 0 }
+				set_temp_variable = { atimp1c = 0 }
+				set_temp_variable = { atimp2c = 0 }
+				set_temp_variable = { atimp3c = 0 }
+				set_temp_variable = { atimp4c = 0 }
+				set_temp_variable = { atimp5c = 0 }
+				set_temp_variable = { atimp6c = 0 }
+				set_temp_variable = { atimp7c = 0 }
+				set_temp_variable = { atimp8c = 10 }
+				Cof_army_theory_implementation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = var_influ_extra_buff
+					TAGVAR = Cof_army_small_combat
+					BUFF = MODIFIERS_ARMY_ATTACK_FACTOR
+				}	
+			}
+			else = {
+				if = { limit = { check_variable = { atencourage1 = 3 } } }
+				else = { set_variable = { atencourage1 = 0 } }
+				if = { limit = { check_variable = { atencourage2 = 3 } } }
+				else = { set_variable = { atencourage2 = 0 } }
+				if = { limit = { check_variable = { atencourage3 = 3 } } }
+				else = { set_variable = { atencourage3 = 0 } }
+				if = { limit = { check_variable = { atencourage4 = 3 } } }
+				else = { set_variable = { atencourage4 = 0 } }
+				if = { limit = { check_variable = { atencourage5 = 3 } } }
+				else = { set_variable = { atencourage5 = 0 } }
+				if = { limit = { check_variable = { atencourage6 = 3 } } }
+				else = { set_variable = { atencourage6 = 0 } }
+				if = { limit = { check_variable = { atencourage7 = 3 } } }
+				else = { set_variable = { atencourage7 = 0 } }
+			}
+		}
+	}
+}
 
 
 

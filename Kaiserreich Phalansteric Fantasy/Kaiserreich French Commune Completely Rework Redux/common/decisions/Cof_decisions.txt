@@ -5534,10 +5534,204 @@ Cof_economy = {
 			cof_econ_target_change = yes
 		}
 	}
+
+	#军事经济
+	Cof_mediterranean_naval_base_building = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = FRA }
+		visible = { has_completed_focus = FRA_mediterranean_naval_base }
+		ai_will_do = { factor = 0 }
+		days_remove = 120
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			navy_experience = 25
+			21 = {
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 3 }
+				Cof_state_economy_situation_change = yes
+			}
+		}
+	}
+
+	Cof_british_naval_cooperation_building = {
+		icon = eng_trade_unions_support
+		allowed = { original_tag = FRA }
+		visible = { has_completed_focus = FRA_mediterranean_naval_base }
+		ai_will_do = { factor = 0 }
+		days_remove = 90
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 3 }
+		remove_effect = {
+			navy_experience = 25
+			17 = {
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 1 }
+				Cof_state_economy_situation_change = yes
+			}
+			ENG = {
+				navy_experience = 25
+				127 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
 }
 
 #### 军事改革 ####
 Cof_militray_reform = {
+	#军事学说发展
+	Cof_army_theory_development = {
+		icon = ger_mefo_bills
+		activation = { tag = FRA }
+		available = { always = no }
+		is_good = yes
+		fixed_random_seed = no
+		days_mission_timeout = 120
+		timeout_effect = {
+			custom_effect_tooltip = effect_military
+			
+			random_list = {
+				var:FRA.pop_army_officers = {
+					modifier = { factor = var:FRA.pop_officers_synd }
+					modifier = { 
+						set_temp_variable = { t = var:FRA.pop_army_soldiers }
+						multiply_temp_variable = { t = var:FRA.pop_soldiers_synd }
+						add = t
+					}
+					modifier = { factor = var:FRA.military_synd }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 1 }
+					set_temp_variable = { atsynd2c = 0 }
+					set_temp_variable = { atoppo1c = 0 }
+					set_temp_variable = { atoppo2c = 0 }
+					set_temp_variable = { atjaco1c = 0 }
+					set_temp_variable = { atjaco2c = 0 }
+					set_temp_variable = { atsore1c = 0 }
+					set_temp_variable = { atsore2c = 0 }
+					Cof_army_theory_change = yes
+				}
+				var:FRA.pop_army_ncos = {
+					modifier = { factor = var:FRA.pop_ncos_synd }
+					modifier = { factor = var:FRA.military_synd }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 0 }
+					set_temp_variable = { atsynd2c = 1 }
+					set_temp_variable = { atoppo1c = 0 }
+					set_temp_variable = { atoppo2c = 0 }
+					set_temp_variable = { atjaco1c = 0 }
+					set_temp_variable = { atjaco2c = 0 }
+					set_temp_variable = { atsore1c = 0 }
+					set_temp_variable = { atsore2c = 0 }
+					Cof_army_theory_change = yes
+				}
+				var:FRA.pop_army_officers = {
+					modifier = { factor = var:FRA.pop_officers_oppo }
+					modifier = { factor = var:FRA.military_oppo }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 0 }
+					set_temp_variable = { atsynd2c = 0 }
+					set_temp_variable = { atoppo1c = 1 }
+					set_temp_variable = { atoppo2c = 0 }
+					set_temp_variable = { atjaco1c = 0 }
+					set_temp_variable = { atjaco2c = 0 }
+					set_temp_variable = { atsore1c = 0 }
+					set_temp_variable = { atsore2c = 0 }
+					Cof_army_theory_change = yes
+				}
+				var:FRA.pop_army_ncos = {
+					modifier = { factor = var:FRA.pop_ncos_oppo }
+					modifier = { 
+						set_temp_variable = { t = var:FRA.pop_army_soldiers }
+						multiply_temp_variable = { t = var:FRA.pop_soldiers_oppo }
+						add = t
+					}
+					modifier = { factor = var:FRA.military_oppo }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 0 }
+					set_temp_variable = { atsynd2c = 0 }
+					set_temp_variable = { atoppo1c = 0 }
+					set_temp_variable = { atoppo2c = 1 }
+					set_temp_variable = { atjaco1c = 0 }
+					set_temp_variable = { atjaco2c = 0 }
+					set_temp_variable = { atsore1c = 0 }
+					set_temp_variable = { atsore2c = 0 }
+					Cof_army_theory_change = yes
+				}
+				var:FRA.pop_army_officers = {
+					modifier = { factor = var:FRA.pop_officers_jaco }
+					modifier = { factor = var:FRA.military_jaco }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 0 }
+					set_temp_variable = { atsynd2c = 0 }
+					set_temp_variable = { atoppo1c = 0 }
+					set_temp_variable = { atoppo2c = 0 }
+					set_temp_variable = { atjaco1c = 1 }
+					set_temp_variable = { atjaco2c = 0 }
+					set_temp_variable = { atsore1c = 0 }
+					set_temp_variable = { atsore2c = 0 }
+					Cof_army_theory_change = yes
+				}
+				var:FRA.pop_army_ncos = {
+					modifier = { factor = var:FRA.pop_ncos_jaco }
+					modifier = { 
+						set_temp_variable = { t = var:FRA.pop_army_soldiers }
+						multiply_temp_variable = { t = var:FRA.pop_soldiers_jaco }
+						add = t
+					}
+					modifier = { factor = var:FRA.military_jaco }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 0 }
+					set_temp_variable = { atsynd2c = 0 }
+					set_temp_variable = { atoppo1c = 0 }
+					set_temp_variable = { atoppo2c = 0 }
+					set_temp_variable = { atjaco1c = 0 }
+					set_temp_variable = { atjaco2c = 1 }
+					set_temp_variable = { atsore1c = 0 }
+					set_temp_variable = { atsore2c = 0 }
+					Cof_army_theory_change = yes
+				}		
+				var:FRA.pop_army_ncos = {
+					modifier = { factor = var:FRA.pop_ncos_sore }
+					modifier = { factor = var:FRA.military_sore }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 0 }
+					set_temp_variable = { atsynd2c = 0 }
+					set_temp_variable = { atoppo1c = 0 }
+					set_temp_variable = { atoppo2c = 0 }
+					set_temp_variable = { atjaco1c = 0 }
+					set_temp_variable = { atjaco2c = 0 }
+					set_temp_variable = { atsore1c = 1 }
+					set_temp_variable = { atsore2c = 0 }
+					Cof_army_theory_change = yes
+				}		
+				var:FRA.pop_army_soldiers = {
+					modifier = { factor = var:FRA.pop_soldiers_sore }
+					modifier = { factor = var:FRA.military_sore }
+					army_experience = 5
+					set_temp_variable = { atsynd1c = 0 }
+					set_temp_variable = { atsynd2c = 0 }
+					set_temp_variable = { atoppo1c = 0 }
+					set_temp_variable = { atoppo2c = 0 }
+					set_temp_variable = { atjaco1c = 0 }
+					set_temp_variable = { atjaco2c = 0 }
+					set_temp_variable = { atsore1c = 0 }
+					set_temp_variable = { atsore2c = 1 }
+					Cof_army_theory_change = yes
+				}
+			}
+		}
+	}
+
+	#训练
 	Cof_amry_stop_the_training = {
 		icon = ger_mefo_bills 
 		allowed = { original_tag = FRA }
@@ -5567,6 +5761,29 @@ Cof_militray_reform = {
 			custom_effect_tooltip = army_training_tt
 		}
 		remove_effect = {
+			if = {
+				limit = { has_country_flag = army_train_equipment_upgrade }
+				custom_effect_tooltip = army_train_equipment_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 0 }
+				set_temp_variable = { atc = 2 }
+				set_temp_variable = { aec = 1 }
+				set_temp_variable = { apc = 0 }
+				Cof_army_reform_values_change = yes
+			}
+
+			if = {
+				limit = { has_country_flag = army_train_place_upgrade }
+				custom_effect_tooltip = army_train_place_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 1 }
+				set_temp_variable = { atc = 1 }
+				set_temp_variable = { aec = 0 }
+				set_temp_variable = { apc = 2 }
+				Cof_army_reform_values_change = yes
+			}
 			hidden_effect = { 
 				if = {
 					limit = { has_country_flag = has_mili_focus }
@@ -5576,6 +5793,255 @@ Cof_militray_reform = {
 		}
 	}
 
+	Cof_army_routine_training_improved = {
+		icon = ger_mefo_bills  
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_ensuring_quality_of_integrated_training
+			NOT = { has_country_flag = has_mili_focus }
+		}
+		cancel_trigger = { NOT = { has_country_flag = has_mili_focus } } 
+		days_remove = 90
+		days_re_enable = 0
+		modifier = {
+			monthly_change_awill = -0.2
+			monthly_change_apassion = -0.2
+			monthly_change_atrain = 0.8
+		}
+		complete_effect = {
+			set_country_flag = has_mili_focus
+			custom_effect_tooltip = army_training_tt
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = army_train_equipment_upgrade }
+				custom_effect_tooltip = army_train_equipment_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 0 }
+				set_temp_variable = { atc = 2 }
+				set_temp_variable = { aec = 1 }
+				set_temp_variable = { apc = 0 }
+				Cof_army_reform_values_change = yes
+			}
+
+			if = {
+				limit = { has_country_flag = army_train_place_upgrade }
+				custom_effect_tooltip = army_train_place_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 1 }
+				set_temp_variable = { atc = 1 }
+				set_temp_variable = { aec = 0 }
+				set_temp_variable = { apc = 2 }
+				Cof_army_reform_values_change = yes
+			}
+			hidden_effect = { 
+				if = {
+					limit = { has_country_flag = has_mili_focus }
+					activate_decision = Cof_army_routine_training_improved 
+				}
+			}
+		}
+	}
+
+	Cof_army_endurance_training = {
+		icon = ger_mefo_bills  
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_ensuring_quality_of_integrated_training
+			NOT = { has_country_flag = has_mili_focus }
+		}
+		cancel_trigger = { NOT = { has_country_flag = has_mili_focus } } 
+		days_remove = 90
+		days_re_enable = 0
+		modifier = {
+			monthly_change_awill = 0.4
+			monthly_change_apassion = -0.8
+			monthly_change_atrain = 0.2
+		}
+		complete_effect = {
+			set_country_flag = has_mili_focus
+			custom_effect_tooltip = army_training_tt
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = army_train_equipment_upgrade }
+				custom_effect_tooltip = army_train_equipment_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 0 }
+				set_temp_variable = { atc = 2 }
+				set_temp_variable = { aec = 1 }
+				set_temp_variable = { apc = 0 }
+				Cof_army_reform_values_change = yes
+			}
+
+			if = {
+				limit = { has_country_flag = army_train_place_upgrade }
+				custom_effect_tooltip = army_train_place_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 1 }
+				set_temp_variable = { atc = 1 }
+				set_temp_variable = { aec = 0 }
+				set_temp_variable = { apc = 2 }
+				Cof_army_reform_values_change = yes
+			}
+			hidden_effect = { 
+				if = {
+					limit = { has_country_flag = has_mili_focus }
+					activate_decision = Cof_army_endurance_training 
+				}
+			}
+		}
+	}
+
+	Cof_army_combat_training = {
+		icon = ger_mefo_bills  
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_ensuring_quality_of_integrated_training
+			NOT = { has_country_flag = has_mili_focus }
+		}
+		cancel_trigger = { NOT = { has_country_flag = has_mili_focus } } 
+		days_remove = 90
+		days_re_enable = 0
+		modifier = {
+			monthly_change_apassion = 0.4
+			monthly_change_atrain = 0.2
+		}
+		complete_effect = {
+			set_country_flag = has_mili_focus
+			custom_effect_tooltip = army_training_tt
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -100
+			}
+			if = {
+				limit = { has_country_flag = army_train_equipment_upgrade }
+				custom_effect_tooltip = army_train_equipment_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 0 }
+				set_temp_variable = { atc = 2 }
+				set_temp_variable = { aec = 1 }
+				set_temp_variable = { apc = 0 }
+				Cof_army_reform_values_change = yes
+			}
+
+			if = {
+				limit = { has_country_flag = army_train_place_upgrade }
+				custom_effect_tooltip = army_train_place_upgrade_tt
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 1 }
+				set_temp_variable = { atc = 1 }
+				set_temp_variable = { aec = 0 }
+				set_temp_variable = { apc = 2 }
+				Cof_army_reform_values_change = yes
+			}
+			hidden_effect = { 
+				if = {
+					limit = { has_country_flag = has_mili_focus }
+					activate_decision = Cof_army_combat_training 
+				}
+			}
+		}
+	}
+
+	Cof_army_upgrade_trainging_equipment = {
+		icon = ger_mefo_bills  
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_ensuring_quality_of_integrated_training
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			set_country_flag = army_train_equipment_upgrade
+			custom_effect_tooltip = Cof_army_upgrade_trainging_equipment_tt
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 3 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 5 }
+			set_temp_variable = { apc = 0 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+
+	Cof_army_upgrade_trainging_place = {
+		icon = ger_mefo_bills  
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_ensuring_quality_of_integrated_training
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 49.9 } }
+		custom_cost_text = cost_ep_50
+		complete_effect = {
+			add_to_variable = { economy_power = -50 }
+			set_country_flag = army_train_place_upgrade
+			custom_effect_tooltip = Cof_army_upgrade_trainging_equipment_tt
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 5 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 2.5 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 2.5 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+
+	#学说方向
+	Cof_army_theory_encourage = {
+		icon = ger_mefo_bills  
+		allowed = { original_tag = FRA }
+		visible = {
+			has_completed_focus = FRA_national_military_academy
+		}
+		days_re_enable = 90
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = Cof_army_theory_encourage_tt
+			country_event = cofmilitary.2
+		}
+	}
+
+	#士兵胃是将军剑
 	Cof_soldiers_stomach_is_generals_sword0 = {
 		icon = ger_mefo_bills
 		allowed = { original_tag = FRA }

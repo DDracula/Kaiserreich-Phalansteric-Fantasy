@@ -1409,7 +1409,10 @@
   FRA_national_military_academy:0 "法兰西国家军事学院"
   FRA_national_military_academy_desc:0 "一支革命的军队，需要一个革命的军官团。我们将整合全国最优秀的军事教育资源，建立一所全新的国家军事学院。在这里，未来的指挥官们不仅要学习最先进的战术理论，更要接受最严格的政治思想教育，确保从这里走出的每一位军官，都将是公社最忠诚、最可靠的利剑。"
   landmark_national_military_academy:0 "法兰西国家军事学院"
-  FRA_national_military_academy_tt:0 "我们将在§Y[785.GetName]§!建设§Y$landmark_national_military_academy$§!。\n其效果为：\n  $experience_gain_army_factor_tt$[?0.1|+=.1%]\n  $MODIFIER_MAX_PLANNING_FACTOR$：[?0.025|+=.1%]\n  $MODIFIER_ARMY_LEADER_START_PLANNING_LEVEL$：[?1|G=.0]"
+  landmark_national_military_academy_desc:0 ""
+  FRA_national_military_academy_tt:0 "我们将在§Y[785.GetName]§!建设§Y$landmark_national_military_academy$§!。\n其效果为：\n  $experience_gain_army_factor_tt$[?0.1|+=.1%]\n  $MODIFIER_MAX_PLANNING_FACTOR$：[?0.025|+=.1%]\n  $MODIFIER_ARMY_LEADER_START_PLANNING_LEVEL$：[?1|G=.0]\n 所有军事理论每月落实度：[?0.3|G=.1%%]"
+  Cof_army_theory_encourage:0 "对军事理论的研讨"
+  Cof_army_theory_encourage_tt:0 "§G当我们连续研讨某一理论三次，我们就将取得该理论的突破性进展§!\n当前我们的理论突破进展：\n（只有已经有倾向的军事理论才能被研讨）\n$Cof_army_theory_panzer_group$：[?atencourage1|.0]/3\n$Cof_army_theory_blitz_delite$：[?atencourage2|.0]/3\n$Cof_army_theory_motorization$：[?atencourage3|.0]/3\n$Cof_army_theory_infanty_artillery$：[?atencourage4|.0]/3\n$Cof_army_theory_centrailed_command$：[?atencourage5|.0]/3\n$Cof_army_theory_defensive_countattack$：[?atencourage6|.0]/3\n$Cof_army_theory_nco_initiative$：[?atencourage7|.0]/3\n$Cof_army_theory_small_combat$：[?atencourage8|.0]/3\n§G如果我们中断了对某一理论的研讨，该理论的突破性进展的进度将归零§!\n每90天可进行一次研讨"
 
   FRA_flexible_joints:0 "灵活关节"
   FRA_flexible_joints_desc:0 "一支强大的军队，不应是僵硬的铁棍，而应是拥有灵活关节的有机体。我们将向中下级军官下放更多的战术自主权，鼓励他们根据战场实际情况，进行创造性的临场发挥。一个由无数个能够独立思考、快速反应的“灵活关节”组成的军队，将让敌人陷入无法预测的噩梦。"
@@ -1477,96 +1480,130 @@
 
   FRA_ensuring_quality_of_integrated_training:0 "确保整体训练质量"
   FRA_ensuring_quality_of_integrated_training_desc:0 "无论是民兵还是精兵，都必须遵循统一的、高标准的训练大纲。我们将成立一个由总参谋部直属的训练督导委员会，对全军的训练质量进行监督和评估。我们将确保，从我们训练营里走出的每一个士兵，都是一名合格的、值得信赖的革命战士。"
+  Cof_army_routine_training_improved:0 "进阶训练"
+  Cof_army_endurance_training:0 "耐力训练"
+  Cof_army_combat_training:0 "实战训练"
+  Cof_army_upgrade_trainging_equipment:0 "改进训练装备"
+  Cof_army_upgrade_trainging_equipment_tt:0 "§G通过改进训练装备，我们的训练将得到额外收益§!"
+  army_train_equipment_upgrade_tt:0 "§C由于我们改进了训练装备：§!"
+  Cof_army_upgrade_trainging_place:0 "改善训练场所"
+  Cof_army_upgrade_trainging_place_tt:0 "§G通过改善训练场所，我们的训练将得到额外收益§!"
+  army_train_place_upgrade_tt:0 "§C由于我们改善了训练场所：§!"
 
   FRA_special_military_category:0 "特殊兵种"
   FRA_special_military_category_desc:0 "现代战争需要多样化的作战能力。我们将根据不同的作战环境，建立专门的特殊兵种部队。无论是能在阿尔卑斯山如履平地的山地猎兵，还是能从天而降、直插敌人心脏的伞兵，都将成为我们克敌制胜的奇兵。"
+  Cof_special_military_category:0 " 独立的特种部队"
 
   FRA_across_the_ocean:0 "穿过海洋"
   FRA_across_the_ocean_desc:0 "革命的烈火不能只局限于欧洲大陆。为了将我们的力量投送到遥远的海岸，我们将建立一支精锐的海军陆战队。他们将接受最严格的两栖作战训练，能够从任何一片海滩登陆，将红旗插上敌人的滩头阵地。"
+  tech_across_the_ocean:0 "穿过海洋"
+  tech_across_the_ocean_tt:0 "  §Y$marsh$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.1|=+1%]\n    $STAT_ADJUSTER_ATTACK$[?0.1|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$river$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.1|=+1%]\n    $STAT_ADJUSTER_ATTACK$[?0.1|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$amphibious$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.1|=+1%]\n    $STAT_ADJUSTER_ATTACK$[?0.1|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]"
 
   FRA_vanguard_task_force:0 "先锋特遣队"
   FRA_vanguard_task_force_desc:0 "在装甲集群发起主攻之前，需要一支力量为其撕开突破口。我们将组建一支由战斗工兵、突击炮和喷火兵组成的“先锋特遣队”，专门负责扫清敌人的雷区、碉堡和反坦克阵地。他们将用血肉和火焰，为我们的钢铁洪流开辟道路。"
+  tech_vanguard_task_force:0 "先锋特遣队"
 
   FRA_conquering_the_hills:0 "征服山巅"
-  FRA_conquering_the_hills_desc:0 "山地是天然的堡垒，但也可能成为我们的坦途。我们将组建和训练专业的山地部队，他们将装备轻便的武器，掌握娴熟的攀登和滑雪技巧。无论是比利牛斯山还是阿尔卑斯山，都无法阻挡我们革命的脚步，每一座山巅都将被我们征服。"
+  FRA_conquering_the_hills_desc:0 "山地是天然的堡垒，但也可能成为我们的坦途。我们将组建和训练专业的山地部队，他们将装备轻便的武器，掌握娴熟的攀登和滑雪技巧。无论是比利牛斯山还是阿尔卑斯山，都无法阻挡我们革命的脚步，每一座山巅都将被我们征服。" 
+  tech_conquering_the_hills:0 "征服山巅"
+  tech_conquering_the_hills_tt:0 "  §Y$hills$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.15|=+1%]\n    $STAT_ADJUSTER_ATTACK$[?0.15|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.1|=+1%]\n  §Y$mountain$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.15|=+1%]\n    $STAT_ADJUSTER_ATTACK$[?0.15|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.1|=+1%]"
 
   FRA_appraisal_advancement:0 "考核式分层"
   FRA_appraisal_advancement_desc:0 "为了最大限度地发挥每一名士兵的潜能，我们将引入“考核式分层”制度。通过定期的、严格的军事技能和体能考核，我们将把士兵划分为不同的等级，并给予相应的待遇和晋升机会。这将极大地激发士兵们的训练热情，形成一种你追我赶、奋勇争先的良好氛围。"
+  Cof_appraisal_advancement:0 "阶层式管理模式"
 
   FRA_reflections_from_the_great_war:0 "反思世界大战"
   FRA_reflections_from_the_great_war_desc:0 "上一次大战的惨痛教训，我们绝不能忘记。无论是凡尔登的绞肉机，还是索姆河的尸山血海，都向我们揭示了旧式战争的野蛮与愚蠢。我们将组织全军，对大战的经验与教训进行一次深刻的、系统性的反思。只有正视过去的错误，我们才能在未来的战争中，避免重蹈覆辙。"
 
   FRA_coordinate_with_three_armed_forces:0 "三军协同"
   FRA_coordinate_with_three_armed_forces_desc:0 "陆、海、空，不再是各自为战的独立王国。我们将建立一个常设的三军协同作战司令部，制定联合作战条令，并定期举行大规模的跨军种联合演习。一支能够陆海空一体、无缝协同的武装力量，将发挥出三倍于其自身的力量。"
+  Cof_three_armed_force:0 "三军协同作战"
 
   FRA_lightning_war:0 "闪电战"
   FRA_lightning_war_desc:0 "静止的战线是死亡的陷阱。我们将彻底抛弃阵地战的陈旧思想，拥抱一种全新的、基于速度与突然性的“闪电战”理论。通过集中使用坦克、俯冲轰炸机和摩托化步兵，我们将在敌人反应过来之前，就将其指挥体系彻底瘫痪，将其防线撕成碎片。"
 
   FRA_instant_victory_theory:0 "速胜论"
   FRA_instant_victory_theory_desc:0 "当闪电战的理论被推向极致，我们就将拥抱“速胜论”的信念。我们相信，通过一次完美的、毁灭性的闪击，我们可以在战争的最初几周、甚至几天内就彻底击溃敌人的主力，迫使其投降。这不仅能最大限度地减少我方的伤亡，更是向全世界展示革命力量雷霆万钧之势的最佳方式。"
+  Cof_instant_victory_theory:0 "速胜论情绪"
+  Cof_instant_victory_theory_failed:0 "速败论情绪"
+  Cof_instant_victory_theory_success:0 "行之有效的速胜论"
+  Cof_instant_victory_theory_tt:0 "§R我们必须在时间耗尽前结束战争，否则后果不堪设想§!"
+  FRA_instant_victory_theory_tt1:0 "§C如果速胜论得到证实：§!"
+  FRA_instant_victory_theory_tt2:0 "§C如果速胜论被证明是自大妄为，我们将陷入速败论的情绪之中：§!"
 
   FRA_travel_thousand_miles_a_day:0 "一日千里"
   FRA_travel_thousand_miles_a_day_desc:0 "速度，是闪电战的灵魂。我们将不惜一切代价，推动我军的全面摩托化和机械化。我们的每一个步兵师，都将乘坐卡车和装甲运兵车投入战斗。一支能够“一日千里”的军队，将让敌人永远无法建立起稳固的防线，只能在无尽的追击中崩溃。"
+  Cof_travel_thousand_miles_a_day:0 "更快的机动部队"
 
   FRA_learning_from_barricades:0 "街垒的遗产"
   FRA_learning_from_barricades_desc:0 "从1871年的公社到1919年的总罢工，街垒战的经验已经深深融入我们的血液。我们将把这种“街垒的遗产”系统化、理论化，使其成为我们现代防御思想的基石。我们不仅要学习如何在城市中构筑坚固的防线，更要学习那种根植于人民、坚韧不拔的防御精神。"
 
   FRA_put_to_our_advantage:0 "为己所用"
   FRA_put_to_our_advantage_desc:0 "敌人的优势，同样可以化为我们的武器。我们将深入研究敌人的战术思想和装备性能，并有针对性地制定反制措施。无论是利用缴获的坦克组建我们自己的装甲部队，还是通过分析敌人的通讯来设置埋伏，我们都将把敌人的力量“为己所用”，让他们作茧自缚。"
+  Cof_put_to_our_advantage:0 "战场回收策略"
+  tech_put_to_our_advantage:0 "战场回收策略"
 
   FRA_triumph_of_will:0 "意志的胜利"
   FRA_triumph_of_will_desc:0 "物质的力量终有极限，而革命的意志坚不可摧。在最艰难的防御战中，我们将向士兵们灌输“意志胜利论”的信念。通过强大的政治宣传和精神鼓动，我们将把每一个士兵都锻造成一个永不屈服的战斗堡垒。在我们的钢铁意志面前，任何敌人的进攻都将粉身碎骨。"
+  Cof_triumph_of_will:0 "意志的胜利"
 
   FRA_rock_firm:0 "坚如磐石"
   FRA_rock_firm_desc:0 "我们的防御，不应只是被动地承受打击，而应像磐石一样，让来犯的浪潮在自己面前撞得粉碎。我们将构筑由反坦克壕、地雷区、永备工事和纵深梯次配置的部队组成的、坚不可摧的防御体系。任何胆敢踏入这片死亡地带的敌人，都将有来无回。"
-
-  FRA_when_attack_ture_vulnerable:0 "攻击时正是脆弱时"
-  FRA_when_attack_ture_vulnerable_desc:0 "进攻，是敌人最强大的时刻，也是其最脆弱的时刻。我们将训练部队掌握防守反击的精髓，在承受住敌人的第一波冲击后，利用其队形混乱、筋疲力尽的瞬间，立刻投入预备队，发动迅猛的、致命的反击，将进攻的敌人彻底歼灭在我们的阵地前。"
+  tech_rock_firm:0 "坚如磐石"
 
   FRA_man_can_conquer_nature:0 "人定胜天"
   FRA_man_can_conquer_nature_desc:0 "无论是泥泞的沼泽、崎岖的山地，还是茂密的森林，都不能成为阻挡我们前进的障碍。我们将向士兵们灌输“人定胜天”的信念，并大力发展特种工程装备，确保我们的军队在任何极端地形下，都能保持强大的作战能力。在革命军队的面前，没有不可逾越的天险。"
 
   FRA_chameleon_warfare:0 "变色龙战法"
   FRA_chameleon_warfare_desc:0 "我们的军队将像变色龙一样，完美地融入任何作战环境。我们将大力发展伪装技术，训练士兵利用地形地物，让他们能够像消失在背景中一样，对敌人发动出其不意的打击。一支看不见的军队，才是最可怕的军队。"
+  tech_chameleon_warfare:0 "变色龙战法"
+  tech_chameleon_warfare_tt:0 "  §Y$urban$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$hills$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$mountain$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$jungle$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$forest$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$marsh$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$snow$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$plains$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]\n  §Y$river$§!：\n    $STAT_ADJUSTER_MOVEMENT$[?0.03|=+1%]\n    $STAT_ADJUSTER_DEFENCE$[?0.05|=+1%]"
 
   FRA_pursui_oriented_guerrilla_warfare:0 "主动型游击战"
   FRA_pursui_oriented_guerrilla_warfare_desc:0 "我们的游击战，不应只是被动地骚扰敌人，而应是主动地、以歼灭敌人有生力量为目的的进攻行动。我们将把敌人的后方变成我们的前线，用“主动型游击战”不断地、系统地削弱敌人的战争潜力，为我军主力的总攻创造条件。"
+  tech_pursui_oriented_guerrilla:0 "主动型游击"
 
   FRA_flexible_and_mobile:0 "灵活机动"
   FRA_flexible_and_mobile_desc:0 "“敌进我退，敌驻我扰，敌疲我打，敌退我追。”这十六字诀将成为我们所有部队的作战信条。我们将最大限度地发挥我军灵活机动的优势，通过不断的运动、穿插和迂回，牢牢掌握战场的主动权，迫使笨重的敌人陷入被动挨打的绝境。"
 
   FRA_dominant_firepower:0 "支配性火力"
   FRA_dominant_firepower_desc:0 "我们将不再吝啬炮弹。通过大规模生产火炮和建立高效的炮兵指挥体系，我们将追求在每一个战场上，都取得绝对的、压倒性的“支配性火力”。在我们的钢铁风暴将敌人的阵地彻底犁为焦土之前，我们的步兵绝不发起冲锋。"
+  Cof_dominant_firepower:0 "主导地位的火炮"
 
   FRA_ultra_long_range_artillery:0 "超远距离炮击"
   FRA_ultra_long_range_artillery_desc:0 "敌人的指挥部、后勤枢纽和集结地，都将处于我们炮火的打击范围之内。我们将研发和部署射程更远的重型火炮和火箭炮，对敌人的纵深目标进行持续的、毁灭性的打击。战争，将在敌人看到我们第一个士兵之前，就已经开始。"
+
+  FRA_precision_killing:0 "精准杀伤"
+  FRA_precision_killing_desc:0 "每一发炮弹都应该有它的价值。我们将大力发展炮兵侦察和火控技术，并为一线部队配备炮兵观察员。通过精确的计算和引导，我们的炮火将能够像外科手术刀一样，精准地摧毁敌人的指挥所、机枪火力点和炮兵阵地。"
+  tech_precision_killing:0 "精准火炮"
 
   FRA_shower_of_artillery:0 "炮如雨下"
   FRA_shower_of_artillery_desc:0 "我们将用炮弹的数量来弥补精度的不足。通过饱和式的炮火准备，我们将在敌人的阵地上降下名副其实的“钢铁阵雨”。在这种铺天盖地的火力覆盖下，任何工事都将化为齑粉，任何抵抗意志都将被彻底摧毁。"
 
   FRA_sport_combat:0 "运动战"
   FRA_sport_combat_desc:0 "我们将把战争，变成一场高强度的“运动”。通过不断的穿插、分割、包围，我们将迫使敌人离开他们熟悉的工事，在运动中与我们交战。在广阔的战场上，一支更灵活、更坚韧、更能忍耐艰苦的军队，将取得最终的胜利。"
+  Cof_sport_combat:0 "运动战"
 
   FRA_artillery_dynamics:0 "火炮动力学"
   FRA_artillery_dynamics_desc:0 "我们的炮兵将不再是固定的火力点，而是能够跟随一线部队快速机动的支援力量。我们将为炮兵部队全面换装自行火炮和摩托化牵引车，让他们能够随时出现在最需要的地方，为我们的进攻矛头提供最及时的火力支援。"
-
-  FRA_precision_killing:0 "精准杀伤"
-  FRA_precision_killing_desc:0 "每一发炮弹都应该有它的价值。我们将大力发展炮兵侦察和火控技术，并为一线部队配备炮兵观察员。通过精确的计算和引导，我们的炮火将能够像外科手术刀一样，精准地摧毁敌人的指挥所、机枪火力点和炮兵阵地。"
 
   FRA_machine_war:0 "机械战争"
   FRA_machine_war_desc:0 "未来的战争，将是机器与机器的较量。我们将把国家的工业力量，毫无保留地倾注到战争机器的生产中。坦克、飞机、大炮——这些钢铁巨兽将成为我们军队的主宰，我们将用一个无可匹敌的机械化军团，去碾碎一切敢于阻挡革命的敌人。"
 
   FRA_armor_research_development_funding:0 "装甲研发资金"
   FRA_armor_research_development_funding_desc:0 "更厚的装甲，更强的火炮，更快的速度。我们将为我们的装甲车辆研究机构提供充足的资金和最优秀的人才，鼓励他们不断探索新的技术。我们绝不能满足于现有的成就，我们的目标，是永远拥有比敌人更先进一代的坦克。"
+  Cof_armor_research_funding:0 "装甲研发资金"
 
   FRA_secondary_armor:0 "辅助性装甲力量"
   FRA_secondary_armor_desc:0 "坦克不应孤军奋战。我们将大力发展自行火炮、装甲侦察车、装甲运兵车等“辅助性装甲力量”。一个由多种装甲车辆组成的、功能完备的合成化部队，才能在战场上发挥出最大的威力。"
 
   FRA_steel_flood:0 "钢铁洪流"
   FRA_steel_flood_desc:0 "我们将简化坦克的设计，优化生产流程，将我们的工厂变成生产钢铁巨兽的流水线。我们将用数量的绝对优势来压倒敌人，让我们的“钢铁洪流”淹没战场上的每一个角落，让敌人在无尽的坦克集群面前感到彻底的绝望。"
+  Cof_steel_flood:0 "钢铁洪流"
 
   FRA_red_thunder:0 "红色雷霆"
   FRA_red_thunder_desc:0 "当我们的钢铁洪流与闪电战的理论相结合，就将爆发出“红色雷霆”般的毁灭性力量。我们的装甲集群将以无可阻挡之势，在敌人的防线上撕开巨大的、无法愈合的突破口，直捣黄龙，将革命的旗帜插上敌人的首都。"
+  Cof_red_thunder:0 "红色雷霆"
 
   FRA_renseignements_generaux:0 "法兰西情报总局"
   FRA_renseignements_generaux_desc:0 "知己知彼，百战不殆。我们将重组并加强我们的情报机构，成立一个统一的、高效的“法兰西情报总局”。它将像一只看不见的眼睛，监视着国内外所有敌对势力的动向，为我们的最高决策者，提供最及时、最准确的情报。"
@@ -1772,9 +1809,6 @@
   FRA_international_column:0 "国际纵队"
   FRA_international_column_desc:0 "法兰西的儿女绝不会对他国同志的斗争袖手旁观。我们将正式组建“国际纵队”，招募和派遣志愿者，前往世界各地斗争最前线。每一位国际纵队的战士，都是一颗播撒向全世界的革命火种。"
 
-  FRA_from_the_lab_to_the_battlefield:0 "从实验室到战场"
-  FRA_from_the_lab_to_the_battlefield_desc:0 "我们将把我们最新研发的武器装备，优先提供给正在浴血奋战的国际纵队和盟友。我们将让敌人成为我们新武器的第一个试验品，让我们的科研成果，在最短的时间内，转化为战场上的胜利。"
-
   FRA_revolutionary_bases_abroad:0 "海外革命根据地"
   FRA_revolutionary_bases_abroad_desc:0 "我们将与世界各地的盟友合作，建立数个“海外革命根据地”。这些基地将成为我们训练国际纵队、储备物资、支援周边地区革命的战略支点，将我们的力量辐射到全球。"
 
@@ -1883,12 +1917,18 @@
 
   FRA_toulon_naval_declaration:0 "土伦海军宣言"
   FRA_toulon_naval_declaration_desc:0 "我们的海军，在革命后长期处于一种被忽视的尴尬境地。现在，是时候为这支红色舰队指明未来的航向了。我们将于土伦——我们地中海舰队的心脏——向全世界发表一份庄严的《海军宣言》，阐明我们的海洋战略，重申我们保卫海岸线、突破封锁、将革命浪潮带向全世界的决心。"
+  Cof_naval_construction:0 "重启海军建设"
+  during_naval_construction:0 "§C如果我们在§Y$Cof_naval_construction$§!生效期间完成：§!"
 
   FRA_mediterranean_naval_base:0 "地中海海军基地"
   FRA_mediterranean_naval_base_desc:0 "地中海是我们通往非洲和中东同志的生命线。为了确保这条生命线的绝对安全，我们将对土伦和马赛的军港进行一次全面的现代化升级。全新的深水泊位、潜艇洞库和维修设施，将使这里成为整个地中海最坚固的红色海军堡垒。"
+  FRA_mediterranean_naval_base_tt:0 "这将占用我们[?5|Y.0]个§Y$industrial_complex$§!并花费[?180|Y.0]天\n当我们完成后，我们将得到："
+  Cof_mediterranean_naval_base_building:0 "地中海海军建设"
 
   FRA_british_naval_cooperation:0 "不列颠海军合作"
   FRA_british_naval_cooperation_desc:0 "英吉利海峡不应是隔阂，而应是连接我们与不列颠同志的纽带。我们将与不列颠联盟海军建立深度合作关系，共享情报、统一指挥、定期举行联合演习。一支协同作战的英法联合舰队，将彻底主宰欧洲的北海与大西洋，让任何敌人都不敢越雷池一步。"
+  FRA_british_naval_cooperation_tt:0 "这将占用我们[?3|Y.0]个§Y$industrial_complex$§!并花费[?90|Y.0]天\n当我们完成后，我们将得到："
+  Cof_british_naval_cooperation_building:0 "英吉利海峡海军建设"
 
   FRA_wolf_combat:0 "狼群战术"
   FRA_wolf_combat_desc:0 "面对敌人强大的水面舰队，正面对决是愚蠢的。我们将大力发展潜艇部队，并采用狡猾而致命的“狼群战术”。我们的潜艇将像狼群一样，在黑夜的掩护下，悄无声息地撕开敌人的护航编队，扼住资本主义世界的海上咽喉。"
@@ -1908,21 +1948,36 @@
 
   FRA_new_navy_old_school:0 "新海军，老方法"
   FRA_new_navy_old_school_desc:0 "在追求新技术的同事，我们不能忘记那些被证明行之有效的传统海战原则。我们将强调严格的纪律、精确的炮术和无畏的勇气。一支由意志坚定的水兵操控的、纪律严明的舰队，即便装备稍显落后，也能战胜精神涣散的敌人。"
+  FRA_new_navy_old_school_tt:0 "§G如果§Y[NFA.GetName]§!发生了大规模叛逃，我们将有机会重新启用一部分旧共和国的海军官兵§!"
 
   FRA_brest_naval_college:0 "布雷斯特海军学院"
   FRA_brest_naval_college_desc:0 "我们将重振历史悠久的布雷斯特海军学院，使其成为培养红色海军军官的摇篮。在这里，未来的舰长们将学习最经典的海战理论，接受最严格的航海训练，并被灌输对公社绝对忠诚的信念。"
+  FRA_brest_naval_college_tt:0 "我们将在§Y[983.GetName]§!建设§Y$landmark_brest_naval_college$§!。\n其效果为：\n $MODIFIER_NAVY_ADVISOR_COST_FACTOR$：[?-0.25|-=.0%]\n $MODIFIER_XP_GAIN_NAVY_FACTOR$：[?0.15|+=.1%]\n $MODIFIER_NAVAL_CRITICAL_RECEIVE_CHANCE_FACTOR$：[?-0.25|-=.1%]"
+  landmark_brest_naval_college:0 "布雷斯特海军学院"
+  landmark_brest_naval_college_desc:0 ""
 
   FRA_handling_butchers_cleaver_with_ease:0 "游刃有余"
   FRA_handling_butchers_cleaver_with_ease_desc:0 "我们的舰队主力，将由装备精良、火力强大的巡洋舰组成。它们就像屠夫手中的利刃，既能为我们的主力舰队提供掩护，也能独立执行破袭和护航任务。一支“游刃有余”的巡洋舰队，将是我们制霸大洋的多面手。"
+  tech_handling_butchers_cleaver_with_ease:0 "游刃有余"
+
 
   FRA_decisive_battle:0 "总决战"
   FRA_decisive_battle_desc:0 "我们将不再回避与敌人主力舰队的决战。通过集中我们所有的战列舰、巡洋舰和航空力量，我们将在选定的时间与海域，寻求与敌人进行一场决定性的“总决战”。一场辉煌的胜利，将彻底扫清我们在海上的所有威胁，为革命的全球播撒扫清障碍。"
+  ships_at_battle_start_tt:0 "$MODIFIER_SHIPS_AT_BATTLE_START_FACTOR$：$RIGHT|+=%1$"
 
   FRA_seagull_project:0 "海鸥计划"
   FRA_seagull_project_desc:0 "航空母舰，是海战的未来。我们将启动雄心勃勃的“海鸥计划”，建造我们自己的航空母舰。这些移动的海上机场，将把我们的空中力量延伸到大洋的任何一个角落，成为我们红色海军最锐利的矛头。"
+  FRA_seagull_project_tt:0 "§G这将允许我们解锁§Y$FRA_the_ark_project$§!§!"
 
   FRA_birds_nest_on_the_sea:0 "海上鸟巢"
   FRA_birds_nest_on_the_sea_desc:0 "我们将为我们的航空母舰战斗群，配备最先进的舰载战斗机和鱼雷攻击机。这些“海上鸟巢”里飞出的钢铁雄鹰，将为我们的舰队撑起可靠的防空保护伞，并对敌人的水面舰艇发动毁灭性的打击。"
+  tech_birds_nest_on_the_sea:0 "海上鸟巢"
+  carrier_traffic_tt:0 "$MODIFIER_CARRIER_TRAFFIC$：$RIGHT|+=%0$"
+  fighter_sortie_efficiency_tt:0 "$MODIFIER_CARRIER_FIGHTER_SORTIE_EFFICIENCY_FACTOR$：$RIGHT|+=%0$"
+  carrier_capacity_penalty_reduction_tt:0 "$MODIFIER_CARRIER_CAPACITY_PENALTY_REDUCTION$：$RIGHT|-=%1$"
+  navy_carrier_air_attack_factor_tt:0 "$MODIFIER_NAVAL_CARRIER_AIR_ATTACK_FACTOR$：$RIGHT|+=%2$"
+  navy_carrier_air_targetting_factor_tt:0 "$MODIFIER_NAVAL_CARRIER_AIR_TARGETTING_FACTOR$：$RIGHT|+=%2$"
+  navy_carrier_air_agility_factor_tt:0 "$MODIFIER_NAVAL_CARRIER_AIR_AGILITY_FACTOR$：$RIGHT|+=%2$"
 
   FRA_big_fish_eats_small_fish:0 "大鱼吃小鱼"
   FRA_big_fish_eats_small_fish_desc:0 "我们的战列舰将是无可争议的海上霸主。更大口径的主炮，更厚重的装甲——我们将信奉“大鱼吃小鱼”的简单真理，用绝对的火力优势和装甲优势，将任何敌人的水面舰艇都送入海底。"
@@ -1935,12 +1990,14 @@
 
   FRA_wild_goose_breakthrough:0 "雁型突破"
   FRA_wild_goose_breakthrough_desc:0 "在舰队决战中，我们将采用大胆的“雁型突破”战术。以我们最强大的战列舰或航空母舰为矛头，组成锋利的V字形编队，高速突入敌人的舰队核心，瘫痪其指挥，打乱其阵型，在近距离的混战中，用我们更强大的火力和更顽强的意志将其彻底击溃。"
+  tech_wild_goose_breakthrough:0 "雁型突破"
 
   FRA_coordinated_action_land_and_sea:0 "海陆协同作战"
   FRA_coordinated_action_land_and_sea_desc:0 "我们的海军将不再是孤立的军种，而是陆上作战的有力延伸。无论是为登陆部队提供精确的舰炮火力支援，还是利用舰载机轰炸敌人的纵深目标，我们都将实现海陆之间的无缝协同，将敌人拖入立体战争的汪洋大海。"
 
-  FRA_land_cruiser:0 "陆地巡洋舰"
+  FRA_land_cruiser:0 "登录装甲力量"
   FRA_land_cruiser_desc:0 "我们将研发一种全新的、专门用于两栖登陆作战的重型坦克——“陆地巡洋舰”。它们拥有厚重的装甲和强大的火炮，能够在登陆的第一时间，就为滩头部队建立起坚不可摧的移动堡垒，将敌人的反击彻底碾碎。"
+  tech_land_cruiser:0 "登录装甲力量"
 
   FRA_theft_of_military_technology_from_germany:0 "对德军事技术窃取"
   FRA_theft_of_military_technology_from_germany_desc:0 "德意志的军事技术固然先进，但这并非无法企及。我们将派遣最精锐的特工，通过渗透、收买和窃取等一切手段，获取他们最新的技术图纸和研究成果。用敌人的智慧来武装我们自己，将是对他们最大的嘲讽。"
@@ -1949,23 +2006,28 @@
   Cof_theft_tech_from_germany_remove:0 "当我们的科技水平领先于§Y[GER.GetName]§!，该国家精神就会移除"
   FRA_theft_of_military_technology_from_germany_tt:0 "\n在该国家精神生效期间，我们将获得一个§Y临时§!的§G科研槽§!"
 
-  FRA_radio_refinement:0 "精进无线电"
-  FRA_radio_refinement_desc:0 "我们将大力投资于无线电技术的精进。无论是更清晰的语音通话，还是更难被破译的加密方式，抑或是更远的通讯距离，我们都将力求做到最好。在信息化的现代海战中，掌握无线电优势，就等于掌握了胜利的先机。"
-
   FRA_peoples_water_army:0 "人民海军"
   FRA_peoples_water_army_desc:0 "我们的海军，其根基在于人民。我们将从沿海的渔民和码头工人中，招募和培养海军后备力量。一支深深植根于人民、得到人民拥护的“人民海军”，将拥有取之不尽的力量源泉。"
 
   FRA_guardians_of_the_oceans:0 "大洋卫士"
   FRA_guardians_of_the_oceans_desc:0 "我们的海军将不仅仅是战争的工具，更是保卫世界革命航运线、维护海洋和平的“大洋卫士”。我们将向全世界的同志们承诺，任何悬挂着红旗的船只，都将在我们的保护之下，自由地航行在世界的每一个角落。"
+  FRA_guardians_of_the_oceans_tt:0 "现有的$radical_socialist$、$syndicalist$和$totalist$国家总数>20（目前：[?numt|Y.0]）"
 
   FRA_central_fluid_power_research_institute:0 "中央流体动力学研究机构"
   FRA_central_fluid_power_research_institute_desc:0 "飞行与航行，本质上都是对流体动力学的征服。我们将建立一个国家级的“中央流体动力学研究机构”，汇集最顶尖的科学家和工程师，为我们的飞机和舰船，设计出更符合空气动力学和流体力学的外形，以追求极致的速度与效率。"
+  Cof_central_fluid_power_research_institute:0 "中央流体动力学研究机构"
 
   FRA_alpine_hollow_experimental_base:0 "阿尔卑斯空洞基地"
   FRA_alpine_hollow_experimental_base_desc:0 "为了进行最尖端的、最机密的航空航天研究，我们将在阿尔卑斯山的深处，挖掘和建造一个巨大的、与世隔绝的“空洞实验基地”。在这里，我们将测试最大胆、最疯狂的飞行器设想，而不必担心被敌人的间谍所窥探。"
+  VICTORY_POINTS_9745:0 "莫达讷"
+  landmark_alpine_hollow_experimental_base:0 "阿尔卑斯空洞基地"
+  landmark_alpine_hollow_experimental_base_desc:0 ""
+  FRA_central_fluid_power_research_institute_tt:0 "我们将在§Y[735.GetName]§!建设§Y$landmark_alpine_hollow_experimental_base$§!。\n其效果为：\n $MODIFIER_XP_GAIN_AIR$：[?0.1|+=.1%]\n $MODIFIER_AIR_EQUIPMENT_UPGRADE_XP_COST$：[?-0.25|-=.0%]\n $specialization_air_speed_factor$：[?0.25|+=.0%]"
 
   FRA_vehicle_concept:0 "飞行器设想"
   FRA_vehicle_concept_desc:0 "我们将鼓励我们的工程师和设计师们，挣脱传统思维的束缚，大胆地提出各种全新的“飞行器设想”。无论是能垂直起降的战斗机，还是能贴地飞行的攻击机，任何能够颠覆未来空战的创意，都将得到我们的支持和资助。"
+  FRA_vehicle_concept_tt:0 "§G我们现在可以开始对飞行器进行研究§!"
+  during_vehicle_concept:0 "我们正在进行飞行器研究"
 
   FRA_operational_seaplane:0 "攻击性海上飞机"
   FRA_operational_seaplane_desc:0 "我们将研发一种全新的、能够从水面起降的远程攻击机。这些“攻击性海上飞机”能够依托我们广阔的海岸线和内陆湖泊进行部署，对敌人的舰队和港口发动出其不意的打击，成为我们海空一体战中一支灵活的奇兵。"
@@ -1993,6 +2055,7 @@
 
   FRA_hill_top_air_force_academy:0 "山巅空军学院"
   FRA_hill_top_air_force_academy_desc:0 "我们将为未来的红色飞行员，建立一所坐落于比利牛斯山巅的空军学院。在这里，严酷的自然环境将磨炼他们的意志，复杂的山地气流将考验他们的技巧。从这所“山巅空军学院”毕业的飞行员，将是世界上最坚韧、最优秀的空中战士。"
+  experience_gain_air_factor_tt:0 "$MODIFIER_XP_GAIN_AIR_FACTOR$：$RIGHT|+=1%$"
 
   FRA_lead_the_battlefield:0 "主宰战场"
   FRA_lead_the_battlefield_desc:0 "制空权，就是胜利的保证。我们的空军战略，将以夺取和保持战场上空的绝对制空权为核心。通过优势数量的战斗机和先进的雷达预警体系，我们将彻底“主宰战场”，让我们的陆海军同志们，可以不必担心任何来自天空的威胁。"
@@ -2023,9 +2086,12 @@
 
   FRA_stealth_parachuting:0 "隐秘式伞击"
   FRA_stealth_parachuting_desc:0 "我们的伞兵将在最深的黑夜，从最高的高空，进行“隐秘式伞击”。通过使用先进的导航设备和低噪音的运输机，他们将在敌人毫无察觉的情况下，降落在其心脏地带，像一把尖刀，直插敌人的要害。"
+  tech_stealth_parachuting:0 "隐秘式伞击"
 
   FRA_futurism_and_flight:0 "未来主义与飞行"
   FRA_futurism_and_flight_desc:0 "飞行，本身就是一种超越了现实的、充满未来主义精神的艺术。我们将鼓励我们的飞机设计师，从未来主义的美学中汲取灵感，设计出外形更具流线型、更具攻击性的飞机。我们的战机，不仅要是杀戮的机器，更应是展现革命美学的艺术品。"
+  air_max_speed_factor_tooltip:0 "$MODIFIER_AIR_MAX_SPEED_FACTOR$：$RIGHT|+=%1$"
+  Cof_futurism_air_fanaticism:0 "未来主义狂热"
 
   FRA_another_victory_for_syndicalists:0 "又一次工团派的胜利"
   FRA_another_victory_for_syndicalists_desc:0 "选举的喧嚣已经尘埃落定，人民再次选择了我们——工团派，革命的基石与公社的掌舵人。这并非终点，而是一个全新的起点。我们必须向全法兰西证明，他们的信任没有被错付。是时候弥合分歧，巩固我们的革命成果，并为公社的未来，规划一条稳定而光明的道路了。"
@@ -2518,9 +2584,8 @@
   elite_infantry:0 "精锐步兵"
 
   landmark_peoples_academy_of_sciences:0 "法兰西人民科学院"
-  landmark_peoples_academy_of_sciences_tt:0 "该设施在每月将发展[?0.5|.1G]的$econ_innovate$"
   landmark_peoples_academy_of_sciences_desc:0 "§g作为公社科学研究的最高殿堂，法兰西人民科学院象征着革命对理性与进步的承诺，无数前沿的科学思想与技术在此诞生，致力于将知识的力量从象牙塔中解放出来，为全体人民服务。§!"
-  FRA_peoples_academy_of_sciences_tt:0 "我们将在§Y[16.GetName]§!建设§Y$landmark_peoples_academy_of_sciences$§!。\n其效果为：\n  $MODIFIER_RESEARCH_SPEED_FACTOR$：[?0.15|+=.2%]  $landmark_peoples_academy_of_sciences_tt$"
+  FRA_peoples_academy_of_sciences_tt:0 "我们将在§Y[16.GetName]§!建设§Y$landmark_peoples_academy_of_sciences$§!。\n其效果为：\n  $MODIFIER_RESEARCH_SPEED_FACTOR$：[?0.15|+=.2%]\n  该设施在每月将发展[?0.5|.1G]的$econ_innovate$"
 
 
 

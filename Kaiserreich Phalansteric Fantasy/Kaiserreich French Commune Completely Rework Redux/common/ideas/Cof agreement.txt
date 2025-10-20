@@ -563,7 +563,7 @@ ideas = {
 		Cof_ard4_srmorization = {
 			modifier = {
 				army_armor_defence_factor = 0.1
-				supply_consumption_factor = -0.1
+				supply_consumption_factor = 0.1
 				monthly_change_aequip = 0.3
 			}
 		}
@@ -700,6 +700,165 @@ ideas = {
 				land_reinforce_rate = 0.1
 				coordination_bonus = 0.1
 				army_org_factor = 0.1
+			}
+		}
+		#14
+		Cof_armor_research_funding = {
+			modifier = {
+				economy_power_factor = -20
+				monthly_change_aequip = 0.3
+			}
+			research_bonus = {
+                armor = 0.33
+			}
+		}
+		#15
+		Cof_dominant_firepower = {
+			modifier = {
+				army_artillery_attack_factor = 0.1
+				army_artillery_defence_factor = 0.05
+			}
+			research_bonus = {
+                artillery = 0.25
+			}
+			equipment_bonus = {
+				artillery = {
+					soft_attack = 0.05
+					instant = yes
+				}
+			}
+		}
+		Cof_dominant_firepower_left = {
+			name = Cof_dominant_firepower
+			modifier = {
+				max_dig_in_factor = 0.1
+				dig_in_speed_factor = 0.1
+				army_artillery_attack_factor = 0.1
+				army_artillery_defence_factor = 0.1
+			}
+			research_bonus = {
+                artillery = 0.25
+			}
+			equipment_bonus = {
+				artillery = {
+					soft_attack = 0.1
+					hard_attack = 0.1
+					instant = yes
+				}
+			}
+		}
+		Cof_dominant_firepower_right = {
+			name = Cof_dominant_firepower
+			modifier = {
+				breakthrough_factor = 0.05
+				army_attack_speed_factor = 0.25
+				army_artillery_attack_factor = 0.15
+				army_artillery_defence_factor = 0.05
+			}
+			research_bonus = {
+                artillery = 0.25
+			}
+			equipment_bonus = {
+				artillery = {
+					soft_attack = 0.15
+					hard_attack = 0.05
+					instant = yes
+				}
+			}
+		}
+		#16
+		Cof_sport_combat = {
+			modifier = {
+				army_speed_factor = 0.15
+				army_attack_speed_factor = 0.15
+				army_org_regain = 0.1
+				no_supply_grace = 48
+			}
+		}
+		#17
+		Cof_steel_flood = {
+			modifier = {
+				army_armor_speed_factor = 0.1
+				army_armor_defence_factor = 0.1
+			}
+			equipment_bonus = {
+				armor = {
+					build_cost_ic = -0.15
+					soft_attack = 0.05
+					hard_attack = 0.05
+					instant = yes
+				}
+			}
+		}
+		Cof_red_thunder = {
+			modifier = {
+				army_armor_speed_factor = 0.15
+				army_armor_attack_factor = 0.1
+				army_armor_defence_factor = 0.15
+			}
+			equipment_bonus = {
+				armor = {
+					build_cost_ic = -0.2
+					soft_attack = 0.1
+					hard_attack = 0.1
+					instant = yes
+				}
+			}
+		}
+		#18
+		Cof_three_armed_force = {
+			modifier = {
+				army_bonus_air_superiority_factor = 0.1
+				naval_invasion_planning_bonus_speed = 0.15
+				coordination_bonus = 0.1
+				shore_bombardment_bonus = 0.1
+				army_org_factor = 0.1
+			}
+		}
+		#19
+		Cof_special_military_category = {
+			modifier = {
+				special_forces_cap = 0.75
+				special_forces_training_time_factor = 0.25
+				special_forces_attack_factor = 0.15
+				special_forces_defence_factor = 0.2
+				special_forces_no_supply_grace = 72
+			}
+		}
+		#20
+		Cof_travel_thousand_miles_a_day = {
+			modifier = {
+				army_speed_factor = 0.1
+				mechanized_attack_factor = 0.1
+				mechanized_defence_factor = 0.15
+				army_attack_speed_factor = 0.1
+			}
+			equipment_bonus = {
+				mechanized = {
+					build_cost_ic = -0.1
+					soft_attack = 0.05
+					hard_attack = 0.05
+					instant = yes
+				}
+			}
+		}
+		#21
+		Cof_put_to_our_advantage = {
+			modifier = {
+				army_fuel_consumption_factor = -0.15
+				attrition = -0.1
+				out_of_supply_factor = -0.1
+				equipment_capture_factor = 0.25
+			}
+		}
+		#22
+		Cof_appraisal_advancement = {
+			modifier = {
+				war_support_factor = -0.15
+				political_power_factor = 0.1
+				experience_gain_army_factor = 0.15
+				army_org_factor = 0.05
+				monthly_change_atrain = 0.5
 			}
 		}
 
@@ -1551,7 +1710,7 @@ ideas = {
 			modifier = { 
 				conscription = 0.05
 				industrial_capacity_factory = 0.05
-				production_speed_buildings_factor = 0.05
+				industrial_capacity_dockyard = 0.05
 				production_speed_buildings_factor = 0.025
 				training_time_factor = 0.15
 				monthly_change_eib = 0.3

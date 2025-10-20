@@ -930,10 +930,134 @@ ideas = {
 
 
 
+        #速胜论
+        Cof_instant_victory_theory = {
+            picture = generic_phoenix
+            cancel = { has_war = no }
+            on_remove = {
+                if =  {
+                    limit = { has_war = yes }
+                    add_timed_idea = { idea = Cof_instant_victory_theory_failed days = 240 } 
+                }
+                else = { add_ideas = Cof_instant_victory_theory_success }
+            }
+            modifier = {
+                army_speed_factor = 0.2
+                army_attack_speed_factor = 0.3
+                army_attack_factor = 0.1
+                army_defence_factor = -0.15
+                org_loss_when_moving = -0.15
+                max_planning = -0.2
+                max_dig_in_factor = -0.3
+                custom_modifier_tooltip = Cof_instant_victory_theory_tt
+            }
+        }
 
+        Cof_instant_victory_theory_failed = {
+            picture = generic_desertion
+            modifier = {
+                army_speed_factor = -0.25
+                army_attack_speed_factor = -0.4
+                army_attack_factor = -0.2
+                army_defence_factor = -0.25
+                org_loss_when_moving = 0.2
+                max_planning = -0.25
+                max_dig_in_factor = -0.4
+            }
+        }
 
+        Cof_instant_victory_theory_success = {
+            picture = generic_phoenix
+            modifier = {
+                army_speed_factor = 0.1
+                army_attack_speed_factor = 0.1
+                army_attack_factor = 0.05
+                org_loss_when_moving = -0.1
+            }
+        }
 
+        #意志的胜利
+        Cof_triumph_of_will = {
+            picture = army_cooperation
+            modifier = {
+                army_speed_factor = -0.4
+                breakthrough_factor = -0.25
+                army_org_factor = 0.1
+                max_dig_in = 20
+                max_dig_in_factor = 0.2
+                dig_in_speed_factor = 0.25
+                army_attack_factor = -0.25
+                army_defence_factor = 0.1
+            }
+        }
 
+        #海军建设
+        Cof_naval_construction = {
+            picture = liberty_ships_focus
+            modifier = {
+                civilian_factory_use = 6
+                industrial_capacity_dockyard = 0.15
+                economy_power_factor = -10
+            }
+            equipment_bonus = {
+                battleship = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+                battle_cruiser = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+                heavy_cruiser = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+                submarine = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+            }
+        }
+
+        Cof_central_fluid_power_research_institute = {
+            picture = generic_air_research
+            modifier = {
+                economy_power_factor = -10
+            }
+            research_bonus = {
+                air_equipment = 0.2
+                radar_tech = 0.15
+            }
+        }
+
+        Cof_central_fluid_power_research_institute2 = {
+            name = Cof_central_fluid_power_research_institute
+            picture = generic_air_research
+            modifier = {
+                economy_power_factor = -10
+            }
+            research_bonus = {
+                air_equipment = 0.25
+                radar_tech = 0.15
+            }
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+					build_cost_ic = -0.1
+					instant = yes
+				}
+            }
+        }
+
+        #未来主义狂热
+        Cof_futurism_air_fanaticism = {
+            picture = air_support_focus
+            modifier = {
+                political_power_factor = -0.25
+            }
+            research_bonus = {
+                air_equipment = 0.33
+            }
+        }
     }
 
     hidden_ideas = {

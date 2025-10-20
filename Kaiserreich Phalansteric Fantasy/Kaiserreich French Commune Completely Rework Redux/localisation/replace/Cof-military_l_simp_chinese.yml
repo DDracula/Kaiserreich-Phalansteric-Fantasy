@@ -203,7 +203,7 @@
   has_mili_focus:0 "正在进行训练"
   Cof_army_routine_training:0 "常规训练"
   army_training_tt:0 "§G训练开启后将会重复进行§!"
-
+  Cof_army_theory_development:0 "军事派系发展"
 
 
 
@@ -224,15 +224,33 @@
   army_willing_extra:0 "[army_break_up_the_whole_into_pieces]"
   army_break_up_the_whole_into_pieces_buff:0 "\n- $MODIFIER_COMBAT_WIDTH_FACTOR$：[?aw2_show|-=%.1]" 
 
-  Cof_army_theory_no_buff:0 "-$MODIFIER_XP_GAIN_ARMY_FACTOR$：[?atno1_show|+=%.1]\n- $MODIFIER_TRAINING_TIME_FACTOR$：[?atno2_show|-=%.1]\n- $MODIFIERS_ARMY_CORE_ATTACK_FACTOR$：[?atno3_show|+=%.1]\n- $MODIFIERS_ARMY_CORE_DEFENCE_FACTOR$：[?atno4_show|+=%.1]\n"
-  Cof_army_theory_panzer_group_buff:0 "-$MODIFIERS_ARMY_ARMOR_ATTACK_FACTOR$：[?atsynd1t1_show|+=%.1]\n- $MODIFIERS_ARMY_ARMOR_DEFENCE_FACTOR$：[?atsynd1t2_show|+=%.1]\n"
-  Cof_army_theory_blitz_delite_buff:0 "-$MODIFIER_ARMY_ARMOR_SPEED_FACTOR$：[?atsynd2t1_show|+=%.1]\n- $MODIFIER_BREAKTHROUGH$：[?atsynd2t2_show|+=%.1]\n"
-  Cof_army_theory_motorization_buff:0 "-$MODIFIER_ARMY_SPEED_FACTOR$：[?atoppo1t1_show|+=%.1]\n- $MODIFIER_ATTRITION_FACTOR$：[?atoppo1t2_show|-=%.1]\n- $MODIFIER_SUPPLY_CONSUMPTION_FACTOR$：[?atoppo1t3_show|-=%.1]\n"
-  Cof_army_theory_infanty_artillery_buff:0 "-$MODIFIERS_ARMY_INFANTRY_ATTACK_FACTOR$：[?atoppo2t1_show|+=%.1]\n- $MODIFIERS_ARMY_INFANTRY_DEFENCE_FACTOR$：[?atoppo2t2_show|+=%.1]\n- $MODIFIERS_ARMY_ARTILLERY_ATTACK_FACTOR$：[?atoppo2t3_show|+=%.1]\n- $MODIFIERS_ARMY_ARTILLERY_DEFENCE_FACTOR$：[?atoppo2t4_show|+=%.1]\n"
-  Cof_army_theory_centrailed_command_buff:0 "-$MODIFIER_MAX_PLANNING$：[?atjaco1t1_show|+=%.1]\n- $MODIFIER_PLANNING_SPEED$：[?atjaco1t2_show|+=%.1]\n"
-  Cof_army_theory_defensive_countattack:0 "-$MODIFIER_MAX_DIG_IN_FACTOR$：[?atjaco2t1_show|+=%.1]\n- $MODIFIER_DIG_IN_SPEED_FACTOR$：[?atjaco2t2_show|-=%.1]\n- $MODIFIER_MAX_DIG_IN$：[?atjaco2t3_show|-=%.1]\n"
-  Cof_army_theory_nco_initiative_buff:0 "-$MODIFIER_ARMY_ORG_FACTOR$：[?atsore1t1_show|+=%.1]\n- $MODIFIER_ARMY_ORG_REGAIN$：[?atsore1t2_show|+=%.1]\n- $MODIFIER_ORG_LOSS_WHEN_MOVING$：[?atsore1t3_show|-=%.1]\n- $MODIFIER_INITIATIVE_FACTOR$：[?atsore1t4_show|+=%.1]\n"
-  Cof_army_theory_small_combat_buff:0 "-$MODIFIER_COMBAT_WIDTH_FACTOR$：[?atsore2t1_show|-=%.1]\n- $MODIFIER_TERRAIN_PENALTY_REDUCTION$：[?atsore1t2_show|+=%.1]\n"
+  Cof_army_theory_no_buff:0 "- $MODIFIER_XP_GAIN_ARMY_FACTOR$：[?atno1_show|+=%.1]\n- $MODIFIER_TRAINING_TIME_FACTOR$：[?atno2_show|-=%.1]\n- $MODIFIERS_ARMY_CORE_ATTACK_FACTOR$：[?atno3_show|+=%.1]\n- $MODIFIERS_ARMY_CORE_DEFENCE_FACTOR$：[?atno4_show|+=%.1]\n"
+  
+  Cof_army_theory_panzer_group_buff:0 "- $MODIFIERS_ARMY_ARMOR_ATTACK_FACTOR$：[?atsynd1t1_show|+=%.1]\n- $MODIFIERS_ARMY_ARMOR_DEFENCE_FACTOR$：[?atsynd1t2_show|+=%.1]$army_theory_panzer_group_extra$\n"
+  Cof_army_theory_blitz_delite_buff:0 "- $MODIFIER_ARMY_ARMOR_SPEED_FACTOR$：[?atsynd2t1_show|+=%.1]\n- $MODIFIER_BREAKTHROUGH$：[?atsynd2t2_show|+=%.1]$army_theory_blitz_delite_extra$\n"
+  Cof_army_theory_motorization_buff:0 "- $MODIFIER_ARMY_SPEED_FACTOR$：[?atoppo1t1_show|+=%.1]\n- $MODIFIER_ATTRITION_FACTOR$：[?atoppo1t2_show|-=%.1]\n- $MODIFIER_SUPPLY_CONSUMPTION_FACTOR$：[?atoppo1t3_show|-=%.1]$army_theory_motorization_extra$\n"
+  Cof_army_theory_infanty_artillery_buff:0 "- $MODIFIERS_ARMY_INFANTRY_ATTACK_FACTOR$：[?atoppo2t1_show|+=%.1]\n- $MODIFIERS_ARMY_INFANTRY_DEFENCE_FACTOR$：[?atoppo2t2_show|+=%.1]\n- $MODIFIERS_ARMY_ARTILLERY_ATTACK_FACTOR$：[?atoppo2t3_show|+=%.1]\n- $MODIFIERS_ARMY_ARTILLERY_DEFENCE_FACTOR$：[?atoppo2t4_show|+=%.1]$army_theory_infanty_artillery_extra$\n"
+  Cof_army_theory_centrailed_command_buff:0 "- $MODIFIER_MAX_PLANNING$：[?atjaco1t1_show|+=%.1]\n- $MODIFIER_PLANNING_SPEED$：[?atjaco1t2_show|+=%.1]$army_centrailed_command_extra$\n"
+  Cof_army_theory_defensive_countattack_buff:0 "- $MODIFIER_MAX_DIG_IN_FACTOR$：[?atjaco2t1_show|+=%.1]\n- $MODIFIER_DIG_IN_SPEED_FACTOR$：[?atjaco2t2_show|-=%.1]\n- $MODIFIER_MAX_DIG_IN$：[?atjaco2t3_show|-=%.1]$army_theory_defensive_countattack_extra$\n"
+  Cof_army_theory_nco_initiative_buff:0 "- $MODIFIER_ARMY_ORG_FACTOR$：[?atsore1t1_show|+=%.1]\n- $MODIFIER_ARMY_ORG_REGAIN$：[?atsore1t2_show|+=%.1]\n- $MODIFIER_ORG_LOSS_WHEN_MOVING$：[?atsore1t3_show|-=%.1]\n- $MODIFIER_INITIATIVE_FACTOR$：[?atsore1t4_show|+=%.1]$army_theory_nco_initiative_extra$\n"
+  Cof_army_theory_small_combat_buff:0 "- $MODIFIER_COMBAT_WIDTH_FACTOR$：[?atsore2t1_show|-=%.1]\n- $MODIFIER_TERRAIN_PENALTY_REDUCTION$：[?atsore1t2_show|+=%.1]$army_theory_small_combat_extra$\n"
+
+  army_theory_panzer_group_extra:0 "[atencourage1_content]"
+  atencourage1_buff:0 "\n- $MODIFIER_ARMY_FUEL_CONSUMPTION_FACTOR$：[?atsynd1t3_show|-=%.2]"
+  army_theory_blitz_delite_extra:0 "[atencourage2_content]"
+  atencourage2_buff:0 "\n- $MODIFIERS_ARMY_ARMOR_ATTACK_FACTOR$：[?atsynd2t3_show|+=%.1]"
+  army_theory_motorization_extra:0 "[atencourage3_content]"
+  atencourage3_buff:0 "\n- $MODIFIER_MECHANIZED_ATTACK_FACTOR$：[?atoppo1t4_show|+=%.1]\n- $MODIFIER_MECHANIZED_DEFENCE_FACTOR$：[?atoppo1t5_show|+=%.1]"
+  army_theory_infanty_artillery_extra:0 "[atencourage4_content]"
+  atencourage4_buff:0 "\n- $MODIFIER_BREAKTHROUGH$：[?atoppo2t5_show|+=%.1]"
+  army_centrailed_command_extra:0 "[atencourage5_content]"
+  atencourage5_buff:0 "\n- $MODIFIER_MAX_PLANNING_FACTOR$：[?atjaco1t3_show|+=%.1]\n- $MODIFIER_COMMAND_POWER_GAIN$：[?atjaco1t4_show|+=.2]"
+  army_theory_defensive_countattack_extra:0 "[atencourage6_content]"
+  atencourage6_buff:0 "\n- $MODIFIER_LAND_REINFORCE_RATE$：[?atjaco2t4_show|+=%.1]"
+  army_theory_nco_initiative_extra:0 "[atencourage7_content]"
+  atencourage7_buff:0 "\n- $MODIFIER_ARMY_ATTACK_SPEED_FACTOR$：[?atsore1t5|+=%.1]"
+  army_theory_small_combat_extra:0 "[atencourage8_content]"
+  atencourage8_buff:0 "\n- $MODIFIERS_ARMY_ATTACK_FACTOR$：[?atsore1t5|+=%.1]"
 
   Cof_army_equipment_buff_infantry_equipment1:0 "- §Y$infantry_equipment$§!：$STAT_COMMON_BUILD_COST_IC$[?0.15|-=%.2]，$STAT_ARMY_SOFT_ATTACK$[?-0.1|+=%.2]，$STAT_ARMY_DEFENSE$[?-0.05|+=%.2]"
   Cof_army_equipment_buff_infantry_equipment2:0 "- §Y$infantry_equipment$§!：$STAT_COMMON_BUILD_COST_IC$[?0.1|-=%.2]，$STAT_ARMY_SOFT_ATTACK$[?-0.1|+=%.2]"
@@ -282,4 +300,206 @@
   cofmilitary.1.title:0 "土伦海军宣言"
   cofmilitary.1.desc:0 "1937年3月31日，土伦海军基地。在海军人民委员弗朗索瓦·达尔朗的主持下，一份关于公社海军力量现状的评估报告被呈递至公共安全委员会与劳工总议会的联席会议。会议室外，港内停泊的舰队主力依然是世界大战时期的老旧舰船，只有少数几艘新式巡洋舰点缀其间，船体上薄薄的油漆难以掩盖长年缺乏维护的锈迹。\n\n报告开篇便直指公社成立以来长期存在的战略短板：对海洋力量的系统性忽视。自革命以来，面对东面德意志帝国的陆上威胁，几乎所有的军事资源与工业产能都被优先投入到陆军的现代化建设中。海军，作为旧政权殖民扩张的象征，其预算被一再削减，技术人员流失严重，大型船坞的维护工作也一再推迟。舰队的演习范围从未真正超出过地中海的西部，其战略定位已从一支远洋力量退化为一支仅具象征意义的海岸警备队。\n\n报告的核心内容来自于对外安全总局（DSRG）的最新情报：德意志帝国海军的“Z计划”正在稳步推进，每年都有新的主力舰下水；而在阿尔及尔，流亡政府在美国和加拿大的援助下，其舰队规模和现代化水平也在快速恢复。报告总结道：“同志们，我们不能再将我们的海岸线和至关重要的海上贸易线暴露在敌人的威胁之下。陆地上的胜利无法保证公社的安全，一个被封锁的革命国家是无法长久生存的。”\n\n经过简短而严肃的讨论，与会代表一致通过了这份报告的核心结论，并将其作为指导公社未来海军建设的纲领性文件，即《土伦宣言》。该宣言的发表，标志着公社海军政策的根本性转变。现在，关于如何重建一支能够捍卫革命果实的海军的讨论，正式提上了议程。"
   cofmilitary.1.a:0 "大海，我们回来了。"
+
+  cofmilitary.2.title:0 "军事理论研讨方向？"
+  cofmilitary.2.desc:0 ""
+  cofmilitary.2.a:0 "装甲是未来的主导力量。"
+  cofmilitary.2.b:0 "速度才是战争的关键。"
+  cofmilitary.2.c:0 "机动性的重要性不言而喻。"
+  cofmilitary.2.d:0 "火炮是革命的象征。"
+  cofmilitary.2.e:0 "中央计划在军事上同等重要。"
+  cofmilitary.2.f:0 "防御是最好的进攻。"
+  cofmilitary.2.g:0 "人的能动性被长久地忽略了。"
+  cofmilitary.2.h:0 "士兵们知道自己最擅长什么。"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

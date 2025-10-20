@@ -6,7 +6,7 @@ focus_tree = {
 	country = {
 		factor = 0 
 		modifier = {
-			add = 500
+			add = 500 
 			tag = FRA
 		}  
 	}
@@ -8745,6 +8745,7 @@ focus_tree = {
 		prerequisite = { focus = FRA_new_shipbuilding_program }
 		prerequisite = { focus = FRA_military_industry }
 		available = {
+			has_completed_focus = FRA_seagull_project
 			num_of_naval_factories > 25
 
 			set_temp_variable = { target_t = 1 }
@@ -9613,6 +9614,24 @@ focus_tree = {
 			set_temp_variable = { atimp7c = 0 }
 			set_temp_variable = { atimp8c = 0 }
 			Cof_army_theory_implementation_change = yes
+
+			set_variable = { atencourage1 = 0 }
+			set_variable = { atencourage2 = 0 }
+			set_variable = { atencourage3 = 0 }
+			set_variable = { atencourage4 = 0 }
+			set_variable = { atencourage5 = 0 }
+			set_variable = { atencourage6 = 0 }
+			set_variable = { atencourage7 = 0 }
+			set_variable = { atencourage8 = 0 }
+
+			custom_effect_tooltip = tooltip_white_line
+			every_army_leader = {
+				add_max_trait = 1
+				add_planning = 1
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_army_theory_encourage	
 		}
 	}
 
@@ -10112,6 +10131,7 @@ focus_tree = {
 				set_technology = { tech_regularization_of_militia = 1 popup = no }
 			}
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_military
 			set_temp_variable = { pop_aoc = -10 }
 			set_temp_variable = { pop_anc = 2 }
@@ -10348,7 +10368,20 @@ focus_tree = {
 		y = 4
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 8 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 0 }
+			Cof_army_reform_values_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_army_routine_training_improved
+			unlock_decision_tooltip = Cof_army_endurance_training
+			unlock_decision_tooltip = Cof_army_combat_training
+			unlock_decision_tooltip = Cof_army_upgrade_trainging_equipment
+			unlock_decision_tooltip = Cof_army_upgrade_trainging_place
 		}
 	}
 
@@ -10359,12 +10392,17 @@ focus_tree = {
 		prerequisite = { focus = FRA_ensuring_quality_of_integrated_training }
 		available = {
 			ard_trigger_dpecialization = yes
+
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 65 }
+			cof_military_target_more_than_x = yes
 		}
 		x = 8
 		y = 5
 		cost = 2
 		completion_reward = {
-
+			add_ideas = Cof_special_military_category
+			add_to_array = { array = FRA.cof_ar_bills value = 19 }
 		}
 	}
 
@@ -10373,11 +10411,30 @@ focus_tree = {
 		icon = GFX_focus_FRA_across_the_ocean
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_special_military_category }
+		available = {
+			has_tech = marines
+		}
 		x = 9
 		y = 6
 		cost = 2
 		completion_reward = {
+			if = {
+				limit = { NOT = { has_tech = marines2 } }
+				set_technology = { marines2 = 1 popup = yes } 
+			}
+			else_if = {
+				limit = { NOT = { has_tech = marines3 } }
+				set_technology = { marines3 = 1 popup = yes } 
+			}
 
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_across_the_ocean
+					EFFECT = tech_effect|tech_across_the_ocean
+				}
+				set_technology = { tech_across_the_ocean = 1 popup = no }
+			}
 		}
 	}
 
@@ -10386,11 +10443,23 @@ focus_tree = {
 		icon = GFX_focus_FRA_vanguard_task_force
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_special_military_category }
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 75 }
+			cof_military_target_more_than_x = yes
+		}
 		x = 5
 		y = 6
 		cost = 2
 		completion_reward = {
-
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_vanguard_task_force
+					EFFECT = tech_effect|tech_vanguard_task_force
+				}
+				set_technology = { tech_vanguard_task_force = 1 popup = no }
+			}
 		}
 	}
 
@@ -10399,11 +10468,29 @@ focus_tree = {
 		icon = GFX_focus_FRA_conquering_the_hills
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_special_military_category }
+		available = {
+			owns_state = 763
+			owns_state = 735
+		}
 		x = 7
 		y = 6
 		cost = 2
 		completion_reward = {
 			enable_tech_ski_infantry = yes
+
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_conquering_the_hills
+					EFFECT = tech_effect|tech_conquering_the_hills
+				}
+				set_technology = { tech_conquering_the_hills = 1 popup = no }
+			}
+
+			if = {
+				limit = { NOT = { has_tech = tech_mountaineers2 } }
+				set_technology = { tech_mountaineers2 = 1 popup = yes }
+			}
 		}
 	}
 
@@ -10412,11 +10499,66 @@ focus_tree = {
 		icon = GFX_focus_FRA_appraisal_advancement
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_ensuring_quality_of_integrated_training }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = 6
 		y = 5
 		cost = 2
 		completion_reward = {
+			add_ideas = Cof_appraisal_advancement
+			add_to_array = { array = FRA.cof_ar_bills value = 22 }
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 1 }
+			set_temp_variable = { ard2c = 1 }
+			set_temp_variable = { ard3c = 1 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = 0 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = -4 }
+			set_temp_variable = { atc = 4 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = -4 }
+			Cof_army_reform_values_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 1 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 35 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10457,11 +10599,31 @@ focus_tree = {
 			focus = FRA_learning_from_barricades 
 			focus = FRA_lightning_war 
 		}
+		available = {
+			has_army_experience > 25
+			has_air_experience > 25
+			has_navy_experience > 25
+		}
 		x = 0
 		y = 2
 		cost = 2
 		completion_reward = {
+			army_experience = -25 
+			air_experience = -25
+			navy_experience = -25
 
+			add_ideas = Cof_three_armed_force
+			add_to_array = { array = FRA.cof_ar_bills value = 18 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 		}
 	}
 
@@ -10471,11 +10633,62 @@ focus_tree = {
 		relative_position_id = FRA_reflections_from_the_great_war
 		prerequisite = { focus = FRA_reflections_from_the_great_war }
 		mutually_exclusive = { focus = FRA_learning_from_barricades }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = 4
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = 1 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = -4 }
+			set_temp_variable = { atc = 4 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 0 }
+			Cof_army_reform_values_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 1 }
+			set_temp_variable = { atoppo1c = 1 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 30 }
+			set_temp_variable = { atimp3c = 30 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10485,11 +10698,57 @@ focus_tree = {
 		relative_position_id = FRA_reflections_from_the_great_war
 		prerequisite = { focus = FRA_lightning_war }
 		prerequisite = { focus = FRA_sport_combat }
+		available = {
+			has_army_experience > 50
+		}
 		x = 2
 		y = 2
 		cost = 2
 		completion_reward = {
+			army_experience = -50
+			add_ideas = Cof_travel_thousand_miles_a_day
+			add_to_array = { array = FRA.cof_ar_bills value = 20 }
 
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = 1 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 1 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 20 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10499,11 +10758,62 @@ focus_tree = {
 		prerequisite = { focus = FRA_reflections_from_the_great_war }
 		relative_position_id = FRA_reflections_from_the_great_war
 		mutually_exclusive = { focus = FRA_lightning_war }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = -1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = -1 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 4 }
+			set_temp_variable = { atc = -4 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 0 }
+			Cof_army_reform_values_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 1 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 35 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10512,11 +10822,26 @@ focus_tree = {
 		icon = GFX_focus_FRA_put_to_our_advantage
 		relative_position_id = FRA_reflections_from_the_great_war
 		prerequisite = { focus = FRA_learning_from_barricades }
+		available = {
+			has_tech = tech_maintenance_company
+			has_army_experience > 50
+		}
 		x = -4
 		y = 2
 		cost = 2
 		completion_reward = {
+			army_experience = -50
+			add_ideas = Cof_put_to_our_advantage
+			add_to_array = { array = FRA.cof_ar_bills value = 21 }
 
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_put_to_our_advantage
+					EFFECT = tech_effect|tech_put_to_our_advantage
+				}
+				set_technology = { tech_put_to_our_advantage = 1 popup = no }
+			}
 		}
 	}
 
@@ -10525,11 +10850,37 @@ focus_tree = {
 		icon = GFX_focus_FRA_triumph_of_will
 		relative_position_id = FRA_reflections_from_the_great_war
 		prerequisite = { focus = FRA_learning_from_barricades }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 90 }
+			cof_military_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 75 }
+			cof_military_target_more_than_x = yes
+
+			has_war_support > 0.9
+
+			has_war = yes
+		}
 		x = -1
 		y = 3
 		cost = 2
 		completion_reward = {
-
+			add_ideas = Cof_triumph_of_will
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 20 }
+			set_temp_variable = { atimp6c = 35 }
+			set_temp_variable = { atimp7c = 10 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10539,25 +10890,73 @@ focus_tree = {
 		relative_position_id = FRA_reflections_from_the_great_war
 		prerequisite = { focus = FRA_learning_from_barricades }
 		prerequisite = { focus = FRA_construction_corps }
+		available = {
+			has_tech = tech_engineers2
+			has_army_experience > 50
+
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 80 }
+			cof_military_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 80 }
+			cof_military_target_more_than_x = yes
+		}
 		x = -2
 		y = 2
 		cost = 2
 		completion_reward = {
+			army_experience = -50
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_rock_firm
+					EFFECT = tech_effect|tech_rock_firm
+				}
+				set_technology = { tech_rock_firm = 1 popup = no }
+			}
 
-		}
-	}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 
-	focus = {
-		id = FRA_when_attack_ture_vulnerable
-		icon = GFX_focus_FRA_when_attack_ture_vulnerable
-		relative_position_id = FRA_reflections_from_the_great_war
-		prerequisite = { focus = FRA_learning_from_barricades }
-		prerequisite = { focus = FRA_appraisal_advancement }
-		x = -6
-		y = 2
-		cost = 2
-		completion_reward = {
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = -1 }
+			ard_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 1 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 20 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10567,11 +10966,62 @@ focus_tree = {
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_commune_army_council }
 		mutually_exclusive = { focus = FRA_machine_war }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = 13
 		y = 1
 		cost = 2
 		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_man_can_conquer_nature
+				bonus = 1.5
+				uses = 2
+				category = infantry_weapons
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = -1 } 
+			set_temp_variable = { oppo_judge = 0 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = -1 }
+			set_temp_variable = { ard5c = 0 }
+			ard_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 1 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 35 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10580,11 +11030,31 @@ focus_tree = {
 		icon = GFX_focus_FRA_chameleon_warfare
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_man_can_conquer_nature }
+		available = {
+			has_army_experience > 50
+
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 65 }
+			cof_military_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 70 }
+			cof_military_target_more_than_x = yes
+		}
 		x = 13
 		y = 2
 		cost = 2
 		completion_reward = {
+			army_experience = -50
 
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_chameleon_warfare
+					EFFECT = tech_effect|tech_chameleon_warfare
+				}
+				set_technology = { tech_chameleon_warfare = 1 popup = no }
+			}
 		}
 	}
 
@@ -10594,11 +11064,43 @@ focus_tree = {
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_chameleon_warfare }
 		prerequisite = { focus = FRA_break_up_the_whole_into_pieces }
+		available = {
+			has_army_experience > 50
+
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 80 }
+			cof_military_target_more_than_x = yes
+
+			Cof_army_theory_small_combat_advantage = yes
+			ard_trigger_deneutralization = yes
+			ard_trigger_motorization = yes
+		}
 		x = 13
 		y = 3
 		cost = 2
 		completion_reward = {
+			army_experience = -50
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_pursui_oriented_guerrilla
+					EFFECT = tech_effect|tech_pursui_oriented_guerrilla
+				}
+				set_technology = { tech_pursui_oriented_guerrilla = 1 popup = no }
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 35 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10610,11 +11112,120 @@ focus_tree = {
 			focus = FRA_man_can_conquer_nature 
 			focus = FRA_machine_war 
 		}
+		available = {
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 55 }
+			cof_military_target_more_than_x = yes
+		}
 		x = 15
 		y = 3
 		cost = 2
 		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_flexible_and_mobile
+				bonus = 1.5
+				uses = 1
+				category = motorized_equipment
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = 1 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 1 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 35 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
+		}
+	}
+
+	focus = {
+		id = FRA_precision_killing
+		icon = GFX_focus_FRA_precision_killing
+		relative_position_id = FRA_commune_army_council
+		prerequisite = { focus = FRA_machine_war }
+		available = {
+			has_army_experience > 50
+		}
+		x = 17
+		y = 3
+		cost = 2
+		completion_reward = {
+			army_experience = -50
+
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_precision_killing
+					EFFECT = tech_effect|tech_precision_killing
+				}
+				set_technology = { tech_precision_killing = 1 popup = no }
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 4 }
+			set_temp_variable = { apc = 0 }
+			Cof_army_reform_values_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 1 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 10 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10623,12 +11234,15 @@ focus_tree = {
 		icon = GFX_focus_FRA_dominant_firepower
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_artillery_dynamics }
-		prerequisite = { focus = FRA_flexible_and_mobile }
+		available = {
+			has_tech = artillery2
+		}
 		x = 16
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			add_ideas = Cof_dominant_firepower
+			add_to_array = { array = FRA.cof_ar_bills value = 15 }
 		}
 	}
 
@@ -10638,11 +11252,40 @@ focus_tree = {
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_dominant_firepower }
 		mutually_exclusive = { focus = FRA_shower_of_artillery }
+		available = {
+			ard_trigger_positionization = yes
+		}
 		x = 15
 		y = 5
 		cost = 2
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = Cof_dominant_firepower
+				add_idea = Cof_dominant_firepower_left
+			}
 
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 1 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 1 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 20 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 30 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10651,12 +11294,42 @@ focus_tree = {
 		icon = GFX_focus_FRA_shower_of_artillery
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_dominant_firepower }
+		prerequisite = { focus = FRA_precision_killing }
 		mutually_exclusive = { focus = FRA_ultra_long_range_artillery }
+		available = {
+			ard_trigger_motorization = yes
+		}
 		x = 17
 		y = 5
 		cost = 2
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = Cof_dominant_firepower
+				add_idea = Cof_dominant_firepower_right
+			}
+ 
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 1 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 30 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10666,11 +11339,57 @@ focus_tree = {
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_man_can_conquer_nature }
 		prerequisite = { focus = FRA_flexible_and_mobile }
+		available = {
+			has_tech = mechanised_infantry
+		}
 		x = 14
 		y = 4
 		cost = 2
 		completion_reward = {
+			add_ideas = Cof_sport_combat
+			add_to_array = { array = FRA.cof_ar_bills value = 16 }
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = 1 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 1 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 30 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10682,25 +11401,63 @@ focus_tree = {
 			focus = FRA_man_can_conquer_nature 
 			focus = FRA_machine_war 
 		}
+		available = {
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 60 }
+			cof_military_target_more_than_x = yes
+		}
 		x = 16
 		y = 2
 		cost = 2
 		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_artillery_dynamics
+				bonus = 1.5
+				uses = 1
+				category = artillery
+			}
 
-		}
-	}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
 
-	focus = {
-		id = FRA_precision_killing
-		icon = GFX_focus_FRA_precision_killing
-		relative_position_id = FRA_commune_army_council
-		prerequisite = { focus = FRA_machine_war }
-		prerequisite = { focus = FRA_artillery_dynamics }
-		x = 17
-		y = 3
-		cost = 2
-		completion_reward = {
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 0 }
+			set_temp_variable = { ard5c = -1 }
+			ard_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 0 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 1 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 0 }
+			set_temp_variable = { atimp2c = 0 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 25 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10710,11 +11467,62 @@ focus_tree = {
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_commune_army_council }
 		mutually_exclusive = { focus = FRA_man_can_conquer_nature }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = 17
 		y = 1
 		cost = 2
 		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_machine_war
+				bonus = 1
+				uses = 1
+				category = armor
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 0 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 1 }
+			set_temp_variable = { ard5c = 0 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 1 }
+			set_temp_variable = { atsynd2c = 1 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 25 }
+			set_temp_variable = { atimp2c = 25 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10723,11 +11531,60 @@ focus_tree = {
 		icon = GFX_focus_FRA_armor_research_development_funding
 		relative_position_id = FRA_machine_war
 		prerequisite = { focus = FRA_machine_war }
+		available = {
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 100 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 1
 		y = 1
 		cost = 2
 		completion_reward = { 
+			add_tech_bonus = {
+				name = FRA_armor_research_development_funding
+				bonus = 1
+				uses = 1
+				ahead_reduction = 1
+				category = armor
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -100 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 8 }
+			set_temp_variable = { apc = 0 }
+			Cof_army_reform_values_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 1 }
+			set_temp_variable = { atsynd2c = 0 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			add_ideas = Cof_armor_research_funding
+			add_to_array = { array = FRA.cof_ar_bills value = 14 }
 		}
 	}
 
@@ -10736,11 +11593,64 @@ focus_tree = {
 		icon = GFX_focus_FRA_secondary_armor
 		relative_position_id = FRA_machine_war
 		prerequisite = { focus = FRA_armor_research_development_funding }
+		available = {
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 60 }
+			cof_military_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 150 }
+			cof_econ_target_more_than_x = yes
+
+			OR = {
+				has_tech = tech_engineers
+				has_tech = tech_maintenance_company
+				has_tech = tech_signal_company
+			}
+		}
 		x = 2
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -150 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
 
+			if = {
+				limit = { NOT = { is_special_project_completed = sp:sp_land_military_engineering_vehicles } }
+				complete_special_project = sp:sp_land_military_engineering_vehicles
+			}
+			if = {
+				limit = {
+					has_tech = tech_engineers
+					NOT = { has_tech = sp_armored_engineer_tech }
+				}
+				set_technology = { sp_armored_engineer_tech = 1 popup = yes }
+			}
+			if = {
+				limit = {
+					has_tech = tech_maintenance_company
+					NOT = { has_tech = sp_armored_maintenance_tech }
+				}
+				set_technology = { sp_armored_maintenance_tech = 1 popup = yes }
+			}
+			if = {
+				limit = {
+					has_tech = tech_signal_company
+					NOT = { has_tech = sp_armored_signal_tech }
+				}
+				set_technology = { sp_armored_signal_tech = 1 popup = yes }
+			}
 		}
 	}
 
@@ -10749,11 +11659,63 @@ focus_tree = {
 		icon = GFX_focus_FRA_steel_flood
 		relative_position_id = FRA_machine_war
 		prerequisite = { focus = FRA_armor_research_development_funding }
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 85 }
+			cof_econ_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 70 }
+			cof_military_target_more_than_x = yes
+		}
 		x = 1
 		y = 5
 		cost = 2
 		completion_reward = {
+			add_ideas = Cof_steel_flood
+			add_to_array = { array = FRA.cof_ar_bills value = 17 }
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 0 }
+			set_temp_variable = { ard4c = 1 }
+			set_temp_variable = { ard5c = 1 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 2 }
+			set_temp_variable = { atsynd2c = 1 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 30 }
+			set_temp_variable = { atimp2c = 25 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10763,11 +11725,62 @@ focus_tree = {
 		relative_position_id = FRA_machine_war
 		prerequisite = { focus = FRA_steel_flood }
 		prerequisite = { focus = FRA_lightning_war }
+		available = {
+			has_tech = improved_medium_tank
+			
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 90 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 0
 		y = 6
 		cost = 2
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = Cof_steel_flood
+				add_idea = Cof_red_thunder
+			}
 
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { ard1c = 0 }
+			set_temp_variable = { ard2c = 0 }
+			set_temp_variable = { ard3c = 1 }
+			set_temp_variable = { ard4c = 1 }
+			set_temp_variable = { ard5c = 1 }
+			ard_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atsynd1c = 1 }
+			set_temp_variable = { atsynd2c = 1 }
+			set_temp_variable = { atoppo1c = 0 }
+			set_temp_variable = { atoppo2c = 0 }
+			set_temp_variable = { atjaco1c = 0 }
+			set_temp_variable = { atjaco2c = 0 }
+			set_temp_variable = { atsore1c = 0 }
+			set_temp_variable = { atsore2c = 0 }
+			Cof_army_theory_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { atimpc = 0 }
+			set_temp_variable = { atimp1c = 20 }
+			set_temp_variable = { atimp2c = 20 }
+			set_temp_variable = { atimp3c = 0 }
+			set_temp_variable = { atimp4c = 0 }
+			set_temp_variable = { atimp5c = 0 }
+			set_temp_variable = { atimp6c = 0 }
+			set_temp_variable = { atimp7c = 0 }
+			set_temp_variable = { atimp8c = 0 }
+			Cof_army_theory_implementation_change = yes
 		}
 	}
 
@@ -10776,11 +11789,25 @@ focus_tree = {
 		icon = GFX_focus_FRA_instant_victory_theory
 		relative_position_id = FRA_machine_war
 		prerequisite = { focus = FRA_lightning_war }
+		available = {
+			has_war = yes
+			has_war_support > 0.9
+		}
 		x = -2
 		y = 7
 		cost = 2
 		completion_reward = {
+			add_timed_idea = { idea = Cof_instant_victory_theory days = 120 }
 
+			custom_effect_tooltip = FRA_instant_victory_theory_tt1
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = Cof_instant_victory_theory
+					add_idea = Cof_instant_victory_theory_success
+				}
+			}
+			custom_effect_tooltip = FRA_instant_victory_theory_tt2
+			effect_tooltip = { add_timed_idea = { idea = Cof_instant_victory_theory_failed days = 240 } }
 		}
 	}
 
@@ -11162,6 +12189,12 @@ focus_tree = {
 		icon = GFX_focus_FRA_battlefield_lifeline  
 		relative_position_id = FRA_commune_army_council
 		prerequisite = { focus = FRA_soldiers_stomach_is_generals_sword }
+		available = {
+			has_equipment = { infantry_equipment > 50000 }
+			has_equipment = { support_equipment > 5000 }
+			has_equipment = { motorized_equipment > 5000 }
+
+		}
 		x = -3
 		y = 5
 		cost = 2
@@ -11212,7 +12245,7 @@ focus_tree = {
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			
 		}
 	}
 
@@ -12427,24 +13460,11 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FRA_from_the_lab_to_the_battlefield
-		icon = GFX_focus_FRA_from_the_lab_to_the_battlefield
-		relative_position_id = FRA_white_paper_on_world_revolution
-		prerequisite = { focus = FRA_international_column }
-		x = 7
-		y = 2
-		cost = 2
-		completion_reward = {
-
-		}
-	}
-
-	focus = {
 		id = FRA_revolutionary_bases_abroad
 		icon = GFX_focus_FRA_revolutionary_bases_abroad
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_international_column }
-		x = 5
+		x = 6
 		y = 2
 		cost = 2
 		completion_reward = {
@@ -13268,6 +14288,9 @@ focus_tree = {
 			navy_experience = 25
 			add_dynamic_modifier = { modifier = Cof_naval_buff }
 
+			add_timed_idea = { idea = Cof_naval_construction days = 365 }
+
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_politics
 			set_temp_variable = { synd_judge = 1 } 
 			set_temp_variable = { oppo_judge = 1 }
@@ -13284,11 +14307,56 @@ focus_tree = {
 		icon = GFX_focus_FRA_mediterranean_naval_base
 		relative_position_id = FRA_toulon_naval_declaration
 		prerequisite = { focus = FRA_toulon_naval_declaration }
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 40 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = -1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -40 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
 
+			custom_effect_tooltip = FRA_mediterranean_naval_base_tt
+			effect_tooltip = {
+				navy_experience = 25
+				21 = {
+					set_temp_variable = { sesic = 0 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 3 }
+					Cof_state_economy_situation_change = yes
+				}
+			}
+			activate_decision = Cof_mediterranean_naval_base_building
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_industrial_capacity_dockyard = 0.05
+				tooltip = industrial_capacity_dockyard_tt
+			}
+			add_to_variable = {
+				fnavy_naval_equipment_upgrade_xp_cost = -0.05
+				tooltip = naval_equipment_upgrade_xp_cost_tt
+			}
 		}
 	}
 
@@ -13297,11 +14365,71 @@ focus_tree = {
 		icon = GFX_focus_FRA_british_naval_cooperation
 		relative_position_id = FRA_toulon_naval_declaration
 		prerequisite = { focus = FRA_toulon_naval_declaration }
+		available = {
+			num_of_civilian_factories_available_for_projects > 2
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 25 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 2
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -25 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
 
+			custom_effect_tooltip = FRA_british_naval_cooperation_tt
+			effect_tooltip = {
+				navy_experience = 25
+				17 = {
+					set_temp_variable = { sesic = 0 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 1 }
+					Cof_state_economy_situation_change = yes
+				}
+				ENG = {
+					navy_experience = 25
+					127 = {
+						add_extra_state_shared_building_slots = 1
+						add_building_construction = {
+							type = dockyard
+							level = 1
+							instant_build = yes
+						}
+					}
+				}
+			}
+			activate_decision = Cof_british_naval_cooperation_building
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_experience_gain_navy = 0.1
+				tooltip = experience_gain_navy_tt
+			}
+			add_to_variable = {
+				fnavy_refit_ic_cost = -0.1
+				tooltip = refit_ic_cost_tooltip
+			}
+			add_to_variable = {
+				fnavy_refit_speed = 0.1
+				tooltip = refit_speed_tt
+			}
 		}
 	}
 
@@ -13315,11 +14443,43 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = FRA_seagull_project }
 		mutually_exclusive = { focus = FRA_new_navy_old_school }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = 1
 		y = 2
 		cost = 2
 		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = FRA_wolf_combat
+				bonus = 0.75
+				uses = 2
+				category = ss_tech
+				category = naval_minelaying
+				category = ship_modules_tech
+			}
+			add_doctrine_cost_reduction = {
+				name = FRA_wolf_combat
+				cost_reduction = 0.25
+				uses = 1
+				category = naval_doctrine
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_navy_submarine_attack_factor = 0.05
+				tooltip = navy_submarine_attack_factor_tt
+			}
+			add_to_variable = {
+				fnavy_navy_submarine_defence_factor = 0.1
+				tooltip = navy_submarine_defence_factor_tooltip
+			}
 		}
 	}
 
@@ -13332,7 +14492,18 @@ focus_tree = {
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_strike_force_movement_org_loss = -0.05
+				tooltip = strike_force_movement_org_loss_tooltip
+			}
+			add_to_variable = {
+				fnavy_convoy_raiding_efficiency_factor = 0.1
+				tooltip = convoy_raiding_efficiency_factor_tooltip
+			}
 		}
 	}
 
@@ -13341,11 +14512,69 @@ focus_tree = {
 		icon = GFX_focus_generic_merchant_fleet
 		relative_position_id = FRA_toulon_naval_declaration
 		prerequisite = { focus = FRA_maritime_sabotage_network }
+		available = {
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 0
 		y = 5
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -50 }
+			cof_econ_target_change = yes
 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_strike_force_movement_org_loss = -0.05
+				tooltip = strike_force_movement_org_loss_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_morale_factor = 0.1
+				tooltip = naval_morale_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_defense_factor = 0.05
+				tooltip = naval_defense_factor_tt
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = during_naval_construction
+			effect_tooltip = {
+				add_tech_bonus = {
+					name = FRA_guerrilla_warfare_at_sea
+					bonus = 1
+					uses = 1
+					category = ship_modules_tech
+				}
+				add_doctrine_cost_reduction = {
+					name = FRA_guerrilla_warfare_at_sea
+					cost_reduction = 0.5
+					uses = 1
+					category = naval_doctrine
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_idea = Cof_naval_construction }
+					add_tech_bonus = {
+						name = FRA_guerrilla_warfare_at_sea
+						bonus = 1
+						uses = 1
+						category = ship_modules_tech
+					}
+					add_doctrine_cost_reduction = {
+						name = FRA_guerrilla_warfare_at_sea
+						cost_reduction = 0.5
+						uses = 1
+						category = naval_doctrine
+					}
+				}
+			}
 		}
 	}
 
@@ -13358,7 +14587,22 @@ focus_tree = {
 		y = 6
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_convoy_raiding_efficiency_factor = 0.1
+				tooltip = convoy_raiding_efficiency_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_strike_attack_factor = 0.1
+				tooltip = naval_strike_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_industrial_capacity_dockyard = 0.05
+				tooltip = industrial_capacity_dockyard_tooltip
+			}
 		}
 	}
 
@@ -13367,11 +14611,76 @@ focus_tree = {
 		icon = GFX_focus_generic_mine_warfare
 		relative_position_id = FRA_toulon_naval_declaration
 		prerequisite = { focus = FRA_maritime_sabotage_network }
+		available = {
+			has_navy_experience > 20
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 75 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 3
 		y = 5 
 		cost = 2
 		completion_reward = {
+			navy_experience = -20
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -75 }
+			cof_econ_target_change = yes
 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_mines_planting_by_fleets_factor = 0.1
+				tooltip = mines_planting_by_fleets_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_mines_sweeping_by_fleets_factor = 0.1
+				tooltip = mines_sweeping_by_fleets_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_mine_hit_chance = -0.15
+				tooltip = naval_mine_hit_chance_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_mines_damage_factor = 0.1
+				tooltip = naval_mines_damage_factor_tooltip
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = during_naval_construction
+			effect_tooltip = {
+				if = {
+					limit = { NOT = { has_tech = improved_naval_mines } }
+					set_technology = { improved_naval_mines = 1 popup = yes }
+				}
+				if = {
+					limit = { NOT = { has_tech = degaussing } }
+					set_technology = { degaussing = 1 popup = yes }
+				}
+				if = {
+					limit = { NOT = { has_tech = improved_submarine_mine_laying } }
+					set_technology = { improved_submarine_mine_laying = 1 popup = yes }
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_idea = Cof_naval_construction }
+					if = {
+						limit = { NOT = { has_tech = improved_naval_mines } }
+						set_technology = { improved_naval_mines = 1 popup = yes }
+					}
+					if = {
+						limit = { NOT = { has_tech = degaussing } }
+						set_technology = { degaussing = 1 popup = yes }
+					}
+					if = {
+						limit = { NOT = { has_tech = improved_submarine_mine_laying } }
+						set_technology = { improved_submarine_mine_laying = 1 popup = yes }
+					}
+				}
+			}
 		}
 	}
 
@@ -13385,11 +14694,33 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = FRA_seagull_project }
 		mutually_exclusive = { focus = FRA_wolf_combat }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = -2
 		y = 2
 		cost = 2
 		completion_reward = {
+			navy_experience = 50
+			add_tech_bonus = {
+				name = FRA_new_navy_old_school
+				bonus = 0.5
+				uses = 2
+				category = dd_tech
+				category = cl_tech
+				category = ca_tech
+				category = bb_tech
+			}
+			add_doctrine_cost_reduction = {
+				name = FRA_new_navy_old_school
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = FRA_new_navy_old_school_tt
 		}
 	}
 
@@ -13398,11 +14729,57 @@ focus_tree = {
 		icon = GFX_focus_FRA_brest_naval_college
 		relative_position_id = FRA_toulon_naval_declaration
 		prerequisite = { focus = FRA_new_navy_old_school }
+		available = {
+			controls_province = 3552
+			983 = { 
+				is_owned_and_controlled_by = ROOT
+				can_construct_building = naval_facility
+			}
+		}
 		x = -2
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = FRA_brest_naval_college_tt
+			hidden_effect = {
+				983 = {
+					add_building_construction = {
+						type = landmark_brest_naval_college
+						level = 1
+						instant_build = yes
+						province = 3552
+					}
+				}
+			}
+			983 = { 
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = naval_facility
+						level = 1
+						province = 3552
+						instant_build = yes
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_victory_point
+						BUILDING = naval_facility
+						NUMBER = 1
+						VP = 3552
+					}
+				}
+			}
 
+			every_navy_leader = {
+				add_max_trait = 1
+				add_attack = 1
+				add_defense = 1
+				add_planning = 1
+				add_logistics = 1
+				display_individual_scopes = yes
+				if = {
+					limit = { NOT = { has_trait = bold } }
+					add_trait = { trait = bold }
+				}
+			}
 		}
 	}
 
@@ -13411,11 +14788,51 @@ focus_tree = {
 		icon = GFX_goal_generic_navy_cruiser
 		relative_position_id = FRA_toulon_naval_declaration
 		prerequisite = { focus = FRA_brest_naval_college }
+		available = {
+			has_navy_experience > 50
+		}
 		x = -2
 		y = 6
 		cost = 2
 		completion_reward = {
+			navy_experience = -50
+			add_tech_bonus = {
+				name = FRA_wolf_combat
+				bonus = 0.75
+				uses = 2
+				category = dd_tech
+				category = cl_tech
+				category = ca_tech
+				category = bb_tech
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_positioning = 0.1
+				tooltip = positioning_tooltip
+			}
+			add_to_variable = {
+				fnavy_navy_capital_ship_attack_factor = 0.1
+				tooltip = navy_capital_ship_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_refit_ic_cost = -0.15
+				tooltip = refit_ic_cost_tooltip
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_handling_butchers_cleaver_with_ease
+					EFFECT = tech_effect|tech_handling_butchers_cleaver_with_ease
+				}
+				set_technology = { tech_handling_butchers_cleaver_with_ease = 1 popup = no }
+			}
 		}
 	}
 
@@ -13428,7 +14845,22 @@ focus_tree = {
 		y = 7
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_naval_hit_chance = 0.1
+				tooltip = naval_hit_chance_tooltip
+			}
+			add_to_variable = {
+				fnavy_ships_at_battle_start = 0.15
+				tooltip = ships_at_battle_start_tt
+			}
+			add_to_variable = {
+				fnavy_naval_coordination = 0.1
+				tooltip = naval_coordination_tooltip
+			}
 		}
 	}
 
@@ -13442,11 +14874,31 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = FRA_wolf_combat }
 		mutually_exclusive = { focus = FRA_new_navy_old_school }
+		available = {
+			set_temp_variable = { target_a = 5 }
+			CSP_attitude_trigger_support = yes
+		}
 		x = 4
 		y = 2
 		cost = 2
 		completion_reward = {
+			navy_experience = 10
+			add_tech_bonus = {
+				name = FRA_seagull_project
+				bonus = 1
+				uses = 2
+				category = cv_tech
+				category = naval_bomber
+			}
+			add_doctrine_cost_reduction = {
+				name = FRA_seagull_project
+				cost_reduction = 0.1
+				uses = 1
+				category = naval_doctrine
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = FRA_seagull_project_tt
 		}
 	}
 
@@ -13455,11 +14907,44 @@ focus_tree = {
 		icon = GFX_focus_FRA_birds_nest_on_the_sea
 		relative_position_id = FRA_seagull_project
 		prerequisite = { focus = FRA_seagull_project }
+		available = {
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 100 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 0
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -100 }
+			cof_econ_target_change = yes
 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fanvy_carrier_traffic = 0.1
+				tooltip = carrier_traffic_tt
+			}
+			add_to_variable = {
+				fnavy_sortie_efficiency = 0.1
+				tooltip = sortie_efficiency_tooltip
+			}
+			add_to_variable = {
+				fnavy_carrier_capacity_penalty_reduction = -0.15
+				tooltip = carrier_capacity_penalty_reduction_tt
+			}
+
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_birds_nest_on_the_sea
+					EFFECT = tech_effect|tech_birds_nest_on_the_sea
+				}
+				set_technology = { tech_birds_nest_on_the_sea = 1 popup = no }
+			}
 		}
 	}
 
@@ -13468,11 +14953,100 @@ focus_tree = {
 		icon = GFX_focus_FRA_big_fish_eats_small_fish
 		relative_position_id = FRA_seagull_project
 		prerequisite = { focus = FRA_birds_nest_on_the_sea }
+		available = {
+			has_navy_experience > 40
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 150 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 0
 		y = 4
 		cost = 2
 		completion_reward = {
+			navy_experience = -40
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -150 }
+			cof_econ_target_change = yes
 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_naval_detection = 0.1
+				tooltip = naval_detection_tooltip
+			}
+			add_to_variable = {
+				fnavy_navy_anti_air_attack_factor = 0.15
+				tooltip = navy_anti_air_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_strike_attack_factor = 0.1
+				tooltip = naval_strike_attack_factor_tooltip
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = during_naval_construction
+			effect_tooltip = {
+				add_tech_bonus = {
+					name = FRA_big_fish_eats_small_fish
+					bonus = 1.5
+					uses = 1
+					category = cv_tech
+				}
+				create_equipment_variant = {
+					name = "Sorel Class"
+					type = carrier_3
+					upgrades = {
+						ship_deckspace_upgrade = 2
+						carrier_armor_upgrade = 2
+						ship_engine_upgrade = 2
+						ship_reliability_upgrade = 2
+					}
+				}
+				add_equipment_production = {
+					equipment = {
+						type = carrier_3
+						version_name = "Sorel Class"
+					}
+					name = "SMS Sorel"
+					requested_factories = 2
+					progress = 0.5
+					amount = 1
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_idea = Cof_naval_construction }
+					add_tech_bonus = {
+						name = FRA_big_fish_eats_small_fish
+						bonus = 1.5
+						uses = 1
+						category = cv_tech
+					}
+					create_equipment_variant = {
+						name = "Sorel Class"
+						type = carrier_3
+						upgrades = {
+							ship_deckspace_upgrade = 2
+							carrier_armor_upgrade = 2
+							ship_engine_upgrade = 2
+							ship_reliability_upgrade = 2
+						}
+					}
+					add_equipment_production = {
+						equipment = {
+							type = carrier_4
+							version_name = "Sorel Class"
+						}
+						name = "SMS Sorel"
+						requested_factories = 2
+						progress = 0.5
+						amount = 1
+					}
+				}
+			}
 		}
 	}
 
@@ -13489,7 +15063,30 @@ focus_tree = {
 		y = 3
 		cost = 2
 		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_firepower_is_justice
+				bonus = 1
+				uses = 2
+				category = naval_artillery
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_navy_screen_attack_factor = 0.05
+				tooltip = navy_screen_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_navy_capital_ship_attack_factor = 0.05
+				tooltip = navy_capital_ship_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_critical_score_chance_factor = 0.2
+				tooltip = naval_critical_score_chance_factor_tooltip
+			}
 		}
 	}
 
@@ -13506,7 +15103,49 @@ focus_tree = {
 		y = 3
 		cost = 2
 		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = FRA_multifleet_operation
+				bonus = 0.5
+				uses = 2
+				category = ship_modules_tech
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_naval_coordination = 0.1
+				tooltip = naval_coordination_tooltip
+			}
+			add_to_variable = {
+				fnavy_positioning = 0.05
+				tooltip = positioning_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_has_potf_in_combat_attack = 0.2
+				tooltip = naval_has_potf_in_combat_attack_tooltip
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = during_naval_construction
+			effect_tooltip = {
+				add_breakthrough_progress = {
+					specialization = specialization_naval
+					value = 1
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_idea = Cof_naval_construction }
+					add_breakthrough_progress = {
+						specialization = specialization_naval
+						value = 1
+					}
+				}
+			}
 		}
 	}
 
@@ -13519,7 +15158,46 @@ focus_tree = {
 		y = 4
 		cost = 2
 		completion_reward = {
+			every_navy_leader = {
+				add_attack = 1
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_naval_hit_chance = 0.1
+				tooltip = naval_hit_chance_tooltip
+			}
+			add_to_variable = {
+				fnavy_spotting_chance = 0.1
+				tooltip = spotting_chance_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_damage_factor = 0.05
+				tooltip = naval_damage_factor_tt
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = during_naval_construction
+			effect_tooltip = {	
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_enable_hidden_tech
+						TECH = country_culture|tech_wild_goose_breakthrough
+						EFFECT = tech_effect|tech_wild_goose_breakthrough
+					}
+					set_technology = { tech_wild_goose_breakthrough = 1 popup = no }
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_idea = Cof_naval_construction }
+					set_technology = { tech_wild_goose_breakthrough = 1 popup = no }
+				}
+			}
 		}
 	}
 
@@ -13532,11 +15210,43 @@ focus_tree = {
 			focus = FRA_wolf_combat 
 			focus = FRA_seagull_project 
 		}
+		available = {
+			has_navy_experience > 25
+		}
 		x = -1
 		y = 4
 		cost = 2
 		completion_reward = {
+			navy_experience = -25
+			if = {
+				limit = { NOT = { has_tech = marines2 } }
+				set_technology = { marines2 = 1 popup = yes } 
+			}
+			else_if = {
+				limit = { NOT = { has_tech = marines3 } }
+				set_technology = { marines3 = 1 popup = yes } 
+			}
 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_amphibious_invasion = 0.1
+				tooltip = amphibious_invasion_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_invasion_capacity = 4
+				tooltip = naval_invasion_capacity_tooltip
+			}
+			add_to_variable = {
+				fnavy_invasion_preparation = -0.15
+				tooltip = invasion_preparation_tooltip
+			}
+			add_to_variable = {
+				fnavy_shore_bombardment_bonus = 0.1
+				tooltip = shore_bombardment_bonus_tt
+			}
 		}
 	}
 
@@ -13546,11 +15256,49 @@ focus_tree = {
 		relative_position_id = FRA_toulon_naval_declaration
 		prerequisite = { focus = FRA_coordinated_action_land_and_sea }
 		prerequisite = { focus = FRA_secondary_armor }
+		available = {
+			has_navy_experience > 25
+
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 75 }
+			cof_military_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 100 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = -3
 		y = 5
 		cost = 2
 		completion_reward = {
+			navy_experience = -25
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -100 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
 
+			if = {
+				limit = { NOT = { has_tech = amphibious_tank_chassis } }
+				set_technology = { amphibious_tank_chassis = 1 popup = yes }
+			}
+			
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_land_cruiser
+					EFFECT = tech_effect|tech_land_cruiser
+				}
+				set_technology = { tech_land_cruiser = 1 popup = no }
+			}
 		}
 	}
 
@@ -13585,22 +15333,6 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FRA_radio_refinement
-		icon = GFX_focus_FRA_radio_refinement
-		relative_position_id = FRA_toulon_naval_declaration
-		prerequisite = { 
-			focus = FRA_toulon_naval_declaration 
-			focus = FRA_central_fluid_power_research_institute 
-		}
-		x = 4
-		y = 1
-		cost = 2
-		completion_reward = {
-
-		}
-	}
-
-	focus = {
 		id = FRA_peoples_water_army
 		icon = GFX_focus_FRA_peoples_water_army
 		relative_position_id = FRA_toulon_naval_declaration
@@ -13610,11 +15342,50 @@ focus_tree = {
 			focus = FRA_handling_butchers_cleaver_with_ease 
 		}
 		mutually_exclusive = { focus = FRA_guardians_of_the_oceans }
+		available = {
+			has_navy_size = { size > 149 }
+
+			owns_state = 1
+
+			NFA = { exists = no }
+		}
 		x = 3
 		y = 7
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_industrial_capacity_dockyard = 0.2
+				tooltip = industrial_capacity_dockyard_tooltip
+			}
+			add_to_variable = {
+				fnavy_naval_damage_factor = 0.025
+				tooltip = naval_damage_factor_tt
+			}
+			add_to_variable = {
+				fnavy_naval_defense_factor = 0.05
+				tooltip = naval_defense_factor_tt
+			}
 
+			1 = { 
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = naval_facility
+						level = 1
+						province = 3838
+						instant_build = yes
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_victory_point
+						BUILDING = naval_facility
+						NUMBER = 1
+						VP = 3838
+					}
+				}
+			}
 		}
 	}
 
@@ -13628,11 +15399,43 @@ focus_tree = {
 			focus = FRA_handling_butchers_cleaver_with_ease 
 		}
 		mutually_exclusive = { focus = FRA_peoples_water_army }
+		available = {
+			has_navy_size = { size > 149 }
+			
+			hidden_trigger = {
+				set_temp_variable = { numt = 0 }
+				all_country = {
+					if = {
+						limit = { has_socialist_government = yes }
+						add_to_temp_variable = { numt = 1 }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				check_variable = { numt > 19 }
+				tooltip = FRA_guardians_of_the_oceans_tt
+			}
+		}
 		x = 0
 		y = 7
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_navy_max_range_factor = 0.25
+				tooltip = navy_max_range_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_convoy_raiding_efficiency_factor = 0.2
+				tooltip = convoy_raiding_efficiency_factor_tooltip
+			}
+			add_to_variable = {
+				fnavy_screening_efficiency = 0.1
+				tooltip = screening_efficiency_tooltip
+			}
 		}
 	}
 
@@ -13644,6 +15447,10 @@ focus_tree = {
 		y = 0
 		cost = 2
 		completion_reward = {
+			air_experience = 25
+			add_ideas = Cof_central_fluid_power_research_institute
+
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_politics
 			set_temp_variable = { synd_judge = 1 } 
 			set_temp_variable = { oppo_judge = 1 }
@@ -13660,11 +15467,51 @@ focus_tree = {
 		icon = GFX_focus_FRA_alpine_hollow_experimental_base
 		relative_position_id = FRA_central_fluid_power_research_institute
 		prerequisite = { focus = FRA_central_fluid_power_research_institute }
+		available = {
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 100 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 1
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -100 }
+			cof_econ_target_change = yes
+	
+			custom_effect_tooltip = FRA_central_fluid_power_research_institute_tt
+			hidden_effect = {
+				735 = {
+					add_building_construction = {
+						type = landmark_alpine_hollow_experimental_base
+						level = 1
+						instant_build = yes
+						province = 9745
+					}
+				}
+			}
+			735 = { 
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = air_facility
+						level = 1
+						province = 9745
+						instant_build = yes
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_victory_point
+						BUILDING = air_facility
+						NUMBER = 1
+						VP = 9745
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -13673,11 +15520,24 @@ focus_tree = {
 		icon = GFX_focus_FRA_vehicle_concept
 		relative_position_id = FRA_central_fluid_power_research_institute
 		prerequisite = { focus = FRA_central_fluid_power_research_institute }
+		available = {
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = -1
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -50 }
+			cof_econ_target_change = yes
+	
+			custom_effect_tooltip = FRA_vehicle_concept_tt
+			swap_ideas = {
+				remove_idea = Cof_central_fluid_power_research_institute
+				add_idea = Cof_central_fluid_power_research_institute2
+			}
 		}
 	}
 
@@ -13687,11 +15547,14 @@ focus_tree = {
 		relative_position_id = FRA_central_fluid_power_research_institute
 		prerequisite = { focus = FRA_vehicle_concept }
 		prerequisite = { focus = FRA_seagull_project }
+		available = {
+			NOT = { has_country_flag = during_vehicle_concept }
+		}
 		x = -1
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			set_country_flag = during_vehicle_concept
 		}
 	}
 
@@ -13701,11 +15564,14 @@ focus_tree = {
 		relative_position_id = FRA_central_fluid_power_research_institute
 		prerequisite = { focus = FRA_vehicle_concept }
 		prerequisite = { focus = FRA_alpine_hollow_experimental_base }
+		available = {
+			NOT = { has_country_flag = during_vehicle_concept }
+		}
 		x = 0
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			set_country_flag = during_vehicle_concept
 		}
 	}
 
@@ -13713,13 +15579,16 @@ focus_tree = {
 		id = FRA_air_battleship
 		icon = GFX_focus_FRA_air_battleship
 		relative_position_id = FRA_central_fluid_power_research_institute
+		available = {
+			NOT = { has_country_flag = during_vehicle_concept }
+		}
 		prerequisite = { focus = FRA_vehicle_concept }
 		prerequisite = { focus = FRA_alpine_hollow_experimental_base }
 		x = 2
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			set_country_flag = during_vehicle_concept
 		}
 	}
 
@@ -13727,13 +15596,16 @@ focus_tree = {
 		id = FRA_ground_effect_vehicle
 		icon = GFX_focus_FRA_ground_effect_vehicle
 		relative_position_id = FRA_central_fluid_power_research_institute
+		available = {
+			NOT = { has_country_flag = during_vehicle_concept }
+		}
 		prerequisite = { focus = FRA_vehicle_concept }
 		prerequisite = { focus = FRA_alpine_hollow_experimental_base }
 		x = 4
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			set_country_flag = during_vehicle_concept
 		}
 	}
 
@@ -13741,13 +15613,16 @@ focus_tree = {
 		id = FRA_sky_mothership
 		icon = GFX_focus_generic_long_range_aircraft
 		relative_position_id = FRA_central_fluid_power_research_institute
+		available = {
+			NOT = { has_country_flag = during_vehicle_concept }
+		}
 		prerequisite = { focus = FRA_vehicle_concept }
 		prerequisite = { focus = FRA_alpine_hollow_experimental_base }
 		x = 6
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			set_country_flag = during_vehicle_concept
 		}
 	}
 
@@ -13761,7 +15636,26 @@ focus_tree = {
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_attack_factor = -0.05
+				tooltip = air_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_defence_factor = -0.1
+				tooltip = air_defence_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_agility_factor = 0.2
+				tooltip = air_agility_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_max_speed_factor = 0.15
+				tooltip = air_max_speed_factor_tooltip
+			}
 		}
 	}
 
@@ -13774,7 +15668,22 @@ focus_tree = {
 		y = 2
 		cost = 2
 		completion_reward = {
+			air_experience = 50
+			add_doctrine_cost_reduction = {
+				name = FRA_independence_of_the_air_force
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+
+			set_temp_variable = { fair_experience_gain_air_factor = 0.1 }
+			set_temp_variable = { fair_air_training_xp_gain_factor = 0.05 }
+			set_temp_variable = { fair_air_mission_xp_gain_factor = 0.05 }
 			add_dynamic_modifier = { modifier = Cof_air_buff }
+
+			set_variable = { fair_experience_gain_air_factor = 0.1 }
+			set_variable = { fair_air_training_xp_gain_factor = 0.05 }
+			set_variable = { fair_air_mission_xp_gain_factor = 0.05 }
 		}
 	}
 
@@ -13788,7 +15697,32 @@ focus_tree = {
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_naval_strike_attack_factor = 0.05
+				tooltip = naval_strike_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_naval_strike_agility_factor = 0.1
+				tooltip = naval_strike_agility_factor_tooltip
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_naval_buff
+			}
+			add_to_variable = {
+				fnavy_navy_carrier_air_attack_factor = 0.05
+				tooltip = navy_carrier_air_attack_factor_tt
+			}
+			add_to_variable = {
+				fnavy_navy_carrier_air_agility_factor = 0.1
+				tooltip = navy_carrier_air_agility_factor_tt
+			}
 		}
 	}
 
@@ -13797,11 +15731,44 @@ focus_tree = {
 		icon = GFX_focus_FRA_hill_top_air_force_academy
 		relative_position_id = FRA_central_fluid_power_research_institute
 		prerequisite = { focus = FRA_independence_of_the_air_force }
+		available = {
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = 2
 		y = 3
 		cost = 2
 		completion_reward = {
+			air_experience = 25
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -50 }
+			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			add_doctrine_cost_reduction = {
+				name = FRA_independence_of_the_air_force
+				cost_reduction = 0.25
+				uses = 1
+				category = air_doctrine
+			}
+
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_experience_gain_air_factor = 0.15
+				tooltip = experience_gain_air_factor_tt
+			}
+			add_to_variable = {
+				fair_air_ace_generation_chance_factor = 0.1
+				tooltip = air_ace_generation_chance_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_mission_efficiency = 0.1
+				tooltip = air_mission_efficiency_tooltip
+			}
 		}
 	}
 
@@ -13811,11 +15778,81 @@ focus_tree = {
 		relative_position_id = FRA_central_fluid_power_research_institute
 		prerequisite = { focus = FRA_hill_top_air_force_academy }
 		mutually_exclusive = { focus = FRA_destabilize_warfare }
+		available = {
+			has_deployed_air_force_size = { size > 2999 }
+		}
 		x = 2
 		y = 5
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_superiority_bonus_in_combat = 0.15
+				tooltip = air_superiority_bonus_in_combat_tooltip
+			}
+			add_to_variable = {
+				fair_air_attack_factor = 0.05
+				tooltip = air_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_defence_factor = 0.05
+				tooltip = air_defence_factor_tooltip
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			add_tech_bonus = {
+				name = FRA_lead_the_battlefield
+				bonus = 0.75
+				uses = 2
+				category = medium_air
+				category = heavy_air
+			}
+			add_tech_bonus = {
+				name = FRA_lead_the_battlefield
+				bonus = 1
+				uses = 1
+				category = transport_planes_cat
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			create_equipment_variant = {
+				name = "Br.460"
+				type = medium_plane_fighter_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = heavy_mg_2x
+					fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+					fixed_auxiliary_weapon_slot_2 = bomb_locks
+					fixed_auxiliary_weapon_slot_3 = empty
+					engine_type_slot = engine_2_2x
+				}
+			}
+			create_equipment_variant = {
+				name = "F.222"
+				type = large_plane_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = large_bomb_bay
+					special_type_slot_1 = lmg_defense_turret_2x
+					special_type_slot_2 = lmg_defense_turret
+					engine_type_slot = engine_2_4x
+				}
+			}
+			create_equipment_variant = {
+				name = "NC.223.3"
+				type = large_plane_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = large_bomb_bay
+					fixed_auxiliary_weapon_slot_1 = large_bomb_bay
+					special_type_slot_1 = hmg_defense_turret_2x
+					special_type_slot_2 = hmg_defense_turret_2x
+					engine_type_slot = engine_3_4x
+				}
+			}
 		}
 	}
 
@@ -13828,7 +15865,26 @@ focus_tree = {
 		y = 7
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_range_factor = 0.15
+				tooltip = air_range_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_superiority_bonus_in_combat = 0.1
+				tooltip = air_superiority_bonus_in_combat_tooltip
+			}
+			add_to_variable = {
+				fair_air_mission_efficiency = 0.15
+				tooltip = air_mission_efficiency_tooltip
+			}
+			add_to_variable = {
+				fair_air_defence_factor = 0.05
+				tooltip = air_defence_factor_tooltip
+			}
 		}
 	}
 
@@ -13842,7 +15898,22 @@ focus_tree = {
 		y = 6
 		cost = 2
 		completion_reward = {
-
+				custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_power_projection_factor = 0.15
+				tooltip = air_power_projection_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_superiority_bonus_in_combat = 0.1
+				tooltip = air_superiority_bonus_in_combat_tooltip
+			}
+			add_to_variable = {
+				fair_air_superiority_efficiency = 0.1
+				tooltip = air_superiority_efficiency_tooltip
+			}
 		}
 	}
 
@@ -13851,13 +15922,63 @@ focus_tree = {
 		id = FRA_destabilize_warfare
 		icon = GFX_focus_FRA_destabilize_warfare
 		relative_position_id = FRA_central_fluid_power_research_institute
-		prerequisite = { focus = FRA_independence_of_the_air_force }
 		mutually_exclusive = { focus = FRA_lead_the_battlefield }
+		prerequisite = { focus = FRA_hill_top_air_force_academy }
+		available = {
+			has_deployed_air_force_size = { size > 2999 }
+		}
 		x = -2
 		y = 5
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_ground_attack_factor = 0.15
+				tooltip = ground_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_strategic_bomber_bombing_factor = 0.15
+				tooltip = air_strategic_bomber_bombing_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_fuel_consumption_factor = -0.1
+				tooltip = air_fuel_consumption_factor_tooltip
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			add_tech_bonus = {
+				name = FRA_destabilize_warfare
+				bonus = 0.75
+				uses = 2
+				category = cas_bomber
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			create_equipment_variant = {
+				name = "Br.693"
+				type = small_plane_cas_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = bomb_locks
+					fixed_auxiliary_weapon_slot_1 = recon_camera
+					engine_type_slot = engine_1_2x
+					special_type_slot_1 = fuel_tanks_small
+				}
+			}
+			create_equipment_variant = {
+				name = "Po.633"
+				type = small_plane_cas_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = bomb_locks
+					fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
+					engine_type_slot = engine_2_1x
+				}
+			}
+		
 		}
 	}
 
@@ -13870,7 +15991,26 @@ focus_tree = {
 		y = 7
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_ground_attack_factor = 0.2
+				tooltip = ground_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_agility_factor = 0.1
+				tooltip = air_agility_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_attack_factor = 0.05
+				tooltip = air_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_home_defence_factor = 0.1
+				tooltip = air_home_defence_factor_tooltip
+			}
 		}
 	}
 
@@ -13884,7 +16024,51 @@ focus_tree = {
 		y = 7
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_naval_strike_attack_factor = 0.1
+				tooltip = naval_strike_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_naval_strike_agility_factor = 0.05
+				tooltip = naval_strike_agility_factor_tooltip
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			add_tech_bonus = {
+				name = FRA_naval_aerial_coordination
+				bonus = 0.75
+				uses = 2
+				category = naval_bomber
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			create_equipment_variant = {
+				name = "Pl.108"
+				type = small_plane_naval_bomber_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = torpedo_mounting
+					engine_type_slot = engine_2_1x
+				}
+			}
+			create_equipment_variant = {
+				name = "Potez-CAMS 161"
+				type = large_plane_maritime_patrol_plane_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = torpedo_mounting
+					fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+					fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+					engine_type_slot = engine_2_4x
+					special_type_slot_1 = flying_boat_large
+					special_type_slot_2 = lmg_defense_turret_2x
+					special_type_slot_3 = lmg_defense_turret_2x
+				}
+			}
 		}
 	}
 
@@ -13900,7 +16084,60 @@ focus_tree = {
 		y = 6
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_ground_attack_factor = 0.1
+				tooltip = ground_attack_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_strategic_bomber_bombing_factor = 0.1
+				tooltip = air_strategic_bomber_bombing_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_bombing_targetting = 0.1
+				tooltip = air_bombing_targetting_tooltip
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			add_tech_bonus = {
+				name = FRA_saturation_bombing
+				bonus = 0.75
+				uses = 2
+				category = tactical_bomber
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			create_equipment_variant = {
+				name = "Br.460"
+				type = medium_plane_airframe_1
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = medium_bomb_bay
+					fixed_auxiliary_weapon_slot_1 = bomb_locks
+					fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+					fixed_auxiliary_weapon_slot_3 = torpedo_mounting
+					special_type_slot_1 = lmg_defense_turret_2x
+					special_type_slot_2 = hmg_defense_turret_2x
+					engine_type_slot = engine_3_3x
+				}
+			}
+			create_equipment_variant = {
+				name = "LeO.451"
+				type = medium_plane_airframe_2
+				parent_version = 0
+				modules = {
+					fixed_main_weapon_slot = medium_bomb_bay
+					fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+					fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+					engine_type_slot = engine_3_3x
+					special_type_slot_1 = hmg_defense_turret_2x
+					special_type_slot_2 = hmg_defense_turret_2x
+					special_type_slot_3 = armor_plate_medium
+				}
+			}
 		}
 	}
 
@@ -13914,7 +16151,41 @@ focus_tree = {
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_ace_generation_chance_factor = 0.1
+				tooltip = air_ace_generation_chance_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_mission_xp_gain_factor = 0.1
+				tooltip = air_mission_xp_gain_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_training_xp_gain_factor = 0.1
+				tooltip = air_training_xp_gain_factor_tooltip
+			}
+			custom_effect_tooltip = tooltip_white_line
+			add_ace = {
+				name = "Pierre-Henri"
+				surname = "Clostermann"
+				callsign = "Aigle"
+				type = fighter_unique
+			}
+			add_ace = {
+				name = "Marcel"
+				surname = "Albert"
+				callsign = "Renard"
+				type = fighter_good
+			}
+			add_ace = {
+				name = "Jean"
+				surname = "Demozay"
+				callsign = "Cigogne"
+				type = fighter_good
+			}
 		}
 	}
 
@@ -13927,7 +16198,52 @@ focus_tree = {
 		y = 5
 		cost = 2
 		completion_reward = {
-
+			air_experience = 25
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_ace_generation_chance_factor = 0.05
+				tooltip = air_ace_generation_chance_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_mission_xp_gain_factor = 0.05
+				tooltip = air_mission_xp_gain_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_night_penalty = -0.2
+				tooltip = air_night_penalty_tooltip
+			}
+			add_to_variable = {
+				fair_air_strategic_bomber_night_penalty = -0.1
+				tooltip = air_strategic_bomber_night_penalty_tooltip
+			}
+			custom_effect_tooltip = tooltip_white_line
+			set_rule = { can_generate_female_aces = yes }
+			custom_effect_tooltip = tooltip_white_line
+			add_ace = {
+				name = "Élisabeth"
+				surname = "Lion"
+				callsign = "Reine"
+				type = fighter_unique
+				is_female = yes
+			}
+			add_ace = {
+				name = "Maryse"
+				surname = "Hilsz"
+				callsign = "Combattant"
+				type = fighter_good
+				is_female = yes
+			}
+			add_ace = {
+				name = "Elisabeth"
+				surname = "Boselli"
+				callsign = "Pourfendeur"
+				type = fighter_good
+				is_female = yes
+			}
 		}
 	}
 
@@ -13936,11 +16252,120 @@ focus_tree = {
 		icon = GFX_focus_generic_paratrooper
 		relative_position_id = FRA_central_fluid_power_research_institute
 		prerequisite = { focus = FRA_hill_top_air_force_academy }
+		available = { 
+			has_tech = paratroopers
+		}
 		x = 5
 		y = 4
 		cost = 2
 		completion_reward = {
+			add_tech_bonus = {
+				name = FRA_groupes_de_linfanterie_de_lair
+				bonus = 1
+				uses = 1
+				category = para_tech
+			}
+			add_doctrine_cost_reduction = {
+				name = FRA_groupes_de_linfanterie_de_lair
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_paratroopers_doctrine
+			}
 
+			if = {
+				limit = { has_tech = paras_airborne_light_armor }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_create_division_template
+						NAME = "Groupe d'Infanterie de l'Air"
+						LINE_1 = { localization_key = line_battalion_tt NAME = paratrooper ICON = GFX_unit_paratrooper_icon_small COUNT = 6 }
+						SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
+						SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+						SUPPORT_3 = { localization_key = support_battalion_tt NAME = airborne_light_armor ICON = GFX_unit_airborne_light_armor_icon_small }
+					}
+					if = {
+						limit = { has_template = "Groupe d'Infanterie de l'Air" }
+						delete_unit_template_and_units = { division_template = "Groupe d'Infanterie de l'Air" disband = yes } #no cheating
+					}
+					division_template = {
+						name = "Groupe d'Infanterie de l'Air"
+						division_names_group = FRA_PAR_01
+						regiments = {
+							paratrooper = { x = 0 y = 0 }
+							paratrooper = { x = 0 y = 1 }
+							paratrooper = { x = 0 y = 2 }
+							paratrooper = { x = 1 y = 0 }
+							paratrooper = { x = 1 y = 1 }
+							paratrooper = { x = 1 y = 2 }
+						}
+						support = {
+							recon = { x = 0 y = 0 }
+							engineer = { x = 0 y = 1 }
+							airborne_light_armor = { x = 0 y = 2 }
+						}
+					}
+				}
+			}
+			else = {
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_create_division_template
+						NAME = "Groupe d'Infanterie de l'Air"
+						LINE_1 = { localization_key = line_battalion_tt NAME = paratrooper ICON = GFX_unit_paratrooper_icon_small COUNT = 6 }
+						SUPPORT_1 = { localization_key = support_battalion_tt NAME = recon ICON = GFX_unit_recon_icon_small }
+						SUPPORT_2 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+						SUPPORT_3 = { localization_key = support_battalion_tt NAME = artillery ICON = GFX_unit_artillery_icon_small }
+					}
+					if = {
+						limit = { has_template = "Groupe d'Infanterie de l'Air" }
+						delete_unit_template_and_units = { division_template = "Groupe d'Infanterie de l'Air" disband = yes } #no cheating
+					}
+					division_template = {
+						name = "Groupe d'Infanterie de l'Air"
+						division_names_group = FRA_PAR_01
+						regiments = {
+							paratrooper = { x = 0 y = 0 }
+							paratrooper = { x = 0 y = 1 }
+							paratrooper = { x = 0 y = 2 }
+							paratrooper = { x = 1 y = 0 }
+							paratrooper = { x = 1 y = 1 }
+							paratrooper = { x = 1 y = 2 }
+						}
+						support = {
+							recon = { x = 0 y = 0 }
+							engineer = { x = 0 y = 1 }
+							artillery = { x = 0 y = 2 }
+						}
+					}
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			random_controlled_state = {
+				prioritize = { 31 }
+				limit = { valid_state_for_spawning_friendly_unit = yes }
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_units
+						COUNT = 2
+						TYPE = "Groupe d'Infanterie de l'Air"
+					}
+					create_unit = {
+						division = "division_template = \"Groupe d'Infanterie de l'Air\" start_experience_factor = 0.3"
+						owner = ROOT
+						count = 2
+					}
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_enable_hidden_tech
+					TECH = country_culture|tech_stealth_parachuting
+					EFFECT = tech_effect|tech_stealth_parachuting
+				}
+				set_technology = { tech_stealth_parachuting = 1 popup = no }
+			}
 		}
 	}
 
@@ -13953,7 +16378,24 @@ focus_tree = {
 		y = 3
 		cost = 2
 		completion_reward = {
+			add_timed_idea = { idea = Cof_futurism_air_fanaticism days = 365 }
 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_range_factor = 0.1
+				tooltip = air_range_factor_tooltip
+			}
+			add_to_variable = {
+				fair_air_agility_factor = 0.15
+				tooltip = air_agility_factor_tt
+			}
+			add_to_variable = {
+				fair_air_max_speed_factor = 0.15
+				tooltip = air_max_speed_factor_tooltip
+			}
 		}
 	}
 
