@@ -6,7 +6,7 @@ focus_tree = {
 	country = {
 		factor = 0 
 		modifier = {
-			add = 500 
+			add = 500
 			tag = FRA
 		}  
 	}
@@ -1510,6 +1510,11 @@ focus_tree = {
 					core_state_production_speed_buildings_factor = 0.05
 					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
 				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_factory_energy_consumption = -0.1
+					tooltip = local_factory_energy_consumption_tt
+				}
 			}
 
 			custom_effect_tooltip = tooltip_white_line
@@ -1602,7 +1607,7 @@ focus_tree = {
 		available = {
 			controls_state = 19
 			any_other_country = {
-				has_socialist_government = yes
+				is_socialist_government = yes
 				capital_scope = {
 					OR = {
 						is_on_continent = north_america
@@ -2291,6 +2296,8 @@ focus_tree = {
 					Cof_state_economy_situation_change = yes		
 				}
 			}							
+
+			
 		}
 	}
 
@@ -2354,6 +2361,10 @@ focus_tree = {
 					city_consumer_goods_factor = -0.015
 					tooltip = consumer_goods_factor_tooltip
 				}
+				add_to_variable = {
+					city_local_factory_energy_consumption = -0.025
+					tooltip = local_factory_energy_consumption_tt
+				}
 			}
 
 			every_core_state = {
@@ -2366,6 +2377,10 @@ focus_tree = {
 				add_to_variable = {
 					rural_consumer_goods_factor = -0.01
 					tooltip = consumer_goods_factor_tooltip
+				}
+				add_to_variable = {
+					rural_local_factory_energy_consumption = -0.01
+					tooltip = local_factory_energy_consumption_tt
 				}
 			}
 
@@ -2437,6 +2452,10 @@ focus_tree = {
 					city_state_production_speed_buildings_factor = 0.1
 					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
 				}
+				add_to_variable = {
+					city_local_factory_energy_consumption = -0.05
+					tooltip = local_factory_energy_consumption_tt
+				}
 			}
 
 			every_core_state = {
@@ -2449,6 +2468,10 @@ focus_tree = {
 				add_to_variable = {
 					rural_state_production_speed_buildings_factor = 0.05
 					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					city_local_factory_energy_consumption = -0.025
+					tooltip = local_factory_energy_consumption_tt
 				}
 			}
 
@@ -2749,6 +2772,10 @@ focus_tree = {
 							city_state_resources_factor = 0.1
 							tooltip = state_resources_factor_tooltip
 						}
+						add_to_variable = {
+							city_local_factory_energy_consumption = -0.33
+							tooltip = local_factory_energy_consumption_tt
+						}
 					}
 					else = {
 						add_to_variable = {
@@ -2762,6 +2789,10 @@ focus_tree = {
 						add_to_variable = {
 							rural_state_resources_factor = 0.1
 							tooltip = state_resources_factor_tooltip
+						}
+						add_to_variable = {
+							rural_local_factory_energy_consumption = -0.33
+							tooltip = local_factory_energy_consumption_tt
 						}
 					}
 				}
@@ -3084,7 +3115,7 @@ focus_tree = {
 			}
 
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = Cof_economy_nichiyasu_porcelain_commune
+			unlock_decision_tooltip = Cof_economy_gien_porcelain_commune
 			unlock_decision_tooltip = Cof_economy_dozom_knives_factory
 			unlock_decision_tooltip = Cof_economy_degos_slipper_workshop
 			custom_effect_tooltip = unlock_in_economy
@@ -4290,6 +4321,7 @@ focus_tree = {
 			Cof_economy_model_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { epc = 0 }
 			set_temp_variable = { evc = 0 }
 			set_temp_variable = { eibc = 0 }
 			set_temp_variable = { eipc = 0 }
@@ -4623,6 +4655,7 @@ focus_tree = {
 			Cof_economy_model_change = yes
 			
 			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { epc = 0 }
 			set_temp_variable = { evc = -10 }
 			set_temp_variable = { eibc = 0 }
 			set_temp_variable = { eipc = 0 }
@@ -4887,10 +4920,7 @@ focus_tree = {
 			VEN = { country_event = cofintern.9 }
 			custom_effect_tooltip = if_they_accept_they_effect
 			effect_tooltip = {
-				reverse_add_opinion_modifier = {
-					target = VEN
-					modifier = KR_pleased
-				}
+				add_opinion_modifier = { target = ROOT modifier = KR_trade_agreement }
 				add_ideas = Cof_trade_partnership
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -4954,14 +4984,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = if_they_accept_they_effect
 			effect_tooltip = {
-				reverse_add_opinion_modifier = {
-					target = BRM 
-					modifier = KR_pleased
-				}
-				reverse_add_opinion_modifier = {
-					target = SIA
-					modifier = KR_pleased
-				}
+				add_opinion_modifier = { target = ROOT modifier = KR_trade_agreement }
 				add_ideas = Cof_trade_partnership
 			}
 			custom_effect_tooltip = tooltip_white_line
@@ -8426,7 +8449,38 @@ focus_tree = {
 		y = 2
 		cost = 2
 		completion_reward = {
+			every_state = {
+				limit = {
+					OR = {
+						state = 14
+						state = 17
+						state = 21
+					}
+				}
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 1 }
+				Cof_state_economy_situation_change = yes
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = during_naval_construction
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = Cof_naval_construction
+					add_idea = Cof_naval_construction2
+				}
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { has_idea = Cof_naval_construction }
+					swap_ideas = {
+						remove_idea = Cof_naval_construction
+						add_idea = Cof_naval_construction2
+					}
+				}
+			}
 		}
 	}
 
@@ -8735,36 +8789,6 @@ focus_tree = {
 			hidden_effect = {
 				add_ideas = arms_research_institute
 			}
-		}
-	}
-
-	focus = {
-		id = FRA_the_ark_project
-		icon = GFX_focus_FRA_the_ark_project
-		relative_position_id = FRA_prepare_for_the_next_war
-		prerequisite = { focus = FRA_new_shipbuilding_program }
-		prerequisite = { focus = FRA_military_industry }
-		available = {
-			has_completed_focus = FRA_seagull_project
-			num_of_naval_factories > 25
-
-			set_temp_variable = { target_t = 1 }
-			set_temp_variable = { target_num = 70 }
-			cof_econ_target_more_than_x = yes
-
-			set_temp_variable = { target_t = 3 }
-			set_temp_variable = { target_num = 65 }
-			cof_econ_target_more_than_x = yes
-
-			set_temp_variable = { target_t = 9 }
-			set_temp_variable = { target_num = 60 }
-			cof_econ_target_more_than_x = yes
-		}
-		x = -2
-		y = 5
-		cost = 2
-		completion_reward = {
-
 		}
 	}
 
@@ -10293,7 +10317,7 @@ focus_tree = {
 		cost = 2
 		completion_reward = {
 			add_political_power = -150
-			add_ideas = construction_corps
+			add_ideas = law_construction_corps
 
 			custom_effect_tooltip = effect_politics
 			set_temp_variable = { synd_judge = -1 } 
@@ -11563,6 +11587,7 @@ focus_tree = {
 			set_temp_variable = { eic = 0 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_military
 			set_temp_variable = { aac = 0 }
 			set_temp_variable = { awc = 0 }
@@ -11626,6 +11651,7 @@ focus_tree = {
 			set_temp_variable = { eic = 0 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { NOT = { is_special_project_completed = sp:sp_land_military_engineering_vehicles } }
 				complete_special_project = sp:sp_land_military_engineering_vehicles
@@ -12245,7 +12271,11 @@ focus_tree = {
 		y = 1
 		cost = 2
 		completion_reward = {
+			add_stability = 0.025
+			add_war_support = 0.025
+			add_political_power = 50
 			
+			country_event = cofintern.19
 		}
 	}
 
@@ -12255,11 +12285,16 @@ focus_tree = {
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_problem_with_neibour }
 		mutually_exclusive = { focus = FRA_sleeping_lion_strategy }
+		available = { always = no }
 		x = -1
 		y = 1
-		cost = 2
+		cost = 0
 		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+			add_war_support = 0.025
 
+			add_ideas = bill_rooster_strategy
+			add_to_array = { array = FRA.cof_social_bills value = 18 }
 		}
 	}
 
@@ -12269,11 +12304,38 @@ focus_tree = {
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_rooster_strategy }
 		prerequisite = { focus = FRA_red_ice }
+		available = {
+			date > 1939.7.14
+			threat > 0.75
+			any_other_country = {
+				OR = {
+					tag = DEN
+					tag = NOR
+					tag = SWE
+					tag = FIN
+				}
+				is_socialist_government = yes
+			}
+		}
 		x = -2
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			add_war_support = 0.025
+			add_timed_idea = { idea = Cof_operation_northrend days = 180 }
+		
+			every_other_country = {
+					limit = {
+						OR = {
+						tag = DEN
+						tag = NOR
+						tag = SWE
+						tag = FIN
+					}
+					is_socialist_government = yes
+				}
+				add_timed_idea = { idea = Cof_operation_northrend days = 180 }
+			}
 		}
 	}
 
@@ -12282,12 +12344,42 @@ focus_tree = {
 		icon = GFX_focus_hol_gateway_to_europe
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_rooster_strategy }
+		bypass = {
+			HOL = {
+				OR = {
+					exists = no
+					is_in_faction_with = FRA
+				}
+			}
+			BEL = {
+				OR = {
+					exists = no
+					is_in_faction_with = FRA
+				}
+			}
+			WAL = {
+				OR = {
+					exists = no
+					is_in_faction_with = FRA 
+				}
+			}
+			FLA = {
+				OR = {
+					exists = no
+					is_in_faction_with = FRA 
+				}
+			}
+		}
 		x = 0
 		y = 2
 		cost = 2
 		completion_reward = {
-
-		}
+			custom_effect_tooltip = FRA_prepare_for_a_low_ground_attack_tt
+			effect_tooltip = {
+				add_timed_idea = { idea = Cof_lowland_unexpected_attack days = 90 }
+				country_event = cofintern.37
+			}
+		} 
 	}
 
 	focus = {
@@ -12295,13 +12387,42 @@ focus_tree = {
 		icon = GFX_focus_SWI_continuous_build_up_military_readiness
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_rooster_strategy }
-		
+		available = {
+			SWI = {
+				OR = {
+					is_socialist_government = yes
+					has_completed_focus = SWI_peace_at_last
+				}
+			}
+			NOT = { has_country_flag = SWI_not_gives_cof_access }
+		}
+		select_effect = {
+			if = {
+				limit = { SWI = { has_socialist_government = no } }
+				SWI = { country_event = cofintern.40 }
+			}
+		}
+		cancel = { has_country_flag = SWI_not_gives_cof_access } 
 		x = -4
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = FRA_alpine_surprise_attack_tt
 
-		}
+			add_manpower = -6000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -5500
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -100
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -100
+			}
+		}	
 	}
 
 	focus = {
@@ -12313,12 +12434,92 @@ focus_tree = {
 			focus = FRA_prepare_for_a_low_ground_attack 
 			focus = FRA_alpine_surprise_attack 
 		}
-		
+		available = {
+			OR = {
+				has_political_power > 150
+
+				set_temp_variable = { target_t = 15 }
+				set_temp_variable = { target_num = 150 }
+				cof_econ_target_more_than_x = yes
+			}
+		}
 		x = -3
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = POLITICAL_POWER
+				JUDGE = more_than
+				TAGNUM = 150
+			}
+			effect_tooltip = {
+				add_political_power = -150
+				add_collaboration = {
+					target = GER
+					value = 0.1
+				}
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = POLITICAL_POWER
+				JUDGE = more_than
+				TAGNUM = 300
+			}
+			effect_tooltip = {
+				add_political_power = -300
+				add_collaboration = {
+					target = GER
+					value = 0.15
+				}
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = economy_power
+				JUDGE = more_than
+				TAGNUM = 150
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { epc = -150 }
+				cof_econ_target_change = yes
+				add_collaboration = {
+					target = GER
+					value = 0.15
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = economy_power
+				JUDGE = more_than
+				TAGNUM = 300
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { epc = -300 }
+				cof_econ_target_change = yes
+				add_collaboration = {
+					target = GER
+					value = 0.2
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			GER = {
+				effect_tooltip = {
+					add_stability = -0.05
+					add_war_support = -0.05
+					add_popularity = { ideology = syndicalist popularity = 0.025 }
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+				}
+				country_event = cofintern.39
+			}
 		}
 	}
 
@@ -12331,12 +12532,45 @@ focus_tree = {
 			focus = FRA_prepare_for_a_low_ground_attack 
 			focus = FRA_alpine_surprise_attack 
 		}
-		
+		available = {
+			second_weltkrieg_can_start = yes
+			can_declare_war_on = GER
+			is_faction_leader = yes
+		}
+		bypass = { NOT = { can_declare_war_on = GER } }
 		x = -1
 		y = 3
 		cost = 2
 		completion_reward = {
+			declare_war_on = {
+				target = GER
+				type = topple_government
+			}
 
+			GER = {
+				effect_tooltip = {
+					add_timed_idea = { idea = Cof_berween_two_fires days = 60 }
+				}
+				country_event = cofintern.38
+			}
+
+			if = {
+				limit = { has_completed_focus = FRA_prepare_for_a_low_ground_attack }
+				every_other_country = {
+					limit = {
+						FRA = { can_declare_war_on = PREV }
+						is_in_faction_with = GER
+						capital_scope = { region = 5 }
+					}
+					country_event = cofintern.37
+					FRA = {
+						declare_war_on = {
+							target = PREV
+							type = topple_government
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -12345,12 +12579,25 @@ focus_tree = {
 		icon = GFX_focus_FRA_no_more_european_gendarmes
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_the_fury_of_revenge }
-		
+		available = {
+			NOT = { has_global_flag = cof_rus_peace }
+			can_declare_war_on = RUS
+			is_faction_leader = yes
+		}
 		x = -2
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			if = {
+				limit = {
+					can_declare_war_on = RUS
+					RUS = { has_socialist_government = no }
+				}
+				create_wargoal = {
+					target = RUS
+					type = topple_government
+				}
+			}
 		}
 	}
 
@@ -12359,12 +12606,30 @@ focus_tree = {
 		icon = GFX_focus_AUS_beyond_our_old_lands
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_the_fury_of_revenge }
-		
+		available = {
+			can_declare_war_on = AUS
+			is_faction_leader = yes
+		}
+		bypass = {
+			OR = {
+				NOT = { can_declare_war_on = AUS }
+				AUS = { has_socialist_government = yes }
+			}
+		}
 		x = -4
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			if = {
+				limit = {
+					can_declare_war_on = AUS
+					AUS = { has_socialist_government = no }
+				}
+				create_wargoal = {
+					target = AUS
+					type = topple_government
+				}
+			}
 		}
 	}
 
@@ -12374,12 +12639,77 @@ focus_tree = {
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_problem_with_neibour }
 		mutually_exclusive = { focus = FRA_rooster_strategy }
-		
+		available = { always = no }
 		x = 3
 		y = 1
-		cost = 2
+		cost = 0
 		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+			add_stability = 0.025
 
+			if = { 
+				limit = { NOT = { has_tech = basic_fortification_tech } }
+				set_technology = { basic_fortification_tech = 1 popup = yes }
+			}
+			else_if = {
+				limit = { NOT = { has_tech = land_fort_tech_1 } }
+				set_technology = { land_fort_tech_1 = 1 popup = yes }
+			}
+
+			add_ideas = bill_sleeping_lion_strategy
+			add_to_array = { array = FRA.cof_social_bills value = 18 }
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_decision = Cof_sleeping_lion_construction
+			custom_effect_tooltip = sleeping_lion_construction_tt
+			effect_tooltip = {
+				27 = {
+					add_building_construction = {
+						type = bunker
+						province = 698
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 6698
+						level = 3
+						instant_build = yes
+					}
+				}
+				785 = {
+					add_building_construction = {
+						type = bunker
+						province = 11642
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 521
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 11516
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 5291
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 3560
+						level = 3
+						instant_build = yes
+					}
+				}
+			}
 		}
 	}
 
@@ -12388,12 +12718,85 @@ focus_tree = {
 		icon = GFX_goal_generic_construct_military
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_sleeping_lion_strategy }
-		
+		available = {
+			num_of_civilian_factories_available_for_projects > 4
+		}
 		x = 3
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = { activate_decision = Cof_sleeping_lion_construction }
+			custom_effect_tooltip = sleeping_lion_construction_tt
+			effect_tooltip = {
+				785 = {
+					add_building_construction = {
+						type = bunker
+						province = 9472
+						level = 3
+						instant_build = yes
+					}
+				}
+				24 = {
+					add_building_construction = {
+						type = bunker
+						province = 3447
+						level = 3
+						instant_build = yes
+					}
+				}
+				980 = {
+					add_building_construction = {
+						type = bunker
+						province = 11606
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 11483
+						level = 3
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = { 29 = { is_owned_by = FRA } }
+					29 = {
+						add_building_construction = {
+							type = bunker
+							province = 575
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+				else = {
+					17 = {
+						add_building_construction = {
+							type = bunker
+							province = 3536
+							level = 3
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							province = 11548
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_sleeping_lion_construction_ing
+			effect_tooltip = {
+				add_days_remove = {
+					decision = Cof_sleeping_lion_construction
+					days = 100
+				}
+			}	
+			custom_effect_tooltip = if_sleeping_lion_construction_ing_tt
 		}
 	}
 
@@ -12402,12 +12805,14 @@ focus_tree = {
 		icon = GFX_focus_generic_communist_attack_poland
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_fortress_of_verdun }
-		
+		available = {
+			POL = { has_completed_focus = POL_Centrolew }
+		}
 		x = 1
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = FRA_studded_red_nail_tt
 		}
 	}
 
@@ -12416,12 +12821,21 @@ focus_tree = {
 		icon = GFX_focus_RAJ_i_am_death
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_fortress_of_verdun }
-		
+		available = {
+			has_war_support > 0.7
+			ard_trigger_positionization = yes
+		}
 		x = 3
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = FRA_waiting_for_rabbits_tt
+			effect_tooltip = {
+				GER = {
+					add_timed_idea = { idea = Cof_ger_fall_into_trap days = 240 }
+					country_event = cofintern.36
+				}
+			}
 		}
 	}
 
@@ -12445,7 +12859,7 @@ focus_tree = {
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_waiting_for_rabbits }
 		
-		x = 0
+		x = 4
 		y = 5
 		cost = 2
 		completion_reward = {
@@ -12460,22 +12874,8 @@ focus_tree = {
 		prerequisite = { focus = FRA_antiwar_propaganda }
 		prerequisite = { focus = FRA_evoking_class_hatred }
 		
-		x = 2
+		x = 3
 		y = 6
-		cost = 2
-		completion_reward = {
-
-		}
-	}
-
-	focus = {
-		id = FRA_lowland_defense
-		icon = GFX_focus_BEL_national_redoubt_at_antwerp
-		relative_position_id = FRA_problem_with_neibour
-		prerequisite = { focus = FRA_fortress_of_verdun }
-		
-		x = 4
-		y = 5
 		cost = 2
 		completion_reward = {
 
@@ -12490,12 +12890,15 @@ focus_tree = {
 			focus = FRA_rooster_strategy 
 			focus = FRA_sleeping_lion_strategy
 		}
-		
+		available ={
+			date > 1939.1.1
+			threat > 0.55
+		}
 		x = 2
 		y = 2
 		cost = 2
 		completion_reward = {
-
+			add_timed_idea = { idea = Cof_scalar_economy days = 500 }
 		}
 	}
 
@@ -12507,12 +12910,82 @@ focus_tree = {
 			focus = FRA_rooster_strategy 
 			focus = FRA_sleeping_lion_strategy
 		}
-		
+		available = {
+			RUS = {
+				is_socialist_government = no
+				is_faction_leader = yes
+			}
+		}
 		x = 1
 		y = 3
 		cost = 2
 		completion_reward = {
+			RUS = { country_event = cofintern.41 }
 
+			custom_effect_tooltip = if_rus_accept_economy
+			effect_tooltip = {
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 10 }
+				cof_econ_target_change = yes
+   
+
+				every_country = {
+					limit = {
+						OR = {
+							is_in_faction_with = FRA
+							is_in_faction_with = RUS
+						}
+					}
+					add_offsite_building = { type = industrial_complex level = 1 }
+					add_ideas = Cof_rus_cooperation_100
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_rus_accept_military
+			effect_tooltip = {
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 0 }
+				set_temp_variable = { atc = 3 }
+				set_temp_variable = { aec = 0 }
+				set_temp_variable = { apc = 3 }
+				Cof_army_reform_values_change = yes
+
+				every_country = {
+					limit = {
+						OR = {
+							is_in_faction_with = FRA
+							is_in_faction_with = RUS
+						}
+					}
+					army_experience = 25
+					add_ideas = Cof_rus_cooperation_010
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_rus_accept_politics
+			effect_tooltip = {
+				custom_effect_tooltip = effect_internation
+				set_temp_variable = { iri_euic = 60 }
+				set_temp_variable = { iri_asic = 0 }
+				set_temp_variable = { iri_meic = 0 }
+				set_temp_variable = { iri_afic = 0 }
+				set_temp_variable = { iri_amic = 0 }
+				iri_influence_change = yes
+
+				every_country = {
+					limit = {
+						OR = {
+							is_in_faction_with = FRA
+							is_in_faction_with = RUS
+						}
+					}
+					add_political_power = 100
+					add_ideas = Cof_rus_cooperation_001
+				}
+			}
 		}
 	}
 
@@ -12527,7 +13000,7 @@ focus_tree = {
 			international_influence_judge = yes
 		}
 		bypass = {
-			IRE = { has_socialist_government = yes }
+			IRE = { is_socialist_government = yes }
 		}
 		x = -2
 		y = 1
@@ -12555,7 +13028,7 @@ focus_tree = {
 				}
 			}
 
-			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = after_ireland_1937_election
 			effect_tooltip = {
 				IRE = { 
@@ -12640,7 +13113,7 @@ focus_tree = {
 			}
 			custom_effect_tooltip = second_unification_movement_tt
 
-			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = in_italy_civil_war
 			effect_tooltip = {
 				send_equipment = {
@@ -12660,7 +13133,7 @@ focus_tree = {
 				}
 			}
 
-			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = after_italy_civil_war
 			effect_tooltip = {
 				SRI = { 
@@ -12794,22 +13267,20 @@ focus_tree = {
 					amount = 250
 				}
 				SWF = { add_ideas = Cof_french_military_support }
-				SPA = { country_event = cofintern.5 }
-			}
-			custom_effect_tooltip = event_effect_tooltip
-			effect_tooltip = {
 				SPA = {
 					add_stability = -0.05
 					add_popularity = { ideology = totalist popularity = 0.025 }
 					add_popularity = { ideology = syndicalist popularity = 0.05	}
-					add_popularity = { ideology = radical_socialist popularity = 0.025	}
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
 					add_equipment_to_stockpile = {
 						type = infantry_equipment
 						amount = -1000
 						producer = SPA
 					}
+					country_event = cofintern.5
 				}
 			}
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = barcelona_revolutionary_movement_tt
 
 			custom_effect_tooltip = tooltip_dividing_line
@@ -12929,12 +13400,98 @@ focus_tree = {
 		icon = GFX_focus_FRA_red_ice
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_white_paper_on_world_revolution }
-		
+		available = {
+			set_temp_variable = { target_t = 1 }
+			set_temp_variable = { target_num = 25 }
+			international_influence_judge = yes
+
+			OR = {
+				any_other_country = {
+					OR = {
+						tag = DEN
+						tag = NOR
+						tag = SWE
+						tag = FIN
+					}
+					is_socialist_government = yes
+				}
+
+				set_temp_variable = { target_t = 1 }
+				set_temp_variable = { target_num = 50 }
+				international_influence_judge = yes
+			}
+		}
 		x = -3
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			if = {
+				limit = {
+					any_other_country = {
+						OR = {
+							tag = DEN
+							tag = NOR
+							tag = SWE
+							tag = FIN
+						}
+						has_socialist_government = yes
+					}
+				}
+				set_temp_variable = { iri_euic = -25 }
+			}
+			else = { set_temp_variable = { iri_euic = -50 } }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_north_is_socialist
+			effect_tooltip = {
+				add_stability = 0.025
+				add_war_support = 0.025
+				add_political_power = 25
+				add_ideas = Cof_northeu_cooperation
+				country_event = cofintern.25
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = all_non_socialist_north
+			effect_tooltip = {
+				add_stability = -0.1
+				add_popularity = { ideology = totalist popularity = 0.02 }
+				add_popularity = { ideology = syndicalist popularity = 0.03	}
+				add_popularity = { ideology = radical_socialist popularity = 0.03 }
+				add_timed_idea = { idea = Cof_red_frontline days = 300 }
+				country_event = cofintern.25
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_north_is_not_socialist
+			custom_effect_tooltip = all_non_socialist_north
+			effect_tooltip = {
+				add_stability = -0.05
+				add_popularity = { ideology = totalist popularity = 0.02 }
+				add_popularity = { ideology = syndicalist popularity = 0.03	}
+				add_popularity = { ideology = radical_socialist popularity = 0.03 }
+				add_timed_idea = { idea = Cof_red_frontline days = 200 }
+				country_event = cofintern.25
+			}
+
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = DEN
+							tag = NOR
+							tag = SWE
+							tag = FIN
+						}
+					}
+					country_event = cofintern.25
+				}
+			}
 		}
 	}
 
@@ -12952,7 +13509,7 @@ focus_tree = {
 		}
 		bypass = {
 			AST = { 
-				has_socialist_government = yes 
+				is_socialist_government = yes 
 				OR = {
 					has_completed_focus = AST_syndicalist_congress
 					has_completed_focus = AST_totalist_congress
@@ -12992,15 +13549,14 @@ focus_tree = {
 				}
 			}
 
-			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = if_AST_socialist_not_win
-			effect_tooltip = { 	AST = { country_event = cofintern.15 } }
-			custom_effect_tooltip = event_effect_tooltip
 			effect_tooltip = {
 				AST = {
 					add_stability = -0.1
 					add_popularity = { ideology = syndicalist popularity = 0.05 }
 					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+					country_event = cofintern.15
 				}
 			}
 
@@ -13077,7 +13633,7 @@ focus_tree = {
 				}
 			}
 
-			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = if_lkmt_win_civil_war
 			effect_tooltip = {
 				CHI = {
@@ -13122,11 +13678,26 @@ focus_tree = {
 		relative_position_id = FRA_problem_with_neibour
 		prerequisite = { focus = FRA_righteous_man_ejaculating_the_sun }
 		mutually_exclusive = { focus = FRA_fight_for_glory_on_two_days }
+		available = {
+			date > 1943.1.1
+			JAP = { NOT = { has_war_with = CHI } }
+			can_declare_war_on = JAP
+			is_faction_leader = yes
+		}
 		x = -12
 		y = 3
 		cost = 2
 		completion_reward = {
-
+			if = {
+				limit = {
+					can_declare_war_on = JAP
+					JAP = { has_socialist_government = no }
+				}
+				create_wargoal = {
+					target = JAP
+					type = topple_government
+				}
+			}
 		}
 	}
 
@@ -13136,12 +13707,25 @@ focus_tree = {
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_economic_exchanges_with_china }
 		mutually_exclusive = { focus = FRA_burn_down_the_sun }
-		
+		available = {
+			CHI = {
+				is_faction_leader = yes
+				is_socialist_government = yes
+				has_war_with = JAP
+			}
+		}
 		x = -14
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			CHI = {
+				effect_tooltip = {
+					add_war_support = 0.1
+					army_experience = 50
+					add_ideas = Cof_chi_anti_jap
+				}
+				country_event = cofintern.156
+			}
 		}
 	}
 
@@ -13151,12 +13735,59 @@ focus_tree = {
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_the_china_game }
 		prerequisite = { focus = FRA_world_anti_colonial_committee }
-		
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 20 }
+			international_influence_judge = yes
+
+			JAP = { is_socialist_government = no }
+
+			custom_trigger_tooltip = {
+				tooltip = kor_is_occupied_by_jap
+				1099 = { is_owned_and_controlled_by = JAP }
+				1100 = { is_owned_and_controlled_by = JAP }
+				525 = { is_owned_and_controlled_by = JAP }
+				527 = { is_owned_and_controlled_by = JAP }
+			}
+
+			custom_trigger_tooltip = {
+				tooltip = twi_is_occupied_by_jap
+				524 = { is_owned_and_controlled_by = JAP }
+			}
+		}
 		x = -13
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -20 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			JAP = {
+				effect_tooltip = {
+					add_stability = -0.05
+					every_owned_state = {
+						limit = {
+							OR = {
+								state = 1099
+								state = 1100
+								state = 525
+								state = 527
+								state = 524
+							}
+						}
+						add_compliance = -30
+						add_resistance = 15
+						custom_effect_tooltip = jap_colonial_riot_level_up
+					}
+				}
+				country_event = cofintern.155
+			}
 		}
 	}
 
@@ -13165,12 +13796,59 @@ focus_tree = {
 		icon = GFX_focus_PER_we_will_survive
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_white_paper_on_world_revolution }
-		
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 20 }
+			international_influence_judge = yes
+
+			PER = {
+				has_completed_focus = PER_shah_is_dead_press_f
+				has_stability < 0.5
+				is_socialist_government = no
+			}
+		}
+		bypass = { PER = { is_socialist_government = yes } }
 		x = -8
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = -20 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_per_is_monarchy
+			effect_tooltip = {
+				PER = {
+					add_political_power = -25
+					add_stability = -0.05
+					add_popularity = { ideology = radical_socialist popularity = 0.05 }
+					country_event = cofintern.119
+				}
+			}
+			
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_per_is_democrat
+			effect_tooltip = {
+				PER = {
+					add_popularity = { ideology = radical_socialist popularity = 0.1 }
+					country_event = cofintern.122
+				}
+			}
+
+			hidden_effect = {
+				PER = {
+					if = {
+						limit = { has_elected_government = yes }
+						country_event = cofintern.122
+					}
+					else = { country_event = cofintern.119 }
+				}
+			}
 		}
 	}
 
@@ -13179,12 +13857,142 @@ focus_tree = {
 		icon = GFX_focus_FRA_turning_powder_keg_into_friendship
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_white_paper_on_world_revolution }
-		
+		available = {
+			set_temp_variable = { target_t = 1 }
+			set_temp_variable = { target_num = 40 }
+			international_influence_judge = yes
+
+			OR = {
+				AND = {
+					has_global_flag = balkan_war_started
+					SER = { has_war_with = BUL }
+					GRE = { has_war_with = BUL }
+					ROM = { has_war_with = BUL }
+				}
+				AND = {
+					NOT = { has_global_flag = balkan_war_started }
+					SER = { has_war = no }
+					GRE = { has_war = no }
+					ROM = { has_war = no }
+					BUL = { has_war = no }
+				}
+			}
+		}
 		x = 4
 		y = 1
 		cost = 2
 		completion_reward = {
-			
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -40 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_balkan_war_not_started
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = SER
+							tag = GRE
+							tag = ROM
+						}	
+					}
+					country_event = cofintern.20
+				}
+			}
+			custom_effect_tooltip = if_they_accept_they_effect
+			effect_tooltip = {
+				add_ideas = Cof_balkan_cooperation
+				add_popularity = { ideology = syndicalist popularity = 0.03 }
+				add_popularity = { ideology = radical_socialist popularity = 0.03 }
+				add_popularity = { ideology = totalist popularity = 0.03 }
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_balkan_war_started
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = SER
+							tag = GRE
+							tag = ROM
+						}	
+					}
+					country_event = cofintern.20
+				}
+			}
+			custom_effect_tooltip = if_they_accept_effect
+			effect_tooltip = {
+				send_equipment = {
+					target = GRE
+					type = infantry_equipment
+					amount = 2000
+				}
+				send_equipment = {
+					target = GRE
+					type = artillery_equipment
+					amount = 150
+				}
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = SER
+							tag = GRE
+							tag = ROM
+						}	
+					}
+					add_ideas = Cof_balkan_cooperation
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_balkan_cooperation_yes
+
+			hidden_effect = {
+				if = {
+					limit = {
+						has_global_flag = balkan_war_started
+						SER = { has_war_with = BUL }
+						GRE = { has_war_with = BUL }
+						ROM = { has_war_with = BUL }
+					}
+					every_other_country = {
+						limit = {
+							OR = {
+								tag = SER
+								tag = GRE
+								tag = ROM
+							}	
+						}
+						country_event = cofintern.20
+					}
+				}
+				
+				if = {
+					limit = {
+						NOT = { has_global_flag = balkan_war_started }
+						SER = { has_war = no }
+						GRE = { has_war = no }
+						ROM = { has_war = no }
+						BUL = { has_war = no }
+					}
+					every_other_country = {
+						limit = {
+							OR = {
+								tag = SER
+								tag = GRE
+								tag = ROM
+							}	
+						}
+						country_event = cofintern.20
+					}
+				}
+			}
 		}
 	}
 
@@ -13193,12 +14001,103 @@ focus_tree = {
 		icon = GFX_focus_FRA_second_danube_national_revolution
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_turning_powder_keg_into_friendship }
-		
+		available = {
+			set_temp_variable = { target_t = 1 }
+			set_temp_variable = { target_num = 50 }
+			international_influence_judge = yes
+
+			custom_trigger_tooltip = {
+				106 = { is_owned_by = SER }
+				731 = { is_owned_by = GRE }
+				77 = { is_owned_by = ROM }
+				tooltip = balkan_war_win
+			}
+
+			AUS = {
+				has_stability < 0.5
+				OR = {
+					set_temp_variable = { target_num = 40 }
+					pan_socialist_ideology_more_than_x = yes
+
+					has_country_flag = antiaus_revolution
+				}
+				custom_trigger_tooltip = {
+					tooltip = AUS_owns_non_core
+					OR = {
+						HUN = { is_subject_of = AUS }
+						CZE = { is_subject_of = AUS }
+						CRO = { is_subject_of = AUS }
+						GAL = { is_subject_of = AUS }
+						any_owned_state = {
+							OR = {
+								is_core_of = HUN
+								is_core_of = CZE
+								is_core_of = COR
+								is_core_of = GAL
+							}
+						}
+					}
+				}			
+			}
+		}
 		x = 4
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -50 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			set_global_flag = anti_aus_war
+			AUS = {
+				add_stability = -0.25
+				add_war_support = -0.3
+				country_event = cofintern.21
+				custom_effect_tooltip = if_aus_has_socialist_power		
+			}
+			if = {
+				limit = { 
+					HUN = { 
+						exists = yes 
+						is_subject_of = AUS
+					} 
+				}
+				HUN = { country_event = cofintern.21 }
+			}
+			if = {
+				limit = { 
+					CZE = { 
+						exists = yes 
+						is_subject_of = AUS
+					} 
+				}
+				CZE = { country_event = cofintern.21 }
+			}
+			if = {
+				limit = { 
+					CRO = { 
+						exists = yes 
+						is_subject_of = AUS
+					} 
+				}
+				CRO = { country_event = cofintern.21 }
+			}
+			if = {
+				limit = { 
+					GAL = { 
+						exists = yes 
+						is_subject_of = AUS
+					} 
+				}
+				GAL = { country_event = cofintern.21 }
+			}
+			
+			custom_effect_tooltip = every_anti_aus_country_rebellion
 		}
 	}
 
@@ -13230,12 +14129,87 @@ focus_tree = {
 		icon = GFX_focus_FRA_worker_rome_in_the_americas
 		relative_position_id = FRA_the_new_world
 		prerequisite = { focus = FRA_the_new_world }
-		
-		x = -1
+		available = {
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 15 }
+			international_influence_judge = yes
+
+			MEX = {
+				trade_partners_phalanstere = yes
+				is_socialist_government = yes
+			}
+		}
+		x = 1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = -15 }
+			iri_influence_change = yes
 
+			MEX = {
+				effect_tooltip = {
+					add_political_power = 50
+					add_stability = 0.05
+					add_war_support = 0.05
+					add_ideas = Cof_mexico_cooperation
+				}
+				country_event = cofintern.26
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_economy_power_more_than_100
+			effect_tooltip = {
+				MEX = { country_event = cofintern.27 }
+			}
+			custom_effect_tooltip = if_they_accept_we_effect
+			effect_tooltip = {
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { epc = -100 }
+				cof_econ_target_change = yes
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_they_accept_they_effect
+			effect_tooltip = {
+				every_state = {
+					limit = {
+						is_owned_by = MEX
+						OR = {
+							state = 477
+							state = 475
+						}
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+					add_resource = {
+						type = rubber
+						amount = 50
+					}
+				}
+			}
+
+			hidden_effect = {
+				MEX = {
+					country_event = cofintern.26
+					if = {
+						limit = { FRA = { check_variable = { economy_power > 100 } } }
+						country_event = cofintern.27
+					}
+				}
+			}
 		}
 	}
 
@@ -13244,12 +14218,171 @@ focus_tree = {
 		icon = GFX_focus_FRA_chicago_paris
 		relative_position_id = FRA_the_new_world
 		prerequisite = { focus = FRA_the_new_world }
-		
-		x = 1
+		available = {
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 30 }
+			international_influence_judge = yes
+
+			OR = {
+				date < 1936.11.3
+
+				AND = {
+					WCA = { exists = yes }
+					OR = {
+						USA = { exists = yes }
+						NEE = { exists = yes }
+						APG = { exists = yes }
+						ACC = { exists = yes }
+					}
+				} 
+			} 
+		}
+		x = -1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = -30 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_usa_election_not_finish
+			effect_tooltip = {
+				USA = {
+					add_stability = -0.05
+					add_popularity = { ideology = syndicalist popularity = 0.02 }
+					add_popularity = { ideology = radical_socialist popularity = 0.02 }
+					add_popularity = { ideology = totalist popularity = 0.01 }
+					USA_increase_strike_wave = yes
+					country_event = cofintern.32
+				}
+			}
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = POLITICAL_POWER
+				JUDGE = more_than
+				TAGNUM = 100
+			}
+			effect_tooltip = {
+				add_political_power = -100
+				USA = {
+					add_to_variable = {
+						SPA_strength = 2
+						tooltip = USA_change_socialist_strength
+					}
+				}
+			}
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = economy_power
+				JUDGE = more_than
+				TAGNUM = 100
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { epc = -100 }
+				cof_econ_target_change = yes
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = when_usa_civil_war_start
+			effect_tooltip = {
+				WCA = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2000
+					}
+				}
+				358 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				395 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				} 
+			}
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = ARMY_EXPERIENCE
+				JUDGE = more_than
+				TAGNUM = 50
+			}
+			effect_tooltip = { army_experience = -50 }
+			custom_effect_tooltip = help_wca_take_nee
+
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_usa_civil_war_start
+			effect_tooltip = {
+				WCA = {
+					add_stability = 0.05
+					add_war_support = 0.05
+					add_ideas = Cof_america_cooperation
+					country_event = cofintern.32
+				}
+			}
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = economy_power
+				JUDGE = more_than
+				TAGNUM = 100
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { epc = -100 }
+				cof_econ_target_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				358 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				395 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				} 
+			}
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = ARMY_EXPERIENCE
+				JUDGE = more_than
+				TAGNUM = 50
+			}
+			effect_tooltip = { 
+				army_experience = -50 
+				WCA = {
+					army_experience = 25
+					add_ideas = Cof_america_french_military_help
+				}
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { WCA = { exists = yes } }
+					WCA = { country_event = cofintern.32 }
+				}
+				else = { USA = { country_event = cofintern.32 } }
+			}
 		}
 	}
 
@@ -13261,12 +14394,74 @@ focus_tree = {
 			focus = FRA_chicago_paris 
 			focus = FRA_worker_rome_in_the_americas 
 		}
-		
+		available = {
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 40 }
+			international_influence_judge = yes
+
+			932 = { is_owned_and_controlled_by = WCA }
+			CAN = {
+				OR = {
+					has_war_with = WCA
+					has_stability < 0.5
+				}
+			}
+		}
 		x = 0
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = -40 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_can_war_with_wca
+			effect_tooltip = {
+				CAN = {
+					add_stability = -0.05
+					add_war_support = -0.1
+
+					custom_effect_tooltip = CAN_exile_influence_decrease
+					subtract_from_variable = { king_influence = 1 }
+					CAN_calc_exile_influence_effects = yes
+
+					custom_effect_tooltip = CAN_king_popularity_decrease
+					subtract_from_variable = { king_popularity = 1 }
+					CAN_calc_royal_visit_effects = yes
+
+					add_ideas = Cof_can_que_strike
+
+					country_event = cofintern.34
+				}
+			}
+			custom_effect_tooltip = can_maybe_peace_with_wca
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_can_in_trouble
+			effect_tooltip = {
+				CAN = {
+					add_stability = -0.05
+					add_war_support = -0.1
+
+					custom_effect_tooltip = CAN_exile_influence_decrease
+					subtract_from_variable = { king_influence = 1 }
+					CAN_calc_exile_influence_effects = yes
+
+					custom_effect_tooltip = CAN_king_popularity_decrease
+					subtract_from_variable = { king_popularity = 1 }
+					CAN_calc_royal_visit_effects = yes
+
+					add_ideas = Cof_can_que_strike2
+
+					country_event = cofintern.34
+				}
+			}
+			custom_effect_tooltip = if_que_game_start
 		}
 	}
 	
@@ -13275,26 +14470,154 @@ focus_tree = {
 		icon = GFX_focus_FRA_south_vertebrae_revolution
 		relative_position_id = FRA_the_new_world
 		prerequisite = { focus = FRA_the_new_world }
-		
+		available = {
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 25 }
+			international_influence_judge = yes
+
+			OR = {
+				AND = {
+					FOP = { 
+						exists = yes
+						has_War = no 
+					}
+					ARG = { 
+						exists = yes
+						has_War = no 
+					}
+				}
+				FOP = { has_war_with = ARG }
+				AND = {
+					FOP = {
+						exists = yes
+						has_war = no
+					}
+					ARG = { exists = no }
+				}
+			}
+		}
 		x = -2
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = -25 }
+			iri_influence_change = yes
 
-		}
-	}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_fop_before_war
+			effect_tooltip = {
+				send_equipment = {
+					target = FOP
+					type = infantry_equipment
+					amount = 2000
+				}
+				send_equipment = {
+					target = CHL
+					type = infantry_equipment
+					amount = 2000
+				}
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = FOP
+							tag = CHL
+						}
+						has_socialist_government = yes
+					} 
+					add_stability = 0.05
+					add_war_support = 0.05
+					add_ideas = Cof_south_vertebrae_cooperation
+					country_event = cofintern.28
+				}
+				custom_effect_tooltip = FRA_south_vertebrae_revolution_tt
+				ARG = {
+					add_political_power = -50
+					add_stability = -0.05
+					add_war_support = -0.05
+					add_popularity = { ideology = syndicalist popularity = 0.03 }
+					add_popularity = { ideology = radical_socialist popularity = 0.03 }
+					add_popularity = { ideology = totalist popularity = 0.03 }
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -2000
+					}
+					add_ideas = Cof_panic_skricken
+					country_event = cofintern.28
+				}
+			}
 
-	focus = {
-		id = FRA_colombian_dream
-		icon = GFX_focus_FRA_colombian_dream
-		relative_position_id = FRA_the_new_world
-		prerequisite = { focus = FRA_the_new_world }
-		
-		x = 2
-		y = 2
-		cost = 2
-		completion_reward = {
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_fop_in_war
+			effect_tooltip = {
+				send_equipment = {
+					target = FOP
+					type = infantry_equipment
+					amount = 2500
+				}
+				send_equipment = {
+					target = CHL
+					type = infantry_equipment
+					amount = 2500
+				}
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = FOP
+							tag = CHL
+						}
+						has_socialist_government = yes
+					} 
+					add_war_support = 0.05
+					add_ideas = Cof_south_vertebrae_cooperation
+					add_timed_idea = { idea = Cof_revolutionary_optimism days = 90 }
+					country_event = cofintern.28
+				}
+				ARG = {
+					add_political_power = -25
+					add_stability = -0.025
+					add_war_support = -0.025
+					add_popularity = { ideology = syndicalist popularity = 0.01 }
+					add_popularity = { ideology = radical_socialist popularity = 0.02 }
+					add_popularity = { ideology = totalist popularity = 0.02 }
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -2000
+					}
+					add_timed_idea = { idea = Cof_panic_skricken days = 90 }
+					country_event = cofintern.28
+				}
+			}
+			
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_fop_after_war
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						OR = {
+							tag = FOP
+							tag = CHL
+						}
+						has_socialist_government = yes
+					} 
+					add_stability = 0.05
+					add_ideas = Cof_south_vertebrae_cooperation2
+					country_event = cofintern.28
+				}
+			}
 
+			hidden_effect = {
+				FOP = { country_event = cofintern.28 }
+				CHL = { country_event = cofintern.28 }
+				if = {
+					limit = { ARG = { exists = yes } } 
+					ARG = { country_event = cofintern.28 }
+				}
+			}
 		}
 	}
 
@@ -13303,12 +14626,98 @@ focus_tree = {
 		icon = GFX_focus_FRA_land_of_the_undivided
 		relative_position_id = FRA_the_new_world
 		prerequisite = { focus = FRA_worker_rome_in_the_americas }
-		
-		x = -1
-		y = 3
+		available = {
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 25 }
+			international_influence_judge = yes
+
+			OR = {
+				CEN = {
+					exists = yes
+					is_socialist_government = yes
+				}
+				
+				AND = {
+					CEN = { exists = no }
+					any_other_country = {
+						capital_scope = { region = 34 }
+						is_socialist_government = yes
+					}
+				}
+			}
+		}
+		x = 2
+		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = -25 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_cen_exists
+			effect_tooltip = {
+				CEN = {
+					add_stability = 0.05
+					add_war_support = 0.05
+					add_ideas = Cof_central_america_dream
+					country_event = cofintern.29
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_cen_owns_banama
+			effect_tooltip = {
+				CEN = { country_event = cofintern.30 }
+				MEX = { country_event = cofintern.30 }
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_cen_not_exists
+			custom_effect_tooltip = all_cename_country
+			effect_tooltip = {
+				add_war_support = 0.05
+				add_ideas = Cof_central_america_enthusiasm
+				country_event = cofintern.29
+			}
+
+			hidden_effect = {
+				if = {
+					limit = {
+						CEN = {
+							exists = yes
+							has_socialist_government = yes
+						} 
+					}
+					country_event = cofintern.29
+
+					if = {
+						limit = {
+							MEX = {
+								has_socialist_government = yes
+								NOT = { has_government = totalist }
+							}
+						}
+						country_event = cofintern.30
+						MEX = { country_event = cofintern.30 }
+					}
+				}
+
+				if = {
+					limit = { CEN = { exists = no } }
+					every_other_country = {
+						limit = {
+							capital_scope = { region = 34 }
+							has_socialist_government = yes
+						}
+						country_event = cofintern.29
+					}
+				}
+			}
 		}
 	}
 
@@ -13317,12 +14726,35 @@ focus_tree = {
 		icon = GFX_focus_FRA_partners_of_the_nile
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_white_paper_on_world_revolution }
-		
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 15 }
+			international_influence_judge = yes
+
+			EGY = {
+				has_country_leader = { character = EGY_farouk_i }
+				NOT = { has_war_with = TUR }
+			}
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 100 }
+			cof_econ_target_more_than_x = yes
+		}
 		x = -10
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = -15 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes	
 
+			custom_effect_tooltip = tooltip_white_line
+			country_event = cofintern.125
+			custom_effect_tooltip = choose_the_way_with_egypt
 		}
 	}
 
@@ -13330,13 +14762,57 @@ focus_tree = {
 		id = FRA_investing_in_desert_wars
 		icon = GFX_focus_PER_march_to_nile
 		relative_position_id = FRA_white_paper_on_world_revolution
-		prerequisite = { focus = FRA_partners_of_the_nile }
-		
+		prerequisite = { 
+			focus = FRA_partners_of_the_nile 
+			focus = FRA_fall_of_shah
+		}
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 20 }
+			international_influence_judge = yes
+
+			has_global_flag = OTT_cairo_pact_war
+
+			OR = {
+				EGY = { 
+					has_war_with = TUR 
+					custom_trigger_tooltip = {
+						tooltip = egy_accept_cof_coop
+						OR = {
+							has_idea = Cof_egy_cooperation_economy
+							has_idea = Cof_egy_cooperation_politics
+							has_idea = Cof_egy_cooperation_revolution
+						}
+					}
+				}
+
+				PER = { 
+					has_war_with = TUR 
+					is_socialist_government = yes 
+				}
+			}
+		}
 		x = -11
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = -20 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			TUR = {
+				effect_tooltip = {
+					add_stability = -0.1
+					add_war_support = -0.1
+					add_timed_idea = { idea = Cof_tur_national_uprising days = 200 }
+				}
+				country_event = cofintern.127
+			}
 		}
 	}
 
@@ -13345,12 +14821,57 @@ focus_tree = {
 		icon = GFX_focus_FRA_desert_corps_of_officers
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_partners_of_the_nile }
-		
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 10 }
+			international_influence_judge = yes
+
+			EGY = { 
+				custom_trigger_tooltip = {
+					tooltip = egy_accept_cof_coop
+					OR = {
+						has_idea = Cof_egy_cooperation_economy
+						has_idea = Cof_egy_cooperation_politics
+						has_idea = Cof_egy_cooperation_revolution
+					}
+				}
+			}
+		}
 		x = -9
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = -10 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			EGY = { country_event = cofintern.128 }
+			custom_effect_tooltip = if_they_accept_they_effect
+			effect_tooltip = {
+				army_experience = 25
+				add_ideas = Cof_egy_french_officer_group
+			}
+			custom_effect_tooltip = if_they_accept_we_effect
+			effect_tooltip = { 
+				EGY = {
+					diplomatic_relation = {
+						country = FRA
+						relation = military_access
+						active = yes
+					}
+					diplomatic_relation = {
+						country = FRA
+						relation = docking_rights
+						active = yes
+					}
+				}
+				add_ideas = Cof_desert_training 
+			}
 		}
 	}
 
@@ -13361,12 +14882,54 @@ focus_tree = {
 		prerequisite = { focus = FRA_against_sudan }
 		prerequisite = { focus = FRA_investing_in_desert_wars }
 		prerequisite = { focus = FRA_fall_of_shah }
-		
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 100 }
+			international_influence_judge = yes
+
+			has_global_flag = OTT_defeat_levant
+			OTT_ottomans_defeated = yes
+			NFA = { exists = no }
+		}
 		x = -10
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = -100 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = every_arab_country
+			every_other_country = {
+				limit = { 
+					capital_scope = { 
+						OR = {
+							INT_is_in_middle_east_egypt = yes
+							INT_is_in_middle_east_arab = yes
+							region = 189
+							region = 165
+						}
+					} 
+				}
+				country_event = cofintern.129
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_arab_is_monarchy
+			effect_tooltip = { add_ideas = Cof_pan_arab_passion_monarchy }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_arab_is_republic
+			effect_tooltip = { add_ideas = Cof_pan_arab_passion_republic }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_arab_is_socialist
+			effect_tooltip = { add_ideas = Cof_pan_arab_passion_socialist }
 		}
 	}
 
@@ -13378,7 +14941,7 @@ focus_tree = {
 		prerequisite = { focus = FRA_commune_army_council }
 		available = {
 			any_other_country = {
-				has_socialist_government = yes
+				is_socialist_government = yes
 				has_civil_war = yes
 			}
 		}
@@ -13478,11 +15041,88 @@ focus_tree = {
 		icon = GFX_focus_FRA_veteran_of_hundreds_wars
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_revolutionary_bases_abroad }
+		available = {
+			has_army_experience > 25
+			any_other_country = {
+				is_socialist_government = yes 
+				has_civil_war = yes
+				has_volunteers_amount_from = {
+					tag = FRA
+    				count > 3
+				}
+			}
+		}
 		x = 6
 		y = 3
 		cost = 2
 		completion_reward = {
+			army_experience = -25
+			if = {
+				limit = { has_idea = Cof_international_column1 }
+				swap_ideas = {
+					remove_idea = Cof_international_column1
+					add_idea = Cof_international_column2
+				}
+			}
+			else_if = {
+				limit = { has_idea = Cof_international_column12 }
+				swap_ideas = {
+					remove_idea = Cof_international_column12
+					add_idea = Cof_international_column3
+				}
+			}
+			else = {
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = Cof_international_column1
+						add_idea = Cof_international_column2
+					}
+				}
+			}
+			
 
+			if = {
+				limit = {
+					all_other_country = {
+						OR = {
+							has_socialist_government = no
+							has_civil_war = no
+							has_volunteers_amount_from = {
+								tag = FRA
+								count < 4
+							}
+						}
+					}
+				}
+				custom_effect_tooltip = FRA_veteran_of_hundreds_wars_ttt
+			}
+			random_other_country = {
+				limit = {
+					has_socialist_government = yes 
+					has_civil_war = yes
+					has_volunteers_amount_from = {
+						tag = FRA
+						count > 3
+					}
+				}
+				custom_effect_tooltip = FRA_veteran_of_hundreds_wars_tt
+				hidden_effect = { 
+					every_state = {
+						limit = { is_owned_and_controlled_by = PREV }
+						every_state_division = {
+							limit = { owner = { tag = FRA } }
+							add_history_entry = {
+								key = Cof_international_column_medal
+								subject = "Cof_international_column_medal"
+								allow = yes
+							}
+							add_unit_medal_to_latest_entry = {
+								unit_medals = Cof_international_column_medal
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -13491,11 +15131,59 @@ focus_tree = {
 		icon = GFX_focus_FRA_revolution_from_heaven
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_revolutionary_bases_abroad }
+		available = {
+			has_completed_focus = FRA_independence_of_the_air_force
+			has_deployed_air_force_size = { size > 999 }
+		}
 		x = 5
 		y = 5
 		cost = 2
 		completion_reward = {
+			if = {
+				limit = { has_idea = Cof_international_column1 }
+				swap_ideas = {
+					remove_idea = Cof_international_column1
+					add_idea = Cof_international_column12
+				}
+			}
+			else_if = {
+				limit = { has_idea = Cof_international_column2 }
+				swap_ideas = {
+					remove_idea = Cof_international_column2
+					add_idea = Cof_international_column3
+				}
+			}
+			else = {
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = Cof_international_column1
+						add_idea = Cof_international_column12
+					}
+				}
+			}
 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = Cof_air_buff
+			}
+			add_to_variable = {
+				fair_air_superiority_bonus_in_combat = 0.1
+				tooltip = air_superiority_bonus_in_combat_tooltip
+			}
+			add_to_variable = {
+				fair_air_superiority_efficiency = 0.1
+				tooltip = air_superiority_efficiency_tooltip
+			}
+			add_to_variable = {
+				fair_air_power_projection_factor = 0.05
+				tooltip = air_power_projection_factor_tooltip
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { NOT = { has_tech = bba_improved_transport_plane } }
+				set_technology = { bba_improved_transport_plane = 1 popup = yes }
+			}
 		}
 	}
 
@@ -13559,11 +15247,20 @@ focus_tree = {
 		icon = GFX_focus_AUS_bring_phonix_insurance_from_the_ashes
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_national_land_recovery_authority }
+		available = {
+			has_war = no
+		}
+		bypass = {
+			29 = { is_owned_by = FRA }
+		}
 		x = 6
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			country_event = cofintern.46
+			29 = { owner = {
+				country_event = cofintern.46
+			} }
 		}
 	}
 
@@ -13572,6 +15269,12 @@ focus_tree = {
 		icon = GFX_focus_generic_subjugation
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_national_land_recovery_authority }
+		available = {
+			has_war = no
+		}
+		bypass = {
+			1 = { is_owned_by = FRA }
+		}
 		x = 7
 		y = 5
 		cost = 2
@@ -13585,11 +15288,29 @@ focus_tree = {
 		icon = GFX_focus_FRA_demand_haute_savoie
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_national_land_recovery_authority }
+		available = {
+			has_war = no
+			has_global_flag = can_demand_romandy
+			can_declare_war_on = SWI
+			SWI = { owns_state = 760 }
+		}
+		bypass = {
+			OR = {
+				owns_state = 760
+				NOT = { can_declare_war_on = SWI }
+				SWI = { is_socialist_government = yes }
+			}
+		}
 		x = 9
 		y = 5
 		cost = 2
 		completion_reward = {
-
+			country_event = pre_war_events.7
+			add_named_threat = {
+				threat = 7
+				name = SWI_haute_savoie_threat
+			}
+			custom_effect_tooltip = SWI_romandie_confrontation
 		}
 	}
 
@@ -13598,6 +15319,12 @@ focus_tree = {
 		icon = GFX_focus_FRA_dont_forget_alsace_lorraine
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_national_land_recovery_authority }
+		available = {
+			has_war = no
+		}
+		bypass = {
+			28 = { is_owned_by = FRA }
+		}
 		x = 8
 		y = 4
 		cost = 2
@@ -13611,11 +15338,48 @@ focus_tree = {
 		icon = GFX_focus_FRA_walloon_frenchspeaking_people
 		relative_position_id = FRA_white_paper_on_world_revolution
 		prerequisite = { focus = FRA_national_land_recovery_authority }
+		available = {
+			has_war = no
+			has_completed_focus = FRA_dunkirk_issue
+			29 = { is_owned_by = FRA }
+			OR = {
+				AND = {
+					34 = { owner = { has_socialist_government = no } }
+					948 = { owner = { has_socialist_government = no } }
+				}	
+				WAL = { exists = yes }
+			}
+		}
+		bypass = {
+			34 = { is_owned_by = FRA }
+			948 = { is_owned_by = FRA }
+		}
 		x = 10
 		y = 4
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = if_wallon_soc_exists
+			effect_tooltip = { WAL = { country_event = cofintern.67 } }
 
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_wallon_exists
+			effect_tooltip = { WAL = { country_event = cofintern.69 } }
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_wallon_not_exists
+			effect_tooltip = { 948 = { owner = { country_event = cofintern.94 } } }
+		
+			hidden_effect = {
+				if = {
+					limit = { WAL = { exists = yes } }
+					if = {
+						limit = { WAL = { has_socialist_government = yes } }
+						country_event = cofintern.67
+					}
+					else = { country_event = cofintern.69 }
+				}
+				else = { 948 = { owner = { country_event = cofintern.94 } } }
+			}
 		}
 	}
 
@@ -13649,6 +15413,7 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = unlock_focuses
 			add_political_power = 50
+			add_faction_influence_ratio = 1
 		}
 	}
 
@@ -13927,7 +15692,7 @@ focus_tree = {
 
 			effect_tooltip = {
 				add_to_variable = {
-					INT_political_power_cost = -0.05
+					INT_political_power_cost = 0.05
 					tooltip = political_power_cost_tooltip
 				}
 				add_to_variable = {
@@ -13982,11 +15747,51 @@ focus_tree = {
 		relative_position_id = FRA_found_the_phalanstere_international
 		prerequisite = { focus = FRA_inner_circle_of_socialism }
 		prerequisite = { focus = FRA_indian_revolutionary_program }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 10 }
+			international_influence_judge = yes
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+
+			HND = {
+				exists = yes
+				is_subject = no
+			}
+			NOT = { country_exists = PRF }
+			NOT = { country_exists = RAJ }
+			431 = { is_owned_and_controlled_by = HND } 
+			433 = { is_owned_and_controlled_by = HND } 
+			427 = { is_owned_and_controlled_by = HND }
+		}
 		x = 3
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -10 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -50 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			HND = { country_event = cofintern.142 }
+			custom_effect_tooltip = if_they_accept_they_effect
+			effect_tooltip = {
+				add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+				reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+				
+				add_ideas = Cof_hnd_trade_ties
+			}
 		}
 	}
 
@@ -13996,11 +15801,55 @@ focus_tree = {
 		relative_position_id = FRA_found_the_phalanstere_international
 		prerequisite = { focus = FRA_inner_circle_of_socialism }
 		prerequisite = { focus = FRA_contacts_with_indochina }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 20 }
+			international_influence_judge = yes
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 75 }
+			cof_econ_target_more_than_x = yes
+
+			INC = {
+				exists = yes
+				is_subject = no
+				is_socialist_government = yes
+			}
+		}
 		x = 5
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -20 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -75 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			INC = { country_event = cofintern.143 }
+			custom_effect_tooltip = if_they_accept_they_effect
+			effect_tooltip = {
+				add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+				reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+				
+				add_ideas = Cof_relationship_indochina
+			}
+			custom_effect_tooltip = if_they_accept_we_effect
+			custom_effect_tooltip = if_has_idea_free_immigration
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_free_immigration
+					add_idea = bill_free_immigration_inc
+				}
+			}
 		}
 	}
 
@@ -14010,11 +15859,57 @@ focus_tree = {
 		relative_position_id = FRA_found_the_phalanstere_international
 		prerequisite = { focus = FRA_inner_circle_of_socialism }
 		prerequisite = { focus = FRA_archipelagic_dream }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 10 }
+			international_influence_judge = yes
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+
+			INS = {
+				exists = yes
+				is_subject = no
+				NOT = { is_in_faction_with = JAP }
+				NOT = { is_in_faction_with = GER }
+				NOT = { is_in_faction_with = ENT }
+				has_dictatorship_government = no
+			}
+		}
 		x = 4
 		y = 4
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -10 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -50 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			INS = { country_event = cofintern.141 }
+			custom_effect_tooltip = if_they_accept_they_effect
+			effect_tooltip = {
+				add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+				reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+				1020 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_ideas = Cof_ins_trade_ties
+			}
 		}
 	}
 
@@ -14024,11 +15919,39 @@ focus_tree = {
 		relative_position_id = FRA_found_the_phalanstere_international
 		prerequisite = { focus = FRA_inner_circle_of_socialism }
 		prerequisite = { focus = FRA_unlocking_the_cage_continent }
+		available = {
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 10 }
+			international_influence_judge = yes
+
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 30 }
+			cof_econ_target_more_than_x = yes
+
+			OR = {
+				NOT = { country_exists = MAF }
+				NOT = { country_exists = NFA }
+			}
+		}
 		x = 6
 		y = 5
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = -10 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -30 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = FRA_african_mining_agreement_tt
 		}
 	}
 
@@ -14038,11 +15961,42 @@ focus_tree = {
 		relative_position_id = FRA_found_the_phalanstere_international
 		prerequisite = { focus = FRA_inner_circle_of_socialism }
 		prerequisite = { focus = FRA_the_china_game }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 15 }
+			international_influence_judge = yes
+
+			OR = {
+				set_temp_variable = { target_t = 15 }
+				set_temp_variable = { target_num = 30 }
+				cof_econ_target_more_than_x = yes
+
+				has_political_power > 50
+
+				has_army_experience > 25
+			}
+
+			CHI = {
+				exists = yes
+				owns_state = 613
+				owns_state = 608
+			}
+		}
 		x = 7
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -15 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			country_event = cofintern.151 
+			custom_effect_tooltip = choose_the_way_with_china
 		}
 	}
 
@@ -14077,7 +16031,7 @@ focus_tree = {
 			set_temp_variable = { iri_euic = 0 }
 			set_temp_variable = { iri_asic = 0 }
 			set_temp_variable = { iri_meic = 0 }
-			set_temp_variable = { iri_afic = 5 }
+			set_temp_variable = { iri_afic = 10 }
 			set_temp_variable = { iri_amic = 0 }
 			iri_influence_change = yes
 
@@ -14106,11 +16060,157 @@ focus_tree = {
 		icon = GFX_focus_FRA_contacts_with_indochina
 		relative_position_id = FRA_the_congress_of_the_internationale
 		prerequisite = { focus = FRA_world_anti_colonial_committee }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 20 }
+			international_influence_judge = yes
+
+			GEA = { 
+				OR = {
+					has_idea = GEA_colonial_disaster_idea 
+					has_idea = GEA_colonial_instability_idea
+				}
+			}
+
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = GEA_has_indochina
+					any_state_in = {
+						strategic_region = 196 
+						is_owned_and_controlled_by = GEA
+					}
+				}
+
+				INC = {
+					exists = yes
+					has_war_with = GEA
+				}
+			}
+		}
+		bypass = {
+			INC = {
+				exists = yes
+				is_socialist_government = yes
+				has_war = no
+			}
+		}
 		x = 3
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -20 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_inc_not_exists
+			effect_tooltip = {
+				GEA = {
+					add_stability = -0.05
+					add_ideas = Cof_gea_indochina_threat
+					
+					country_event = cofintern.130
+				}
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_gea_choose1
+			effect_tooltip = {
+				GEA = {
+					add_political_power = -50
+					reverse_add_opinion_modifier = {
+						target = FRA
+						modifier = KR_displeased
+					}
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+					add_to_variable = { 
+						INC.guerilla_activity = 10
+						tooltip = INC_increase_guerilla_strength_tt
+					}
+					swap_ideas = {
+						remove_idea = Cof_gea_indochina_threat
+						add_idea = Cof_gea_indochina_threat1
+					}
+				}
+			}
+
+			custom_effect_tooltip = if_gea_choose2
+			effect_tooltip = {
+				GEA = {
+					add_popularity = { ideology = radical_socialist popularity = 0.05 }
+					add_to_variable = { 
+						INC.guerilla_activity = 20
+						tooltip = INC_increase_guerilla_strength_tt
+					}
+					swap_ideas = {
+						remove_idea = Cof_gea_indochina_threat
+						add_idea = Cof_gea_indochina_threat2
+					}
+				}
+			}
+			
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_inc_exists
+			effect_tooltip = {
+				GEA = {
+					add_stability = -0.05
+					add_manpower = -1000
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -2000
+					}
+					add_timed_idea = { idea = Cof_gea_indochina_revolution days = 200 }
+					country_event = cofintern.133
+				}
+				custom_effect_tooltip = tooltip_white_line
+				INC = {
+					add_stability = 0.05
+					add_war_support = 0.1
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 1500
+					}
+					add_to_variable = { 
+						INC.guerilla_activity = 20
+						tooltip = INC_increase_guerilla_strength_tt
+					}
+					add_ideas = Cof_french_military_support
+					country_event = cofintern.133
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_we_help_inc
+			effect_tooltip = {
+				GEA = {
+					add_stability = -0.05
+					add_manpower = -700
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -1000
+					}
+					country_event = { id = cofintern.134 days = 7 }
+				}
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { INC = { exists = no } }
+					GEA = { country_event = cofintern.130 }
+				}
+				else = {
+					INC = { country_event = cofintern.133 }
+					GEA = {
+						country_event = cofintern.133
+						country_event = { id = cofintern.134 days = 7 }
+					}
+				}
+			}
 		}
 	}
 
@@ -14119,11 +16219,85 @@ focus_tree = {
 		icon = GFX_focus_FRA_archipelagic_dream
 		relative_position_id = FRA_the_congress_of_the_internationale
 		prerequisite = { focus = FRA_contacts_with_indochina }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 30 }
+			international_influence_judge = yes
+
+			OR = {
+				AND = {
+					DEI = { has_stability < 0.5 }
+					INS = { exists = no }
+				}
+
+				INS = {
+					exists = yes
+					has_war_with = DEI
+				}
+			}
+		}
+		bypass = {
+			NOT = { country_exists = DEI }
+			INS = {
+				exists = yes
+				has_war = no
+			}
+		}
 		x = 2
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -30 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_ins_not_exists
+			effect_tooltip = {
+				DEI = {
+					add_stability = -0.1
+					add_manpower = -2000
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -1500
+					}
+					custom_effect_tooltip = dei_unity_upupupup
+					custom_effect_tooltip = dei_strength_upupupup
+					add_ideas = Cof_dei_colonial_disaster
+					country_event = cofintern.139
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_ins_exists
+			effect_tooltip = {
+				INS = {
+					add_war_support = 0.1
+					add_popularity = { ideology = radical_socialist popularity = 0.1 }
+					add_ideas = Cof_ins_dependent_dream
+					country_event = cofintern.140
+				}
+			}
+			
+			hidden_effect = {
+				if = {
+					limit = {
+						INS = { 
+							exists = yes 
+							has_war_with = DEI
+						}
+					}
+					INS = { country_event = cofintern.140 }
+				}
+				else_if = {
+					limit = { NOT = { has_global_flag = indonesian_revolution_fired } }
+					DEI = { country_event = cofintern.139 }
+				}
+			}
 		}
 	}
 
@@ -14132,11 +16306,74 @@ focus_tree = {
 		icon = GFX_focus_FRA_indian_revolutionary_program
 		relative_position_id = FRA_the_congress_of_the_internationale
 		prerequisite = { focus = FRA_world_anti_colonial_committee }
+		available = {
+			set_temp_variable = { target_t = 2 }
+			set_temp_variable = { target_num = 15 }
+			international_influence_judge = yes
+
+			has_country_flag = FRA_support_bharatiya
+
+			HND = { exists = yes }
+		}
+		bypass = {
+			NOT = { country_exists = PRF }
+			NOT = { country_exists = RAJ }
+			431 = { is_owned_and_controlled_by = HND } 
+			433 = { is_owned_and_controlled_by = HND } 
+			427 = { is_owned_and_controlled_by = HND }
+		}
 		x = 1
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = -15 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				HND = {
+					army_experience = 25
+					add_war_support = 0.05
+					add_ideas = Cof_french_military_support
+					add_doctrine_cost_reduction = {
+						name = france_events.62.t
+						cost_reduction = 0.5
+						uses = 1
+						category = land_doctrine
+					}
+					add_tech_bonus = {
+						name = france_events.62.t
+						bonus = 1
+						uses = 1
+						category = infantry_weapons
+					}
+					country_event = france_events.62
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_hnd_not_in_war
+			effect_tooltip = {
+				every_other_country = {
+					limit = { has_idea = RAJ_bombay_pact_idea }
+					add_stability = -0.1
+					add_war_support = -0.1
+					add_popularity = { ideology = radical_socialist popularity = 0.05 }
+					add_timed_idea = { idea = Cof_india_revolution_panic days = 400 }
+					country_event = cofintern.135
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_hnd_in_war
+			effect_tooltip = {
+				country_event = cofintern.136
+			}
 		}
 	}
 
@@ -14145,11 +16382,100 @@ focus_tree = {
 		icon = GFX_focus_FRA_unlocking_the_cage_continent
 		relative_position_id = FRA_the_congress_of_the_internationale
 		prerequisite = { focus = FRA_world_anti_colonial_committee }
+		available = {
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 30 }
+			international_influence_judge = yes
+
+			OR = {
+				country_exists = NFA
+				country_exists = MAF
+				SAF = { is_socialist_government = no }
+			}
+		}
 		x = 4
 		y = 3
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = if_nfa_exists
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = -30 }
+			set_temp_variable = { iri_amic = 0 }
+			effect_tooltip = { iri_influence_change = yes }
 
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				NFA = {
+					add_stability = -0.05
+					africa_colonial_riot_level_up = yes
+					country_event = cofintern.144
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_maf_exists
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = -30 }
+			set_temp_variable = { iri_amic = 0 }
+			effect_tooltip = { iri_influence_change = yes }
+
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				MAF = {
+					add_stability = -0.05
+					africa_colonial_riot_level_up = yes
+					country_event = cofintern.149
+				}
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_saf_not_soc
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = -30 }
+			set_temp_variable = { iri_amic = 0 }
+			effect_tooltip = { iri_influence_change = yes }
+
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				SAF = {
+					add_stability = -0.05
+					add_popularity = { ideology = syndicalist popularity = 0.03 }
+					add_popularity = { ideology = radical_socialist popularity = 0.04 }
+					add_popularity = { ideology = totalist popularity = 0.02 }
+					africa_colonial_riot_level_up = yes
+					
+					country_event = cofintern.150
+				}
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { NFA = { exists = yes } }
+					add_to_variable = { iri_afi = -30 }
+					NFA = { country_event = cofintern.144 }
+				}
+
+				if = {
+					limit = { MAF = { exists = yes } }
+					add_to_variable = { iri_afi = -30 }
+					MAF = { country_event = cofintern.149 }
+				}
+			
+				if = {
+					limit = { SAF = { is_socialist_government = no } }
+					add_to_variable = { iri_afi = -30 }
+					SAF = { country_event = cofintern.150 }
+				}
+			}
 		}
 	}
 
@@ -14158,11 +16484,84 @@ focus_tree = {
 		icon = GFX_focus_FRA_against_sudan
 		relative_position_id = FRA_the_congress_of_the_internationale
 		prerequisite = { focus = FRA_world_anti_colonial_committee }
+		available = {
+			set_temp_variable = { target_t = 3 }
+			set_temp_variable = { target_num = 50 }
+			international_influence_judge = yes
+
+			TUR = { has_stability < 0.5 }
+
+			OR = {
+				has_political_power > 150
+
+				set_temp_variable = { target_t = 15 }
+				set_temp_variable = { target_num = 150 }
+				cof_econ_target_more_than_x = yes
+			}
+		}
 		x = 7
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = -50 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
 
+			TUR = { country_event = cofintern.118 }
+
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = POLITICAL_POWER
+				JUDGE = more_than
+				TAGNUM = 100
+			}
+			effect_tooltip = {
+				add_political_power = -150
+				
+				TUR = {
+					add_stability = -0.1
+					add_manpower = -1000
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -150
+					}
+					every_owned_state = {
+						limit = {
+							OR = {
+								state = 352
+								state = 291
+								state = 554
+								state = 679
+							}
+						}
+						ott_increase_revolt_risk = yes
+					}
+				}
+			}
+
+			custom_effect_tooltip = {
+				localization_key = if_var_judge_num
+				TAGVAR = economy_power
+				JUDGE = more_than
+				TAGNUM = 150
+			}
+			effect_tooltip = {
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { epc = -150 }
+				cof_econ_target_change = yes
+				
+				TUR = {
+					add_political_power = -50
+					subtract_from_variable = { syr_integration_factor = 5 tooltip = ott_decrease_syr_int }
+					subtract_from_variable = { kur_integration_factor = 5 tooltip = ott_decrease_kur_int }
+					subtract_from_variable = { hej_integration_factor = 5 tooltip = ott_decrease_hej_int }
+					subtract_from_variable = { irq_integration_factor = 5 tooltip = ott_decrease_irq_int }
+				}
+			}
 		}
 	}
 
@@ -14332,6 +16731,7 @@ focus_tree = {
 			set_temp_variable = { eic = 0 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = FRA_mediterranean_naval_base_tt
 			effect_tooltip = {
 				navy_experience = 25
@@ -14390,6 +16790,7 @@ focus_tree = {
 			set_temp_variable = { eic = 0 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = FRA_british_naval_cooperation_tt
 			effect_tooltip = {
 				navy_experience = 25
@@ -14525,6 +16926,7 @@ focus_tree = {
 			set_temp_variable = { epc = -50 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = Cof_naval_buff
@@ -14627,6 +17029,7 @@ focus_tree = {
 			set_temp_variable = { epc = -75 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = Cof_naval_buff
@@ -14708,7 +17111,6 @@ focus_tree = {
 				bonus = 0.5
 				uses = 2
 				category = dd_tech
-				category = cl_tech
 				category = ca_tech
 				category = bb_tech
 			}
@@ -14801,7 +17203,6 @@ focus_tree = {
 				bonus = 0.75
 				uses = 2
 				category = dd_tech
-				category = cl_tech
 				category = ca_tech
 				category = bb_tech
 			}
@@ -14896,9 +17297,6 @@ focus_tree = {
 				uses = 1
 				category = naval_doctrine
 			}
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = FRA_seagull_project_tt
 		}
 	}
 
@@ -14920,6 +17318,7 @@ focus_tree = {
 			set_temp_variable = { epc = -100 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = Cof_naval_buff
@@ -14969,6 +17368,7 @@ focus_tree = {
 			set_temp_variable = { epc = -150 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
 				localization_key = tooltip_modify_dynmod
 				DYNMOD = Cof_naval_buff
@@ -14997,7 +17397,7 @@ focus_tree = {
 				}
 				create_equipment_variant = {
 					name = "Sorel Class"
-					type = carrier_3
+					type = ship_hull_carrier_3
 					upgrades = {
 						ship_deckspace_upgrade = 2
 						carrier_armor_upgrade = 2
@@ -15007,7 +17407,7 @@ focus_tree = {
 				}
 				add_equipment_production = {
 					equipment = {
-						type = carrier_3
+						type = ship_hull_carrier_3
 						version_name = "Sorel Class"
 					}
 					name = "SMS Sorel"
@@ -15027,7 +17427,7 @@ focus_tree = {
 					}
 					create_equipment_variant = {
 						name = "Sorel Class"
-						type = carrier_3
+						type = ship_hull_carrier_3
 						upgrades = {
 							ship_deckspace_upgrade = 2
 							carrier_armor_upgrade = 2
@@ -15037,7 +17437,7 @@ focus_tree = {
 					}
 					add_equipment_production = {
 						equipment = {
-							type = carrier_4
+							type = ship_hull_carrier_3
 							version_name = "Sorel Class"
 						}
 						name = "SMS Sorel"
@@ -15286,6 +17686,7 @@ focus_tree = {
 			set_temp_variable = { eic = 0 }
 			cof_econ_target_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
 			if = {
 				limit = { NOT = { has_tech = amphibious_tank_chassis } }
 				set_technology = { amphibious_tank_chassis = 1 popup = yes }
@@ -15480,6 +17881,7 @@ focus_tree = {
 			set_temp_variable = { epc = -100 }
 			cof_econ_target_change = yes
 	
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = FRA_central_fluid_power_research_institute_tt
 			hidden_effect = {
 				735 = {
@@ -15533,6 +17935,7 @@ focus_tree = {
 			set_temp_variable = { epc = -50 }
 			cof_econ_target_change = yes
 	
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = FRA_vehicle_concept_tt
 			swap_ideas = {
 				remove_idea = Cof_central_fluid_power_research_institute
@@ -16636,9 +19039,7 @@ focus_tree = {
 		y = 2
 		cost = 2
 		completion_reward = {
-			country_event = cofpolitics.132
-			country_event = cofpolitics.134
-			country_event = cofpolitics.136
+			
 		}
 	}
 
@@ -16694,7 +19095,7 @@ focus_tree = {
 		prerequisite = { focus = FRA_revolutionary_tents }
 		prerequisite = { focus = FRA_old_alliance }
 		available = {
-			has_country_flag = sorelian_accpet_syndicalist
+			
 		}
 		x = 0
 		y = 3

@@ -9,7 +9,10 @@ country_event = {
 	id = int.0
 	is_triggered_only = yes
 	option = {
-
+		USA = {
+			add_stability = -0.5
+		}
+		975 = { add_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } }
 	} 
 }
  
@@ -3368,8 +3371,7 @@ country_event = {
 		trigger = { has_equipment = { infantry_equipment > 10000 } }
 		custom_effect_tooltip = if_they_accept_effect
 		effect_tooltip = {
-			send_equipment = {
-				target = FROM.FROM
+			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = 2500
 			}
@@ -3416,8 +3418,7 @@ country_event = {
 		trigger = { has_equipment = { artillery_equipment > 5000 } }
 		custom_effect_tooltip = if_they_accept_effect
 		effect_tooltip = {
-			send_equipment = {
-				target = FROM.FROM
+			add_equipment_to_stockpile = {
 				type = artillery_equipment
 				amount = 1000
 			}
@@ -3464,8 +3465,7 @@ country_event = {
 		trigger = { has_equipment = { medium_tank_chassis > 2500 } }
 		custom_effect_tooltip = if_they_accept_effect
 		effect_tooltip = {
-			send_equipment = {
-				target = FROM.FROM
+			add_equipment_to_stockpile = {
 				type = medium_tank_chassis
 				amount = 250
 			}
@@ -4151,10 +4151,8 @@ country_event = {
 		ai_chance = { base = 70 }
 		set_country_flag = Cof_dip_receive
 		add_ideas = Cof_trade_partnership
-		reverse_add_opinion_modifier = {
-			target = FRA
-			modifier = KR_pleased
-		}
+		add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
 	}
 	option = {
 		name = cofintern.9.b
@@ -4182,10 +4180,8 @@ country_event = {
 		ai_chance = { base = 70 }
 		set_country_flag = Cof_dip_receive
 		add_ideas = Cof_trade_partnership
-		reverse_add_opinion_modifier = {
-			target = FRA
-			modifier = KR_pleased
-		}
+		add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
 	}
 	option = {
 		name = cofintern.10.b
@@ -4410,18 +4406,14 @@ country_event = {
 		add_popularity = { ideology = syndicalist popularity = 0.05 }
 		add_popularity = { ideology = radical_socialist popularity = 0.025 }
 
-		effect_tooltip = {
-			FRA = {
-				send_equipment = {
-					target = AST
-					type = infantry_equipment
-					amount = 3000
-				}
-				send_equipment = {
-					target = AST
-					type = artillery_equipment
-					amount = 300
-				}
+		effect_tooltip = { 
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 3000
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 300
 			}
 		}
 	}
@@ -4449,11 +4441,29 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofintern.16.a
-	
+		set_country_flag = socialist_iberia_accept
+		add_stability = 0.05
+		if = {
+			limit = { tag = SWF }
+			custom_effect_tooltip = if_socialist_iberia_accept_swf
+			effect_tooltip = {
+				complete_national_focus = SWF_united_iberia
+				annex_country = { target = POR transfer_troops = yes }
+			}
+			hidden_effect = { FRA = { country_event = { id = cofintern.18 days = 3 } } }
+		}
+		if = {
+			limit = { tag = POR }
+			custom_effect_tooltip = if_socialist_iberia_accept_por
+			effect_tooltip = { SWF = { annex_country = { target = POR transfer_troops = yes } } }
+		}
 	}
 	option = {
 		name = cofintern.16.b
-	
+		if = {
+			limit = { tag = SWF }
+			hidden_effect = { FRA = { country_event = { id = cofintern.18 days = 3 } } }
+		}
 	}
 }
 
@@ -4465,13 +4475,5948 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofintern.17.a
-	
+		add_political_power = -100
+		add_stability = -0.15
+		add_popularity = { ideology = syndicalist popularity = 0.1 }
+		add_popularity = { ideology = radical_socialist popularity = 0.1 }
 	}
 	option = {
 		name = cofintern.17.b
-	
+		add_stability = -0.25
+		add_popularity = { ideology = syndicalist popularity = 0.15 }
+		add_popularity = { ideology = radical_socialist popularity = 0.15 }
+		add_popularity = { ideology = totalist popularity = 0.05 }
 	}
 }
+
+country_event = {
+	id = cofintern.18
+	title = {
+		text = cofintern.18.title.a
+		trigger = {
+			SWF = { has_country_flag = socialist_iberia_accept }
+			POR = { has_country_flag = socialist_iberia_accept }
+		}
+	}
+	title = {
+		text = cofintern.18.title.b
+		trigger = {
+			OR = {
+				SWF = { NOT = { has_country_flag = socialist_iberia_accept } }
+				POR = { NOT = { has_country_flag = socialist_iberia_accept } }
+			}
+		}
+	}
+	desc = {
+		text = cofintern.18.desc.a
+		trigger = {
+			SWF = { has_country_flag = socialist_iberia_accept }
+			POR = { has_country_flag = socialist_iberia_accept }
+		}
+	}
+	desc = {
+		text = cofintern.18.desc.b
+		trigger = {
+			OR = {
+				SWF = { NOT = { has_country_flag = socialist_iberia_accept } }
+				POR = { NOT = { has_country_flag = socialist_iberia_accept } }
+			}
+		}
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.18.a
+		trigger = {
+			SWF = { has_country_flag = socialist_iberia_accept }
+			POR = { has_country_flag = socialist_iberia_accept }
+		}
+		POR = {
+			every_core_state = { add_core_of = SWF }
+		}
+		SWF = {
+			complete_national_focus = SWF_united_iberia
+			annex_country = { target = POR transfer_troops = yes }
+		}
+	}
+	option = {
+		name = cofintern.18.b
+		trigger = {
+			OR = {
+				SWF = { NOT = { has_country_flag = socialist_iberia_accept } }
+				POR = { NOT = { has_country_flag = socialist_iberia_accept } }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.19
+	title = cofintern.19.title
+	desc = cofintern.19.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.19.a
+		complete_national_focus = FRA_rooster_strategy
+	}
+	option = {
+		name = cofintern.19.b
+		complete_national_focus = FRA_sleeping_lion_strategy
+	}
+}
+
+country_event = {
+	id = cofintern.20
+	title = cofintern.20.title
+	desc = cofintern.20.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.20.a
+		add_ideas = Cof_balkan_cooperation
+		if = {
+			limit = { has_war_with = BUL }
+			FRA = {
+				send_equipment = {
+					target = PREV
+					type = infantry_equipment
+					amount = 2000
+				}
+				send_equipment = {
+					target = PREV
+					type = artillery_equipment
+					amount = 150
+				}
+			}
+		}
+		else = {
+			add_popularity = { ideology = syndicalist popularity = 0.03 }
+			add_popularity = { ideology = radical_socialist popularity = 0.03 }
+			add_popularity = { ideology = totalist popularity = 0.03 }
+		}
+	}
+	option = {
+		name = cofintern.20.b
+		add_political_power = -10
+		add_popularity = { ideology = syndicalist popularity = -0.01 }
+		add_popularity = { ideology = radical_socialist popularity = -0.01 }
+		add_popularity = { ideology = totalist popularity = -0.01 }
+	}
+}
+
+country_event = {
+	id = cofintern.21
+	title = cofintern.21.title
+	desc = cofintern.21.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	after = {
+		every_country = {
+			limit = {
+				OR = {
+					tag = CZE
+					tag = CRO
+					tag = GAL
+				}
+			}
+			HUN = { add_to_faction = PREV }
+		}
+	}
+	option = {
+		name = cofintern.21.a
+		trigger = { tag = AUS }
+		add_stability = -0.25
+		add_war_support = -0.3
+		if = {
+			limit = {
+				set_temp_variable = { target_num = 40 }
+				pan_socialist_ideology_more_than_x = yes
+			}
+			hidden_effect = { country_event = { id = cofintern.23 days = 2 random_hours = 12 } }
+		}
+		
+		if = {
+			limit = {
+				HUN = {
+					exists = yes
+					is_subject_of = AUS
+				}
+			}
+			set_autonomy = {
+				target = HUN
+				autonomy_state = autonomy_free
+			}
+			declare_war_on = {
+				target = HUN
+				type = civil_war
+			}
+		}
+		else = {
+			release = HUN
+			hidden_effect = {
+				HUN = {
+					AUS_remove_monarchy = yes
+					set_stability = 0.75
+					set_war_support = 0.75
+					set_politics = {
+						ruling_party = social_democrat
+						last_election = "1888.6.15"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						totalist = 1
+						syndicalist = 8
+						radical_socialist = 17
+						social_democrat = 32
+						social_liberal = 15
+						market_liberal = 2
+						social_conservative = 19
+						authoritarian_democrat = 6
+						paternal_autocrat = 0
+						national_populist = 0
+					}
+
+					create_unit = {
+						division = "division_template = \"Gyaloghadosztály\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 8
+					}
+					create_unit = {
+						division = "division_template = \"Határőrség\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 10
+					}
+					create_unit = {
+						division = "division_template = \"Lovashadosztály\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 3
+					}
+					create_unit = {
+						division = "division_template = \"Lovashadosztály\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 3
+					}
+					create_unit = {
+						division = "division_template = \"Harckocsizó hadosztály\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 1
+					}
+
+					create_faction = anti_habsburg_front
+				}
+			}
+			declare_war_on = {
+				target = HUN
+				type = civil_war
+			}
+		}
+
+		if = {
+			limit = {  
+				CZE = {
+					exists = yes
+					is_subject_of = AUS
+				}
+			}
+			set_autonomy = {
+				target = CZE
+				autonomy_state = autonomy_free
+			}
+			declare_war_on = {
+				target = CZE
+				type = civil_war
+			}
+		}
+		else = {
+			release = CZE
+			hidden_effect = {
+				CZE = {
+					set_stability = 0.75
+					set_war_support = 0.75
+					set_politics = {
+						ruling_party = social_democrat
+						last_election = "1888.6.15"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						totalist = 2
+						syndicalist = 14
+						radical_socialist = 23
+						social_democrat = 26
+						social_liberal = 14
+						market_liberal = 16
+						social_conservative = 10
+						authoritarian_democrat = 6
+						paternal_autocrat = 0
+						national_populist = 0
+					}
+
+					create_unit = {
+						division = "division_template = \"Pěší divize\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 7
+					}
+					create_unit = {
+						division = "division_template = \"Horská divize\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 2
+					}
+					create_unit = {
+						division = "division_template = \"Jezdecká divize\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 3
+					}
+					create_unit = {
+						division = "division_template = \"Útočná vozbá divize\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 1
+					}
+				}
+			}
+			declare_war_on = {
+				target = CZE
+				type = civil_war
+			}
+		}
+
+		if = {
+			limit = {  
+				CRO = {
+					exists = yes
+					is_subject_of = AUS
+				}
+			}
+			set_autonomy = {
+				target = CRO
+				autonomy_state = autonomy_free
+			}
+			declare_war_on = {
+				target = CRO
+				type = civil_war
+			}
+		}
+		else = {
+			release = CRO
+			hidden_effect = {
+				CRO = {
+					set_stability = 0.75
+					set_war_support = 0.75
+					set_politics = {
+						ruling_party = social_democrat
+						last_election = "1888.6.15"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						totalist = 0
+						syndicalist = 8
+						radical_socialist = 17
+						social_democrat = 29
+						social_liberal = 24
+						market_liberal = 12
+						social_conservative = 7
+						authoritarian_democrat = 3
+						paternal_autocrat = 0
+						national_populist = 0
+					}
+
+					create_unit = {
+						division = "division_template = \"Pesadijska Divizija\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 6
+					}
+					create_unit = {
+						division = "division_template = \"Gorska Pesadija\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 2
+					}
+					create_unit = {
+						division = "division_template = \"Konjička Divizija\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 2
+					}
+				}
+			}
+			declare_war_on = {
+				target = CRO
+				type = civil_war
+			}
+		}
+
+		if = {
+			limit = {  
+				GAL = {
+					exists = yes
+					is_subject_of = AUS
+				}
+			}
+			set_autonomy = {
+				target = GAL
+				autonomy_state = autonomy_free
+			}
+			declare_war_on = {
+				target = GAL
+				type = civil_war
+			}
+		}
+		else = {
+			release = GAL
+			hidden_effect = {
+				GAL = {
+					set_stability = 0.75
+					set_war_support = 0.75
+					set_politics = {
+						ruling_party = social_democrat
+						last_election = "1888.6.15"
+						election_frequency = 48
+						elections_allowed = no
+					}
+					set_popularities = {
+						totalist = 6
+						syndicalist = 12
+						radical_socialist = 21
+						social_democrat = 24
+						social_liberal = 19
+						market_liberal = 13
+						social_conservative = 3
+						authoritarian_democrat = 2
+						paternal_autocrat = 0
+						national_populist = 0
+					}
+
+					create_unit = {
+						division = "division_template = \"Dywizja Piechoty\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 8
+					}
+					create_unit = {
+						division = "division_template = \"Dywizja Piechoty Górskiej\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 2
+					}
+					create_unit = {
+						division = "division_template = \"Brygada Kawalerii\" start_experience_factor = 0.3"
+						owner = THIS
+						count = 1
+					}
+				}
+			}
+			declare_war_on = {
+				target = CRO
+				type = civil_war
+			}
+		}
+	}
+	option = {
+		name = cofintern.21.b
+		trigger = { NOT = { tag = AUS } }
+
+		if = {
+			limit = { tag = HUN }
+			set_stability = 0.75
+			set_war_support = 0.75
+			drop_cosmetic_tag = yes
+			leave_faction = yes
+			every_owned_state = {
+				teleport_armies = {
+					limit = { is_ally_with = AUS }
+					to_state_array = owned_controlled_states
+				}
+			}
+			AUS_remove_monarchy = yes
+			GER_remove_from_mitteleuropa = yes
+			set_politics = {
+				ruling_party = social_democrat
+				last_election = "1888.6.15"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				totalist = 1
+				syndicalist = 8
+				radical_socialist = 17
+				social_democrat = 32
+				social_liberal = 15
+				market_liberal = 2
+				social_conservative = 19
+				authoritarian_democrat = 6
+				paternal_autocrat = 0
+				national_populist = 0
+			}
+			create_faction = anti_habsburg_front
+		}
+
+		if = {
+			limit = { tag = CZE }
+			set_stability = 0.75
+			set_war_support = 0.75
+			drop_cosmetic_tag = yes
+			leave_faction = yes
+			every_owned_state = {
+				teleport_armies = {
+					limit = { is_ally_with = AUS }
+					to_state_array = owned_controlled_states
+				}
+			}
+			GER_remove_from_mitteleuropa = yes
+			set_politics = {
+				ruling_party = social_democrat
+				last_election = "1888.6.15"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				totalist = 2
+				syndicalist = 14
+				radical_socialist = 23
+				social_democrat = 26
+				social_liberal = 14
+				market_liberal = 16
+				social_conservative = 10
+				authoritarian_democrat = 6
+				paternal_autocrat = 0
+				national_populist = 0
+			}
+		}
+
+		if = {
+			limit = { tag = CRO }
+			set_stability = 0.75
+			set_war_support = 0.75
+			drop_cosmetic_tag = yes
+			leave_faction = yes
+			every_owned_state = {
+				teleport_armies = {
+					limit = { is_ally_with = AUS }
+					to_state_array = owned_controlled_states
+				}
+			}
+			GER_remove_from_mitteleuropa = yes
+			set_politics = {
+				ruling_party = social_democrat
+				last_election = "1888.6.15"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				totalist = 0
+				syndicalist = 8
+				radical_socialist = 17
+				social_democrat = 29
+				social_liberal = 24
+				market_liberal = 12
+				social_conservative = 7
+				authoritarian_democrat = 3
+				paternal_autocrat = 0
+				national_populist = 0
+			}
+		}
+
+		if = {
+			limit = { tag = GAL }
+			set_stability = 0.75
+			set_war_support = 0.75
+			drop_cosmetic_tag = yes
+			leave_faction = yes
+			every_owned_state = {
+				teleport_armies = {
+					limit = { is_ally_with = AUS }
+					to_state_array = owned_controlled_states
+				}
+			}
+			GER_remove_from_mitteleuropa = yes
+			set_politics = {
+				ruling_party = social_democrat
+				last_election = "1888.6.15"
+				election_frequency = 48
+				elections_allowed = no
+			}
+			set_popularities = {
+				totalist = 6
+				syndicalist = 12
+				radical_socialist = 21
+				social_democrat = 24
+				social_liberal = 19
+				market_liberal = 13
+				social_conservative = 3
+				authoritarian_democrat = 2
+				paternal_autocrat = 0
+				national_populist = 0
+			}
+		}
+		
+		hidden_effect = {
+			AUS = {
+				declare_war_on = {
+					target = ROOT
+					type = civil_war
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.22
+	title = cofintern.22.title
+	desc = cofintern.22.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		tag = AUS
+		has_global_flag = anti_aus_war
+		has_war = yes
+		surrender_progress < 0.7
+	}
+	fire_only_once = yes
+	option = {
+		name = cofintern.22.a
+		every_other_country = {
+			limit = {
+				OR = {
+					tag = HUN
+					is_in_faction_with = HUN
+				}
+			}
+			white_peace = AUS
+		}
+		hidden_effect = {
+			HUN = { dismantle_faction = yes } 
+			country_event = { id = cofintern.23 days = 2 random_hours = 12 }
+		}
+	}
+	option = {
+		name = cofintern.22.b
+		white_peace = AUS 
+		if = {
+			limit = { tag = HUN }
+			dismantle_faction = yes 
+		}
+		else = { leave_faction = yes }
+	}
+}
+
+country_event = {
+	id = cofintern.23
+	title = cofintern.23.title
+	desc = cofintern.23.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.23.a
+		drop_cosmetic_tag = yes
+		set_politics = {
+			ruling_party = radical_socialist
+			last_election = "1888.6.15"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		hidden_effect = {
+			set_popularities = {
+				totalist = 12
+				syndicalist = 21
+				radical_socialist = 34
+				social_democrat = 24
+				social_liberal = 9
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 0
+				paternal_autocrat = 0
+				national_populist = 0
+			}
+
+			GER = { country_event = { id = cofintern.24 days = 2 random_hours = 12 } }
+		}
+		
+		every_other_country = {
+			limit = {
+				OR = {
+					tag = HUN
+					is_in_faction_with = HUN
+				}
+				has_war_with = AUS
+			}
+			white_peace = AUS
+			if = {
+				limit = { tag = HUN }
+				dismantle_faction = yes 
+			}
+			leave_faction = yes
+		}
+	}
+	option = {
+		name = cofintern.23.b
+		add_stability = -0.15
+		add_war_support = -0.25
+		effect_tooltip = { GER = { annex_country = { target = AUS transfer_troops = yes } } }
+		
+		hidden_effect = { GER = { country_event = { id = cofintern.24 days = 2 random_hours = 12 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.24
+	title = cofintern.24.title
+	desc = cofintern.24.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.24.a
+		trigger = { AUS = { has_socialist_government = no } }
+		annex_country = { target = AUS transfer_troops = yes }
+	}
+	option = {
+		name = cofintern.24.b
+		trigger = { AUS = { has_socialist_government = yes } }
+		declare_war_on = {
+			target = AUS
+			type = annex_everything 
+		}
+	}
+	option = {
+		name = cofintern.24.c
+		trigger = { AUS = { has_socialist_government = yes } }
+	}
+}
+
+country_event = {
+	id = cofintern.25
+	title = cofintern.25.title
+	desc = {
+		text = cofintern.25.desc.a
+		trigger = { has_socialist_government = yes }
+	}
+	desc = {
+		text = cofintern.25.desc.b
+		trigger = { has_socialist_government = no }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.25.a
+		trigger = { has_socialist_government = yes }
+		add_stability = 0.025
+		add_war_support = 0.025
+		add_political_power = 25
+		add_ideas = Cof_northeu_cooperation
+	}
+	option = {
+		name = cofintern.25.b
+		trigger = { has_socialist_government = no }
+		if = {
+			limit = {
+				any_other_country = {
+					OR = {
+						tag = DEN
+						tag = NOR
+						tag = SWE
+						tag = FIN
+					}
+					has_socialist_government = yes
+				}
+			}
+			add_stability = -0.1
+			add_popularity = { ideology = totalist popularity = 0.02 }
+			add_popularity = { ideology = syndicalist popularity = 0.03	}
+			add_popularity = { ideology = radical_socialist popularity = 0.03 }
+			add_timed_idea = { idea = Cof_red_frontline days = 300 }
+		}
+		else = {
+			add_stability = -0.05
+			add_popularity = { ideology = totalist popularity = 0.02 }
+			add_popularity = { ideology = syndicalist popularity = 0.03	}
+			add_popularity = { ideology = radical_socialist popularity = 0.03 }
+			add_timed_idea = { idea = Cof_red_frontline days = 200 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.26
+	title = cofintern.26.title
+	desc = cofintern.26.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.26.a
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_ideas = Cof_mexico_cooperation
+	}
+}
+
+country_event = {
+	id = cofintern.27
+	title = cofintern.27.title
+	desc = cofintern.27.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.27.a
+		every_state = {
+			limit = {
+				is_owned_by = MEX
+				OR = {
+					state = 477
+					state = 475
+				}
+			}
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_resource = {
+				type = rubber
+				amount = 50
+			}
+		}
+		hidden_effect = {
+			FRA = {
+				set_temp_variable = { epc = -100 }
+				cof_econ_target_change = yes
+			}
+		}
+	}
+	option = {
+		name = cofintern.27.b
+		
+	}
+}
+
+country_event = {
+	id = cofintern.28
+	title = {
+		text = cofintern.28.title.a
+		trigger = { has_socialist_government = yes }
+	}
+	title = {
+		text = cofintern.28.title.b
+		trigger = { has_socialist_government = no }
+	}
+	desc = {
+		text = cofintern.28.desc.a
+		trigger = { has_socialist_government = yes }
+	}
+	desc = {
+		text = cofintern.28.desc.b
+		trigger = { has_socialist_government = no }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.27.a
+		trigger = { has_socialist_government = yes }
+
+		if = {
+			limit = {
+				ARG = {
+					exists = yes
+					has_War = no
+				}
+				FOP = {
+					exists = yes
+					has_War = no
+				}
+			}
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_ideas = Cof_south_vertebrae_cooperation
+
+			effect_tooltip = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2000
+				}
+			}
+			if = {
+				limit = { tag = FOP }
+				division_template = {
+					name = "Argenitina Volunteers"
+					is_locked = no
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						artillery_brigade = { x = 2 y = 0 }
+					}
+					support = {
+						recon = { x = 0 y = 0 }
+						engineer = { x = 0 y = 1 }
+						field_hospital = { x = 0 y = 2 }
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "division_template = \"Spanish Volunteers\" start_experience_factor = 0.8"
+						owner = FOP
+						count = 3
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = { ARG = { has_war_with = FOP } }
+			add_war_support = 0.05
+			add_ideas = Cof_south_vertebrae_cooperation
+			add_timed_idea = { idea = Cof_revolutionary_optimism days = 90 }
+
+			effect_tooltip = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2500
+				}
+			}
+		}
+
+		if = {
+			limit = { ARG = { exists = no } }
+			add_stability = 0.05
+			add_ideas = Cof_south_vertebrae_cooperation2
+		}
+	}
+	option = {
+		name = cofintern.27.b
+		trigger = { has_socialist_government = no }
+		if = {
+			limit = { 
+				FOP = {
+					exists = yes
+					has_War = no
+				}
+			}
+			add_political_power = -50
+			add_stability = -0.05
+			add_war_support = -0.05
+			add_popularity = { ideology = syndicalist popularity = 0.03 }
+			add_popularity = { ideology = radical_socialist popularity = 0.03 }
+			add_popularity = { ideology = totalist popularity = 0.03 }
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -2000
+			}
+			add_ideas = Cof_panic_skricken
+		}
+
+		if = {
+			limit = { has_war_with = FOP } 
+			add_political_power = -25
+			add_stability = -0.025
+			add_war_support = -0.025
+			add_popularity = { ideology = syndicalist popularity = 0.01 }
+			add_popularity = { ideology = radical_socialist popularity = 0.02 }
+			add_popularity = { ideology = totalist popularity = 0.02 }
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -2000
+			}
+			add_timed_idea = { idea = Cof_panic_skricken days = 90 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.29
+	title = cofintern.29.title
+	desc = cofintern.29.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.29.a
+		if = {
+			limit = { tag = CEN }
+			add_stability = 0.05
+			add_war_support = 0.05
+			add_ideas = Cof_central_america_dream
+		}
+		else = {
+			add_war_support = 0.05
+			add_ideas = Cof_central_america_enthusiasm
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.30
+	title = cofintern.30.title
+	desc = cofintern.30.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.30.a
+		set_country_flag = mex_cen_union
+
+		custom_effect_tooltip = if_they_accept_effect 
+		effect_tooltip = {
+			MEX = { annex_country = { target = AUS transfer_troops = yes } }
+			every_state = {
+				limit = { is_core_of = CEN }
+				add_core_of = MEX
+			}
+		}
+	}
+	option = {
+		name = cofintern.30.b
+		
+	}
+}
+
+country_event = {
+	id = cofintern.31
+	title = {
+		text = cofintern.31.title.a
+		trigger = {
+			MEX = { has_country_flag = mex_cen_union }
+			CEN = { has_country_flag = mex_cen_union }
+		}
+	}
+	title = {
+		text = cofintern.31.title.b
+		trigger = {
+			OR = {
+				MEX = { NOT = { has_country_flag = mex_cen_union } }
+				CEN = { NOT = { has_country_flag = mex_cen_union } }
+			} 
+		}
+	}
+	desc = {
+		text = cofintern.31.desc.a
+		trigger = {
+			MEX = { has_country_flag = mex_cen_union }
+			CEN = { has_country_flag = mex_cen_union }
+		}
+	}
+	desc = {
+		text = cofintern.31.desc.b
+		trigger = {
+			OR = {
+				MEX = { NOT = { has_country_flag = mex_cen_union } }
+				CEN = { NOT = { has_country_flag = mex_cen_union } }
+			} 
+		}
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.31.a
+		trigger = {
+			MEX = { has_country_flag = mex_cen_union }
+			CEN = { has_country_flag = mex_cen_union }
+		}
+
+		MEX = { annex_country = { target = AUS transfer_troops = yes } }
+		every_state = {
+			limit = { is_core_of = CEN }
+			add_core_of = MEX
+		}
+	}
+	option = {
+		name = cofintern.31.b
+		trigger = {
+			OR = {
+				MEX = { NOT = { has_country_flag = mex_cen_union } }
+				CEN = { NOT = { has_country_flag = mex_cen_union } }
+			} 
+		}
+
+	}
+}
+
+country_event = {
+	id = cofintern.32
+	title = {
+		text = cofintern.32.title.a
+		trigger = { tag = USA }
+	}
+	title = {
+		text = cofintern.32.title.b
+		trigger = { tag = WCA }
+	}
+	desc = {
+		text = cofintern.32.desc.a
+		trigger = { tag = USA }
+	}
+	desc = {
+		text = cofintern.32.desc.b
+		trigger = { tag = WCA }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.32.a
+		trigger = { tag = USA }
+		add_stability = -0.05
+		add_popularity = { ideology = syndicalist popularity = 0.02 }
+		add_popularity = { ideology = radical_socialist popularity = 0.02 }
+		add_popularity = { ideology = totalist popularity = 0.01 }
+		USA_increase_strike_wave = yes
+
+		if = {
+			limit = { FRA = { has_political_power > 100 } }
+			hidden_effect = { FRA = { add_political_power = -100 } }
+			add_to_variable = {
+				SPA_strength = 2
+				tooltip = USA_change_socialist_strength
+			}
+		}
+
+		if = {
+			limit = { FRA = { check_variable = { economy_power > 100 } } }
+			hidden_effect = { 
+				FRA = { add_to_variable = { economy_power = -100 } } 
+				WCA = { set_country_flag = cof_prewar_help }
+			}
+			custom_effect_tooltip = when_usa_civil_war_start
+			effect_tooltip = {
+				WCA = {
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2000
+					}
+				}
+				358 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+				395 = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				} 
+			}
+		}
+
+		if = {
+			limit = { FRA = { has_army_experience > 50 } }
+			hidden_effect = { 
+				FRA = { army_experience = -50 } 
+				WCA = { set_country_flag = cof_prewar_nee_help }
+			}
+			custom_effect_tooltip = wca_will_take_over_nee
+		}
+	}
+	option = {
+		name = cofintern.32.b
+		trigger = { tag = WCA }
+		add_stability = 0.05
+		add_war_support = 0.05
+		add_ideas = Cof_america_cooperation
+
+		if = {
+			limit = { FRA = { check_variable = { economy_power > 100 } } }
+			hidden_effect = { FRA = { add_to_variable = { economy_power = -100 } } }
+			358 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			395 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			} 
+		}
+		
+
+		if = {
+			limit = { FRA = { has_army_experience > 50 } }
+			hidden_effect = { FRA = { army_experience = -50 } }
+			army_experience = 25
+			add_ideas = Cof_america_french_military_help
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.33
+	title = cofintern.33.title
+	desc = cofintern.33.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		tag = WCA
+		OR = {
+			has_country_flag = cof_prewar_help
+			has_country_flag = cof_prewar_nee_help
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = cofintern.33.a
+		trigger = { tag = USA }
+		if = {
+			limit = { has_country_flag = cof_prewar_help }
+			WCA = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 2000
+				}
+			}
+			358 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			395 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			} 
+		}
+		
+		if = {
+			limit = { has_country_flag = cof_prewar_nee_help }
+			hidden_effect = { country_event = american_civil_war_events.766 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.34
+	title = cofintern.34.title
+	desc = cofintern.34.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.34.a
+		add_stability = -0.05
+		add_war_support = -0.1
+		
+		custom_effect_tooltip = CAN_exile_influence_decrease
+		subtract_from_variable = { king_influence = 1 }
+		CAN_calc_exile_influence_effects = yes
+
+		custom_effect_tooltip = CAN_king_popularity_decrease
+		subtract_from_variable = { king_popularity = 1 }
+		CAN_calc_royal_visit_effects = yes
+		
+		if = {
+			limit = { has_war_with = WCA }
+			add_ideas = Cof_can_que_strike
+			hidden_effect = { country_event = cofintern.35 }
+		}
+		else = { add_ideas = Cof_can_que_strike2 }
+	}
+}
+
+country_event = {
+	id = cofintern.35
+	title = cofintern.35.title
+	desc = cofintern.35.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.35.a
+		add_political_power = -100
+		swap_ideas = {
+			remove_idea = Cof_can_que_strike
+			add_idea = Cof_can_que_strike2
+		}
+		hidden_effect = {
+			every_other_country = {
+				limit = {
+					has_war_with = CAN
+					tag = WCA
+				}
+				country_event = american_civil_war_events.165
+			}
+		}
+	}
+	option = {
+		name = cofintern.35.b
+		add_political_power = -50
+		add_stability = -0.1
+		add_war_support = -0.1
+	}
+}
+
+country_event = {
+	id = cofintern.36
+	title = cofintern.36.title
+	desc = cofintern.36.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		tag = GER
+		FRA = { has_completed_focus = FRA_waiting_for_rabbits }
+		has_war_with = FRA
+	}
+	fire_only_once = yes
+	option = {
+		name = cofintern.36.a
+		add_timed_idea = { idea = Cof_ger_fall_into_trap days = 240 }
+	}
+}
+
+country_event = {
+	id = cofintern.37
+	title = cofintern.37.title
+	desc = cofintern.37.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.37.a
+		add_timed_idea = { idea = Cof_lowland_unexpected_attack days = 90 }
+	}
+}
+
+country_event = {
+	id = cofintern.38
+	title = cofintern.38.title
+	desc = cofintern.38.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.38.a
+		add_timed_idea = { idea = Cof_berween_two_fires days = 60 }
+	}
+}
+
+country_event = {
+	id = cofintern.39
+	title = cofintern.39.title
+	desc = cofintern.39.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.39.a
+		add_stability = -0.05
+		add_war_support = -0.05
+		add_popularity = { ideology = syndicalist popularity = 0.025 }
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		if = {
+			limit = { FRA = { has_political_power > 150 } }
+			FRA = {
+				hidden_effect = { add_political_power = -150 }
+				add_collaboration = {
+					target = GER
+					value = 0.1
+				}
+			}
+		}
+		else_if = {
+			limit = { FRA = { has_political_power > 300 } }
+			FRA = {
+				hidden_effect = { add_political_power = -300 }
+				add_collaboration = {
+					target = GER
+					value = 0.15
+				}
+			}
+		}
+
+		if = {
+			limit = { FRA = { check_variable = { economy_power > 150 } } }
+			FRA = {
+				hidden_effect = { add_to_variable = { economy_power = -150 } }
+				add_collaboration = {
+					target = GER
+					value = 0.15
+				}
+			}
+		}
+		else_if = {
+			limit = { FRA = { check_variable = { economy_power > 300 } } }
+			FRA = {
+				hidden_effect = { add_to_variable = { economy_power = -300 } }
+				add_collaboration = {
+					target = GER
+					value = 0.2
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.40
+	title = {
+		text = cofintern.40.title.swi
+		trigger = { tag = SWI }
+	}
+	title = {
+		text = cofintern.40.title.fra1
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = SWI_not_gives_cof_access }
+		}
+	}
+	title = {
+		text = cofintern.40.title.fra2
+		trigger = { 
+			tag = FRA 
+			has_country_flag = SWI_not_gives_cof_access 
+		}
+	}
+	desc = {
+		text = cofintern.40.desc.swi
+		trigger = { tag = SWI }
+	}
+	title = {
+		text = cofintern.40.desc.fra1
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = SWI_not_gives_cof_access }
+		}
+	}
+	title = {
+		text = cofintern.40.desc.fra2
+		trigger = { 
+			tag = FRA 
+			has_country_flag = SWI_not_gives_cof_access 
+		}
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.40.a
+		trigger = { tag = SWI }
+		
+		diplomatic_relation = {
+			country = FRA
+			relation = military_access
+			active = yes 
+		}
+		FRA = {
+			diplomatic_relation = {
+				country = SWI
+				relation = military_access
+				active = yes 
+			}
+		}
+
+		hidden_effect = { FRA = { country_event = cofintern.40 } }
+	}
+	option = {
+		name = cofintern.40.b
+		trigger = { tag = SWI }
+
+		hidden_effect = { 
+			FRA = { 
+				set_country_flag = SWI_not_gives_cof_access 
+				country_event = cofintern.40 
+			} 
+		}
+	}
+	option = {
+		name = cofintern.40.fra1
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = SWI_not_gives_cof_access }
+		}
+
+		effect_tooltip = {
+			diplomatic_relation = {
+				country = SWI
+				relation = military_access
+				active = yes 
+			}
+			SWI = {
+				diplomatic_relation = {
+					country = FRA
+					relation = military_access
+					active = yes 
+				}
+			}
+		}
+	}
+	option = {
+		name = cofintern.40.fra2
+		trigger = { 
+			tag = FRA 
+			has_country_flag = SWI_not_gives_cof_access 
+		}
+		
+	}
+}
+
+country_event = {
+	id = cofintern.41
+	title = cofintern.41.title
+	desc = cofintern.41.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.41.a
+		country_event = cofintern.42
+	}
+	option = {
+		name = cofintern.41.b
+		hidden_effect = { FRA = { country_event = cofintern.45 } }
+	}
+}
+
+country_event = {
+	id = cofintern.42
+	title = cofintern.42.title
+	desc = cofintern.42.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.42.a
+		set_country_flag = rus_accept_cop_100
+		effect_tooltip = {
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_ideas = Cof_rus_cooperation_100
+		}
+		country_event = cofintern.43
+	}
+	option = {
+		name = cofintern.42.b
+		country_event = cofintern.43
+	}
+	option = {
+		name = cofintern.42.c
+		country_event = cofintern.45
+		FRA = { country_event = cofintern.45 }
+	}
+}
+
+country_event = {
+	id = cofintern.43
+	title = cofintern.43.title
+	desc = cofintern.43.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.43.a
+		if = {
+			limit = { has_country_flag = rus_accept_cop_100 }
+			clr_country_flag = rus_accept_cop_100
+			set_country_flag = rus_accept_cop_110
+		}
+		else = { set_country_flag = rus_accept_cop_010 }
+		effect_tooltip = {
+			army_experience = 25
+			add_ideas = Cof_rus_cooperation_010
+		}
+		country_event = cofintern.44
+	}
+	option = {
+		name = cofintern.43.b
+		country_event = cofintern.44
+	}
+	option = {
+		name = cofintern.43.c
+		country_event = cofintern.45
+		FRA = { country_event = cofintern.45 }
+	}
+}
+
+country_event = {
+	id = cofintern.44
+	title = cofintern.44.title
+	desc = cofintern.44.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.44.a
+		if = {
+			limit = { has_country_flag = rus_accept_cop_100 }
+			clr_country_flag = rus_accept_cop_100
+			set_country_flag = rus_accept_cop_101
+		}
+		else_if = {
+			limit = { has_country_flag = rus_accept_cop_110 }
+			clr_country_flag = rus_accept_cop_110
+			set_country_flag = rus_accept_cop_111
+		}
+		else_if = {
+			limit = { has_country_flag = rus_accept_cop_010 }
+			clr_country_flag = rus_accept_cop_010
+			set_country_flag = rus_accept_cop_011
+		}
+		else = { set_country_flag = rus_accept_cop_001 }
+		effect_tooltip = {
+			add_political_power = 100
+			add_ideas = Cof_rus_cooperation_010
+		}
+		country_event = cofintern.45
+		FRA = { country_event = cofintern.45 }
+	}
+	option = {
+		name = cofintern.44.b
+		country_event = cofintern.45
+		FRA = { country_event = cofintern.45 }
+	}
+}
+
+country_event = {
+	id = cofintern.45
+	title = {
+		text = cofintern.45.title.a
+		trigger = {
+			RUS = {
+				OR = {
+					has_country_flag = rus_accept_cop_100
+					has_country_flag = rus_accept_cop_010
+					has_country_flag = rus_accept_cop_001
+					has_country_flag = rus_accept_cop_110
+					has_country_flag = rus_accept_cop_101
+					has_country_flag = rus_accept_cop_011
+					has_country_flag = rus_accept_cop_111
+				}
+			}
+		}
+	}
+	title = {
+		text = cofintern.45.title.b
+		trigger = {
+			RUS = {
+				NOT = { has_country_flag = rus_accept_cop_100 }
+				NOT = { has_country_flag = rus_accept_cop_010 }
+				NOT = { has_country_flag = rus_accept_cop_001 }
+				NOT = { has_country_flag = rus_accept_cop_110 }
+				NOT = { has_country_flag = rus_accept_cop_101 }
+				NOT = { has_country_flag = rus_accept_cop_011 }
+				NOT = { has_country_flag = rus_accept_cop_111 }
+			}
+		}
+	}
+	desc = {
+		text = cofintern.45.desc.a
+		trigger = {
+			RUS = {
+				OR = {
+					has_country_flag = rus_accept_cop_100
+					has_country_flag = rus_accept_cop_010
+					has_country_flag = rus_accept_cop_001
+					has_country_flag = rus_accept_cop_110
+					has_country_flag = rus_accept_cop_101
+					has_country_flag = rus_accept_cop_011
+					has_country_flag = rus_accept_cop_111
+				}
+			}
+		}
+	}
+	desc = {
+		text = cofintern.45.desc.b
+		trigger = {
+			RUS = {
+				NOT = { has_country_flag = rus_accept_cop_100 }
+				NOT = { has_country_flag = rus_accept_cop_010 }
+				NOT = { has_country_flag = rus_accept_cop_001 }
+				NOT = { has_country_flag = rus_accept_cop_110 }
+				NOT = { has_country_flag = rus_accept_cop_101 }
+				NOT = { has_country_flag = rus_accept_cop_011 }
+				NOT = { has_country_flag = rus_accept_cop_111 }
+			}
+		}
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.45.a
+		trigger = {
+			RUS = {
+				OR = {
+					has_country_flag = rus_accept_cop_100
+					has_country_flag = rus_accept_cop_010
+					has_country_flag = rus_accept_cop_001
+					has_country_flag = rus_accept_cop_110
+					has_country_flag = rus_accept_cop_101
+					has_country_flag = rus_accept_cop_011
+					has_country_flag = rus_accept_cop_111
+				}
+			}
+		}
+		if = {
+			limit = { RUS = { has_country_flag = rus_accept_cop_100 } }
+			if = {
+				limit = { tag = FRA }
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 10 }
+				cof_econ_target_change = yes
+			}
+
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_ideas = Cof_rus_cooperation_100
+		}
+		else_if = {
+			limit = { RUS = { has_country_flag = rus_accept_cop_010 } }
+			if = {
+				limit = { tag = FRA }
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atc = 3 }
+				set_temp_variable = { apc = 3 }
+				Cof_army_reform_values_change = yes
+			}
+
+			army_experience = 25
+			add_ideas = Cof_rus_cooperation_010
+		}
+		else_if = {
+			limit = { RUS = { has_country_flag = rus_accept_cop_001 } }
+			if = {
+				limit = { tag = FRA }
+				custom_effect_tooltip = effect_internation
+				set_temp_variable = { iri_euic = 60 }
+				iri_influence_change = yes
+			}
+
+			add_political_power = 100
+			add_ideas = Cof_rus_cooperation_001
+		}
+		else_if = {
+			limit = { RUS = { has_country_flag = rus_accept_cop_110 } }
+			if = {
+				limit = { tag = FRA }
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 10 }
+				cof_econ_target_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atc = 3 }
+				set_temp_variable = { apc = 3 }
+				Cof_army_reform_values_change = yes
+			}
+
+			add_offsite_building = { type = industrial_complex level = 1 }
+			army_experience = 25
+			add_ideas = Cof_rus_cooperation_110
+		}
+		else_if = {
+			limit = { RUS = { has_country_flag = rus_accept_cop_101 } }
+			if = {
+				limit = { tag = FRA }
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 10 }
+				cof_econ_target_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_internation
+				set_temp_variable = { iri_euic = 60 }
+				iri_influence_change = yes
+			}
+
+			add_offsite_building = { type = industrial_complex level = 1 }
+			add_political_power = 100
+			add_ideas = Cof_rus_cooperation_101
+		}
+		else_if = {
+			limit = { RUS = { has_country_flag = rus_accept_cop_011 } }
+			if = {
+				limit = { tag = FRA }
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atc = 3 }
+				set_temp_variable = { apc = 3 }
+				Cof_army_reform_values_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_internation
+				set_temp_variable = { iri_euic = 60 }
+				iri_influence_change = yes
+			}
+
+			army_experience = 25
+			add_political_power = 100
+			add_ideas = Cof_rus_cooperation_011
+		}
+		else_if = {
+			limit = { RUS = { has_country_flag = rus_accept_cop_111 } }
+			if = {
+				limit = { tag = FRA }
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 10 }
+				cof_econ_target_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { atc = 3 }
+				set_temp_variable = { apc = 3 }
+				Cof_army_reform_values_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_internation
+				set_temp_variable = { iri_euic = 60 }
+				iri_influence_change = yes
+			}
+
+			add_offsite_building = { type = industrial_complex level = 1 }
+			army_experience = 25
+			add_political_power = 100
+			add_ideas = Cof_rus_cooperation_111
+		}
+
+		hidden_effect = {
+			if = {
+				limit = { tag = FRA }
+				every_other_country = {
+					limit = {
+						NOT = { tag = RUS }
+						OR = {
+							is_in_faction_with = FRA
+							is_in_faction_with = RUS
+						}
+					}
+					country_event = cofintern.45
+				}
+			}
+		}
+	}
+	option = {
+		name = cofintern.45.b
+		trigger = {
+			RUS = {
+				NOT = { has_country_flag = rus_accept_cop_100 }
+				NOT = { has_country_flag = rus_accept_cop_010 }
+				NOT = { has_country_flag = rus_accept_cop_001 }
+				NOT = { has_country_flag = rus_accept_cop_110 }
+				NOT = { has_country_flag = rus_accept_cop_101 }
+				NOT = { has_country_flag = rus_accept_cop_011 }
+				NOT = { has_country_flag = rus_accept_cop_111 }
+			}
+		}
+
+	}
+}
+
+country_event = {
+	id = cofintern.46
+	title = cofintern.46.title
+	desc = {
+		text = cofintern.46.desc.a
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.46.desc.b
+		trigger = { owns_state = 29 }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.46.a
+		trigger = { tag = FRA }
+		hidden_effect = { 29 = { owner = { country_event = { id = cofintern.47 days = 2 } } } }
+	}
+	option = {
+		name = cofintern.46.b
+		trigger = { tag = FRA }
+		hidden_effect = { country_event = { id = cofintern.48 days = 2 } }
+	}
+	option = {
+		name = cofintern.46.c
+		trigger = { owns_state = 29 }
+		add_political_power = -30
+		add_stability = -0.05
+	}
+}
+
+country_event = {
+	id = cofintern.47
+	title = cofintern.47.title
+	desc = cofintern.47.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.47.a
+		add_political_power = -50
+		add_stability = -0.05
+		hidden_effect = {
+			FRA = {
+				set_country_flag = dunkirk_tough
+				country_event = { id = cofintern.49 days = 2 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.47.b
+		add_political_power = -25
+		add_stability = -0.025
+		hidden_effect = {
+			FRA = {
+				set_country_flag = dunkirk_mild
+				country_event = { id = cofintern.49 days = 2 }
+			}
+		}	
+	}
+	option = {
+		name = cofintern.47.c
+		hidden_effect = {
+			FRA = {
+				country_event = { id = cofintern.53 days = 3 }
+				country_event = { id = cofintern.65 days = 4 }
+			}
+			country_event = { id = cofintern.53 days = 3 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.48
+	title = cofintern.48.title
+	desc = cofintern.48.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.48.a
+		add_political_power = -25
+		hidden_effect = {
+			country_event = { id = cofintern.53 days = 7 }
+			country_event = { id = cofintern.66 days = 9 }
+			29 = { owner = { country_event = { id = cofintern.53 days = 7 } } }
+		}
+	}
+	option = {
+		name = cofintern.48.b
+		add_political_power = -50
+		hidden_effect = {
+			country_event = { id = cofintern.53 days = 3 }
+			country_event = { id = cofintern.66 days = 5 }
+			29 = { owner = { country_event = { id = cofintern.53 days = 3 } } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.49
+	title = cofintern.49.title
+	desc = cofintern.49.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.49.a
+		army_experience = -5
+		hidden_effect = {
+			random_list = {
+				90 = {
+					modifier = {
+						add = -20
+						has_country_flag = dunkirk_tough
+					}
+					country_event = { id = cofintern.50 days = 3 }
+					set_country_flag = dunkirk_guerrilla
+				}
+				10 = {
+					modifier = {
+						add = 20
+						has_country_flag = dunkirk_tough
+					}
+					country_event = { id = cofintern.51 days = 3 }
+					29 = { owner = { country_event = { id = cofintern.51 days = 3 } } }
+				}
+			}
+		}
+	}
+	option = {
+		name = cofintern.49.b
+		set_country_flag = dunkirk_redeployment
+		hidden_effect = { 29 = { owner = { country_event = { id = cofintern.52 days = 1 } } } }	
+	}
+	option = {
+		name = cofintern.49.c
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -500
+		}
+		hidden_effect = {
+			random_list = {
+				70 = {
+					modifier = {
+						add = -20
+						has_country_flag = dunkirk_tough
+					}
+					country_event = { id = cofintern.50 days = 3 }
+					set_country_flag = dunkirk_guerrilla
+				}
+				50 = {
+					modifier = {
+						add = 20
+						has_country_flag = dunkirk_tough
+					}
+					country_event = { id = cofintern.51 days = 3 }
+					29 = { owner = { country_event = { id = cofintern.51 days = 3 } } }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.50
+	title = cofintern.50.title
+	desc = cofintern.50.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.50.a
+		hidden_effect = {
+			country_event = { id = cofintern.53 days = 5 }
+			country_event = { id = cofintern.55 days = 7 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.50
+	title = {
+		text = cofintern.50.title.a
+		trigger = { tag = FRA }
+	}
+	title = {
+		text = cofintern.50.title.b
+		trigger = { owns_state = 29 }
+	}
+	desc = {
+		text = cofintern.50.desc.a
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.50.desc.b
+		trigger = { owns_state = 29 }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.50.a
+		29 = { add_manpower = -5000 }
+		17 = { add_manpower = 2000 }
+	}
+	option = {
+		name = cofintern.50.b
+		effect_tooltip = {
+			29 = { add_manpower = -5000 }
+			17 = { add_manpower = 2000 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.52
+	title = cofintern.52.title
+	desc = cofintern.52.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.52.a
+		29 = { set_demilitarized_zone = yes }
+		hidden_effect = { FRA = { country_event = { id = cofintern.54 days = 4 } } }
+	}
+	option = {
+		name = cofintern.52.b
+		trigger = { FRA = { has_country_flag = dunkirk_tough } }
+		add_political_power = -50
+		add_stability = -0.025
+		hidden_effect = { FRA = { country_event = { id = cofintern.51 days = 4 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.53
+	title = cofintern.53.title
+	desc = cofintern.53.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.53.a 
+	}
+}
+
+country_event = {
+	id = cofintern.54
+	title = cofintern.54.title
+	desc = {
+		text = cofintern.54.desc.a
+		trigger = { has_country_flag = dunkirk_guerrilla }
+	}
+	desc = {
+		text = cofintern.54.desc.b
+		trigger = { has_country_flag = dunkirk_redeployment }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.54.a 
+		add_political_power = -25
+		army_experience = -10
+		hidden_effect = { country_event = { id = cofintern.59 days = 7 } }
+	}
+}
+
+country_event = {
+	id = cofintern.55
+	title = cofintern.54.title
+	desc = cofintern.55.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.55.a
+		hidden_effect = {
+			29 = { owner = {
+				set_country_flag = dunkirk_procession
+				country_event = { id = cofintern.56 days = 3 } 
+			} } 
+		}
+	}
+	option = {
+		name = cofintern.55.b
+		hidden_effect = { country_event = { id = cofintern.57 days = 3 }   }
+	}
+	option = {
+		name = cofintern.55.c
+		hidden_effect = {
+			29 = { owner = {
+				set_country_flag = dunkirk_exaggerate
+				country_event = { id = cofintern.56 days = 3 } 
+			} } 
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.56
+	title = cofintern.56.title
+	desc = {
+		text = cofintern.56.desc.a
+		trigger = { has_country_flag = dunkirk_procession }
+	}
+	desc = {
+		text = cofintern.56.desc.b
+		trigger = { has_country_flag = dunkirk_exaggerate }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.56.a 
+		add_political_power = -100
+		add_stability = -0.15
+		29 = { set_demilitarized_zone = yes }
+		hidden_effect = { FRA = { country_event = { id = cofintern.54 days = 3 } } }
+	}
+	option = {
+		name = cofintern.56.b
+		trigger = {
+			has_country_flag = dunkirk_procession
+			FRA = { has_country_flag = dunkirk_tough }
+		}
+		add_political_power = -200
+		add_stability = -0.2
+		hidden_effect = { FRA = { country_event = { id = cofintern.58 days = 3 } } }
+	}
+	option = {
+		name = cofintern.56.b
+		trigger = {
+			has_country_flag = dunkirk_exaggerate
+			FRA = { has_country_flag = dunkirk_tough }
+		}
+		add_political_power = -200
+		add_stability = -0.15
+		add_popularity = { 
+			ideology = syndicalist
+			popularity = 0.03
+		}
+		add_popularity = { 
+			ideology = radical_socialist
+			popularity = 0.03 
+		}
+		add_popularity = { 
+			ideology = totalist
+			popularity = 0.03
+		}
+		hidden_effect = { FRA = { country_event = { id = cofintern.58 days = 3 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.57
+	title = cofintern.57.title
+	desc = cofintern.57.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.57.a
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						add = -30
+						has_country_flag = dunkirk_tough
+					}
+					modifier = {
+						add = 30
+						has_country_flag = dunkirk_mild
+					}
+					country_event = { id = cofintern.59 days = 1 }
+				}
+				50 = {
+					modifier = {
+						add = 30
+						has_country_flag = dunkirk_tough
+					}
+					modifier = {
+						add = -30
+						has_country_flag = dunkirk_mild
+					}
+					country_event = { id = cofintern.60 days = 1 }
+				}
+			}
+		}
+	}
+	option = {
+		name = cofintern.57.b
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						add = 30
+						has_country_flag = dunkirk_tough
+					}
+					modifier = {
+						add = -30
+						has_country_flag = dunkirk_mild
+					}
+					country_event = { id = cofintern.59 days = 1 }
+				}
+				50 = {
+					modifier = {
+						add = -30
+						has_country_flag = dunkirk_tough
+					}
+					modifier = {
+						add = 30
+						has_country_flag = dunkirk_mild
+					}
+					country_event = { id = cofintern.60 days = 1 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.58
+	title = cofintern.58.title
+	desc = cofintern.58.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.58.a 
+		29 = { owner = { add_manpower = -1000 } }
+		hidden_effect = {
+			country_event = { id = cofintern.51 days = 1 }
+			29 = { owner = { country_event = { id = cofintern.51 days = 1 } } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.59
+	title = cofintern.59.title
+	desc = cofintern.59.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.59.a 
+		transfer_state = 29
+		add_state_core = 29
+		add_stability = 0.025
+		add_war_support = 0.025
+		hidden_effect = { news_event = cofintern.64 }
+	}
+	option = {
+		name = cofintern.59.b
+		29 = { set_demilitarized_zone = yes }
+		hidden_effect = { 29 = { owner = { country_event = cofintern.61 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.60
+	title = cofintern.60.title
+	desc = cofintern.60.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.60.a 
+		hidden_effect = {
+			country_event = { id = cofintern.51 days = 1 }
+			29 = { owner = { country_event = { id = cofintern.51 days = 1 } } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.61
+	title = cofintern.61.title
+	desc = cofintern.61.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.61.a 
+		add_stability = -0.25
+		add_popularity = { 
+			ideology = national_populist
+			popularity = 0.4
+		}
+		hidden_effect = { FRA = { country_event = { id = cofintern.62 days = 1 } } }
+	}
+	option = {
+		name = cofintern.61.b
+		custom_effect_tooltip = wal_threat_waring
+		add_stability = -0.5
+		add_popularity = { 
+			ideology = national_populist
+			popularity = 0.4
+		}
+		hidden_effect = { 
+			FRA = { country_event = { id = cofintern.62 days = 1 } } 
+			GER = { country_event = { id = cofintern.63 days = 6 } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.62
+	title = cofintern.62.title
+	desc = cofintern.62.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.62.a 
+		29 = { set_demilitarized_zone = no }	
+		transfer_state = 29
+		add_state_core = 29
+		add_stability = 0.025
+		hidden_effect = { news_event = cofintern.64 }
+	}
+}
+
+country_event = {
+	id = cofintern.63
+	title = {
+		text = cofintern.63.title.a
+		trigger = { tag = FRA }
+	}
+	title = {
+		text = cofintern.63.title.b
+		trigger = { tag = GER }
+	}
+	desc = {
+		text = cofintern.63.desc.a
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.63.desc.b
+		trigger = { tag = GER }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.63.a 
+		trigger = { tag = FRA }
+
+		add_war_support = 0.025
+	}
+	option = {
+		name = cofintern.63.b
+		trigger = { tag = GER }
+
+	}
+	option = {
+		name = cofintern.63.c
+		trigger = { tag = GER }
+		add_political_power = -50
+		add_stability = -0.03
+		annex_country = { target = FROM transfer_troops = yes }
+		
+		hidden_effect = { FRA = { country_event = cofintern.63 } }
+	}
+}
+
+news_event = {      
+    id = cofintern.64
+    title = cofintern.64.title
+    desc = cofintern.64.desc
+    picture = GFX_news_event_capture_paris
+    is_triggered_only = yes
+    major = yes
+    option = {
+        name = cofintern.64.a
+		trigger = {
+			has_socialist_government = no 
+			NOT = { tag = NFA }
+		}
+    }
+    option = { 
+        name = cofintern.64.b
+		trigger = { has_socialist_government = yes }
+    }
+	option = {
+        name = cofintern.64.a
+		trigger = { 
+			has_socialist_government = no 
+			tag = NFA
+		}
+    }
+}
+
+country_event = {
+	id = cofintern.65
+	title = {
+		text = cofintern.65.title.a
+		trigger = { tag = FRA }
+	}
+	title = {
+		text = cofintern.65.title.b
+		trigger = { owns_state = 29 }
+	}
+	desc = {
+		text = cofintern.65.desc.a
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.65.desc.b
+		trigger = { owns_state = 29 }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.65.a 
+		trigger = { tag = FRA }
+		add_political_power = -25
+		add_war_support = -0.025
+		hidden_effect = { 29 = { owner = { country_event = { id = cofintern.65 days = 1 } } } }
+	}
+	option = {
+		name = cofintern.65.b
+		trigger = { owns_state = 29 } 
+		add_stability = 0.025
+	}
+}
+
+country_event = {
+	id = cofintern.66
+	title = cofintern.66.title
+	desc = cofintern.66.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.66.a 
+		add_stability = 0.01
+	}
+}
+
+country_event = {
+	id = cofintern.67
+	title = cofintern.67.title
+	desc = cofintern.67.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.67.a 
+		hidden_effect = {
+			FRA = {
+				set_country_flag = WAL_agree_annex
+				country_event = { id = cofintern.68 days = 3 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.67.b
+		hidden_effect = { FRA = { country_event = { id = cofintern.68 days = 3 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.68
+	title = {
+		text = cofintern.68.title.a
+		trigger = { has_country_flag = WAL_agree_annex }
+	}
+	title = {
+		text = cofintern.68.title.b
+		trigger = { NOT = { has_country_flag = WAL_agree_annex } }
+	}
+	desc = {
+		text = cofintern.68.desc.a
+		trigger = { has_country_flag = WAL_agree_annex }
+	}
+	desc = {
+		text = cofintern.68.desc.b
+		trigger = { NOT = { has_country_flag = WAL_agree_annex } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.68.a 
+		trigger = { has_country_flag = WAL_agree_annex }
+		add_stability = 0.025
+		add_war_support = 0.025
+		annex_country = { target = WAL transfer_troops = yes }
+		hidden_effect = {
+			948 = { add_core_of = FRA }
+			34 = { add_core_of = FRA }
+		}
+	}
+	option = {
+		name = cofintern.68.b
+		trigger = { NOT = { has_country_flag = WAL_agree_annex } }
+	}
+}
+
+country_event = {
+	id = cofintern.69
+	title = cofintern.69.title
+	desc = cofintern.69.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.69.a 
+		add_popularity = { ideology = syndicalist popularity = 0.1 }
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		add_popularity = { ideology = totalist popularity = 0.025 }
+		hidden_effect = {
+			FRA = {
+				set_country_flag = WAL_problem_easy
+				country_event = { id = cofintern.70 days = 2 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.69.b
+		add_political_power = -50
+		add_popularity = { ideology = syndicalist popularity = 0.05 }
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		add_popularity = { ideology = totalist popularity = 0.025 }
+		hidden_effect = {
+			FRA = {
+				set_country_flag = WAL_problem_hard
+				country_event = { id = cofintern.70 days = 2 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.69.c
+		trigger = {
+			set_temp_variable = { target_num = 25 }
+			pan_socialist_ideology_more_than_x = yes
+		}
+		add_popularity = { ideology = syndicalist popularity = 0.15 }
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		add_popularity = { ideology = totalist popularity = 0.05 }
+		hidden_effect = {
+			FRA = {
+				set_country_flag = WAL_problem_soc
+				country_event = { id = cofintern.70 days = 2 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.70
+	title = {
+		text = cofintern.70.title.a
+		trigger = { has_country_flag = WAL_problem_easy }
+	}
+	title = {
+		text = cofintern.70.title.b
+		trigger = { has_country_flag = WAL_problem_hard }
+	}
+	title = {
+		text = cofintern.70.title.c
+		trigger = { has_country_flag = WAL_problem_soc }
+	}
+	desc = {
+		text = cofintern.70.desc.a
+		trigger = { has_country_flag = WAL_problem_easy }
+	}
+	desc = {
+		text = cofintern.70.desc.b
+		trigger = { has_country_flag = WAL_problem_hard }
+	}
+	desc = {
+		text = cofintern.70.desc.c
+		trigger = { has_country_flag = WAL_problem_soc }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.70.a 
+		trigger = { NOT = { has_country_flag = WAL_problem_soc } }
+		hidden_effect = {
+			random_list = {
+				60 = {
+					modifier = {
+						add = 40
+						has_country_flag = WAL_problem_easy
+					}
+					modifier = {
+						add = -10
+						has_country_flag = WAL_problem_hard
+					}
+					country_event = { id = cofintern.84 days = 14 }
+				}
+				40 = {
+					modifier = {
+						add = -40
+						has_country_flag = WAL_problem_easy
+					}
+					modifier = {
+						add = 10
+						has_country_flag = WAL_problem_hard
+					}
+					country_event = { id = cofintern.85 days = 14 }
+				}
+			}	
+		}
+	}
+	option = {
+		name = cofintern.70.b
+		trigger = { NOT = { has_country_flag = WAL_problem_soc } }
+		hidden_effect = { country_event = { id = cofintern.86 days = 14 } } 
+	}
+	option = {
+		name = cofintern.70.c
+		trigger = { has_country_flag = WAL_problem_soc }
+		hidden_effect = {
+			country_event = { id = cofintern.71 days = 2 }
+			WAL = { country_event = { id = cofintern.71 days = 2 } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.71
+	title = cofintern.71.title
+	desc = cofintern.71.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.71.a 
+		trigger = { tag = FRA }
+		hidden_effect = {
+			GER = {
+				set_country_flag = WAL_FRA_radical
+				country_event = { id = cofintern.72 days = 4 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.71.b
+		trigger = { tag = FRA }
+		hidden_effect = {
+			GER = {
+				set_country_flag = WAL_FRA_base
+				country_event = { id = cofintern.72 days = 4 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.71.c
+		trigger = { tag = WAL } 
+	}
+}
+
+country_event = {
+	id = cofintern.72
+	title = cofintern.72.title
+	desc = cofintern.72.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.72.a 
+		set_autonomy = {
+			target = WAL
+			autonomous_state = nominal_puppet
+		}
+		hidden_effect = { WAL = { country_event = { id = cofintern.73 days = 2 } } }
+	}
+	option = {
+		name = cofintern.72.b
+		hidden_effect = { WAL = { country_event = { id = cofintern.74 days = 2 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.73
+	title = cofintern.73.title
+	desc = cofintern.73.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.73.a 
+		effect_tooltip = {
+			GER = {
+				set_autonomy = {
+					target = WAL
+					autonomous_state = nominal_puppet
+				}
+			}
+		}
+
+		add_stability = 0.1
+		add_popularity = { ideology = social_liberal popularity = -0.05 }
+		add_popularity = { ideology = market_liberal popularity = -0.1 }
+		add_popularity = { ideology = social_conservative popularity = -0.1 }
+		add_popularity = { ideology = authoritarian_democrat popularity = -0.1 }
+		add_popularity = { ideology = paternal_autocrat popularity = -0.15 }
+		add_popularity = { ideology = national_populist popularity = -0.15 }
+		
+		hidden_effect = { FRA = { country_event = { id = cofintern.75 days = 2 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.74
+	title = cofintern.74.title
+	desc = cofintern.74.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.74.a 
+		hidden_effect = { FRA = { country_event = { id = cofintern.76 days = 2 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.75
+	title = cofintern.75.title
+	desc = cofintern.75.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.75.a 
+		hidden_effect = { WAL = { country_event = { id = cofintern.78 days = 2 } } }
+	}
+	option = {
+		name = cofintern.75.b
+		add_political_power = -10
+		add_command_power = -15
+
+		hidden_effect = { 
+			WAL = { 
+				set_country_flag = WAL_FRA_help
+				country_event = { id = cofintern.78 days = 2 } 
+			} 
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.76
+	title = cofintern.76.title
+	desc = cofintern.76.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.76.a 
+		custom_effect_tooltip = wal_will_revo_in_ww2
+		set_global_flag = WAL_revo_in_ww2
+	}
+}
+
+country_event = {
+	id = cofintern.77
+	title = cofintern.77.title
+	desc = cofintern.77.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		tag = WAL 
+		has_global_flag = WAL_revo_in_ww2
+		GER = {
+			OR = {
+				has_war_with = RUS
+				has_war_with = FRA
+			}
+		}
+	}
+	fire_only_once = yes
+	option = {
+		name = cofintern.77.a
+		set_politics = {
+			ruling_party = syndicalist
+			elections_allowed = no
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		FRA = { add_to_faction = WAL }
+		complete_national_focus = WAL_Disband_The_Parliamentary_System
+		complete_national_focus = WAL_Declare_The_Walloon_Commune
+	}
+}
+
+country_event = {
+	id = cofintern.78
+	title = cofintern.78.title
+	desc = cofintern.78.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.78.a 
+		hidden_effect = { GER = { country_event = { id = cofintern.79 days = 2 } } }
+	}
+	option = {
+		name = cofintern.78.b
+		hidden_effect = {
+			random_list = {
+				70 = {
+					set_country_flag = WAL_congruence_win
+				}
+				30 = {
+					modifier = {
+						factor = 0
+						has_country_flag = WAL_FRA_help
+					}
+				}
+			}
+			country_event = { id = cofintern.80 days = 2 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.79
+	title = cofintern.79.title
+	desc = cofintern.79.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.79.a 
+		end_puppet = WAL
+		hidden_effect = {
+			WAL = {
+				set_country_flag = WAL_GER_agree_indent
+				country_event = { id = cofintern.81 days = 2 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.79.b
+		WAL = { country_event = { id = cofintern.81 days = 2 } }
+	}
+}
+
+country_event = {
+	id = cofintern.80
+	title = {
+		text = cofintern.80.title.a
+		trigger = { has_country_flag = WAL_congruence_win }
+	}
+	title = {
+		text = cofintern.80.title.b
+		trigger = { NOT = { has_country_flag = WAL_congruence_win } }
+	}
+	desc = {
+		text = cofintern.80.desc.a
+		trigger = { has_country_flag = WAL_congruence_win }
+	}
+	desc = {
+		text = cofintern.80.desc.b
+		trigger = { NOT = { has_country_flag = WAL_congruence_win } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.80.a 
+		trigger = { has_country_flag = WAL_congruence_win }
+		add_stability = 0.15
+		add_popularity = { ideology = syndicalist popularity = 0.1 }
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		add_popularity = { ideology = totalist popularity = 0.05 }
+		hidden_effect = { GER = { country_event = { id = cofintern.83 days = 4 } } }
+	}
+	option = {
+		name = cofintern.80.b
+		trigger = { NOT = { has_country_flag = WAL_congruence_win } }
+		hidden_effect = { FRA = { country_event = { id = cofintern.76 days = 2 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.81
+	title = {
+		text = cofintern.81.title.a
+		trigger = { has_country_flag = WAL_GER_agree_indent }
+	}
+	title = {
+		text = cofintern.81.title.b
+		trigger = { NOT = { has_country_flag = WAL_GER_agree_indent } }
+	}
+	desc = {
+		text = cofintern.81.desc.a
+		trigger = { has_country_flag = WAL_GER_agree_indent }
+	}
+	desc = {
+		text = cofintern.81.desc.b
+		trigger = { NOT = { has_country_flag = WAL_GER_agree_indent } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.81.a 
+		trigger = { has_country_flag = WAL_GER_agree_indent }
+		effect_tooltip = { GER = { end_puppet = WAL } }
+		leave_faction = yes
+		hidden_effect = { country_event = { id = cofintern.82 days = 14 } }
+	}
+	option = {
+		name = cofintern.81.b
+		trigger = { NOT = { has_country_flag = WAL_GER_agree_indent } }
+		hidden_effect = { FRA = { country_event = { id = cofintern.76 days = 2 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.82
+	title = {
+		text = cofintern.82.title.a
+		trigger = { tag = WAL }
+	}
+	title = {
+		text = cofintern.82.title.b
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.82.desc.a
+		trigger = { tag = WAL }
+	}
+	desc = {
+		text = cofintern.82.desc.b
+		trigger = { tag = FRA }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.82.a 
+		trigger = { tag = WAL }
+		set_politics = {
+			ruling_party = syndicalist
+			elections_allowed = no
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		FRA = { add_to_faction = WAL }
+		complete_national_focus = WAL_Disband_The_Parliamentary_System
+		complete_national_focus = WAL_Declare_The_Walloon_Commune
+	}
+	option = {
+		name = cofintern.82.b
+		trigger = { tag = FRA }
+		effect_tooltip = {
+			WAL = {
+				set_politics = {
+					ruling_party = syndicalist
+					elections_allowed = no
+				}
+			}
+			FRA = { add_to_faction = WAL }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.83
+	title = cofintern.83.title
+	desc = cofintern.83.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.83.a 
+		end_puppet = WAL
+		hidden_effect = {
+			WAL = {
+				set_country_flag = WAL_GER_agree_indent
+				country_event = { id = cofintern.81 days = 2 }
+			}
+		}
+	}
+	option = {
+		name = cofintern.83.b
+		WAL = { country_event = { id = cofintern.81 days = 2 } }
+	}
+}
+
+country_event = {
+	id = cofintern.84
+	title = cofintern.84.title
+	desc = cofintern.84.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.84.a 
+		hidden_effect = { WAL = { country_event = { id = cofintern.87 days = 4 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.85
+	title = {
+		text = cofintern.85.title.a
+		trigger = { tag = FRA }
+	}
+	title = {
+		text = cofintern.85.title.b
+		trigger = { tag = WAL }
+	}
+	desc = {
+		text = cofintern.85.desc.a
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.85.desc.b
+		trigger = { tag = WAL }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.85.a 
+		trigger = { tag = FRA }
+		add_political_power = -25
+		add_war_support = -0.025
+		hidden_effect = { WAL = { country_event = { id = cofintern.85 days = 4 } } }
+	}
+	option = {
+		name = cofintern.85.a 
+		trigger = { tag = WAL }
+		add_stability = 0.15
+		add_manpower = -3000
+		add_popularity = { ideology = totalist popularity = -0.15 }
+		add_popularity = { ideology = syndicalist popularity = -0.25 }
+		add_popularity = { ideology = radical_socialist popularity = -0.15 }
+	}
+}
+
+country_event = {
+	id = cofintern.86
+	title = cofintern.86.title
+	desc = cofintern.86.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.86.a 
+		hidden_effect = { WAL = { country_event = { id = cofintern.88 days = 4 } } }
+	}
+	option = {
+		name = cofintern.86.a 
+		add_political_power = -25
+		hidden_effect = {
+			GER = { country_event = { id = cofintern.89 days = 4 } }
+			WAL = { country_event = { id = cofintern.89 days = 4 } }
+		}
+	}
+}
+
+
+country_event = {
+	id = cofintern.87
+	title = cofintern.87.title
+	desc = cofintern.87.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.87.a 
+		if = {
+			limit = { is_subject_of = GER }
+			GER = { end_puppet = WAL }
+		}
+		if = {
+			limit = { NOT = { is_in_faction_with = FRA } }
+			leave_faction = yes
+		}
+
+		set_politics = {
+			ruling_party = syndicalist
+			elections_allowed = no
+		}
+		add_popularity = { ideology = totalist popularity = 0.15 }
+		add_popularity = { ideology = syndicalist popularity = 0.2 }
+		add_popularity = { ideology = radical_socialist popularity = 0.1 }
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		FRA = { add_to_faction = WAL }
+		set_stability = 0.8
+		set_war_support = 0.5
+		hidden_effect = {
+			uncomplete_national_focus = {
+				focus = WAL_Reform_Into_A_Republic
+				uncomplete_children = yes
+			}
+			uncomplete_national_focus = {
+				focus = WAL_Hold_On_To_The_Monarchy
+				uncomplete_children = yes
+			}
+			uncomplete_national_focus = {
+				focus = WAL_The_Government_Has_Failed
+				uncomplete_children = yes
+			}
+			uncomplete_national_focus = {
+				focus = WAL_German_Investements
+				uncomplete_children = yes
+			}
+			uncomplete_national_focus = {
+				focus = WAL_Retain_German_Staff
+				uncomplete_children = yes
+			}
+			GER = { country_event = { id = wallonia_events.112 days = 7 } }
+		}
+		complete_national_focus = WAL_Syndicalist_Revolution
+		complete_national_focus = WAL_Revolution_By_Force
+	}
+}
+
+country_event = {
+	id = cofintern.88
+	title = cofintern.88.title
+	desc = cofintern.88.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.88.a 
+		add_stability = -0.15
+		hidden_effect = { country_event = { id = cofintern.90 days = 3 } }
+	}
+	option = {
+		name = cofintern.88.b
+		add_stability = -0.15
+		hidden_effect = { GER = { country_event = { id = cofintern.91 days = 3 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.89
+	title = {
+		text = cofintern.89.title.a
+		trigger = { tag = GER }
+	}
+	title = {
+		text = cofintern.89.title.b
+		trigger = { tag = WAL }
+	}
+	desc = {
+		text = cofintern.89.desc.a
+		trigger = { tag = GER }
+	}
+	desc = {
+		text = cofintern.89.desc.b
+		trigger = { tag = WAL }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.89.a 
+		trigger = { tag = GER }
+		end_puppet = WAL 
+		hidden_effect = { WAL = { country_event = { id = cofintern.92 days = 4 } } }
+	}
+	option = {
+		name = cofintern.89.b
+		trigger = { tag = GER }
+		add_political_power = -50
+		add_stability = -0.15
+		hidden_effect = { WAL = { country_event = { id = cofintern.93 days = 4 } } }
+	}
+	option = {
+		name = cofintern.89.c
+		trigger = { tag = WAL }
+		add_stability = -0.15
+	}
+}
+
+country_event = {
+	id = cofintern.90
+	title = cofintern.90.title
+	desc = cofintern.90.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.90.a 
+		trigger = { has_country_flag = WAL_GER_help }
+		hidden_effect = { country_event = { id = cofintern.87 days = 1 } }
+	}
+	option = {
+		name = cofintern.90.b
+		hidden_effect = { FRA = { country_event = { id = cofintern.85 days = 4 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.91
+	title = cofintern.91.title
+	desc = cofintern.91.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.91.a 
+		hidden_effect = { WAL = { country_event = { id = cofintern.90 days = 6 } } }
+	}
+	option = {
+		name = cofintern.91.b
+		hidden_effect = {
+			WAL = {
+				set_country_flag = WAL_GER_help
+				country_event = { id = cofintern.90 days = 6 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.92
+	title = cofintern.92.title
+	desc = cofintern.92.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.92.a 
+		effect_tooltip = { GER = { end_puppet = WAL } }
+		hidden_effect = { country_event = { id = cofintern.87 days = 8 } }
+	}
+}
+
+country_event = {
+	id = cofintern.93
+	title = cofintern.93.title
+	desc = cofintern.93.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.93.a 
+		add_stability = 0.1
+		hidden_effect = { FRA = { country_event = { id = cofintern.85 days = 8 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.94
+	title = cofintern.94.title
+	desc = cofintern.94.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.94.a 
+		add_stability = -0.15
+		add_popularity = { ideology = totalist popularity = 0.025 }
+		add_popularity = { ideology = syndicalist popularity = 0.1 }
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+
+		hidden_effect = { FRA = { country_event = { id = cofintern.95 days = 5 } } }
+	}
+	option = {
+		name = cofintern.94.b
+		add_stability = -0.2
+		add_popularity = { ideology = totalist popularity = 0.05 }
+		add_popularity = { ideology = syndicalist popularity = 0.15 }
+		add_popularity = { ideology = radical_socialist popularity = 0.075 }
+
+		hidden_effect = { FRA = { country_event = { id = cofintern.108 days = 5 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.95
+	title = cofintern.95.title
+	desc = cofintern.95.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.95.a 
+		set_country_flag = BEL_wallon_radical
+		hidden_effect = { 34 = { owner = { country_event = { id = cofintern.96 days = 4 } } } }
+	}
+	option = {
+		name = cofintern.95.b
+		hidden_effect = { 34 = { owner = { country_event = { id = cofintern.96 days = 4 } } } }
+	}
+}
+
+country_event = {
+	id = cofintern.96
+	title = cofintern.96.title
+	desc = cofintern.96.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.96.a 
+		add_political_power = -75
+		hidden_effect = { 
+			if = {
+				limit = { FRA = { has_country_flag = BEL_wallon_radical } }
+				FRA = { country_event = { id = cofintern.97 days = 4 } }
+			}
+			else = { country_event = { id = cofintern.102 days = 4 } }
+		}
+	}
+	option = {
+		name = cofintern.96.b
+		hidden_effect = { 
+			if = {
+				limit = { FRA = { has_country_flag = BEL_wallon_radical } }
+				country_event = { id = cofintern.104 days = 4 }
+			}
+			else = { FRA = { country_event = { id = cofintern.105 days = 7 } } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.97
+	title = cofintern.97.title
+	desc = cofintern.97.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.97.a 
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -2000
+		}
+		hidden_effect = { 34 = { owner = { country_event = { id = cofintern.98 days = 6 } } } }
+	}
+	option = {
+		name = cofintern.97.b
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -2500
+		}
+		add_manpower = -500
+		hidden_effect = {
+			34 = { owner = {
+				set_country_flag = BEL_wallon_FRA_help
+				country_event = { id = cofintern.98 days = 6 }
+			} }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.98
+	title = cofintern.98.title
+	desc = cofintern.98.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.98.a 
+		add_political_power = -50
+		add_command_power = -20
+		set_country_flag = wallon_plan_army
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						add = 30
+						has_country_flag = BEL_wallon_FRA_help
+					}
+					country_event = { id = cofintern.99 days = 8 }
+				}
+				50 = {
+					modifier = {
+						add = -30
+						has_country_flag = BEL_wallon_FRA_help
+					}
+					country_event = { id = cofintern.101 days = 8 }
+				}
+			}
+		}
+	}
+	option = {
+		name = cofintern.98.b
+		add_political_power = -25
+		add_stability = -0.025
+		hidden_effect = {
+			random_list = {
+				70 = {
+					modifier = {
+						add = 30
+						has_country_flag = BEL_wallon_FRA_help
+					}
+					country_event = { id = cofintern.99 days = 8 }
+				}
+				30 = {
+					modifier = {
+						add = -30
+						has_country_flag = BEL_wallon_FRA_help
+					}
+					country_event = { id = cofintern.101 days = 8 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.99
+	title = cofintern.99.title
+	desc = {
+		text = cofintern.99.desc.a
+		trigger = { has_country_flag = wallon_plan_army }
+	}
+	desc = {
+		text = cofintern.99.desc.b
+		trigger = { NOT = { has_country_flag = wallon_plan_army } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.99.a 
+		add_stability = -0.15
+		34 = { set_demilitarized_zone = yes }
+		948 = { set_demilitarized_zone = yes }
+		hidden_effect = {
+			country_event = { id = cofintern.100 days = 4 }
+			FRA = { country_event = { id = cofintern.100 days = 4 } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.100
+	title = cofintern.100.title
+	desc = cofintern.100.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.100.a 
+		trigger = { tag = BEL }
+		hidden_effect = {
+			34 = { set_demilitarized_zone = no }
+			948 = { set_demilitarized_zone = no }
+		}
+		Release_Flanders = yes
+		WAL = {
+			set_stability = 0.6
+			set_politics = {
+				ruling_party = totalist
+				elections_allowed = no
+			}
+			hidden_effect = {
+				add_popularity = { ideology = totalist popularity = 0.4 }
+				add_popularity = { ideology = syndicalist popularity = 0.1 }
+				add_popularity = { ideology = radical_socialist popularity = 0.1 }
+			}
+			unlock_national_focus = WAL_Syndicalist_Revolution
+			BEL_remove_adelbert = yes
+			change_tag_from = BEL
+			FRA = { add_to_faction = WAL }
+		}
+		hidden_effect = { GER = { country_event = { id = wallonia_events.112 days = 4 } } }
+	}
+	option = {
+		name = cofintern.100.b
+		trigger = { tag = FRA }
+		effect_tooltip = {
+			BEL = {	Release_Flanders = yes }
+			WAL = {
+				set_politics = {
+					ruling_party = totalist
+					elections_allowed = no
+				}
+				unlock_national_focus = WAL_Syndicalist_Revolution
+				BEL_remove_adelbert = yes
+				change_tag_from = BEL
+				FRA = { add_to_faction = WAL }
+			}
+		}	
+	}
+}
+
+country_event = {
+	id = cofintern.101
+	title = cofintern.101.title
+	desc = {
+		text = cofintern.101.desc.a
+		trigger = { has_country_flag = wallon_plan_army }
+	}
+	desc = {
+		text = cofintern.101.desc.b
+		trigger = { NOT = { has_country_flag = wallon_plan_army } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.101.a 
+		add_stability = 0.3
+		add_popularity = { ideology = totalist popularity = -0.1 }
+		add_popularity = { ideology = syndicalist popularity = -0.25 }
+		add_popularity = { ideology = radical_socialist popularity = -0.1 }
+		hidden_effect = { FRA = { country_event = { id = cofintern.85 days = 4 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.102
+	title = cofintern.102.title
+	desc = cofintern.102.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.102.a 
+		add_stability = -0.2
+		add_manpower = -2000
+		hidden_effect = { country_event = { id = cofintern.103 days = 8 } }
+	}
+	option = {
+		name = cofintern.102.b
+		34 = { set_demilitarized_zone = yes }
+		948 = { set_demilitarized_zone = yes }
+		hidden_effect = {
+			country_event = { id = cofintern.100 days = 4 }
+			FRA = { country_event = { id = cofintern.100 days = 4 } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.103
+	title = cofintern.103.title
+	desc = cofintern.103.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.103.a 
+		add_stability = -0.35
+		34 = { set_demilitarized_zone = yes }
+		948 = { set_demilitarized_zone = yes }
+		hidden_effect = {
+			country_event = { id = cofintern.100 days = 4 }
+			FRA = { country_event = { id = cofintern.100 days = 4 } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.104
+	title = cofintern.104.title
+	desc = cofintern.104.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.104.a 
+		add_stability = 0.3
+		add_popularity = { ideology = totalist popularity = -0.15 }
+		add_popularity = { ideology = syndicalist popularity = -0.25 }
+		add_popularity = { ideology = radical_socialist popularity = -0.15 }
+		hidden_effect = { FRA = { country_event = { id = cofintern.85 days = 4 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.105
+	title = cofintern.105.title
+	desc = cofintern.105.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.105.a 
+		34 = { owner = {
+			add_stability = -0.05
+			add_popularity = { ideology = syndicalist popularity = 0.05 }
+			hidden_effect = { country_event = { id = cofintern.106 days = 20 random_days = 10 } }
+		} }
+	}
+}
+
+country_event = {
+	id = cofintern.106
+	title = cofintern.106.title
+	desc = cofintern.106.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.106.a 
+		add_political_power = -25
+		add_manpower = -100
+		hidden_effect = { country_event = { id = cofintern.102 days = 11 } }
+	}
+	option = {
+		name = cofintern.106.b
+		add_political_power = -100
+		hidden_effect = { country_event = { id = cofintern.107 days = 28 } }
+	}
+}
+
+country_event = {
+	id = cofintern.107
+	title = cofintern.107.title
+	desc = cofintern.107.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.107.a 
+		add_stability = 0.3
+		add_popularity = { ideology = totalist popularity = -0.15 }
+		add_popularity = { ideology = syndicalist popularity = -0.25 }
+		add_popularity = { ideology = radical_socialist popularity = -0.15 }
+		hidden_effect = { FRA = { country_event = { id = cofintern.85 days = 3 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.108
+	title = cofintern.108.title
+	desc = cofintern.108.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.108.a 
+		hidden_effect = { 34 = { owner = { country_event = { id = cofintern.109 days = 7 } } } }
+	}
+	option = {
+		name = cofintern.108.b
+		hidden_effect = { 34 = { owner = { country_event = { id = cofintern. days = 7 } } } }
+	}
+}
+
+country_event = {
+	id = cofintern.109
+	title = cofintern.109.title
+	desc = cofintern.109.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.109.a 
+		add_political_power = -50
+		add_stability = -0.05
+		hidden_effect = { FRA = { country_event = { id = cofintern.110 days = 6 } } }
+	}
+	option = {
+		name = cofintern.109.b 
+		add_political_power = -100
+		add_stability = -0.1
+		hidden_effect = { 
+			FRA = { 
+				set_country_flag = wal_more_military
+				country_event = { id = cofintern.110 days = 6 } 
+			} 
+		}
+	}
+	option = {
+		name = cofintern.109.c 
+		add_political_power = -150
+		add_stability = 0.025
+		hidden_effect = { FRA = { country_event = { id = cofintern.112 days = 3 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.110
+	title = cofintern.110.title
+	desc = cofintern.110.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.110.a 
+		add_political_power = -25
+		hidden_effect = {
+			random_list = {
+				70 = {
+					modifier = {
+						add = -30
+						has_country_flag = wal_more_military
+					}
+					34 = { owner = { country_event = { id = cofintern.111 days = 4 } } }
+				}
+				30 = {
+					modifier = {
+						add = 30
+						has_country_flag = wal_more_military
+					}
+					34 = { owner = { country_event = { id = cofintern.98 days = 4 } } }
+				}
+			}
+		}
+	}
+	option = {
+		name = cofintern.110.b 
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						add = -30
+						has_country_flag = wal_more_military
+					}
+					34 = { owner = { country_event = { id = cofintern.98 days = 4 } } }
+				}
+				50 = {
+					modifier = {
+						add = 30
+						has_country_flag = wal_more_military
+					}
+					34 = { owner = { country_event = { id = cofintern.102 days = 4 } } }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.111
+	title = cofintern.111.title
+	desc = cofintern.111.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.111.a 
+		add_stability = -0.1
+		add_war_support = -0.2
+		hidden_effect = { country_event = { id = cofintern.102 days = 4 } }
+	}
+	option = {
+		name = cofintern.111.b
+		add_political_power = -100
+		add_stability = -0.05
+		hidden_effect = { country_event = { id = cofintern.98 days = 4 } }
+	}
+}
+
+country_event = {
+	id = cofintern.112
+	title = cofintern.112.title
+	desc = cofintern.112.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.112.a 
+		hidden_effect = { 34 = { owner = { country_event = { id = cofintern.113 days = 2 } } } }
+	}
+	option = {
+		name = cofintern.112.b
+		hidden_effect = { 34 = { owner = { country_event = { id = cofintern.114 days = 2 } } } }
+	}
+}
+
+country_event = {
+	id = cofintern.113
+	title = cofintern.113.title
+	desc = cofintern.113.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.113.a 
+		hidden_effect = { country_event = { id = cofintern.102 days = 6 } }
+	}
+}
+
+country_event = {
+	id = cofintern.114
+	title = cofintern.114.title
+	desc = cofintern.114.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.114.a 
+		hidden_effect = { FRA = { country_event = { id = cofintern.117 days = 2 } } }
+	}
+	option = {
+		name = cofintern.114.b
+		hidden_effect = { FRA = { country_event = { id = cofintern.116 days = 2 } } }
+	}
+	option = {
+		name = cofintern.114.c 
+		add_stability = -0.15
+		hidden_effect = { 
+			country_event = { id = cofintern.115 days = 2 }
+			FRA = { country_event = { id = cofintern.115 days = 2 } } 
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.115
+	title = cofintern.115.title
+	desc = {
+		text = cofintern.115.desc.a
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.115.desc.b
+		trigger = { NOT = { tag = FRA } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	after = {
+		if = {
+			limit = { 
+				NOT = { tag = FRA }
+				FLA = { exists = yes } 
+			}
+			FLA = {
+				set_politics = {
+					ruling_party = radical_socialist
+					elections_allowed = no
+				}
+				add_popularity = { ideology = totalist popularity = 0.15 }
+				add_popularity = { ideology = syndicalist popularity = 0.2 }
+				add_popularity = { ideology = radical_socialist popularity = 0.25 }
+				complete_national_focus = FLA_Regency_By_The_Flemish_Council
+				complete_national_focus = FLA_Syndicalist_Revolution
+				FRA = { add_to_faction = WAL }
+			}
+		}
+	}
+	option = {
+		name = cofintern.115.a 
+		trigger = { tag = FRA }
+		effect_tooltip = {
+			BEL = {	Release_Flanders = yes }
+			WAL = {
+				set_politics = {
+					ruling_party = totalist
+					elections_allowed = no
+				}
+				unlock_national_focus = WAL_Syndicalist_Revolution
+				BEL_remove_adelbert = yes
+				change_tag_from = BEL
+				FRA = { add_to_faction = WAL }
+			}
+		}	
+	}
+	option = {
+		name = cofintern.115.b
+		trigger = { NOT = { tag = FRA } }
+		Release_Flanders = yes
+		WAL = {
+			set_stability = 0.6
+			set_politics = {
+				ruling_party = totalist
+				elections_allowed = no
+			}
+			hidden_effect = {
+				add_popularity = { ideology = totalist popularity = 0.4 }
+				add_popularity = { ideology = syndicalist popularity = 0.1 }
+				add_popularity = { ideology = radical_socialist popularity = 0.1 }
+			}
+			unlock_national_focus = WAL_Syndicalist_Revolution
+			BEL_remove_adelbert = yes
+			change_tag_from = BEL
+			FRA = { add_to_faction = WAL }
+		}
+		hidden_effect = { GER = { country_event = { id = wallonia_events.112 days = 4 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.116
+	title = {
+		text = cofintern.116.title.a
+		trigger = { tag = FRA }
+	}
+	title = {
+		text = cofintern.116.title.b
+		trigger = { NOT = { tag = FRA } }
+	}
+	desc = {
+		text = cofintern.116.desc.a
+		trigger = { tag = FRA }
+	}
+	desc = {
+		text = cofintern.116.desc.b
+		trigger = { NOT = { tag = FRA } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.116.a 
+		trigger = { tag = FRA }
+		hidden_effect = { FROM = { country_event = { id = cofintern.116 days = 1 } } }
+	}
+	option = {
+		name = cofintern.116.b
+		trigger = { NOT = { tag = FRA } }
+		hidden_effect = {
+			country_event = { id = cofintern.100 days = 1 }
+			FRA = { country_event = { id = cofintern.100 days = 1 } }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.117
+	title = cofintern.117.title
+	desc = cofintern.117.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.117.a 
+		hidden_effect = { FROM = { country_event = { id = cofintern.116 days = 1 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.118
+	title = cofintern.118.title
+	desc = cofintern.118.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.118.a 
+		if = {
+			limit = { FRA = { has_political_power > 150 } }
+			hidden_effect = { FRA = { add_political_power = -150 } }
+			add_stability = -0.1
+			add_manpower = -1000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -150
+			}
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 352
+						state = 291
+						state = 554
+						state = 679
+					}
+				}
+				ott_increase_revolt_risk = yes
+			}
+		}
+
+		if = {
+			limit = { FRA = { check_variable = { economy_power > 150 } } }
+			hidden_effect = { FRA = { add_to_variable = { economy_power = -150 } } }
+			add_political_power = -50
+			subtract_from_variable = { syr_integration_factor = 5 tooltip = ott_decrease_syr_int }
+			subtract_from_variable = { kur_integration_factor = 5 tooltip = ott_decrease_kur_int }
+			subtract_from_variable = { hej_integration_factor = 5 tooltip = ott_decrease_hej_int }
+			subtract_from_variable = { irq_integration_factor = 5 tooltip = ott_decrease_irq_int }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.119
+	title = cofintern.119.title
+	desc = cofintern.119.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.119.a 
+		add_political_power = -25
+		add_stability = -0.05
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		hidden_effect = {
+			random_list = {
+				0 = {
+					modifier = {
+						set_temp_variable = { t = 0.5 }
+						subtract_from_temp_variable = { t = THIS.stability }
+						multiply_temp_variable = { t = 100 }
+						add = t
+					}
+					modifier = {
+						set_temp_variable = { t = var:THIS.party_popularity_100@syndicalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@totalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@radical_socialist }
+						add = t
+					}
+					country_event = { id = cofintern.120 days = 2 random_hours = 12 }
+				}
+				100 = {
+					modifier = {
+						set_temp_variable = { t = 0.5 }
+						subtract_from_temp_variable = { t = THIS.stability }
+						multiply_temp_variable = { t = -100 }
+						add = t
+					}
+					modifier = {
+						set_temp_variable = { t = var:THIS.party_popularity_100@syndicalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@totalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@radical_socialist }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					country_event = { id = cofintern.121 days = 2 random_hours = 12 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.120
+	title = cofintern.120.title
+	desc = cofintern.120.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.120.a 
+		PER_remove_monarchy = yes
+		add_stability = 0.25
+		set_politics = {
+			ruling_party = radical_socialist
+			elections_allowed = no
+		}
+		add_popularity = { ideology = radical_socialist popularity = 0.3 }
+		add_popularity = { ideology = authoritarian_democrat popularity = -0.2 }
+		add_popularity = { ideology = paternal_autocrat popularity = -0.2 }
+		complete_national_focus = PER_long_live_revolution
+		if = {
+			limit = {
+				OR = {
+					has_completed_focus = PER_army_german
+					has_completed_focus = PER_army_austria
+				}
+			}
+			hidden_effect = {
+				uncomplete_national_focus = {
+					focus = PER_army_german
+					uncomplete_children = yes
+				}
+				uncomplete_national_focus = {
+					focus = PER_army_austria
+					uncomplete_children = yes
+				}
+			}
+			complete_national_focus = PER_army_france
+		}
+		hidden_effect = {
+			news_event = { id = persia_events.111 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.121
+	title = cofintern.121.title
+	desc = cofintern.121.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.121.a 
+		add_stability = 0.025
+		add_popularity = { ideology = authoritarian_democrat popularity = 0.01 }
+		add_popularity = { ideology = paternal_autocrat popularity = 0.01 }
+	}
+}
+
+country_event = {
+	id = cofintern.122
+	title = cofintern.122.title
+	desc = cofintern.122.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.122.a 
+		set_politics = {
+			ruling_party = radical_socialist
+			elections_allowed = no
+		}
+		add_popularity = { ideology = radical_socialist popularity = 0.25 }
+		add_popularity = { ideology = authoritarian_democrat popularity = -0.15 }
+		add_popularity = { ideology = paternal_autocrat popularity = -0.15 }
+		complete_national_focus = PER_long_live_revolution
+		if = {
+			limit = {
+				OR = {
+					has_completed_focus = PER_army_german
+					has_completed_focus = PER_army_austria
+				}
+			}
+			hidden_effect = {
+				uncomplete_national_focus = {
+					focus = PER_army_german
+					uncomplete_children = yes
+				}
+				uncomplete_national_focus = {
+					focus = PER_army_austria
+					uncomplete_children = yes
+				}
+			}
+			complete_national_focus = PER_army_france
+		}
+		if = {
+			limit = { has_completed_focus = PER_republic }
+			hidden_effect = {
+				uncomplete_national_focus = {
+					focus = PER_republic
+					uncomplete_children = yes
+				}
+			}
+			complete_national_focus = PER_nedaye_socialism
+		}
+		hidden_effect = {
+			news_event = { id = persia_events.111 days = 1 }
+		}
+	}
+	option = {
+		name = cofintern.122.b
+		add_popularity = { ideology = radical_socialist popularity = 0.1 }
+		hidden_effect = {
+			random_list = {
+				0 = {
+					modifier = {
+						set_temp_variable = { t = 0.5 }
+						subtract_from_temp_variable = { t = THIS.stability }
+						multiply_temp_variable = { t = 100 }
+						add = t
+					}
+					modifier = {
+						set_temp_variable = { t = var:THIS.party_popularity_100@syndicalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@totalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@radical_socialist }
+						add = t
+					}
+					country_event = { id = cofintern.123 days = 2 random_hours = 12 }
+				}
+				100 = {
+					modifier = {
+						set_temp_variable = { t = 0.5 }
+						subtract_from_temp_variable = { t = THIS.stability }
+						multiply_temp_variable = { t = -100 }
+						add = t
+					}
+					modifier = {
+						set_temp_variable = { t = var:THIS.party_popularity_100@syndicalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@totalist }
+						add_to_temp_variable = { t = var:THIS.party_popularity_100@radical_socialist }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					country_event = { id = cofintern.124 days = 2 random_hours = 12 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.123
+	title = cofintern.123.title
+	desc = cofintern.123.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.123.a 
+		set_politics = {
+			ruling_party = radical_socialist
+			elections_allowed = no
+		}
+		add_popularity = { ideology = radical_socialist popularity = 0.25 }
+		add_popularity = { ideology = authoritarian_democrat popularity = -0.15 }
+		add_popularity = { ideology = paternal_autocrat popularity = -0.15 }
+		complete_national_focus = PER_long_live_revolution
+		if = {
+			limit = {
+				OR = {
+					has_completed_focus = PER_army_german
+					has_completed_focus = PER_army_austria
+				}
+			}
+			hidden_effect = {
+				uncomplete_national_focus = {
+					focus = PER_army_german
+					uncomplete_children = yes
+				}
+				uncomplete_national_focus = {
+					focus = PER_army_austria
+					uncomplete_children = yes
+				}
+			}
+			complete_national_focus = PER_army_france
+		}
+		if = {
+			limit = { has_completed_focus = PER_republic }
+			hidden_effect = {
+				uncomplete_national_focus = {
+					focus = PER_republic
+					uncomplete_children = yes
+				}
+			}
+			complete_national_focus = PER_nedaye_socialism
+		}
+		hidden_effect = {
+			news_event = { id = persia_events.111 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.124
+	title = cofintern.124.title
+	desc = cofintern.124.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.124.a 
+		add_stability = 0.025
+		add_popularity = { ideology = social_democrat popularity = 0.05 }
+	}
+}
+
+country_event = {
+	id = cofintern.125
+	title = cofintern.125.title
+	desc = cofintern.125.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.125.a 
+		custom_effect_tooltip = egypt_coop_economy
+		set_temp_variable = { epc = -100 }
+		cof_econ_target_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		EGY = { 
+			country_event = { id = cofintern.126 days = 3 } 
+			set_country_flag = cofegypt_coop_economy
+		}
+
+		custom_effect_tooltip = if_they_accept_they_effect
+		effect_tooltip = {
+			add_political_power = 50
+			add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = Cof_egy_cooperation_economy
+		}
+	}
+	option = {
+		name = cofintern.125.b
+		custom_effect_tooltip = egypt_coop_politics
+		add_political_power = -50
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -100 }
+		cof_econ_target_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		EGY = { 
+			country_event = { id = cofintern.126 days = 3 } 
+			set_country_flag = cofegypt_coop_politics
+		}
+
+		custom_effect_tooltip = if_they_accept_they_effect
+		effect_tooltip = {
+			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			add_popularity = { ideology = social_democrat popularity = 0.05 }
+			add_popularity = { ideology = social_liberal popularity = 0.05 }
+			add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = Cof_egy_cooperation_politics
+		}
+	}
+	option = {
+		name = cofintern.125.c 
+		custom_effect_tooltip = egypt_coop_revolution
+		add_political_power = -100
+		set_temp_variable = { epc = -100 }
+		cof_econ_target_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		EGY = { 
+			country_event = { id = cofintern.126 days = 3 } 
+			set_country_flag = cofegypt_coop_revolution
+		}
+
+		custom_effect_tooltip = if_they_accept_they_effect
+		effect_tooltip = {
+			add_popularity = { ideology = syndicalist popularity = 0.05 }
+			add_popularity = { ideology = radical_socialist popularity = 0.1 }
+			add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = Cof_egy_cooperation_revolution
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.126
+	title = cofintern.126.title
+	desc = {
+		text = cofintern.126.desc.a
+		trigger = { has_country_flag = cofegypt_coop_economy }
+	}
+	desc = {
+		text = cofintern.126.desc.b
+		trigger = { has_country_flag = cofegypt_coop_politics }
+	}
+	desc = {
+		text = cofintern.126.desc.c
+		trigger = { has_country_flag = cofegypt_coop_revolution }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.126.a 
+		if = {
+			limit = { has_country_flag = cofegypt_coop_economy }
+			add_political_power = 50
+			add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = Cof_egy_cooperation_economy
+		}
+		else_if = {
+			limit = { has_country_flag = cofegypt_coop_politics }
+			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			add_popularity = { ideology = social_democrat popularity = 0.05 }
+			add_popularity = { ideology = social_liberal popularity = 0.05 }
+			add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = Cof_egy_cooperation_politics
+		}
+		else_if = {
+			limit = { has_country_flag = cofegypt_coop_revolution }
+			add_popularity = { ideology = syndicalist popularity = 0.05 }
+			add_popularity = { ideology = radical_socialist popularity = 0.1 }
+			add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+			447 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_ideas = Cof_egy_cooperation_revolution
+		}
+	}
+	option = {
+		name = cofintern.126.b 
+	}
+}
+
+country_event = {
+	id = cofintern.127
+	title = cofintern.127.title
+	desc = cofintern.127.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.127.a 
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_timed_idea = { idea = Cof_tur_national_uprising days = 200 }
+	}
+}
+
+country_event = {
+	id = cofintern.128
+	title = cofintern.128.title
+	desc = cofintern.128.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.128.a 
+		army_experience = 25
+		add_ideas = Cof_egy_french_officer_group
+		diplomatic_relation = {
+			country = FRA
+			relation = military_access
+			active = yes
+		}
+		diplomatic_relation = {
+			country = FRA
+			relation = docking_rights
+			active = yes
+		}
+		FRA = {
+			add_ideas = Cof_desert_training 
+			add_to_array = { array = FRA.cof_ar_bills value = 23 }
+		}
+	}
+	option = {
+		name = cofintern.128.b
+		
+	}
+}
+
+country_event = {
+	id = cofintern.129
+	title = cofintern.129.title
+	desc = cofintern.129.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.129.a 
+		if = {
+			limit = { is_monarchy = yes }
+			add_ideas = Cof_pan_arab_passion_monarchy
+		}
+		else_if = {
+			limit = {
+				is_monarchy = no 
+				has_socialist_government = no
+			}
+			add_ideas = Cof_pan_arab_passion_republic
+		}
+		else_if = {
+			limit = { has_socialist_government = yes }
+			add_ideas = Cof_pan_arab_passion_socialist
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.130
+	title = cofintern.130.title
+	desc = cofintern.130.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.130.a 
+		add_stability = -0.05
+		add_political_power = -50
+		reverse_add_opinion_modifier = {
+			target = FRA
+			modifier = KR_displeased
+		}
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		add_to_variable = { 
+			INC.guerilla_activity = 10
+			tooltip = INC_increase_guerilla_strength_tt
+		}
+		add_ideas = Cof_gea_indochina_threat1
+		modify_country_flag = {
+			flag = GEA_Indochinese_Anger
+			value = 1
+		}
+
+		hidden_effect = { FRA = { country_event = { id = cofintern.131 days = 3 } } }
+	}
+	option = {
+		name = cofintern.130.b
+		add_stability = -0.05
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		add_to_variable = { 
+			INC.guerilla_activity = 20
+			tooltip = INC_increase_guerilla_strength_tt
+		}
+		add_ideas = Cof_gea_indochina_threat2
+		modify_country_flag = {
+			flag = GEA_Indochinese_Anger
+			value = 2
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.131
+	title = {
+		text = cofintern.131.title.a
+		trigger = { tag = FRA } 
+	}
+	title = {
+		text = cofintern.131.title.b
+		trigger = { tag = GEA } 
+	}
+	title = {
+		text = cofintern.131.title.c
+		trigger = { tag = GER } 
+	}
+	desc = {
+		text = cofintern.131.desc.a
+		trigger = { tag = FRA } 
+	}
+	desc = {
+		text = cofintern.131.desc.b
+		trigger = { tag = GEA } 
+	}
+	desc = {
+		text = cofintern.131.desc.c
+		trigger = { tag = GER } 
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.131.a 
+		trigger = { tag = FRA } 
+
+		hidden_effect = { GEA = { country_event = { id = cofintern.131 days = 3 } } }
+	}
+	option = {
+		name = cofintern.131.b
+		trigger = { tag = GEA } 
+		add_political_power = -25
+		hidden_effect = { GER = { country_event = { id = cofintern.131 days = 3 } } }
+	}
+	option = {
+		name = cofintern.131.c
+		trigger = { tag = GEA } 
+		add_political_power = -50
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		add_to_variable = { 
+			INC.guerilla_activity = 5
+			tooltip = INC_increase_guerilla_strength_tt
+		}
+		modify_country_flag = {
+			flag = GEA_Indochinese_Anger
+			value = 1
+		}
+	}
+	option = {
+		name = cofintern.131.d
+		trigger = { tag = GER } 
+		
+		hidden_effect = { GEA = { country_event = { id = cofintern.132 days = 4 } } }
+	}
+}
+
+
+
+country_event = {
+	id = cofintern.132
+	title = cofintern.132.title
+	desc = cofintern.132.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.132.a 
+		
+		add_stability = -0.025
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		add_to_variable = { 
+			INC.guerilla_activity = 5
+			tooltip = INC_increase_guerilla_strength_tt
+		}
+		modify_country_flag = {
+			flag = GEA_Indochinese_Anger
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.133
+	title = {
+		text = cofintern.133.title.a
+		trigger = { tag = INC } 
+	}
+	title = {
+		text = cofintern.133.title.b
+		trigger = { tag = GEA } 
+	}
+	desc = {
+		text = cofintern.133.desc.a
+		trigger = { tag = INC } 
+	}
+	desc = {
+		text = cofintern.133.desc.b
+		trigger = { tag = GEA } 
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.133.a 
+		trigger = { tag = INC } 
+		add_stability = 0.05
+		add_war_support = 0.1
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 1500
+		}
+		add_to_variable = { 
+			INC.guerilla_activity = 20
+			tooltip = INC_increase_guerilla_strength_tt
+		}
+		add_ideas = Cof_french_military_support
+	}
+	option = {
+		name = cofintern.133.b
+		trigger = { tag = GEA } 
+		add_stability = -0.05
+		add_manpower = -1000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -2000
+		}
+		add_timed_idea = { idea = Cof_gea_indochina_revolution days = 200 }
+	}
+}
+
+country_event = {
+	id = cofintern.134
+	title = cofintern.134.title
+	desc = cofintern.134.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.134.a 
+		add_stability = -0.05
+		add_manpower = -700
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1000
+		}
+		custom_effect_tooltip = inc_takes_northern_vit
+		hidden_effect = {
+			INC = {
+				division_template = {
+					name = "Dan quan Du kich"	# Guerilla Militia; Small Militia Division
+					division_names_group = INC_MLT_01
+					is_locked = yes
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+						militia = { x = 2 y = 0 }
+						militia = { x = 2 y = 1 }
+						militia = { x = 2 y = 2 }
+					}
+				}
+
+				if = {
+					limit = { 671 = { is_owned_and_controlled_by = GEA } }
+					671 = { 
+						transfer_state_to = INC 
+						teleport_armies = {
+							limit = { is_ally_with = GEA }
+							to_state = GEA.capital
+						}
+						create_unit = {
+							division = "name = \"Dan quan Long An\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+							prioritize_location = 4075
+							owner = INC
+							allow_spawning_on_enemy_provs = yes
+							count = 2
+						}
+						create_unit = {
+							division = "name = \"Dan quan Long An\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+							owner = INC
+							allow_spawning_on_enemy_provs = yes
+							count = 2
+						}
+					}
+				}
+
+				if = {
+					limit = { 857 = { is_owned_and_controlled_by = GEA } }
+					857 = { 
+						transfer_state_to = INC 
+						teleport_armies = {
+							limit = { is_ally_with = GEA }
+							to_state = GEA.capital
+						}
+						create_unit = {
+							division = "name = \"Dan quan Long An\" division_template = \"Dan quan Du kich\" start_experience_factor = 0.2"
+							owner = INC
+							allow_spawning_on_enemy_provs = yes
+							count = 3
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.135
+	title = cofintern.135.title
+	desc = cofintern.135.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.135.a 
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		add_timed_idea = { idea = Cof_india_revolution_panic days = 400 }
+	}
+}
+
+country_event = {
+	id = cofintern.136
+	title = cofintern.136.title
+	desc = cofintern.136.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	after = { country_event = cofintern.137 }
+	option = {
+		name = cofintern.136.a 
+		HND = { set_country_flag = hnd_idea_10 }
+		effect_tooltip = { HND = { add_timed_idea = { idea = Cof_india_revo_attack_10 days = 400 } } }
+	}
+	option = {
+		name = cofintern.136.b 
+		HND = { set_country_flag = hnd_idea_20 }
+		effect_tooltip = { HND = { add_timed_idea = { idea = Cof_india_revo_attack_20 days = 400 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.137
+	title = cofintern.137.title
+	desc = cofintern.137.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	after = { HND = { country_event = cofintern.138 } }
+	option = {
+		name = cofintern.137.a 
+		HND = { set_country_flag = hnd_idea_01 }
+		effect_tooltip = { HND = { add_timed_idea = { idea = Cof_india_revo_attack_01 days = 400 } } }
+	}
+	option = {
+		name = cofintern.137.b 
+		HND = { set_country_flag = hnd_idea_02 }
+		effect_tooltip = { HND = { add_timed_idea = { idea = Cof_india_revo_attack_02 days = 400 } } }
+	}
+	option = {
+		name = cofintern.137.c
+		HND = { set_country_flag = hnd_idea_03 }
+		effect_tooltip = { HND = { add_timed_idea = { idea = Cof_india_revo_attack_03 days = 400 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.138
+	title = cofintern.138.title
+	desc = cofintern.138.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.138.a 
+		if = {
+			limit = {  
+				has_country_flag = hnd_idea_10
+				has_country_flag = hnd_idea_01
+			}
+			add_timed_idea = { idea = Cof_india_revo_attack_11 days = 400 }
+		}
+		else_if = {
+			limit = {  
+				has_country_flag = hnd_idea_10
+				has_country_flag = hnd_idea_02
+			}
+			add_timed_idea = { idea = Cof_india_revo_attack_12 days = 400 }
+		}
+		else_if = {
+			limit = {  
+				has_country_flag = hnd_idea_10
+				has_country_flag = hnd_idea_03
+			}
+			add_timed_idea = { idea = Cof_india_revo_attack_13 days = 400 }
+		}
+		else_if = {
+			limit = {  
+				has_country_flag = hnd_idea_20
+				has_country_flag = hnd_idea_01
+			}
+			add_timed_idea = { idea = Cof_india_revo_attack_21 days = 400 }
+		}
+		else_if = {
+			limit = {  
+				has_country_flag = hnd_idea_20
+				has_country_flag = hnd_idea_02
+			}
+			add_timed_idea = { idea = Cof_india_revo_attack_22 days = 400 }
+		}
+		else_if = {
+			limit = {  
+				has_country_flag = hnd_idea_20
+				has_country_flag = hnd_idea_03
+			}
+			add_timed_idea = { idea = Cof_india_revo_attack_23 days = 400 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.139
+	title = cofintern.139.title
+	desc = cofintern.139.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.139.a 
+		add_stability = -0.1
+		add_manpower = -2000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1500
+		}
+		custom_effect_tooltip = dei_unity_upupupup
+		increase_indonesian_independence_unity = yes
+		increase_indonesian_independence_unity = yes
+		increase_indonesian_independence_unity = yes
+		increase_indonesian_independence_unity = yes
+		custom_effect_tooltip = dei_strength_upupupup
+		increase_indonesian_independence_strength = yes
+		increase_indonesian_independence_strength = yes
+		increase_indonesian_independence_strength = yes
+		increase_indonesian_independence_strength = yes
+		add_ideas = Cof_dei_colonial_disaster
+	}
+}
+
+country_event = {
+	id = cofintern.140
+	title = cofintern.140.title
+	desc = cofintern.140.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.140.a 
+		add_stability = 0.05
+		add_war_support = 0.1
+		add_popularity = { ideology = radical_socialist popularity = 0.2 }
+		add_ideas = Cof_ins_dependent_dream
+	}
+	option = {
+		name = cofintern.140.b
+		add_political_power = -50
+		add_war_support = 0.1
+		add_popularity = { ideology = radical_socialist popularity = 0.1 }
+		add_ideas = Cof_ins_dependent_dream
+	}
+}
+
+country_event = {
+	id = cofintern.141
+	title = {
+		text = cofintern.141.title.a
+		trigger = { tag = INS }
+	}
+	title = {
+		text = cofintern.141.title.b
+		trigger = { 
+			tag = FRA 
+			has_country_flag = ins_accept
+		}
+	}
+	title = {
+		text = cofintern.141.title.c
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = ins_accept }
+		}
+	}
+	desc = {
+		text = cofintern.141.desc.a
+		trigger = { tag = INS }
+	}
+	desc = {
+		text = cofintern.141.desc.b
+		trigger = { 
+			tag = FRA 
+			has_country_flag = ins_accept
+		}
+	}
+	desc = {
+		text = cofintern.141.desc.c
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = ins_accept }
+		}
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	after = {
+		if = {
+			limit = { tag = INS }
+			FRA = { country_event = cofintern.141 }
+		}
+	}
+	option = {
+		name = cofintern.141.a 
+		trigger = { tag = INS }
+		add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		1020 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_ideas = Cof_ins_trade_ties
+		hidden_effect = { FRA = { set_country_flag = ins_accept } }
+	}
+	option = {
+		name = cofintern.141.b
+		trigger = { tag = INS }
+	}
+	option = {
+		name = cofintern.141.c
+		trigger = { tag = FRA }
+	}
+}
+
+country_event = {
+	id = cofintern.142
+	title = {
+		text = cofintern.142.title.a
+		trigger = { tag = HND }
+	}
+	title = {
+		text = cofintern.142.title.b
+		trigger = { 
+			tag = FRA 
+			has_country_flag = hnd_accept
+		}
+	}
+	title = {
+		text = cofintern.142.title.c
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = hnd_accept }
+		}
+	}
+	desc = {
+		text = cofintern.142.desc.a
+		trigger = { tag = HND }
+	}
+	desc = {
+		text = cofintern.142.desc.b
+		trigger = { 
+			tag = FRA 
+			has_country_flag = hnd_accept
+		}
+	}
+	desc = {
+		text = cofintern.142.desc.c
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = hnd_accept }
+		}
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	after = {
+		if = {
+			limit = { tag = HND }
+			FRA = { country_event = cofintern.142 }
+		}
+	}
+	option = {
+		name = cofintern.142.a 
+		trigger = { tag = HND }
+		add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		
+		add_ideas = Cof_hnd_trade_ties
+		hidden_effect = { FRA = { set_country_flag = hnd_accept } }
+	}
+	option = {
+		name = cofintern.142.b
+		trigger = { tag = HND }
+	}
+	option = {
+		name = cofintern.142.c
+		trigger = { tag = FRA }
+	}
+}
+
+country_event = {
+	id = cofintern.143
+	title = {
+		text = cofintern.143.title.a
+		trigger = { tag = INC }
+	}
+	title = {
+		text = cofintern.143.title.b
+		trigger = { 
+			tag = FRA 
+			has_country_flag = inc_accept
+		}
+	}
+	title = {
+		text = cofintern.143.title.c
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = inc_accept }
+		}
+	}
+	desc = {
+		text = cofintern.143.desc.a
+		trigger = { tag = INC }
+	}
+	desc = {
+		text = cofintern.143.desc.b
+		trigger = { 
+			tag = FRA 
+			has_country_flag = inc_accept
+		}
+	}
+	desc = {
+		text = cofintern.143.desc.c
+		trigger = { 
+			tag = FRA 
+			NOT = { has_country_flag = inc_accept }
+		}
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	after = {
+		if = {
+			limit = { tag = INC }
+			FRA = { country_event = cofintern.143 }
+		}
+	}
+	option = {
+		name = cofintern.143.a 
+		trigger = { tag = INC }
+		add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		reverse_add_opinion_modifier = { target = FRA modifier = KR_trade_agreement }
+		
+		add_ideas = Cof_relationship_indochina
+		hidden_effect = { FRA = { set_country_flag = inc_accept } }
+	}
+	option = {
+		name = cofintern.143.b
+		trigger = { tag = INC }
+	}
+	option = {
+		name = cofintern.143.c
+		trigger = { tag = FRA }
+	}
+}
+
+country_event = {
+	id = cofintern.144
+	title = cofintern.144.title
+	desc = cofintern.144.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.144.a 
+		add_political_power = -150
+		add_stability = -0.1
+		add_manpower = -2000
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = -1500
+		}
+		africa_colonial_riot_level_up = yes
+	}
+	option = {
+		name = cofintern.144.b
+		add_stability = -0.05
+		africa_colonial_riot_level_up = yes
+		custom_effect_tooltip = nfa_lost_alg_core
+		hidden_effect = { country_event = { id = cofintern.145 days = 30 random_days = 60 } }
+	}
+}
+
+country_event = {
+	id = cofintern.145
+	title = cofintern.145.title
+	desc = cofintern.145.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_stability < 0
+		OR = {
+			has_idea = Cof_africa_colonial_riot5
+			has_idea = Cof_africa_colonial_riot4
+			has_idea = Cof_africa_colonial_riot3
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = cofintern.145.a 
+		custom_effect_tooltip = nfa_alg_war_warning
+		add_ideas = NFA_small_native_revolt
+		add_ideas = Cof_nfa_all_fall
+		hidden_effect = {
+			release = ALG
+			declare_war_on = { target = ALG type = annex_everything }
+			set_variable = { NFA.all_gone_times = 0 }
+			set_state_controller = 459
+			ALG = {
+				transfer_technology_without_doctrines = yes
+				set_politics = {
+					ruling_party = radical_socialist
+					last_election = "1888.6.15"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				set_popularities = {
+					totalist = 7
+					radical_socialist = 32
+					syndicalist = 13
+					social_democrat = 12
+					social_liberal = 6
+					market_liberal = 6
+					social_conservative = 10
+					authoritarian_democrat = 7
+					paternal_autocrat = 2
+					national_populist = 5
+				}
+				set_stability = 0.7
+				set_war_support = 0.85
+				division_template = {
+					name = "African Liberation Army"
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+					}
+					priority = 0
+				}
+				every_core_state = {
+					create_unit = {
+						division = "division_template = \"African Liberation Army\" start_experience_factor = 0.5 start_equipment_factor = 1"
+						owner = ALG
+						count = 2
+					}	
+				}
+				add_ideas = Cof_alg_northern_africa_star
+			}
+		}
+	}
+	option = {
+		name = cofintern.145.b
+		every_core_state = {
+			limit = { 
+				is_core_of = ALG
+				NOT = { state = 459 }
+			}
+			remove_core_of = NFA
+			add_claim_by = NFA
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.1450
+	title = cofintern.1450.title
+	desc = cofintern.1450.desc
+	picture = GFX_report_event_generic_diplomacy1
+	hidden = yes
+	trigger = {
+		tag = NFA 
+		has_war_with = ALG 
+		NOT = { has_country_flag = nfa_has_all_gone } 
+	}
+	option = {
+		name = cofintern.1450.a
+		add_to_variable = { NFA.all_gone_times = 1 }
+		if = {
+			limit = { check_variable = { NFA.all_gone_times = 13 } }
+			NFA = { country_event = cofintern.146 }
+		}
+		else_if = {
+			limit = { check_variable = { NFA.all_gone_times > 13 } }
+			NFA = { 
+				country_event = cofintern.146 
+				set_variable = { NFA.all_gone_times = 13 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.146
+	title = cofintern.146.title
+	desc = cofintern.146.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_stability < -0.5
+		has_war_with = ALG
+		NOT = { has_country_flag = nfa_has_all_gone }
+	}
+	is_triggered_only = yes
+	option = {
+		name = cofintern.146.a 
+		set_country_flag = nfa_has_all_gone
+		if = {
+			limit = { 1 = { is_owned_and_controlled_by = NFA } }
+			set_capital = { state = 1 }
+			add_victory_points = { province = 3838 value = 99 }
+		}
+		every_core_state = {
+			limit = { NOT = { state = 1 } }
+			remove_core_of = NFA
+		}
+		every_owned_state = {
+			limit = { NOT = { is_core_of = NFA } }
+			add_resistance = 50
+		}
+		hidden_effect = { country_event = { id = cofintern.147 days = 1 } }
+	}
+}
+
+country_event = {
+	id = cofintern.147
+	title = cofintern.147.title
+	desc = cofintern.147.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		1 = { is_owned_and_controlled_by = NFA }
+	}
+	is_triggered_only = yes
+	option = {
+		name = cofintern.147.a 
+		every_country = {
+			limit = { 
+				is_in_faction_with = NFA 
+				has_war_with = ALG
+			}
+			white_peace = ALG
+		}
+		FRA = { add_to_faction = ALG }
+		hidden_effect = { 
+			FRA = { country_event = { id = cofintern.148 days = 4 }  }
+			country_event = { id = cofintern.148 days = 3 } 
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.148
+	title = {
+		text = cofintern.148.title.a
+		trigger = { tag = FRA }
+	}
+	title = {
+		text = cofintern.148.title.b
+		trigger = { tag = NFA }
+	}
+	desc = {
+		text = cofintern.148.desc.a
+		trigger = { tag = NFA }
+	}
+	desc = {
+		text = cofintern.148.desc.b
+		trigger = { tag = FRA }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.148.a 
+		trigger = { tag = FRA }
+		set_country_flag = nfa_has_return
+		annex_country = { target = NFA transfer_troops = yes }
+		hidden_effect = { 1 = { add_core_of = FRA } }
+	}
+	option = {
+		name = cofintern.148.b
+		trigger = { tag = NFA }
+		FRA = { change_tag_from = ROOT }
+	}
+}
+
+country_event = {
+	id = cofintern.149
+	title = cofintern.149.title
+	desc = cofintern.149.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.149.a 
+		add_stability = -0.05
+		africa_colonial_riot_level_up = yes
+		
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = congo_riot_tt
+		every_core_state = {
+			limit = { check_variable = { mittelafrika_territory_capital_state = 295 } }
+			add_dynamic_modifier = { modifier = Cof_african_colonial_riot days = 180 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.150
+	title = cofintern.150.title
+	desc = cofintern.150.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.150.a 
+		add_stability = -0.05
+		add_popularity = { ideology = syndicalist popularity = 0.03 }
+		add_popularity = { ideology = radical_socialist popularity = 0.04 }
+		add_popularity = { ideology = totalist popularity = 0.02 }
+		africa_colonial_riot_level_up = yes
+	}
+}
+
+country_event = {
+	id = cofintern.151
+	title = cofintern.151.title
+	desc = cofintern.151.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.151.a 
+		custom_effect_tooltip = the_way_with_china_themselves
+		hidden_effect = { CHI = { country_event = { id = cofintern.152 days = 2 } } }
+	}
+	option = {
+		name = cofintern.151.b 
+		custom_effect_tooltip = the_way_with_china_economy
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -30 }
+		set_temp_variable = { evc = 10 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		cof_econ_target_change = yes
+
+		effect_tooltip = {
+			CHI = {
+				add_popularity = { ideology = syndicalist popularity = 0.025 }
+				add_popularity = { ideology = radical_socialist popularity = 0.025 }
+				add_popularity = { ideology = totalist popularity = 0.01 }
+				add_ideas = Cof_chi_coop_econ
+				capital = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		hidden_effect = { 
+			CHI = { 
+				set_country_flag = cof_coop_econ
+				country_event = { id = cofintern.153 days = 2 } 
+			} 
+		}
+	}
+	option = {
+		name = cofintern.151.c 
+		custom_effect_tooltip = the_way_with_china_politics
+		add_political_power = -50
+
+		effect_tooltip = {
+			CHI = {
+				add_political_power = 100
+				add_popularity = { ideology = syndicalist popularity = 0.04 }
+				add_popularity = { ideology = radical_socialist popularity = 0.05 }
+				add_popularity = { ideology = totalist popularity = 0.025 }
+				add_ideas = Cof_chi_coop_pols
+				capital = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		hidden_effect = { 
+			CHI = { 
+				set_country_flag = cof_coop_pols
+				country_event = { id = cofintern.153 days = 2 } 
+			} 
+		}
+	}
+	option = {
+		name = cofintern.151.d 
+		custom_effect_tooltip = the_way_with_china_military
+		army_experience = -25
+
+		effect_tooltip = {
+			CHI = {
+				army_experience = 50
+				add_popularity = { ideology = syndicalist popularity = 0.025 }
+				add_popularity = { ideology = radical_socialist popularity = 0.025 }
+				add_popularity = { ideology = totalist popularity = 0.01 }
+				add_ideas = Cof_chi_coop_mili
+				capital = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		hidden_effect = { 
+			CHI = { 
+				set_country_flag = cof_coop_mili
+				country_event = { id = cofintern.153 days = 2 } 
+			} 
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.152
+	title = cofintern.152.title
+	desc = cofintern.152.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.152.a 
+		add_popularity = { ideology = syndicalist popularity = 0.025 }
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		add_popularity = { ideology = totalist popularity = 0.01 }
+		add_ideas = Cof_chi_coop_econ
+		capital = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		set_country_flag = cof_coop_econ
+		hidden_effect = { FRA = { country_event = { id = cofintern.154 days = 2 } } }
+	}
+	option = {
+		name = cofintern.152.b 
+		add_political_power = 100
+		add_popularity = { ideology = syndicalist popularity = 0.04 }
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		add_popularity = { ideology = totalist popularity = 0.025 }
+		add_ideas = Cof_chi_coop_pols
+		capital = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_country_flag = cof_coop_pols
+		hidden_effect = { FRA = { country_event = { id = cofintern.154 days = 2 } } }
+	}
+	option = {
+		name = cofintern.152.c
+		army_experience = 50
+		add_popularity = { ideology = syndicalist popularity = 0.025 }
+		add_popularity = { ideology = radical_socialist popularity = 0.025 }
+		add_popularity = { ideology = totalist popularity = 0.01 }
+		add_ideas = Cof_chi_coop_mili
+		capital = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		set_country_flag = cof_coop_mili
+		hidden_effect = { FRA = { country_event = { id = cofintern.154 days = 2 } } }
+	}
+}
+
+country_event = {
+	id = cofintern.153
+	title = cofintern.153.title
+	desc = {
+		text = cofintern.153.desc.a
+		trigger = { has_country_flag = cof_coop_econ }
+	}
+	desc = {
+		text = cofintern.153.desc.b
+		trigger = { has_country_flag = cof_coop_pols }
+	}
+	desc = {
+		text = cofintern.153.desc.c
+		trigger = { has_country_flag = cof_coop_mili }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.153.a 
+		if = {
+			limit = { has_country_flag = cof_coop_econ }
+			add_popularity = { ideology = syndicalist popularity = 0.025 }
+			add_popularity = { ideology = radical_socialist popularity = 0.025 }
+			add_popularity = { ideology = totalist popularity = 0.01 }
+			add_ideas = Cof_chi_coop_econ
+			capital = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = cof_coop_pols }
+			add_political_power = 100
+			add_popularity = { ideology = syndicalist popularity = 0.04 }
+			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			add_popularity = { ideology = totalist popularity = 0.025 }
+			add_ideas = Cof_chi_coop_pols
+			capital = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		else_if = {
+			limit = { has_country_flag = cof_coop_mili }
+			army_experience = 50
+			add_popularity = { ideology = syndicalist popularity = 0.025 }
+			add_popularity = { ideology = radical_socialist popularity = 0.025 }
+			add_popularity = { ideology = totalist popularity = 0.01 }
+			add_ideas = Cof_chi_coop_mili
+			capital = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.154
+	title = cofintern.154.title
+	desc = {
+		text = cofintern.154.desc.a
+		trigger = { CHI = { has_country_flag = cof_coop_econ } }
+	}
+	desc = {
+		text = cofintern.154.desc.b
+		trigger = { CHI = { has_country_flag = cof_coop_pols } }
+	}
+	desc = {
+		text = cofintern.154.desc.c
+		trigger = { CHI = { has_country_flag = cof_coop_mili } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.154.a 
+		if = {
+			limit = { CHI = { has_country_flag = cof_coop_econ } }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -30 }
+			set_temp_variable = { evc = 10 }
+			cof_econ_target_change = yes
+		}
+		else_if = {
+			limit = { CHI = { has_country_flag = cof_coop_pols } }
+			add_political_power = -50
+		}
+		else_if = {
+			limit = { CHI = { has_country_flag = cof_coop_mili } }
+			army_experience = -25
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.155
+	title = cofintern.155.title
+	desc = cofintern.155.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.155.a 
+		add_political_power = -50
+		add_manpower = -500
+
+		add_stability = -0.05
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 1099
+					state = 1100
+					state = 525
+					state = 527
+					state = 524
+				}
+			}
+			add_compliance = -30
+			add_resistance = 15
+			if = {
+				limit = { NOT = { has_dynamic_modifier = { modifier = Cof_jap_colonial_riot scope = THIS.id } } }
+				set_variable = { jap_colonial_riot_level = 1 }
+				jap_colonial_riot_judge = yes
+				add_dynamic_modifier = { modifier = Cof_jap_colonial_riot scope = THIS.id }
+			}
+			else = {
+				add_to_variable = {
+					jap_colonial_riot_level = 1
+					tooltip = jap_colonial_riot_level_up
+				}
+				jap_colonial_riot_judge = yes
+			}
+		}
+	}
+	option = {
+		name = cofintern.155.b 
+		add_stability = -0.075
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 1099
+					state = 1100
+					state = 525
+					state = 527
+					state = 524
+				}
+			}
+			add_compliance = -30
+			add_resistance = 20
+			if = {
+				limit = { NOT = { has_dynamic_modifier = { modifier = Cof_jap_colonial_riot scope = THIS.id } } }
+				set_variable = { jap_colonial_riot_level = 2 }
+				jap_colonial_riot_judge = yes
+				add_dynamic_modifier = { modifier = Cof_jap_colonial_riot scope = THIS.id }
+			}
+			else = {
+				add_to_variable = {
+					jap_colonial_riot_level = 2
+					tooltip = jap_colonial_riot_level_up
+				}
+				jap_colonial_riot_judge = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.156
+	title = cofintern.156.title
+	desc = cofintern.156.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.156.a 
+		add_war_support = 0.1
+		army_experience = 50
+		add_ideas = Cof_chi_anti_jap
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5832,7 +11777,12 @@ country_event = {
 	title = cofstory.3.title
 	desc = cofstory.3.desc
 	picture = GFX_report_event_generic_diplomacy1
-	is_triggered_only = yes
+	trigger = {
+		has_idea = bill_rural_education_subsidy
+		has_country_flag = Amir_local
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
 	option = {
 		name = cofstory.3.a
 		ai_chance = { base = 50 }
@@ -5844,9 +11794,65 @@ country_event = {
 	title = cofstory.4.title
 	desc = cofstory.4.desc
 	picture = GFX_report_event_generic_diplomacy1
-	is_triggered_only = yes
+	trigger = {
+		has_idea = bill_comprehensive_education_program
+		has_country_flag = Amir_school
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
 	option = {
 		name = cofstory.4.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = cofstory.5
+	title = cofstory.5.title
+	desc = cofstory.5.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_completed_focus = FRA_central_brain
+		has_country_flag = Amir_army
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.5.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = cofstory.6
+	title = cofstory.6.title
+	desc = cofstory.6.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_completed_focus = FRA_flexible_joints
+		has_country_flag = Amir_army
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.6.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = cofstory.7
+	title = cofstory.7.title
+	desc = cofstory.7.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_completed_focus = FRA_peripheral_nerve
+		has_country_flag = Amir_army
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.7.a
 		ai_chance = { base = 50 }
 	}	
 }

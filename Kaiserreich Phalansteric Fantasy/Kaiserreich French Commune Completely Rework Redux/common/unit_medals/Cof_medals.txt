@@ -1,0 +1,50 @@
+# Valid unit modifiers are not exhaustive
+# Currently supported:
+# army_morale
+# army_morale_factor
+# army_org
+# army_org_factor
+# supply_consumption_factor
+# equipment_capture
+# equipment_capture_factor
+# army_fuel_capacity_factor
+# army_fuel_consumption_factor
+# recon_factor
+# recon_factor_while_entrenched
+# transport_capacity (?)
+# breakthrough_factor
+# armor_factor
+# army_strength_factor
+# experience_loss_factor
+# leader_modifier applies unit modifiers to all units under them as a general, similarly to traits.
+# army_attack_factor
+# army_defence_factor
+# max_dig_in
+# max_dig_in_factor
+
+@cost = 15
+
+unit_medals = {
+
+	Cof_international_column_medal = {
+		available = {
+			should_have_french_medals_trigger = yes
+		}
+		frame = 2
+		icon = "GFX_medal_icon_communism"
+
+		cost = 1848
+
+		unit_modifiers = {
+			terrain_penalty_reduction = 0.1
+			supply_consumption_factor = -0.1
+			army_org_factor = 0.1
+			army_morale_factor = 0.2
+			experience_loss_factor = -0.25
+		}
+
+		one_time_effect = {
+			add_divisional_commander_xp = 400
+		}
+	}
+}

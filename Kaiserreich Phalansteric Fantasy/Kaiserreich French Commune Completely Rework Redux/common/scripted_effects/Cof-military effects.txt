@@ -1458,3 +1458,228 @@ ard_change = {
     }
 }
 
+#军事契合度
+doctrines_fitness = {
+    set_variable = { dfw = 0 }
+
+    if = {
+        limit = { has_doctrine = new_mobile_warfare }
+        if = {
+            limit = { Cof_army_theory_defensive_countattack_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = grand_battleplan }
+        if = {
+            limit = {
+                OR = {
+                    Cof_army_theory_nco_initiative_advantage = yes
+                    Cof_army_theory_small_combat_advantage = yes
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = mass_assault }
+        if = {
+            limit = {
+                OR = {
+                    Cof_army_theory_panzer_group_advantage = yes
+                    Cof_army_theory_blitz_delite_advantage = yes
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard4 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    #sub
+    if = {
+        limit = { has_doctrine = mobile_infantry }
+        if = {
+            limit = { Cof_army_theory_defensive_countattack_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = defensive_postures }
+        if = {
+            limit = { Cof_army_theory_blitz_delite_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = large_unit_tactics }
+        if = {
+            limit = { Cof_army_theory_small_combat_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = commandos }
+        if = {
+            limit = { check_variable = { ard3 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = great_war_infantry }
+        if = {
+            limit = { 
+                OR = {
+                    Cof_army_theory_panzer_group_advantage = yes
+                    Cof_army_theory_blitz_delite_advantage = yes
+                    Cof_army_theory_motorization_advantage = yes
+                    Cof_army_theory_nco_initiative_advantage = yes
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = mission_type_tactics }
+        if = {
+            limit = { Cof_army_theory_centrailed_command_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = last_stand }
+        if = {
+            limit = { 
+                OR = {
+                    Cof_army_theory_panzer_group_advantage = yes
+                    Cof_army_theory_blitz_delite_advantage = yes
+                    Cof_army_theory_motorization_advantage = yes
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = infiltration_tactics }
+        if = {
+            limit = { Cof_army_theory_defensive_countattack_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = grand_assault }
+        if = {
+            limit = { Cof_army_theory_nco_initiative_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = deep_battle }
+        if = {
+            limit = { Cof_army_theory_defensive_countattack_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = guerilla_war }
+        if = {
+            limit = { 
+                OR = {
+                    Cof_army_theory_panzer_group_advantage = yes 
+                    Cof_army_theory_blitz_delite_advantage = yes
+                    Cof_army_theory_defensive_countattack_advantage = yes
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard3 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard4 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = rapid_domination }
+        if = {
+            limit = { Cof_army_theory_defensive_countattack_advantage = yes }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    set_variable = { dfwbuff = dfw }
+    multiply_variable = { dfwbuff = -0.05 }
+
+    if = {
+        limit = {
+            check_variable = { dfw > 0 }
+            NOT = { has_dynamic_modifier = { modifier = Cof_doctrines_fitness } }
+        }
+        add_dynamic_modifier = { modifier = Cof_doctrines_fitness }
+    }
+}

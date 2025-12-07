@@ -435,3 +435,44 @@ phalanstere_buff_judge = {
     multiply_variable = { INT_political_power_factor = 0.1 }
 }
 
+africa_colonial_riot_level_up = {
+    if = {
+        limit = { has_idea = Cof_africa_colonial_riot4 }
+        swap_ideas = {
+            remove_idea = Cof_africa_colonial_riot4
+            add_idea = Cof_africa_colonial_riot5
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_africa_colonial_riot3 }
+        swap_ideas = {
+            remove_idea = Cof_africa_colonial_riot3
+            add_idea = Cof_africa_colonial_riot4
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_africa_colonial_riot2 }
+        swap_ideas = {
+            remove_idea = Cof_africa_colonial_riot2
+            add_idea = Cof_africa_colonial_riot3
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_africa_colonial_riot1 }
+        swap_ideas = {
+            remove_idea = Cof_africa_colonial_riot1
+            add_idea = Cof_africa_colonial_riot2
+        }
+    }
+    else = { add_ideas = Cof_africa_colonial_riot1 }
+}
+
+jap_colonial_riot_judge = {
+    clamp_variable = {
+        var = jap_colonial_riot_level
+        max = 10
+        min = 0
+    }
+    set_variable = { jap_colonial_riot = jap_colonial_riot_level }
+    multiply_variable = { jap_colonial_riot = -0.1 }
+}

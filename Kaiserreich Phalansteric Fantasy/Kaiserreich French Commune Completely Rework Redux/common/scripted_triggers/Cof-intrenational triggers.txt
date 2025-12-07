@@ -452,3 +452,19 @@ INT_is_in_america_south = {
     }
 }
 
+pan_socialist_ideology_more_than_x = {
+    set_temp_variable = { t = var:THIS.party_popularity_100@syndicalist }
+    add_to_temp_variable = { t = var:THIS.party_popularity_100@totalist }
+    add_to_temp_variable = { t = var:THIS.party_popularity_100@radical_socialist }
+    custom_trigger_tooltip = {
+        tooltip = pan_socialist_ideology_more_than_x
+        check_variable = { t > target_num }
+    }
+}
+
+is_socialist_government = {
+    custom_trigger_tooltip = {
+		tooltip = is_socialist_government
+		has_socialist_government = yes
+	}
+}

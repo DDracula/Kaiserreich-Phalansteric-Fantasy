@@ -61,8 +61,9 @@ Cof_economy_impact = {
     ##工业指标
     #工业基础 +生产基础 +民工建设 +资源获取 
 
-    #流程标准化 +生产保持 +生产增长
+    #流程标准化 +生产保持 +生产增长 -能源消耗
     line_change_production_efficiency_factor = econ_line_change_production_efficiency_factor
+    factory_energy_consumption = econ_factory_energy_consumption
     
     #军事工业 +军工建设 +转换速度
     conversion_cost_civ_to_mil_factor = econ_conversion_cost_civ_to_mil_factor
@@ -71,8 +72,9 @@ Cof_economy_impact = {
     ##农业指标
     #机械化 +人口修正
     conscription_factor = econ_conscription_factor
-    #化工生产 +补给消耗
+    #化工生产 +补给消耗 +煤炭效率
     supply_consumption_factor = econ_supply_consumption_factor
+    energy_gain_factor = econ_energy_gain_factor
     #农副产业链 +生活消费品
 
     ##其他指标
@@ -272,15 +274,14 @@ Cof_air_buff = {
     icon = "GFX_idea_generic_air_fighter"
     experience_gain_air_factor = fair_experience_gain_air_factor
 
-    air_max_speed_factor = fair_air_max_speed_factor
+    air_maximum_speed_factor = fair_air_max_speed_factor
     air_attack_factor = fair_air_attack_factor
     air_defence_factor = fair_air_defence_factor
 
     air_bombing_targetting = fair_air_bombing_targetting
     air_power_projection_factor = fair_air_power_projection_factor
 
-    air_superiority_efficiency  = fair_air_superiority_efficiency
-    air_strategic_bomber_bombing_factor = fair_air_strategic_bomber_bombing_factor
+    air_superiority_efficiency  = fair_air_superiority_efficienc
     
     #本地空域防卫修正系数
 	air_home_defence_factor = fair_air_home_defence_factor
@@ -401,6 +402,8 @@ Cof_state_general_buff = {
 
     research_speed_factor = all_state_research_speed_factor
 
+    factory_energy_consumption = all_state_factory_energy_consumption
+
     industrial_capacity_factory = all_state_industrial_capacity_factory
     industrial_capacity_dockyard = all_state_industrial_capacity_dockyard
 
@@ -445,6 +448,7 @@ Cof_state_city_zone = {
     war_support_factor = city_war_support_factor
     political_power_factor = city_political_power_factor
     research_speed_factor = city_research_speed_factor
+    factory_energy_consumption = city_factory_energy_consumption
 
     industrial_capacity_factory = city_industrial_capacity_factory
     consumer_goods_factor = city_consumer_goods_factor
@@ -452,6 +456,7 @@ Cof_state_city_zone = {
     weekly_manpower = city_weekly_manpower
     monthly_population = city_monthly_population
     local_resources_factor = city_local_resources_factor
+    local_factory_energy_consumption = city_local_factory_energy_consumption
 
     production_factory_max_efficiency_factor = city_production_factory_max_efficiency_factor
     production_factory_efficiency_gain_factor = city_production_factory_efficiency_gain_factor
@@ -512,6 +517,7 @@ Cof_state_rural_zone = {
     war_support_factor = rural_war_support_factor
     political_power_factor = rural_political_power_factor
     research_speed_factor = rural_research_speed_factor
+    factory_energy_consumption = rural_factory_energy_consumption
 
     industrial_capacity_factory = rural_industrial_capacity_factory
     consumer_goods_factor = rural_consumer_goods_factor
@@ -519,6 +525,7 @@ Cof_state_rural_zone = {
     weekly_manpower = rural_weekly_manpower
     monthly_population = rural_monthly_population
     local_resources_factor = rural_local_resources_factor
+    local_factory_energy_consumption = rural_local_factory_energy_consumption
 
     production_factory_max_efficiency_factor = rural_production_factory_max_efficiency_factor
     production_factory_efficiency_gain_factor = rural_production_factory_efficiency_gain_factor
@@ -578,7 +585,9 @@ Cof_state_Paris = {
     war_support_factor = core_war_support_factor
     political_power_factor = core_political_power_factor
     research_speed_factor = core_research_speed_factor
+    factory_energy_consumption = core_factory_energy_consumption
 
+    local_factory_energy_consumption = core_local_factory_energy_consumption
     industrial_capacity_factory = core_industrial_capacity_factory
     consumer_goods_factor = core_consumer_goods_factor
     supply_consumption_factor = core_supply_consumption_factor
@@ -642,7 +651,9 @@ Cof_state_Calais = {
     war_support_factor = core_war_support_factor
     political_power_factor = core_political_power_factor
     research_speed_factor = core_research_speed_factor
+    factory_energy_consumption = core_factory_energy_consumption
 
+    local_factory_energy_consumption = core_local_factory_energy_consumption
     industrial_capacity_factory = core_industrial_capacity_factory
     consumer_goods_factor = core_consumer_goods_factor
     supply_consumption_factor = core_supply_consumption_factor
@@ -706,7 +717,9 @@ Cof_state_Bordeaux = {
     war_support_factor = core_war_support_factor
     political_power_factor = core_political_power_factor
     research_speed_factor = core_research_speed_factor
+    factory_energy_consumption = core_factory_energy_consumption
 
+    local_factory_energy_consumption = core_local_factory_energy_consumption
     industrial_capacity_factory = core_industrial_capacity_factory
     consumer_goods_factor = core_consumer_goods_factor
     supply_consumption_factor = core_supply_consumption_factor
@@ -770,7 +783,9 @@ Cof_state_Massay = {
     war_support_factor = core_war_support_factor
     political_power_factor = core_political_power_factor
     research_speed_factor = core_research_speed_factor
+    factory_energy_consumption = core_factory_energy_consumption
 
+    local_factory_energy_consumption = core_local_factory_energy_consumption
     industrial_capacity_factory = core_industrial_capacity_factory
     consumer_goods_factor = core_consumer_goods_factor
     supply_consumption_factor = core_supply_consumption_factor
@@ -833,7 +848,9 @@ Cof_state_lyon = {
     war_support_factor = core_war_support_factor
     political_power_factor = core_political_power_factor
     research_speed_factor = core_research_speed_factor
+    factory_energy_consumption = core_factory_energy_consumption
 
+    local_factory_energy_consumption = core_local_factory_energy_consumption
     industrial_capacity_factory = core_industrial_capacity_factory
     consumer_goods_factor = core_consumer_goods_factor
     supply_consumption_factor = core_supply_consumption_factor
@@ -901,7 +918,9 @@ Cof_state_Brittany = {
     war_support_factor = core_war_support_factor
     political_power_factor = core_political_power_factor
     research_speed_factor = core_research_speed_factor
+    factory_energy_consumption = core_factory_energy_consumption
 
+    local_factory_energy_consumption = core_local_factory_energy_consumption
     industrial_capacity_factory = core_industrial_capacity_factory
     consumer_goods_factor = core_consumer_goods_factor
     supply_consumption_factor = core_supply_consumption_factor
@@ -1003,6 +1022,7 @@ Cof_state_red_black_market = {
     state_resource_rubber = rbm_state_resource_rubber
     state_resource_steel = rbm_state_resource_steel
     state_resource_tungsten = rbm_state_resource_tungsten    
+    temporary_state_resource_coal = rbm_state_resource_coal
 }
 
 Cof_red_black_market = {
@@ -1018,6 +1038,7 @@ Cof_red_black_market = {
     country_resource_rubber = rbm_rubber
     country_resource_steel = rbm_steel
     country_resource_tungsten = rbm_tungsten
+    country_resource_coal = rbm_coal
 }
 
 #边境走私
@@ -1042,6 +1063,7 @@ Cof_border_smuggling_ger = {
     country_resource_rubber = bsg_rubber
     country_resource_steel = bsg_steel
     country_resource_tungsten = bsg_tungsten
+    country_resource_coal = bsg_coal
 }
 
 Cof_border_smuggling_fra = {
@@ -1056,6 +1078,7 @@ Cof_border_smuggling_fra = {
     country_resource_rubber = bsf_rubber
     country_resource_steel = bsf_steel
     country_resource_tungsten = bsf_tungsten
+    country_resource_coal = bsf_coal
 }
 
 Cof_piece_rate_economy_buff = {
@@ -1135,4 +1158,44 @@ Cof_total_variable_change = {
     weekly_change_ime = weekly_change_imec
     weekly_change_iaf = weekly_change_iafc
     weekly_change_iam = weekly_change_iamc
+}
+
+Cof_doctrines_fitness = {
+    icon = "GFX_idea_bul_zveno"
+    remove_trigger = { check_variable = { dfw = 0 } }
+    custom_modifier_tooltip = Cof_doctrines_fitness_tt
+
+    experience_gain_army_factor = dfwbuff
+    army_core_attack_factor = dfwbuff
+    army_core_defence_factor = dfwbuff
+    army_speed_factor= dfwbuff
+    max_planning_factor = dfwbuff
+    max_dig_in_factor = dfwbuff
+    dig_in_speed_factor = dfwbuff
+    army_org_factor = dfwbuff
+}
+
+Cof_african_colonial_riot = {
+    icon = "GFX_decision_SWI_consolidate_council_power"
+    enable = { is_controlled_by = MFA }
+	remove_trigger = { NOT = { is_owned_by = MFA } }
+    custom_modifier_tooltip = Cof_african_colonial_riot_tt
+    state_resources_factor = -0.5
+	local_factories = -0.5
+    recruitable_population_factor = -0.5
+}
+
+Cof_jap_colonial_riot = {
+    icon = "GFX_decision_SWI_consolidate_council_power"
+    enable = { is_controlled_by = JAP }
+	remove_trigger = { 
+        compliance > 90
+        resistance < 1
+        JAP = { has_stability > 0.85 }
+        NOT = { is_owned_by = JAP }
+    }
+    custom_modifier_tooltip = Cof_jap_colonial_riot_tt
+    state_resources_factor = jap_colonial_riot
+	local_factories = jap_colonial_riot
+    recruitable_population_factor = jap_colonial_riot
 }

@@ -499,10 +499,12 @@ on_actions = {
             Cof_military_reform_impact_count = yes
 
             set_variable = { arsnum = array:FRA.cof_ar_bills^num }
-            add_to_variable = { arsnum = -6 }
+            add_to_variable = { arsnum = -5 }
 
             set_variable = { bills_cost = cof_social_bills^num }
             multiply_variable = { bills_cost = -0.01 }
+
+            doctrines_fitness = yes
 
             every_core_state = {
                 if = {
@@ -714,6 +716,7 @@ on_actions = {
             set_variable = { rbm_rubber = 0 }
             set_variable = { rbm_steel = 0 }
             set_variable = { rbm_tungsten = 0 }
+            set_variable = { rbm_coal = 0 }
             every_other_country = {
                 limit = { any_owned_state = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } } }
                 set_temp_variable = { t = var:THIS.party_popularity@totalist }
@@ -839,6 +842,21 @@ on_actions = {
                     set_temp_variable = { ttt = rbm_state_resource_tungsten }
                     multiply_temp_variable = { ttt = -1 }
                     add_to_variable = { FRA.rbm_tungsten = ttt }
+
+                    if = {
+                        limit = {
+                            has_resources_amount = {
+                                resource = coal
+                                amount > 0
+                            }
+                        }
+                        set_variable = { rbm_state_resource_coal = resource@coal }
+                        multiply_variable = { rbm_state_resource_coal = tt }
+                        multiply_variable = { rbm_state_resource_coal = -1 } 
+                    }
+                    set_temp_variable = { ttt = rbm_state_resource_coal }
+                    multiply_temp_variable = { ttt = -1 }
+                    add_to_variable = { FRA.rbm_coal = ttt }
                 }
             }
 
@@ -894,12 +912,18 @@ on_actions = {
                         set_variable = { bsg_tungsten = rt }
                     }
                     else = { set_variable = { bsg_tungsten = THIS.resource_produced@tungsten } }
+                    if = {
+                        limit = { coal > rt }
+                        set_variable = { bsg_coal = rt }
+                    }
+                    else = { set_variable = { bsg_coal = THIS.resource_produced@coal } }
                     multiply_variable = { bsg_aluminium = -1 }
                     multiply_variable = { bsg_chromium = -1 }
                     multiply_variable = { bsg_oil = -1 }
                     multiply_variable = { bsg_rubber = -1 }
                     multiply_variable = { bsg_steel = -1 }
                     multiply_variable = { bsg_tungsten = -1 }
+                    multiply_variable = { bsg_coal = -1 }
                 }
                 set_variable = { bsf_industrial_factory_donations = GER.t }
                 set_variable = { bsf_aluminium = GER.bsg_aluminium }
@@ -908,12 +932,14 @@ on_actions = {
                 set_variable = { bsf_rubber = GER.bsg_rubber }
                 set_variable = { bsf_steel = GER.bsg_steel }
                 set_variable = { bsf_tungsten = GER.bsg_tungsten }
+                set_variable = { bsf_coal = GER.bsg_coal }
                 multiply_variable = { bsf_aluminium = -1 }
                 multiply_variable = { bsf_chromium = -1 }
                 multiply_variable = { bsf_oil = -1 }
                 multiply_variable = { bsf_rubber = -1 }
                 multiply_variable = { bsf_steel = -1 }
                 multiply_variable = { bsf_tungsten = -1 }
+                multiply_variable = { bsf_coal = -1 }
             }
         }
     }

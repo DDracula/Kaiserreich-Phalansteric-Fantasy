@@ -861,6 +861,14 @@ ideas = {
 				monthly_change_atrain = 0.5
 			}
 		}
+		#23
+		Cof_desert_training = {
+			modifier = {
+				attrition = -0.05
+				heat_attrition_factor = -0.1
+				acclimatization_hot_climate_gain_factor = 0.25
+			}
+		}
 
 		#### 社会法案
 		#1
@@ -1269,6 +1277,24 @@ ideas = {
 				production_factory_start_efficiency_factor = 0.05
 				consumer_goods_factor = -0.1
 				weekly_manpower = 600
+				monthly_population = 0.025
+
+				monthly_change_popsw = -0.2
+
+				monthly_change_ev = 0.3
+			}
+		}
+
+		bill_free_immigration_inc = { 
+			name = bill_free_immigration
+			modifier = {
+				custom_modifier_tooltip = bill_free_immigration_tt
+				political_power_factor = -0.05
+				stability_factor = -0.05
+				production_factory_start_efficiency_factor = 0.05
+				consumer_goods_factor = -0.15
+				weekly_manpower = 1500
+				monthly_population = 0.03
 
 				monthly_change_popsw = -0.2
 
@@ -1458,7 +1484,7 @@ ideas = {
 				industrial_capacity_factory = -0.1
 				monthly_population = 0.5
 				supply_consumption_factor = -0.025
-				no_supply_grace = 18
+				factory_energy_consumption = -0.5
 
 				monthly_change_popsw = 0.2
 				monthly_change_popsp = 0.2
@@ -1630,6 +1656,36 @@ ideas = {
 				monthly_change_eq = 2
 			}
 		}
+
+		#18
+		bill_rooster_strategy = {
+			name = bill_rooster_strategy
+			modifier = {
+				production_speed_industrial_complex_factor = -0.1
+				production_speed_arms_factory_factor = 0.15
+
+				monthly_change_eia = 0.3
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.1
+				breakthrough_bonus_against = 0.1
+			}
+		}
+
+		bill_sleeping_lion_strategy = {
+			name = bill_sleeping_lion_strategy
+			modifier = {
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_arms_factory_factor = -0.1
+
+				monthly_change_eib = 0.3
+			}
+			targeted_modifier = {
+				tag = GER
+				defense_bonus_against = 0.2
+			}
+		}
     }
 
 	trade_laws = {
@@ -1695,8 +1751,8 @@ ideas = {
 	mobilization_laws = {
 		law = yes
 		use_list_view = yes
-
-		construction_corps = {
+		
+		law_construction_corps = {
 			picture = extensive_conscription 
 			level = 6
 			removal_cost = -1

@@ -9,4 +9,4 @@ dependencies={
 }
 name="Kaiserreich French Commune Completely Rework Redux"
 picture="Thumbnail.png"
-supported_version="1.16.*"
+supported_version="1.17.*"

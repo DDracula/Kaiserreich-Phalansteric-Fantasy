@@ -475,6 +475,48 @@ ideas = {
                 war_support_factor = 0.05
                 send_volunteer_size = 3
 				training_time_army_factor = -0.1
+                army_experience_from_volunteers = 0.05
+            }
+        }
+
+        Cof_international_column12 = {
+            name = Cof_international_column
+            picture = Cof_international_column
+            modifier = {
+                war_support_factor = 0.05
+                send_volunteer_size = 3
+				training_time_army_factor = -0.1
+                air_volunteer_cap = 5
+                army_experience_from_volunteers = 0.05
+            }
+        }
+
+        Cof_international_column2 = {
+            name = Cof_international_column
+            picture = Cof_international_column
+            modifier = {
+                war_support_factor = 0.05
+                send_volunteer_size = 5
+                max_training = 0.1
+                grant_medal_cost_factor = -0.5
+                experience_loss_factor = -0.1
+				training_time_army_factor = -0.1
+                army_experience_from_volunteers = 0.05
+            }
+        }
+
+         Cof_international_column3 = {
+            name = Cof_international_column
+            picture = Cof_international_column
+            modifier = {
+                war_support_factor = 0.05
+                send_volunteer_size = 5
+                max_training = 0.1
+                grant_medal_cost_factor = -0.5
+                experience_loss_factor = -0.1
+				training_time_army_factor = -0.1
+                air_volunteer_cap = 5
+                army_experience_from_volunteers = 0.05
             }
         }
 
@@ -693,7 +735,26 @@ ideas = {
             }
         }
 
+        Cof_scalar_economy = {
+            picture = NOR_syndicalist_industry_idea
+            modifier = {
+                consumer_goods_factor = -0.2
+                industrial_capacity_factory = 0.1
+                economy_power_factor = 10
 
+                monthly_change_popsw = -0.1
+                monthly_change_popsp = -0.1
+                monthly_change_popsm = -0.1
+                monthly_change_popss = -0.1
+                monthly_change_popsb = -0.1
+                monthly_change_popsa = 0.5
+
+                monthly_change_ev = -0.3
+                monthly_change_eib = 0.3
+                monthly_change_eia = 0.3
+                monthly_change_eq = -0.3
+            }
+        }
 
 
 
@@ -753,6 +814,7 @@ ideas = {
         Cof_weapons_payment_factory = {
             name = Cof_weapons_payment
             picture = generic_coins
+            available = { country_exists = FRA }
             on_remove = { 
                 clr_country_flag = weapons_trade_receive
                 FRA = { add_offsite_building = { type = industrial_complex level = -1 } } 
@@ -765,6 +827,7 @@ ideas = {
         Cof_weapons_payment_resource = {
             name = Cof_weapons_payment
             picture = generic_coins
+            available = { country_exists = FRA }
             on_remove = { 
                 clr_country_flag = weapons_trade_receive
                 every_owned_state = {
@@ -782,18 +845,20 @@ ideas = {
         #公社军事援助
         Cof_french_military_support = {
             picture = advisors_france
+            available = { country_exists = FRA }
             cancel = { has_socialist_government = no }
 			modifier = {
-				experience_gain_army_factor = 0.05
 				training_time_army_factor = -0.1
                 army_core_defence_factor = 0.025
 				army_org_factor = 0.05
+                army_attack_speed_factor = 0.05
 			}
         }
 
         #意大利内战援助
         Cof_italy_french_support = {
             picture = HOL_totalist_military
+            available = { country_exists = FRA }
             modifier = {
                 army_speed_factor = 0.05
             }
@@ -825,6 +890,7 @@ ideas = {
 
         Cof_italy_rebuild_support = {
             picture = economic_control_icon
+            available = { country_exists = FRA }
             modifier = {
                 political_power_factor = 0.05
                 stability_factor = 0.05
@@ -834,6 +900,7 @@ ideas = {
 
         Cof_italy_defeatist_panic = {
             picture = generic_desertion
+            cancel = { SRI = { exists = no } }
             modifier = {
                 surrender_limit = -0.33
             }
@@ -844,9 +911,10 @@ ideas = {
             }
         }
 
-        #承认中国政府
+        #中国
         Cof_CHI_recoginize_the_government = {
             picture = CHI_support_kmt
+            available = { country_exists = FRA }
             cancel = { has_socialist_government = no }
             modifier = {
                 stability_factor = 0.1
@@ -855,9 +923,85 @@ ideas = {
             }
         }
 
+        Cof_chi_coop_econ = {
+            name = Cof_chi_coop_econ
+            picture = CHI_baojia_system
+            modifier = {
+                production_speed_buildings_factor = 0.025
+                production_speed_industrial_complex_factor = 0.1
+                production_speed_industrial_complex_factor = 0.5
+
+                industrial_capacity_factory = 0.5
+                production_factory_max_efficiency_factor = 0.025
+            }
+            targeted_modifier = {
+                tag = FRA
+                trade_cost_for_target_factor = -0.25
+            }
+        }
+
+        Cof_chi_coop_pols = {
+            name = Cof_chi_coop_econ
+            picture = CHI_baojia_system
+            modifier = {
+                production_speed_buildings_factor = 0.025
+                production_speed_industrial_complex_factor = 0.1
+                production_speed_industrial_complex_factor = 0.5
+
+                political_power_factor = 0.15
+                radical_socialist_drift = 0.01
+                syndicalist_drift = 0.01
+                totalist_drift = 0.01
+            }
+            targeted_modifier = {
+                tag = FRA
+                trade_cost_for_target_factor = -0.1
+            }
+        }
+
+        Cof_chi_coop_mili = {
+            name = Cof_chi_coop_econ
+            picture = CHI_baojia_system
+            modifier = {
+                production_speed_buildings_factor = 0.025
+                production_speed_industrial_complex_factor = 0.1
+                production_speed_industrial_complex_factor = 0.5
+
+                max_planning = 0.05
+                army_org_factor = 0.05
+                army_attack_factor = 0.025
+            }
+            targeted_modifier = {
+                tag = FRA
+                trade_cost_for_target_factor = -0.1
+            }
+        }
+
+        Cof_chi_anti_jap = {
+            picture = GER_proud_eagle_that_ate_the_sun
+            cancel = { NOT = { has_war_with = JAP } }
+            modifier = {
+                surrender_limit = 0.5
+                industrial_capacity_factory = 0.1
+                production_factory_efficiency_gain_factor = 0.15
+
+                army_core_attack_factor = 0.05
+                army_core_defence_factor = 0.1
+                army_speed_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = JAP 
+                attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+            }
+        }
+
+        #日本
+
         #贸易伙伴
         Cof_trade_partnership = {
             picture = KTG_Gold_Trade
+            available = { country_exists = FRA }
             cancel = {
                 OR = {
 					any_other_country = {
@@ -885,6 +1029,1058 @@ ideas = {
 			}
         }
 
+        #巴尔干合作
+        Cof_balkan_cooperation = {
+            picture = advisors_france
+            available = { country_exists = FRA }
+            modifier = {
+                political_power_factor = -0.05
+                consumer_goods_factor = -0.1
+                army_org_factor = 0.1
+                radical_socialist_drift = 0.05
+                syndicalist_drift = 0.05
+            }
+            targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+            targeted_modifier = {
+				tag = BUL
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+        }
+
+        #北欧合作
+        Cof_northeu_cooperation = {
+            picture = generic_syndicalist_worker
+            available = { country_exists = FRA }
+            modifier = {
+                political_power_factor = 0.05
+                consumer_goods_factor = -0.1
+                research_speed_factor = 0.1
+            }
+            targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+        }
+
+        Cof_red_frontline = {
+            picture = generic_syndicalism_drift_bonus
+            available = { country_exists = FRA }
+            modifier = {
+                totalist_drift = 0.03
+                syndicalist_drift = 0.04
+                radical_socialist_drift = 0.04
+                stability_factor = -0.05
+                industrial_capacity_factory = -0.05
+                industrial_capacity_dockyard = -0.05
+                custom_modifier_tooltip = Cof_red_frontline_tt
+            }
+        }
+
+        #墨西哥合作
+        Cof_mexico_cooperation = {
+            picture = generic_syndicalist_fort
+            available = { country_exists = FRA }
+            modifier = {
+                political_power_factor = 0.1
+                local_resources_factor = 0.15
+                production_speed_industrial_complex_factor = 0.1
+                production_speed_infrastructure_factor = 0.2
+            }
+            targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+        }
+
+        #南椎体革命
+        Cof_south_vertebrae_cooperation = {
+            picture = advisors_france
+            available = { country_exists = FRA }
+            modifier = {
+                political_power_factor = 0.05
+                war_support_factor = 0.1
+                army_org_factor = 0.1
+                industrial_capacity_factory = 0.05
+            }
+            targeted_modifier = {
+                tag = FRA
+            	trade_cost_for_target_factor = -0.33   
+            }
+        }
+
+        Cof_south_vertebrae_cooperation2 = {
+            name = Cof_south_vertebrae_cooperation
+            picture = advisors_france
+            available = { country_exists = FRA }
+            modifier = {
+                political_power_factor = 0.05
+                stability_factor = 0.05
+                army_org_factor = 0.05
+                industrial_capacity_factory = 0.05
+                consumer_goods_factor = -0.1
+                production_speed_industrial_complex_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = FRA
+            	trade_cost_for_target_factor = -0.33   
+            }
+        }
+
+        Cof_revolutionary_optimism = {
+            picture = generic_syndicalist_manpower
+            cancel = { ARG = { exists = no } }
+            modifier = {
+                political_power_factor = -0.1
+            }
+            targeted_modifier = {
+                tag = ARG
+            	attack_bonus_against = 0.15
+				defense_bonus_against = 0.15    
+            }
+        }
+
+        Cof_panic_skricken = {
+            picture = POL_the_peasants_strike
+            cancel = { FOP = { exists = no } }
+            modifier = {
+                stability_factor = -0.05
+                war_support_factor = -0.1
+                conscription_factor = -0.15
+                industrial_capacity_factory = -0.1
+                army_core_attack_factor = -0.1
+                army_core_defence_factor = -0.1
+            }
+        }
+
+        #中美洲之梦
+        Cof_central_america_dream = {
+            picture = generic_phoenix
+            modifier = {
+                army_core_attack_factor = 0.1
+                army_core_defence_factor = 0.1
+                monthly_population = 0.15
+                production_speed_industrial_complex_factor = 0.2
+                production_speed_infrastructure_factor = 0.25
+            }
+            targeted_modifier = {
+                tag = FRA
+            	trade_cost_for_target_factor = -0.33   
+            }
+        }
+
+        Cof_central_america_enthusiasm = {
+            picture = generic_phoenix
+            cancel = { has_socialist_government = no }
+            modifier = {
+                army_attack_factor = 0.025
+                army_org_factor = 0.1
+                org_loss_when_moving = -0.05
+                industrial_capacity_factory = 0.025
+            }
+        }
+
+        #美利坚合作
+        Cof_america_cooperation = {
+            picture = generic_syndicalist_worker
+            available = { country_exists = FRA }
+            modifier = {
+                political_power_factor = 0.05
+                industrial_capacity_factory = 0.05
+                industrial_capacity_dockyard = 0.1
+                consumer_goods_factor = -0.1
+            }
+            targeted_modifier = {
+                tag = FRA
+            	trade_cost_for_target_factor = -0.33   
+            }
+        }
+
+        Cof_america_french_military_help = {
+            picture = advisors_france
+            available = { country_exists = FRA }
+            cancel = {
+                USA = { exists = yes }
+                NEE = { exists = yes }
+                APG = { exists = yes }
+                ACC = { exists = yes }
+            }
+            modifier = {
+                army_org_factor = 0.1
+                army_speed_factor = 0.05
+                training_time_army_factor = -0.15
+            }
+            targeted_modifier = {
+                tag = USA
+                attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+            }
+            targeted_modifier = {
+                tag = NEE
+                attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+            }
+            targeted_modifier = {
+                tag = ACC
+                attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+            }
+            targeted_modifier = {
+                tag = APG
+                attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+            }
+        }
+
+        #加拿大危机
+        Cof_can_que_strike = {
+            picture = generic_crippled_industry
+            modifier = {
+                political_power_cost = 0.5
+                stability_factor = -0.1
+                war_support_factor = -0.25
+                conscription_factor = -0.3
+                industrial_capacity_factory = -0.1
+                industrial_capacity_dockyard = -0.1
+                consumer_goods_factor = 0.15
+                custom_modifier_tooltip = Cof_can_que_strike_tt
+            }
+            targeted_modifier = {
+                tag = WCA
+                attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+            }
+        }
+
+        Cof_can_que_strike2 = {
+            name = Cof_can_que_strike
+            picture = generic_crippled_industry
+            modifier = {
+                political_power_cost = 0.25
+                stability_factor = -0.05
+                war_support_factor = -0.2
+                conscription_factor = -0.15
+                industrial_capacity_factory = -0.1
+                industrial_capacity_dockyard = -0.1
+                consumer_goods_factor = 0.1
+
+                totalist_drift = 0.02
+                syndicalist_drift = 0.03
+                radical_socialist_drift = 0.03
+                custom_modifier_tooltip = Cof_can_que_strike_tt
+            }
+        }
+
+        #印支革命
+        Cof_gea_indochina_threat = {
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = {
+                INC = { exists = yes }
+                NOT = { has_war_with = INC }
+            }
+            modifier = {
+                custom_modifier_tooltip = Cof_gea_indochina_threat_tt
+                stability_factor = -0.1
+                industrial_capacity_factory = -0.05
+                supply_consumption_factor = 0.05
+                training_time_army_factor = 0.15
+            }
+        }
+
+        Cof_gea_indochina_threat1 = {
+            name = Cof_gea_indochina_threat
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = {
+                INC = { exists = yes }
+                NOT = { has_war_with = INC }
+            }
+            modifier = {
+                custom_modifier_tooltip = Cof_gea_indochina_threat_tt
+                stability_factor = -0.05
+                industrial_capacity_factory = -0.1
+                consumer_goods_factor = 0.1
+                supply_consumption_factor = 0.05
+                training_time_army_factor = 0.1
+            }
+        }
+
+        Cof_gea_indochina_threat2 = {
+            name = Cof_gea_indochina_threat
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = {
+                INC = { exists = yes }
+                NOT = { has_war_with = INC }
+            }
+            modifier = {
+                custom_modifier_tooltip = Cof_gea_indochina_threat_tt
+                stability_factor = -0.1
+                industrial_capacity_factory = -0.05
+                supply_consumption_factor = 0.05
+                training_time_army_factor = 0.15
+            }
+            targeted_modifier = {
+                tag = INC
+                attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+            }
+        }
+
+        Cof_gea_indochina_revolution = {
+            picture = Recruitment_Crisis
+            available = { country_exists = INC }
+            modifier = {
+                supply_consumption_factor = 0.05
+                army_speed_factor = -0.1
+            }
+            targeted_modifier = {
+                tag = INC
+                attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+            }
+        }
+
+        Cof_relationship_indochina = {
+            picture = generic_syndicalist_worker
+            cancel = { 
+                FRA = { exists = no } 
+                has_socialist_government = no
+            }
+            modifier = {
+                consumer_goods_factor = -0.2
+                monthly_population = 0.1
+                industrial_capacity_factory = 0.1
+                production_speed_buildings_factor = 0.05
+                production_speed_industrial_complex_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = FRA 
+                trade_cost_for_target_factor = -0.5
+            }
+        }
+
+        #印度
+        Cof_india_revolution_panic = {
+            picture = Recruitment_Crisis
+            available = { country_exists = HND }
+            modifier = {
+                political_power_factor = -0.1
+                industrial_capacity_factory = -0.05
+                industrial_capacity_dockyard = -0.05
+                consumer_goods_factor = 0.1
+                army_org_factor = -0.05
+                conscription_factor = -0.2
+
+                radical_socialist_drift = 0.02
+            }
+            targeted_modifier = {
+                tag = HND
+                attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+            }
+        }
+
+        Cof_india_revo_attack_10 = {
+            name = Cof_india_revo_attack
+            targeted_modifier = {
+                tag = RAJ
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_india_revo_attack_20 = {
+            name = Cof_india_revo_attack
+            targeted_modifier = {
+                tag = PRF
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_india_revo_attack_01 = {
+            name = Cof_india_revo_attack
+            modifier = {
+                army_speed_factor = 0.1
+                army_attack_speed_factor = 0.1
+                org_loss_when_moving = -0.1
+            }
+        }
+
+        Cof_india_revo_attack_02 = {
+            name = Cof_india_revo_attack
+            modifier = {
+                army_org_factor = 0.05
+                supply_consumption_factor = -0.05
+                recon_factor = 0.1
+            }
+        }
+
+        Cof_india_revo_attack_03 = {
+            name = Cof_india_revo_attack
+            modifier = {
+                max_planning = 0.05
+                attrition = -0.05
+                max_dig_in_factor = 0.1
+            }
+        }
+
+        Cof_india_revo_attack_11 = {
+            name = Cof_india_revo_attack
+            picture = generic_syndicalist_manpower
+            modifier = {
+                army_speed_factor = 0.1
+                army_attack_speed_factor = 0.1
+                org_loss_when_moving = -0.1
+            }
+            targeted_modifier = {
+                tag = RAJ
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_india_revo_attack_12 = {
+            name = Cof_india_revo_attack
+            picture = generic_syndicalist_manpower
+            modifier = {
+                army_org_factor = 0.05
+                supply_consumption_factor = -0.05
+                recon_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = RAJ
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_india_revo_attack_13 = {
+            name = Cof_india_revo_attack
+            picture = generic_syndicalist_manpower
+            modifier = {
+                max_planning = 0.05
+                attrition = -0.05
+                max_dig_in_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = RAJ
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_india_revo_attack_21 = {
+            name = Cof_india_revo_attack
+            picture = generic_syndicalist_manpower
+            modifier = {
+                army_speed_factor = 0.1
+                army_attack_speed_factor = 0.1
+                org_loss_when_moving = -0.1
+            }
+            targeted_modifier = {
+                tag = PRF
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_india_revo_attack_22 = {
+            name = Cof_india_revo_attack
+            picture = generic_syndicalist_manpower
+            modifier = {
+                army_org_factor = 0.05
+                supply_consumption_factor = -0.05
+                recon_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = PRF
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_india_revo_attack_23 = {
+            name = Cof_india_revo_attack
+            picture = generic_syndicalist_manpower
+            modifier = {
+                max_planning = 0.05
+                attrition = -0.05
+                max_dig_in_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = PRF
+                attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+            }
+        }
+
+        Cof_hnd_trade_ties = {
+            picture = generic_syndicalist_worker
+            cancel = { FRA = { exists = no } }
+            modifier = {
+                industrial_capacity_factory = 0.05
+                production_speed_buildings_factor = 0.025
+                production_speed_industrial_complex_factor = 0.15
+                production_speed_industrial_complex_factor = 0.1
+                consumer_goods_factor = -0.15
+            }
+            targeted_modifier = {
+                tag = FRA 
+                trade_cost_for_target_factor = -0.33
+            }
+        }
+
+        #印尼
+        Cof_dei_colonial_disaster = {
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = { 
+                INS = { exists = no }
+                NOT = {
+                    has_idea = DEI_idea_indonesian_unity_very_low
+                    has_idea = DEI_idea_indonesian_unity_low
+                    has_idea = DEI_idea_indonesian_unity_medium
+                    has_idea = DEI_idea_indonesian_unity_high
+                    has_idea = DEI_idea_indonesian_unity_very_high
+                    has_idea = DEI_idea_indonesian_strength_very_low
+                    has_idea = DEI_idea_indonesian_strength_low
+                    has_idea = DEI_idea_indonesian_strength_medium
+                    has_idea = DEI_idea_indonesian_strength_high
+                    has_idea = DEI_idea_indonesian_strength_very_high
+                }
+            }
+            modifier = {
+                war_support_factor = -0.1
+				stability_factor = -0.1
+				political_power_factor = -0.1
+				local_resources_factor = -0.15
+				army_morale_factor = -0.1
+            }
+            targeted_modifier = {
+                tag = INS
+                attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+            }
+        }
+
+        Cof_ins_dependent_dream = {
+            picture = generic_phoenix
+            cancel = {
+                has_dictatorship_government = yes
+                has_war = no
+                DEI = { exists = no }
+            }
+            modifier = {
+                stability_factor = 0.05
+                industrial_capacity_factory = 0.05
+                army_core_attack_factor = 0.1
+                army_core_defence_factor = 0.15
+                supply_consumption_factor = -0.05
+            }
+        }
+
+        Cof_ins_trade_ties = {
+            picture = generic_syndicalist_worker
+            cancel = {
+                FRA = { exists = no }
+                NOT = { is_in_faction_with = JAP }
+				NOT = { is_in_faction_with = GER }
+				NOT = { is_in_faction_with = ENT }
+				has_dictatorship_government = no
+            }
+            modifier = {
+                industrial_capacity_factory = 0.05
+                production_speed_buildings_factor = 0.05
+                local_resources_factor = 0.2
+                production_speed_industrial_complex_factor = 0.1
+            }
+            targeted_modifier = {
+                tag = FRA 
+                trade_cost_for_target_factor = -0.5
+            }
+        }
+
+        #非洲
+        Cof_africa_colonial_riot1 = {
+            name = Cof_africa_colonial_riot
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = { has_socialist_government = yes }
+            modifier = {
+                stability_factor = -0.025
+
+				required_garrison_factor = 0.05
+                resistance_activity = 0.05
+				resistance_growth = 0.05
+
+                compliance_gain = -0.01
+				compliance_growth = -0.05
+            }
+        }
+
+        Cof_africa_colonial_riot2 = {
+            name = Cof_africa_colonial_riot
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = { has_socialist_government = yes }
+            modifier = {
+                stability_factor = -0.05
+
+				required_garrison_factor = 0.1
+                resistance_activity = 0.1
+				resistance_growth = 0.1
+
+                compliance_gain = -0.02
+				compliance_growth = -0.1
+            }
+        }
+
+        Cof_africa_colonial_riot3 = {
+            name = Cof_africa_colonial_riot
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = { has_socialist_government = yes }
+            modifier = {
+                stability_factor = -0.075
+
+				required_garrison_factor = 0.15
+                resistance_activity = 0.155
+				resistance_growth = 0.15
+
+                compliance_gain = -0.03
+				compliance_growth = -0.15
+            }
+        }
+
+        Cof_africa_colonial_riot4 = {
+            name = Cof_africa_colonial_riot
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = { has_socialist_government = yes }
+            modifier = {
+                stability_factor = -0.1
+
+				required_garrison_factor = 0.2
+                resistance_activity = 0.2
+				resistance_growth = 0.2
+
+                compliance_gain = -0.04
+				compliance_growth = -0.2
+            }
+        }
+
+        Cof_africa_colonial_riot5 = {
+            name = Cof_africa_colonial_riot
+            picture = FRA_scw_intervention_republicans_focus
+            cancel = { has_socialist_government = yes }
+            modifier = {
+                stability_factor = -0.15
+
+				required_garrison_factor = 0.25
+                resistance_activity = 0.25
+				resistance_growth = 0.25
+
+                compliance_gain = -0.05
+				compliance_growth = -0.25
+            }
+        }
+
+        #国法
+        Cof_nfa_all_fall = {
+            picture = generic_desertion
+            cancel = {
+                has_stability > 0
+                has_war = no
+            }
+            modifier = {
+                stability_factor = -0.2
+                war_support_factor = -0.3
+                army_attack_factor = -0.1
+                army_defence_factor = -0.1
+                resistance_growth = 0.25
+                compliance_growth = -0.25
+                custom_modifier_tooltip = Cof_nfa_all_fall_tt
+            }
+        }
+
+        Cof_alg_northern_africa_star = {
+            picture = generic_phoenix
+            modifier = {
+                stability_factor = 0.1
+                war_support_factor = 0.1
+                army_core_attack_factor = 0.1
+                army_core_defence_factor = 0.1
+                industrial_capacity_factory = 0.05
+                production_speed_buildings_factor = 0.025
+            }
+        }
+
+        #雄鸡计划
+        Cof_berween_two_fires = {
+            picture = generic_desertion  
+            modifier = {
+                surrender_limit = -0.25
+                war_support_factor = -0.1
+                max_planning = -0.05
+            }
+            targeted_modifier = {
+                tag = FRA
+                attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+            }
+        }
+
+        Cof_lowland_unexpected_attack = {
+            picture = generic_desertion  
+            modifier = {
+                surrender_limit = -0.33
+                army_core_attack_factor = -0.05
+                army_core_defence_factor = -0.1
+            }
+            targeted_modifier = {
+                tag = FRA
+                attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+            }
+        }
+
+        Cof_operation_northrend = {
+            picture = SWE_coastal_support
+            modifier = {
+                naval_invasion_prep_speed = 0.15
+				naval_invasion_capacity = 12
+				invasion_preparation = -0.5
+            }
+        }
+
+        #守株待兔
+        Cof_ger_fall_into_trap = {
+            picture = generic_desertion
+            modifier = {
+                stability_factor = -0.2
+                war_support_factor = -0.2
+                army_org_factor = -0.15
+                industrial_capacity_factory = -0.1
+            }
+            targeted_modifier = {
+                tag = FRA
+                attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+            }
+        }
+
+        #法埃合作
+        Cof_egy_cooperation_economy = {
+            picture = generic_constitutional_guarantees
+            available = { country_exists = FRA }
+            cancel = { has_war_with = FRA }
+            modifier = {
+                local_resources_factor = 0.05
+                production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.1
+            }
+        }
+
+        Cof_egy_cooperation_politics = {
+            name = Cof_egy_cooperation_economy
+            picture = generic_constitutional_guarantees
+            available = { country_exists = FRA }
+            cancel = { has_war_with = FRA }
+            modifier = {
+                political_power_gain = 0.05
+                local_resources_factor = 0.05
+                production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.1
+
+                radical_socialist_drift = 0.01
+                social_democrat_drift = 0.01
+                social_liberal_drift = 0.01
+            }
+        }
+
+        Cof_egy_cooperation_revolution = {
+            name = Cof_egy_cooperation_economy
+            picture = generic_constitutional_guarantees
+            available = { country_exists = FRA }
+            cancel = { has_war_with = FRA }
+            modifier = {
+                stability_factor = -0.05
+                political_power_gain = 0.05
+                local_resources_factor = 0.05
+                production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.1
+
+                syndicalist_drift = 0.02
+                radical_socialist_drift = 0.02
+            }
+        }
+
+        Cof_egy_french_officer_group = {
+            picture = advisors_france
+            available = { country_exists = FRA }
+            modifier = {
+                experience_gain_army_factor = 0.05
+                training_time_army_factor = -0.1
+                land_reinforce_rate = 0.025
+				experience_loss_factor = -0.1
+                army_attack_speed_factor = 0.1
+
+                totalist_drift = 0.01
+                syndicalist_drift = 0.01
+                radical_socialist_drift = 0.01
+            }
+        }
+
+        #沙漠战争
+        Cof_tur_national_uprising = {
+            picture = generic_desertion
+            modifier = {
+                supply_consumption_factor = 0.05
+                army_speed_factor = -0.05
+                army_org_factor = -0.05
+            }
+            targeted_modifier = {
+                tag = PER
+                attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+            }
+            targeted_modifier = {
+                tag = EGY
+                attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+            }
+        }
+
+        #泛阿情绪
+        Cof_pan_arab_passion_monarchy = {
+            name = Cof_pan_arab_passion
+            cancel = { has_socialist_government = yes }
+            picture = generic_phoenix
+            modifier = {
+                custom_modifier_tooltip = Cof_pan_arab_passion_monarchy_tt
+                political_power_factor = -0.15
+                stability_factor = -0.2
+
+                totalist_drift = 0.03
+                syndicalist_drift = 0.03
+                radical_socialist_drift = 0.03
+            }
+        }
+
+        Cof_pan_arab_passion_republic = {
+            name = Cof_pan_arab_passion
+            cancel = { has_socialist_government = yes }
+            picture = generic_phoenix
+            modifier = {
+                custom_modifier_tooltip = Cof_pan_arab_passion_republic_tt
+                political_power_factor = -0.1
+                stability_factor = -0.1
+
+                totalist_drift = 0.03
+                syndicalist_drift = 0.03
+                radical_socialist_drift = 0.03
+            }
+        }
+
+        Cof_pan_arab_passion_socialist = {
+            name = Cof_pan_arab_passion
+            cancel = { has_socialist_government = yes }
+            picture = generic_phoenix
+            modifier = {
+                custom_modifier_tooltip = Cof_pan_arab_passion_socialist_tt
+                political_power_factor = 0.1
+                stability_factor = 0.15
+                war_support_factor = 0.15
+
+                totalist_drift = 0.03
+                syndicalist_drift = 0.03
+                radical_socialist_drift = 0.03
+            }
+        }
+
+        #法俄合作
+        Cof_rus_cooperation_100 = {
+            name = Cof_rus_cooperation
+            picture = generic_constitutional_guarantees
+            cancel = {
+                OR = {
+                    NOT = { is_in_faction_with = FRA }
+                    NOT = { is_in_faction_with = RUS }
+                }
+                OR = {
+                    has_war_with = FRA
+                    has_war_with = RUS
+                }
+            }
+            modifier = {
+                consumer_goods_factor = -0.15
+                production_factory_max_efficiency_factor = 0.05
+                production_speed_industrial_complex_factor = 0.1
+            }
+        }
+
+        Cof_rus_cooperation_010 = {
+            name = Cof_rus_cooperation
+            picture = generic_constitutional_guarantees
+            cancel = {
+                OR = {
+                    NOT = { is_in_faction_with = FRA }
+                    NOT = { is_in_faction_with = RUS }
+                }
+                OR = {
+                    has_war_with = FRA
+                    has_war_with = RUS
+                }
+            }
+            modifier = {
+                war_support_factor = 0.05
+                army_org_factor = 0.05
+                experience_gain_army_factor = 0.15
+            }
+            targeted_modifier = {
+                tag = GER
+                attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+            }
+        }
+
+        Cof_rus_cooperation_001 = {
+            name = Cof_rus_cooperation
+            picture = generic_constitutional_guarantees
+            cancel = {
+                OR = {
+                    NOT = { is_in_faction_with = FRA }
+                    NOT = { is_in_faction_with = RUS }
+                }
+                OR = {
+                    has_war_with = FRA
+                    has_war_with = RUS
+                }
+            }
+            modifier = {
+                political_power_factor = 0.1
+                stability_factor = 0.05
+                research_speed_factor = 0.1
+                industrial_capacity_factory = 0.05
+            }
+        }
+
+        Cof_rus_cooperation_110 = {
+            name = Cof_rus_cooperation
+            picture = generic_constitutional_guarantees
+            cancel = {
+                OR = {
+                    NOT = { is_in_faction_with = FRA }
+                    NOT = { is_in_faction_with = RUS }
+                }
+                OR = {
+                    has_war_with = FRA
+                    has_war_with = RUS
+                }
+            }
+            modifier = {
+                consumer_goods_factor = -0.15
+                production_factory_max_efficiency_factor = 0.05
+                production_speed_industrial_complex_factor = 0.1
+
+                war_support_factor = 0.05
+                army_org_factor = 0.05
+                experience_gain_army_factor = 0.15
+            }
+            targeted_modifier = {
+                tag = GER
+                attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+            }
+        }
+
+        Cof_rus_cooperation_101 = {
+            name = Cof_rus_cooperation
+            picture = generic_constitutional_guarantees
+            cancel = {
+                OR = {
+                    NOT = { is_in_faction_with = FRA }
+                    NOT = { is_in_faction_with = RUS }
+                }
+                OR = {
+                    has_war_with = FRA
+                    has_war_with = RUS
+                }
+            }
+            modifier = {
+                consumer_goods_factor = -0.15
+                production_factory_max_efficiency_factor = 0.05
+                production_speed_industrial_complex_factor = 0.1
+
+                political_power_factor = 0.1
+                stability_factor = 0.05
+                research_speed_factor = 0.1
+                industrial_capacity_factory = 0.05
+            }
+        }
+
+        Cof_rus_cooperation_011 = {
+            name = Cof_rus_cooperation
+            picture = generic_constitutional_guarantees
+            cancel = {
+                OR = {
+                    NOT = { is_in_faction_with = FRA }
+                    NOT = { is_in_faction_with = RUS }
+                }
+                OR = {
+                    has_war_with = FRA
+                    has_war_with = RUS
+                }
+            }
+            modifier = {
+                war_support_factor = 0.05
+                army_org_factor = 0.05
+                experience_gain_army_factor = 0.15
+
+                political_power_factor = 0.1
+                stability_factor = 0.05
+                research_speed_factor = 0.1
+                industrial_capacity_factory = 0.05
+            }
+            targeted_modifier = {
+                tag = GER
+                attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+            }
+        }
+
+        Cof_rus_cooperation_111 = {
+            name = Cof_rus_cooperation
+            picture = generic_constitutional_guarantees
+            cancel = {
+                OR = {
+                    NOT = { is_in_faction_with = FRA }
+                    NOT = { is_in_faction_with = RUS }
+                }
+                OR = {
+                    has_war_with = FRA
+                    has_war_with = RUS
+                }
+            }
+            modifier = {
+                consumer_goods_factor = -0.15
+                production_factory_max_efficiency_factor = 0.05
+                production_speed_industrial_complex_factor = 0.1
+
+                war_support_factor = 0.05
+                army_org_factor = 0.05
+                experience_gain_army_factor = 0.15
+
+                political_power_factor = 0.1
+                stability_factor = 0.05
+                research_speed_factor = 0.1
+                industrial_capacity_factory = 0.05
+            }
+            targeted_modifier = {
+                tag = GER
+                attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+            }
+        }
+
         #革命基地
         Cof_revolutionary_bases_buff = {
             name = Cof_revolutionary_bases
@@ -901,7 +2097,7 @@ ideas = {
             }
             cancel = { has_socialist_government = no }
             modifier = {
-                training_time_factor = -0.1
+                training_time_army_factor = -0.1
                 send_volunteer_size = 2
                 custom_modifier_tooltip = Cof_revolutionary_bases_tt
             }
@@ -1004,11 +2200,40 @@ ideas = {
 					build_cost_ic = -0.15
 					instant = yes
 				}
-                battle_cruiser = {
+                destroyer = {
 					build_cost_ic = -0.15
 					instant = yes
 				}
-                heavy_cruiser = {
+                ship_hull_light = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+                submarine = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+            }
+        }
+
+        Cof_naval_construction2 = {
+            picture = liberty_ships_focus
+            modifier = {
+                industrial_capacity_dockyard = 0.2
+                economy_power_factor = -10
+
+                monthly_change_eib = -0.2
+                monthly_change_eia = -0.2
+            }
+            equipment_bonus = {
+                battleship = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+                destroyer = {
+					build_cost_ic = -0.15
+					instant = yes
+				}
+                ship_hull_light = {
 					build_cost_ic = -0.15
 					instant = yes
 				}

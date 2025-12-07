@@ -286,6 +286,14 @@ Cof_economy_impact_count = {
 	set_variable = { eip2_show = eip2 }
 	add_to_variable = { econ_production_factory_efficiency_gain_factor = eip2 }
 
+	set_temp_variable = { eip3 = eip }
+	set_temp_variable = { endt = eip3 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eip3 = endt }
+	multiply_temp_variable = { eip3 = -0.5 }
+	set_variable = { eip3_show = eip3 }
+	set_variable = { econ_factory_energy_consumption = eip3 }
+
 	#军工
 	set_temp_variable = { eia1 = eia }
 	set_temp_variable = { endt = eia1 }
@@ -319,6 +327,13 @@ Cof_economy_impact_count = {
 	multiply_temp_variable = { eae1 = -1 }
 	set_variable = { eae1_show = eae1 }
 	set_variable = { econ_supply_consumption_factor = eae1 }
+
+	set_temp_variable = { eae2 = eae }
+	set_temp_variable = { endt = eae2 }
+	functions_two_steep_curve = yes
+	set_temp_variable = { eae2 = endt }
+	set_variable = { eae2_show = eae2 }
+	set_variable = { econ_energy_gain_factor = eae2 }
 
 	#产业链
 	set_temp_variable = { eaa1 = eaa }
@@ -499,22 +514,22 @@ Cof_economy_impact_count = {
 	#流程
 	if = {
 		limit = { has_completed_focus = FRA_entertainment_in_the_factory }
-		set_temp_variable = { eip3 = eib }
-		set_temp_variable = { endt = eip3 }
-		functions_two_steep_curve = yes
-		set_temp_variable = { eip3 = endt }
-		set_variable = { eip3_show = eip3 }
-		add_to_variable = { econ_consumer_goods_factor = eip3 }
-	}
-
-	if = {
-		limit = { has_completed_focus = FRA_borrow_from_model }
-		set_temp_variable = { eip4 = eib }
+		set_temp_variable = { eip4 = eip }
 		set_temp_variable = { endt = eip4 }
 		functions_two_steep_curve = yes
 		set_temp_variable = { eip4 = endt }
 		set_variable = { eip4_show = eip4 }
-		add_to_variable = { econ_production_factory_max_efficiency_factor = eip4 }
+		add_to_variable = { econ_consumer_goods_factor = eip4 }
+	}
+
+	if = {
+		limit = { has_completed_focus = FRA_borrow_from_model }
+		set_temp_variable = { eip5 = eip }
+		set_temp_variable = { endt = eip5 }
+		functions_two_steep_curve = yes
+		set_temp_variable = { eip5 = endt }
+		set_variable = { eip5_show = eip5 }
+		add_to_variable = { econ_production_factory_max_efficiency_factor = eip5 }
 	}
 	#军工
 	if = {
@@ -572,7 +587,6 @@ cof_econ_target_change = {
 	else = {
 		add_to_variable = { economy_power = epc }
 		custom_effect_tooltip = economy_power_change_tips
-		custom_effect_tooltip = tooltip_white_line
 	}
 
 	if = { limit = { check_variable = { evc = 0 } } }
@@ -1876,6 +1890,8 @@ Cof_state_general_buff_get = {
 	set_variable = { all_state_political_power_factor = 0 }
 	set_variable = { all_state_research_speed_factor = 0 }
 
+	set_variable = { all_state_factory_energy_consumption = 0 }
+
 	set_variable = { all_state_industrial_capacity_factory = 0 }
 	set_variable = { all_state_industrial_capacity_dockyard = 0 }
 
@@ -1923,6 +1939,7 @@ Cof_state_general_buff_get = {
 			add_to_variable = { FRA.all_state_war_support_factor = core_war_support_factor }
 			add_to_variable = { FRA.all_state_political_power_factor = core_political_power_factor }
 			add_to_variable = { FRA.all_state_research_speed_factor = core_research_speed_factor }
+			add_to_variable = { FRA.all_state_industrial_capacity_factory = core_factory_energy_consumption }
 			add_to_variable = { FRA.all_state_industrial_capacity_factory = core_industrial_capacity_factory }
 			add_to_variable = { FRA.all_state_consumer_goods_factor = core_consumer_goods_factor }
 			add_to_variable = { FRA.all_state_supply_consumption_factor = core_supply_consumption_factor }
@@ -1940,6 +1957,7 @@ Cof_state_general_buff_get = {
 			add_to_variable = { FRA.all_state_war_support_factor = city_war_support_factor }
 			add_to_variable = { FRA.all_state_political_power_factor = city_political_power_factor }
 			add_to_variable = { FRA.all_state_research_speed_factor = city_research_speed_factor }
+			add_to_variable = { FRA.all_state_industrial_capacity_factory = city_factory_energy_consumption }
 			add_to_variable = { FRA.all_state_industrial_capacity_factory = city_industrial_capacity_factory }
 			add_to_variable = { FRA.all_state_consumer_goods_factor = city_consumer_goods_factor }
 			add_to_variable = { FRA.all_state_supply_consumption_factor = city_supply_consumption_factor }
@@ -1957,6 +1975,7 @@ Cof_state_general_buff_get = {
 			add_to_variable = { FRA.all_state_war_support_factor = rural_war_support_factor }
 			add_to_variable = { FRA.all_state_political_power_factor = rural_political_power_factor }
 			add_to_variable = { FRA.all_state_research_speed_factor = rural_research_speed_factor }
+			add_to_variable = { FRA.all_state_industrial_capacity_factory = rural_factory_energy_consumption }
 			add_to_variable = { FRA.all_state_industrial_capacity_factory = rural_industrial_capacity_factory }
 			add_to_variable = { FRA.all_state_consumer_goods_factor = rural_consumer_goods_factor }
 			add_to_variable = { FRA.all_state_supply_consumption_factor = rural_supply_consumption_factor }
@@ -2118,8 +2137,12 @@ state_city_buff_count = {
 		add_to_variable = { city_state_production_speed_buildings_factor = 0.1 }
 		add_to_variable = { city_local_building_slots_factor = 0.05 }
 		set_variable = { city_state_resources_factor = 0.1 }
+		set_variable = { city_local_factory_energy_consumption = -0.33 }
 	}
-	else = { set_variable = { city_state_resources_factor = 0 } }
+	else = { 
+		set_variable = { city_state_resources_factor = 0 } 
+		set_variable = { city_local_factory_energy_consumption = 0 }
+	}
 
 	if = {
 		limit = {
@@ -2486,7 +2509,9 @@ state_rural_buff_count = {
 		add_to_variable = { rural_state_production_speed_buildings_factor = 0.1 }
 		add_to_variable = { rural_local_building_slots_factor = 0.05 }
 		add_to_variable = { rural_state_resources_factor = 0.1 }
+		set_variable = { rural_local_factory_energy_consumption = -0.33 }
 	}
+	else = { set_variable = { rural_local_factory_energy_consumption = 0 } }
 
 	if = {
 		limit = {

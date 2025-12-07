@@ -35,6 +35,35 @@ set_technology = {
 
 	### Trains ###
 	basic_train = 1
+
+	### Navy ###
+
+	### Hulls ###
+	early_ship_hull_submarine = 1
+	basic_ship_hull_submarine = 1
+	early_ship_hull_light = 1
+	basic_ship_hull_light = 1
+	early_ship_hull_cruiser = 1
+	early_ship_hull_heavy = 1
+	basic_ship_hull_heavy = 1
+	early_ship_hull_carrier = 1
+
+	### Modules ###
+	basic_naval_mines = 1
+	submarine_mine_laying = 1
+	basic_battery = 1
+	basic_light_battery = 1
+	basic_heavy_battery = 1
+	basic_torpedo = 1
+	basic_depth_charges = 1
+	basic_cruiser_armor_scheme = 1
+	basic_heavy_armor_scheme = 1
+
+	### Transport ###
+	mtg_transport = 1
+
+	### GTD - cruiser sub iteration rewards ###
+	tech_gtd_unlock_cruiser_sub_modules = 1
 }
 
 ### Planes - BBA ###
@@ -94,63 +123,6 @@ if = {
 		basic_light_tank = 1
 		basic_heavy_tank = 1
 		improved_light_tank = 1
-	}
-}
-
-### Navy - MtG ###
-if = {
-	limit = { has_dlc_mtg = yes }
-	set_technology = {
-		### Hulls ###
-		early_ship_hull_submarine = 1
-		basic_ship_hull_submarine = 1
-		early_ship_hull_light = 1
-		basic_ship_hull_light = 1
-		early_ship_hull_cruiser = 1
-		early_ship_hull_heavy = 1
-		basic_ship_hull_heavy = 1
-		early_ship_hull_carrier = 1
-
-		### Modules ###
-		basic_naval_mines = 1
-		submarine_mine_laying = 1
-		basic_battery = 1
-		basic_heavy_battery = 1
-		basic_light_battery = 1
-		basic_medium_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
-		basic_cruiser_armor_scheme = 1
-		basic_heavy_armor_scheme = 1
-
-		### Transport ###
-		mtg_transport = 1
-
-		### GTD - cruiser sub iteration rewards ###
-		tech_gtd_unlock_cruiser_sub_modules = 1
-	}
-}
-
-### Navy - non MtG ###
-if = {
-	limit = { has_dlc_mtg = no }
-	set_technology = {
-		### Hulls ###
-		early_submarine = 1
-		basic_submarine = 1
-		early_destroyer = 1
-		basic_destroyer = 1
-		early_light_cruiser = 1
-		basic_light_cruiser = 1
-		early_heavy_cruiser = 1
-		basic_heavy_cruiser = 1
-		early_battleship = 1
-		early_battlecruiser = 1
-		basic_battlecruiser = 1
-		early_carrier = 1
-
-		### Transport ###
-		transport = 1
 	}
 }
 
@@ -226,52 +198,51 @@ ROOT = {
 }
 
 ### Diplomacy ###
-create_faction = third_internationale
+create_faction_from_template = faction_template_internationale
 save_global_event_target_as = KR_internationale_leader
 add_to_faction = ENG
 
-add_opinion_modifier = { target = NFA modifier = KR_hostile }
-reverse_add_opinion_modifier = { target = NFA modifier = KR_hostile }
-
 recruit_character = FRA_pierre_monatte
 
+#温和派
 recruit_character = FRA_leon_jouhaux
 recruit_character = FRA_robert_bothereau
 recruit_character = FRA_leon_blum
 recruit_character = FRA_louis_lecoin
 recruit_character = FRA_louis_saillant
 recruit_character = FRA_maurice_gamelin
+recruit_character = FRA_jean_zyromski
 recruit_character = FRA_vincent_auriol
 recruit_character = FRA_joseph_putz
 recruit_character = FRA_edouard_peisson
-
-
+#激进派
 recruit_character = FRA_benoit_frachon
 
-recruit_character = FRA_jean_baptiste_lebas
 recruit_character = FRA_alphonse_merrheim
+recruit_character = FRA_jean_baptiste_lebas
 recruit_character = FRA_roger_salengro
 recruit_character = FRA_charles_delestraint
 recruit_character = FRA_marceau_pivert
 
-
+#共产党
 recruit_character = FRA_marcel_cachin
 recruit_character = FRA_charles_tillon
 recruit_character = FRA_maurice_thorez
 recruit_character = FRA_boris_souvarine
+recruit_character = FRA_jacques_duclos
 recruit_character = FRA_henri_tanguy
 recruit_character = FRA_charles_rappoport
 recruit_character = FRA_andre_marty
+recruit_character = FRA_marcel_mauss
 recruit_character = FRA_pierre_jules_cot
 recruit_character = FRA_georges_marrane
 recruit_character = FRA_ernest_petit
 recruit_character = FRA_jacques_sadoul
 recruit_character = FRA_irene_and_frederic_joliot_curie
-recruit_character = FRA_jean_zyromski
 recruit_character = FRA_suzanne_girault
 recruit_character = FRA_florimond_bonte
 
-
+#无政府
 recruit_character = FRA_maurice_joyeux
 recruit_character = FRA_fernand_despres
 recruit_character = FRA_may_picqueray
@@ -280,23 +251,23 @@ recruit_character = FRA_rene_fremont
 recruit_character = FRA_gaston_leval
 recruit_character = FRA_emile_armand
 recruit_character = FRA_nestor_makhno
+FRA_nestor_makhno = { set_nationality = FOP }
 recruit_character = FRA_daniel_guerin
 
-
+#新社
 recruit_character = FRA_marcel_deat
 recruit_character = FRA_louis_vallon
 recruit_character = FRA_pierre_renaudel
 recruit_character = FRA_adrien_marquet
 recruit_character = FRA_georges_albertini
 recruit_character = FRA_ernest_pezet
-recruit_character = FRA_marcel_mauss
 recruit_character = FRA_georges_catroux
-recruit_character = FRA_rene_olry
 recruit_character = FRA_henri_frenay
 recruit_character = FRA_gabriel_lafaye
 recruit_character = FRA_joseph_paul_boncour
+recruit_character = FRA_rene_olry
 
-
+#革命行动
 recruit_character = FRA_jacques_doriot
 recruit_character = FRA_pierre_celor
 recruit_character = FRA_jean_fontenoy
@@ -304,7 +275,7 @@ recruit_character = FRA_henri_barbe
 recruit_character = FRA_simon_sabiani
 recruit_character = FRA_victor_barthelemy
 
-
+#守旧
 recruit_character = FRA_georges_valois
 recruit_character = FRA_edouard_berth
 recruit_character = FRA_hubert_bourgin
@@ -316,7 +287,7 @@ recruit_character = FRA_francois_darlan
 recruit_character = FRA_gabriel_auphan
 recruit_character = FRA_philippe_auboyneau
 
-
+#青年
 recruit_character = FRA_georges_bataille
 recruit_character = FRA_michel_leiris
 recruit_character = FRA_alphonse_laurencic
@@ -342,12 +313,10 @@ recruit_character = FRA_clement_blanc
 recruit_character = FRA_paul_legentilhomme
 recruit_character = FRA_aubert_frere
 recruit_character = FRA_louis_buisson
-FRA_nestor_makhno = { set_nationality = FOP }
+
 recruit_character = FRA_raoul_castex
 recruit_character = FRA_andre_georges_lemmonier
 recruit_character = FRA_marcel_gensoul
-recruit_character = FRA_jacques_duclos
-
 
 recruit_character = FRA_martial_henri_valin
 recruit_character = FRA_maryse_bastie

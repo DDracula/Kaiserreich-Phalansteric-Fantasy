@@ -37,11 +37,6 @@ country_event = {
 		}
 		hidden_effect = {
 			set_cosmetic_tag = FRA_alternate
-			FRA_conseil_de_defense_federal = {
-				set_portraits = {
-					civilian = { large = GFX_portrait_FRA_conseil_de_defense_federal_civilian_large_alternate }
-				}
-			}
 		}
 	}
 
@@ -81,11 +76,6 @@ country_event = {
 					}
 				}
 				drop_cosmetic_tag = yes
-			}
-			FRA_conseil_de_defense_federal = {
-				set_portraits = {
-					civilian = { large = GFX_portrait_FRA_conseil_de_defense_federal_civilian_large }
-				}
 			}
 		}
 	}
@@ -1356,6 +1346,9 @@ country_event = {
 	option = { #The Red Army shall put these comrades to good use!
 		log = "[GetLogInfo]: event france_events.62 option france_events.62.a"
 		name = france_events.62.a
+		army_experience = 25
+		add_war_support = 0.05
+		add_ideas = Cof_french_military_support
 		add_doctrine_cost_reduction = {
 			name = france_events.62.t
 			cost_reduction = 0.5
@@ -1368,7 +1361,6 @@ country_event = {
 			uses = 1
 			category = infantry_weapons
 		}
-		add_ideas = FRA_bhartiya_support
 	}
 }
 

@@ -917,6 +917,28 @@ characters = {
 		}
 	}
 
+	FRA_marcel_mauss = {	#马塞尔·莫斯 
+		name = FRA_marcel_mauss
+		portraits = {
+			civilian = {
+				small = GFX_portrait_FRA_marcel_mauss_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = FRA_marcel_mauss
+			available = {
+				set_temp_variable = { bgt_seat_target = 80 }
+				custom_trigger_tooltip = {
+					tooltip	= oppo_comm_seat_greater_than_x
+					check_variable = { seat_oppo_comm > bgt_seat_target }
+				}
+			}
+			traits = { FRA_social_anthropologist }
+			desc = FRA_marcel_mauss_advisor_desc
+		}
+	}	
+
 	FRA_pierre_jules_cot = { #皮埃尔·朱尔·考特
 		name = FRA_pierre_jules_cot
 		portraits = {
@@ -1151,27 +1173,7 @@ characters = {
 		}
 	}
 
-	FRA_marcel_mauss = {	#马塞尔·莫斯 
-		name = FRA_marcel_mauss
-		portraits = {
-			civilian = {
-				small = GFX_portrait_FRA_marcel_mauss_civilian_small
-			}
-		}
-		advisor = {
-			slot = political_advisor
-			idea_token = FRA_marcel_mauss
-			available = {
-				set_temp_variable = { bgt_seat_target = 80 }
-				custom_trigger_tooltip = {
-					tooltip	= oppo_comm_seat_greater_than_x
-					check_variable = { seat_oppo_comm > bgt_seat_target }
-				}
-			}
-			traits = { FRA_social_anthropologist }
-			desc = FRA_marcel_mauss_advisor_desc
-		}
-	}	
+	
 
 	#oppo-anar
 	FRA_maurice_joyeux = {	#莫里斯·茹瓦耶   
@@ -1844,6 +1846,71 @@ characters = {
 		}
 	}
 
+	FRA_rene_olry = { #勒内·奥尔里
+		name = FRA_rene_olry
+		portraits = {
+			army = {
+				large = GFX_portrait_FRA_rene_olry_army_large
+				small = GFX_portrait_FRA_rene_olry_army_small
+			}
+		}
+		corps_commander = {
+			desc = FRA_rene_olry_commander_desc
+			traits = { trait_mountaineer artillery_officer artillery_specialist }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 2
+			logistics_skill = 2
+		}
+		advisor = {
+			slot = high_command
+			idea_token = FRA_rene_olry
+			ledger = army
+			traits = { KR_MHC_artillery_2 }
+			desc = FRA_rene_olry_high_command_desc
+			cost = 100
+			on_add = {
+				FRA = {
+					if = { limit = { has_country_flag = FRA_rene_olry_effect } }
+					else = {
+						set_country_flag = FRA_rene_olry_effect
+
+						custom_effect_tooltip = effect_military
+						set_temp_variable = { msyndc = -0.3 }
+						set_temp_variable = { moppoc = -0.3 }
+						set_temp_variable = { mjacoc = 0.9 }
+						set_temp_variable = { msorec = -0.3 }
+						mili_faction_influence_change = yes
+
+						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { atsynd1c = 0 }
+						set_temp_variable = { atsynd2c = 0 }
+						set_temp_variable = { atoppo1c = 0 }
+						set_temp_variable = { atoppo2c = 1 }
+						set_temp_variable = { atjaco1c = 1 }
+						set_temp_variable = { atjaco2c = 0 }
+						set_temp_variable = { atsore1c = 0 }
+						set_temp_variable = { atsore2c = 0 }
+						Cof_army_theory_change = yes
+
+						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { atimpc = 0 }
+						set_temp_variable = { atimp1c = 0 }
+						set_temp_variable = { atimp2c = 0 }
+						set_temp_variable = { atimp3c = 0 }
+						set_temp_variable = { atimp4c = 5 }
+						set_temp_variable = { atimp5c = 5 }
+						set_temp_variable = { atimp6c = 0 }
+						set_temp_variable = { atimp7c = 0 }
+						set_temp_variable = { atimp8c = 0 }
+						Cof_army_theory_implementation_change = yes	
+					}	
+				}
+			}
+		}
+	}
+
 	#jaco_revo
 	FRA_jacques_doriot = { #雅克·多里奥特
 		name = FRA_jacques_doriot
@@ -2091,72 +2158,6 @@ characters = {
 						set_temp_variable = { atimp8c = 0 }
 						Cof_army_theory_implementation_change = yes		
 					}			
-				}
-			}
-		}
-	}
-
-
-	FRA_rene_olry = { #勒内·奥尔里
-		name = FRA_rene_olry
-		portraits = {
-			army = {
-				large = GFX_portrait_FRA_rene_olry_army_large
-				small = GFX_portrait_FRA_rene_olry_army_small
-			}
-		}
-		corps_commander = {
-			desc = FRA_rene_olry_commander_desc
-			traits = { trait_mountaineer artillery_officer artillery_specialist }
-			skill = 3
-			attack_skill = 2
-			defense_skill = 4
-			planning_skill = 2
-			logistics_skill = 2
-		}
-		advisor = {
-			slot = high_command
-			idea_token = FRA_rene_olry
-			ledger = army
-			traits = { KR_MHC_artillery_2 }
-			desc = FRA_rene_olry_high_command_desc
-			cost = 100
-			on_add = {
-				FRA = {
-					if = { limit = { has_country_flag = FRA_rene_olry_effect } }
-					else = {
-						set_country_flag = FRA_rene_olry_effect
-
-						custom_effect_tooltip = effect_military
-						set_temp_variable = { msyndc = -0.3 }
-						set_temp_variable = { moppoc = -0.3 }
-						set_temp_variable = { mjacoc = 0.9 }
-						set_temp_variable = { msorec = -0.3 }
-						mili_faction_influence_change = yes
-
-						custom_effect_tooltip = tooltip_white_line
-						set_temp_variable = { atsynd1c = 0 }
-						set_temp_variable = { atsynd2c = 0 }
-						set_temp_variable = { atoppo1c = 0 }
-						set_temp_variable = { atoppo2c = 1 }
-						set_temp_variable = { atjaco1c = 1 }
-						set_temp_variable = { atjaco2c = 0 }
-						set_temp_variable = { atsore1c = 0 }
-						set_temp_variable = { atsore2c = 0 }
-						Cof_army_theory_change = yes
-
-						custom_effect_tooltip = tooltip_white_line
-						set_temp_variable = { atimpc = 0 }
-						set_temp_variable = { atimp1c = 0 }
-						set_temp_variable = { atimp2c = 0 }
-						set_temp_variable = { atimp3c = 0 }
-						set_temp_variable = { atimp4c = 5 }
-						set_temp_variable = { atimp5c = 5 }
-						set_temp_variable = { atimp6c = 0 }
-						set_temp_variable = { atimp7c = 0 }
-						set_temp_variable = { atimp8c = 0 }
-						Cof_army_theory_implementation_change = yes	
-					}	
 				}
 			}
 		}
