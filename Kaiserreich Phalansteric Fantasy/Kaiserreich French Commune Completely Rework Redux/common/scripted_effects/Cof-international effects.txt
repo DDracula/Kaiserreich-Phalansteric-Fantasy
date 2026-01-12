@@ -320,7 +320,57 @@ phalanstere_vote_judge_effect = {
         clr_country_flag = phalanstere_discuss_about_inner_circle_of_socialism
         set_country_flag = phalanstere_agree_about_inner_circle_of_socialism
     }
-    else = {  clr_country_flag = phalanstere_discuss_about_inner_circle_of_socialism }
+    else = { clr_country_flag = phalanstere_discuss_about_inner_circle_of_socialism }
+
+    if = {
+        limit = { 
+            has_country_flag = phalanstere_discuss_about_revolutionary_aid_construction
+            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
+        }
+        clr_country_flag = phalanstere_discuss_about_revolutionary_aid_construction
+        set_country_flag = phalanstere_agree_about_revolutionary_aid_construction
+    }
+    else = { clr_country_flag = phalanstere_discuss_about_revolutionary_aid_construction }
+
+    if = {
+        limit = { 
+            has_country_flag = phalanstere_discuss_about_international_union_of_socialist_students
+            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
+        }
+        clr_country_flag = phalanstere_discuss_about_international_union_of_socialist_students
+        set_country_flag = phalanstere_agree_about_international_union_of_socialist_students
+    }
+    else = { clr_country_flag = phalanstere_discuss_about_international_union_of_socialist_students }
+
+    if = {
+        limit = { 
+            has_country_flag = phalanstere_discuss_about_abolition_of_bourgeois_jurisdiction
+            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
+        }
+        clr_country_flag = phalanstere_discuss_about_abolition_of_bourgeois_jurisdiction
+        set_country_flag = phalanstere_agree_about_abolition_of_bourgeois_jurisdiction
+    }
+    else = { clr_country_flag = phalanstere_discuss_about_abolition_of_bourgeois_jurisdiction }
+
+    if = {
+        limit = { 
+            has_country_flag = phalanstere_discuss_about_literacy_expeditionary_force
+            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
+        }
+        clr_country_flag = phalanstere_discuss_about_literacy_expeditionary_force
+        set_country_flag = phalanstere_agree_about_literacy_expeditionary_force
+    }
+    else = { clr_country_flag = phalanstere_discuss_about_literacy_expeditionary_force }
+
+    if = {
+        limit = { 
+            has_country_flag = phalanstere_discuss_about_international_open_laboratory
+            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
+        }
+        clr_country_flag = phalanstere_discuss_about_international_open_laboratory
+        set_country_flag = phalanstere_agree_about_international_open_laboratory
+    }
+    else = { clr_country_flag = phalanstere_discuss_about_international_open_laboratory }
 }
 
 ###     法伦施泰尔团结度改变  
@@ -383,6 +433,7 @@ phalanstere_unity_change_monthly = {
 
     set_variable = { phauc_monthly1 = global.phalanstere_member^num }
     multiply_variable = { phauc_monthly1 = 0.1 }
+    multiply_variable = { phauc_monthly1 = 5 }
 
     if = {
         limit = { phalanstere_totalist_advantage = yes }
@@ -422,6 +473,7 @@ phalanstere_unity_change_monthly = {
         set_variable = { phauc_monthly2 = global.phalanstere_member^num }
         multiply_variable  = { phauc_monthly2 = -0.1 }
     }
+    multiply_variable = { phauc_monthly2 = 5 }
 
     set_variable = { phauc_monthly = phauc_monthly1 }
     add_to_variable = { phauc_monthly = phauc_monthly2 }
@@ -431,10 +483,193 @@ phalanstere_buff_judge = {
     set_temp_variable = { phau = global.phalanstere_unity }
     multiply_temp_variable = { phau = 0.01 }
 
-    set_variable = { INT_political_power_factor = phau }
-    multiply_variable = { INT_political_power_factor = 0.1 }
+    set_variable = { INT_political_power_gain = phau }
+
+    set_variable = { INT_political_power_cost = FRA.pha_coop_num }
+    multiply_variable = { INT_political_power_cost = 0.05 } 
+
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_inner_circle_of_socialism } }
+        set_variable = { INT_consumer_goods_factor = -0.1 }
+        set_variable = { INT_local_resources_factor = 0.1 }
+        set_variable = { INT_trade_cost = -0.25 }
+    }
+    else = { 
+        set_variable = { INT_consumer_goods_factor = 0 } 
+        set_variable = { INT_local_resources_factor = 0 }
+        set_variable = { INT_trade_cost = 0 }
+    }
+
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_revolutionary_aid_construction } }
+        set_variable = { INT_production_speed_industrial_complex_factor = phau }
+        multiply_variable = { INT_production_speed_industrial_complex_factor = 0.1 }
+
+        set_variable = { INT_production_speed_infrastructure_factor = 0.1 }
+		set_variable = { INT_production_speed_industrial_complex_factor = 0.05 }
+    }
+    else = { 
+        set_variable = { INT_production_speed_industrial_complex_factor = 0 } 
+        set_variable = { INT_production_speed_infrastructure_factor = 0 }
+		set_variable = { INT_production_speed_industrial_complex_factor = 0 }
+    }
+    
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_international_union_of_socialist_students } }
+        add_to_variable = { INT_consumer_goods_factor = -0.05 }
+		set_variable = { INT_political_power_factor = 0.1 }
+
+        set_variable = { INT_research_speed_factor = phau }
+        multiply_variable = { INT_research_speed_factor = 0.05 }
+    }
+    else = { 
+        set_variable = { INT_political_power_factor = 0 }
+        set_variable = { INT_research_speed_factor = 0 }
+    }
+
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_international_union_of_socialist_students } }
+        set_variable = { INT_production_factory_max_efficiency_factor = 0.05 }
+		set_variable = { INT_production_factory_start_efficiency_factor = 0.05 }
+    }
+    else = { 
+        set_variable = { INT_production_factory_max_efficiency_factor = 0 }
+        set_variable = { INT_production_factory_start_efficiency_factor = 0 }
+    }
+
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_international_union_of_socialist_students } }
+        set_variable = { INT_stability_factor = 0.05 }
+		set_variable = { INT_war_support_factor = 0.05 }
+		set_variable = { INT_production_factory_efficiency_gain_factor = 0.1 }
+    }
+    else = { 
+        set_variable = { INT_stability_factor = 0 }
+        set_variable = { INT_war_support_factor = 0 }
+        set_variable = { INT_production_factory_efficiency_gain_factor = 0 }
+    }
+
+    set_variable = { INT_research_speed_factor = phau }
+    multiply_variable = { INT_research_speed_factor = 0.05 }
+    multiply_variable = { INT_research_speed_factor = phatechcoop }
+
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_international_open_laboratory } }
+        set_variable = { INT_research_sharing_per_country_bonus = 0.5 }
+		add_to_variable = { INT_production_factory_max_efficiency_factor = 0.05 }
+		add_to_variable = { INT_production_factory_efficiency_gain_factor = 0.05 }
+    }
+    else = { set_variable = { INT_research_sharing_per_country_bonus = 0 } }
+
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_international_open_laboratory } }
+        if = {
+            limit = { tag = FRA }
+            set_variable = { INT_industrial_capacity_factory = 0.15 }
+        }
+        else = { add_to_variable = { INT_consumer_goods_factor = -0.1 } }
+    }
+    else = { set_variable = { INT_industrial_capacity_factory = 0 } }
+
+    if = {
+        limit = { FRA = { has_completed_focus = FRA_international_open_laboratory } }
+        set_variable = { INT_experience_gain_army = 0.03 }
+        set_variable = { INT_experience_gain_navy = 0.03 }
+        set_variable = { INT_experience_gain_air = 0.03 }
+    }
+    else = { 
+        set_variable = { INT_experience_gain_army = 0 }
+        set_variable = { INT_experience_gain_navy = 0 }
+        set_variable = { INT_experience_gain_air = 0 }
+    }
 }
 
+#改变立场
+phacongress_change_agree_from_waiver = {
+    custom_effect_tooltip = phacongress_change_agree_from_waiver
+    clr_country_flag = phalanstere_attitude_waiver
+    remove_from_array = {
+        array = global.phalanstere_vote_waiver
+        value = THIS.id
+    }
+    set_country_flag = phalanstere_attitude_agree
+    add_to_array = {
+        array = global.phalanstere_vote_agree
+        value = THIS.id
+    }
+}
+
+phacongress_change_agree_from_oppose = {
+    custom_effect_tooltip = phacongress_change_agree_from_oppose
+    clr_country_flag = phalanstere_attitude_oppose
+    remove_from_array = {
+        array = global.phalanstere_vote_oppose
+        value = THIS.id
+    }
+    set_country_flag = phalanstere_attitude_agree
+    add_to_array = {
+        array = global.phalanstere_vote_agree
+        value = THIS.id
+    }
+}
+
+phacongress_change_oppose_from_waiver = {
+    custom_effect_tooltip = phacongress_change_oppose_from_waiver
+    clr_country_flag = phalanstere_attitude_waiver
+    remove_from_array = {
+        array = global.phalanstere_vote_waiver
+        value = THIS.id
+    }
+    set_country_flag = phalanstere_attitude_oppose
+    add_to_array = {
+        array = global.phalanstere_vote_oppose
+        value = THIS.id
+    }
+}
+
+phacongress_change_oppose_from_agree = {
+    custom_effect_tooltip = phacongress_change_oppose_from_agree
+    clr_country_flag = phalanstere_attitude_agree
+    remove_from_array = {
+        array = global.phalanstere_vote_agree
+        value = THIS.id
+    }
+    set_country_flag = phalanstere_attitude_oppose
+    add_to_array = {
+        array = global.phalanstere_vote_oppose
+        value = THIS.id
+    }
+}
+
+phacongress_change_waiver_from_agree = {
+    custom_effect_tooltip = phacongress_change_waiver_from_agree
+    clr_country_flag = phalanstere_attitude_agree
+    remove_from_array = {
+        array = global.phalanstere_vote_agree
+        value = THIS.id
+    }
+    set_country_flag = phalanstere_attitude_waiver
+    add_to_array = {
+        array = global.phalanstere_vote_waiver
+        value = THIS.id
+    }
+}
+
+phacongress_change_waiver_from_oppose = {
+    custom_effect_tooltip = phacongress_change_waiver_from_oppose
+    clr_country_flag = phalanstere_attitude_oppose
+    remove_from_array = {
+        array = global.phalanstere_vote_oppose
+        value = THIS.id
+    }
+    set_country_flag = phalanstere_attitude_waiver
+    add_to_array = {
+        array = global.phalanstere_vote_waiver
+        value = THIS.id
+    }
+}
+
+#非洲殖民地骚乱
 africa_colonial_riot_level_up = {
     if = {
         limit = { has_idea = Cof_africa_colonial_riot4 }

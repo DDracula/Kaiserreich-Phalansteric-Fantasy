@@ -14,12 +14,12 @@
   phalanstere_social_democrat_num:0 "[?global.phalanstere_social_democrat^num|.0]"
   phalanstere_member_position_name:0 "[?phalanstere_member_list^v.GetName]"
 
-  phalanstere_totalist_advantage_tt:0 "$phalanstere$主流意识形态为§o$totlaist$§!"
+  phalanstere_totalist_advantage_tt:0 "$phalanstere$主流意识形态为§o$totalist$§!"
   phalanstere_syndicalist_advantage_tt:0 "$phalanstere$主流意识形态为§r$syndicalist$§!"
   phalanstere_radical_socialist_advantage_tt:0 "$phalanstere$主流意识形态为§R$radical_socialist$§!"
   phalanstere_social_democrat_advantage_tt:0 "$phalanstere$主流意识形态为§S$social_democrat$§!"
 
-  phalanstere_totalist_advantage_tt_NOT:0 "$phalanstere$主流意识形态不是§o$totlaist$§!"
+  phalanstere_totalist_advantage_tt_NOT:0 "$phalanstere$主流意识形态不是§o$totalist$§!"
   phalanstere_syndicalist_advantage_tt_NOT:0 "$phalanstere$主流意识形态不是§r$syndicalist$§!"
   phalanstere_radical_socialist_advantage_tt_NOT:0 "$phalanstere$主流意识形态不是§R$radical_socialist$§!"
   phalanstere_social_democrat_advantage_tt_NOT:0 "$phalanstere$主流意识形态不是§S$social_democrat$§!"
@@ -282,7 +282,7 @@
   Cof_phalanstere:0 "法伦施泰尔成员国"
   Cof_phalanstere_desc:0 "一个属于夏尔·傅里叶的旧日梦想，一个关于和谐社区的乌托邦——法伦施泰尔。在革命的烈火中，这个梦想被重新锻造。它不再是纸面上的空想，而是由法兰西公社牵头，旨在联合全世界所有社会主义同志的伟大事业。\n\n作为这个红色堡垒的一员，我们不再是孤军奋战。我们是这个反抗帝国主义与资本主义的全球阵线的一部分，是新世界秩序的奠基者。我们共享着最先进的技术，协调着我们的生产，我们的命运已与所有被压迫者紧密相连。法伦施泰尔属于全人类，它的荣光，亦是我们的荣光。"
   INT_targeted_modifier_tt:0 "[INT_targeted_modifier_content]"
-  INT_targeted_modifier:0 "（§Y所有的法伦施泰尔成员国§!）$MODIFIER_TRADE_COST_TO_TARGET_FACTOR$：[?INT_trade_cost|%.2-=]"
+  INT_targeted_modifier:0 "\n（§Y所有的法伦施泰尔成员国§!）$MODIFIER_TRADE_COST_TO_TARGET_FACTOR$：[?FRA.INT_trade_cost|%.2-=]"
 
   phalanstere_congress_enable:0 "召开法伦施泰尔大会"
   phalanstere_agree_about_what:0 "法伦施泰尔大会已同意$COOPROJECT|Y$"
@@ -291,7 +291,7 @@
   phalanstere_congress_start_ahead:0 "提前结束休会期"
   phalanstere_congress_end_ahead:0 "提前结束法伦施泰尔大会"
 
-  phalanstere_unity_detail:0 "$phalanstere_unity$：[?global.phalanstere_unity|Y.1%%]\n每月变化：[?phauc_monthly|+=.1%%]"
+  phalanstere_unity_detail:0 "$phalanstere_unity$：[?global.phalanstere_unity|G.1%%]\n每月变化：[?phauc_monthly|+=.1%%]"
   phalanstere_unity_detail_tt:0 "[?phauc_monthly1|+=.1%%] 来自于[?global.phalanstere_member^num|Y.0]个§Y法伦施泰尔成员国§!\n[?phauc_monthly2|+=.1%%] [phalanstere_unity_monthly_change_ideology]"
   phalanstere_unity_monthly_change_ideology_no:0 "来自于混乱的意识形态"
   phalanstere_unity_monthly_change_ideology_totalist:0 "来自于与主流意识形态不同的§Y$Cof_phalanstere$§!数量（$phalanstere_totalist_advantage_tt$）"
@@ -301,31 +301,86 @@
 
   phalanstere_unity_more_than_x:0 "$phalanstere_unity$大于[?phalanstere_unity_target|.1Y%%]"
 
-  Cof_phalanstere_buff_tt:0 "由于[?global.phalanstere_unity|Y.1%%]的$phalanstere_unity$："
+  Cof_phalanstere_buff_tt:0 "由于[?global.phalanstere_unity|Y.1%%]的$phalanstere_unity$：[INT_targeted_modifier_tt]"
   phalanstere_unity_set_tt:0 "启用$phalanstere_unity$，其数值将影响法伦施泰尔成员得到的效果"
 
   phalanstere_unity:0 "£phalanstere_unity_texticon §Y法伦施泰尔团结度§!"
   phalanstere_unity_change_tt:0 "$phalanstere_unity$改变[?phauc|+=.1%%]"
 
+  cost_phalanstere_unity_2.5:0 "£phalanstere_unity_texticon [?2.5|Y.1%%]"
+  cost_phalanstere_unity_2.5_blocked:0 "£phalanstere_unity_texticon [?2.5|R.1%%]"
+  cost_phalanstere_unity_2.5_tooltip:0 "需要[?2.5|Y.1%%] £phalanstere_unity_texticon 以执行此决议"
+
   cost_phalanstere_unity_5:0 "£phalanstere_unity_texticon [?5|Y.1%%]"
-  cost_phalanstere_unity_5_block:0 "£phalanstere_unity_texticon [?5|R.1%%]"
+  cost_phalanstere_unity_5_blocked:0 "£phalanstere_unity_texticon [?5|R.1%%]"
   cost_phalanstere_unity_5_tooltip:0 "需要[?5|Y.1%%] £phalanstere_unity_texticon 以执行此决议"
 
   cost_phalanstere_unity_10:0 "£phalanstere_unity_texticon [?10|Y.1%%]"
-  cost_phalanstere_unity_10_block:0 "£phalanstere_unity_texticon [?10|R.1%%]"
+  cost_phalanstere_unity_10_blocked:0 "£phalanstere_unity_texticon [?10|R.1%%]"
   cost_phalanstere_unity_10_tooltip:0 "需要[?10|Y.1%%] £phalanstere_unity_texticon 以执行此决议"
 
   cost_phalanstere_unity_15:0 "£phalanstere_unity_texticon [?15|Y.1%%]"
-  cost_phalanstere_unity_15_block:0 "£phalanstere_unity_texticon [?15|R.1%%]"
+  cost_phalanstere_unity_15_blocked:0 "£phalanstere_unity_texticon [?15|R.1%%]"
   cost_phalanstere_unity_15_tooltip:0 "需要[?15|Y.1%%] £phalanstere_unity_texticon 以执行此决议"
 
   cost_phalanstere_unity_20:0 "£phalanstere_unity_texticon [?20|Y.1%%]"
-  cost_phalanstere_unity_20_block:0 "£phalanstere_unity_texticon [?20|R.1%%]"
+  cost_phalanstere_unity_20_blocked:0 "£phalanstere_unity_texticon [?20|R.1%%]"
   cost_phalanstere_unity_20_tooltip:0 "需要[?20|Y.1%%] £phalanstere_unity_texticon 以执行此决议"
 
   cost_phalanstere_unity_25:0 "£phalanstere_unity_texticon [?25|Y.1%%]"
-  cost_phalanstere_unity_25_block:0 "£phalanstere_unity_texticon [?25|R.1%%]"
+  cost_phalanstere_unity_25_blocked:0 "£phalanstere_unity_texticon [?25|R.1%%]"
   cost_phalanstere_unity_25_tooltip:0 "需要[?25|Y.1%%] £phalanstere_unity_texticon 以执行此决议"
+
+  phalanstere_congress_provide_benefits_waiver:0 "向[FROM.GetName]提供好处"
+  phacongress_change_agree_from_waiver:0 "§G由弃权转向赞同§!"
+  phalanstere_congress_provide_benefits_oppose:0 "向[FROM.GetName]提供好处"
+  phacongress_change_agree_from_oppose:0 "§G由反对转向赞同§!"
+  phacongress_change_oppose_from_waiver:0 "§R由弃权转向反对§!"
+  phacongress_change_oppose_from_agree:0 "§R由赞同转向反对§!"
+  phacongress_change_waiver_from_agree:0 "§R由赞同转向弃权§!"
+  phacongress_change_waiver_from_oppose:0 "§G由反对转向弃权§!"
+
+  phalanstere_aid_construction:0 "协助[FROM.GetName]经济建设"
+  phalanstere_aid_construction_show:0 "显示/隐藏经济援助决议"
+  phalanstere_literacy_expeditionary_force:0 "向[FROM.GetName]派遣扫盲远征队"
+  phalanstere_literacy_expeditionary_force_show:0 "显示/隐藏派遣扫盲远征队决议"
+  Cof_literacy_expeditionary_force:0 "扫盲远征队"
+
+
+
+
+
+
+
+
+
+  Cof_phalanstere_category:0 "法伦施泰尔"
+  Cof_phalanstere_category_desc:0 "§g$Cof_phalanstere_desc$§!\n\n$phalanstere_unity$：[?global.phalanstere_unity|G.1%%]\n目前共有[?global.phalanstere_member^num|Y.0]个§Y法伦施泰尔成员国§!\n[phalanstere_ideology_advantage]\n\n§o$totalist$§!成员数量：$phalanstere_totalist_num$\n§r$syndicalist$§!成员数量：$phalanstere_syndicalist_num$\n§R$radical_socialist$§!成员数量：$phalanstere_radical_socialist_num$\n§S$social_democrat$§!成员数量：$phalanstere_social_democrat_num$\n\n[phalanstere_congress_status]\n"
+  phalanstere_congress_empty:0 "法伦施泰尔大会空闲中……"
+  phalanstere_congress_in_progress_status:0 "$phalanstere_congress_in_progress$\n$phalanstere_window_intro_found$\n\n$phalanstere_vote_agree$：$phalanstere_agree_count_num$\n$phalanstere_vote_oppose$：$phalanstere_oppose_count_num$\n$phalanstere_vote_waiver$：$phalanstere_waiver_count_num$"
+  phalanstere_member_show:0 "已经通过的合作"
+  phalanstere_change_vote_agree:0 "支持合作项目"
+  phalanstere_change_vote_oppose:0 "反对合作项目"
+  phalanstere_change_vote_waiver:0 "搁置合作项目"
+  phalanstere_member_aid_construction:0 "协助[FROM.GetName]经济建设"
+  phalanstere_member_aid_construction_show:0 "显示/隐藏经济援助决议"
+  phalanstere_member_literacy_expeditionary_force:0 "向[FROM.GetName]派遣扫盲远征队"
+  phalanstere_member_literacy_expeditionary_force_show:0 "显示/隐藏派遣扫盲远征队决议"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1222,9 +1277,15 @@
   cofintern.156.desc:0 ""
   cofintern.156.a:0 "我们将取得最后的胜利。"
 
-  cofintern.157.title:0 ""
-  cofintern.157.desc:0 ""
-  cofintern.157.a:0 ""
+  cofintern.157.title.a:0 "科西嘉的地下组织"
+  cofintern.157.title.b:0 "地中海孤岛的困局"
+  cofintern.157.desc.a:0 ""
+  cofintern.157.desc.b:0 ""
+  cofintern.157.a:0 "反动政府已经失去了民心，我们早就应该公开行动了。"
+  cofintern.157.b:0 "保持耐心，反动政府不可能心慈手软的。"
+  cofintern.157.c:0 "派遣更多的资源到科西嘉，我们不能失去它。"
+  cofintern.157.d:0 "在当地组织起一个自治政府，减轻我们的压力。"
+  cofintern.157.e:0 "科西嘉比不上阿尔及尔。"
 
   cofintern.158.title:0 ""
   cofintern.158.desc:0 ""
@@ -1382,8 +1443,6 @@
   int.3.a:0 "好极了。"
   int.3.b:0 "真遗憾。"
 
-  int.4.title:0 ""
+  int.4.title:0 "法兰西希望我们站在他们一边"
   int.4.desc:0 ""
-  int.4.a:0 ""
-  int.4.b:0 ""
-  int.4.c:0 ""
+  int.4.a:0 "不错的交易。"

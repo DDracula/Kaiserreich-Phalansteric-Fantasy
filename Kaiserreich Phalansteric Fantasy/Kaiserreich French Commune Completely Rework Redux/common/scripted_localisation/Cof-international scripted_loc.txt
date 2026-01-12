@@ -103,8 +103,32 @@ defined_text = {
 defined_text = {
     name = phalanstere_cooperate_context
     text = {
-        trigger = { has_country_flag = phalanstere_discuss_about_inner_circle_of_socialism }
+        trigger = { FRA = { has_country_flag = phalanstere_discuss_about_inner_circle_of_socialism } }
         localization_key = FRA_inner_circle_of_socialism
+    }
+    text = {
+        trigger = { FRA = { has_country_flag = phalanstere_discuss_about_revolutionary_aid_construction } }
+        localization_key = FRA_revolutionary_aid_construction
+    }
+    text = {
+        trigger = { FRA = { has_country_flag = phalanstere_discuss_about_international_union_of_socialist_students } }
+        localization_key = FRA_international_union_of_socialist_students
+    }
+    text = {
+        trigger = { FRA = { has_country_flag = phalanstere_discuss_about_abolition_of_bourgeois_jurisdiction } }
+        localization_key = FRA_abolition_of_bourgeois_jurisdiction
+    }
+    text = {
+        trigger = { FRA = { has_country_flag = phalanstere_discuss_about_literacy_expeditionary_force } }
+        localization_key = FRA_literacy_expeditionary_force
+    }
+    text = {
+        trigger = { FRA = { has_country_flag = phalanstere_discuss_about_international_open_laboratory } }
+        localization_key = FRA_international_open_laboratory
+    }
+    text = {
+        trigger = { FRA = { has_country_flag = phalanstere_discuss_about_more_than_economic_alliance } }
+        localization_key = FRA_more_than_economic_alliance
     }
     text = { localization_key = phalanstere_cooperate_context_no }
 }
@@ -131,7 +155,7 @@ defined_text = {
 defined_text = {
     name = INT_targeted_modifier_tt
     text = {
-        trigger = { NOT = { check_variable = { INT_trade_cost = 0 } } }
+        trigger = { NOT = { check_variable = { FRA.INT_trade_cost = 0 } } }
         localization_key = INT_targeted_modifier
     }
 }
@@ -155,4 +179,49 @@ defined_text = {
         localization_key = phalanstere_unity_monthly_change_ideology_social_democrat
     }
     text = { localization_key = phalanstere_unity_monthly_change_ideology_no }
+}
+
+defined_text = {
+    name = phalanstere_ideology_advantage
+    text = {
+        trigger = { phalanstere_totalist_advantage = yes }
+        localization_key = phalanstere_totalist_advantage_tt
+    }
+    text = {
+        trigger = { phalanstere_syndicalist_advantage = yes }
+        localization_key = phalanstere_syndicalist_advantage_tt
+    }
+    text = {
+        trigger = { phalanstere_radical_socialist_advantage = yes }
+        localization_key = phalanstere_radical_socialist_advantage_tt
+    }
+    text = {
+        trigger = { phalanstere_social_democrat_advantage = yes }
+        localization_key = phalanstere_social_democrat_advantage_tt
+    }
+}
+
+defined_text = {
+    name = phalanstere_congress_status
+    text = {
+        trigger = {
+            NOT = { has_global_flag = phalanstere_congress_adjournment }
+            NOT = { has_global_flag = phalanstere_congress_in_progress }
+        }
+        localization_key = phalanstere_congress_empty
+    }
+    text = {
+        trigger = {
+            has_global_flag = phalanstere_congress_adjournment 
+            NOT = { has_global_flag = phalanstere_congress_in_progress }
+        }
+        localization_key = phalanstere_congress_adjournment
+    }
+    text = {
+        trigger = {
+            NOT = { has_global_flag = phalanstere_congress_adjournment }
+            has_global_flag = phalanstere_congress_in_progress 
+        }
+        localization_key = phalanstere_congress_in_progress_status
+    }
 }

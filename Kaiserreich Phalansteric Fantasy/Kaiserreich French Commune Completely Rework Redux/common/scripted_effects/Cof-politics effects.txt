@@ -3086,6 +3086,7 @@ bill_to_judge = {
     }
     
     clr_country_flag = voting_for_bill
+    set_variable = { agree_vote = 0 }
 
     clr_country_flag = party_CNS_choice
     clr_country_flag = party_PSF_choice
@@ -3392,10 +3393,7 @@ bill_effect_tooltips = {
                 add_idea = bill_CGT_depoliticized
             }
 
-            swap_ideas = {
-                remove_idea = Cof_weak_central_government
-                add_idea = Cof_weak_central_government2
-            }
+            weak_central_government_improve = yes
 
             remove_ideas = Cof_anti_cgt_record_weaken
            
@@ -3929,6 +3927,211 @@ bill_effect_tooltips = {
             cof_econ_target_change = yes    
         }
     }
+
+    #《国家老兵荣誉法案》
+    if = {
+        limit = { has_country_flag = bill_national_veterans_horor_vote }
+        effect_tooltip = {
+            add_ideas = bill_national_veterans_horor
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { ssc = 6 }
+            set_temp_variable = { asc = -2 }
+            set_temp_variable = { tsc = -2 }
+            set_temp_variable = { csc = -2 }
+            syndmode_sincerity_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = effect_society
+            set_temp_variable = { pop_wc = -1 }
+            set_temp_variable = { pop_pc = -1 }
+            set_temp_variable = { pop_mc = -1 }
+            set_temp_variable = { pop_sc = -1 }
+            set_temp_variable = { pop_bc = -1 }
+            set_temp_variable = { pop_ac = 5 }
+            set_temp_variable = { pop_aoc = 0 }
+            set_temp_variable = { pop_anc = 0 }
+            set_temp_variable = { pop_asc = 0 }
+            class_pop_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { wc = 0 }
+            set_temp_variable = { pc = 0 }
+            set_temp_variable = { mc = 0 }
+            set_temp_variable = { sc = 0 }
+            set_temp_variable = { bc = 0 }
+            set_temp_variable = { ac = 10 }
+            class_pop_satisfactions_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { pop_target = 8 }   
+            set_temp_variable = { pop_syndc = -2 }
+            set_temp_variable = { pop_oppoc = -2 }
+            set_temp_variable = { pop_jacoc = -2 }
+            set_temp_variable = { pop_sorec = 6 }
+            class_pop_faction_tendency_change = yes
+    
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = effect_military
+            set_temp_variable = { aac = 0 }
+            set_temp_variable = { awc = 0 }
+            set_temp_variable = { atc = 0 }
+            set_temp_variable = { aec = 0 }
+            set_temp_variable = { apc = 5 }
+            Cof_army_reform_values_change = yes
+        }
+    }
+
+    #《地方委员会改革草案》
+    if = {
+        limit = { has_country_flag = bill_local_committee_reform_vote }
+        effect_tooltip = {
+            add_ideas = bill_local_council_reform
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { ssc = -1 }
+            set_temp_variable = { asc = -2 }
+            set_temp_variable = { tsc = 4 }
+            set_temp_variable = { csc = -2 }
+            syndmode_sincerity_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = effect_society
+            set_temp_variable = { pop_wc = -1 }
+            set_temp_variable = { pop_pc = -1 }
+            set_temp_variable = { pop_mc = -1 }
+            set_temp_variable = { pop_sc = -1 }
+            set_temp_variable = { pop_bc = 4 }
+            set_temp_variable = { pop_ac = 0 }
+            set_temp_variable = { pop_aoc = 0 }
+            set_temp_variable = { pop_anc = 0 }
+            set_temp_variable = { pop_asc = 0 }
+            class_pop_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { wc = -2 }
+            set_temp_variable = { pc = -2 }
+            set_temp_variable = { mc = -2 }
+            set_temp_variable = { sc = -2 }
+            set_temp_variable = { bc = 8 }
+            set_temp_variable = { ac = 0 }
+            class_pop_satisfactions_change = yes
+        }
+    }
+
+    #《地方议会改革草案》
+    if = {
+        limit = { has_country_flag = bill_local_council_reform_vote }
+        effect_tooltip = {
+            add_ideas = bill_local_council_reform
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { ssc = -1 }
+            set_temp_variable = { asc = -2 }
+            set_temp_variable = { tsc = 4 }
+            set_temp_variable = { csc = -2 }
+            syndmode_sincerity_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = effect_society
+            set_temp_variable = { pop_wc = -1 }
+            set_temp_variable = { pop_pc = -1 }
+            set_temp_variable = { pop_mc = -1 }
+            set_temp_variable = { pop_sc = -1 }
+            set_temp_variable = { pop_bc = 4 }
+            set_temp_variable = { pop_ac = 0 }
+            set_temp_variable = { pop_aoc = 0 }
+            set_temp_variable = { pop_anc = 0 }
+            set_temp_variable = { pop_asc = 0 }
+            class_pop_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { wc = -2 }
+            set_temp_variable = { pc = -2 }
+            set_temp_variable = { mc = -2 }
+            set_temp_variable = { sc = -2 }
+            set_temp_variable = { bc = 8 }
+            set_temp_variable = { ac = 0 }
+            class_pop_satisfactions_change = yes
+        }
+    }
+
+    #延长的教育年限
+    if = {
+        limit = { has_country_flag = bill_extended_duration_of_education_vote }
+        effect_tooltip = {
+            add_ideas = bill_extended_duration_of_education
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { ssc = 0 }
+            set_temp_variable = { asc = -2 }
+            set_temp_variable = { tsc = 2 }
+            set_temp_variable = { csc = 3 }
+            syndmode_sincerity_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = effect_society
+            set_temp_variable = { pop_wc = -1 }
+            set_temp_variable = { pop_pc = -1 }
+            set_temp_variable = { pop_mc = -1 }
+            set_temp_variable = { pop_sc = 3 }
+            set_temp_variable = { pop_bc = 0 }
+            set_temp_variable = { pop_ac = 0 }
+            set_temp_variable = { pop_aoc = 0 }
+            set_temp_variable = { pop_anc = 0 }
+            set_temp_variable = { pop_asc = 0 }
+            class_pop_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { wc = 1 }
+            set_temp_variable = { pc = 1 }
+            set_temp_variable = { mc = 1 }
+            set_temp_variable = { sc = 2 }
+            set_temp_variable = { bc = 0 }
+            set_temp_variable = { ac = 0 }
+            class_pop_satisfactions_change = yes
+        }
+    }
+
+    #《赋权工会法案》
+    if = {
+        limit = { has_country_flag = bill_trade_union_empowerment_vote }
+        effect_tooltip = {
+            add_ideas = bill_trade_union_empowerment
+            
+            custom_effect_tooltip = effect_society
+            set_temp_variable = { pop_wc = 4 }
+            set_temp_variable = { pop_pc = -1 }
+            set_temp_variable = { pop_mc = -1 }
+            set_temp_variable = { pop_sc = -1 }
+            set_temp_variable = { pop_bc = -1 }
+            set_temp_variable = { pop_ac = 0 }
+            class_pop_change = yes
+
+            custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { wc = 4 }
+            set_temp_variable = { pc = -1 }
+            set_temp_variable = { mc = -1 }
+            set_temp_variable = { sc = 0 }
+            set_temp_variable = { bc = -2 }
+            set_temp_variable = { ac = 0 }
+            class_pop_satisfactions_change = yes
+    
+            custom_effect_tooltip = tooltip_white_line
+            custom_effect_tooltip = effect_economy
+            set_temp_variable = { evc = 2 }
+            set_temp_variable = { eibc = 4 }
+            set_temp_variable = { eipc = 4 }
+            set_temp_variable = { eiac = 0 }
+            set_temp_variable = { eamc = 0 }
+            set_temp_variable = { eaec = 0 }
+            set_temp_variable = { eaac = 0 }
+            set_temp_variable = { eqc = -2 }
+            set_temp_variable = { elc = 0 }
+            set_temp_variable = { eic = 0 }
+            cof_econ_target_change = yes
+        }
+    }
 }
 
 bill_pass_effect = {
@@ -4232,10 +4435,7 @@ bill_pass_effect = {
             add_idea = bill_CGT_depoliticized
         }
 
-        swap_ideas = {
-            remove_idea = Cof_weak_central_government
-            add_idea = Cof_weak_central_government2
-        }
+        weak_central_government_improve = yes
 
         remove_ideas = Cof_anti_cgt_record_weaken
         
@@ -4762,6 +4962,213 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes    
     }
+
+    #《国家老兵荣誉法案》
+    if = {
+        limit = { has_country_flag = bill_national_veterans_horor_vote }
+        clr_country_flag = bill_national_veterans_horor_vote
+
+        add_ideas = bill_national_veterans_horor
+        add_to_array = { array = FRA.cof_social_bills value = 19 }
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { ssc = 6 }
+        set_temp_variable = { asc = -2 }
+        set_temp_variable = { tsc = -2 }
+        set_temp_variable = { csc = -2 }
+        syndmode_sincerity_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = -1 }
+        set_temp_variable = { pop_mc = -1 }
+        set_temp_variable = { pop_sc = -1 }
+        set_temp_variable = { pop_bc = -1 }
+        set_temp_variable = { pop_ac = 5 }
+        set_temp_variable = { pop_aoc = 0 }
+        set_temp_variable = { pop_anc = 0 }
+        set_temp_variable = { pop_asc = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = 0 }
+        set_temp_variable = { pc = 0 }
+        set_temp_variable = { mc = 0 }
+        set_temp_variable = { sc = 0 }
+        set_temp_variable = { bc = 0 }
+        set_temp_variable = { ac = 10 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 8 }   
+        set_temp_variable = { pop_syndc = -2 }
+        set_temp_variable = { pop_oppoc = -2 }
+        set_temp_variable = { pop_jacoc = -2 }
+        set_temp_variable = { pop_sorec = 6 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_military
+        set_temp_variable = { aac = 0 }
+        set_temp_variable = { awc = 0 }
+        set_temp_variable = { atc = 0 }
+        set_temp_variable = { aec = 0 }
+        set_temp_variable = { apc = 5 }
+        Cof_army_reform_values_change = yes
+    }
+
+    #《地方委员会改革草案》
+    if = {
+        limit = { has_country_flag = bill_local_committee_reform_vote }
+        clr_country_flag = bill_local_committee_reform_vote
+        add_ideas = bill_local_council_reform
+        add_to_array = { array = FRA.cof_social_bills value = 20 }
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { ssc = -1 }
+        set_temp_variable = { asc = -2 }
+        set_temp_variable = { tsc = 4 }
+        set_temp_variable = { csc = -2 }
+        syndmode_sincerity_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = -1 }
+        set_temp_variable = { pop_mc = -1 }
+        set_temp_variable = { pop_sc = -1 }
+        set_temp_variable = { pop_bc = 4 }
+        set_temp_variable = { pop_ac = 0 }
+        set_temp_variable = { pop_aoc = 0 }
+        set_temp_variable = { pop_anc = 0 }
+        set_temp_variable = { pop_asc = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = -2 }
+        set_temp_variable = { pc = -2 }
+        set_temp_variable = { mc = -2 }
+        set_temp_variable = { sc = -2 }
+        set_temp_variable = { bc = 8 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+    }
+
+    #《地方议会改革草案》
+    if = {
+        limit = { has_country_flag = bill_local_council_reform_vote }
+        clr_country_flag = bill_local_council_reform_vote
+
+        add_ideas = bill_local_council_reform
+        add_to_array = { array = FRA.cof_social_bills value = 21 }
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { ssc = -1 }
+        set_temp_variable = { asc = -2 }
+        set_temp_variable = { tsc = 4 }
+        set_temp_variable = { csc = -2 }
+        syndmode_sincerity_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = -1 }
+        set_temp_variable = { pop_mc = -1 }
+        set_temp_variable = { pop_sc = -1 }
+        set_temp_variable = { pop_bc = 4 }
+        set_temp_variable = { pop_ac = 0 }
+        set_temp_variable = { pop_aoc = 0 }
+        set_temp_variable = { pop_anc = 0 }
+        set_temp_variable = { pop_asc = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = -2 }
+        set_temp_variable = { pc = -2 }
+        set_temp_variable = { mc = -2 }
+        set_temp_variable = { sc = -2 }
+        set_temp_variable = { bc = 8 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+    }
+
+    #延长的教育年限
+    if = {
+        limit = { has_country_flag = bill_extended_duration_of_education_vote }
+        clr_country_flag = bill_extended_duration_of_education_vote
+
+        add_ideas = bill_extended_duration_of_education
+        add_to_array = { array = FRA.cof_social_bills value = 25 }
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { ssc = 0 }
+        set_temp_variable = { asc = -2 }
+        set_temp_variable = { tsc = 2 }
+        set_temp_variable = { csc = 3 }
+        syndmode_sincerity_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = -1 }
+        set_temp_variable = { pop_mc = -1 }
+        set_temp_variable = { pop_sc = 3 }
+        set_temp_variable = { pop_bc = 0 }
+        set_temp_variable = { pop_ac = 0 }
+        set_temp_variable = { pop_aoc = 0 }
+        set_temp_variable = { pop_anc = 0 }
+        set_temp_variable = { pop_asc = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = 1 }
+        set_temp_variable = { pc = 1 }
+        set_temp_variable = { mc = 1 }
+        set_temp_variable = { sc = 2 }
+        set_temp_variable = { bc = 0 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+    }
+
+    #《赋权工会法案》
+    if = {
+        limit = { has_country_flag = bill_trade_union_empowerment_vote }
+        add_ideas = bill_trade_union_empowerment
+        add_to_array = { array = FRA.cof_social_bills value = 27 }
+        
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = 4 }
+        set_temp_variable = { pop_pc = -1 }
+        set_temp_variable = { pop_mc = -1 }
+        set_temp_variable = { pop_sc = -1 }
+        set_temp_variable = { pop_bc = -1 }
+        set_temp_variable = { pop_ac = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = 4 }
+        set_temp_variable = { pc = -1 }
+        set_temp_variable = { mc = -1 }
+        set_temp_variable = { sc = 0 }
+        set_temp_variable = { bc = -2 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_economy
+        set_temp_variable = { evc = 2 }
+        set_temp_variable = { eibc = 4 }
+        set_temp_variable = { eipc = 4 }
+        set_temp_variable = { eiac = 0 }
+        set_temp_variable = { eamc = 0 }
+        set_temp_variable = { eaec = 0 }
+        set_temp_variable = { eaac = 0 }
+        set_temp_variable = { eqc = -2 }
+        set_temp_variable = { elc = 0 }
+        set_temp_variable = { eic = 0 }
+        cof_econ_target_change = yes
+    }
 }
 
 bill_not_pass_effect = {
@@ -4894,6 +5301,36 @@ bill_not_pass_effect = {
         limit = { has_country_flag = bill_universal_basic_benefits_vote }
         clr_country_flag = bill_universal_basic_benefits_vote
     
+    }
+
+    #《国家老兵荣誉法案》
+    if = {
+        limit = { has_country_flag = bill_national_veterans_horor_vote }
+        clr_country_flag = bill_national_veterans_horor_vote
+    }
+
+    #《地方委员会改革草案》
+    if = {
+        limit = { has_country_flag = bill_local_committee_reform_vote }
+        clr_country_flag = bill_local_committee_reform_vote
+    }
+
+    #《地方议会改革草案》
+    if = {
+        limit = { has_country_flag = bill_local_council_reform_vote }
+        clr_country_flag = bill_local_council_reform_vote
+    }
+
+    #延长的教育年限
+    if = {
+        limit = { has_country_flag = bill_extended_duration_of_education_vote }
+        clr_country_flag = bill_extended_duration_of_education_vote
+    }
+
+     #《赋权工会法案》
+    if = {
+        limit = { has_country_flag = bill_trade_union_empowerment_vote }
+        clr_country_flag = bill_trade_union_empowerment_vote
     }
 }
 
@@ -5166,17 +5603,45 @@ CSP_attitude_change = {
     }
 
     if = {
-        limit = { check_variable = { change_num > 0 } }
+        limit = { check_variable = { change_num = 1 } }
         custom_effect_tooltip = {
             localization_key = CSP_attitude_change_tt
-            CHANGE_V = attitude_improvement
+            CHANGE_V = attitude_improvement_1
         }
     }
     else_if = {
-        limit = { check_variable = { change_num < 0 } }
+        limit = { check_variable = { change_num = 2 } }
         custom_effect_tooltip = {
             localization_key = CSP_attitude_change_tt
-            CHANGE_V = attitude_reduction
+            CHANGE_V = attitude_improvement_2
+        }
+    }
+    else_if = {
+        limit = { check_variable = { change_num = 3 } }
+        custom_effect_tooltip = {
+            localization_key = CSP_attitude_change_tt
+            CHANGE_V = attitude_improvement_3
+        }
+    }
+    else_if = {
+        limit = { check_variable = { change_num = -1 } }
+        custom_effect_tooltip = {
+            localization_key = CSP_attitude_change_tt
+            CHANGE_V = attitude_reduction_1
+        }
+    }
+    else_if = {
+        limit = { check_variable = { change_num = -2 } }
+        custom_effect_tooltip = {
+            localization_key = CSP_attitude_change_tt
+            CHANGE_V = attitude_reduction_2
+        }
+    }
+    else_if = {
+        limit = { check_variable = { change_num = -3 } }
+        custom_effect_tooltip = {
+            localization_key = CSP_attitude_change_tt
+            CHANGE_V = attitude_reduction_3
         }
     }
     else = {
@@ -8554,4 +9019,846 @@ Cof_intensified_urban_rural_conflicts_update = {
         limit = { has_idea = Cof_intensified_urban_rural_conflicts5 }
         remove_ideas = Cof_intensified_urban_rural_conflicts5
     }
+}
+
+#大帐篷之下
+#    set_temp_variable = { ssc = 0 }
+#    set_temp_variable = { asc = 0 }
+#    set_temp_variable = { tsc = 0 }
+#    set_temp_variable = { csc = 0 }
+#    syndmode_sincerity_change = yes
+syndmode_sincerity_change = {
+    if = { limit = { check_variable = { ssc = 0 } } }
+    else = {
+        add_to_variable = { sorelian_sincerity = ssc }
+        if = {
+            limit = { check_variable = { ssc > 0 } }
+            custom_effect_tooltip = sorelian_yes
+        }
+        else = { custom_effect_tooltip = sorelian_no }
+    }
+
+    if = { limit = { check_variable = { asc = 0 } } }
+    else = {
+        add_to_variable = { anarchist_sincerity = asc }
+        if = {
+            limit = { check_variable = { asc > 0 } }
+            custom_effect_tooltip = anarchist_yes
+        }
+        else = { custom_effect_tooltip = anarchist_no }
+    }
+
+    if = { limit = { check_variable = { tsc = 0 } } }
+    else = {
+        add_to_variable = { technocrat_sincerity = tsc }
+        if = {
+            limit = { check_variable = { tsc > 0 } }
+            custom_effect_tooltip = technocrat_yes
+        }
+        else = { custom_effect_tooltip = technocrat_no }
+    }
+
+    if = { limit = { check_variable = { csc = 0 } } }
+    else = {
+        add_to_variable = { communist_sincerity = csc }
+        if = {
+            limit = { check_variable = { csc > 0 } }
+            custom_effect_tooltip = communist_yes
+        }
+        else = { custom_effect_tooltip = communist_no }
+    }
+
+    under_tent_number_judge = yes
+    under_the_tent_idea_change = yes
+}
+
+under_the_tent_idea_change = {
+    if = {
+        limit = { 
+            has_country_flag = under_tent_sorelian 
+            OR = {
+                check_variable = { sorelian_sincerity > 0 }
+                check_variable = { sorelian_sincerity = 0 }
+            }
+        }
+        if = {
+            limit = { has_idea = Cof_under_the_tent_0000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0000
+                add_idea = Cof_under_the_tent_1000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0100
+                add_idea = Cof_under_the_tent_1100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0010 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0010
+                add_idea = Cof_under_the_tent_1010
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0001 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0001
+                add_idea = Cof_under_the_tent_1001
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0110
+                add_idea = Cof_under_the_tent_1110
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0101
+                add_idea = Cof_under_the_tent_1101
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0111 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0111
+                add_idea = Cof_under_the_tent_1111
+            }
+        }
+    }
+    else = {
+        if = {
+            limit = { has_idea = Cof_under_the_tent_1000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1000
+                add_idea = Cof_under_the_tent_0000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1100
+                add_idea = Cof_under_the_tent_0100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1010 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1010
+                add_idea = Cof_under_the_tent_0010
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1001 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1001
+                add_idea = Cof_under_the_tent_0001
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1110
+                add_idea = Cof_under_the_tent_0110
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1101
+                add_idea = Cof_under_the_tent_0101
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1111 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1111
+                add_idea = Cof_under_the_tent_0111
+            }
+        }
+    }
+
+    if = {
+        limit = { 
+            has_country_flag = under_tent_anarchist
+            OR = {
+                check_variable = { anarchist_sincerity > 0 }
+                check_variable = { anarchist_sincerity = 0 }
+            }
+        }
+        if = {
+            limit = { has_idea = Cof_under_the_tent_0000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0000
+                add_idea = Cof_under_the_tent_0100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1000
+                add_idea = Cof_under_the_tent_1100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0010 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0010
+                add_idea = Cof_under_the_tent_0110
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0001 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0001
+                add_idea = Cof_under_the_tent_0101
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1010 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1010
+                add_idea = Cof_under_the_tent_1110
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1001 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1001
+                add_idea = Cof_under_the_tent_1101
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1011 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1011
+                add_idea = Cof_under_the_tent_1111
+            }
+        }
+    }
+    else = {
+        if = {
+            limit = { has_idea = Cof_under_the_tent_0100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0100
+                add_idea = Cof_under_the_tent_0000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1100
+                add_idea = Cof_under_the_tent_1000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0110
+                add_idea = Cof_under_the_tent_0010
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0101
+                add_idea = Cof_under_the_tent_0001
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1110
+                add_idea = Cof_under_the_tent_1010
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1101
+                add_idea = Cof_under_the_tent_1001
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1111 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1111
+                add_idea = Cof_under_the_tent_1011
+            }
+        }
+    }
+
+    if = {
+        limit = { 
+            has_country_flag = under_tent_technocrat 
+            OR = {
+                check_variable = { technocrat_sincerity > 0 }
+                check_variable = { technocrat_sincerity = 0 }
+            }
+        }
+        if = {
+            limit = { has_idea = Cof_under_the_tent_0000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0000
+                add_idea = Cof_under_the_tent_0010
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0100
+                add_idea = Cof_under_the_tent_0110
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1000
+                add_idea = Cof_under_the_tent_1010
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0001 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0001
+                add_idea = Cof_under_the_tent_0011
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1100
+                add_idea = Cof_under_the_tent_1110
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0101
+                add_idea = Cof_under_the_tent_0111
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1101
+                add_idea = Cof_under_the_tent_1111
+            }
+        }
+    }
+    else = {
+        if = {
+            limit = { has_idea = Cof_under_the_tent_0010 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0010
+                add_idea = Cof_under_the_tent_0000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0110
+                add_idea = Cof_under_the_tent_0100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1010 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1010
+                add_idea = Cof_under_the_tent_1000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0011 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0011
+                add_idea = Cof_under_the_tent_0001
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1110
+                add_idea = Cof_under_the_tent_1100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0111 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0111
+                add_idea = Cof_under_the_tent_0101
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1111 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1111
+                add_idea = Cof_under_the_tent_1101
+            }
+        }
+    }
+
+    if = {
+        limit = { 
+            has_country_flag = under_tent_communist 
+            OR = {
+                check_variable = { communist_sincerity > 0 }
+                check_variable = { communist_sincerity = 0 }
+            }
+        }
+        if = {
+            limit = { has_idea = Cof_under_the_tent_0000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0000
+                add_idea = Cof_under_the_tent_0001
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0100
+                add_idea = Cof_under_the_tent_0101
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0010 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0010
+                add_idea = Cof_under_the_tent_0011
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1000 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1000
+                add_idea = Cof_under_the_tent_1001
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0110
+                add_idea = Cof_under_the_tent_0111
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1100 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1100
+                add_idea = Cof_under_the_tent_1101
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1110 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1110
+                add_idea = Cof_under_the_tent_1111
+            }
+        }
+    }
+    else = {
+        if = {
+            limit = { has_idea = Cof_under_the_tent_0001 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0001
+                add_idea = Cof_under_the_tent_0000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0101
+                add_idea = Cof_under_the_tent_0100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0011 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0011
+                add_idea = Cof_under_the_tent_0010
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1001 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1001
+                add_idea = Cof_under_the_tent_1000
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_0111 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_0111
+                add_idea = Cof_under_the_tent_0110
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1101 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1101
+                add_idea = Cof_under_the_tent_1100
+            }
+        }
+        else_if = {
+            limit = { has_idea = Cof_under_the_tent_1111 }
+            swap_ideas = {
+                remove_idea = Cof_under_the_tent_1111
+                add_idea = Cof_under_the_tent_1110
+            }
+        }
+    }
+}
+
+establish_national_news = {
+    set_country_flag = establish_national_news
+    set_country_flag = show_national_news
+    set_country_flag = news_topic_patriotism
+
+    set_variable = { news_ability_number = 1 }
+    set_variable = { news_ability_quality = 1 }
+    set_variable = { news_ability_deal = 1 }
+
+    national_news_var_get = yes
+
+    custom_effect_tooltip  = national_new_set_tips
+    unlock_decision_tooltip = Cof_national_news_recreate
+    unlock_decision_tooltip = Cof_national_news_topic_patriotism
+    unlock_decision_tooltip = Cof_national_news_topic_economy
+    unlock_decision_tooltip = Cof_national_news_topic_internationale
+    unlock_decision_tooltip = Cof_national_news_focus_on_news
+    unlock_decision_tooltip = Cof_national_news_recruit_journalists
+    unlock_decision_tooltip = Cof_national_news_recruit_copywriting
+    unlock_decision_tooltip = Cof_national_news_recruit_editor
+    custom_effect_tooltip = unlock_in_society
+}
+
+national_news_var_get = {
+    hidden_effect = {
+        random_list = {
+            1 = { set_variable = { news_number = 0 } }
+            1 = { set_variable = { news_number = 1 } }
+            1 = { set_variable = { news_number = 2 } }
+            1 = { set_variable = { news_number = 3 } }
+        }
+        add_to_variable = { news_number = news_ability_number }
+
+        random_list = {
+            1 = { set_variable = { news_quality = 0 } }
+            1 = { set_variable = { news_quality = 1 } }
+            1 = { set_variable = { news_quality = 2 } }
+            1 = { set_variable = { news_quality = 3 } }
+        }
+        add_to_variable = { news_quality = news_ability_quality }
+
+        set_temp_variable_to_random = {
+            var = ttt
+            min = 0
+            max = news_number
+            integer = yes
+        }
+        set_variable = { news_deal = ttt }
+        subtract_from_variable = { news_deal = news_ability_deal }
+        clamp_variable = { var = news_deal min = 0 }
+    }
+}
+
+national_news_buff_get = {
+    set_temp_variable = { t = news_number }
+    subtract_from_temp_variable = { t = news_deal }
+    multiply_temp_variable = { t = news_quality }
+
+    set_temp_variable = { tt = news_deal }
+    add_to_temp_variable = { tt = 1 }
+    divide_temp_variable = { t = tt }
+    
+
+    if = {
+        limit = { has_country_flag = news_topic_patriotism }
+        set_temp_variable = { t1 = t }
+        multiply_temp_variable = { t1 = 0.01 }
+        multiply_temp_variable = { t1 = 0.2 }
+
+        add_stability = t1
+
+        set_temp_variable = { t2 = t }
+        multiply_temp_variable = { t2 = 0.05 }
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = t2 }
+        set_temp_variable = { pc = t2 } 
+        set_temp_variable = { mc = 0 }
+        set_temp_variable = { sc = 0 }
+        set_temp_variable = { bc = 0 }
+        set_temp_variable = { ac = t2 }
+        class_pop_satisfactions_change = yes
+    }
+
+    if = {
+        limit = { has_country_flag = news_topic_economy }
+        set_temp_variable = { t1 = t }
+        multiply_temp_variable = { t1 = 0.05 }
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 0 }
+        set_temp_variable = { pc = 0 } 
+        set_temp_variable = { mc = t1 }
+        set_temp_variable = { sc = 0 }
+        set_temp_variable = { bc = t1 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_economy
+        set_temp_variable = { evc = t1 }
+        set_temp_variable = { eibc = 0 }
+        set_temp_variable = { eipc = 0 }
+        set_temp_variable = { eiac = 0 }
+        set_temp_variable = { eamc = 0 }
+        set_temp_variable = { eaec = 0 }
+        set_temp_variable = { eaac = 0 }
+        set_temp_variable = { eqc = 0 }
+        set_temp_variable = { elc = t1 }
+        set_temp_variable = { eic = 0 }
+        cof_econ_target_change = yes
+    }
+
+    if = {
+        limit = { has_country_flag = news_topic_internationale }
+        set_temp_variable = { t1 = t }
+        multiply_temp_variable = { t1 = 0.1 }
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 0 }
+        set_temp_variable = { pc = 0 } 
+        set_temp_variable = { mc = 0 }
+        set_temp_variable = { sc = t1 }
+        set_temp_variable = { bc = 0 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        set_temp_variable = { t2 = t }
+        multiply_temp_variable = { t2 = 0.75 }
+        custom_effect_tooltip = effect_internation
+        set_temp_variable = { iri_euic = t2 }
+        set_temp_variable = { iri_asic = t2 }
+        set_temp_variable = { iri_meic = t2 }
+        set_temp_variable = { iri_afic = t2 }
+        set_temp_variable = { iri_amic = t2 }
+        iri_influence_change = yes
+    }
+}
+
+weak_central_government_improve = {
+    if = {
+        limit = { has_idea = Cof_weak_central_government }
+        swap_ideas = {
+            remove_idea = Cof_weak_central_government
+            add_idea = Cof_weak_central_government2
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_weak_central_government2 }
+        swap_ideas = {
+            remove_idea = Cof_weak_central_government2
+            add_idea = Cof_weak_central_government3
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_weak_central_government3 }
+        swap_ideas = {
+            remove_idea = Cof_weak_central_government3
+            add_idea = Cof_weak_central_government4
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_weak_central_government4 }
+        remove_ideas = Cof_weak_central_government4
+    }
+}
+
+clr_gui_politics_flag = {
+    clr_country_flag = gui_politics_bgtvscsp
+    clr_country_flag = gui_politics_ios
+    
+    clr_country_flag = gui_politics_synd
+    clr_country_flag = gui_politics_oppo
+    clr_country_flag = gui_politics_jaco
+    clr_country_flag = gui_politics_sore
+
+    clr_country_flag = gui_politics_vote
+
+    clr_country_flag = gui_politics_irieu
+    clr_country_flag = gui_politics_irias
+    clr_country_flag = gui_politics_irime
+    clr_country_flag = gui_politics_iriaf
+    clr_country_flag = gui_politics_iriam
+}
+
+clr_gui_society_flag = {
+    clr_country_flag = gui_society_popw
+    clr_country_flag = gui_society_popp
+    clr_country_flag = gui_society_popm
+    clr_country_flag = gui_society_pops
+    clr_country_flag = gui_society_popb
+    clr_country_flag = gui_society_popa
+
+    clr_country_flag = gui_society_popsall
+    clr_country_flag = gui_society_popsw
+    clr_country_flag = gui_society_popsp
+    clr_country_flag = gui_society_popsm
+    clr_country_flag = gui_society_popss
+    clr_country_flag = gui_society_popsb
+    clr_country_flag = gui_society_popsa
+}
+
+clr_gui_economy_flag = {
+    clr_country_flag = gui_economy_ev
+
+    clr_country_flag = gui_economy_eib
+    clr_country_flag = gui_economy_eip
+    clr_country_flag = gui_economy_eia
+
+    clr_country_flag = gui_economy_eam
+    clr_country_flag = gui_economy_eae
+    clr_country_flag = gui_economy_eaa
+
+    clr_country_flag = gui_economy_eq
+    clr_country_flag = gui_economy_el
+    clr_country_flag = gui_economy_ei
+
+    clr_country_flag = gui_economy_coop
+    clr_country_flag = gui_economy_market
+    clr_country_flag = gui_economy_plan
+    clr_country_flag = gui_economy_order
+    clr_country_flag = gui_economy_focus
+
+    clr_country_flag = gui_economy_synd
+    clr_country_flag = gui_economy_oppo
+    clr_country_flag = gui_economy_jaco
+    clr_country_flag = gui_economy_sore
+}
+
+clr_gui_military_flag = {
+    clr_country_flag = gui_military_popao
+    clr_country_flag = gui_military_popan
+    clr_country_flag = gui_military_popas
+    
+    clr_country_flag = gui_military_aa
+    clr_country_flag = gui_military_aw
+    clr_country_flag = gui_military_at
+    clr_country_flag = gui_military_ae
+    clr_country_flag = gui_military_ap
+
+    clr_country_flag = gui_military_synd
+    clr_country_flag = gui_military_oppo
+    clr_country_flag = gui_military_jaco
+    clr_country_flag = gui_military_sore
+}
+
+under_tent_number_judge = {
+    set_variable = { under_tent_number = 0 }
+    if = {
+        limit = {
+            has_country_flag = under_tent_sorelian
+            OR = {
+                check_variable = { sorelian_sincerity > 0 }
+                check_variable = { sorelian_sincerity = 0 }
+            }
+        }
+        add_to_variable = { under_tent_number = 1 }
+    }
+
+    if = {
+        limit = {
+            has_country_flag = under_tent_anarchist
+            OR = {
+                check_variable = { anarchist_sincerity > 0 }
+                check_variable = { anarchist_sincerity = 0 }
+            }
+        }
+        add_to_variable = { under_tent_number = 1 }
+    }
+
+    if = {
+        limit = {
+            has_country_flag = under_tent_technocrat
+            OR = {
+                check_variable = { technocrat_sincerity > 0 }
+                check_variable = { technocrat_sincerity = 0 }
+            }
+        }
+        add_to_variable = { under_tent_number = 1 }
+    }
+
+    if = {
+        limit = {
+            has_country_flag = under_tent_communist
+            OR = {
+                check_variable = { communist_sincerity > 0 }
+                check_variable = { communist_sincerity = 0 }
+            }
+        }
+        add_to_variable = { under_tent_number = 1 }
+    }
+}
+
+midway_society_build_change = {
+    add_to_variable = {
+        mws = mwsc
+        tooltip = mws_change_tt
+    }
+
+    clamp_variable = {
+        var = mws
+        max = 100
+        min = 0
+    }
+
+    hidden_effect = {
+        if = {
+            limit = { check_variable = { mws = 100 } }
+            if = {
+                limit = { has_idea = Cof_building_midway_society1 }
+                country_event = cofpolitics.168
+            }
+            else_if = {
+                limit = { has_idea = Cof_building_midway_society2 }
+                country_event = cofpolitics.169
+            }
+            else_if = {
+                limit = { has_idea = Cof_building_midway_society3 }
+                country_event = cofpolitics.170
+            }
+            else_if = {
+                limit = { has_idea = Cof_building_midway_society4 }
+                country_event = cofpolitics.171
+            }
+        }
+    }
+}
+
+midway_society_build_monthly_change_judge = {
+    set_variable = { mwsmc = 1 }
+
+    set_variable = { mwsmc_tentnum = under_tent_number }
+    multiply_variable = { mwsmc_tentnum = 1 }    
+    add_to_variable = { mwsmc = mwsmc_tentnum }
+
+    set_variable = { mwsmc_ios = Cof_politics_intensity_of_struggle }
+    multiply_variable = { mwsmc_ios = -0.1 }
+    add_to_variable = { mwsmc = mwsmc_ios }
+
+    set_variable = { mwsmc_popsall = pop_satisfaction }
+    multiply_variable = { mwsmc_popsall = 0.1 }
+    add_to_variable = { mwsmc = mwsmc_popsall }
+
+    set_variable = { mwsmc_ev = cof_econ_values }
+    multiply_variable = { mwsmc_ev = 0.1 }
+    add_to_variable = { mwsmc = mwsmc_ev }
+
+    set_variable = { mwsmc_aa = Cof_army_autonomy }
+    multiply_variable = { mwsmc_aa = 0.05 }
+    add_to_variable = { mwsmc = mwsmc_aa }
 }

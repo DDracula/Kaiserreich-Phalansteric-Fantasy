@@ -326,6 +326,215 @@
   politics_ui_detail_tt:0 "§Y法兰西公社联邦政治现状§!\n§g法兰西公社联邦实行的劳工总议会-公共安全委员会二元并行制始终面临着现实政治运作的挑战。尽管联邦建立初期关于行政权与立法权分离的制度设计获得广泛认同，但在实际政治实践中，这种理想化的制度架构逐渐显现出些许缺陷。\n\n公共安全委员会采取全民直选模式，按事务部门划分，通过比例代表制分配职位，由得票率最高的政治派系担任对应的事务代表职位。与之并行的劳工总议会则实行逐级选举制，由地方议会逐级推选代表进入中央议会，实质上是地方利益在联邦层面的集合体。虽然劳工总议会主席同时出任公社主席，但因为公安委作为真正处理国家事务的机构，公安委主席的实际权力是要大于总议会主席的——即使在劳工总议会相较于公安委拥有宪法优先性。\n\n作为地方自治公社的联合体，联邦各行政区同样采用议会-委员会双轨制。这种制度导致地方优势政治派系往往能够同时掌控议会和委员会两大机构。尽管地方委员会名义上隶属于公共安全委员会，但后者缺乏有效手段强制前者执行政策。公共安全委员会对地方委员会尚能施加有限影响力，而劳工总议会对地方议会则完全丧失了话语权——既无法干预地方立法进程，其立法权限也仅局限于联邦层面。\n\n总议会代表的属地属性在巴黎、波尔多、加莱、马赛等政治派系鲜明的地区尤为突出。即便这些地区的代表不隶属于特定政党，其政治立场也往往与地方主导派系高度契合。其他地区的代表则更多表现出基于具体议题的政治倾向。虽然政治分析中常根据代表的提案倾向将其归类到特定派系，但这种标签化归类本质上是对复杂政治博弈的量化简写，并不意味着代表会永久固守某个政治阵营。§!"
   open_faction_desc_tt:0 "派系介绍"
 
+  open_politics_landscape_tt:0 "打开/隐藏政治图景"
+  politics_landscape_text:0 "[politics_landscape]"
+  no_politics_landscape:0 "\n\n\n\n\n\n\n平稳航行中……"
+
+  synd_mode_politics_landscape:0 "§Y大帐篷之下§!\n为了稳固公社，为了保卫革命，同志之间绝对不能再出现裂痕了。没有什么不能谈的，革命是为了改革，改革是为了革命！\n$sorelian_sincerity$：[?sorelian_sincerity|.0+=][under_tent_sorelian]\n$anarchist_sincerity$：[?anarchist_sincerity|.0+=][under_tent_anarchist]\n$technocrat_sincerity$：[?technocrat_sincerity|.0+=][under_tent_technocrat]\n$communist_sincerity$：[?communist_sincerity|.0+=][under_tent_communist][midway_society]"
+  under_tent_leave:0 "§R（离开大帐篷）§!\n§g（将态度提升到0后，我们就可以挽回他们）§!"
+  under_tent_yes:0 "§G（已加入大帐篷）§!\n§g（当态度低于0时，他们就会离开大帐篷）§!"
+  under_tent_no:0 "§g（大帐篷之外）§!"
+
+  sorelian_sincerity:0 "§o索雷尔主义者§!态度"
+  anarchist_sincerity:0 "§r无政府主义者§!态度"
+  technocrat_sincerity:0 "§x技术官僚§!态度"
+  communist_sincerity:0 "§R共产党人§!态度"
+
+  under_tent_sorelian:0 "§o索雷尔主义者§!已加入大帐篷"
+  under_tent_anarchist:0 "§r无政府主义者§!已加入大帐篷"
+  under_tent_technocrat:0 "§x技术官僚§!已加入大帐篷"
+  under_tent_communist:0 "§R共产党人§!已加入大帐篷"
+
+  syndmode_benefit_sorelian:0 "已向索雷尔主义者让利"
+  syndmode_benefit_anarchist:0 "已向无政府主义者让利"
+  syndmode_benefit_technocrat:0 "已向技术官僚让利"
+  syndmode_benefit_communist:0 "已向共产党人让利"
+
+  sorelian_yes:0 "§G索雷尔主义者对此乐见其成（[?ssc|.0+=]）§!"
+  anarchist_yes:0 "§G无政府主义者对此乐见其成（[?asc|.0+=]）§!"
+  technocrat_yes:0 "§G技术官僚对此乐见其成（[?tsc|.0+=]）§!"
+  communist_yes:0 "§G共产党人对此乐见其成（[?csc|.0+=]）§!"
+
+  sorelian_no:0 "§R索雷尔主义者对此相当不满（[?ssc|.0+=]）§!"
+  anarchist_no:0 "§R无政府主义者对此相当不满（[?asc|.0+=]）§!"
+  technocrat_no:0 "§R技术官僚对此相当不满（[?tsc|.0+=]）§!"
+  communist_no:0 "§R共产党人对此相当不满（[?csc|.0+=]）§!"
+
+  Cof_syndmode_benefit_sorelian:0 "向索雷尔主义者让利"
+  decision_cost_ArmXP_5:0 "£army_experience §Y5§!"
+  decision_cost_ArmXP_5_blocked:0 "£army_experience §R5§!"
+  decision_cost_ArmXP_5_tooltip:0 "执行该决议将花费£army_experience §Y5§!"
+  Cof_syndmode_benefit_anarchist:0 "向无政府主义者让利"
+  Cof_syndmode_benefit_technocrat:0 "向技术官僚让利"
+  COf_syndmode_benefit_communist:0 "向共产党人让利"
+
+  Cof_syndmode_meet_anarchist:0 "与无政府主义者洽谈"
+  Cof_syndmode_meet_technocrat:0 "与技术官僚洽谈"
+  Cof_syndmode_meet_communist:0 "与共产党人洽谈"
+
+  Cof_syndmode_bring_in_sorelian_test_of_sincerity:0 "索雷尔主义者的耐心"
+  sorelian_test_of_sincerity_trigger:0 "我们展现出了足购的诚意，让瓦卢瓦接受了联合\n\n我们至少应该表现的诚意：[?sorelian_target_sincerity|.0G]\n我们目前表现出的诚意：[?sorelian_sincerity|.0G]"
+  Cof_syndmode_bring_in_sorelian_youth_corps:0 "设立国家工团主义青年团"
+  Cof_syndmode_bring_in_sorelian_increase_military_budgets:0 "增加军事预算"
+  Cof_syndmode_bring_in_sorelian_diplomatic_assertion1:0 "重申对阿尔萨斯的主权"
+  Cof_syndmode_bring_in_sorelian_diplomatic_assertion2:0 "重申对敦刻尔克的主权"
+  Cof_syndmode_bring_in_sorelian_vote_bill_national_veterans_horor:0 "递交《国家老兵荣誉法案》"
+
+  Cof_syndmode_bring_in_anarchist_test_of_sincerity:0 "无政府主义者的等待"
+  anarchist_test_of_sincerity_trigger:0 "我们展现出了足购的诚意，让无政府主义者愿意恢复与我们的合作\n\n我们至少应该表现的诚意：[?anarchist_target_sincerity|.0G]\n我们目前表现出的诚意：[?anarchist_sincerity|.0G]"
+  Cof_syndmode_bring_in_anarchist_relax_regulations:0 "放松地方管制"
+  Cof_syndmode_bring_in_anarchist_allocate_to_local:0 "向地方财政拨款"
+  Cof_syndmode_bring_in_anarchist_promote_exchange:0 "促进地方公社交流"
+  Cof_syndmode_bring_in_anarchist_provide_assistance:0 "向落后地区提供援助"
+
+  Cof_syndmode_bring_in_anarchist_allow_militia_armed:0 "允许民兵武备"
+  Cof_syndmode_bring_in_anarchist_relax_militia_strandard:0 "放宽民兵标准"
+  Cof_syndmode_bring_in_anarchist_define_responsibility:0 "规范联邦军职责"
+  Cof_syndmode_bring_in_anarchist_commendate_outstanding:0 "表彰优秀民兵"
+
+  Cof_syndmode_bring_in_anarchist_reaffirm_internationale:0 "重申国际义务"
+  Cof_syndmode_bring_in_anarchist_curb_nationalist:0 "遏制民族主义宣传"
+  Cof_syndmode_bring_in_anarchist_encourage_volunteer:0 "鼓励民间志愿军"
+  Cof_syndmode_bring_in_anarchist_allocate_resources:0 "向同志国家倾斜资源"
+
+  Cof_syndmode_bring_in_technocrat_test_of_sincerity:0 "技术官僚的观望"
+  technocrat_test_of_sincerity_trigger:0 "我们展现出了足购的诚意，让技术官僚愿意全力服务于本届政府\n\n我们至少应该表现的诚意：[?technocrat_target_sincerity|.0G]\n我们目前表现出的诚意：[?technocrat_sincerity|.0G]"
+  Cof_syndmode_bring_in_technocrat_optimize_selecting_officials:0 "优化官员选拔机制"
+  Cof_syndmode_bring_in_technocrat_cut_local_spending:0 "削减地方支出"
+  Cof_syndmode_bring_in_technocrat_adjust_central_budget:0 "调整中央预算"
+  Cof_syndmode_bring_in_technocrat_dismiss_employees:0 "辞退低效雇员"
+
+  Cof_syndmode_bring_in_technocrat_overspend_budget:0 "超支财政预算"
+
+  Cof_syndmode_bring_in_technocrat_establish_national_news:0 "设立国家报社"
+  Cof_national_news_decision:0 "§Y国家报社§!"
+  national_new_set_tips:0 "解锁§Y国家报社§!机制，每月将发布一期国家报纸，根据报纸刊登的内容和质量将决定报纸发布后给国家带来的影响"
+  national_news_tipis:0 "§Y国家报社§!\n$news_ability_number$：[?news_ability_number|Y.0]§L（影响每期报纸的新闻数量）§!\n$news_ability_quality$：[?news_ability_quality|Y.0]§L（影响单项新闻的质量）§!\n$news_ability_deal$：[?news_ability_deal|Y.0]§L（影响处理负面舆论的能力）§!\n-----------------\n§Y当期报纸§!\n报纸主题：[news_topic]\n新闻数量：[?news_number|Y.0]\n新闻质量：[?news_quality|Y.0]\n负面舆论数量：[?news_deal|Y.0]\n这将使得本期报纸产生以下效果："
+  national_news_hidden:0 "显示/隐藏国家报社相关决议"
+  Cof_national_news_recreate:0 "重新制作这期报纸"
+  Cof_national_news_recreate_tt:0 "这将重新决定报纸的新闻数量、新闻质量以及负面舆论数量"
+  Cof_national_news_topic_patriotism:0 "新闻主题：爱国主义"
+  Cof_national_news_topic_economy:0 "新闻主题：经济发展"
+  Cof_national_news_topic_internationale:0 "新闻主题：国际主义"
+  Cof_national_news_topic_change_tt:0 "该主题提供以下效果："
+  news_topic_patriotism:0 "爱国主义"
+  news_topic_economy:0 "经济发展"
+  news_topic_internationale:0 "国际主义"
+  Cof_national_news_focus_on_news:0 "扩张国家报社"
+  Cof_national_news_focus_on_news_tt:0 "§G我们将可以进行1次团队招募§!"
+  Cof_national_news_recruit_journalists:0 "扩大记者团队"
+  Cof_national_news_recruit_copywriting:0 "扩大文案团队"
+  Cof_national_news_recruit_editor:0 "扩大编辑团队"
+  news_ability_number:0 "§Y新闻获取能力§!"
+  news_ability_number_tt:0 "§G国家报社的新闻获取能力提高§!\n§R这将消耗1次团队招募的机会§!"
+  news_ability_quality:0 "§Y新闻撰写能力§!"
+  news_ability_quality_tt:0 "§G国家报社的新闻撰写能力提高§!\n§R这将消耗1次团队招募的机会§!"
+  news_ability_deal:0 "§Y新闻处理能力§!"
+  news_ability_deal_tt:0 "§G国家报社的新闻处理能力提高§!\n§R这将消耗1次团队招募的机会§!"
+  news_number:0 "§Y新闻数量§!"
+  news_quality:0 "§Y新闻质量§!"
+  news_deal:0 "§Y负面舆论数量§!"
+
+  Cof_syndmode_bring_in_technocrat_expand_police_department:0 "扩大警务部门"
+  Cof_syndmode_bring_in_technocrat_regulate_boundary:0 "规范政治人物的言论边界"
+
+  Cof_syndmode_bring_in_technocrat_tilt_towards_csp:0 "向公安委倾斜资源"
+  Cof_syndmode_bring_in_technocrat_vote_bill_local_committee_reform:0 "递交《地方委员会改革草案》"
+  Cof_syndmode_bring_in_technocrat_vote_bill_local_council_reform:0 "递交《地方议会改革草案》"
+
+  Cof_syndmode_bring_in_communist_test_of_sincerity:0 "共产党人的审慎"
+  communist_test_of_sincerity_trigger:0 "我们展现出了足购的诚意，让共产党人愿意协助我们的施政\n\n我们至少应该表现的诚意：[?communist_target_sincerity|.0G]\n我们目前表现出的诚意：[?communist_sincerity|.0G]"
+
+  Cof_syndmode_bring_in_communist_subsidize_argi_coop:0 "补贴农业公社"
+  Cof_syndmode_bring_in_communist_raise_purchase_prise:0 "提高粮食收购价格"
+  Cof_syndmode_bring_in_communist_reduce_agri_taxes:0 "削减农业税"
+  Cof_syndmode_bring_in_communist_fund_rural_industry:0 "资助农村小工业"
+
+  Cof_syndmode_bring_in_communist_provide_commercial_loans:0 "提供商业贷款"
+  Cof_syndmode_bring_in_communist_crark_down_monoplies:0 "打击行业垄断"
+  Cof_syndmode_bring_in_communist_adjust_tariff:0 "调整关税政策"
+  Cof_syndmode_bring_in_communist_reduce_comsumption_tax:0 "减少消费税种"
+
+  Cof_syndmode_bring_in_communist_offer_student_loans:0 "提供助学贷款"
+  Cof_syndmode_bring_in_communist_establish_scholarship:0 "设立国家奖学金"
+  Cof_syndmode_bring_in_communist_revive_salons:0 "复兴文艺沙龙"
+  Cof_syndmode_bring_in_communist_extend_education_duration:0 "延长教育年限"
+
+  midway_society_loc:0 "\n\n§C[midway_society_build]§!\n建设进展：[?mws|.1G%]（[?mwsmc|.1+=%%]）\n[?1|.1+=%%]来自基础\n[?mwsmc_tentnum|.1+=%%]来自大帐篷下的盟友数量\n[?mwsmc_ios|.1+=%%]来自$Cof_politics_intensity_of_struggle$\n[?mwsmc_popsall|.1+=%%]来自$pop_satisfaction$\n[?mwsmc_ev|.1+=%%]来自$cof_econ_values$\n[?mwsmc_aa|.1+=%%]来自$Cof_army_autonomy$"
+  mws_change_tt:0 "中道社会的建设进展改变[?mwsc|+=.1%%]"
+
+  Cof_synd_bgt_administrative_change:0 "行政化总工会"
+  Cof_synd_bgt_administrative_change_tt:0 "我们需要花费[?180|Y.0]天来进行§Y$Cof_synd_bgt_administrative_change$§!\n期间我们将获得：\n  $MODIFIER_POLITICAL_POWER_FACTOR$：[?-0.15|%.0+=]\n  $MODIFIER_STABILITY_FACTOR$：[?-0.1|.2%+=]\n  $monthly_change_popsw$：[?0.6|.1%%+=]\n  $monthly_change_popsb$：[?-0.6|.1%%+=]\n\n完成后，我们将获得：\n"
+  
+  Cof_syndmode_midway_society_cooperate_with_sorelian:0 "和索雷尔主义者合作"
+  Cof_syndmode_midway_society_cooperate_with_anarchist:0 "和无政府主义者合作"
+  Cof_syndmode_midway_society_cooperate_with_technocrat:0 "和技术官僚合作"
+  Cof_syndmode_midway_society_cooperate_with_communist:0 "和共产党人合作"
+
+  sorelian_sincerity_more_than_0:0 "§o索雷尔主义者§!态度至少为§G+1§!"
+  anarchist_sincerity_more_than_0:0 "§r无政府主义者§!态度至少为§G+1§!"
+  technocrat_sincerity_more_than_0:0 "§x技术官僚§!态度至少为§G+1§!"
+  communist_sincerity_more_than_0:0 "§R共产党人§!态度至少为§G+1§!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -492,6 +701,9 @@
   bill_basic_speech_freedom:0 "基本言论自由"
   bill_basic_speech_freedom_desc:0 "言论自由是人的基本权力，我们赋予了所有公民合理合法的发声能力。"
 
+  bill_public_seepch_freedom:0 "民众言论自由"
+  bill_public_seepch_freedom_desc:0 "言论自由是人的基本权力，我们赋予了所有公民合理合法的发声能力。不过，对于一些有影响的人物，他们的一举一动都将对于群众产生难以预测的影响，为了社会整体的稳定，只能要求这些“大人物”牺牲一点自己的小小自由。"
+
   bill_limited_womens_rights:0 "受限的妇女权益"
   bill_limited_womens_rights_desc:0 "旧共和国时期，尽管他们自称为“民主”，然而，占据人民一半的女性们却连投票都做不到。很多傲慢知识分子都认为女人愚昧无知，会被教权主义影响，就像第二共和国时期农民投给路易·波拿巴一样。而那些保守派，甚至都不将女性作为一个独立的人类。但事实证明，女性投票的方式和男人并无不同，无非是根据相应的社会阶层做出相应的选择。自然，在革命后，我们给予了女性选举权，虽然这一举动引起了很多保守的革命者的反对，但革命就是这样——如果什么都没有改变，那我们为什么要革命？\n\n当然，在国家层面上的革命并不能一瞬间改变全社会个体的认识。实际情况是，女性的权益并没有得到完善的保障，依旧有些行业不对女性开放或者直接对女性进行赤裸裸的就业歧视——并且其中许多行为都得到了法律背书。而很多妇女们，尤其是在落后地区的女性，她们同样有着浓重的思想刻印，尽管我们给予了她们选举权，但她们却“耻于”投票。与此同时，城市里的女性工人以及女性知识分子却在呼吁完善对女性权益的保护——就像男人一样，女人之间也会出现阶层分化。"
 
@@ -594,23 +806,203 @@
   bill_universal_basic_benefits_effect:0 "\n$if_bill_pass$\n"
   bill_universal_basic_benefits_intro:0 ""
 
+  bill_national_veterans_horor:0 "《国家老兵荣誉法案》"
+  bill_national_veterans_horor_desc:0 ""
+  bill_national_veterans_horor_effect:0 "\n$if_bill_pass$\n"
+  bill_national_veterans_horor_intro:0 ""
+
+  bill_local_committee_reform:0 "《地方委员会改革草案》"
+  bill_local_committee_reform_desc:0 ""
+  bill_local_committee_reform_effect:0 "\n$if_bill_pass$\n"
+  bill_local_committee_reform_intro:0 ""
+
+  bill_local_council_reform:0 "《地方议会改革草案》"
+  bill_local_council_reform_desc:0 ""
+  bill_local_council_reform_effect:0 "\n$if_bill_pass$\n"
+  bill_local_council_reform_intro:0 ""
+
+  bill_expanded_police_department:0 "扩张的警务部门"
+  bill_expanded_police_department_desc:0 ""
+
+  bill_reduce_agricultural_taxes:0 "宽松的农业税"
+  bill_reduce_agricultural_taxes_desc:0 ""
+
+  bill_reduce_comsumption_taxes:0 "减免的消费税"
+  bill_reduce_comsumption_taxes_desc:0 ""
+
+  bill_extended_duration_of_education:0 "延长的教育年限"
+  bill_extended_duration_of_education_desc:0 ""
+  bill_extended_duration_of_education_effect:0 "\n$if_bill_pass$\n"
+  bill_extended_duration_of_education_intro:0 ""
+
+  bill_CGT_administrative:0 "行政化的总工会"
+  bill_CGT_administrative_desc:0 ""
+
+  bill_CGT_administrative_direct:0 "行政化的总工会：直接行政"
+  bill_CGT_administrative_direct_desc:0 ""
+
+  bill_CGT_administrative_picket:0 "行政化的总工会：纠察体系"
+  bill_CGT_administrative_picket_desc:0 ""
+
+  bill_trade_union_empowerment:0 "《赋权工会法案》"
+  bill_trade_union_empowerment_desc:0 ""
+  bill_trade_union_empowerment_effect:0 "\n$if_bill_pass$\n"
+  bill_trade_union_empowerment_intro:0 ""
+
   bill_:0 ""
   bill__desc:0 ""
   bill__effect:0 "\n$if_bill_pass$\n"
   bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
+
+  bill_:0 ""
+  bill__desc:0 ""
+  bill__effect:0 "\n$if_bill_pass$\n"
+  bill__intro:0 ""
 
 
 
@@ -696,9 +1088,136 @@
   Cof_eased_urban_rural_conflicts:0 "缓和的城乡矛盾"
   Cof_eased_urban_rural_conflicts_desc:0 "那道曾将法兰西撕裂成两个世界的鸿沟，正在缓慢地弥合。\n\n巴黎熔炉的轰鸣声，似乎不再那么刺耳；而在广袤的田野间，长久的沉默也正被一种谨慎的希望所取代。从城市运来的新拖拉机和化肥，是对过去亏欠的迟来补偿；而从乡间送往首都的，除了面包，还有一份被重新唤起的、对共同事业的信任。\n\n在工人的酒馆里，人们开始谈论粮食的来之不易；在乡村的集市上，人们也开始讨论工业带来的新变化。两个法兰西，正在笨拙地、试探性地，学习说同一种语言。\n\n裂痕犹在，伤疤未愈，通往真正团结的道路依然漫长。但至少，城市与乡村不再背对彼此，而是开始并肩，朝着同一个方向前行。"
 
-  cofpolitics.15.title:0 "三月八日的怒火"
-  cofpolitics.15.desc:0 "1938年3月8日，巴黎。按照官方安排，国际劳动妇女节的庆祝活动正在共和国广场有条不紊地进行。BGT的代表在台上发表着千篇一律的演说，赞扬着女性同志在工厂和家庭中为革命做出的“同等重要的贡献”。然而，台下的气氛却远非和谐。在官方游行队伍的外围，一支规模远超预期的队伍正在集结，她们高举着未经审查的标语：“面包和玫瑰，缺一不可！”、“我们的子宫不为国家服务！”、“打倒家务劳动的暴政！”\n\n\这些是来自公社内部最激进的女权主义者、无政府主义者和左翼社会主义者。在她们看来，这场官方庆典不过是男性领导层用以粉饰太平的又一场政治作秀。革命胜利多年，但妇女的真正解放却被无限期地推迟了。她们依然被困在传统的家庭角色中，同工同酬的承诺在许多工会中仍是一纸空文，而在BGT和CSP的高层会议里，女性的声音更是微乎其微。像梅·皮奎雷这样的资深活动家早已对这种“父权制的工团主义”失去了耐心。\n\n当官方游行队伍准备出发时，这支“不速之客”突然汇入了主干道，她们高唱着充满战斗性的歌曲，口号声浪盖过了官方的喇叭。混乱随之而来。负责维持秩序的民兵试图将她们隔离开，却引发了激烈的推搡和扭打。几名带头的女权主义者被强行逮捕，但这反而激起了更多女性的愤怒。很快，整场游行演变成了一场席卷巴黎市中心的骚乱，商店橱窗被砸碎，交通陷入瘫痪。\n\n这场“妇女节骚乱”震惊了整个公社。它如同一道刺眼的闪电，划破了革命团结的表象，将一个尖锐的问题摆在了所有人的面前：这场革命，究竟是谁的革命？"
+  cofpolitics.15.title:0 "四月十一日的怒火"
+  cofpolitics.15.desc:0 "1938年4月11日，巴黎。按照官方安排，为纪念在1871年4月11日成立的“保卫巴黎和救护伤员妇女联盟”（Union des Femmes）而设立的妇女节的庆祝活动正在共和国广场有条不紊地进行。BGT的代表在台上发表着千篇一律的演说，赞扬着女性同志在工厂和家庭中为革命做出的“同等重要的贡献”。然而，台下的气氛却远非和谐。在官方游行队伍的外围，一支规模远超预期的队伍正在集结，她们高举着未经审查的标语：“面包和玫瑰，缺一不可！”、“我们的子宫不为国家服务！”、“打倒家务劳动的暴政！”\n\n\这些是来自公社内部最激进的女权主义者、无政府主义者和左翼社会主义者。在她们看来，这场官方庆典不过是男性领导层用以粉饰太平的又一场政治作秀。革命胜利多年，但妇女的真正解放却被无限期地推迟了。她们依然被困在传统的家庭角色中，同工同酬的承诺在许多工会中仍是一纸空文，而在BGT和CSP的高层会议里，女性的声音更是微乎其微。像梅·皮奎雷这样的资深活动家早已对这种“父权制的工团主义”失去了耐心。\n\n当官方游行队伍准备出发时，这支“不速之客”突然汇入了主干道，她们高唱着充满战斗性的歌曲，口号声浪盖过了官方的喇叭。混乱随之而来。负责维持秩序的民兵试图将她们隔离开，却引发了激烈的推搡和扭打。几名带头的女权主义者被强行逮捕，但这反而激起了更多女性的愤怒。很快，整场游行演变成了一场席卷巴黎市中心的骚乱，商店橱窗被砸碎，交通陷入瘫痪。\n\n这场“妇女节骚乱”震惊了整个公社。它如同一道刺眼的闪电，划破了革命团结的表象，将一个尖锐的问题摆在了所有人的面前：这场革命，究竟是谁的革命？"
   cofpolitics.15.a:0 "又一个烂摊子。"
+
+  cofpolitics.16.title:0 "被诅咒的名字"
+  cofpolitics.16.desc:0 "“如果他姓马丁，或者姓杜邦，这充其量只是一起平庸的叛国案，”反间谍二局的局长站在单向玻璃后，低声对身边的秘书说道，“但这该死的命运，偏偏让他姓德雷福斯。”\n\n对于法兰西公社的革命者而言，这个姓氏是一道尴尬的双重诅咒。四十年前，左翼为了那个叫阿尔弗雷德·德雷福斯的军官，几乎撕裂了整个法国社会，将他捧为反动军阀暴政下的受害者图腾。然而，那个被这面红旗所救赎的阿尔弗雷德，最终却在大革命的浪潮中背弃了工人。他选择了旧共和国，跟随贝当元帅流亡至阿尔及尔，在反动政府的庇护下带着“叛徒”的印记了却残生。\n\n而现在，历史仿佛在演一出拙劣的黑色幽默剧。玻璃窗的另一侧坐着亨利·德雷福斯——前德意志帝国铁路局斯特拉斯堡枢纽的调度主任，黑色星期一后的难民。这个凭借精湛技术和公社“吸纳阿尔萨斯同胞”的政治宣传需要，在短短两年内便火箭般窜升至铁路总局高级调度员的犹太人，如今却成为了这场风暴的中心。\n\n“过去三周，我们截获并破译了十二份发往斯图加特的加急电报，内容全部涉及默兹河防线的主力列车调度时刻表。”\n\n审讯官将一份厚重的档案袋重重地摔在铁桌上，发出沉闷的响声。他盯着面前那个神情恍惚的男人，眼神如同盯着一只死老鼠。\n\n“发报者的代号指向了你——亨利·德雷福斯。还要我继续念下去吗？这一次我们可没有像当年的总参谋部那样伪造证据。说实话，你的发报手法太业余了。难道德国军情局现在的招募标准已经堕落到这种地步了吗？”\n\n德雷福斯坐在审讯椅上，大口喘着粗气，汗水浸透了他的衣领。这里不是他在铁路局那间温暖明亮的办公室，这里是瑟什-米迪监狱的地下室，空气中弥漫的霉味和审讯官的逼视正在一点点压垮他的理智。\n\n“我在问你话，公民德雷福斯！”\n\n一只钢笔被狠狠地摔到他面前，墨水溅在了审讯桌上。\n\n这声脆响成了压垮骆驼的最后一根稻草。他再也绷不住了，那种被冤枉的委屈和他所背负的真实罪恶交织在一起，让他彻底崩溃。\n\n“不是我要干的……我不是间谍！你们不懂……”德雷福斯猛地站了起来，双手颤抖着抓向桌沿，充血的眼球死死盯着审讯官，发出了绝望的嘶吼：\n\n“是军情局！那些普鲁士宪兵抓了我的女儿！就在斯特拉斯堡！他们给我寄了照片……他们说如果我不把时刻表发过去，他们就要把安娜送进惩戒营！那是我的女儿啊！！”"
+  cofpolitics.16.a:0 "审讯还在继续。"
+
+  cofpolitics.17.title:0 "先遣者的悲剧"
+  cofpolitics.17.desc:0 "在德雷福斯的嘶吼在狭窄的审讯室里回荡，随后便是死一般的寂静。当他重新开口时，声音嘶哑而破碎，如同在废墟中翻找余烬。审讯官并没有打断他，随着笔尖在纸上的沙沙声，整件故事逐渐拼凑完整。\n\n黑色星期一的飓风摧毁了这个中产阶级家庭，瞬间将他们从优渥的生活抛入了赤贫的深渊。他听到了公社仁慈的广播：“只要有一技之长，就有面包和瓦片。”\n\n在和家人的讨论之下，亨利·德雷福斯和妻子做出了决定：他只身前往巴黎闯荡，让妻女暂时寄宿在娘家。按照计划，等他在巴黎站稳脚跟，拿到了那把承诺中的公寓钥匙，再把家人接来，从而体面地逃离即将流落街头的命运。\n\n然而，命运展现了它最残忍的幽默感。\n\n他在巴黎确实站稳了脚跟，甚至爬得比预想的还要高。但在东方的家乡，为了压制因经济危机引发的暴动，德意志帝国拉下了那道铁闸——戒严。德国宪兵敲响了岳母家的门。面对并没有男主人的家庭，亨利的妻子试图撒谎，她颤抖着声称丈夫已经死于流感，试图掩盖他非法越境的事实。这个谎言差点就骗过了警察，直到那个信封的出现。\n\n那是亨利寄回的家书。信里洋溢着对巴黎新生活的自豪，他兴奋地告诉妻子他成为了公社铁路的调度员，生活有了着落。此刻，这些充满爱意的文字变成了最致命的把柄。宪兵不需要更多的证据了，他们带走了他的女儿。罪名很简单：“直系亲属通敌”。\n\n对于亨利·德雷福斯，这是一场注定的个人悲剧；但审讯官看着手中这份沉甸甸的供词，感到的却是一阵彻骨的寒意——对于公社而言，这何尝不是一场更加恐怖的政治悲剧？\n\n单是“德雷福斯”这个名字，加上他那敏感的身份，就已经让这起叛国案足够令人窒息了。如果他仅仅是个利欲熏心的卑鄙小人，我们大可以光明正大地将他推向刑场，用子弹洗刷耻辱。可现在，当叛国的动机被包裹在一位父亲被撕裂的爱意中时，正义的天平究竟应该朝哪里倾斜？"
+  cofpolitics.17.a:0 "我们恐怕要被绑在同一条沉船上了，德雷福斯先生。"
+
+  cofpolitics.18.title:0 "总议会的喧闹"
+  cofpolitics.18.desc:0 "“肃静！肃静！给我肃静！”\n\n主席台上的木槌敲得震天响，仿佛下一秒就要断裂，但这沉闷的敲击声就像是丢进沸油里的一滴水，瞬间被淹没在人民议会厅穹顶下的咆哮声中。当关于“新德雷福斯案”的卷宗被正式递交到劳工总议会的那一刻，预料之中的政治风暴如期而至，甚至比预想的更加猛烈。\n\n“又是这个该死的姓氏！”\n\n在联合工人党的席位上，一位头发花白的老代表痛苦地将脸埋进了掌心，声音里透着绝望。对于他们来说，这是一个历史的噩梦重演。“四十年前我们救了一个，结果他跑去了阿尔及尔；现在我们接纳了另一个，结果他把情报卖给了柏林。我们还嫌脸丢得不够大吗？”\n\n一群身穿旧军装的国工联老兵兴奋地跳上了椅子，挥舞着拳头，唾沫横飞地喷洒着民族主义的毒液：“睁开眼看看吧！这就是犹太人的本质！他们没有根，没有祖国，也没有阶级忠诚！他们是天生的雇佣兵——昨天跪舔法兰西共和国的资本家，今天就去跪舔德意志帝国的皇帝！”\n\n《国家解放》（L'Emancipation Nationale）的撰稿人甚至没有抬头看一眼混乱的现场，他正趴在膝盖上奋笔疾书，标题已经拟好：《从阿尔及尔到柏林：一条连贯的背叛之路》。\n\n“这是制度的耻辱，不是个人的！”一位年轻的无政府主义者代表冲到过道上，指着主席台怒吼，“如果铁路系统是公开透明的，如果是由工人委员会直接监管的，这个叛徒早在发电报前就被揪出来了！是我们那不透明的、臃肿的官僚机构制造了这场背叛！而且……”他的声音因为激动而颤抖，“……我们要为了保全官僚的面子，去处死一个为了救女儿而被勒索的父亲吗？这是一场人道主义的屠杀！”\n\n“毫无营养的闹剧，”马赛尔·戴亚对身边的助手冷冷地说道，“既然罪证确凿，那个‘父亲’的眼泪和那个‘犹太人’的标签就都毫无意义。叛国是一个客观事实，不是政治戏剧。任何关于动机或血统的讨论，都不过是低效的体现。”\n\n木槌依旧无力地锤击着，喧闹似乎没有停止的时刻。但谁都知道，一场远比四十年前的德雷福斯案更加危险的“第二次德雷福斯案”已经爆发了。"
+  cofpolitics.18.a:0 "关于亨利·德雷福斯的审判，将于一个月后正式开庭。"
+
+  cofpolitics.19.title:0 "犹太人的血脉"
+  cofpolitics.19.desc:0 "“德雷福斯”。对于反犹主义者和民族主义者来说，这个名字不仅仅是一个姓氏，它是一个图腾，一个等待了四十年的预言。\n\n就像当年那些狂热的“反德雷福斯派”一样，他们憎恨这个名字，首先是因为他流着犹太人的血，其次才是因为他是个叛徒。但历史开了一个最残酷的玩笑：四十年前，他们为了证明犹太人是叛徒而不得不伪造证据；而今天，亨利·德雷福斯把确凿无疑的罪证亲手送到了他们面前。\n\n反犹主义者和狂热的民族主义者第一次发现，自己竟然站在了“真相”与“正义”的制高点上。没有伪造的清单，没有梅西耶将军的谎言，只有赤裸裸的、无可辩驳的背叛。\n\n乔治·瓦卢瓦控制的《新世纪》（Le Nouveau Siècle）并没有刊登那些粗俗的种族辱骂，而是推出了一系列伪装成社会学分析的专题文章。他们用冷静得可怕的笔调论证“世界主义者的先天缺陷”、“官僚系统被腐蚀的必然性”，以及“对德复仇战争的必要性”。这种披着“爱国主义”外衣的理论毒药迅速渗透了普通工人的心智——许多朴素的法兰西公民放下报纸时，心中已不再有疑虑：亨利·德雷福斯必须死，而这与仇恨无关，只与生存有关。\n\n相比之下，雅克·多里奥特的手段则充满了火药味。《国家解放》（L'Emancipation Nationale）直接刊登了那篇臭名昭著的社论——《从阿尔及尔到柏林：一条连贯的背叛之路》。文章将矛头不仅指向德雷福斯，更指向了黑色星期一后涌入公社的所有“非纯正法兰西人”。\n\n那是暴力的信号。多里奥特的“突击队”开始在巴黎东区的街道上游荡。玻璃破碎的声音打破了夜晚的宁静，那是阿尔萨斯难民和犹太商铺遭殃的序曲。当警察将这些暴徒按倒在地时，他们没有求饶，而是昂着头高喊：“我们在守护法兰西！我们在做你们不敢做的事！”\n\n革命胜利后，左翼曾天真地以为反犹主义这个幽灵已经被理性的阳光彻底驱散。但当危机真的降临，当恐惧笼罩城市时，人们惊恐地发现，那些被视为愚昧、狭隘的旧思想从未真正离开。它们只是潜伏在阴影里，等待着一个机会。\n\n而现在，亨利·德雷福斯给了它们这个机会。这一次，暴徒们不需要在黑暗中行凶了，他们可以堂而皇之地戴上“正义”的冠冕，在光天化日之下举起屠刀。"
+  cofpolitics.19.a:0 "这仅仅是第一回合。"
+
+  cofpolitics.20.title:0 "可怜的父亲"
+  cofpolitics.20.desc:0 ""
+  cofpolitics.20.a:0 "我们要做什么？去向德国要人质吗？"
+
+  cofpolitics.21.title:0 "唯一正确的判罚"
+  cofpolitics.21.desc:0 ""
+  cofpolitics.21.a:0 "他们只是嫌现在还不够乱。"
+
+  cofpolitics.22.title:0 "对亨利·德雷福斯的判决"
+  cofpolitics.22.desc:0 ""
+  cofpolitics.22.a:0 "叛国罪，成立！执行死刑。"
+  cofpolitics.22.b:0 "叛国罪，成立！执行劳动改造。"
+  cofpolitics.22.c:0 "叛国罪，成立！但由于案情特殊，暂执行监禁。"
+  cofpolitics.22.d:0 "由于案情特殊，暂缓宣判。"
+  dreyfus_case_death:0 "亨利·德雷福斯被判处死刑"
+  dreyfus_case_labor_reform:0 "亨利·德雷福斯被判处劳动改造"
+  dreyfus_case_imprison:0 "亨利·德雷福斯被判处监禁"
+  dreyfus_case_postpone:0 "亨利·德雷福斯被暂缓宣判"
+
+  cofpolitics.23.title:0 "罪有应得"
+  cofpolitics.23.desc:0 ""
+  cofpolitics.23.a:0 "但愿这不是走向疯狂的序幕。"
+
+  cofpolitics.24.title:0 "怜悯"
+  cofpolitics.24.desc:0 ""
+  cofpolitics.24.a:0 "意料之中。"
+
+  cofpolitics.25.title:0 "于心不忍"
+  cofpolitics.25.desc:0 ""
+  cofpolitics.25.a:0 "让我们找德国人要个说法。"
+
+  cofpolitics.26.title:0 "什么？"
+  cofpolitics.26.desc:0 ""
+  cofpolitics.26.a:0 "虽千万人吾往矣。"
+
+  cofpolitics.27.title:0 "第二次德雷福斯案"
+  cofpolitics.27.desc.ger1:0 ""
+  cofpolitics.27.desc.ger2:0 ""
+  cofpolitics.27.desc.eng1:0 ""
+  cofpolitics.27.desc.eng2:0 ""
+  cofpolitics.27.a:0 "工团暴徒的又一次闹剧。"
+  cofpolitics.27.b:0 "法国人总是干这种事。"
+
+  cofpolitics.28.title:0 "德雷福斯的解决方案"
+  cofpolitics.28.desc:0 ""
+  cofpolitics.28.a:0 "要求德国人释放亨利的女儿。"
+  cofpolitics.28.b:0 "直接让亨利作为证人向德国人施压。"
+  cofpolitics.28.c:0 "或许，我们应该组织一次特工行动？"
+
+  cofpolitics.29.title:0 "我们的德雷福斯"
+  cofpolitics.29.desc.a:0 ""
+  cofpolitics.29.desc.b:0 ""
+  cofpolitics.29.a:0 "否认这种诽谤。"
+  cofpolitics.29.b:0 "这种行为确实有失帝国的风范。"
+
+  cofpolitics.30.title:0 "口说无凭"
+  cofpolitics.30.desc:0 ""
+  cofpolitics.30.a:0 "现在轮到他们倒打一耙了？"
+
+  cofpolitics.31.title:0 "人道主义的光辉"
+  cofpolitics.31.desc:0 ""
+  cofpolitics.31.a:0 "我们没有冤枉任何一个人。"
+
+  cofpolitics.32.title:0 "特别行动：德雷福斯"
+  cofpolitics.32.desc:0 ""
+  cofpolitics.32.a:0 "我们只有一次机会。"
+
+  cofpolitics.33.title:0 "大获成功"
+  cofpolitics.33.desc:0 ""
+  cofpolitics.33.a:0 "德国佬的脸面丢完了。"
+
+  cofpolitics.34.title:0 "丢人现眼"
+  cofpolitics.34.desc:0 ""
+  cofpolitics.34.a:0 "偷鸡不成蚀把米。"
+
+  cofpolitics.35.title:0 ""
+  cofpolitics.35.desc:0 ""
+  cofpolitics.35.a:0 ""
+
+  cofpolitics.36.title:0 ""
+  cofpolitics.36.desc:0 ""
+  cofpolitics.36.a:0 ""
+
+  cofpolitics.37.title:0 ""
+  cofpolitics.37.desc:0 ""
+  cofpolitics.37.a:0 ""
+
+  cofpolitics.38.title:0 ""
+  cofpolitics.38.desc:0 ""
+  cofpolitics.38.a:0 ""
+
+  cofpolitics.39.title:0 ""
+  cofpolitics.39.desc:0 ""
+  cofpolitics.39.a:0 ""
+
+  cofpolitics.40.title:0 ""
+  cofpolitics.40.desc:0 ""
+  cofpolitics.40.a:0 ""
+
+  cofpolitics.41.title:0 ""
+  cofpolitics.41.desc:0 ""
+  cofpolitics.41.a:0 ""
+
+  cofpolitics.42.title:0 ""
+  cofpolitics.42.desc:0 ""
+  cofpolitics.42.a:0 ""
+
+  cofpolitics.43.title:0 ""
+  cofpolitics.43.desc:0 ""
+  cofpolitics.43.a:0 ""
 
   cofpolitics.99.title:0 "新任公共安全委员会主席" 
   cofpolitics.99.desc:0 "公共安全委员会，作为公社的实际行政机关，享有的权力是极大的。虽然在宪法上，公安委是低于劳工总议会的，但靠着对行政权的垄断，公安委主席的实际职权要比同时身为国家主席的总议会主席要大的。不过，各个派系都将公安委主席的位置视为拉拢政治盟友的手段，一般来说，是由派系内部的合作派系的领袖作为候选人来竞选公安委主席。\n\n1936年的选举也不出预料，为了防止工团派的进一步分裂，作为“团结工团主义”者的著名激进派伯努瓦·弗拉商作为工团派的第一候选人参与竞争；而前“纲领派”的组建者，现如今联安协的重要人物的莫里斯·茹瓦耶在加香的协助下也进行了参选——尽管这似乎与他的无政府主义倾向并不相符；前共产党员、前人民党主席雅克·多里奥特也作为雅各宾派的候选人，自人民党合并进社会党后，多里奥特就一直是基层工作的重要人物，可以预想到有很多狂热的支持者会投多里奥特一票；最令人以外的是索雷尔派的候选人，瓦卢瓦并没有选择国工联内的老资历，而是选择了索雷尔俱乐部的组建者乔治·巴塔耶，或许是瓦卢瓦看重了巴塔耶对于年轻人的吸引力，又或者是这个可怜的老家伙头脑不清醒了，但总之，巴塔耶这个在政治中根基尚浅的年轻人在一开始就要冲刺公社最高权力的宝座。"
@@ -828,12 +1347,12 @@
   cofpolitics.118.c:0 "“第三国际的团结是我们的盾牌，也是我们的利剑。”"
   cofpolitics.118.d:0 "“和平的时代已经结束了。我们必须为不可避免的战争做好准备。”"
 
-  cofpolitics.119.title:0 "阿尔萨斯人的选票"
-  cofpolitics.119.desc:0 "在香槟地区一个被葡萄藤环绕的小村庄里，阳光正好。但今天，埃米尔·福格特却感觉不到丝毫暖意。他坐在村口的老橡树下，手里紧紧攥着那张崭新的、象征着他成年与公民权的投票证。他身边的朋友们——皮埃尔、雅克、艾蒂安——都用一种混杂着羡慕和期待的目光看着他。因为年龄差了几个月，他们都错过了这次选举。在这群从小一起长大的伙伴中，只有埃米尔，能够投下这决定未来的一票。\n\n埃米尔对政治并不太敏感。他的世界，本应是葡萄的收成和母亲偶尔的乡愁。他出生在阿尔萨斯，母语是德语，但母亲从小就告诉他：“记住，孩子，你的心是法兰西的。”革命后，他们逃离了被德国吞并的家乡，在这里安了家。他记得的，只有公社治下的和平，以及母亲眼中那份无法抹去的、对故土的思念。\n\n“你还在犹豫什么，埃米尔？”皮埃尔的父亲，村里合作社的工团派代表让-皮埃尔大叔走了过来，他的声音像陈年的香槟一样醇厚，“是公社和总工会给了我们土地和安宁。我们是工人，是农民，我们应该相信这个为我们建立的体制。”\n\n“可这个体制正在忘记我们！”和他们一起在田里干活的年轻共产党员马克反驳道，他的脸上还带着泥土的痕迹，“巴黎的官僚们只想着他们的工厂，却不管我们的收成！只有加香同志，才真正关心我们这些土地上的人！”\n\n艾蒂安的叔叔，那位从波尔多回乡探亲、穿着体面西装的技术官僚，则拿出了一张画报，上面是宏伟的工厂和整齐的城市规划。“孩子们，看看这个。这才是未来。”他用一种不容置疑的语气说，“情感和传统无法对抗德国的钢铁。只有雅各宾派的计划和秩序，才能建立一个真正强大的法兰西，一个能让我们昂首挺胸的国家。”\n\n就在这时，一个高大、黝黑的身影走近了。是他们童年的大哥哥，卢克。他刚从联邦军服役归来，身上还带着军营的硬朗。他看着埃米尔，眼神里有火。“强大的国家？”他冷笑一声，“懦弱的计划永远换不来强大。埃米尔，你和我们不一样，你比我们更懂‘家’的意义。家，不是靠妥协和算计得来的，是靠战斗和牺牲赢回来的！只有索雷尔派，才懂得用敌人的血，来捍卫我们的荣誉，去夺回本就属于我们的东西——比如阿尔萨斯！”\n\n所有人的目光都聚焦在埃米尔身上。他看着手中的投票证，仿佛有千斤重。他是一个说德语的法国人，一个来自失地的农民，一个公社治下的青年。他究竟是谁？他应该相信谁？他的这一票，不仅是为自己，也是为他身边所有无法投票的朋友们而投。"
+  cofpolitics.119.title:0 "布里人的选票"
+  cofpolitics.119.desc:0 "在香槟地区一个被葡萄藤环绕的小村庄里，阳光正好。但今天，埃米尔·福格特却感觉不到丝毫暖意。他坐在村口的老橡树下，手里紧紧攥着那张崭新的、象征着他成年与公民权的投票证。他身边的朋友们——皮埃尔、雅克、艾蒂安——都用一种混杂着羡慕和期待的目光看着他。因为年龄差了几个月，他们都错过了这次选举。在这群从小一起长大的伙伴中，只有埃米尔，能够投下这决定未来的一票。\n\n埃米尔对政治并不太敏感。他的世界，本应是矿工父亲的笑颜和母亲偶尔的乡愁。他出生在布里，家里从德国来到布里做工，但母亲从小就告诉他：“记住，孩子，你的心是法兰西的。”革命后，他们逃离了被德国吞并的家乡，在这里安了家。他记得的，只有公社治下的和平，以及母亲眼中那份无法抹去的、对故土的思念。\n\n“你还在犹豫什么，埃米尔？”皮埃尔的父亲，村里合作社的工团派代表让-皮埃尔大叔走了过来，他的声音像陈年的香槟一样醇厚，“是公社和总工会给了我们土地和安宁。我们是工人，是农民，我们应该相信这个为我们建立的体制。”\n\n“可这个体制正在忘记我们！”和他们一起在田里干活的年轻共产党员马克反驳道，他的脸上还带着泥土的痕迹，“巴黎的官僚们只想着他们的工厂，却不管我们的收成！只有加香同志，才真正关心我们这些土地上的人！”\n\n艾蒂安的叔叔，那位从波尔多回乡探亲、穿着体面西装的技术官僚，则拿出了一张画报，上面是宏伟的工厂和整齐的城市规划。“孩子们，看看这个。这才是未来。”他用一种不容置疑的语气说，“情感和传统无法对抗德国的钢铁。只有雅各宾派的计划和秩序，才能建立一个真正强大的法兰西，一个能让我们昂首挺胸的国家。”\n\n就在这时，一个高大、黝黑的身影走近了。是他们童年的大哥哥，卢克。他刚从联邦军服役归来，身上还带着军营的硬朗。他看着埃米尔，眼神里有火。“强大的国家？”他冷笑一声，“懦弱的计划永远换不来强大。埃米尔，你和我们不一样，你比我们更懂‘家’的意义。家，不是靠妥协和算计得来的，是靠战斗和牺牲赢回来的！只有索雷尔派，才懂得用敌人的血，来捍卫我们的荣誉，去夺回本就属于我们的东西——比如布里！”\n\n所有人的目光都聚焦在埃米尔身上。他看着手中的投票证，仿佛有千斤重。他是一个说德语的法国人，一个来自失地的矿工孩子，一个公社治下的青年。他究竟是谁？他应该相信谁？他的这一票，不仅是为自己，也是为他身边所有无法投票的朋友们而投。"
   cofpolitics.119.a:0 "“让-皮埃尔大叔说得对，我们应该相信工会。”"
   cofpolitics.119.b:0 "“马克最懂我们的辛苦，我支持工农派。”"
   cofpolitics.119.c:0 "“一个有秩序的、强大的国家，才能让我们安心。”"
-  cofpolitics.119.d:0 "“为了阿尔萨斯，为了我们的家。”"
+  cofpolitics.119.d:0 "“为了布里，为了我们的家。”"
 
   cofpolitics.120.title:0 "一位不情愿的公民"
   cofpolitics.120.desc:0 "里昂的夜晚，空气中混杂着索恩河的湿气和工厂烟囱的余温。在吉罗家小小的公寓里，晚餐的气氛却有些凝重。\n\n阿黛尔·吉罗心不在焉地拨弄着盘子里的土豆。她的父亲，一位在当地丝织厂干了一辈子的工团派成员，刚从一场激烈的工会会议回来，把所有的政治情绪都带回了家。“……那些雅各宾派的知识分子，他们懂什么叫劳动？还有索雷尔派的那帮疯子，他们除了会喊口号还会干什么？”他一边说，一边用叉子重重地戳着香肠，“阿黛尔，你成年了，这是你的第一次选举。你已经决定好要投给谁了吗？”\n\n“我不知道，”阿黛尔小声说，“爸爸，我觉得他们听起来都差不多……”她鼓起勇气，说出了心里话：“而且，巴黎那么远，多我这一票，少我这一票，又有什么关系呢？”\n\n父亲的叉子“当”的一声掉在盘子里。他死死地盯着女儿，眼神里满是失望和难以置信的愤怒。“没关系？”他的声音在颤抖，“你脚下的每一寸土地，你吃的每一口面包，你呼吸的每一口自由空气，都是用你从未见过的同志们的鲜血换来的！我们当年在街垒里，没有人想过‘有没有关系’！我们只是知道，如果我们不战斗，你，还有千千万万个像你一样的孩子，就只能在资本家的工厂里被活活榨干！投票不是游戏，阿黛尔，这是责任！是对那些牺牲者的责任！”\n\n说完，他猛地推开椅子，走进了自己的房间，重重地关上了门。\n\n晚饭在尴尬的沉默中结束。夜深了，母亲悄悄走进阿黛尔的房间，坐在她的床边。“别怪你爸爸，”她轻声说，抚摸着女儿的头发，“他只是……害怕。他害怕我们忘记了这一切是怎么来的。他害怕我们把革命的果实，当成了从树上自己掉下来的苹果。”\n\n母亲顿了顿，继续说道：“我也不懂那些大道理。但我知道，明天选出的人，会决定我们工厂明年是开工还是停产，会决定你弟弟参军后是去守卫边境还是被派去异国他乡，会决定我们这些普通人的生活，到底是变得更好，还是更糟。你的一票，或许改变不了法兰西，但它会改变我们家。所以，孩子，去投下你认为对的那一票吧，为你自己投。”\n\n母亲离开后，阿黛尔独自坐在窗前，看着窗外里昂星星点点的灯火。她想起父亲愤怒的脸，想起母亲温柔的话语。她第一次感觉到，那张薄薄的选票，原来承载着如此沉重的分量。它连接着过去与未来，连接着一个家庭的命运和整个国家的航向。\n\n她拿出那张空白的选票，在煤油灯下，久久地凝视着。"
@@ -873,6 +1392,9 @@
   cofpolitics.128.desc:0 "乔治·瓦卢瓦当选后的第一次正式活动，安排在荣军院的庭院里。这里安葬着旧法兰西的军事英雄，而今天，它迎来了新法兰西的战士们。数千名来自“国家工团主义联盟”的老兵排着整齐的队列，他们虽然衣着朴素，许多人身上还带着战争的伤残，但胸膛挺得笔直，眼神锐利如刀。\n\n没有狂热的口号，没有冲天的火焰。瓦卢瓦穿着一件得体的黑色外套，缓步走在队列前。他会停下来，与那些他曾在战壕里并肩作战过的老伙计们握手，叫出他们的名字，询问他们家人的近况。阳光照耀在他们胸前的旧勋章和崭新的公社徽章上，反射出庄严的光芒。\n\n检阅完毕，瓦卢瓦走上一个临时搭建的讲台。他没有高声嘶吼，而是用一种沉稳而充满力量的声音说道：\n\n“同志们，战士们。看看你们自己，看看你们身边的人。你们是法兰西的脊梁。是你们，在最黑暗的时刻，用鲜血和牺牲保卫了革命。但这些年，你们的荣誉被遗忘了，你们的牺牲被那些喋喋不休的政客们当成了可以交易的筹码。”\n\n“他们告诉我们，革命是为了安逸和享乐。他们错了！革命，是为了重塑我们民族的灵魂！是为了找回我们在战场上拥有过的那种荣誉感、责任感和兄弟情谊！我，乔治·瓦卢瓦，现在是你们的总议会主席。我向你们承诺，从今往后，法兰西将重新以战士为荣！”\n\n他顿了顿，目光扫过在场的每一个人：“我们的第一个目标，就是结束这个国家可耻的分裂。那个所谓的‘公安委’，那个滋生了无数官僚和阴谋的机构，必须被废除！所有的权力，都将回归到代表着人民战斗意志的总议会手中！一个法兰西，一个议会，一个意志！”\n\n老兵们没有欢呼，只是用靴跟猛地并拢，发出一声整齐划一的巨响。这无声的回应，比任何口号都更具力量。"
   cofpolitics.128.a:0 "另一群人民的声音。"
 
+
+
+
   cofpolitics.129.title:0 "工团主义大会"
   cofpolitics.129.desc.a:0 "人民宫的大厅里，空气像凝固了一样，混杂着廉价香烟的烟雾和一种压抑着的、几乎能听见的紧张感。\n\n伯努瓦·弗拉商的演讲充满了火焰与钢铁的味道。他抨击着“背叛革命的官僚”，痛斥着“与旧世界毫无区别的稳定”，他的每一个词都像锤子一样敲打在代表们的心上，赢得了大厅另一侧年轻人们狂热的欢呼。他们是革命的子辈，渴望一场永不停歇的风暴。\n\n轮到莱昂·儒奥发言时，他没有走向讲台。他只是缓缓地站起身，站在自己的座位前。他没有高声辩驳，只是用一种近乎疲惫但无比坚定的声音，讲述着另一件事：圣但尼区一家纺织厂的养老金缺口，诺曼底地区铁路运力的瓶颈，以及一份来自不列颠同志的、关于联合采购橡胶的贸易协定草案。\n\n他谈论的是面包、煤炭和齿轮。他谈论的是如何让这座名为法兰西的巨大机器，在下一次风暴到来之前，还能勉强运转下去。\n\n激进者的位置上传来了不耐烦的嘘声，但儒奥没有理会。他的目光投向了那些和他一样，从旧时代的工会斗争中一路走来的老伙计们。他们的脸上没有火焰，只有被岁月和责任刻下的沟壑。他们没有欢呼，只是用沉默的、压倒性的多数，回应着他们的领袖。\n\n会议结束时，弗拉商和他的追随者们先行离场，他们的脚步声带着愤怒。儒奥依然站在原地，看着他们离去的背影。他知道，他守住了这艘船的舵，但也可能因此失去了它的灵魂。"
   cofpolitics.129.desc.b:0 "人民宫的大厅里，空气像一锅即将沸腾的水。\n\n莱昂·儒奥的发言被一阵充满嘲讽的歌声打断了。他本想谈论生产指标和贸易协定，但台下那些年轻的、属于伯努瓦·弗拉商的代表们，用一首关于“贝尔维尔街垒”的老战歌，淹没了他所有关于“稳定”和“秩序”的言辞。\n\n弗拉商站在一张椅子上，像一位即将发起冲锋的将军。他没有看儒奥，而是对着整个大厅宣告：“同志们！革命不是一份需要小心翼翼去经营的遗产！它是一团火焰！要么熊熊燃烧，要么在官僚主义的灰烬中熄灭！我们选择燃烧！”\n\n雷鸣般的欢呼声几乎要掀翻人民宫的屋顶。儒奥环视四周，他看到自己身边的老伙计们，那些工会的元老，第一次露出了茫然和孤立的神情。他们的人数，在这片狂热的海洋中，显得如此微不足道。\n\n儒奥缓缓地坐下，他知道，辩论已经结束了。他依然是主席，是这艘船名义上的船长，但掌舵的权利，已经不在他的手中。从今天起，他将要驾驶的，是一艘被火焰包裹的船，驶向一片他自己也无法预测的未知风暴。他要么被这火焰吞噬，要么就成为火焰本身。"
@@ -893,12 +1415,6 @@
   cofpolitics.132.title:0 "承诺"
   cofpolitics.132.desc:0 "当“我们会尽可能做到的”这几个字从儒奥口中说出时，房间里的空气仿佛凝固了。这不仅仅是一句答复，这是一份契约，一份用公社未来的部分灵魂换取当前政治稳定的契约。\n\n瓦卢瓦的脸上没有丝毫胜利的喜悦。他只是缓缓地点了点头，那是一种意料之中的、冷酷的确认。他站起身，伸出手。儒奥也站了起来，握住了那只手。他们的手都同样粗糙，布满了岁月的痕迹，但此刻，这两只手所代表的力量却截然不同。这次握手没有温度，只有交易完成后的沉重。\n\n没有再多说一句话，瓦卢瓦转身离开了房间的深处，消失在阴影里。\n\n儒奥独自一人在原地站了许久，才缓缓穿过那间空旷的台球室，走出了俱乐部。巴黎的晚风吹在脸上，带着一丝凉意。他抬头望向荣军院金色的穹顶，在夜色中泛着幽光。为了对抗眼前的混乱，他将一头沉睡的、更难预测的雄狮引入了人民宫。他获得了一个盟友，但也可能为法兰西的未来埋下了一颗更危险的种子。"
   cofpolitics.132.a:0 "我们应该算成功了？"
-  Cof_syndmode_bring_in_sorelian_youth_corps:0 "设立国家工团主义青年团"
-  Cof_syndmode_bring_in_sorelian_increase_military_budgets:0 "增加军事预算"
-  Cof_syndmode_bring_in_sorelian_diplomatic_assertion1:0 "重申对阿尔萨斯的主权"
-  Cof_syndmode_bring_in_sorelian_diplomatic_assertion2:0 "重申对敦刻尔克的主权"
-
-  sorelain_yes_but_anarchist_technocrat_no:0 "§G索雷尔主义者对此乐见其成§!\n§R无政府主义者和技术官僚对此相当不满§!"
 
   cofpolitics.133.title:0 "不欢而散"
   cofpolitics.133.desc:0 "儒奥的声音平静但坚定：“我们不可能接受这些，乔治。”\n\n这句话像一块石头投入冰封的湖面，瞬间让房间里最后一点回旋的余地也消失了。瓦卢瓦脸上的表情没有变化，但儒奥能感觉到，对方眼中那丝仅存的、作为老同志的复杂情感已经彻底熄灭，只剩下冰冷的、属于政治对手的审视。\n\n瓦卢瓦缓缓地将那根未点燃的雪茄放在桌上，站起身，整理了一下他那身一丝不苟的旧军装。“我明白了。” 他只说了这几个字，声音里听不出任何情绪。“看来，你还是选择守着你那艘正在下沉的船，莱昂。祝你好运。”\n\n他没有伸出手，甚至没有再看儒奥一眼，便转身走进了俱乐部的阴影深处，脚步声坚定而沉重。\n\n儒奥独自坐在原地，听着那脚步声远去。他来时寻求一个盟友，现在却铸就了一个更坚定的敌人。他知道，从这一刻起，公社内部的裂痕已经无法弥补。前方的道路，将只有斗争。"
@@ -918,133 +1434,256 @@
   cofpolitics.136.a:0 "略胜一筹。"
 
   cofpolitics.137.title:0 "诚意"
-  cofpolitics.137.desc:0 "几个月后的一个雨夜，儒奥的办公室门被敲响了。没有事先通报，乔治·瓦卢瓦独自一人走了进来，身上还带着外面的寒气。他将一份湿漉漉的报纸扔在儒奥的办公桌上，头版头条是关于外交部最新声明的报道——措辞强硬，直指莱茵河对岸。\n\n“我看了报纸，莱昂。”瓦卢瓦脱下帽子，露出了他那花岗岩般的面孔。“我还听说，军工部门的预算提案，你在总议会里顶住了雅各宾傻子和无政府疯子的联合反对，强行通过了。”\n\n他走到窗边，看着雨水冲刷下的巴黎夜景。“你做的，比我预想的要多。也比你那些只会空谈的同志们，要有担当得多。”\n\n儒奥从文件中抬起头，静静地看着他。“我只是在做一个主席该做的事，乔治。为了稳住这艘船。”\n\n瓦卢瓦转过身，脸上第一次露出了一种复杂的、近乎是认可的表情。“或许吧。但你的行动，至少让我相信，这艘船的船长还没有完全忘记什么是荣誉和力量。”他从口袋里拿出一份文件，放在了儒奥的桌上。“这是国家工团主义联盟的正式声明。从明天起，我们将是你执政联盟的一部分。我们的人，会在总议会里支持你的每一个‘正确’的决定。”\n\n他没有伸手，只是微微颔首。“但别搞错了，莱昂。这不是投降，这是停战。我们会看着你，看着你把法兰西带向何方。”\n\n说完，他便转身离开了，只留下一室的寂静和那份沉甸甸的联盟声明。儒奥知道，他终于为自己赢得了这个最危险、也最强大的盟友。"
+  cofpolitics.137.desc.a:0 "几个月后的一个雨夜，儒奥的办公室门被敲响了。没有事先通报，乔治·瓦卢瓦独自一人走了进来，身上还带着外面的寒气。他将一份湿漉漉的报纸扔在儒奥的办公桌上，头版头条是关于外交部最新声明的报道——措辞强硬，直指莱茵河对岸。\n\n“我看了报纸，莱昂。”瓦卢瓦脱下帽子，露出了他那花岗岩般的面孔。“我还听说，军工部门的预算提案，你在总议会里顶住了雅各宾傻子和无政府疯子的联合反对，强行通过了。”\n\n他走到窗边，看着雨水冲刷下的巴黎夜景。“你做的，比我预想的要多。也比你那些只会空谈的同志们，要有担当得多。”\n\n儒奥从文件中抬起头，静静地看着他。“我只是在做一个主席该做的事，乔治。为了稳住这艘船。”\n\n瓦卢瓦转过身，脸上第一次露出了一种复杂的、近乎是认可的表情。“或许吧。但你的行动，至少让我相信，这艘船的船长还没有完全忘记什么是荣誉和力量。”他从口袋里拿出一份文件，放在了儒奥的桌上。“这是国家工团主义联盟的正式声明。从明天起，我们将是你执政联盟的一部分。我们的人，会在总议会里支持你的每一个‘正确’的决定。”\n\n他没有伸手，只是微微颔首。“但别搞错了，莱昂。这不是投降，这是停战。我们会看着你，看着你把法兰西带向何方。”\n\n说完，他便转身离开了，只留下一室的寂静和那份沉甸甸的联盟声明。儒奥知道，他终于为自己赢得了这个最危险、也最强大的盟友。"
+  cofpolitics.137.desc.b:0 ""
   cofpolitics.137.a:0 "我们赢得了尊重。"
 
   cofpolitics.138.title:0 "再一次认识"
-  cofpolitics.138.desc:0 "一张没有署名的便条被悄无声息地放在了儒奥办公室的桌上，上面只写着一个时间和地点——荣军院旁的那家老兵俱乐部。儒奥知道，这是清算时刻的到来。\n\n这一次，俱乐部里的气氛比上次更加冰冷。瓦卢瓦甚至没有坐在他对面，而是背对着他，擦拭着一把旧式的勒贝尔步枪，动作一丝不苟，仿佛儒奥并不存在。\n\n“几个月了，莱昂。”瓦卢瓦没有回头，声音平静得可怕。“我看到了你们的报纸，听到了你们的广播。除了你耍的嘴皮子工夫，我什么都没看到。青年团的提案被‘无限期搁置’，军工预算被你们的经济学家们以‘影响民生’为由削减了一半，至于外交部……他们发表的那些不痛不痒的抗议，连德国大使馆的看门狗都吓不跑。”\n\n他终于停下了手中的动作，将步枪靠在墙上，转过身来。他的眼神里没有愤怒，只有一种彻底的、毫无温度的失望。\n\n“我曾以为，你至少还保留着一点革命者的骨气，莱昂。我错了。”他缓缓走向儒奥，每一步都像是在丈量着两人之间不可逾越的鸿沟。“你不是船长，你只是那艘船上最老朽的一块甲板。你修补不了任何东西，因为你本身就是腐朽的一部分。”\n\n他走到儒奥面前，却没有看他，而是望向窗外荣军院的方向。“我们的协议结束了。从今天起，国家工团主义联盟将不再对你的政府抱有任何幻想。我们会用我们自己的方式，来保卫法兰西的荣誉。”"
+  cofpolitics.138.desc.a:0 "一张没有署名的便条被悄无声息地放在了儒奥办公室的桌上，上面只写着一个时间和地点——荣军院旁的那家老兵俱乐部。儒奥知道，这是清算时刻的到来。\n\n这一次，俱乐部里的气氛比上次更加冰冷。瓦卢瓦甚至没有坐在他对面，而是背对着他，擦拭着一把旧式的勒贝尔步枪，动作一丝不苟，仿佛儒奥并不存在。\n\n“几个月了，莱昂。”瓦卢瓦没有回头，声音平静得可怕。“我看到了你们的报纸，听到了你们的广播。除了你耍的嘴皮子工夫，我什么都没看到。青年团的提案被‘无限期搁置’，军工预算被你们的经济学家们以‘影响民生’为由削减了一半，至于外交部……他们发表的那些不痛不痒的抗议，连德国大使馆的看门狗都吓不跑。”\n\n他终于停下了手中的动作，将步枪靠在墙上，转过身来。他的眼神里没有愤怒，只有一种彻底的、毫无温度的失望。\n\n“我曾以为，你至少还保留着一点革命者的骨气，莱昂。我错了。”他缓缓走向儒奥，每一步都像是在丈量着两人之间不可逾越的鸿沟。“你不是船长，你只是那艘船上最老朽的一块甲板。你修补不了任何东西，因为你本身就是腐朽的一部分。”\n\n他走到儒奥面前，却没有看他，而是望向窗外荣军院的方向。“我们的协议结束了。从今天起，国家工团主义联盟将不再对你的政府抱有任何幻想。我们会用我们自己的方式，来保卫法兰西的荣誉。”"
+  cofpolitics.138.desc.b:0 ""
   cofpolitics.138.a:0 "吹牛终究是吹牛。"
 
   cofpolitics.139.title:0 "反青年团游行"
   cofpolitics.139.desc:0 ""
-  cofpolitics.139.a:0 "支持者和反对者爆发了斗殴。"
-  cofpolitics.139.b:0 "双方都保持了最大的克制。"
+  cofpolitics.139.a:0 "是游行者先动的手。"
+  cofpolitics.139.b:0 "是青年团先动的手。"
 
-  cofpolitics.140.title:0 ""
+  cofpolitics.140.title:0 "优先事项"
   cofpolitics.140.desc:0 ""
-  cofpolitics.140.a:0 ""
+  cofpolitics.140.a:0 "让我们挽回无政府主义的盟友。"
+  syndmode_anarchist_first:0 "我们将优先拉拢无政府主义者进入到我们的大帐篷之中"
+  cofpolitics.140.b:0 "政府离不开技术官僚们。"
+  syndmode_technocrat_first:0 "我们将优先拉拢技术官僚进入到我们的大帐篷之中"
+  cofpolitics.140.c:0 "共产党在群众和政治之间起到了至关重要的作用。"
+  syndmode_communist_first:0 "我们将优先拉拢共产党人进入到我们的大帐篷之中"
 
-  cofpolitics.141.title:0 ""
+  cofpolitics.141.title:0 "与茹瓦耶的会面"
   cofpolitics.141.desc:0 ""
-  cofpolitics.141.a:0 ""
+  cofpolitics.141.a:0 "你们想要什么？"
+  cofpolitics.141.b:0 "我有一个提议。"
+  cofpolitics.141.c:0 "关于总工会的事情……"
 
-  cofpolitics.142.title:0 ""
+  cofpolitics.142.title:0 "无政府主义者的诉求"
   cofpolitics.142.desc:0 ""
-  cofpolitics.142.a:0 ""
+  cofpolitics.142.a:0 "我们会尽可能做到的。"
+  cofpolitics.142.b:0 "简直是狮子大开口！"
 
-  cofpolitics.143.title:0 ""
+  cofpolitics.143.title:0 "合作愉快"
   cofpolitics.143.desc:0 ""
-  cofpolitics.143.a:0 ""
+  cofpolitics.143.a:0 "其实并不愉快。"
 
-  cofpolitics.144.title:0 ""
+  cofpolitics.144.title:0 "闭门送客"
   cofpolitics.144.desc:0 ""
-  cofpolitics.144.a:0 ""
+  cofpolitics.144.a:0 "这算是白来了。"
 
-  cofpolitics.145.title:0 ""
+  cofpolitics.145.title:0 "但说无妨"
   cofpolitics.145.desc:0 ""
-  cofpolitics.145.a:0 ""
+  cofpolitics.145.a:0 "地方公社的自治问题。"
+  cofpolitics.145.b:0 "地方民兵的管理问题。"
+  cofpolitics.145.c:0 "国际事务的外交问题。"  
 
-  cofpolitics.146.title:0 ""
-  cofpolitics.146.desc:0 ""
-  cofpolitics.146.a:0 ""
+  cofpolitics.146.title:0 "顺水推舟"
+  cofpolitics.146.desc.a:0 ""
+  cofpolitics.146.desc.b:0 ""
+  cofpolitics.146.desc.c:0 ""
+  cofpolitics.146.a:0 "等抓紧时间了。"
 
-  cofpolitics.147.title:0 ""
+  cofpolitics.147.title:0 "命根子"
   cofpolitics.147.desc:0 ""
-  cofpolitics.147.a:0 ""
+  cofpolitics.147.a:0 "一举两得。"
+  syndmode_anarchists_cgt_reform:0 "我们需要在期限内对总工会完成§Y$FRA_unions_are_not_just_for_labor$§!改革"
 
-  cofpolitics.148.title:0 ""
+  cofpolitics.148.title:0 "与戴亚会面"
   cofpolitics.148.desc:0 ""
-  cofpolitics.148.a:0 ""
+  cofpolitics.148.a:0 "高效是我们的共同追求。"
+  cofpolitics.148.b:0 "稳定是最重要的政治原则。"
+  cofpolitics.148.c:0 "官僚们想要什么？"
 
-  cofpolitics.149.title:0 ""
-  cofpolitics.149.desc:0 ""
-  cofpolitics.149.a:0 ""
+  cofpolitics.149.title:0 "拭目以待"
+  cofpolitics.149.desc.a:0 ""
+  cofpolitics.149.desc.b:0 ""
+  cofpolitics.149.a:0 "官僚们的想法很容易摸透。"
 
-  cofpolitics.150.title:0 ""
+  cofpolitics.150.title:0 "巴别塔"
   cofpolitics.150.desc:0 ""
-  cofpolitics.150.a:0 ""
+  cofpolitics.150.a:0 "我们会尽可能做到的。"
+  cofpolitics.150.b:0 "他们知道这是不可能的事情。"  
 
-  cofpolitics.151.title:0 ""
+  cofpolitics.151.title:0 "改革之风"
   cofpolitics.151.desc:0 ""
-  cofpolitics.151.a:0 ""
+  cofpolitics.151.a:0 "让我们快起来吧。"
 
-  cofpolitics.152.title:0 ""
+  cofpolitics.152.title:0 "不合作"
   cofpolitics.152.desc:0 ""
-  cofpolitics.152.a:0 ""
+  cofpolitics.152.a:0 "但愿这只是暂时的。"
 
-  cofpolitics.153.title:0 ""
+  cofpolitics.153.title:0 "与加香会面"
   cofpolitics.153.desc:0 ""
-  cofpolitics.153.a:0 ""
+  cofpolitics.153.a:0 "有什么不能聊的呢？"
 
-  cofpolitics.154.title:0 ""
+  cofpolitics.154.title:0 "务实的群众工作者"
   cofpolitics.154.desc:0 ""
-  cofpolitics.154.a:0 ""
+  cofpolitics.154.a:0 "农民的利益当然是首要的。"
+  cofpolitics.154.b:0 "小商贩们是我们经济的主要贡献者。"
+  cofpolitics.154.c:0 "知识分子昭示着公社的未来。"
 
-  cofpolitics.155.title:0 ""
-  cofpolitics.155.desc:0 ""
-  cofpolitics.155.a:0 ""
+  cofpolitics.155.title:0 "其他人？"
+  cofpolitics.155.desc.a:0 ""
+  cofpolitics.155.desc.b:0 ""
+  cofpolitics.155.desc.c:0 ""
+  cofpolitics.155.a:0 "我们当然不会忘记他们。"
+  cofpolitics.155.b:0 "他们当然很重要，但没有那么重要。"
+  cofpolitics.155.c:0 "这里就只有我们，没有其他人。"
 
-  cofpolitics.156.title:0 ""
+  cofpolitics.156.title:0 "成交"
   cofpolitics.156.desc:0 ""
-  cofpolitics.156.a:0 ""
+  cofpolitics.156.a:0 "任务繁重啊……"
 
-  cofpolitics.157.title:0 ""
+  cofpolitics.157.title:0 "怀疑"
   cofpolitics.157.desc:0 ""
-  cofpolitics.157.a:0 ""
+  cofpolitics.157.a:0 "我们要把精力集中在单一的地方。"
+  cofpolitics.157.b:0 "我们只是在说明优先级上的问题，而非是取舍。"
 
-  cofpolitics.158.title:0 ""
+  cofpolitics.158.title:0 "顾此失彼"
   cofpolitics.158.desc:0 ""
-  cofpolitics.158.a:0 ""
+  cofpolitics.158.a:0 "真是蛮不讲理。"
 
-  cofpolitics.159.title:0 ""
+  cofpolitics.159.title:0 "优先级"
   cofpolitics.159.desc:0 ""
-  cofpolitics.159.a:0 ""
+  cofpolitics.159.a:0 "慢慢来，总会解决的。"
 
-  cofpolitics.160.title:0 ""
+  cofpolitics.160.title:0 "迟疑，然后是离开"
   cofpolitics.160.desc:0 ""
-  cofpolitics.160.a:0 ""
+  cofpolitics.160.a:0 "这算是我们自找的？"
 
-  cofpolitics.161.title:0 ""
-  cofpolitics.161.desc:0 ""
-  cofpolitics.161.a:0 ""
+  cofpolitics.161.title:0 "重归于好"
+  cofpolitics.161.desc.a:0 ""
+  cofpolitics.161.desc.b:0 ""
+  cofpolitics.161.a:0 "欢迎回来，同志。"
 
-  cofpolitics.162.title:0 ""
-  cofpolitics.162.desc:0 ""
-  cofpolitics.162.a:0 ""
+  cofpolitics.162.title:0 "事不过三"
+  cofpolitics.162.desc.a:0 ""
+  cofpolitics.162.desc.b:0 ""
+  cofpolitics.162.a:0 "他们并没有看走眼。"
 
-  cofpolitics.163.title:0 ""
-  cofpolitics.163.desc:0 ""
-  cofpolitics.163.a:0 ""
+  cofpolitics.163.title:0 "效率就是生命"
+  cofpolitics.163.desc.a:0 ""
+  cofpolitics.163.desc.b:0 ""
+  cofpolitics.163.a:0 "就感到快。"
 
-  cofpolitics.164.title:0 ""
-  cofpolitics.164.desc:0 ""
-  cofpolitics.164.a:0 ""
+  cofpolitics.164.title:0 "失望透顶"
+  cofpolitics.164.desc.a:0 ""
+  cofpolitics.164.desc.b:0 ""
+  cofpolitics.164.a:0 "官僚们应该做好他们的本职工作。"
 
-  cofpolitics.165.title:0 ""
-  cofpolitics.165.desc:0 ""
-  cofpolitics.165.a:0 ""
+  cofpolitics.165.title:0 "不被遗忘的人们"
+  cofpolitics.165.desc.a:0 ""
+  cofpolitics.165.desc.b:0 ""
+  cofpolitics.165.desc.c:0 ""
+  cofpolitics.165.desc.d:0 ""
+  cofpolitics.165.desc.e:0 ""
+  cofpolitics.165.a:0 "我们从未抛弃任何一个人。"
 
-  cofpolitics.166.title:0 ""
-  cofpolitics.166.desc:0 ""
-  cofpolitics.166.a:0 ""
+  cofpolitics.166.title:0 "遥远的人们"
+  cofpolitics.166.desc.a:0 ""
+  cofpolitics.166.desc.b:0 ""
+  cofpolitics.166.desc.c:0 ""
+  cofpolitics.166.desc.d:0 ""
+  cofpolitics.166.desc.e:0 ""
+  cofpolitics.166.a:0 "我们又一次辜负他们了。"
 
-  cofpolitics.167.title:0 ""
+  cofpolitics.167.title:0 "百年大梦"
   cofpolitics.167.desc:0 ""
-  cofpolitics.167.a:0 ""
+  cofpolitics.167.a:0 "从第一步开始。"
 
-  cofpolitics.168.title:0 ""
+  cofpolitics.168.title:0 "从无到有"
   cofpolitics.168.desc:0 ""
-  cofpolitics.168.a:0 ""
+  cofpolitics.168.a:0 "真正开始了。"
+
+  cofpolitics.169.title:0 "披荆斩棘"
+  cofpolitics.169.desc:0 ""
+  cofpolitics.169.a:0 "如火如荼！"
+
+  cofpolitics.170.title:0 "精雕细琢"
+  cofpolitics.170.desc:0 ""
+  cofpolitics.170.a:0 "这件事要耐心点。"
+
+  cofpolitics.171.title:0 "“这是梦吗？”"
+  cofpolitics.171.desc:0 ""
+  cofpolitics.171.a:0 "“我们活在现实！”"
+
+  cofpolitics.172.title:0 "重启1925年计划"
+  cofpolitics.172.desc:0 ""
+  cofpolitics.172.a:0 "再一次启航！"
+  restart_1925_plan:0 "我们已经决定重启1925年计划"
+
+  cofpolitics.173.title:0 ""
+  cofpolitics.173.desc:0 ""
+  cofpolitics.173.a:0 ""
+
+  cofpolitics.174.title:0 ""
+  cofpolitics.174.desc:0 ""
+  cofpolitics.174.a:0 ""
+
+  cofpolitics.17s.title:0 ""
+  cofpolitics.175.desc:0 ""
+  cofpolitics.175.a:0 ""
+
+  cofpolitics.176.title:0 ""
+  cofpolitics.176.desc:0 ""
+  cofpolitics.176.a:0 ""
+
+  cofpolitics.177.title:0 ""
+  cofpolitics.177.desc:0 ""
+  cofpolitics.177.a:0 ""
+
+  cofpolitics.178.title:0 ""
+  cofpolitics.178.desc:0 ""
+  cofpolitics.178.a:0 ""
+
+  cofpolitics.179.title:0 ""
+  cofpolitics.179.desc:0 ""
+  cofpolitics.179.a:0 ""
+
+  cofpolitics.180.title:0 ""
+  cofpolitics.180.desc:0 ""
+  cofpolitics.180.a:0 ""
+
+  cofpolitics.181.title:0 ""
+  cofpolitics.181.desc:0 ""
+  cofpolitics.181.a:0 ""
+
+  cofpolitics.182.title:0 ""
+  cofpolitics.182.desc:0 ""
+  cofpolitics.182.a:0 ""
+
+  cofpolitics.183.title:0 ""
+  cofpolitics.183.desc:0 ""
+  cofpolitics.183.a:0 ""
+
+  cofpolitics.184.title:0 ""
+  cofpolitics.184.desc:0 ""
+  cofpolitics.184.a:0 ""
+
+  cofpolitics.185.title:0 ""
+  cofpolitics.185.desc:0 ""
+  cofpolitics.185.a:0 ""
+
+  cofpolitics.186.title:0 ""
+  cofpolitics.186.desc:0 ""
+  cofpolitics.186.a:0 ""
+
+  cofpolitics.187.title:0 ""
+  cofpolitics.187.desc:0 ""
+  cofpolitics.187.a:0 ""
+
+  cofpolitics.188.title:0 ""
+  cofpolitics.188.desc:0 ""
+  cofpolitics.188.a:0 ""
+
+  cofpolitics.189.title:0 ""
+  cofpolitics.189.desc:0 ""
+  cofpolitics.189.a:0 ""
 
   cofpolitics.1000.title.a:0 "总议会通过议案"
   cofpolitics.1000.title.b:0 "总议会否决议案"
@@ -1167,3 +1806,128 @@
   desc_argue_result_021:0 "这是一场令人沮丧的辩论。从一开始，我们就处在被动防守的境地，只能勉强招架对手一轮又一轮的攻势。尽管我们拼尽全力扳回一局平手，但最终还是无力回天。反对派的胜利是理所当然的，我们必须承认，在这次交锋中，我们的准备远不如人。"
   desc_argue_result_020:0 "一场彻头彻尾的溃败。我们的每一个论点都被对方无情地解构、批驳得体无完肤。讲堂里弥漫着失败的气息，支持者们士气低落，而反对者的阵营则爆发出毫不掩饰的嘲笑与喝彩。我们被沉默了，被压制了。在这场交锋中，我们输得毫无悬念。"
   cofpolitics.1005.a:0 "静待命运的裁决。"
+
+  cofpolitics.1006.title:0 ""
+  cofpolitics.1006.desc:0 ""
+  cofpolitics.1006.a:0 ""
+  cofpolitics.1006.b:0 ""
+
+  cofpolitics.1007.title:0 ""
+  cofpolitics.1007.desc:0 ""
+  cofpolitics.1007.a:0 ""
+  cofpolitics.1007.b:0 ""
+
+  cofpolitics.1008.title:0 ""
+  cofpolitics.1008.desc:0 ""
+  cofpolitics.1008.a:0 ""
+  cofpolitics.1008.b:0 ""
+
+  cofpolitics.1009.title:0 ""
+  cofpolitics.1009.desc:0 ""
+  cofpolitics.1009.a:0 ""
+  cofpolitics.1009.b:0 ""
+
+  cofpolitics.1010.title:0 ""
+  cofpolitics.1010.desc:0 ""
+  cofpolitics.1010.a:0 ""
+  cofpolitics.1010.b:0 ""
+
+  cofpolitics.1011.title:0 ""
+  cofpolitics.1011.desc:0 ""
+  cofpolitics.1011.a:0 ""
+  cofpolitics.1011.b:0 ""
+
+  cofpolitics.1012.title:0 ""
+  cofpolitics.1012.desc:0 ""
+  cofpolitics.1012.a:0 ""
+  cofpolitics.1012.b:0 ""
+
+  cofpolitics.1013.title:0 ""
+  cofpolitics.1013.desc:0 ""
+  cofpolitics.1013.a:0 ""
+  cofpolitics.1013.b:0 ""
+
+  cofpolitics.1014.title:0 ""
+  cofpolitics.1014.desc:0 ""
+  cofpolitics.1014.a:0 ""
+  cofpolitics.1014.b:0 ""
+
+  cofpolitics.1015.title:0 ""
+  cofpolitics.1015.desc:0 ""
+  cofpolitics.1015.a:0 ""
+  cofpolitics.1015.b:0 ""
+
+  cofpolitics.1016.title:0 ""
+  cofpolitics.1016.desc:0 ""
+  cofpolitics.1016.a:0 ""
+  cofpolitics.1016.b:0 ""
+
+  cofpolitics.1017.title:0 ""
+  cofpolitics.1017.desc:0 ""
+  cofpolitics.1017.a:0 ""
+  cofpolitics.1017.b:0 ""
+
+  cofpolitics.1018.title:0 ""
+  cofpolitics.1018.desc:0 ""
+  cofpolitics.1018.a:0 ""
+  cofpolitics.1018.b:0 ""
+
+  cofpolitics.1019.title:0 ""
+  cofpolitics.1019.desc:0 ""
+  cofpolitics.1019.a:0 ""
+  cofpolitics.1019.b:0 ""
+
+  cofpolitics.1020.title:0 ""
+  cofpolitics.1020.desc:0 ""
+  cofpolitics.1020.a:0 ""
+  cofpolitics.1020.b:0 ""
+
+  cofpolitics.1021.title:0 ""
+  cofpolitics.1021.desc:0 ""
+  cofpolitics.1021.a:0 ""
+  cofpolitics.1021.b:0 ""
+
+  cofpolitics.1022.title:0 ""
+  cofpolitics.1022.desc:0 ""
+  cofpolitics.1022.a:0 ""
+  cofpolitics.1022.b:0 ""
+
+  cofpolitics.1023.title:0 ""
+  cofpolitics.1023.desc:0 ""
+  cofpolitics.1023.a:0 ""
+  cofpolitics.1023.b:0 ""
+
+  cofpolitics.1024.title:0 ""
+  cofpolitics.1024.desc:0 ""
+  cofpolitics.1024.a:0 ""
+  cofpolitics.1024.b:0 ""
+
+  cofpolitics.1025.title:0 ""
+  cofpolitics.1025.desc:0 ""
+  cofpolitics.1025.a:0 ""
+  cofpolitics.1025.b:0 ""
+
+  cofpolitics.1026.title:0 ""
+  cofpolitics.1026.desc:0 ""
+  cofpolitics.1026.a:0 ""
+  cofpolitics.1026.b:0 ""
+
+  cofpolitics.1027.title:0 ""
+  cofpolitics.1027.desc:0 ""
+  cofpolitics.1027.a:0 ""
+  cofpolitics.1027.b:0 ""
+
+  cofpolitics.1028.title:0 ""
+  cofpolitics.1028.desc:0 ""
+  cofpolitics.1028.a:0 ""
+  cofpolitics.1028.b:0 ""
+
+  cofpolitics.1029.title:0 ""
+  cofpolitics.1029.desc:0 ""
+  cofpolitics.1029.a:0 ""
+  cofpolitics.1029.b:0 ""
+
+  cofpolitics.1030.title:0 ""
+  cofpolitics.1030.desc:0 ""
+  cofpolitics.1030.a:0 ""
+  cofpolitics.1030.b:0 ""

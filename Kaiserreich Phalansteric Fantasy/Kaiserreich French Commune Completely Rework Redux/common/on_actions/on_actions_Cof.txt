@@ -31,9 +31,15 @@ on_actions = {
                 add_victory_points = { province = 6775 value = 1 }
                 add_victory_points = { province = 9745 value = 1 }
 
+                set_country_flag = gui_politics_bgtvscsp
+                set_country_flag = gui_society_popw
+                set_country_flag = gui_economy_ev
+                set_country_flag = gui_military_aa
+
                 country_event = cofpolitics.1
                 country_event = { id = cofpolitics.14 days = 180 random_days = 30 }
-                country_event = { id = cofpolitics.15 days = 797 random_hours = 12 }
+                country_event = { id = cofpolitics.15 days = 813 random_hours = 12 }
+                country_event = { id = cofpolitics.16 days = 999 random_hours = 12 }
 
                 country_event = { id = cofeconomy.2 days = 132 random_hours = 18 }
                 country_event = { id = cofeconomy.6 days = 60 random_days = 30 }
@@ -659,9 +665,10 @@ on_actions = {
                 multiply_variable = { factory_used_in_consumer = 0.005 }	
             }
 
-            #internatonale
-            phalanstere_buff_judge = yes
+            #mode
+            midway_society_build_monthly_change_judge = yes
 
+            #internatonale
             if = {
                 limit = { FRA = { has_completed_focus = FRA_found_the_phalanstere_international } }
                 clear_array = global.phalanstere_member
@@ -670,6 +677,11 @@ on_actions = {
                     limit = { FRA_is_phalanstere_member = yes }
                     add_to_array = { global.phalanstere_member = THIS.id }
                 }
+                every_country = {
+                    limit = { FRA_is_phalanstere_member = yes }
+                    phalanstere_buff_judge = yes
+                }
+                phalanstere_unity_change_monthly = yes
             }
 
             if = {
@@ -1000,7 +1012,6 @@ on_actions = {
             set_temp_variable = { ppvc = modifier@monthly_change_bgt_vs_csp }
             cof_politics_BGT_vs_CSP_values_change = yes
 
-            phalanstere_unity_change_monthly = yes
             set_temp_variable = { phauc = phauc_monthly }
             phalanstere_unity_change = yes
 
@@ -1017,6 +1028,18 @@ on_actions = {
 				set_temp_variable = { bc = t }
 				set_temp_variable = { ac = t }
 				class_pop_satisfactions_change = yes
+            }
+
+            if = {
+                limit = { has_country_flag = establish_national_news }
+                national_news_buff_get = yes
+
+                national_news_var_get = yes
+            }
+
+            if = {
+                limit = { has_completed_focus = FRA_midway_society }
+                add_to_variable = { mws = mwsmc }
             }
         }
     }

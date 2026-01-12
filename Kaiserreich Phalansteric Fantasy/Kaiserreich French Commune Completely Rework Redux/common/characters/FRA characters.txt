@@ -273,7 +273,7 @@ characters = {
 					else = {
 						set_country_flag = FRA_vincent_auriol_effect
 
-						custom_effect_tooltip = efffect_economy
+						custom_effect_tooltip = effect_economy
 						set_temp_variable = { esyndc = 1.5 }
 						set_temp_variable = { eoppoc = -0.5 }
 						set_temp_variable = { ejacoc = -0.5 }
@@ -1001,6 +1001,7 @@ characters = {
 						Cof_economy_model_change = yes
 						
 						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { epc = 0 }
 						set_temp_variable = { evc = 5 }
 						set_temp_variable = { eibc = 2.5 }
 						set_temp_variable = { eipc = 0 }
@@ -1091,47 +1092,6 @@ characters = {
 			}
 			traits = { KR_adventurous_daredevil }
 			desc = FRA_jacques_sadoul_advisor_desc
-		}
-	}
-
-	FRA_irene_and_frederic_joliot_curie = { #伊雷娜&弗雷德里克·约里奥-居里
-		name = FRA_irene_and_frederic_joliot_curie
-		portraits = {
-			civilian = {
-				small = GFX_portrait_FRA_irene_and_frederic_joliot_curie_civilian_small
-			}
-		}
-		advisor = {
-			slot = theorist
-			idea_token = FRA_irene_and_frederic_joliot_curie
-			ledger = army
-			research_bonus = {
-				nuclear = 0.5
-			}
-			traits = { FRA_atomic_pair }
-			desc = FRA_irene_and_frederic_joliot_curie_theorist_desc
-			cost = 150
-			on_add = {
-				FRA = {
-					if = { limit = { has_country_flag = FRA_irene_and_frederic_joliot_curie_effect } }
-					else = {
-						set_country_flag = FRA_irene_and_frederic_joliot_curie_effect
-						
-						custom_effect_tooltip = effect_economy
-						set_temp_variable = { evc = 0 }
-						set_temp_variable = { eibc = 0 }
-						set_temp_variable = { eipc = 0 }
-						set_temp_variable = { eiac = 0 }
-						set_temp_variable = { eamc = 0 }
-						set_temp_variable = { eaec = 0 }
-						set_temp_variable = { eaac = 0 }
-						set_temp_variable = { eqc = 0 }
-						set_temp_variable = { elc = 0 }
-						set_temp_variable = { eic = 10 }
-						cof_econ_target_change = yes
-					}
-				}
-			}
 		}
 	}
 
@@ -1531,6 +1491,7 @@ characters = {
 						Cof_economy_model_change = yes
 					
 						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { epc = 0 }
 						set_temp_variable = { evc = 2.5 }
 						set_temp_variable = { eibc = 2.5 }
 						set_temp_variable = { eipc = 2.5 }
@@ -2458,12 +2419,12 @@ characters = {
 		name = FRA_francois_darlan
 		portraits = {
 			army = {
-				large = GFX_portrait_FRA_francois_darlan_army_large
-				small = GFX_portrait_FRA_francois_darlan_army_small
+				large = GFX_portrait_FRA_francois_darlan_navy_large
+				small = GFX_portrait_FRA_francois_darlan_navy_small
 			}
 		}
 		navy_leader = {
-			desc = FRA_francois_darlan_admiral_desc
+			desc = FRA_francois_darlan_navy_chief_desc
 			traits = { bold naval_lineage superior_tactician }
 			skill = 3
 			attack_skill = 2
@@ -3046,40 +3007,42 @@ characters = {
 	FRA_raoul_castex = {
 		name = FRA_raoul_castex
 		portraits = {
-			army = {
-				large = GFX_portrait_FRA_raoul_castex_army_large
-				small = GFX_portrait_FRA_raoul_castex_army_small
+			navy = {
+				large = GFX_portrait_FRA_raoul_castex_navy_large
+				small = GFX_portrait_FRA_raoul_castex_navy_small
 			}
 		}
 		navy_leader = {
-			desc = FRA_raoul_castex_admiral_desc
-			traits = { superior_tactician battleship_adherent }
+			desc = FRA_raoul_castex_navy_chief_desc
+			traits = { naval_lineage caustic_personality bold superior_tactician spotter }
 			skill = 3
-			attack_skill = 2
-			defense_skill = 3
-			maneuvering_skill = 2
-			coordination_skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			maneuvering_skill = 3
+			coordination_skill = 2
 		}
 		advisor = {
 			slot = navy_chief
+			idea_token = FRA_raoul_castex_navy_chief
 			available = {
 				not_already_hired_except_as = navy_chief
 			}
-			idea_token = FRA_raoul_castex_navy_chief
 			traits = { KR_navy_chief_manoeuvre_3 }
 			cost = 200
 		}
 		advisor = {
 			slot = theorist
 			idea_token = FRA_raoul_castex_theorist
+			desc = FRA_raoul_castex_navy_chief_desc
 			ledger = navy
 			available = {
 				not_already_hired_except_as = theorist
 			}
-			traits = { KR_submarine_specialist }
-			cost = 150
+			traits = { KR_naval_theorist }
+			cost = 100
 		}
 	}
+
 	FRA_andre_georges_lemmonier = {
 		name = FRA_andre_georges_lemmonier
 		portraits = {
@@ -3105,30 +3068,147 @@ characters = {
 			cost = 100
 		}
 	}
-	
-	
-	FRA_marcel_gensoul = {
-		name = FRA_marcel_gensoul
+	FRA_paul_ortoli = {
+		name = FRA_paul_ortoli
 		portraits = {
-			army = {
-				large = GFX_portrait_FRA_marcel_gensoul_army_large
-				small = GFX_portrait_FRA_marcel_gensoul_army_small
+			navy = {
+				large = GFX_portrait_FRA_paul_ortoli_navy_large
+				small = GFX_portrait_FRA_paul_ortoli_navy_small
 			}
 		}
 		navy_leader = {
-			desc = FRA_marcel_gensoul_admiral_desc
-			traits = { ironside seawolf }
-			skill = 2
-			attack_skill = 3
+			desc = FRA_paul_ortoli_high_command_desc
+			traits = { gunnery_expert seawolf }
+			skill = 1
+			attack_skill = 1
 			defense_skill = 1
-			maneuvering_skill = 2
+			maneuvering_skill = 1
 			coordination_skill = 1
 		}
 		advisor = {
 			slot = high_command
-			idea_token = FRA_marcel_gensoul
+			idea_token = FRA_paul_ortoli_high_command
 			ledger = navy
-			traits = { KR_MHC_submarine_2 }
+			traits = { KR_MHC_capital_ship_1 }
+			cost = 50
+		}
+	}
+	FRA_louis_de_villefosse = {
+		name = FRA_louis_de_villefosse
+		portraits = {
+			navy = {
+				large = GFX_portrait_FRA_louis_de_villefosse_navy_large
+				small = GFX_portrait_FRA_louis_de_villefosse_navy_small
+			}
+		}
+		navy_leader = {
+			desc = FRA_louis_de_villefosse_high_command_desc
+			traits = { fleet_protector }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			maneuvering_skill = 1
+			coordination_skill = 1
+		}
+	}
+	FRA_raymond_moullec = {
+		name = FRA_raymond_moullec
+		portraits = {
+			navy = {
+				large = GFX_portrait_FRA_raymond_moullec_navy_large
+				small = GFX_portrait_FRA_raymond_moullec_navy_small
+			}
+		}
+		navy_leader = {
+			desc = FRA_raymond_moullec_high_command_desc
+			traits = { gunnery_expert }
+			skill = 1
+			attack_skill = 1
+			defense_skill = 1
+			maneuvering_skill = 1
+			coordination_skill = 1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = FRA_raymond_moullec_high_command
+			ledger = navy
+			traits = { KR_MHC_fleet_logistics_1 }
+			cost = 50
+		}
+	}
+	
+	FRA_robert_jaujard = {
+		name = FRA_robert_jaujard
+		portraits = {
+			navy = {
+				large = GFX_portrait_FRA_robert_jaujard_navy_large
+				small = GFX_portrait_FRA_robert_jaujard_navy_small
+			}
+		}
+		navy_leader = {
+			desc = FRA_robert_jaujard_high_command_desc
+			traits = { superior_tactician }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			maneuvering_skill = 3
+			coordination_skill = 1
+		}
+		advisor = {
+			slot = high_command
+			idea_token = FRA_robert_jaujard_high_command
+			ledger = navy
+			traits = { KR_MHC_screen_2 }
+			cost = 100
+		}
+	}
+	
+	FRA_marcel_gensoul = {
+		name = FRA_marcel_gensoul
+		portraits = {
+			navy = {
+				large = GFX_portrait_FRA_marcel_gensoul_navy_large
+				small = GFX_portrait_FRA_marcel_gensoul_navy_small
+			}
+		}
+		navy_leader = {
+			desc = FRA_marcel_gensoul_high_command_desc
+			traits = { fleet_protector lancer }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 2
+			maneuvering_skill = 2
+			coordination_skill = 4
+		}
+		advisor = {
+			slot = high_command
+			idea_token = FRA_marcel_gensoul_high_command
+			ledger = navy
+			traits = { KR_MHC_anti_submarine_2 }
+			cost = 100
+		}
+	}
+	FRA_emile_muselier = {
+		name = FRA_emile_muselier
+		portraits = {
+			navy = {
+				large = GFX_portrait_FRA_emile_muselier_navy_large
+				small = GFX_portrait_FRA_emile_muselier_navy_small
+			}
+		}
+		navy_leader = {
+			desc = FRA_emile_muselier_navy_chief_desc
+			traits = { chief_engineer blockade_runner concealment_expert substance_abuser }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 2
+			maneuvering_skill = 2
+			coordination_skill = 3
+		}
+		advisor = {
+			slot = navy_chief
+			idea_token = FRA_emile_muselier_navy_chief
+			traits = { KR_navy_chief_reform_2 }
 			cost = 100
 		}
 	}

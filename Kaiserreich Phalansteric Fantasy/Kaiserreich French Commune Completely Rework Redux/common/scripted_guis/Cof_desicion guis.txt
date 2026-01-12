@@ -432,6 +432,15 @@ scripted_gui = {
             politics_ui_bgt_vs_csp_bgt_visible = {
                 check_variable = { Cof_BGT_vs_CSP_value < 0 }
             }
+
+            bgt_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            csp_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            ios_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_synd_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_oppo_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_jaco_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_sore_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            politics_landscape_visible = { has_country_flag = show_politics_landscape }
         }
         effects = {
             open_bgt_windows_click = {
@@ -452,6 +461,13 @@ scripted_gui = {
             }
             open_faction_desc_sore_click = {
                 country_event = cofpolitics.11
+            }
+            open_politics_landscape_click = {
+                if = {
+                    limit = { has_country_flag = show_politics_landscape }
+                    clr_country_flag = show_politics_landscape
+                }
+                else = { set_country_flag = show_politics_landscape }
             }
         }
         properties = {
@@ -488,11 +504,526 @@ scripted_gui = {
             add_ep_with_pp_click_enabled = {
                 has_political_power > 9.9
             }
+            add_pp_with_ep_click_enabled = {
+                check_variable = { economy_power > 19.9 }
+            }
+
+            politics_variable_list_show_visible = {
+                NOT = { has_country_flag = show_politics_variable_list }
+            }
+            politics_variable_list_hidden_visible = {
+                has_country_flag = show_politics_variable_list
+            }
+            polbgtvscsp_icon_visible = { has_country_flag = gui_politics_bgtvscsp }
+            polios_icon_visible = { has_country_flag = gui_politics_ios }
+            
+            polsynd_icon_visible = { has_country_flag = gui_politics_synd }
+            poloppo_icon_visible = { has_country_flag = gui_politics_oppo }
+            poljaco_icon_visible = { has_country_flag = gui_politics_jaco }
+            polsore_icon_visible = { has_country_flag = gui_politics_sore }
+
+            gui_politics_vote_text_visible = { has_country_flag = gui_politics_vote }
+
+            polirieu_icon_visible = { has_country_flag = gui_politics_irieu }
+            polirias_icon_visible = { has_country_flag = gui_politics_irias }
+            polirime_icon_visible = { has_country_flag = gui_politics_irime }
+            poliriaf_icon_visible = { has_country_flag = gui_politics_iriaf }
+            poliriam_icon_visible = { has_country_flag = gui_politics_iriam }
+
+            society_influence_list_show_visible = {
+                NOT = { has_country_flag = show_society_influence_list }
+            }
+            society_influence_list_hidden_visible = {
+                has_country_flag = show_society_influence_list
+            }
+            socw_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popw
+                    has_country_flag = gui_society_popsw
+                }
+            }
+            socp_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popp
+                    has_country_flag = gui_society_popsp
+                }
+            }
+            socm_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popm
+                    has_country_flag = gui_society_popsm
+                }
+            }
+            socs_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_pops
+                    has_country_flag = gui_society_popss
+                }
+            }
+            socb_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popb
+                    has_country_flag = gui_society_popsb
+                }
+            }
+            soca_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popa
+                    has_country_flag = gui_society_popsa
+                }
+            }
+            socpops_icon_visible = { has_country_flag = gui_society_popsall }
+
+            economy_variable_list_show_visible = {
+                NOT = { has_country_flag = show_economy_variable_list }
+            }
+            economy_variable_list_hidden_visible = {
+                has_country_flag = show_economy_variable_list
+            }
+            econv_icon_visible = { has_country_flag = gui_economy_ev }
+            econib_icon_visible = { has_country_flag = gui_economy_eib }
+            econip_icon_visible = { has_country_flag = gui_economy_eip }
+            econia_icon_visible = { has_country_flag = gui_economy_eia }
+            econam_icon_visible = { has_country_flag = gui_economy_eam }
+            econae_icon_visible = { has_country_flag = gui_economy_eae }
+            econaa_icon_visible = { has_country_flag = gui_economy_eaa }
+            econq_icon_visible = { has_country_flag = gui_economy_eq }
+            econl_icon_visible = { has_country_flag = gui_economy_el }
+            econi_icon_visible = { has_country_flag = gui_economy_ei }
+
+            econsynd_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_coop 
+                    has_country_flag = gui_economy_synd
+                }   
+            }
+            econoppo_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_market 
+                    has_country_flag = gui_economy_oppo
+                }   
+            }
+            econjaco_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_plan
+                    has_country_flag = gui_economy_jaco
+                }   
+            }
+            econsore_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_order 
+                    has_country_flag = gui_economy_sore
+                }   
+            }
+
+            gui_economy_focus_text_visible = { has_country_flag = gui_economy_focus }
+
+            army_reform_variable_list_show_visible = {
+                NOT = { has_country_flag = show_army_reform_variable_list }
+            }
+            army_reform_variable_list_hidden_visible = {
+                has_country_flag = show_army_reform_variable_list
+            }
+            miliao_icon_visible = { has_country_flag = gui_military_popao }
+            milian_icon_visible = { has_country_flag = gui_military_popan }
+            milias_icon_visible = { has_country_flag = gui_military_popas }
+
+            miliaa_icon_visible = { has_country_flag = gui_military_aa }
+            miliaw_icon_visible = { has_country_flag = gui_military_aw }
+            miliat_icon_visible = { has_country_flag = gui_military_at }
+            miliae_icon_visible = { has_country_flag = gui_military_ae }
+            miliap_icon_visible = { has_country_flag = gui_military_ap }
+
+            milisynd_icon_visible = { has_country_flag = gui_military_synd }
+            milioppo_icon_visible = { has_country_flag = gui_military_oppo }
+            milijaco_icon_visible = { has_country_flag = gui_military_jaco }
+            milisore_icon_visible = { has_country_flag = gui_military_sore }
         }
         effects = {
             add_ep_with_pp_click = {
                 add_political_power = -10
                 add_to_variable = { economy_power = 10 }
+            }
+            add_pp_with_ep_click = {
+                add_to_variable = { economy_power = -20 }
+                add_political_power = 10
+            }
+
+            politics_variable_list_show_click = {
+                set_country_flag = show_politics_variable_list 
+            }
+            politics_variable_list_hidden_click = {
+                clr_country_flag = show_politics_variable_list
+            }
+
+            society_influence_list_show_click = {
+                set_country_flag = show_society_influence_list
+            }
+            society_influence_list_hidden_click = {
+                clr_country_flag = show_society_influence_list
+            }
+
+            economy_variable_list_show_click = {
+                set_country_flag = show_economy_variable_list 
+            }
+            economy_variable_list_hidden_click = {
+                clr_country_flag = show_economy_variable_list
+            }
+
+            army_reform_variable_list_show_click = {
+                set_country_flag = show_army_reform_variable_list 
+            }
+            army_reform_variable_list_hidden_click = {
+                clr_country_flag = show_army_reform_variable_list
+            }
+        }
+    }
+
+    show_the_politics_variable_list = {
+        context_type = player_context
+        window_name = politics_variable_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_politics_variable_list
+        }
+        triggers = {
+            bgtvscspicon_chosen_visible = { has_country_flag = gui_politics_bgtvscsp }
+            iosicon_chosen_visible = { has_country_flag = gui_politics_ios }
+            
+            syndicon_chosen_visible = { has_country_flag = gui_politics_synd }
+            oppoicon_chosen_visible = { has_country_flag = gui_politics_oppo }
+            jacoicon_chosen_visible = { has_country_flag = gui_politics_jaco }
+            soreicon_chosen_visible = { has_country_flag = gui_politics_sore }
+
+            voteicon_chosen_visible = { has_country_flag = gui_politics_vote }
+
+            irieuicon_chosen_visible = { has_country_flag = gui_politics_irieu }
+            iriasicon_chosen_visible = { has_country_flag = gui_politics_irias }
+            irimeicon_chosen_visible = { has_country_flag = gui_politics_irime }
+            iriaficon_chosen_visible = { has_country_flag = gui_politics_iriaf }
+            iriamicon_chosen_visible = { has_country_flag = gui_politics_iriam }
+        }
+        effects = {
+            bgtvscsp_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_bgtvscsp
+            }
+            ios_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_ios
+            }
+
+            synd_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_synd
+            }
+            oppo_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_oppo
+            }
+            jaco_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_jaco
+            }
+            sore_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_sore
+            }
+        
+            vote_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_vote
+            }
+
+            irieu_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_irieu
+            }
+            irias_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_irias
+            }
+            irime_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_irime
+            }
+            iriaf_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_iriaf
+            }
+            iriam_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_iriam
+            }
+        }
+    }
+
+    show_the_society_influence_list = {
+        context_type = player_context
+        window_name = society_influence_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_society_influence_list
+        }
+        triggers = {
+            popwicon_chosen_visible = { has_country_flag = gui_society_popw }
+            poppicon_chosen_visible = { has_country_flag = gui_society_popp }
+            popmicon_chosen_visible = { has_country_flag = gui_society_popm }
+            popsicon_chosen_visible = { has_country_flag = gui_society_pops }
+            popbicon_chosen_visible = { has_country_flag = gui_society_popb }
+            popaicon_chosen_visible = { has_country_flag = gui_society_popa }
+
+            popsallicon_chosen_visible = { has_country_flag = gui_society_popsall }
+
+            popswicon_chosen_visible = { has_country_flag = gui_society_popsw }
+            popspicon_chosen_visible = { has_country_flag = gui_society_popsp }
+            popsmicon_chosen_visible = { has_country_flag = gui_society_popsm }
+            popssicon_chosen_visible = { has_country_flag = gui_society_popss }
+            popsbicon_chosen_visible = { has_country_flag = gui_society_popsb }
+            popsaicon_chosen_visible = { has_country_flag = gui_society_popsa }
+        }
+        effects = {
+            popw_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popw
+            }
+            popp_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popp
+            }
+            popm_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popm
+            }
+            pops_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_pops
+            }
+            popb_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popb
+            }
+            popa_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popa
+            }
+
+            popsall_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsall
+            }
+            popsw_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsw
+            }
+            popsp_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsp
+            }
+            popsm_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsm
+            }
+            popss_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popss
+            }
+            popsb_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsb
+            }
+            popsa_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsa
+            }
+        }
+    }
+
+    show_the_economy_variable_list = {
+        context_type = player_context
+        window_name = economy_variable_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_economy_variable_list
+        }
+        triggers = {
+            evicon_chosen_visible = { has_country_flag = gui_economy_ev }
+            eibicon_chosen_visible = { has_country_flag = gui_economy_eib }
+            eipicon_chosen_visible = { has_country_flag = gui_economy_eip }
+            eiaicon_chosen_visible = { has_country_flag = gui_economy_eia }
+            eamicon_chosen_visible = { has_country_flag = gui_economy_eam }
+            eaeicon_chosen_visible = { has_country_flag = gui_economy_eae }
+            eaaicon_chosen_visible = { has_country_flag = gui_economy_eaa }
+            eqicon_chosen_visible = { has_country_flag = gui_economy_eq }
+            elicon_chosen_visible = { has_country_flag = gui_economy_el }
+            eiicon_chosen_visible = { has_country_flag = gui_economy_ei }
+
+            coopicon_chosen_visible = { has_country_flag = gui_economy_coop }
+            marketicon_chosen_visible = { has_country_flag = gui_economy_market }
+            planicon_chosen_visible = { has_country_flag = gui_economy_plan }
+            ordericon_chosen_visible = { has_country_flag = gui_economy_order }
+            econfocusicon_chosen_visible = { has_country_flag = gui_economy_focus }
+
+            econsyndicon_chosen_visible = { has_country_flag = gui_economy_synd }
+            econoppoicon_chosen_visible = { has_country_flag = gui_economy_oppo }
+            econjacoicon_chosen_visible = { has_country_flag = gui_economy_jaco }
+            econsoreicon_chosen_visible = { has_country_flag = gui_economy_sore }
+        }
+        effects = {
+            ev_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_ev
+            }
+            eib_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eib
+            }
+            eip_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eip
+            }
+            eia_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eia
+            }
+            eam_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eam
+            }
+            eae_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eae
+            }
+            eaa_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eaa
+            }
+            eq_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eq
+            }
+            el_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_el
+            }
+            ei_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_ei
+            }
+
+            coop_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_coop
+            }
+            market_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_market
+            }
+            plan_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_plan
+            }
+            order_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_order
+            }
+            econfocus_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_focus
+            }
+
+            econsynd_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_synd
+            }
+            econoppo_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_oppo
+            }
+            econjaco_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_jaco
+            }
+            econsore_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_sore
+            }
+        }
+    }
+
+    show_the_army_reform_variable_list = {
+        context_type = player_context
+        window_name = army_reform_variable_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_army_reform_variable_list
+        }
+        triggers = {
+            popaoicon_chosen_visible = { has_country_flag = gui_military_popao }
+            popanicon_chosen_visible = { has_country_flag = gui_military_popan }
+            popasicon_chosen_visible = { has_country_flag = gui_military_popas }
+
+            aaicon_chosen_visible = { has_country_flag = gui_military_aa }
+            awicon_chosen_visible = { has_country_flag = gui_military_aw }
+            aticon_chosen_visible = { has_country_flag = gui_military_at }
+            aeicon_chosen_visible = { has_country_flag = gui_military_ae }
+            apicon_chosen_visible = { has_country_flag = gui_military_ap }
+
+            milisyndicon_chosen_visible = { has_country_flag = gui_military_synd }
+            milioppoicon_chosen_visible = { has_country_flag = gui_military_oppo }
+            milijacoicon_chosen_visible = { has_country_flag = gui_military_jaco }
+            milisoreicon_chosen_visible = { has_country_flag = gui_military_sore }
+        }
+        effects = {
+            popao_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_popao
+            }
+            popan_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_popan
+            }
+            popas_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_popas
+            }
+
+            aa_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_aa
+            }
+            aw_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_aw
+            }
+            at_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_at
+            }
+            ae_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_ae
+            }
+            ap_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_ap
+            }
+
+            milisynd_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_synd
+            }
+            milioppo_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_oppo
+            }
+            milijaco_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_jaco
+            }
+            milisore_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_sore
             }
         }
     }

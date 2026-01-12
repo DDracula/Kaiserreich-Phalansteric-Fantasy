@@ -1348,8 +1348,6 @@ guiTypes = {
 			}
 		}
 
-		
-
 		containerWindowType = {
 			name = "politics_faction_ui"
 			position = { x = 200 y = 200 }
@@ -1477,11 +1475,30 @@ guiTypes = {
 			clicksound = click_default
 			pdx_tooltip = open_faction_desc_tt
 		}
+
+		buttonType = {
+			name = "open_politics_landscape"
+			position = { x = 220 y = 690 }
+			scale = 1
+			quadTextureSprite ="GFX_idea_generic_constitutional_guarantees"
+			clicksound = click_default
+			pdx_tooltip = open_politics_landscape_tt
+		}
+
+		instantTextboxType = {
+			name = "politics_landscape"
+			position = { x = 15 y = 330 }
+			font = "hoi_18mbs"
+			text = politics_landscape_text
+			maxWidth = 470
+			maxHeight = 200
+			format = centre
+		}
 	}
 
 	containerWindowType = {
 		name = "ep_show_window"
-		position = { x = 1100 y = 5 }
+		position = { x = 1065 y = 5 }
 		size = { width = 70 height = 65 }
 		origo = upper_left
 		moveable = no
@@ -1494,14 +1511,12 @@ guiTypes = {
 			Orientation = "UPPER_LEFT"
 			pdx_tooltip = economy_power_gain_daily_tt    
 		}
-
 		iconType = {
 			name = "epicon"
 			spriteType = "GFX_economy_power_texticon"
 			position = { x = 2 y = 2 }
 			alwaystransparent = yes
 		} 
-
 		instantTextBoxType = {
 			name ="econ_power"
 			position = { x = 18 y = 2 }
@@ -1516,10 +1531,2460 @@ guiTypes = {
 
 		buttonType = {
 			name = "add_ep_with_pp"
-			position = { x = 72 y = 2 }
+			position = { x = 71 y = 2 }
 			quadTextureSprite ="GFX_boost_building_button"
 			clicksound = click_default
 			pdx_tooltip = add_ep_with_pp_tt
 		} 
+
+		iconType = {
+			name = "polpicon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = -45 y = -3 }
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "add_pp_with_ep"
+			position = { x = -23 y = 2 }
+			quadTextureSprite ="GFX_boost_building_button"
+			clicksound = click_default
+			pdx_tooltip = add_pp_with_ep_tt
+		} 
+
+		#政治
+		iconType ={
+			name = "politics_variable_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 95 y = 0 }
+			Orientation = "UPPER_LEFT" 
+		}
+		buttonType = {
+			name = "politics_variable_list_show"
+			position = { x = 165 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "politics_variable_list_hidden"
+			position = { x = 165 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+		#头标
+		iconType = {
+			name = "polbgtvscsp_icon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 98 y = -3 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "polios_icon"
+			spriteType = "GFX_pol_violence"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		iconType = {
+			name = "polsynd_icon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "poloppo_icon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "poljaco_icon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "polsore_icon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		iconType = {
+			name = "polirieu_icon"
+			spriteType = "GFX_international_europe_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "polirias_icon"
+			spriteType = "GFX_international_asia_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "polirime_icon"
+			spriteType = "GFX_international_middle_east_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "poliriaf_icon"
+			spriteType = "GFX_international_africa_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "poliriam_icon"
+			spriteType = "GFX_international_america_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		instantTextBoxType = {
+			name ="gui_politics_text"
+			position = { x = 111 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_politics]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		instantTextBoxType = {
+			name ="gui_politics_vote_text"
+			position = { x = 100 y = 2 }
+			font = "hoi_18mbs"
+			text = "[?agree_vote|.0G]/650"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		#社会
+		iconType ={
+			name = "society_influence_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 189 y = 0 }
+			Orientation = "UPPER_LEFT" 
+		}
+		buttonType = {
+			name = "society_influence_list_show"
+			position = { x = 259 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "society_influence_list_hidden"
+			position = { x = 259 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small" 
+		} 
+
+		#头标
+		#workers
+		iconType = {
+			name = "socw_icon"
+			spriteType = "GFX_pop_worker_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		}
+		#peasants
+		iconType = {
+			name = "socp_icon"
+			spriteType = "GFX_pop_peasant_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#merchants
+		iconType = {
+			name = "socm_icon"
+			spriteType = "GFX_pop_merchant_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#scholars
+		iconType = {
+			name = "socs_icon"
+			spriteType = "GFX_pop_scholar_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#bureaucrats
+		iconType = {
+			name = "socb_icon"
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#armys
+		iconType = {
+			name = "soca_icon"
+			spriteType = "GFX_pop_army_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#popsatiftion
+		iconType = {
+			name = "socpops_icon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 192 y = -3 }
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name ="gui_society_text"
+			position = { x = 205 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_society]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		#经济
+		iconType ={
+			name = "economy_variable_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 283 y = 0 }
+			Orientation = "UPPER_LEFT"
+		}
+		buttonType = {
+			name = "economy_variable_list_show"
+			position = { x = 353 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "economy_variable_list_hidden"
+			position = { x = 353 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small" 
+		} 
+
+		#头标
+		iconType = {
+			name = "econv_icon"
+			spriteType = "GFX_econ_value_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econib_icon"
+			spriteType = "GFX_econ_industry_basic_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econip_icon"
+			spriteType = "GFX_econ_industry_process_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econia_icon"
+			spriteType = "GFX_econ_industry_arms_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econam_icon"
+			spriteType = "GFX_econ_agriculture_mechanized_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econae_icon"
+			spriteType = "GFX_econ_agriculture_chemical_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econaa_icon"
+			spriteType = "GFX_econ_agriculture_chain_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econq_icon"
+			spriteType = "GFX_econ_equal_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econl_icon"
+			spriteType = "GFX_econ_link_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econi_icon"
+			spriteType = "GFX_econ_innovate_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		iconType = {
+			name = "econsynd_icon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econoppo_icon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econjaco_icon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econsore_icon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		instantTextBoxType = {
+			name ="gui_economy_text"
+			position = { x = 299 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_economy]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		instantTextBoxType = {
+			name ="gui_economy_focus_text"
+			position = { x = 288 y = 2 }
+			font = "hoi_18mbs"
+			text = "[?econfocus|G.0]/[?maxeconfocus|R.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		#军事
+		iconType ={
+			name = "army_reform_variable_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 377 y = 0 }
+			Orientation = "UPPER_LEFT"  
+		}
+		buttonType = {
+			name = "army_reform_variable_list_show"
+			position = { x = 447 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "army_reform_variable_list_hidden"
+			position = { x = 447 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+		#头标
+		iconType = {
+			name = "miliao_icon"
+			spriteType = "GFX_pop_officer_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "milian_icon"
+			spriteType = "GFX_pop_nco_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "milias_icon"
+			spriteType = "GFX_pop_soldier_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		iconType = {
+			name = "miliaa_icon"
+			spriteType = "GFX_army_autonomy_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliaw_icon"
+			spriteType = "GFX_army_willing_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliat_icon"
+			spriteType = "GFX_army_training_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliae_icon"
+			spriteType = "GFX_army_equipment_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliap_icon"
+			spriteType = "GFX_army_passionate_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		iconType = {
+			name = "milisynd_icon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "milioppo_icon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "milijaco_icon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "milisore_icon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		instantTextBoxType = {
+			name ="gui_military_text"
+			position = { x = 393 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_military]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+	}
+
+		
+	###数值显示
+	#政治
+	containerWindowType = {
+		name = "politics_variable_list"
+		position = { x = 1150 y = 30 }
+		size = { width = 92 height = 410 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#bgt vs csp
+		buttonType ={
+			name = "bgtvscsp_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "bgtvscspicon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 12 y = 8 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="bgtvscsp_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?Cof_BGT_vs_CSP_value|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "bgtvscspicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#ios
+		buttonType ={
+			name = "ios_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "iosicon"
+			spriteType = "GFX_pol_violence"
+			position = { x = 12 y = 42 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ios_text"
+			position = { x = 24 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?Cof_politics_intensity_of_struggle|R.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "iosicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#派系影响力
+		buttonType ={
+			name = "synd_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 80 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "syndicon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 12 y = 82 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="synd_text"
+			position = { x = 24 y = 82 }
+			font = "hoi_18mbs"
+			text = "[?infulence_synd|r.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "syndicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 79 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "oppo_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 110 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "oppoicon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 12 y = 112 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="oppo_text"
+			position = { x = 24 y = 112 }
+			font = "hoi_18mbs"
+			text = "[?infulence_oppo|R.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "oppoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 109 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "jaco_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 140 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "jacoicon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 12 y = 142 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="jaco_text"
+			position = { x = 24 y = 142 }
+			font = "hoi_18mbs"
+			text = "[?infulence_jaco|o.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "jacoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 139 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "sore_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 170 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "soreicon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 12 y = 172 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="sore_text"
+			position = { x = 24 y = 172 }
+			font = "hoi_18mbs"
+			text = "[?infulence_sore|x.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "soreicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 169 }
+			scale = 2
+			alwaystransparent = yes
+		}
+	
+		#议会
+		buttonType ={
+			name = "vote_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 210 }
+			Orientation = "UPPER_LEFT" 
+		}
+		instantTextBoxType = {
+			name ="vote_text"
+			position = { x = 14 y = 212 }
+			font = "hoi_18mbs"
+			text = "[?agree_vote|.0G]/650"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "voteicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 209 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#国际
+		buttonType ={
+			name = "irieu_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 250 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "irieuicon"
+			spriteType = "GFX_international_europe_texticon"
+			position = { x = 12 y = 252 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="irieu_text"
+			position = { x = 24 y = 252 }
+			font = "hoi_18mbs"
+			text = "[?iri_eui|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "irieuicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 249 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "irias_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 280 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "iriasicon"
+			spriteType = "GFX_international_asia_texticon"
+			position = { x = 12 y = 282 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="irias_text"
+			position = { x = 24 y = 282 }
+			font = "hoi_18mbs"
+			text = "[?iri_asi|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "iriasicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 279 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "irime_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 310 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "irimeicon"
+			spriteType = "GFX_international_middle_east_texticon"
+			position = { x = 12 y = 312 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="irime_text"
+			position = { x = 24 y = 312 }
+			font = "hoi_18mbs"
+			text = "[?iri_mei|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "irimeicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 309 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "iriaf_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 340 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "iriaficon"
+			spriteType = "GFX_international_africa_texticon"
+			position = { x = 12 y = 342 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="iriaf_text"
+			position = { x = 24 y = 342 }
+			font = "hoi_18mbs"
+			text = "[?iri_afi|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "iriaficon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 339 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "iriam_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 370 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "iriamicon"
+			spriteType = "GFX_international_america_texticon"
+			position = { x = 12 y = 372 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="iriam_text"
+			position = { x = 24 y = 372 }
+			font = "hoi_18mbs"
+			text = "[?iri_ami|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "iriamicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 369 }
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+
+	#社会
+	containerWindowType = {
+		name = "society_influence_list"
+		position = { x = 1244 y = 30 }
+		size = { width = 92 height = 550 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#影响力
+		#workers
+		buttonType ={
+			name = "popw_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popwicon"
+			spriteType = "GFX_pop_worker_texticon"
+			position = { x = 12 y = 12 }
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name ="popw_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?pop_workers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popwicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#peasants
+		buttonType ={
+			name = "popp_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "poppicon"
+			spriteType = "GFX_pop_peasant_texticon"
+			position = { x = 12 y = 42 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popp_text"
+			position = { x = 24 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?pop_peasants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "poppicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#merchants
+		buttonType ={
+			name = "popm_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 70 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popmicon"
+			spriteType = "GFX_pop_merchant_texticon"
+			position = { x = 12 y = 72 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popm_text"
+			position = { x = 24 y = 72 }
+			font = "hoi_18mbs"
+			text = "[?pop_merchants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popmicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 69 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#scholars
+		buttonType ={
+			name = "pops_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 100 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsicon"
+			spriteType = "GFX_pop_scholar_texticon"
+			position = { x = 12 y = 102 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="pops_text"
+			position = { x = 24 y = 102 }
+			font = "hoi_18mbs"
+			text = "[?pop_scholars|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 99 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#bureaucrats
+		buttonType ={
+			name = "popb_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 130 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popbicon"
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			position = { x = 12 y = 132 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popb_text"
+			position = { x = 24 y = 132 }
+			font = "hoi_18mbs"
+			text = "[?pop_bureaucrats|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popbicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 129 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#armys
+		buttonType ={
+			name = "popa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 160 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popaicon"
+			spriteType = "GFX_pop_army_texticon"
+			position = { x = 12 y = 162 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popa_text"
+			position = { x = 24 y = 162 }
+			font = "hoi_18mbs"
+			text = "[?pop_army|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 159 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+
+		#满意度
+		buttonType ={
+			name = "popsall_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 200 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsallicon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 10 y = 198 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsall_text"
+			position = { x = 24 y = 202 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsallicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 199 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#workers
+		buttonType ={
+			name = "popsw_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 230 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popswicon"
+			spriteType = "GFX_pop_worker_texticon"
+			position = { x = 12 y = 232 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsw_text"
+			position = { x = 24 y = 232 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_workers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popswicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 229 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#peasants
+		buttonType ={
+			name = "popsp_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 260 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popspicon"
+			spriteType = "GFX_pop_peasant_texticon"
+			position = { x = 12 y = 262 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsp_text"
+			position = { x = 24 y = 262 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_peasants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popspicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 259 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#merchants
+		buttonType ={
+			name = "popsm_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 290 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsmicon"
+			spriteType = "GFX_pop_merchant_texticon"
+			position = { x = 12 y = 292 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsm_text"
+			position = { x = 24 y = 292 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_merchants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsmicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 289 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#scholars
+		buttonType ={
+			name = "popss_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 320 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popssicon"
+			spriteType = "GFX_pop_scholar_texticon"
+			position = { x = 12 y = 322 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popss_text"
+			position = { x = 24 y = 322 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_scholars|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popssicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 319 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#bureaucrats
+		buttonType ={
+			name = "popsb_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 350 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsbicon"
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			position = { x = 12 y = 352 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsb_text"
+			position = { x = 24 y = 352 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_bureaucrats|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsbicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 349 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#armys
+		buttonType ={
+			name = "popsa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 380 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsaicon"
+			spriteType = "GFX_pop_army_texticon"
+			position = { x = 12 y = 382 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsa_text"
+			position = { x = 24 y = 382 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_army|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 379 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#派系倾向
+		buttonType ={
+			name = "popsynd_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 420 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsyndicon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 12 y = 422 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsynd_text"
+			position = { x = 24 y = 422 }
+			font = "hoi_18mbs"
+			text = "[gui_popsynd]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType ={
+			name = "popoppo_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 450 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popoppoicon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 12 y = 452 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popoppo_text"
+			position = { x = 24 y = 452 }
+			font = "hoi_18mbs"
+			text = "[gui_popoppo]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType ={
+			name = "popjaco_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 480 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popjacoicon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 12 y = 482 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popjaco_text"
+			position = { x = 24 y = 482 }
+			font = "hoi_18mbs"
+			text = "[gui_popjaco]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType ={
+			name = "popsore_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 510 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsoreicon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 12 y = 512 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsore_text"
+			position = { x = 24 y = 512 }
+			font = "hoi_18mbs"
+			text = "[gui_popsore]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+	}
+
+	#经济
+	containerWindowType = {
+		name = "economy_variable_list"
+		position = { x = 1338 y = 30 }
+		size = { width = 92 height = 610 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#经济指标
+		#ev
+		buttonType ={
+			name = "ev_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "evicon"
+			spriteType = "GFX_econ_value_texticon"
+			position = { x = 12 y = 12 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ev_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?cof_econ_values|.1+=]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "evicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eib
+		buttonType ={
+			name = "eib_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eibicon"
+			spriteType = "GFX_econ_industry_basic_texticon"
+			position = { x = 12 y = 42 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eib_text"
+			position = { x = 24 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?econ_industry_basic|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eibicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eip
+		buttonType ={
+			name = "eip_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 70 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eipicon"
+			spriteType = "GFX_econ_industry_process_texticon"
+			position = { x = 12 y = 72 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eip_text"
+			position = { x = 24 y = 72 }
+			font = "hoi_18mbs"
+			text = "[?econ_industry_process|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eipicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 69 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eia
+		buttonType ={
+			name = "eia_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 100 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eiaicon"
+			spriteType = "GFX_econ_industry_arms_texticon"
+			position = { x = 12 y = 102 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eia_text"
+			position = { x = 24 y = 102 }
+			font = "hoi_18mbs"
+			text = "[?econ_industry_arms|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eiaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 99 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eam
+		buttonType ={
+			name = "eam_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 130 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eamicon"
+			spriteType = "GFX_econ_agriculture_mechanized_texticon"
+			position = { x = 12 y = 132 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eam_text"
+			position = { x = 24 y = 132 }
+			font = "hoi_18mbs"
+			text = "[?econ_agriculture_mechanized|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eamicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 129 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eae
+		buttonType ={
+			name = "eae_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 160 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eaeicon"
+			spriteType = "GFX_econ_agriculture_chemical_texticon"
+			position = { x = 12 y = 162 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eae_text"
+			position = { x = 24 y = 162 }
+			font = "hoi_18mbs"
+			text = "[?econ_agriculture_chemical|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eaeicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 159 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eaa
+		buttonType ={
+			name = "eaa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 190 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eaaicon"
+			spriteType = "GFX_econ_agriculture_chain_texticon"
+			position = { x = 12 y = 192 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eaa_text"
+			position = { x = 24 y = 192 }
+			font = "hoi_18mbs"
+			text = "[?econ_agriculture_chain|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eaaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 189 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eq
+		buttonType ={
+			name = "eq_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 220 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eqicon"
+			spriteType = "GFX_econ_equal_texticon"
+			position = { x = 12 y = 222 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eq_text"
+			position = { x = 24 y = 222 }
+			font = "hoi_18mbs"
+			text = "[?econ_equal|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eqicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 219 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#el
+		buttonType ={
+			name = "el_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 250 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "elicon"
+			spriteType = "GFX_econ_link_texticon"
+			position = { x = 12 y = 252 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="el_text"
+			position = { x = 24 y = 252 }
+			font = "hoi_18mbs"
+			text = "[?econ_link|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "elicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 249 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#ei
+		buttonType ={
+			name = "ei_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 280 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eiicon"
+			spriteType = "GFX_econ_innovate_texticon"
+			position = { x = 12 y = 282 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ei_text"
+			position = { x = 24 y = 282 }
+			font = "hoi_18mbs"
+			text = "[?econ_innovate|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eiicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 279 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#经济模式
+		buttonType ={
+			name = "coop_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 320 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "coopicon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 12 y = 322 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="coop_text"
+			position = { x = 24 y = 322 }
+			font = "hoi_18mbs"
+			text = "[?Cof_economy_model_co_ops|r.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "coopicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 319 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "market_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 350 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "marketicon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 12 y = 352 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="market_text"
+			position = { x = 24 y = 352 }
+			font = "hoi_18mbs"
+			text = "[?Cof_economy_model_market|R.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "marketicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 349 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "plan_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 380 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "planicon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 12 y = 382 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="plan_text"
+			position = { x = 24 y = 382 }
+			font = "hoi_18mbs"
+			text = "[?Cof_economy_model_plan|o.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "planicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 379 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "order_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 410 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "ordericon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 12 y = 412 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="order_text"
+			position = { x = 24 y = 412 }
+			font = "hoi_18mbs"
+			text = "[?Cof_economy_model_order|x.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "ordericon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 409 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "econfocus_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 440 }
+			Orientation = "UPPER_LEFT" 
+		}
+		instantTextBoxType = {
+			name ="econfocus_text"
+			position = { x = 14 y = 442 }
+			font = "hoi_18mbs"
+			text = "[?econfocus|G.0]/[?maxeconfocus|R.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "econfocusicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 439 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+
+		#经济派系影响力
+		buttonType ={
+			name = "econsynd_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 480 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "econsyndicon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 12 y = 482 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="econsynd_text"
+			position = { x = 24 y = 482 }
+			font = "hoi_18mbs"
+			text = "[?economy_synd|r.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "econsyndicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 479 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "econoppo_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 510 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "econoppoicon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 12 y = 512 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="econoppo_text"
+			position = { x = 24 y = 512 }
+			font = "hoi_18mbs"
+			text = "[?economy_oppo|R.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "econoppoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 509 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "econjaco_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 540 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "econjacoicon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 12 y = 542 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="econjaco_text"
+			position = { x = 24 y = 542 }
+			font = "hoi_18mbs"
+			text = "[?economy_jaco|o.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "econjacoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 539 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "econsore_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 570 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "econsoreicon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 12 y = 572 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="econsore_text"
+			position = { x = 24 y = 572 }
+			font = "hoi_18mbs"
+			text = "[?economy_sore|x.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "econsoreicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 569 }
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+
+	#军事
+	containerWindowType = {
+		name = "army_reform_variable_list"
+		position = { x = 1434 y = 30 }
+		size = { width = 92 height = 530 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#军事数值
+		buttonType ={
+			name = "aa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "aaicon"
+			spriteType = "GFX_army_autonomy_texticon"
+			position = { x = 12 y = 12 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="aa_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?Cof_army_autonomy|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "aaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "aw_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "awicon"
+			spriteType = "GFX_army_willing_texticon"
+			position = { x = 12 y = 42 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="aw_text"
+			position = { x = 24 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?Cof_army_willing|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "awicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "at_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 70 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "aticon"
+			spriteType = "GFX_army_training_texticon"
+			position = { x = 12 y = 72 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="at_text"
+			position = { x = 24 y = 72 }
+			font = "hoi_18mbs"
+			text = "[?Cof_army_training|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "aticon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 69 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "ae_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 100 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "aeicon"
+			spriteType = "GFX_army_equipment_texticon"
+			position = { x = 12 y = 102 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ae_text"
+			position = { x = 24 y = 102 }
+			font = "hoi_18mbs"
+			text = "[?Cof_army_equipment|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "aeicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 99 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "ap_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 130 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "apicon"
+			spriteType = "GFX_army_passionate_texticon"
+			position = { x = 12 y = 132 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ap_text"
+			position = { x = 24 y = 132 }
+			font = "hoi_18mbs"
+			text = "[?Cof_army_passionate|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "apicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 129 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#军事派系影响力
+		buttonType ={
+			name = "milisynd_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 170 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "milisyndicon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 12 y = 172 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="milisynd_text"
+			position = { x = 24 y = 172 }
+			font = "hoi_18mbs"
+			text = "[?military_synd|r.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "milisyndicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 169 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "milioppo_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 200 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "milioppoicon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 12 y = 202 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="milioppo_text"
+			position = { x = 24 y = 202 }
+			font = "hoi_18mbs"
+			text = "[?military_oppo|R.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "milioppoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 199 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "milijaco_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 230 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "milijacoicon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 12 y = 232 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="milijaco_text"
+			position = { x = 24 y = 232 }
+			font = "hoi_18mbs"
+			text = "[?military_jaco|o.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "milijacoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 229 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "milisore_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 260 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "milisoreicon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 12 y = 262 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="milisore_text"
+			position = { x = 24 y = 262 }
+			font = "hoi_18mbs"
+			text = "[?military_sore|x.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "milisoreicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 259 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#officers
+		buttonType ={
+			name = "popao_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 300 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popaoicon"
+			spriteType = "GFX_pop_officer_texticon"
+			position = { x = 12 y = 302 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popao_text"
+			position = { x = 24 y = 302 }
+			font = "hoi_18mbs"
+			text = "[?pop_army_officers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popaoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 299 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#ncos
+		buttonType ={
+			name = "popan_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 330 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popanicon"
+			spriteType = "GFX_pop_nco_texticon"
+			position = { x = 12 y = 332 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popan_text"
+			position = { x = 24 y = 332 }
+			font = "hoi_18mbs"
+			text = "[?pop_army_ncos|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popanicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 329 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#soldiers
+		buttonType ={
+			name = "popas_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 360 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popasicon"
+			spriteType = "GFX_pop_soldier_texticon"
+			position = { x = 12 y = 362 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popas_text"
+			position = { x = 24 y = 362 }
+			font = "hoi_18mbs"
+			text = "[?pop_army_soldiers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popasicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 359 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#派系倾向
+		buttonType ={
+			name = "popasynd_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 400 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popasyndicon"
+			spriteType = "GFX_faction_synd_texticon"
+			position = { x = 12 y = 402 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popasynd_text"
+			position = { x = 24 y = 402 }
+			font = "hoi_18mbs"
+			text = "[gui_popasynd]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType ={
+			name = "popaoppo_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 430 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popaoppoicon"
+			spriteType = "GFX_faction_oppo_texticon"
+			position = { x = 12 y = 432 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popaoppo_text"
+			position = { x = 24 y = 432 }
+			font = "hoi_18mbs"
+			text = "[gui_popaoppo]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType ={
+			name = "popajaco_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 460 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popajacoicon"
+			spriteType = "GFX_faction_jaco_texticon"
+			position = { x = 12 y = 462 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popajaco_text"
+			position = { x = 24 y = 462 }
+			font = "hoi_18mbs"
+			text = "[gui_popajaco]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType ={
+			name = "popasore_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 490 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popasoreicon"
+			spriteType = "GFX_faction_sore_texticon"
+			position = { x = 12 y = 492 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popasore_text"
+			position = { x = 24 y = 492 }
+			font = "hoi_18mbs"
+			text = "[gui_popasore]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
 	}
 }
