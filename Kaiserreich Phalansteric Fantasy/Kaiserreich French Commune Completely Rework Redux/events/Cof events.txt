@@ -596,7 +596,10 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.33.a
-		
+		hidden_effect = { 
+			GER = { country_event = { id = cofpolitics.35 days = 3 } } 
+			ENG = { country_event = { id = cofpolitics.35 days = 3 } } 
+		}
 	}
 }
 
@@ -608,7 +611,822 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.34.a
+		hidden_effect = { 
+			GER = { country_event = { id = cofpolitics.36 days = 3 } } 
+			ENG = { country_event = { id = cofpolitics.35 days = 3 } } 
+		}
+	}
+}
+
+country_event = {
+	id = cofpolitics.35
+	title = cofpolitics.35.title
+	desc = {
+		text = cofpolitics.35.desc.ger
+		trigger = { tag = GER }
+	}
+	desc = {
+		text = cofpolitics.35.desc.eng
+		trigger = { tag = ENG }
+	}
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.35.a
+		trigger = { tag = GER }
+
+	}
+	option = {
+		name = cofpolitics.35.b
+		trigger = { tag = ENG }
 		
+	}
+}
+
+country_event = {
+	id = cofpolitics.36
+	title = cofpolitics.36.title
+	desc = {
+		text = cofpolitics.36.desc.ger
+		trigger = { tag = GER }
+	}
+	desc = {
+		text = cofpolitics.36.desc.eng
+		trigger = { tag = ENG }
+	}
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.36.a
+		trigger = { tag = GER }
+
+	}
+	option = {
+		name = cofpolitics.36.b
+		trigger = { tag = ENG }
+		
+	}
+}
+
+country_event = {
+	id = cofpolitics.37
+	title = cofpolitics.37.title
+	desc = cofpolitics.37.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.37.a
+		complete_national_focus = FRA_democratic_principle
+	}
+	option = {
+		name = cofpolitics.37.b
+		complete_national_focus = FRA_enemy_at_the_gates
+		add_ideas = Cof_doubt_of_democrazy
+		activate_mission = Cof_enemy_at_the_gates_mission
+	}
+}
+
+country_event = {
+	id = cofpolitics.38
+	title = cofpolitics.38.title
+	desc = cofpolitics.38.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			country_event = { id = cofpolitics.39 days = 3 }
+			country_event = { id = cofpolitics.40 days = 6 }
+			country_event = { id = cofpolitics.41 days = 9 }
+			country_event = { id = cofpolitics.42 days = 12 }
+			country_event = { id = cofpolitics.43 days = 15 }
+			country_event = { id = cofpolitics.44 days = 18 }
+		}
+	}
+	option = {
+		name = cofpolitics.38.a
+		set_variable = { CGSC_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+
+		set_country_flag = CGSC_synd
+		clr_country_flag = CGSC_oppo
+		clr_country_flag = CGSC_jaco
+		clr_country_flag = CGSC_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.38.b
+		set_variable = { CGSC_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+
+		clr_country_flag = CGSC_synd
+		set_country_flag = CGSC_oppo
+		clr_country_flag = CGSC_jaco
+		clr_country_flag = CGSC_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.38.c
+		set_variable = { CGSC_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+
+		clr_country_flag = CGSC_synd
+		clr_country_flag = CGSC_oppo
+		set_country_flag = CGSC_jaco
+		clr_country_flag = CGSC_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.38.d
+		set_variable = { CGSC_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+
+		clr_country_flag = CGSC_synd
+		clr_country_flag = CGSC_oppo
+		clr_country_flag = CGSC_jaco
+		set_country_flag = CGSC_sore
+		csp_position_change = yes
+	}
+}
+
+country_event = {
+	id = cofpolitics.39
+	title = cofpolitics.39.title
+	desc = cofpolitics.39.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.39.a
+		set_variable = { DSRG_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		set_country_flag = DSRG_synd
+		clr_country_flag = DSRG_oppo
+		clr_country_flag = DSRG_jaco
+		clr_country_flag = DSRG_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.39.b
+		set_variable = { DSRG_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DSRG_synd
+		set_country_flag = DSRG_oppo
+		clr_country_flag = DSRG_jaco
+		clr_country_flag = DSRG_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.39.c
+		set_variable = { DSRG_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DSRG_synd
+		clr_country_flag = DSRG_oppo
+		set_country_flag = DSRG_jaco
+		clr_country_flag = DSRG_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.39.d
+		set_variable = { DSRG_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DSRG_synd
+		clr_country_flag = DSRG_oppo
+		clr_country_flag = DSRG_jaco
+		set_country_flag = DSRG_sore
+		csp_position_change = yes
+	}
+}
+
+country_event = {
+	id = cofpolitics.40
+	title = cofpolitics.40.title
+	desc = cofpolitics.40.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.40.a
+		set_variable = { DIS_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		set_country_flag = DIS_synd
+		clr_country_flag = DIS_oppo
+		clr_country_flag = DIS_jaco
+		clr_country_flag = DIS_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.40.b
+		set_variable = { DIS_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DIS_synd
+		set_country_flag = DIS_oppo
+		clr_country_flag = DIS_jaco
+		clr_country_flag = DIS_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.40.c
+		set_variable = { DIS_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DIS_synd
+		clr_country_flag = DIS_oppo
+		set_country_flag = DIS_jaco
+		clr_country_flag = DIS_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.40.d
+		set_variable = { DIS_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DIS_synd
+		clr_country_flag = DIS_oppo
+		clr_country_flag = DIS_jaco
+		set_country_flag = DIS_sore
+		csp_position_change = yes
+	}
+}
+
+country_event = {
+	id = cofpolitics.41
+	title = cofpolitics.41.title
+	desc = cofpolitics.41.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.41.a
+		set_variable = { DEA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		set_country_flag = DEA_synd
+		clr_country_flag = DEA_oppo
+		clr_country_flag = DEA_jaco
+		clr_country_flag = DEA_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.41.b
+		set_variable = { DEA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DEA_synd
+		set_country_flag = DEA_oppo
+		clr_country_flag = DEA_jaco
+		clr_country_flag = DEA_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.41.c
+		set_variable = { DEA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DEA_synd
+		clr_country_flag = DEA_oppo
+		set_country_flag = DEA_jaco
+		clr_country_flag = DEA_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.41.d
+		set_variable = { DEA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DEA_synd
+		clr_country_flag = DEA_oppo
+		clr_country_flag = DEA_jaco
+		set_country_flag = DEA_sore
+		csp_position_change = yes
+	}
+}
+
+country_event = {
+	id = cofpolitics.42
+	title = cofpolitics.42.title
+	desc = cofpolitics.42.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.42.a
+		set_variable = { DFA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DFA_synd
+		clr_country_flag = DFA_oppo
+		clr_country_flag = DFA_jaco
+		set_country_flag = DFA_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.42.b
+		set_variable = { DFA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DFA_synd
+		set_country_flag = DFA_oppo
+		clr_country_flag = DFA_jaco
+		clr_country_flag = DFA_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.42.c
+		set_variable = { DFA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DFA_synd
+		clr_country_flag = DFA_oppo
+		set_country_flag = DFA_jaco
+		clr_country_flag = DFA_sore
+		csp_position_change = yes
+	}
+	option = {
+		name = cofpolitics.42.d
+		set_variable = { DFA_attitude = 0 }
+		hidden_effect = { CSP_attitude_change = yes }
+		
+		clr_country_flag = DFA_synd
+		clr_country_flag = DFA_oppo
+		clr_country_flag = DFA_jaco
+		set_country_flag = DFA_sore
+		csp_position_change = yes
+	}
+}
+
+country_event = {
+	id = cofpolitics.43
+	title = cofpolitics.43.title
+	desc = cofpolitics.43.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.43.a
+		set_country_flag = CCSP_synd
+		clr_country_flag = CCSP_oppo
+		clr_country_flag = CCSP_jaco
+		clr_country_flag = CCSP_sore
+		csp_position_change = yes
+
+		if = {
+			limit = { has_country_flag = DFA_synd }
+			set_temp_variable = { target_a = 1 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DEA_synd }
+			set_temp_variable = { target_a = 2 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DIS_synd }
+			set_temp_variable = { target_a = 3 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DSRG_synd }
+			set_temp_variable = { target_a = 4 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = CGSC_synd }
+			set_temp_variable = { target_a = 5 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+	}
+	option = {
+		name = cofpolitics.43.b
+		clr_country_flag = CCSP_synd
+		set_country_flag = CCSP_oppo
+		clr_country_flag = CCSP_jaco
+		clr_country_flag = CCSP_sore
+		csp_position_change = yes
+
+		if = {
+			limit = { has_country_flag = DFA_oppo }
+			set_temp_variable = { target_a = 1 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DEA_oppo }
+			set_temp_variable = { target_a = 2 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DIS_oppo }
+			set_temp_variable = { target_a = 3 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DSRG_oppo }
+			set_temp_variable = { target_a = 4 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = CGSC_oppo }
+			set_temp_variable = { target_a = 5 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+	}
+	option = {
+		name = cofpolitics.43.c
+		clr_country_flag = CCSP_synd
+		clr_country_flag = CCSP_oppo
+		set_country_flag = CCSP_jaco
+		clr_country_flag = CCSP_sore
+		csp_position_change = yes
+
+		if = {
+			limit = { has_country_flag = DFA_synd }
+			set_temp_variable = { target_a = 1 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DEA_jaco }
+			set_temp_variable = { target_a = 2 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DIS_jaco }
+			set_temp_variable = { target_a = 3 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DSRG_jaco }
+			set_temp_variable = { target_a = 4 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = CGSC_jaco }
+			set_temp_variable = { target_a = 5 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+	}
+	option = {
+		name = cofpolitics.43.d
+		clr_country_flag = CCSP_synd
+		clr_country_flag = CCSP_oppo
+		clr_country_flag = CCSP_jaco
+		set_country_flag = CCSP_sore
+		csp_position_change = yes
+
+		if = {
+			limit = { has_country_flag = DFA_sore }
+			set_temp_variable = { target_a = 1 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DEA_sore }
+			set_temp_variable = { target_a = 2 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DIS_sore }
+			set_temp_variable = { target_a = 3 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = DSRG_sore }
+			set_temp_variable = { target_a = 4 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+		if = {
+			limit = { has_country_flag = CGSC_sore }
+			set_temp_variable = { target_a = 5 }
+			set_temp_variable = { change_num = 2 }
+			CSP_attitude_change = yes
+		}
+	}
+}
+
+country_event = {
+	id = cofpolitics.44
+	title = cofpolitics.44.title
+	desc = cofpolitics.44.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.44.a
+		add_stability = 0.1
+		activate_mission = Cof_election
+		set_country_flag = election_time
+
+		hidden_effect = {
+			country_event = { id = cofpolitics.45 days = 1 random_hours = 36 }
+			country_event = { id = cofpolitics.46 days = 4 random_hours = 36 }
+			country_event = { id = cofpolitics.47 days = 7 random_hours = 36 }
+			country_event = { id = cofpolitics.48 days = 10 random_hours = 36 }
+			country_event = { id = cofpolitics.49 days = 13 random_hours = 36 }
+			country_event = { id = cofpolitics.50 days = 16 random_hours = 36 }
+			country_event = { id = cofpolitics.51 days = 19 random_hours = 36 }
+			country_event = { id = cofpolitics.52 days = 21 random_hours = 36 }
+			country_event = { id = cofpolitics.53 days = 23 random_hours = 36 }
+
+			if = {
+				limit = { has_war_with = GER }
+				country_event = { id = cofpolitics.54 days = 25 random_hours = 36 }
+			}
+			else_if = {
+				limit = { GER = { exists = no } }
+				country_event = { id = cofpolitics.55 days = 25 random_hours = 36 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofpolitics.45
+	title = cofpolitics.45.title
+	desc = cofpolitics.45.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.45.a
+	}
+	option = {
+		name = cofpolitics.45.b
+	}
+	option = {
+		name = cofpolitics.45.c
+	}
+	option = {
+		name = cofpolitics.45.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.46
+	title = cofpolitics.46.title
+	desc = cofpolitics.46.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.46.a
+	}
+	option = {
+		name = cofpolitics.46.b
+	}
+	option = {
+		name = cofpolitics.46.c
+	}
+	option = {
+		name = cofpolitics.46.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.47
+	title = cofpolitics.47.title
+	desc = cofpolitics.47.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.47.a
+	}
+	option = {
+		name = cofpolitics.47.b
+	}
+	option = {
+		name = cofpolitics.47.c
+	}
+	option = {
+		name = cofpolitics.47.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.48
+	title = cofpolitics.48.title
+	desc = cofpolitics.48.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.48.a
+	}
+	option = {
+		name = cofpolitics.48.b
+	}
+	option = {
+		name = cofpolitics.48.c
+	}
+	option = {
+		name = cofpolitics.48.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.49
+	title = cofpolitics.49.title
+	desc = cofpolitics.49.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.49.a
+	}
+	option = {
+		name = cofpolitics.49.b
+	}
+	option = {
+		name = cofpolitics.49.c
+	}
+	option = {
+		name = cofpolitics.49.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.50
+	title = cofpolitics.50.title
+	desc = cofpolitics.50.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.50.a
+	}
+	option = {
+		name = cofpolitics.50.b
+	}
+	option = {
+		name = cofpolitics.50.c
+	}
+	option = {
+		name = cofpolitics.50.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.51
+	title = cofpolitics.51.title
+	desc = cofpolitics.51.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.51.a
+	}
+	option = {
+		name = cofpolitics.51.b
+	}
+	option = {
+		name = cofpolitics.51.c
+	}
+	option = {
+		name = cofpolitics.51.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.52
+	title = cofpolitics.52.title
+	desc = cofpolitics.52.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.52.a
+	}
+	option = {
+		name = cofpolitics.52.b
+	}
+	option = {
+		name = cofpolitics.52.c
+	}
+	option = {
+		name = cofpolitics.52.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.53
+	title = cofpolitics.53.title
+	desc = cofpolitics.53.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.53.a
+	}
+	option = {
+		name = cofpolitics.53.b
+	}
+	option = {
+		name = cofpolitics.53.c
+	}
+	option = {
+		name = cofpolitics.53.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.54
+	title = cofpolitics.54.title
+	desc = cofpolitics.54.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.54.a
+	}
+	option = {
+		name = cofpolitics.54.b
+	}
+	option = {
+		name = cofpolitics.54.c
+	}
+	option = {
+		name = cofpolitics.54.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.55
+	title = cofpolitics.55.title
+	desc = cofpolitics.55.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.55.a
+	}
+	option = {
+		name = cofpolitics.55.b
+	}
+	option = {
+		name = cofpolitics.55.c
+	}
+	option = {
+		name = cofpolitics.55.d
+	}
+}
+
+country_event = {
+	id = cofpolitics.56
+	title = cofpolitics.56.title
+	desc = cofpolitics.56.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.56.a
+	}
+}
+
+country_event = {
+	id = cofpolitics.57
+	title = cofpolitics.57.title
+	desc = cofpolitics.57.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.57.a
+	}
+}
+
+country_event = {
+	id = cofpolitics.58
+	title = cofpolitics.58.title
+	desc = cofpolitics.58.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.58.a
+	}
+}
+
+country_event = {
+	id = cofpolitics.59
+	title = cofpolitics.59.title
+	desc = cofpolitics.59.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.59.a
+	}
+}
+
+country_event = {
+	id = cofpolitics.60
+	title = cofpolitics.60.title
+	desc = cofpolitics.60.desc
+	picture = GFX_report_event_generic_books
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.60.a
 	}
 }
 
@@ -3250,6 +4068,296 @@ country_event = {
 		add_political_power = 100
 	}	
 }
+
+country_event = {
+	id = cofpolitics.173
+	title = cofpolitics.173.title
+	desc = cofpolitics.173.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.173.a
+
+		hidden_effect = { country_event = { id = cofpolitics.174 days = 60 random_days = 30 } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.174
+	title = cofpolitics.174.title
+	desc = cofpolitics.174.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.174.a
+		hidden_effect = { country_event = { id = cofpolitics.175 days = 20 random_days = 14 } }
+	}	
+	option = {
+		name = cofpolitics.174.b
+		hidden_effect = { country_event = { id = cofpolitics.176 days = 60 random_days = 14 } }
+	}	
+	option = {
+		name = cofpolitics.174.c
+		hidden_effect = { country_event = { id = cofpolitics.177 days = 50 random_days = 14 } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.175
+	title = cofpolitics.175.title
+	desc = cofpolitics.175.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.175.a
+		hidden_effect = { country_event = { id = cofpolitics.176 days = 40 random_days = 14 } }
+	}	
+	option = {
+		name = cofpolitics.175.b
+		hidden_effect = { country_event = { id = cofpolitics.181 days = 20 random_days = 14 } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.176
+	title = cofpolitics.176.title
+	desc = cofpolitics.176.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.176.a
+		hidden_effect = { country_event = { id = cofpolitics.178 days = 20 random_days = 14 } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.177
+	title = cofpolitics.177.title
+	desc = cofpolitics.177.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.177.a
+		hidden_effect = { country_event = { id = cofpolitics.176 days = 20 random_days = 14 } }
+	}	
+	option = {
+		name = cofpolitics.177.b
+		hidden_effect = { country_event = { id = cofpolitics.181 days = 10 random_days = 14 } }
+	}	
+	option = {
+		name = cofpolitics.177.c
+		hidden_effect = { country_event = { id = cofpolitics.175 days = 10 random_days = 14 } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.178
+	title = cofpolitics.178.title
+	desc = cofpolitics.178.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.178.a
+		hidden_effect = { country_event = { id = cofpolitics.179 days = 14 random_days = 7 } }
+	}	
+}
+
+country_event = {
+	id = cofpolitics.179
+	title = cofpolitics.179.title
+	desc = cofpolitics.179.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.179.a
+		
+	}	
+	option = {
+		name = cofpolitics.179.b
+		
+	}	
+}
+
+country_event = {
+	id = cofpolitics.180
+	title = {
+		text = cofpolitics.180.title.a
+		trigger = {  
+			NOT = { has_country_flag = under_tent_anarchist }
+			NOT = { has_country_flag = under_tent_communist }
+		}
+	}
+	title = {
+		text = cofpolitics.180.title.b
+		trigger = {  
+			OR = {
+				AND = {
+					has_country_flag = under_tent_anarchist 
+					NOT = { has_country_flag = under_tent_communist }
+				}
+				AND = {
+					NOT = { has_country_flag = under_tent_anarchist }
+					has_country_flag = under_tent_communist 
+				}
+			}
+		}
+	}
+	title = {
+		text = cofpolitics.180.title.c
+		trigger = {  
+			has_country_flag = under_tent_anarchist 
+			has_country_flag = under_tent_communist 
+		}
+	}
+	desc = {
+		text = cofpolitics.180.desc.a
+		trigger = {
+			NOT = { has_country_flag = under_tent_anarchist }
+			NOT = { has_country_flag = under_tent_communist }
+		}
+	}
+	desc = {
+		text = cofpolitics.180.desc.b
+		trigger = {  
+			OR = {
+				AND = {
+					has_country_flag = under_tent_anarchist 
+					NOT = { has_country_flag = under_tent_communist }
+				}
+				AND = {
+					NOT = { has_country_flag = under_tent_anarchist }
+					has_country_flag = under_tent_communist 
+				}
+			}
+		}
+	}
+	desc = {
+		text = cofpolitics.180.desc.c
+		trigger = {
+			has_country_flag = under_tent_anarchist 
+			has_country_flag = under_tent_communist 
+		}
+	}
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.180.a
+		trigger = {
+			NOT = { has_country_flag = under_tent_anarchist }
+			NOT = { has_country_flag = under_tent_communist }
+		}
+	}	
+	option = {
+		name = cofpolitics.180.b
+		trigger = {  
+			OR = {
+				AND = {
+					has_country_flag = under_tent_anarchist 
+					NOT = { has_country_flag = under_tent_communist }
+				}
+				AND = {
+					NOT = { has_country_flag = under_tent_anarchist }
+					has_country_flag = under_tent_communist 
+				}
+			}
+		}
+	}	
+	option = {
+		name = cofpolitics.180.c
+		trigger = {
+			has_country_flag = under_tent_anarchist 
+			has_country_flag = under_tent_communist 
+		}
+	}	
+}
+
+country_event = {
+	id = cofpolitics.181
+	title = cofpolitics.181.title
+	desc = cofpolitics.181.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.181.a
+		
+	}	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10742,6 +11850,23 @@ country_event = {
 	option = {
 		name = cofintern.143.c
 		trigger = { tag = FRA }
+		if = {
+			limit = { has_country_flag = inc_accept }
+			if = {
+				limit = { has_idea = bill_free_immigration }
+				swap_ideas = {
+					remove_idea = bill_free_immigration
+					add_idea = bill_free_immigration_inc
+				}
+			}
+			else_if = {
+				limit = { has_idea = bill_anti_discrimination }
+				swap_ideas = {
+					remove_idea = bill_anti_discrimination
+					add_idea = bill_anti_discrimination_inc
+				}
+			}
+		}
 	}
 }
 

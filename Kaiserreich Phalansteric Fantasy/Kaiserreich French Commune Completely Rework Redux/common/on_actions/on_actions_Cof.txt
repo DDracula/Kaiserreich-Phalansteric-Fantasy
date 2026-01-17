@@ -38,8 +38,9 @@ on_actions = {
 
                 country_event = cofpolitics.1
                 country_event = { id = cofpolitics.14 days = 180 random_days = 30 }
-                country_event = { id = cofpolitics.15 days = 813 random_hours = 12 }
-                country_event = { id = cofpolitics.16 days = 999 random_hours = 12 }
+                country_event = { id = cofpolitics.15 days = 831 random_hours = 12 }
+                country_event = { id = cofpolitics.16 days = 1216 random_days = 60 }
+                country_event = { id = cofpolitics.37 days = 1582 random_days = 30 }
 
                 country_event = { id = cofeconomy.2 days = 132 random_hours = 18 }
                 country_event = { id = cofeconomy.6 days = 60 random_days = 30 }
@@ -81,28 +82,45 @@ on_actions = {
                     mission = Cof_voting_time_for_bill
                     days = -23
                 }
-                set_variable = { agree_synd_mode = 18 }
+                set_variable = { seat_synd_mode = 127 }
+                set_variable = { seat_synd_radi = 110 }
+                set_variable = { seat_synd = seat_synd_mode }
+                add_to_variable = { seat_synd = seat_synd_radi }
+                set_variable = { seat_oppo_comm = 94 }
+                set_variable = { seat_oppo_anar = 91 }
+                set_variable = { seat_oppo = seat_oppo_comm }
+                add_to_variable = { seat_oppo = seat_oppo_anar }
+                set_variable = { seat_jaco_neos = 70 }
+                set_variable = { seat_jaco_revo = 42 }
+                set_variable = { seat_jaco = seat_jaco_neos }
+                add_to_variable = { seat_jaco = seat_jaco_revo }
+                set_variable = { seat_sore_oldl = 81 }
+                set_variable = { seat_sore_yout = 35 }
+                set_variable = { seat_sore = seat_sore_oldl }
+                add_to_variable = { seat_sore = seat_sore_yout }
+
+                set_variable = { agree_synd_mode = 12 }
               	set_variable = { agree_synd_radi = 21 }
-            	set_variable = { agree_oppo_comm = 89 }
-              	set_variable = { agree_oppo_anar = 76 }
-               	set_variable = { agree_jaco_neos = 64 }
-            	set_variable = { agree_jaco_revo = 38 }
-	            set_variable = { agree_sore_oldl = 82 }
-	            set_variable = { agree_sore_yout = 26 }
+            	set_variable = { agree_oppo_comm = 82 }
+              	set_variable = { agree_oppo_anar = 80 }
+               	set_variable = { agree_jaco_neos = 70 }
+            	set_variable = { agree_jaco_revo = 42 }
+	            set_variable = { agree_sore_oldl = 81 }
+	            set_variable = { agree_sore_yout = 32 }
                 Cof_politics_voting_for_bill_agree_count = yes
 
-                set_variable = { seat_CNS = 67 }
-                set_variable = { seat_PSF = 52 }
-                set_variable = { seat_POU = 78 }
-                set_variable = { seat_CSR = 143 }
-                set_variable = { seat_PCOP = 75 }
-                set_variable = { seat_AFA = 57 }
-                set_variable = { seat_LJR = 21 }
-                set_variable = { seat_FSR = 28 }
+                set_variable = { seat_CNS = 61 }
+                set_variable = { seat_PSF = 63 }
+                set_variable = { seat_POU = 82 }
+                set_variable = { seat_CSR = 120 }
+                set_variable = { seat_PCOP = 74 }
+                set_variable = { seat_AFA = 64 }
+                set_variable = { seat_LJR = 25 }
+                set_variable = { seat_FSR = 21 }
                 set_variable = { seat_FNC = 7 }
-                set_variable = { seat_FCF = 17 }
-                set_variable = { seat_FP = 27 }
-                set_variable = { seat_ETC = 78 }
+                set_variable = { seat_FCF = 14 }
+                set_variable = { seat_FP = 23 }
+                set_variable = { seat_ETC = 96 }
                 refresh_bgt_seat = yes
 
                 set_country_flag = party_CNS_choice
@@ -124,19 +142,19 @@ on_actions = {
                 set_variable = { CNS_faction^4 = 0 }
                 set_variable = { CNS_faction^5 = 0 }
                 set_variable = { CNS_faction^6 = 0 }
-                set_variable = { CNS_faction^7 = 58 }
-                set_variable = { CNS_faction^8 = 14 }
+                set_variable = { CNS_faction^7 = 61 }
+                set_variable = { CNS_faction^8 = 0 }
 
                 set_variable = { PSF_faction^1 = 0 }
                 set_variable = { PSF_faction^2 = 0 }
                 set_variable = { PSF_faction^3 = 0 }
                 set_variable = { PSF_faction^4 = 0 }
-                set_variable = { PSF_faction^5 = 29 }
-                set_variable = { PSF_faction^6 = 23 }
+                set_variable = { PSF_faction^5 = 42 }
+                set_variable = { PSF_faction^6 = 21 }
                 set_variable = { PSF_faction^7 = 0 }
                 set_variable = { PSF_faction^8 = 0 }
 
-                set_variable = { POU_faction^1 = 62 }
+                set_variable = { POU_faction^1 = 66 }
                 set_variable = { POU_faction^2 = 16 }
                 set_variable = { POU_faction^3 = 0 }
                 set_variable = { POU_faction^4 = 0 }
@@ -145,10 +163,10 @@ on_actions = {
                 set_variable = { POU_faction^7 = 0 }
                 set_variable = { POU_faction^8 = 0 }
 
-                set_variable = { CSR_faction^1 = 44 }
-                set_variable = { CSR_faction^2 = 99 }
+                set_variable = { CSR_faction^1 = 34 }
+                set_variable = { CSR_faction^2 = 84 }
                 set_variable = { CSR_faction^3 = 0 }
-                set_variable = { CSR_faction^4 = 0 }
+                set_variable = { CSR_faction^4 = 2 }
                 set_variable = { CSR_faction^5 = 0 }
                 set_variable = { CSR_faction^6 = 0 }
                 set_variable = { CSR_faction^7 = 0 }
@@ -156,32 +174,32 @@ on_actions = {
 
                 set_variable = { PCOP_faction^1 = 0 }
                 set_variable = { PCOP_faction^2 = 0 }
-                set_variable = { PCOP_faction^3 = 75 }
+                set_variable = { PCOP_faction^3 = 72 }
                 set_variable = { PCOP_faction^4 = 0 }
                 set_variable = { PCOP_faction^5 = 0 }
                 set_variable = { PCOP_faction^6 = 0 }
                 set_variable = { PCOP_faction^7 = 0 }
-                set_variable = { PCOP_faction^8 = 0 }
+                set_variable = { PCOP_faction^8 = 2 }
 
                 set_variable = { AFA_faction^1 = 0 }
-                set_variable = { AFA_faction^2 = 0 }
+                set_variable = { AFA_faction^2 = 2 }
                 set_variable = { AFA_faction^3 = 0 }
-                set_variable = { AFA_faction^4 = 57 }
+                set_variable = { AFA_faction^4 = 61 }
                 set_variable = { AFA_faction^5 = 0 }
                 set_variable = { AFA_faction^6 = 0 }
                 set_variable = { AFA_faction^7 = 0 }
-                set_variable = { AFA_faction^8 = 0 }
+                set_variable = { AFA_faction^8 = 1 }
 
-                set_variable = { LJR_faction^1 = 11 }
+                set_variable = { LJR_faction^1 = 18 }
                 set_variable = { LJR_faction^2 = 0 }
-                set_variable = { LJR_faction^3 = 2 }
-                set_variable = { LJR_faction^4 = 3 }
-                set_variable = { LJR_faction^5 = 5 }
+                set_variable = { LJR_faction^3 = 7 }
+                set_variable = { LJR_faction^4 = 0 }
+                set_variable = { LJR_faction^5 = 0 }
                 set_variable = { LJR_faction^6 = 0 }
                 set_variable = { LJR_faction^7 = 0 }
                 set_variable = { LJR_faction^8 = 0 }
 
-                set_variable = { FSR_faction^1 = 12 }
+                set_variable = { FSR_faction^1 = 5 }
                 set_variable = { FSR_faction^2 = 0 }
                 set_variable = { FSR_faction^3 = 0 }
                 set_variable = { FSR_faction^4 = 0 }
@@ -193,22 +211,22 @@ on_actions = {
                 set_variable = { FNC_faction^1 = 0 }
                 set_variable = { FNC_faction^2 = 0 }
                 set_variable = { FNC_faction^3 = 0 }
-                set_variable = { FNC_faction^4 = 0 }
-                set_variable = { FNC_faction^5 = 7 }
+                set_variable = { FNC_faction^4 = 6 }
+                set_variable = { FNC_faction^5 = 0 }
                 set_variable = { FNC_faction^6 = 0 }
-                set_variable = { FNC_faction^7 = 0 }
+                set_variable = { FNC_faction^7 = 1 }
                 set_variable = { FNC_faction^8 = 0 }
 
                 set_variable = { FCF_faction^1 = 0 }
                 set_variable = { FCF_faction^2 = 0 }
                 set_variable = { FCF_faction^3 = 0 }
                 set_variable = { FCF_faction^4 = 0 }
-                set_variable = { FCF_faction^5 = 3 }
+                set_variable = { FCF_faction^5 = 0 }
                 set_variable = { FCF_faction^6 = 0 }
                 set_variable = { FCF_faction^7 = 14 }
                 set_variable = { FCF_faction^8 = 0 }
 
-                set_variable = { FP_faction^1 = 4 }
+                set_variable = { FP_faction^1 = 0 }
                 set_variable = { FP_faction^2 = 0 }
                 set_variable = { FP_faction^3 = 6 }
                 set_variable = { FP_faction^4 = 0 }
@@ -220,28 +238,15 @@ on_actions = {
                 set_variable = { ETC_faction^1 = 4 }
                 set_variable = { ETC_faction^2 = 8 }
                 set_variable = { ETC_faction^3 = 9 }
-                set_variable = { ETC_faction^4 = 28 }
-                set_variable = { ETC_faction^5 = 4 }
-                set_variable = { ETC_faction^6 = 0 }
-                set_variable = { ETC_faction^7 = 13 }
-                set_variable = { ETC_faction^8 = 12 }
+                set_variable = { ETC_faction^4 = 22 }
+                set_variable = { ETC_faction^5 = 12 }
+                set_variable = { ETC_faction^6 = 6 }
+                set_variable = { ETC_faction^7 = 3 }
+                set_variable = { ETC_faction^8 = 32 }
 
                 set_variable = { parilament_choice^1 = 14 }
                 set_variable = { parilament_choice^2 = 14 }
                 set_variable = { parilament_choice^3 = 14 }
-
-                set_variable = { seat_synd_mode = 137 }
-                set_variable = { seat_synd_radi = 127 }
-                set_variable = { seat_synd = 264 }
-                set_variable = { seat_oppo_comm = 92 }
-                set_variable = { seat_oppo_anar = 84 }
-                set_variable = { seat_oppo = 176 }
-                set_variable = { seat_jaco_neos = 64 }
-                set_variable = { seat_jaco_revo = 38 }
-                set_variable = { seat_jaco = 102 }
-                set_variable = { seat_sore_oldl = 82 }
-                set_variable = { seat_sore_yout = 26 }
-                set_variable = { seat_sore = 108 }
                 
                 set_variable = { pop_workers = 27 }
                 set_variable = { pop_satisfaction_workers = 42 }
@@ -489,6 +494,43 @@ on_actions = {
     }
     on_daily_FRA = {
         effect = {
+            if = {
+                limit = { 
+                    date > 1941.1.1 
+                    NOT = { has_country_flag = cof_1941_election_start }
+                    NOT = { has_country_flag = cof_1941_election_delay }
+                }
+                if = {
+                    limit = { has_completed_focus = FRA_democratic_principle }
+                    set_country_flag = cof_1941_election_start
+                    country_event = { id = cofpolitics.38 days = 7 }
+                }
+                
+                if = {
+                    limit = { has_completed_focus = FRA_post_war_democracy_commitments }
+                    if = {
+                        limit = { has_war_with = GER } 
+                        set_country_flag = cof_1941_election_delay
+                        country_event = { id = cofpolitics.60 days = 7 }
+                    }
+                    else = {
+                        set_country_flag = cof_1941_election_start
+                        country_event = { id = cofpolitics.38 days = 7 }
+                    }
+                }
+            }
+
+
+            if = {
+                limit = {
+                    has_country_flag = cof_1941_election_delay
+                    GER = { exists = no }
+                    all_enemy_country = { capital_scope = { NOT = { is_on_continent = europe } } }
+                }
+                set_country_flag = cof_1941_election_start
+                country_event = { id = cofpolitics.38 days = 7 }
+            }
+
             economy_power_judge = yes
             add_to_variable = { economy_power = economy_power_change }
 

@@ -5988,6 +5988,7 @@ focus_tree = {
 			cof_econ_values_location_less = yes
 
 			has_political_power > 250
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 4
 		y = 1
@@ -6132,6 +6133,7 @@ focus_tree = {
 				}
 				check_variable = { Cof_politics_intensity_of_struggle < 20 }
 			}
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 5
 		y = 3
@@ -6577,6 +6579,7 @@ focus_tree = {
 		mutually_exclusive = { focus = FRA_more_union_guidanc_rights }
 		available = {
 			Cof_economy_model_market_advantage = yes
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 4
 		y = 2
@@ -6701,6 +6704,7 @@ focus_tree = {
 				Cof_economy_model_plan_advantage = yes
 				Cof_economy_model_order_advantage = yes
 			}
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = -4
 		y = 2
@@ -6920,6 +6924,8 @@ focus_tree = {
 		mutually_exclusive = { focus = FRA_voluntary_commodity_exchanges }
 		available = {
 			Cof_economy_model_co_ops_advantage = yes
+
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 0
 		y = 2
@@ -7498,6 +7504,8 @@ focus_tree = {
 		available = {
 			set_temp_variable = { target_t = 1 }
 			cof_econ_values_location_more = yes
+
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 5
 		y = 2
@@ -7954,6 +7962,8 @@ focus_tree = {
 			set_temp_variable = { target_t = 11 }
 			set_temp_variable = { target_num = 25 }
 			cof_politics_more_than_x = no
+
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 9
 		y = 2
@@ -19248,9 +19258,7 @@ focus_tree = {
 		cost = 0
 		completion_reward = {
 			custom_effect_tooltip = unlock_focuses
-			hidden_effect = {
-				country_event = { id = cofpolitics.129 days = 14 }
-			}
+			hidden_effect = { country_event = { id = cofpolitics.129 days = 14 } }
 		}
 	}
 
@@ -19272,7 +19280,7 @@ focus_tree = {
 		cost = 0
 		completion_reward = {
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { iosc = 5 }
+			set_temp_variable = { iosc = 10 }
 	        intensity_of_struggle_change = yes 
 
 			custom_effect_tooltip = tooltip_white_line
@@ -19688,6 +19696,10 @@ focus_tree = {
 			unlock_decision_tooltip = Cof_syndmode_benefit_technocrat
 			unlock_decision_tooltip = COf_syndmode_benefit_communist
 			custom_effect_tooltip = unlock_in_politics
+
+			hidden_effect = {
+				country_event = { id = cofpolitics.173 days = 240 random_days = 60 }
+			}
 		}
 	}
 
@@ -19788,6 +19800,7 @@ focus_tree = {
 		icon = GFX_focus_FRA_trade_union_empowerment_bill
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_midway_society }
+		available = { NOT= { has_country_flag = voting_for_bill } }
 		x = -2
 		y = 5
 		cost = 2
@@ -19833,9 +19846,9 @@ focus_tree = {
 					has_country_flag = under_tent_sorelian 
 					check_variable = { sorelian_sincerity > -1 }
 				}
-				set_temp_variable = { vtl5 = 7 } 
+				set_temp_variable = { vtl7 = 7 } 
 			}
-			else = { set_temp_variable = { vtl5 = 4 } }
+			else = { set_temp_variable = { vtl7 = 4 } }
 			set_temp_variable = { vtl8 = 4 }
 			Cof_politics_voting_set = yes
 
@@ -20262,11 +20275,64 @@ focus_tree = {
 		prerequisite = { focus = FRA_libertarian_socialist_principles }
 		mutually_exclusive = { focus = FRA_bottom_line_on_expression }
 		mutually_exclusive = { focus = FRA_doing_rather_than_saying }
+		available = { NOT = { has_country_flag = voting_for_bill } }
 		x = 6
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_complete_speech_freedom
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_complete_speech_freedom_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 4 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 9 } 
+			set_temp_variable = { vtl4 = 9 } 
+			set_temp_variable = { vtl5 = 2 } 
+			set_temp_variable = { vtl6 = 1 } 
+			set_temp_variable = { vtl7 = 1 } 
+			set_temp_variable = { vtl8 = 7 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_basic_speech_freedom
+					add_idea = bill_complete_speech_freedom
+				}
+				
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = 2 }
+				set_temp_variable = { pc = 2 }
+				set_temp_variable = { mc = 2 }
+				set_temp_variable = { sc = 4 }
+				set_temp_variable = { bc = -4 }
+				set_temp_variable = { ac = -2 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 4 }
+				set_temp_variable = { eibc = 0 }
+				set_temp_variable = { eipc = 2 }
+				set_temp_variable = { eiac = 0 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 2 }
+				set_temp_variable = { eic = 4 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21267,12 +21333,65 @@ focus_tree = {
 				has_country_flag = dreyfus_case_death
 				has_country_flag = dreyfus_case_labor_reform
 			}
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_national_immigration
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_national_immigration_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 3 }
+       		set_temp_variable = { vtl2 = 3 }
+			set_temp_variable = { vtl3 = 1 } 
+			set_temp_variable = { vtl4 = 1 } 
+			set_temp_variable = { vtl5 = 4 } 
+			set_temp_variable = { vtl6 = 9 } 
+			set_temp_variable = { vtl7 = 8 } 
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_free_immigration
+					add_idea = bill_national_immigration
+				}
+				
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = 2 }
+				set_temp_variable = { pc = 2 }
+				set_temp_variable = { mc = 2 }
+				set_temp_variable = { sc = -4 }
+				set_temp_variable = { bc = 0 }
+				set_temp_variable = { ac = 2 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 0 }
+				set_temp_variable = { eipc = 2 }
+				set_temp_variable = { eiac = 0 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = -2 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = 0 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21282,12 +21401,62 @@ focus_tree = {
 		relative_position_id = FRA_second_dreyfus_case
 		prerequisite = { focus = FRA_ten_year_model }
 		prerequisite = { focus = FRA_tightening_immigration_bill }
-		
+		available = { NOT = { has_country_flag = voting_for_bill } }
 		x = 3
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_national_counterintelligence
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_national_counterintelligence_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 3 }
+       		set_temp_variable = { vtl2 = 3 }
+			set_temp_variable = { vtl3 = 1 } 
+			set_temp_variable = { vtl4 = 1 } 
+			set_temp_variable = { vtl5 = 4 } 
+			set_temp_variable = { vtl6 = 9 } 
+			set_temp_variable = { vtl7 = 8 } 
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_national_counterintelligence
+				
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -2 }
+				set_temp_variable = { pc = -2 }
+				set_temp_variable = { mc = -2 }
+				set_temp_variable = { sc = -4 }
+				set_temp_variable = { bc = 6 }
+				set_temp_variable = { ac = 4 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 2 }
+				set_temp_variable = { eipc = 2 }
+				set_temp_variable = { eiac = 2 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 2 }
+				set_temp_variable = { eic = -2 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21303,12 +21472,65 @@ focus_tree = {
 				has_country_flag = dreyfus_case_imprison
 				has_country_flag = dreyfus_case_postpone
 			}
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = -1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_anti_discrimination
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_anti_discrimination_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 6 }
+			set_temp_variable = { vtl3 = 9 } 
+			set_temp_variable = { vtl4 = 9 } 
+			set_temp_variable = { vtl5 = 4 } 
+			set_temp_variable = { vtl6 = 1 } 
+			set_temp_variable = { vtl7 = 1 } 
+			set_temp_variable = { vtl8 = 5 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_free_immigration
+					add_idea = bill_anti_discrimination
+				}
+				
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -2 }
+				set_temp_variable = { pc = -2 }
+				set_temp_variable = { mc = -2 }
+				set_temp_variable = { sc = 4 }
+				set_temp_variable = { bc = 0 }
+				set_temp_variable = { ac = -2 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 2 }
+				set_temp_variable = { eipc = 2 }
+				set_temp_variable = { eiac = 0 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 4 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = 2 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21319,11 +21541,64 @@ focus_tree = {
 		prerequisite = { focus = FRA_second_dreyfus_case }
 		mutually_exclusive = { focus = FRA_complete_freedom_of_expression }
 		mutually_exclusive = { focus = FRA_doing_rather_than_saying }
+		available = { NOT = { has_country_flag = voting_for_bill } }
 		x = 2
 		y = 0
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_speech_freedom_under_scrutiny
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_speech_freedom_under_scrutiny_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 6 }
+			set_temp_variable = { vtl3 = 5 } 
+			set_temp_variable = { vtl4 = 5 } 
+			set_temp_variable = { vtl5 = 6 } 
+			set_temp_variable = { vtl6 = 5 } 
+			set_temp_variable = { vtl7 = 4 } 
+			set_temp_variable = { vtl8 = 6 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_basic_speech_freedom
+					add_idea = bill_speech_freedom_under_scrutiny
+				}
+				
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -1 }
+				set_temp_variable = { pc = -1 }
+				set_temp_variable = { mc = -1 }
+				set_temp_variable = { sc = -1 }
+				set_temp_variable = { bc = 2 }
+				set_temp_variable = { ac = 1 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 2 }
+				set_temp_variable = { eibc = 1 }
+				set_temp_variable = { eipc = 1 }
+				set_temp_variable = { eiac = 0 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 1 }
+				set_temp_variable = { eic = 0 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21356,12 +21631,65 @@ focus_tree = {
 		mutually_exclusive = { focus = FRA_progressive_women }
 		available = {
 			has_completed_focus = FRA_removal_of_labor_restrictions_for_women
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_glorious_mothers
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_glorious_mothers_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 6 }
+			set_temp_variable = { vtl3 = 4 } 
+			set_temp_variable = { vtl4 = 3 } 
+			set_temp_variable = { vtl5 = 5 } 
+			set_temp_variable = { vtl6 = 6 } 
+			set_temp_variable = { vtl7 = 6 } 
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_developing_womens_rights
+					add_idea = bill_glorious_mothers
+				}
+				
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = 1 }
+				set_temp_variable = { pc = 1 }
+				set_temp_variable = { mc = 1 }
+				set_temp_variable = { sc = -4 }
+				set_temp_variable = { bc = 1 }
+				set_temp_variable = { ac = 2 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 2 }
+				set_temp_variable = { eipc = 0 }
+				set_temp_variable = { eiac = 0 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 2 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = 0 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21373,12 +21701,65 @@ focus_tree = {
 		mutually_exclusive = { focus = FRA_glorious_mother }
 		available = {
 			has_completed_focus = FRA_removal_of_labor_restrictions_for_women
+			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = -1
 		y = 1
 		cost = 2
-		completion_reward = {
+		completion_reward = {	
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_gender_equality
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_gender_equality_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 5 }
+       		set_temp_variable = { vtl2 = 5 }
+			set_temp_variable = { vtl3 = 8 } 
+			set_temp_variable = { vtl4 = 8 } 
+			set_temp_variable = { vtl5 = 3 } 
+			set_temp_variable = { vtl6 = 2 } 
+			set_temp_variable = { vtl7 = 1 } 
+			set_temp_variable = { vtl8 = 5 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_developing_womens_rights
+					add_idea = bill_gender_equality
+				}
+				
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -1 }
+				set_temp_variable = { pc = -1 }
+				set_temp_variable = { mc = -1 }
+				set_temp_variable = { sc = 4 }
+				set_temp_variable = { bc = -2 }
+				set_temp_variable = { ac = -3 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 0 }
+				set_temp_variable = { eipc = 0 }
+				set_temp_variable = { eiac = 0 }
+				set_temp_variable = { eamc = 0 }
+				set_temp_variable = { eaec = 0 }
+				set_temp_variable = { eaac = 0 }
+				set_temp_variable = { eqc = 5 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = 2.5 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21392,11 +21773,48 @@ focus_tree = {
 		}
 		prerequisite = { focus = FRA_womens_day_parade }
 		mutually_exclusive = { focus = FRA_assembly_declaration_system }
+		available = { NOT = { has_country_flag = voting_for_bill } }
 		x = 1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_freedom_of_assembly
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_freedom_of_assembly_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 3 }
+       		set_temp_variable = { vtl2 = 3 }
+			set_temp_variable = { vtl3 = 8 } 
+			set_temp_variable = { vtl4 = 8 } 
+			set_temp_variable = { vtl5 = 2 } 
+			set_temp_variable = { vtl6 = 1 } 
+			set_temp_variable = { vtl7 = 1 } 
+			set_temp_variable = { vtl8 = 5 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_freedom_of_assembly
+				
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = 2 }
+				set_temp_variable = { pc = 2 }
+				set_temp_variable = { mc = 2 }
+				set_temp_variable = { sc = 2 }
+				set_temp_variable = { bc = -4 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
 		}
 	}
 
@@ -21410,11 +21828,48 @@ focus_tree = {
 		}
 		prerequisite = { focus = FRA_womens_day_parade }
 		mutually_exclusive = { focus = FRA_free_assembly }
+		available = { NOT = { has_country_flag = voting_for_bill } }
 		x = 1
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_assemblies_requiring_notification
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_assemblies_requiring_notification_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 4 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 3 } 
+			set_temp_variable = { vtl4 = 1 } 
+			set_temp_variable = { vtl5 = 6 } 
+			set_temp_variable = { vtl6 = 6 } 
+			set_temp_variable = { vtl7 = 6 } 
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_assemblies_requiring_notification
+				
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -1 }
+				set_temp_variable = { pc = -1 }
+				set_temp_variable = { mc = -1 }
+				set_temp_variable = { sc = -2 }
+				set_temp_variable = { bc = 4 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
 		}
 	}
 
@@ -21440,11 +21895,70 @@ focus_tree = {
 		relative_position_id = FRA_enemy_at_the_gates
 		prerequisite = { focus = FRA_enemy_at_the_gates }
 		mutually_exclusive = { focus = FRA_post_war_democracy_commitments }
+		available = {
+			NOT = { has_country_flag = ten_year_model_no }
+
+			has_stability > 0.8
+
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = Cof_politics_intensity_of_struggle
+					JUDGE = less_than
+					TAGNUM = "10.0"
+				}
+				check_variable = { Cof_politics_intensity_of_struggle < 10 }
+			}
+
+			NOT= { has_country_flag = voting_for_bill }
+		}
 		x = -2
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_ten_year_model
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_ten_year_model_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 4 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 0 } 
+			set_temp_variable = { vtl4 = 0 } 
+			set_temp_variable = { vtl5 = 8 } 
+			set_temp_variable = { vtl6 = 7 } 
+			set_temp_variable = { vtl7 = 6 } 
+			set_temp_variable = { vtl8 = 2 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				remove_ideas = Cof_doubt_of_democrazy
+
+				custom_effect_tooltip = tooltip_white_line
+				add_ideas = bill_ten_year_model
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -2 }
+				set_temp_variable = { pc = -1 }
+				set_temp_variable = { mc = -1 }
+				set_temp_variable = { sc = -1 }
+				set_temp_variable = { bc = 4 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				weak_central_government_improve = yes
+			}
 		}
 	}
 
@@ -21455,11 +21969,64 @@ focus_tree = {
 		prerequisite = { focus = FRA_ten_year_model }
 		mutually_exclusive = { focus = FRA_bottom_line_on_expression }
 		mutually_exclusive = { focus = FRA_complete_freedom_of_expression }
+		available = { NOT = { has_country_flag = voting_for_bill } }
 		x = -2
 		y = 2
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_speech_control
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_speech_control_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 3 }
+       		set_temp_variable = { vtl2 = 3 }
+			set_temp_variable = { vtl3 = 0 } 
+			set_temp_variable = { vtl4 = 0 } 
+			set_temp_variable = { vtl5 = 7 } 
+			set_temp_variable = { vtl6 = 9 } 
+			set_temp_variable = { vtl7 = 8 } 
+			set_temp_variable = { vtl8 = 3 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_basic_speech_freedom
+					add_idea = bill_speech_control
+				}
+				
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -2 }
+				set_temp_variable = { pc = -2 }
+				set_temp_variable = { mc = -2 }
+				set_temp_variable = { sc = -4 }
+				set_temp_variable = { bc = 4 }
+				set_temp_variable = { ac = 3 }
+				class_pop_satisfactions_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { evc = 0 }
+				set_temp_variable = { eibc = 2 }
+				set_temp_variable = { eipc = 2 }
+				set_temp_variable = { eiac = 2 }
+				set_temp_variable = { eamc = 2 }
+				set_temp_variable = { eaec = 2 }
+				set_temp_variable = { eaac = 2 }
+				set_temp_variable = { eqc = 0 }
+				set_temp_variable = { elc = 0 }
+				set_temp_variable = { eic = -6 }
+				cof_econ_target_change = yes
+			}
 		}
 	}
 
@@ -21482,11 +22049,51 @@ focus_tree = {
 		relative_position_id = FRA_enemy_at_the_gates
 		prerequisite = { focus = FRA_enemy_at_the_gates }
 		mutually_exclusive = { focus = FRA_ten_year_model }
+		available = { NOT= { has_country_flag = voting_for_bill } }
 		x = 2
 		y = 1
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_interwar_special_status
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_interwar_special_status_vote
 
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 4 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 0 } 
+			set_temp_variable = { vtl4 = 0 } 
+			set_temp_variable = { vtl5 = 8 } 
+			set_temp_variable = { vtl6 = 7 } 
+			set_temp_variable = { vtl7 = 6 } 
+			set_temp_variable = { vtl8 = 2 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				remove_ideas = Cof_doubt_of_democrazy
+
+				custom_effect_tooltip = tooltip_white_line
+				add_ideas = bill_interwar_special_status
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = -1 }
+				set_temp_variable = { pc = -1 }
+				set_temp_variable = { mc = -1 }
+				set_temp_variable = { sc = -1 }
+				set_temp_variable = { bc = 2 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
 		}
 	}
 
@@ -21558,6 +22165,18 @@ focus_tree = {
 		cost = 0
 		completion_reward = {
 			custom_effect_tooltip = unlock_focuses
+
+			add_war_support = -0.1
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = 1 }
+			set_temp_variable = { ac = 1 }
+			class_pop_satisfactions_change = yes
 		}
 	}
 
@@ -21569,11 +22188,12 @@ focus_tree = {
 			focus = FRA_democratic_principle 
 			focus = FRA_post_war_democracy_commitments 
 		}
+		available = { always = no }
 		x = -5
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 
@@ -21603,7 +22223,7 @@ focus_tree = {
 		y = 4
 		cost = 2
 		completion_reward = {
-
+			
 		}
 	}
 
@@ -21616,11 +22236,12 @@ focus_tree = {
 			focus = FRA_democratic_principle 
 			focus = FRA_post_war_democracy_commitments 
 		}
+		available = { always = no }
 		x = -3
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 
@@ -21662,11 +22283,12 @@ focus_tree = {
 			focus = FRA_democratic_principle 
 			focus = FRA_post_war_democracy_commitments 
 		}
+		available = { always = no }
 		x = 3
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 
@@ -21708,11 +22330,12 @@ focus_tree = {
 			focus = FRA_democratic_principle 
 			focus = FRA_post_war_democracy_commitments 
 		}
+		available = { always = no }
 		x = 5
 		y = 1
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 

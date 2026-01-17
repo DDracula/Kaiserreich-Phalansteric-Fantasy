@@ -16,6 +16,38 @@ Cof_politics = {
 		}
 	}
 
+	Cof_enemy_at_the_gates_mission = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = {
+			OR = {
+				has_idea = bill_ten_year_model
+				has_completed_focus = FRA_post_war_democracy_commitments
+			}
+		}
+		is_good = yes
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		complete_effect = {
+			add_political_power = 50
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_political_power = -100
+			add_stability = -0.1
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -4 }
+       		set_temp_variable = { pc = -4 } 
+	        set_temp_variable = { mc = -4 }
+    		set_temp_variable = { sc = -4 }
+        	set_temp_variable = { bc = -4 }
+        	set_temp_variable = { ac = -4 }
+	        class_pop_satisfactions_change = yes
+		}
+	}
+
 	Cof_election = {
 		icon = ger_mefo_bills
 		activation = { has_country_flag = election_time }
@@ -33,7 +65,11 @@ Cof_politics = {
 						check_variable = { seat_synd > seat_oppo }
 						check_variable = { seat_synd > seat_sore }
 					}
-					country_event = cofpolitics.121
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.56
+					}
+					else = { country_event = cofpolitics.121 }
 				}
 				
 				if = {
@@ -42,7 +78,11 @@ Cof_politics = {
 						check_variable = { seat_oppo > seat_synd }
 						check_variable = { seat_oppo > seat_sore }
 					}
-					country_event = cofpolitics.122
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.57
+					}
+					else = { country_event = cofpolitics.122 }
 				}
 
 				if = {
@@ -51,7 +91,11 @@ Cof_politics = {
 						check_variable = { seat_jaco > seat_oppo }
 						check_variable = { seat_jaco > seat_sore }
 					}
-					country_event = cofpolitics.123
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.58
+					}
+					else = { country_event = cofpolitics.123 }
 				}
 
 				if = {
@@ -60,7 +104,11 @@ Cof_politics = {
 						check_variable = { seat_sore > seat_oppo }
 						check_variable = { seat_sore > seat_synd }
 					}
-					country_event = cofpolitics.124
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.59
+					}
+					else = { country_event = cofpolitics.124 }
 				}
 			}
 		}
@@ -503,6 +551,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = need_vote_bill_national_veterans_horor }
+		available = { NOT= { has_country_flag = voting_for_bill } }
 		fire_only_once = yes
 		cost = 50
 		complete_effect = {
@@ -1730,11 +1779,6 @@ Cof_politics = {
 		fire_only_once = yes
 		cost = 60
 		complete_effect = {
-			swap_ideas = {
-				remove_idea = bill_basic_speech_freedom
-				add_idea = bill_public_seepch_freedom
-			}
-
 			set_temp_variable = { ssc = -2 }
 			set_temp_variable = { asc = -2 }
 			set_temp_variable = { tsc = 3 }
@@ -1825,6 +1869,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = syndmode_technocrat_babeltower }
+		available = { NOT= { has_country_flag = voting_for_bill } }
 		fire_only_once = yes
 		cost = 50
 		complete_effect = {
@@ -1890,6 +1935,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = syndmode_technocrat_babeltower }
+		available = { NOT= { has_country_flag = voting_for_bill } }
 		fire_only_once = yes
 		cost = 50
 		complete_effect = {
@@ -2628,6 +2674,7 @@ Cof_politics = {
 			check_variable = { communist_target_sincerity > 0 }
 			has_country_flag = syndmode_communist_scholar 
 		}
+		available = { NOT= { has_country_flag = voting_for_bill } }
 		fire_only_once = yes
 		cost = 40
 		complete_effect = {
