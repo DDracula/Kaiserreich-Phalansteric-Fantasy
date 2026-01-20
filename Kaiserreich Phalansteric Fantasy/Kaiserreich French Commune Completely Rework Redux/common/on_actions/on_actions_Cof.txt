@@ -917,7 +917,12 @@ on_actions = {
 
 
             if = {
-                limit = { GER = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } } }
+                limit = { 
+                    GER = { 
+                        has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } 
+                        has_country_flag = has_set_smuggling
+                    } 
+                }
                 GER = {
                     set_temp_variable = { t = var:THIS.party_popularity@totalist }
                     add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
@@ -994,6 +999,15 @@ on_actions = {
                 multiply_variable = { bsf_steel = -1 }
                 multiply_variable = { bsf_tungsten = -1 }
                 multiply_variable = { bsf_coal = -1 }
+            }
+            else_if = {
+                limit = {
+                    GER = { 
+                        NOT = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } }
+                        has_country_flag = has_set_smuggling
+                    } 
+                }
+                clr_country_flag = has_set_smuggling
             }
         }
     }

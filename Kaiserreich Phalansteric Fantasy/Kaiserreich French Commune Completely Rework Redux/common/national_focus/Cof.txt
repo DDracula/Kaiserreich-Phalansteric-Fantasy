@@ -14769,7 +14769,7 @@ focus_tree = {
 							has_socialist_government = yes
 						} 
 					}
-					country_event = cofintern.29
+					CEN = { country_event = cofintern.29 }
 
 					if = {
 						limit = {
@@ -18375,16 +18375,18 @@ focus_tree = {
 		y = 1
 		cost = 2
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = Cof_central_fluid_power_research_institute
+				add_idea = Cof_central_fluid_power_research_institute2
+			}
+
 			custom_effect_tooltip = effect_economy
 			set_temp_variable = { epc = -50 }
 			cof_econ_target_change = yes
 	
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = FRA_vehicle_concept_tt
-			swap_ideas = {
-				remove_idea = Cof_central_fluid_power_research_institute
-				add_idea = Cof_central_fluid_power_research_institute2
-			}
+			custom_effect_tooltip = unlock_in_military
 		}
 	}
 

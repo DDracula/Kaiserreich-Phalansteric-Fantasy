@@ -8474,7 +8474,7 @@ Cof_economy = {
 }
 
 #### 军事改革 ####
-Cof_militray_reform = {
+Cof_military_reform = {
 	#军事学说发展
 	Cof_army_theory_development = {
 		icon = ger_mefo_bills
@@ -8623,18 +8623,20 @@ Cof_militray_reform = {
 		icon = ger_mefo_bills 
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			has_country_flag = has_mili_focus
 		}
 		days_re_enable = 0
 		complete_effect = {
 			clr_country_flag = has_mili_focus
 		}
-	}
-
+	} 
+      
 	Cof_army_routine_training = {
 		icon = ger_mefo_bills  
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			NOT = { has_country_flag = has_mili_focus }
 		}
 		cancel_trigger = { NOT = { has_country_flag = has_mili_focus } } 
@@ -8684,6 +8686,7 @@ Cof_militray_reform = {
 		icon = ger_mefo_bills  
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			has_completed_focus = FRA_ensuring_quality_of_integrated_training
 			NOT = { has_country_flag = has_mili_focus }
 		}
@@ -8736,6 +8739,7 @@ Cof_militray_reform = {
 		icon = ger_mefo_bills  
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			has_completed_focus = FRA_ensuring_quality_of_integrated_training
 			NOT = { has_country_flag = has_mili_focus }
 		}
@@ -8788,6 +8792,7 @@ Cof_militray_reform = {
 		icon = ger_mefo_bills  
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			has_completed_focus = FRA_ensuring_quality_of_integrated_training
 			NOT = { has_country_flag = has_mili_focus }
 		}
@@ -8847,6 +8852,7 @@ Cof_militray_reform = {
 		icon = ger_mefo_bills  
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			has_completed_focus = FRA_ensuring_quality_of_integrated_training
 		}
 		fire_only_once = yes
@@ -8882,6 +8888,7 @@ Cof_militray_reform = {
 		icon = ger_mefo_bills  
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			has_completed_focus = FRA_ensuring_quality_of_integrated_training
 		}
 		fire_only_once = yes
@@ -8918,6 +8925,7 @@ Cof_militray_reform = {
 		icon = ger_mefo_bills  
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = show_air_reasearch }
 			has_completed_focus = FRA_national_military_academy
 		}
 		days_re_enable = 90

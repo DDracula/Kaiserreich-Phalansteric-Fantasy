@@ -1683,3 +1683,32 @@ doctrines_fitness = {
         add_dynamic_modifier = { modifier = Cof_doctrines_fitness }
     }
 }
+
+###飞行器
+#    set_temp_variable = { vctc = 0 }
+#    set_temp_variable = { vcmc = 0 }
+#    set_temp_variable = { vcec = 0 }
+#    vehicle_concept_variable_change = yes
+vehicle_concept_variable_change = {
+    if = { limit = { check_variable = { vctc = 0 } } }
+    else = {
+        add_to_variable = {
+            vehicle_concept_theory = vctc
+            tooltip = vctc_tt
+        }
+    }
+    if = { limit = { check_variable = { vcmc = 0 } } }
+    else = {
+        add_to_variable = {
+            vehicle_concept_material = vcmc
+            tooltip = vcmc_tt
+        }
+    }
+    if = { limit = { check_variable = { vcec = 0 } } }
+    else = {
+        add_to_variable = {
+            vehicle_concept_engineer = vcec
+            tooltip = vcec_tt
+        }
+    }
+}

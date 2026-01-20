@@ -9,12 +9,7 @@ country_event = {
 	id = int.0
 	is_triggered_only = yes
 	option = {
-		set_temp_variable = { ssc = 10 }
-		set_temp_variable = { asc = 10 }
-		set_temp_variable = { tsc = 10 }
-		set_temp_variable = { csc = 10 }
-		syndmode_sincerity_change = yes
-
+		
 	} 
 }
  
@@ -3183,11 +3178,13 @@ country_event = {
 	option = {
 		name = cofpolitics.129.a
 		trigger = { check_variable = { seat_synd_mode > seat_synd_radi } }
+		set_country_flag = synd_mode_politics_landscape
 		complete_national_focus = FRA_to_be_change_unity_first
 	}	
 	option = {
 		name = cofpolitics.129.b
 		trigger = { check_variable = { seat_synd_radi > seat_synd_mode } }
+		set_country_flag = synd_radi_politics_landscape
 		complete_national_focus = FRA_to_unite_sacrifice_first
 	}	
 }
@@ -3747,7 +3744,7 @@ country_event = {
 	option = {
 		name = cofpolitics.156.a
 		activate_mission = Cof_syndmode_bring_in_communist_test_of_sincerity
-		set_variable = { technocrat_target_sincerity = 10 }
+		set_variable = { communist_target_sincerity = 10 }
 
 		unlock_decision_tooltip = Cof_syndmode_bring_in_communist_subsidize_argi_coop
 		unlock_decision_tooltip = Cof_syndmode_bring_in_communist_raise_purchase_prise
@@ -4283,6 +4280,21 @@ country_event = {
 	}	
 }
 
+country_event = {
+	id = cofpolitics.182
+	title = cofpolitics.182.title
+	desc = cofpolitics.182.desc
+	picture = GFX_report_event_ARG_car93
+	is_triggered_only = yes
+	option = {
+		name = cofpolitics.182.a
+		
+	}	
+	option = {
+		name = cofpolitics.182.b
+		
+	}	
+}
 
 
 
@@ -6122,25 +6134,25 @@ country_event = {
 	id = cofintern.5
 	title = {
 		text = cofintern.5.title.SPA
-		trigger = { tag = SPA }
+		trigger = { has_socialist_government = no }
 	}
 	title = {
 		text = cofintern.5.title.SWF
-		trigger = { tag = SWF }
+		trigger = { has_socialist_government = yes }
 	}
 	desc = {
 		text = cofintern.5.desc.SPA
-		trigger = { tag = SPA }
+		trigger = { has_socialist_government = no }
 	}
 	desc = {
 		text = cofintern.5.desc.SWF
-		trigger = { tag = SWF }
+		trigger = { has_socialist_government = yes }
 	}
 	picture = GFX_report_event_BEL_Syndies_Royalists
 	is_triggered_only = yes
 	option = {
 		name = cofintern.5.SPA
-		trigger = { tag = SPA }
+		trigger = { has_socialist_government = no }
 		add_stability = -0.05
 		add_popularity = { ideology = totalist popularity = 0.025 }
 		add_popularity = { ideology = syndicalist popularity = 0.05	}
@@ -6169,7 +6181,7 @@ country_event = {
 	}		
 	option = {
 		name = cofintern.5.SWF
-		trigger = { tag = SWF }
+		trigger = { has_socialist_government = yes }
 		if = {
 			limit = {  has_country_flag = french_military_volunteer }
 			clr_country_flag = french_military_volunteer
@@ -7759,7 +7771,7 @@ country_event = {
 
 		custom_effect_tooltip = if_they_accept_effect 
 		effect_tooltip = {
-			MEX = { annex_country = { target = AUS transfer_troops = yes } }
+			MEX = { annex_country = { target = CEN transfer_troops = yes } }
 			every_state = {
 				limit = { is_core_of = CEN }
 				add_core_of = MEX
