@@ -1,0 +1,2315 @@
+###国际干涉
+FRA_BoP_category = {
+#全局
+	#武器出口
+	FRA_global_weapons_trade_show = {
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_excess_arms_trade
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			clr_all_flag = yes
+			if = {
+				limit = { has_country_flag = show_weapons_trade }
+				clr_country_flag = show_weapons_trade
+			}
+			else = { set_country_flag = show_weapons_trade }
+		}
+	}
+	FRA_global_weapons_trade = {
+		allowed = { tag = FRA }
+		visible = { has_country_flag = show_weapons_trade }
+		available = {
+			OR = {
+				has_equipment = { infantry_equipment > 10000 }
+				has_equipment = { artillery_equipment > 5000 }
+				has_equipment = { medium_tank_chassis > 2500 }
+			}
+		}
+		target_trigger = {
+			FROM = {
+				NOT = { has_country_flag = weapons_trade_receive }
+				NOT = { is_embargoing = FRA }
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			effect_tooltip = { country_event = cofintern.2 }
+			hidden_effect = { FROM = { FRA = { country_event = cofintern.2 } } }
+		}
+	}
+	#建立黑市
+	FRA_set_red_black_market_show = {
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_government_is_not_people
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			clr_all_flag = yes
+			if = {
+				limit = { has_country_flag = show_set_red_black_market }
+				clr_country_flag = show_set_red_black_market
+			}
+			else = { set_country_flag = show_set_red_black_market }
+		}
+	}
+	FRA_set_red_black_market = {
+		allowed = { tag = FRA }
+		visible = { has_country_flag = show_set_red_black_market }
+		target_trigger = {
+			FROM = {
+				has_stability < 0.25
+				has_socialist_government = no
+				set_temp_variable = { ck = var:THIS.party_popularity@totalist }
+				add_to_temp_variable = { ck = var:THIS.party_popularity@syndicalist }
+				add_to_temp_variable = { ck = var:THIS.party_popularity@radical_socialist }
+				check_variable = { ck > 0.1 }   
+				capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } } }
+			}
+		}
+		cost = 50
+		complete_effect = {
+			FROM = {
+				country_event = cofintern.11
+				capital_scope = {
+					add_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id }
+				}
+			}
+		}
+	}
+
+#欧洲
+	iri_eu_expand = {
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_eu_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+###西欧
+#葡萄牙
+	iri_euw_por_organize_workers = {
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = POR }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = POR 
+				exists = yes
+				has_socialist_government = no
+				NOT = { has_country_flag = cof_iri_has_finished }
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_text = cost_iri_eui_10
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		days_re_enable = 50
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -10 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				activate_countermeasures_decision = yes
+				country_event = cofintern.161
+				effect_tooltip = {
+					add_stability = -0.05
+
+					random_list = {
+						1 = { add_popularity = { ideology = totalist popularity = 0.05 } }
+						1 = { add_popularity = { ideology = syndicalist popularity = 0.05 } }
+						1 = { add_popularity = { ideology = radical_socialist popularity = 0.05 } }
+						1 = {
+							add_popularity = { ideology = totalist popularity = 0.025 }
+							add_popularity = { ideology = syndicalist popularity = 0.025	}
+							add_popularity = { ideology = radical_socialist popularity = 0.025	}
+						}
+					}
+				}
+			}
+		}
+	}
+	iri_euw_por_call_for_strike = {
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = POR }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = POR 
+				exists = yes
+				has_socialist_government = no
+				NOT = { has_country_flag = cof_iri_has_finished }
+			}
+		}
+		available = {
+			FROM = {
+				OR = {
+					set_temp_variable = { target_num = 10 }
+					pan_socialist_ideology_more_than_x = yes
+
+					has_stability < 0.4
+				}
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_text = cost_iri_eui_15
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		days_re_enable = 80
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				activate_countermeasures_decision = yes
+				country_event = cofintern.162
+				effect_tooltip = {
+					add_stability = -0.05
+					add_political_power = -50
+					
+					add_timed_idea = { idea = Cof_iri_organized_strike days = 30 }
+				}
+			}
+		}
+	}
+	iri_euw_por_cooperate_with_republic = {
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = POR }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = POR 
+				exists = yes
+				has_socialist_government = no
+				NOT = { has_country_flag = cof_iri_has_finished }
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_text = cost_iri_eui_15
+		ai_will_do = { base = 0	}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = iri_cooperate_with_republic
+			FROM = {
+				activate_countermeasures_decision = yes
+				country_event = cofintern.158
+				custom_effect_tooltip = if_they_accept_effect
+				effect_tooltip = {
+					add_stability = -0.05
+
+					add_popularity = { ideology = totalist popularity = 0.025 }
+					add_popularity = { ideology = syndicalist popularity = 0.025 }
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+
+					add_popularity = { ideology = social_democrat popularity = 0.025 }
+					add_popularity = { ideology = social_liberal popularity = 0.025 }
+				}
+				custom_effect_tooltip = if_they_not_accept_effect
+				effect_tooltip = {
+					add_stability = 0.025
+
+					add_popularity = { ideology = totalist popularity = -0.01 }
+					add_popularity = { ideology = syndicalist popularity = -0.01 }
+					add_popularity = { ideology = radical_socialist popularity = -0.01 }
+				}
+			}
+		}
+	}
+	iri_euw_por_assassinate_leader = {
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = POR }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = POR 
+				exists = yes
+				has_socialist_government = no
+				is_monarchy = yes
+				NOT = { has_country_flag = cof_iri_has_finished }
+			}
+		}
+		available = {
+			FROM = {
+				set_temp_variable = { target_num = 30 }
+				pan_socialist_ideology_more_than_x = yes
+
+				has_stability < 0.2
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 29 } }
+		custom_cost_text = cost_iri_eui_30
+		ai_will_do = { base = 0	}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -30 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			FROM = {
+				hidden_effect = {
+					random_list = {
+						var:THIS.cof_iri_revolution = { 
+							modifier = { add = 20 }
+							set_country_flag = cof_iri_assassinate_leader_success 
+						}
+						100 = {
+							modifier = {
+								set_temp_variable = { t = cof_iri_revolution }
+								add_to_temp_variable = { t = 20 }
+								multiply_temp_variable = { t = -1 }
+								add = t
+							}
+							set_country_flag = cof_iri_assassinate_leader_fail
+						}
+					}
+				}
+
+				country_event = cofintern.160
+				custom_effect_tooltip = if_assassinate_success
+				effect_tooltip = {
+					custom_effect_tooltip = tooltip_white_line
+					add_trait = {
+						character = THIS.country_leader
+						ideology = THIS.current_party_ideology_group
+						trait = FRA_assassinated_leader_dead
+					}
+				}
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = if_assassinate_fail
+				effect_tooltip = {
+					custom_effect_tooltip = tooltip_white_line
+					add_trait = {
+						character = THIS.country_leader
+						ideology = THIS.current_party_ideology_group
+						trait = FRA_assassinated_leader_injured
+					}
+				}
+			}
+		}
+	}
+	iri_euw_por_revolution = {
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = POR }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = POR 
+				exists = yes
+				has_socialist_government = no
+				NOT = { has_country_flag = cof_iri_has_finished }
+			}
+		}
+		available = {
+			FROM = {
+				OR = {
+					set_temp_variable = { target_num = 25 }
+					pan_socialist_ideology_more_than_x = yes
+
+					has_stability < 0.3
+
+					has_country_flag = cof_iri_assassinate_leader_success
+				}
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 49 } }
+		custom_cost_text = cost_iri_eui_50
+		ai_will_do = { base = 0	} 
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -50 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			FROM = {
+				country_event = cofintern.163
+				custom_effect_tooltip = iri_revolution_tt
+			}
+		}
+	}
+#西班牙
+	iri_euw_spa_fund_swf = {
+		allowed = { tag = FRA }
+		visible = { 
+			NOT = { has_global_flag = spanish_civil_war }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = SPA
+				has_war = no
+				has_socialist_government = no
+			}
+		}
+		available = { num_of_civilian_factories_available_for_projects > 4 }
+		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_text = cost_iri_eui_20
+		ai_will_do = { base = 0	}
+		fire_only_once = yes
+		days_remove = 60
+		modifier = { civilian_factory_use = 4 }
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -20 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				country_event = cofintern.173
+				effect_tooltip = {
+					add_stability = -0.1
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -1000
+					}
+					SWF = {
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 1000
+							producer = SPA
+						}
+					}
+					165 = { 
+						add_building_construction = {
+							type = arms_factory
+							level = 1
+							instant_build = yes
+						}
+						add_dynamic_modifier = { modifier = Cof_iri_state_catalonia } 
+					}
+					167 = { 
+						add_building_construction = {
+							type = arms_factory
+							level = 1
+							instant_build = yes
+						}
+						add_dynamic_modifier = { modifier = Cof_iri_state_catalonia } 
+					}
+				}
+			}
+		}
+	}
+	iri_euw_spa_civil_war_destroy = {
+		allowed = { tag = FRA }
+		visible = { 
+			has_global_flag = spanish_civil_war
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_war_with = SWF
+				OR = {
+					tag = SPA
+					tag = SPR
+				}
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_text = cost_iri_eui_10
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		days_re_enable = 80
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -10 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				country_event = cofintern.174
+				effect_tooltip = {
+					add_stability = -0.025
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = -1000
+					}
+					capital_scope = {
+						damage_building = {
+							type = arms_factory
+							damage = 0.5
+						}
+						damage_building = {
+							type = industrial_complex
+							damage = 0.5
+						}
+					}
+				}
+			}
+		}
+	}
+	iri_euw_spa_civil_war_plan = {
+		allowed = { tag = FRA }
+		visible = { 
+			has_global_flag = spanish_civil_war
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_war_with = SWF
+				NOT = { has_idea = Cof_spanish_infiltrated_command_chain }
+				OR = {
+					tag = SPA
+					tag = SPR
+				}
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_text = cost_iri_eui_15
+		ai_will_do = { base = 0	}
+		days_remove = 50
+		days_re_enable = 100
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				country_event = cofintern.175
+				effect_tooltip = {
+					add_stability = -0.025
+					add_timed_idea = { idea = Cof_spanish_infiltrated_command_chain days = 30 }
+				}
+			}
+		}
+	}
+	iri_euw_mission_spanish_civil_war = {
+		icon = generic_civil_support
+		activation = { has_global_flag = spanish_civil_war }
+		available = {  
+			OR = {
+				SWF = { has_country_flag = SPA_aftermath_of_the_civil_war }
+				SWF = { exists = no }
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 400
+		complete_effect = {
+			custom_effect_tooltip = if_swf_wins_civil_war
+			effect_tooltip = {
+				add_war_support = 0.025
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_internation
+				set_temp_variable = { iri_euic = 50 }
+				set_temp_variable = { iri_asic = 0 }
+				set_temp_variable = { iri_meic = 0 }
+				set_temp_variable = { iri_afic = 0 }
+				set_temp_variable = { iri_amic = 0 }
+				iri_influence_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { wc = 2 }
+				set_temp_variable = { pc = 2 }
+				set_temp_variable = { mc = 2 }
+				set_temp_variable = { sc = 2 }
+				set_temp_variable = { bc = 2 }
+				set_temp_variable = { ac = 2 }
+				class_pop_satisfactions_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_not_swf_wins_civil_war
+			effect_tooltip = {
+				custom_effect_tooltip = effect_internation
+				set_temp_variable = { iri_euic = -30 }
+				set_temp_variable = { iri_asic = 0 }
+				set_temp_variable = { iri_meic = 0 }
+				set_temp_variable = { iri_afic = 0 }
+				set_temp_variable = { iri_amic = 0 }
+				iri_influence_change = yes
+			}
+
+			hidden_effect = {
+				if = {
+					limit = { country_exists = SWF }
+					set_temp_variable = { iri_euic = 50 }
+					set_temp_variable = { iri_asic = 0 }
+					set_temp_variable = { iri_meic = 0 }
+					set_temp_variable = { iri_afic = 0 }
+					set_temp_variable = { iri_amic = 0 }
+					iri_influence_change = yes
+
+					set_temp_variable = { wc = 2 }
+					set_temp_variable = { pc = 2 }
+					set_temp_variable = { mc = 2 }
+					set_temp_variable = { sc = 2 }
+					set_temp_variable = { bc = 2 }
+					set_temp_variable = { ac = 2 }
+					class_pop_satisfactions_change = yes
+				}
+				else = {
+					set_temp_variable = { iri_euic = -30 }
+					set_temp_variable = { iri_asic = 0 }
+					set_temp_variable = { iri_meic = 0 }
+					set_temp_variable = { iri_afic = 0 }
+					set_temp_variable = { iri_amic = 0 }
+					iri_influence_change = yes
+				}
+			}
+		}
+		timeout_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -20 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+#爱尔兰
+	iri_euw_ire_socialist_propaganda = {
+		allowed = { tag = FRA }
+		visible = { 
+			IRE = { NOT = { has_country_flag = cof_iri_ireland_revolution } }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_text = cost_iri_eui_10
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -10 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				country_event = cofintern.176
+				effect_tooltip = {
+					random_list = {
+						1 = { add_popularity = { ideology = totalist popularity = 0.025 } }
+						1 = { add_popularity = { ideology = syndicalist popularity = 0.025 } }
+						1 = { add_popularity = { ideology = radical_socialist popularity = 0.025 } }
+						1 = {
+							add_popularity = { ideology = totalist popularity = 0.01 }
+							add_popularity = { ideology = syndicalist popularity = 0.01 }
+							add_popularity = { ideology = radical_socialist popularity = 0.01 }
+						}
+					}
+
+					custom_effect_tooltip = if_ire_gateway_start
+					set_temp_variable = { IRE_ENG_delta = 5 }
+					IRE_add_ENG_influence = yes
+				}
+			}
+		}
+	}
+	iri_euw_ire_fund_socialist = {
+		allowed = { tag = FRA }
+		visible = { 
+			IRE = { NOT = { has_country_flag = cof_iri_ireland_revolution } }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+			}
+		}
+		available = {
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 20 } 
+			cof_econ_target_more_than_x = yes
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_text = cost_iri_eui_15
+		ai_will_do = { base = 0	}
+		days_remove = 40
+		modifier = { economy_power_factor = -0.05 }
+		days_re_enable = 90
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -20 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				country_event = cofintern.177
+				effect_tooltip = {
+					add_timed_idea = { idea = Cof_ireland_active_leftwing_activities days = 30 }
+						
+					custom_effect_tooltip = if_ire_gateway_start
+					set_temp_variable = { IRE_ENG_delta = 5 }
+					IRE_add_ENG_influence = yes
+				}
+			}
+		}
+	}
+	iri_euw_ire_strengthen_influence = {
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = IRE_gateway_started
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_text = cost_iri_eui_20
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		modifier = { political_power_factor = -0.05 }
+		days_re_enable = 70
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -20 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				country_event = cofintern.178
+				effect_tooltip = {
+					add_popularity = { ideology = totalist popularity = 0.03 }
+
+					set_temp_variable = { IRE_ENG_delta = 20 }
+					IRE_add_ENG_influence = yes
+				}
+			}
+		}
+	}
+	iri_euw_ire_violent_revolution = {
+		allowed = { tag = FRA }
+		visible = { 
+			IRE = { 
+                OR = {
+                    has_country_flag = IRE_gateway_IRE_victory
+                    has_country_flag = IRE_gateway_GER_victory 
+                }
+            }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 39 } }
+		custom_cost_text = cost_iri_eui_40
+		ai_will_do = { base = 0	}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -40 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = ireland_violend_revolution_tt
+			ENG = { 
+				activate_countermeasures_decision = yes
+				country_event = cofintern.179 
+			}
+			IRE = { 
+				activate_countermeasures_decision = yes
+				country_event = cofintern.179
+				set_country_flag = cof_iri_ireland_revolution 
+			}
+		}
+	}
+	iri_euw_ire_revo_transport_weapons = {
+		allowed = { tag = FRA }
+		visible = { 
+			IRE = { has_country_flag = cof_iri_ireland_revolution }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		available = {
+			has_equipment = { infantry_equipment > 499 }
+			has_equipment = { support_equipment > 24 }
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_text = cost_iri_eui_15
+		ai_will_do = { base = 0	}
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -25
+			}
+			IRE = {
+				country_event = cofintern.181
+				effect_tooltip = {
+					add_popularity = { ideology = totalist popularity = 0.03 }
+					set_temp_variable = { t = 1 }
+					ireland_violend_revolution_army_change = yes
+				}
+			}
+		}
+	}
+	iri_euw_ire_revo_popraganda = {
+		allowed = { tag = FRA }
+		visible = { 
+			IRE = { has_country_flag = cof_iri_ireland_revolution }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_text = cost_iri_eui_20
+		ai_will_do = { base = 0	}
+		modifier = { political_power_factor = -0.05 }
+		days_remove = 50
+		days_re_enable = 100
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -20 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			IRE = {
+				country_event = cofintern.182
+				effect_tooltip = {
+					add_popularity = { ideology = totalist popularity = 0.02 }
+					add_popularity = { ideology = syndicalist popularity = 0.02 }
+					add_popularity = { ideology = radical_socialist popularity = 0.02 }
+				}
+			}
+		}
+	}
+	iri_euw_ire_revo_strike = {
+		allowed = { tag = FRA }
+		visible = { 
+			IRE = { has_country_flag = cof_iri_ireland_revolution }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_text = cost_iri_eui_20
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		days_re_enable = 80
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -20 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+		remove_effect = {
+			IRE = {
+				country_event = cofintern.183
+				effect_tooltip = {
+					if = {
+						limit = { has_idea = Cof_ireland_revolution_strike }
+						modify_timed_idea = { idea = Cof_ireland_revolution_strike days = 40 }
+					}
+					else = { add_timed_idea = { idea = Cof_ireland_revolution_strike days = 30 } }
+				}
+			}
+		}
+	}
+	iri_euw_ire_revo_start_revolution = {
+		allowed = { tag = FRA }
+		visible = { 
+			IRE = { has_country_flag = cof_iri_ireland_revolution }
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_euw_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = FROM }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		available = {
+			IRE = {
+				OR = {
+					has_stability < 0.3
+
+					set_temp_variable = { target_num = 20 }
+					pan_socialist_ideology_more_than_x = yes
+
+					custom_trigger_tooltip = {
+						tooltip = iri_ire_revolution_army_more_than_5
+						check_variable = { iri_ire_revolution_army > 5 }
+					}
+				}
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 49 } }
+		custom_cost_text = cost_iri_eui_50
+		ai_will_do = { base = 0	}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -50 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			IRE = {
+				country_event = cofintern.184
+				custom_effect_tooltip = iri_revolution_tt
+			}
+		}
+	}
+
+	
+
+#中欧
+	iri_eum_ger_organize_smugglers = {
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_acquiescence_to_german_smugglers
+			OR = {
+				AND = {
+					NOT = { has_country_flag = iri_targeted_chosen }
+					has_country_flag = iri_eum_show 
+				}
+				AND = {
+					has_country_flag = iri_targeted_chosen
+					check_variable = { var:FRA.iri_targeted^0 = GER }
+				}
+			}
+		}
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = GER
+				exists = yes
+				has_socialist_government = no
+			}
+		}
+		available = {
+			GER = { 
+				has_stability < 0.6
+				set_temp_variable = { target_num = 0.05 }
+				custom_trigger_tooltip = {
+					tooltip = socialist_like_ideology_more_than_x
+					set_temp_variable = { t = var:THIS.party_popularity@totalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+					check_variable = { t > target_num }
+				}
+				NOT = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } } 
+			}
+		}
+		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_text = cost_iri_eui_15
+		ai_will_do = { base = 0	}
+		complete_effect = {
+			add_political_power = -50
+
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = -15 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			GER = { country_event = cofintern.13 }
+			custom_effect_tooltip = event_effect_tooltip
+			effect_tooltip = {
+				GER = {
+					add_stability = -0.025
+					add_popularity = { ideology = syndicalist popularity = 0.01 }
+					add_popularity = { ideology = radical_socialist popularity = 0.025 }
+				
+					set_temp_variable = { t = var:THIS.party_popularity@totalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+					add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+					multiply_temp_variable = { t = 20 }
+					round_temp_variable = t
+
+					set_temp_variable = { tt = 0.6 }
+					subtract_from_temp_variable = { tt = THIS.stability }
+					multiply_temp_variable = { tt = 10 }
+					round_temp_variable = tt
+
+					add_to_temp_variable = { t = tt }
+					set_temp_variable = { bsg_civilian_factory_use = t }
+					
+					set_temp_variable = { rt = t }
+					multiply_temp_variable = { rt = 3 }
+					
+					if = {
+						limit = { aluminium > rt }
+						set_temp_variable = { bsg_aluminium = rt }
+					}
+					else = { set_temp_variable = { bsg_aluminium = THIS.resource_produced@aluminium } }
+					if = {
+						limit = { chromium > rt }
+						set_temp_variable = { bsg_chromium = rt }
+					}
+					else = { set_temp_variable = { bsg_chromium = THIS.resource_produced@chromium } }
+					if = {
+						limit = { oil > rt }
+						set_temp_variable = { bsg_oil = rt }
+					}
+					else = { set_temp_variable = { bsg_oil = THIS.resource_produced@oil } }
+					if = {
+						limit = { rubber > rt }
+						set_temp_variable = { bsg_rubber = rt }
+					}
+					else = { set_temp_variable = { bsg_rubber = THIS.resource_produced@rubber } }
+					if = {
+						limit = { steel > rt }
+						set_temp_variable = { bsg_steel = rt }
+					}
+					else = { set_temp_variable = { bsg_steel = THIS.resource_produced@steel } }
+					if = {
+						limit = { tungsten > rt }
+						set_temp_variable = { bsg_tungsten = rt }
+					}
+					else = { set_temp_variable = { bsg_tungsten = THIS.resource_produced@tungsten } }
+					multiply_temp_variable = { bsg_aluminium = -1 }
+					multiply_temp_variable = { bsg_chromium = -1 }
+					multiply_temp_variable = { bsg_oil = -1 }
+					multiply_temp_variable = { bsg_rubber = -1 }
+					multiply_temp_variable = { bsg_steel = -1 }
+					multiply_temp_variable = { bsg_tungsten = -1 }
+
+					add_dynamic_modifier = { modifier = Cof_border_smuggling_ger days = 90 }
+				}
+				custom_effect_tooltip = tooltip_white_line
+				FRA = {
+					set_temp_variable = { bsf_industrial_factory_donations = GER.t }
+					set_temp_variable = { bsf_aluminium = GER.bsg_aluminium }
+					set_temp_variable = { bsf_chromium = GER.bsg_chromium }
+					set_temp_variable = { bsf_oil = GER.bsg_oil }
+					set_temp_variable = { bsf_rubber = GER.bsg_rubber }
+					set_temp_variable = { bsf_steel = GER.bsg_steel }
+					set_temp_variable = { bsf_tungsten = GER.bsg_tungsten }
+					multiply_temp_variable = { bsf_aluminium = -1 }
+					multiply_temp_variable = { bsf_chromium = -1 }
+					multiply_temp_variable = { bsf_oil = -1 }
+					multiply_temp_variable = { bsf_rubber = -1 }
+					multiply_temp_variable = { bsf_steel = -1 }
+					multiply_temp_variable = { bsf_tungsten = -1 }
+
+					add_dynamic_modifier = { modifier = Cof_border_smuggling_fra days = 90 }	
+				}
+			}
+			hidden_effect = { add_dynamic_modifier = { modifier = Cof_border_smuggling_fra days = 90 } }
+		}
+	}
+
+#亚洲
+	iri_as_expand = {
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_as_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 15 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+
+#中东
+	iri_me_expand = {
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_me_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 15 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+
+#非洲
+	iri_af_expand = {
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_af_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 15 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+
+#美洲
+	iri_am_expand = {
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = iri_expanding }
+			has_country_flag = iri_am_show
+		}
+		icon = generic_operation
+		cost = 30
+		days_remove = 30
+		fixed_random_seed = no
+		days_re_enable = 30
+		complete_effect = { set_country_flag = iri_expanding }
+		remove_effect = {
+			custom_effect_tooltip = expanding_infulence
+			clr_country_flag = iri_expanding
+			add_political_power = 30
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 15 }
+			iri_influence_change = yes
+		}
+	}
+
+#法伦施泰尔       
+	phalanstere_congress_enable = {
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_found_the_phalanstere_international
+			has_country_flag = phalanstere_show
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			NOT = { has_global_flag = phalanstere_congress_in_progress }
+		}
+		icon = generic_operation
+		cost = 10
+		complete_effect = { 
+			set_global_flag = phalanstere_congress_in_progress
+			country_event = int.2
+		}
+	}
+	phalanstere_congress_in_progress = {
+		icon = aluminium
+		activation = { has_global_flag = phalanstere_congress_in_progress }
+		available = { has_global_flag = phalanstere_congress_end_ahead }
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		complete_effect = {
+			clr_global_flag = phalanstere_congress_end_ahead
+			clr_global_flag = phalanstere_congress_in_progress
+			set_global_flag = phalanstere_congress_adjournment
+			country_event = int.3
+			hidden_effect = {
+				every_other_country = {
+					limit = { FRA_is_phalanstere_member = yes }
+					country_event = int.3
+				}
+			}
+		}
+		timeout_effect = {
+			clr_global_flag = phalanstere_congress_in_progress
+			set_global_flag = phalanstere_congress_adjournment
+			country_event = int.3
+			hidden_effect = {
+				every_other_country = {
+					limit = { FRA_is_phalanstere_member = yes }
+					country_event = int.3
+				}
+			}
+		}
+	}
+	phalanstere_congress_end_ahead = {
+		allowed = { tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+		}
+		icon = generic_operation
+		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 9.9 } }
+		custom_cost_text = cost_phalanstere_unity_10
+		complete_effect = { 
+			set_temp_variable = { phauc = -10 }
+			phalanstere_unity_change = yes
+			set_global_flag = phalanstere_congress_end_ahead
+		}
+	}
+	phalanstere_congress_adjournment = {
+		icon = aluminium
+		activation = { has_global_flag = phalanstere_congress_adjournment }
+		available = { has_global_flag = phalanstere_congress_start_ahead }
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 60
+		complete_effect = {
+			clr_global_flag = phalanstere_congress_start_ahead
+			clr_global_flag = phalanstere_congress_adjournment
+		}
+		timeout_effect = {
+			clr_global_flag = phalanstere_congress_adjournment
+			set_temp_variable = { phauc = 1 }
+			phalanstere_unity_change = yes
+		}
+	}
+	phalanstere_congress_start_ahead = {
+		allowed = { tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			has_global_flag = phalanstere_congress_adjournment 
+			NOT = { has_global_flag = phalanstere_congress_in_progress }
+		}
+		icon = generic_operation
+		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 4.9 } }
+		custom_cost_text = cost_phalanstere_unity_5
+		complete_effect = { 
+			set_temp_variable = { phauc = -5 }
+			phalanstere_unity_change = yes
+			set_global_flag = phalanstere_congress_start_ahead
+		}
+	}
+
+	#辩论
+	phalanstere_congress_provide_benefits_waiver = {
+		allowed = { tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+
+			has_country_flag = phalanstere_member_list_waiver
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				has_country_flag = phalanstere_attitude_waiver
+			}
+		}
+		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 2.4 } }
+		custom_cost_text = cost_phalanstere_unity_2.5
+		complete_effect = { 
+			set_temp_variable = { phauc = -2.5 }
+			phalanstere_unity_change = yes
+			FROM = {
+				effect_tooltip = { add_political_power = 100 }
+				phacongress_change_agree_from_waiver = yes
+				hidden_effect = { country_event = int.4 }
+			}
+		}
+	}
+
+	phalanstere_congress_provide_benefits_oppose = {
+		allowed = { tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+
+			has_country_flag = phalanstere_member_list_oppose
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				has_country_flag = phalanstere_attitude_oppose
+			}
+		}
+		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 4.9 } }
+		custom_cost_text = cost_phalanstere_unity_5
+		complete_effect = { 
+			set_temp_variable = { phauc = -5 }
+			phalanstere_unity_change = yes
+			FROM = {
+				effect_tooltip = { add_political_power = 100 }
+				phacongress_change_agree_from_oppose = yes
+				hidden_effect = { country_event = int.4 }
+			}
+		}
+	}
+
+	#国际援助
+	phalanstere_aid_construction_show = {
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_revolutionary_aid_construction
+			has_country_flag = phalanstere_show
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_aid_construction_show }
+				clr_country_flag = phalanstere_aid_construction_show
+			}
+			else = { set_country_flag = phalanstere_aid_construction_show }
+		}
+	}
+	phalanstere_aid_construction = {
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_revolutionary_aid_construction
+			has_country_flag = phalanstere_show
+			has_country_flag = phalanstere_aid_construction_show
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				NOT = { tag = ENG }
+			}
+		}
+		fire_only_once = yes
+		days_remove = 90
+		custom_cost_trigger = { check_variable = { economy_power > 24.9 } }
+		custom_cost_text = cost_ep_25
+		complete_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -25 } 
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { phauc = 5 }
+   		    phalanstere_unity_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				capital_scope = {
+					if = {
+						limit = { infrastructure < 4 }
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				add_tech_bonus = {
+					name = phalanstere_aid_construction
+					bonus = 0.75
+					uses = 1
+					category = industry
+				}
+			}
+		}
+	}
+
+	#扫盲远征队
+	phalanstere_literacy_expeditionary_force_show = {
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_literacy_expeditionary_force
+			has_country_flag = phalanstere_show
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_literacy_expeditionary_force_show }
+				clr_country_flag = phalanstere_literacy_expeditionary_force_show
+			}
+			else = { set_country_flag = phalanstere_literacy_expeditionary_force_show }
+		}
+	}
+	phalanstere_literacy_expeditionary_force = {
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_literacy_expeditionary_force
+			has_country_flag = phalanstere_show
+			has_country_flag = phalanstere_literacy_expeditionary_force_show
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				capital_scope = {
+					INT_is_in_europe = no
+					INT_is_in_america_north = no
+				}
+				NOT = { has_idea = Cof_literacy_expeditionary_force }
+			}
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			FROM = {
+				add_political_power = 50
+				add_timed_idea = { idea = Cof_literacy_expeditionary_force days = 365 }
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { phauc = 2.5 }
+   		    phalanstere_unity_change = yes
+		}
+	}
+
+	#国际革命根据地
+	Cof_set_revolutionary_bases_show = {
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_revolutionary_bases_abroad
+			has_country_flag = phalanstere_show
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = set_revolutionary_bases_show }
+				clr_country_flag = set_revolutionary_bases_show
+			}
+			else = { set_country_flag = set_revolutionary_bases_show }
+		}
+	}
+	Cof_set_revolutionary_bases = {
+		allowed = { tag = FRA }
+		visible = {
+			has_country_flag = phalanstere_show
+			has_country_flag = set_revolutionary_bases_show
+		}
+		target_trigger = {
+			FROM = {
+				has_socialist_government = yes
+				has_war = no
+				capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } }
+			}
+		}
+		icon = generic_operation
+		fire_only_once = yes
+		custom_cost_trigger = { num_of_civilian_factories_available_for_projects > 0 }
+		custom_cost_text = cost_civ_factory_1
+		complete_effect = { 
+			random_core_state = {
+				limit = { industrial_complex > 0 }
+				remove_building = {
+					type = industrial_complex
+					level = 1
+				}
+			}
+			FROM = { 
+				capital_scope = { 
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+					add_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } 
+				} 
+				hidden_effect = { add_ideas = Cof_revolutionary_bases_buff }
+			}
+
+			custom_effect_tooltip = effect_internation
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_europe = yes } } }
+				set_temp_variable = { iri_euic = 5 }
+			}
+			else = { set_temp_variable = { iri_euic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_asia = yes } } }
+				set_temp_variable = { iri_asic = 5 }
+			}
+			else = { set_temp_variable = { iri_asic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_middle_east = yes } } }
+				set_temp_variable = { iri_meic = 5 }
+			}
+			else = { set_temp_variable = { iri_meic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_africa = yes } } }
+				set_temp_variable = { iri_afic = 5 }
+			}
+			else = { set_temp_variable = { iri_afic = 0 } }
+
+			if = {
+				limit = { FROM = { capital_scope = { INT_is_in_america = yes } } }
+				set_temp_variable = { iri_amic = 5 }
+			}
+			else = { set_temp_variable = { iri_amic = 0 } }
+			iri_influence_change = yes
+
+			if = {
+				limit = { has_completed_focus = FRA_found_the_phalanstere_international }
+				set_temp_variable = { phauc = 0.5 }
+				phalanstere_unity_change = yes
+			}
+		}
+	}
+}
+
+#其他国家的法伦施泰尔
+Cof_phalanstere_category = {
+	phalanstere_change_vote_agree = {
+		visible = {
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+			NOT = { has_country_flag = phalanstere_attitude_agree }
+		}
+		icon = generic_operation
+		cost = 5
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_attitude_waiver }
+				phacongress_change_agree_from_waiver = yes
+			}
+			else_if = {
+				limit = { has_country_flag = phalanstere_attitude_oppose }
+				phacongress_change_agree_from_oppose = yes
+			}
+		}
+	}
+	phalanstere_change_vote_oppose = {
+		visible = {
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+			NOT = { has_country_flag = phalanstere_attitude_oppose }
+		}
+		icon = generic_operation
+		cost = 5
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_attitude_waiver }
+				phacongress_change_oppose_from_waiver = yes
+			}
+			else_if = {
+				limit = { has_country_flag = phalanstere_attitude_agree }
+				phacongress_change_oppose_from_agree = yes
+			}
+		}
+	}
+	phalanstere_change_vote_waiver = {
+		visible = {
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+			
+			NOT = { has_country_flag = phalanstere_attitude_waiver }
+		}
+		icon = generic_operation
+		cost = 5
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_attitude_agree }
+				phacongress_change_waiver_from_agree = yes
+			}
+			else_if = {
+				limit = { has_country_flag = phalanstere_attitude_oppose }
+				phacongress_change_waiver_from_oppose = yes
+			}
+		}
+	}
+
+	#国际援助
+	phalanstere_member_aid_construction_show = {
+		allowed = { original_tag = ENG }
+		visible = { FRA = { has_completed_focus = FRA_revolutionary_aid_construction } }
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = { 
+				limit = { has_country_flag = phalanstere_aid_construction_show }
+				clr_country_flag = phalanstere_aid_construction_show
+			}
+			else = { set_country_flag = phalanstere_aid_construction_show }
+		}
+	}
+	phalanstere_member_aid_construction = {
+		allowed = { original_tag = ENG }
+		visible = {
+			FRA = { has_completed_focus = FRA_revolutionary_aid_construction }
+			has_country_flag = phalanstere_aid_construction_show
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				NOT = { tag = FRA }
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 90
+		remove_effect = {
+			FROM = {
+				capital_scope = {
+					if = {
+						limit = { infrastructure < 4 }
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				add_tech_bonus = {
+					name = phalanstere_aid_construction
+					bonus = 0.75
+					uses = 1
+					category = industry
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { phauc = 5 }
+   		    phalanstere_unity_change = yes
+		}
+	}
+
+	#扫盲远征队
+	phalanstere_member_literacy_expeditionary_force_show = {
+		allowed = { original_tag = ENG }
+		visible = { FRA = { has_completed_focus = FRA_literacy_expeditionary_force } }
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_literacy_expeditionary_force_show }
+				clr_country_flag = phalanstere_literacy_expeditionary_force_show
+			}
+			else = { set_country_flag = phalanstere_literacy_expeditionary_force_show }
+		}
+	}
+	phalanstere_member_literacy_expeditionary_force = {
+		allowed = { original_tag = ENG }
+		visible = {
+			FRA = { has_completed_focus = FRA_literacy_expeditionary_force }
+			has_country_flag = phalanstere_literacy_expeditionary_force_show
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				capital_scope = {
+					INT_is_in_europe = no
+					INT_is_in_america_north = no
+				}
+				NOT = { has_idea = Cof_literacy_expeditionary_force }
+			} 
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			FROM = {
+				add_political_power = 50
+				add_timed_idea = { idea = Cof_literacy_expeditionary_force days = 365 }
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { phauc = 2.5 }
+   		    phalanstere_unity_change = yes
+		}
+	}
+}
+
+Cof_iri_countermeasures = {
+	POR_countermeasures_propaganda = {
+		allowed = { tag = POR }
+		visible = { 
+			NOT = { has_country_flag = cof_iri_has_finished }
+			has_socialist_government = no
+			set_temp_variable = { target_num = 10 }
+			pan_socialist_ideology_more_than_x = yes
+		}
+		icon = generic_civil_support
+		cost = 20
+		ai_will_do = { base = 0	}
+		days_remove = 40
+		modifier = { political_power_factor = -0.1 }
+		days_re_enable = 40
+		remove_effect = {
+			random_list = {
+				1 = { add_popularity = { ideology = totalist popularity = -0.025 } }
+				1 = { add_popularity = { ideology = syndicalist popularity = -0.025 } }
+				1 = { add_popularity = { ideology = radical_socialist popularity = -0.025 } }
+				1 = {
+					add_popularity = { ideology = totalist popularity = -0.01 }
+					add_popularity = { ideology = syndicalist popularity = -0.01 }
+					add_popularity = { ideology = radical_socialist popularity = -0.01	}
+				}
+			}
+		}
+	}
+	POR_countermeasures_welfare = {
+		allowed = { tag = POR }
+		visible = { 
+			NOT = { has_country_flag = cof_iri_has_finished }
+			has_socialist_government = no
+			has_stability < 0.4
+		}
+		icon = generic_civil_support
+		cost = 25
+		ai_will_do = { base = 0	}
+		modifier = {
+			political_power_factor = -0.1
+			consumer_goods_factor = 0.15
+
+			stability_weekly = 0.01
+		}
+		days_remove = 90
+		days_re_enable = 90
+		remove_effect = {
+			add_stability = 0.05
+		}
+	}
+
+	IRE_eng_transport_weapons = {
+		allowed = { tag = ENG }
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		available = {
+			has_equipment = { infantry_equipment > 499 }
+			has_equipment = { support_equipment > 24 }
+		}
+		cost = 20
+		ai_will_do = { base = 0	}
+		days_remove = 60
+		days_re_enable = 60
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -25
+			}
+			IRE = {
+				country_event = cofintern.181
+				effect_tooltip = {
+					add_popularity = { ideology = totalist popularity = 0.03 }
+					set_temp_variable = { t = 1 }
+					ireland_violend_revolution_army_change = yes
+				}
+			}
+		}
+	}
+	IRE_eng_popraganda = {
+		allowed = { tag = ENG }
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		cost = 25
+		ai_will_do = { base = 0	}
+		modifier = { political_power_factor = -0.05 }
+		days_remove = 50
+		days_re_enable = 100
+		remove_effect = {
+			IRE = {
+				country_event = cofintern.182
+				effect_tooltip = {
+					add_popularity = { ideology = totalist popularity = 0.02 }
+					add_popularity = { ideology = syndicalist popularity = 0.02 }
+					add_popularity = { ideology = radical_socialist popularity = 0.02 }
+				}
+			}
+		}
+	}
+	IRE_eng_strike = {
+		allowed = { tag = ENG }
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		cost = 25
+		ai_will_do = { base = 0	}
+		days_remove = 30
+		days_re_enable = 80
+		remove_effect = {
+			IRE = {
+				country_event = cofintern.183
+				effect_tooltip = {
+					if = {
+						limit = { has_idea = Cof_ireland_revolution_strike }
+						modify_timed_idea = { idea = Cof_ireland_revolution_strike days = 40 }
+					}
+					else = { add_timed_idea = { idea = Cof_ireland_revolution_strike days = 30 } }
+				}
+			}
+		}
+	}
+	IRE_eng_start_revolution = {
+		allowed = { tag = ENG }
+		icon = generic_civil_support
+		target_trigger = {
+			FROM = {
+				tag = IRE
+				has_socialist_government = no
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+			}
+		}
+		available = {
+			IRE = {
+				OR = {
+					has_stability < 0.3
+
+					set_temp_variable = { target_num = 20 }
+					pan_socialist_ideology_more_than_x = yes
+
+					custom_trigger_tooltip = {
+						tooltip = iri_ire_revolution_army_more_than_5
+						check_variable = { iri_ire_revolution_army > 5 }
+					}
+				}
+			}
+		}
+		cost = 50
+		ai_will_do = { base = 0	}
+		fire_only_once = yes
+		complete_effect = {
+			IRE = {
+				country_event = cofintern.184
+				custom_effect_tooltip = iri_revolution_tt
+			}
+		}
+	}
+
+	IRE_countermeasures_propaganda = {
+		allowed = { tag = IRE }
+		visible = { 
+			has_socialist_government = no
+			set_temp_variable = { target_num = 10 }
+			pan_socialist_ideology_more_than_x = yes
+		}
+		icon = generic_civil_support
+		cost = 20
+		ai_will_do = { base = 0	}
+		days_remove = 40
+		modifier = { political_power_factor = -0.1 }
+		days_re_enable = 40
+		remove_effect = {
+			random_list = {
+				1 = { add_popularity = { ideology = totalist popularity = -0.025 } }
+				1 = { add_popularity = { ideology = syndicalist popularity = -0.025 } }
+				1 = { add_popularity = { ideology = radical_socialist popularity = -0.025 } }
+				1 = {
+					add_popularity = { ideology = totalist popularity = -0.01 }
+					add_popularity = { ideology = syndicalist popularity = -0.01 }
+					add_popularity = { ideology = radical_socialist popularity = -0.01	}
+				}
+			}
+		}
+	}
+	IRE_countermeasures_welfare = {
+		allowed = { tag = IRE }
+		visible = { 
+			has_socialist_government = no
+			has_stability < 0.4
+		}
+		icon = generic_civil_support
+		cost = 25
+		ai_will_do = { base = 0	}
+		modifier = {
+			political_power_factor = -0.1
+			consumer_goods_factor = 0.15
+
+			stability_weekly = 0.01
+		}
+		days_remove = 70
+		days_re_enable = 140
+		remove_effect = {
+			add_stability = 0.05
+		}
+	}
+	IRE_crack_down_revolution = {
+		allowed = { tag = IRE }
+		icon = generic_civil_support
+		visible = { IRE = { has_country_flag = cof_iri_ireland_revolution } }
+		available = {
+			has_equipment = { infantry_equipment > 499 }
+			has_equipment = { support_equipment > 24 }
+		}
+		cost = 20
+		ai_will_do = { base = 0	}
+		days_remove = 40
+		days_re_enable = 40
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			}
+			add_equipment_to_stockpile = {
+				type = support_equipment
+				amount = -25
+			}
+			add_popularity = { ideology = totalist popularity = -0.02 }
+			set_temp_variable = { t = -1 }
+			ireland_violend_revolution_army_change = yes
+		}
+	}
+	IRE_contend_for_state = {
+		allowed = { tag = IRE }
+		icon = generic_civil_support
+		visible = {
+			IRE = { has_country_flag = cof_iri_ireland_revolution }
+			any_owned_state = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } 
+		}
+		available = { has_equipment = { infantry_equipment > 499 } }
+		state_target = yes
+		target_trigger = { FROM = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+		cost = 20
+		ai_will_do = { base = 0	}
+		days_re_enable = 40
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+			}
+			FROM = {
+				add_to_variable = {
+					revolution_control = -1
+					tooltip = ireland_revolution_control_weaken
+				}
+				clamp_variable = {
+					var = revolution_control
+					max = 3
+					min = 0
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } } }
+					country_event = { id = cofintern.180 days = 6 }
+				}
+			}
+		}
+	}
+	IRE_revolution_take_over_state = {
+		allowed = { tag = IRE }
+		icon = generic_civil_support
+		visible = { always = no }
+		available = { any_owned_state = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } } 
+		ai_will_do = { base = 0	}
+		days_remove = 40
+		fixed_random_seed = no
+		remove_effect = {
+			random_owned_state = {
+				limit = { check_variable = { revolution_control < 4 } }
+				add_to_variable = {
+					revolution_control = 1
+					tooltip = ireland_revolution_control_strengthen
+				}
+				clamp_variable = {
+					var = revolution_control
+					max = 3
+					min = 0
+				}
+				hidden_effect = {
+					if = {
+						limit = { 
+							check_variable = { revolution_control >  0 } 
+							NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } 
+						}
+						add_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id }
+					}
+				}
+			}
+			if = {
+				limit = {
+					set_temp_variable = { target_num = 25 }
+					pan_socialist_ideology_more_than_x = yes
+				}
+				random_owned_state = {
+					limit = { check_variable = { revolution_control < 4 } }
+					add_to_variable = {
+						revolution_control = 1
+						tooltip = ireland_revolution_control_strengthen
+					}
+					clamp_variable = {
+						var = revolution_control
+						max = 3
+						min = 0
+					}
+					hidden_effect = {
+						if = {
+							limit = { 
+								check_variable = { revolution_control >  0 } 
+								NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } 
+							}
+							add_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id }
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				set_temp_variable = { t = 0 }
+				every_owned_state = {
+					limit = { 
+						check_variable = { revolution_control > 1 } 
+						has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } 
+					}
+					add_to_temp_variable = { IRE.t = 1 }
+				}
+				if = {
+					limit = { check_variable = { t > 2 } }
+					country_event = { id = cofintern.193 days = 3 }
+				}
+				else = { activate_decision = IRE_revolution_take_over_state }
+			}
+		}
+	}
+}

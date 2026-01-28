@@ -11774,7 +11774,7 @@ focus_tree = {
 		prerequisite = { focus = FRA_steel_flood }
 		prerequisite = { focus = FRA_lightning_war }
 		available = {
-			has_tech = improved_medium_tank
+			has_tech = improved_medium_tank_chassis
 			
 			set_temp_variable = { target_t = 3 }
 			set_temp_variable = { target_num = 90 }
@@ -13427,6 +13427,7 @@ focus_tree = {
 				POR = { country_event = cofintern.17 }
 			}
 
+			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = if_iberia_not_socialist
 			effect_tooltip = {
 				declare_war_on = {
@@ -15126,7 +15127,7 @@ focus_tree = {
 					tag = FRA
     				count > 3
 				}
-			}
+			} 
 		}
 		x = 6
 		y = 3
@@ -15614,6 +15615,8 @@ focus_tree = {
 
 				phalanstere_member_list_choose = yes
 			}
+
+			unlock_military_industrial_organization_tooltip = mio:FRA_phalanstere_reasearch_organization
 		}
 	}
  
@@ -15623,6 +15626,15 @@ focus_tree = {
 		relative_position_id = FRA_found_the_phalanstere_international
 		prerequisite = { focus = FRA_found_the_phalanstere_international }
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_revolutionary_aid_construction
+				}
+				has_country_flag = phalanstere_agree_about_revolutionary_aid_construction
+			}
+		}
+		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what
@@ -15692,6 +15704,15 @@ focus_tree = {
 				check_variable = { phalanstere_unity > 60 }
 			}
 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_international_union_of_socialist_students
+				}
+				has_country_flag = phalanstere_agree_about_international_union_of_socialist_students
+			}
+		}
+		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what
@@ -15784,6 +15805,15 @@ focus_tree = {
 				has_country_flag = phalanstere_agree_about_abolition_of_bourgeois_jurisdiction
 			}
 		}
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_abolition_of_bourgeois_jurisdiction
+				}
+				has_country_flag = phalanstere_agree_about_abolition_of_bourgeois_jurisdiction
+			}
+		}
 		x = -1
 		y = 1
 		cost = 0
@@ -15860,6 +15890,15 @@ focus_tree = {
 				check_variable = { phalanstere_unity > 50 }
 			}
 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_literacy_expeditionary_force
+				}
+				has_country_flag = phalanstere_agree_about_literacy_expeditionary_force
+			}
+		}
+		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what
@@ -15986,6 +16025,15 @@ focus_tree = {
 				has_country_flag = phalanstere_agree_about_international_open_laboratory
 			}
 		}
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_international_open_laboratory
+				}
+				has_country_flag = phalanstere_agree_about_international_open_laboratory
+			}
+		}
 		x = -1
 		y = 3
 		cost = 0
@@ -16077,6 +16125,15 @@ focus_tree = {
 				check_variable = { phalanstere_unity > 60 }
 			}
 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_inner_circle_of_socialism
+				}
+				has_country_flag = phalanstere_agree_about_inner_circle_of_socialism
+			}	
+		}
+		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what
@@ -16999,6 +17056,15 @@ focus_tree = {
 				check_variable = { phalanstere_unity > 80 }
 			}
 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_more_than_economic_alliance
+				}
+				has_country_flag = phalanstere_agree_about_more_than_economic_alliance
+			}
+		}
+		bypass = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what

@@ -225,3 +225,173 @@ defined_text = {
         localization_key = phalanstere_congress_in_progress_status
     }
 }
+
+defined_text = {
+    name = mio_phalanstere_industry_investment_loc
+    text = {
+        trigger = { any_country = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_get_back } } }
+        localization_key = mio_phalanstere_industry_investment_tt
+    }
+}
+
+defined_text = {
+    name = which_type_of_revolution
+    text = {
+        trigger = {
+            var:FRA.iri_targeted^0 = {
+                is_monarchy = yes
+                NOT = { has_country_flag = cof_iri_revolustion_socialist }
+            }
+        }
+        localization_key = republic_revolution
+    }
+    text = {
+        trigger = {
+            var:FRA.iri_targeted^0 = {
+                has_dictatorship_government = yes
+                NOT = { has_country_flag = cof_iri_revolustion_socialist }
+            }
+        }
+        localization_key = democrat_revolution
+    }
+    text = { localization_key = socialist_revolution }
+}
+
+defined_text = {
+    name = civil_war_threat_loc
+    text = { localization_key = civil_war_threat_tt }
+}
+
+defined_text = {
+    name = iri_information_stability
+    text = {
+        trigger = { var:FRA.iri_targeted^0 = { has_stability > 0.5 } }
+        localization_key = iri_information_stability_50
+    }
+    text = {
+        trigger = { var:FRA.iri_targeted^0 = { has_stability > 0.25 } }
+        localization_key = iri_information_stability_25
+    }
+    text = {
+        trigger = { var:FRA.iri_targeted^0 = { has_stability > 0.1 } }
+        localization_key = iri_information_stability_10
+    }
+    text = {
+        trigger = { var:FRA.iri_targeted^0 = { has_stability > 0 } }
+        localization_key = iri_information_stability_0
+    }
+    text = { localization_key = iri_information_stability_00 }
+}
+
+defined_text = {
+    name = iri_information_left
+    text = {
+        trigger = {
+            var:FRA.iri_targeted^0 = {
+                set_temp_variable = { target_num = 50 }
+                pan_socialist_ideology_more_than_x = yes
+            }
+        }
+        localization_key = iri_information_left_50
+    }
+    text = {
+        trigger = {
+            var:FRA.iri_targeted^0 = {
+                set_temp_variable = { target_num = 35 }
+                pan_socialist_ideology_more_than_x = yes
+            }
+        }
+        localization_key = iri_information_left_35
+    }
+    text = {
+        trigger = {
+            var:FRA.iri_targeted^0 = {
+                set_temp_variable = { target_num = 20 }
+                pan_socialist_ideology_more_than_x = yes
+            }
+        }
+        localization_key = iri_information_left_20
+    }
+    text = {
+        trigger = {
+            var:FRA.iri_targeted^0 = {
+                set_temp_variable = { target_num = 10 }
+                pan_socialist_ideology_more_than_x = yes
+            }
+        }
+        localization_key = iri_information_left_10
+    }
+    text = { localization_key = iri_information_left_0 }
+}
+
+defined_text = {
+    name = iri_information_loc
+    text = {
+        trigger = { check_variable = { iri_targeted^0 = POR } }
+        localization_key = iri_information_por
+    }
+    text = {
+        trigger = { 
+            check_variable = { iri_targeted^0 = IRE } 
+            IRE = { has_country_flag = IRE_gateway_started }
+        }
+        localization_key = iri_information_ire_gateway
+    }
+    text = {
+        trigger = { 
+            check_variable = { iri_targeted^0 = IRE } 
+            IRE = { has_country_flag = cof_iri_ireland_revolution }
+        }
+        localization_key = iri_information_ire_revolution
+    }
+}
+
+defined_text = {
+    name = Cof_iri_countermeasures_TAG
+    text = {
+        trigger = { tag = POR }
+        localization_key = Cof_iri_countermeasures_POR
+    }
+    text = {
+        trigger = { 
+            OR = {
+                tag = IRE 
+                tag = ENG
+            }
+        }
+        localization_key = Cof_iri_countermeasures_IRE
+    }
+}
+
+defined_text = {
+    name = Cof_iri_countermeasures_desc_TAG
+    text = {
+        trigger = { tag = POR }
+        localization_key = Cof_iri_countermeasures_desc_POR
+    }
+    text = {
+        trigger = { 
+            OR = {
+                tag = IRE 
+                tag = ENG
+            }
+        }
+        localization_key = Cof_iri_countermeasures_desc_IRE
+    }
+}
+
+defined_text = {
+    name = state_ireland_revolution_loc
+    text = {
+        trigger = { check_variable = { revolution_control = 3 } }
+        localization_key = state_ireland_revolution_high
+    }
+    text = {
+        trigger = { check_variable = { revolution_control = 2 } }
+        localization_key = state_ireland_revolution_middle
+    }
+    text = {
+        trigger = { check_variable = { revolution_control = 1 } }
+        localization_key = state_ireland_revolution_low
+    }
+}

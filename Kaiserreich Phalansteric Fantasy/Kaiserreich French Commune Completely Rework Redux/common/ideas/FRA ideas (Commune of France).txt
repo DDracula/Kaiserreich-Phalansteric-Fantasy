@@ -1,0 +1,353 @@
+ideas = {
+	##############
+	# Companies
+	##############
+	industrial_concern = {
+		longwei_steel_company = {
+            picture = generic_industrial_concern_2
+            on_add = { 
+                custom_effect_tooltip = effect_economy
+                set_temp_variable = { evc = 5 }
+                set_temp_variable = { eibc = 0 }
+                set_temp_variable = { eipc = 5 }
+                set_temp_variable = { eiac = 0 }
+                set_temp_variable = { eamc = 0 }
+                set_temp_variable = { eaec = 0 }
+                set_temp_variable = { eaac = 0 }
+                set_temp_variable = { eqc = 0 }
+                set_temp_variable = { elc = 0 }
+                set_temp_variable = { eic = 0 }
+                cof_econ_target_change = yes 
+                custom_effect_tooltip = tooltip_white_line
+            }
+            allowed = { original_tag = FRA }
+            traits = { industrial_manufacturer }
+            modifier = {
+                production_speed_industrial_complex_factor = 0.2
+                local_resources_factor = 0.1
+            }
+            research_bonus = {
+                industry = 0.1
+            }
+        }
+
+        schneiderkruso = {
+            picture = generic_industrial_concern_2
+            on_add = { 
+                custom_effect_tooltip = effect_economy
+                set_temp_variable = { evc = 5 }
+                set_temp_variable = { eibc = 0 }
+                set_temp_variable = { eipc = 0 }
+                set_temp_variable = { eiac = 5 }
+                set_temp_variable = { eamc = 0 }
+                set_temp_variable = { eaec = 0 }
+                set_temp_variable = { eaac = 0 }
+                set_temp_variable = { eqc = 0 }
+                set_temp_variable = { elc = 0 }
+                set_temp_variable = { eic = 0 }
+                cof_econ_target_change = yes  
+                custom_effect_tooltip = tooltip_white_line
+            }
+            allowed = { original_tag = FRA }
+            traits = { industrial_manufacturer }
+            modifier = {
+                production_factory_max_efficiency_factor = 0.05
+                local_resources_factor = 0.15
+            }
+            equipment_bonus = {
+                armor = {
+                    build_cost_ic = -0.05
+                    instant = yes 
+                }
+            }
+            research_bonus = {
+                industry = 0.1
+            }
+        }
+
+        sakim_corporation = {
+            picture = generic_industrial_concern_2
+            on_add = { 
+                custom_effect_tooltip = effect_economy
+                set_temp_variable = { evc = 0 }
+                set_temp_variable = { eibc = 0 }
+                set_temp_variable = { eipc = 5 }
+                set_temp_variable = { eiac = 0 }
+                set_temp_variable = { eamc = 0 }
+                set_temp_variable = { eaec = 0 }
+                set_temp_variable = { eaac = 0 }
+                set_temp_variable = { eqc = 0 }
+                set_temp_variable = { elc = 0 }
+                set_temp_variable = { eic = 5 }
+                cof_econ_target_change = yes
+                custom_effect_tooltip = tooltip_white_line
+            }
+            allowed = { original_tag = FRA }
+            traits = { electronics_manufacturer }
+            modifier = {
+                production_speed_radar_station_factor = 0.2
+            }
+            research_bonus = {
+                electronics = 0.2
+                industry = 0.2
+            }
+        }
+
+        damocles_research_group = {
+            picture = generic_industrial_concern_2
+            on_add = {
+                custom_effect_tooltip = effect_economy
+                set_temp_variable = { evc = 0 }
+                set_temp_variable = { eibc = 0 }
+                set_temp_variable = { eipc = 0 }
+                set_temp_variable = { eiac = 0 }
+                set_temp_variable = { eamc = 0 }
+                set_temp_variable = { eaec = 0 }
+                set_temp_variable = { eaac = 0 }
+                set_temp_variable = { eqc = 0 }
+                set_temp_variable = { elc = 0 }
+                set_temp_variable = { eic = 15 }
+                cof_econ_target_change = yes 
+                custom_effect_tooltip = tooltip_white_line
+            }
+            allowed = { 
+                OR = { 
+                    original_tag = FRA 
+                    AND = {
+                        original_tag = ENG
+                        FRA = { has_completed_focus = FRA_the_damocles_project }
+                    } 
+                }
+            }
+            traits = { electronics_manufacturer }
+            modifier = {
+                nuclear_production_factor = 0.25
+                research_speed_factor = 0.2
+                special_project_speed_factor = 0.25
+            }
+            research_bonus = {
+                nuclear = 1
+            }
+        }
+
+        michelin = {
+            picture = generic_industrial_concern_2
+            on_add = { 
+                custom_effect_tooltip = effect_economy
+                set_temp_variable = { evc = 5 }
+                set_temp_variable = { eibc = 0 }
+                set_temp_variable = { eipc = 5 }
+                set_temp_variable = { eiac = 0 }
+                set_temp_variable = { eamc = 0 }
+                set_temp_variable = { eaec = 0 }
+                set_temp_variable = { eaac = 0 }
+                set_temp_variable = { eqc = 0 }
+                set_temp_variable = { elc = 0 }
+                set_temp_variable = { eic = 0 }
+                cof_econ_target_change = yes 
+                custom_effect_tooltip = tooltip_white_line
+            }
+            allowed = { original_tag = FRA }
+            traits = { chemical_producer }
+            modifier = {
+                production_speed_synthetic_refinery_factor = 0.3
+            }
+            research_bonus = {
+                synth_resources = 0.15
+                industry = 0.15
+            }
+            equipment_bonus = {
+                motorized_equipment = {
+                    build_cost_ic = -0.2
+                    instant = yes 
+                }
+            }
+            equipment_bonus = {
+                mechanized_equipment = {
+                    build_cost_ic = -0.1
+                    instant = yes 
+                }
+            }
+        }
+
+		######从这里开始添加（不要删除此条）######新工业企业
+	}
+
+	#### Weapons Manufacturer ####
+	materiel_manufacturer = {
+		designer = yes
+
+		manufacture_saint_etienne = {
+			on_add = { log = "[GetLogRoot]: add idea manufacture_saint_etienne" }
+			allowed = { original_tag = FRA }
+			traits = { infantry_equipment_manufacturer_offence }
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+		}
+		manufacture_bayonne = {
+			on_add = { log = "[GetLogRoot]: add idea manufacture_bayonne" }
+			allowed = { original_tag = FRA }
+			traits = { infantry_equipment_manufacturer_defence }
+			research_bonus = {
+				infantry_weapons = 0.15
+			}
+		}
+		atelier_de_puteaux = {
+			on_add = { log = "[GetLogRoot]: add idea atelier_de_puteaux" }
+			allowed = { original_tag = FRA }
+			traits = { artillery_equipment_manufacturer_cheap }
+			research_bonus = {
+				artillery = 0.15
+			}
+		}
+		berliet = {
+			on_add = { log = "[GetLogRoot]: add idea berliet" }
+			allowed = { original_tag = FRA }
+			traits = { motorised_equipment_manufacturer }
+			research_bonus = {
+				motorized_equipment = 0.15
+			}
+		}
+		panhard = {
+			on_add = { log = "[GetLogRoot]: add idea panhard" }
+			picture = FRA_panhard
+			allowed = {
+				original_tag = FRA
+				has_dlc_lar = yes
+			}
+			traits = { armored_car_manufacturer }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+
+		######从这里开始添加（不要删除此条）######新武器制造商
+	}
+
+	#### Heavy Equipment Manufacturer ####
+	tank_manufacturer = {
+		designer = yes
+
+		famh = {
+			on_add = { log = "[GetLogRoot]: add idea famh" }
+			allowed = { original_tag = FRA }
+			traits = { heavy_tank_manufacturer }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+		de_dion_bouton = {
+			on_add = { log = "[GetLogRoot]: add idea de_dion_bouton" }
+			allowed = { original_tag = FRA }
+			traits = { infantry_tank_manufacturer }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+		lorraine_dietrich = {
+			on_add = { log = "[GetLogRoot]: add idea lorraine_dietrich" }
+			allowed = { original_tag = FRA }
+			traits = { mobile_tank_manufacturer }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+		somua = {
+			on_add = { log = "[GetLogRoot]: add idea somua" }
+			allowed = {
+				OR = {
+					original_tag = FRA
+					original_tag = FRP
+				}
+			}
+			traits = { medium_tank_manufacturer_improved }
+			research_bonus = {
+				armor = 0.15
+			}
+		}
+
+		######从这里开始添加（不要删除此条）######新装甲制造商
+	}
+
+	#### Naval Manufacturer ####
+	naval_manufacturer = {
+		designer = yes
+
+		ateliers_de_la_loire = {
+			on_add = { log = "[GetLogRoot]: add idea ateliers_de_la_loire" }
+			allowed = { original_tag = FRA }
+			traits = { battle_line_ship_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		ateliers_de_saint_nazaire = {
+			on_add = { log = "[GetLogRoot]: add idea ateliers_de_saint_nazaire" }
+			allowed = { original_tag = FRA }
+			traits = { raider_ship_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+		fcm = {
+			on_add = { log = "[GetLogRoot]: add idea fcm" }
+			allowed = { original_tag = FRA }
+			traits = { escort_ship_manufacturer }
+			research_bonus = {
+				naval_equipment = 0.15
+			}
+		}
+
+		######从这里开始添加（不要删除此条）######新海军制造商
+	}
+
+	#### Air Manufacturer ####
+	aircraft_manufacturer = {
+		designer = yes
+
+		morane_saulnier = {
+			on_add = { log = "[GetLogRoot]: add idea morane_saulnier" }
+			allowed = { original_tag = FRA }
+			traits = { light_aircraft_manufacturer_improved }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		fouga = {
+			on_add = { log = "[GetLogRoot]: add idea fouga" }
+			allowed = { original_tag = FRA }
+			traits = { multi_role_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		potez = {
+			on_add = { log = "[GetLogRoot]: add idea potez" }
+			allowed = { original_tag = FRA }
+			traits = { medium_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		breguet = {
+			on_add = { log = "[GetLogRoot]: add idea breguet" }
+			allowed = { original_tag = FRA }
+			traits = { cas_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+		kr_levasseur = {
+			on_add = { log = "[GetLogRoot]: add idea kr_levasseur" }
+			allowed = { original_tag = FRA }
+			traits = { naval_aircraft_manufacturer }
+			research_bonus = {
+				air_equipment = 0.15
+			}
+		}
+
+		######从这里开始添加（不要删除此条）######新空军制造商
+	}
+}
+

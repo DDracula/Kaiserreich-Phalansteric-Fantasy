@@ -1,0 +1,4619 @@
+#### 公社经济 ####
+Cof_economy = {
+    Cof_base_focus_on_industry = {
+		icon = ger_mefo_bills
+		priority = 3
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { econfocus < maxeconfocus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		custom_cost_trigger = { check_variable = { economy_power > 4.9 } }
+		custom_cost_text = cost_ep_5
+		modifier = {
+			monthly_change_eib = 0.5
+			monthly_change_eae = 0.3
+			monthly_change_eq = -0.4
+			monthly_change_el = 0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -5 }
+			custom_effect_tooltip = economy_focus_tt
+			add_to_variable = { econfocus = 1 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = -1 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_to_variable = { econfocus = -1 }
+		}
+	}
+
+	Cof_base_focus_on_economy = {
+		icon = ger_mefo_bills
+		priority = 3
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { econfocus < maxeconfocus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		custom_cost_trigger = { check_variable = { economy_power > 4.9 } }
+		custom_cost_text = cost_ep_5
+		modifier = {
+			monthly_change_ev = 0.4
+			monthly_change_eaa = 0.4
+			monthly_change_eq = 0.2
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -5 }
+			custom_effect_tooltip = economy_focus_tt
+			add_to_variable = { econfocus = 1 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -1 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_to_variable = { econfocus = -1 }
+		}
+	}
+
+	Cof_base_focus_on_rural = {
+		icon = ger_mefo_bills
+		priority = 3
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { econfocus < maxeconfocus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		custom_cost_trigger = { check_variable = { economy_power > 9.9 } }
+		custom_cost_text = cost_ep_10
+		modifier = {
+			monthly_change_eam = 0.5
+			monthly_change_eae = 0.3
+			monthly_change_eq = 0.2
+			monthly_change_el = 0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -10 }
+			custom_effect_tooltip = economy_focus_tt
+			add_to_variable = { econfocus = 1 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0.5 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 0.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -1 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_to_variable = { econfocus = -1 }
+		}
+	}
+
+	Cof_economy_focus_on_war_prouduce = {
+		icon = ger_mefo_bills
+		priority = 3
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_prepare_for_the_next_war
+			check_variable = { econfocus < maxeconfocus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		custom_cost_trigger = { check_variable = { economy_power > 9.9 } }
+		custom_cost_text = cost_ep_10
+		modifier = {
+			monthly_change_eia = 1
+			monthly_change_eib = -0.3
+			monthly_change_el = -0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -10 }
+			custom_effect_tooltip = economy_focus_tt
+			add_to_variable = { econfocus = 1 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = -2 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_to_variable = { econfocus = -1 }
+		}
+	}
+
+	#巴黎
+	Cof_economy_paris_big_paris = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		available = {
+			set_temp_variable = { target_t = 1 }
+			set_temp_variable = { target_num = 55 }
+			cof_econ_target_more_than_x = yes
+
+			num_of_civilian_factories_available_for_projects > 5
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 24.9 } }
+		custom_cost_text = cost_ep_25
+		days_remove = 120
+		modifier = { 
+			civilian_factory_use = 5 
+			monthly_change_ev = -0.5
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -25 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = -3 }
+			set_temp_variable = { mc = 0.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 1 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			16 = {
+				add_victory_points = { province = 11506 value = 5 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.2
+					tooltip = local_building_slots_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { esyndc = 2 }
+			set_temp_variable = { eoppoc = -1 }
+			set_temp_variable = { ejacoc = -0.5 }
+			set_temp_variable = { esorec = -0.5 }
+			econ_faction_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = -5 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_paris_underground = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = { 
+			civilian_factory_use = 2
+			monthly_change_eib = -0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			build_railway = {
+				path = { 11506 11491 6949 11518 9561 9534 9523 9725 11491 }
+				level = 5
+			}
+
+			16 = {
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_supplies = 0.1
+					tooltip = local_supplies_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_state_production_speed_buildings_factor = 0.1
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2.5 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_paris_exurb_vitry_ivry = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = { 
+			civilian_factory_use = 2
+			monthly_change_eib = -0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = -3 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			16 = {
+				add_victory_points = { province = 9725 value = 10 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.1
+					tooltip = local_building_slots_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_paris_exurb_nanterre = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Paris_metro }
+		state_target = yes
+		target_trigger = { FROM = { state = 16 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = { 
+			civilian_factory_use = 2
+			monthly_change_eib = -0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = -3 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			16 = {
+				add_victory_points = { province = 9534 value = 10 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Paris
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.1
+					tooltip = local_building_slots_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	
+	#加莱
+	Cof_economy_calais_cross_harbor_tunnel = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_strengthen_ties_with_british }
+		state_target = yes      
+		target_trigger = { FROM = { state = 17 } }
+		complete_effect = {
+			ENG = { country_event = cofeconomy.20 }
+			custom_effect_tooltip = Cof_economy_calais_cross_harbor_tunnel_tt
+		}
+	}
+
+	Cof_economy_calais_cross_harbor_tunnel_build = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_country_flag = calais_eng_receive }
+		state_target = yes
+		target_trigger = { FROM = { state = 17 } }
+		available = {
+			set_temp_variable = { target_t = 1 }
+			set_temp_variable = { target_num = 60 }
+			cof_econ_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 9 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+			num_of_civilian_factories_available_for_projects > 10
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 39.9 } }
+		custom_cost_text = cost_ep_40
+		days_remove = 360
+		modifier = {
+			civilian_factory_use = 10
+			monthly_change_eib = -0.5
+		}
+		complete_effect = { add_to_temp_variable = { economy_power = -40 } }
+		remove_effect = {
+			17 = {
+				increase_state_category_by_one_level = yes
+
+				set_temp_variable = { sesic = 3 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 2 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Calais
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.15
+					tooltip = local_building_slots_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_supplies = 0.2
+					tooltip = local_supplies_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_state_production_speed_dockyard_factor = 0.2
+					tooltip = state_production_speed_dockyard_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_resources_factor = 0.2
+					tooltip = local_resources_factor_tooltip
+				}
+			}
+
+			127 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { esyndc = -0.3 }
+			set_temp_variable = { eoppoc = 0.9 }
+			set_temp_variable = { ejacoc = -0.3 }
+			set_temp_variable = { esorec = -0.3 }
+			econ_faction_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { evc = 3 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 3 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_calais_expansion_of_lille = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_strengthen_ties_with_british }
+		state_target = yes
+		target_trigger = { FROM = { state = 980 } }
+		available = { num_of_civilian_factories_available_for_projects > 3 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 3
+			monthly_change_eib = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -2 }
+			set_temp_variable = { pc = -1 }
+			set_temp_variable = { mc = 3 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -3 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				increase_state_category_by_one_level = yes
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_calais_normandy_textile_base = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_strengthen_ties_with_british }
+		state_target = yes
+		target_trigger = { FROM = { state = 15 } }
+		available = { num_of_civilian_factories_available_for_projects > 3 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 60
+		modifier = {
+			civilian_factory_use = 3
+			monthly_change_eib = -0.2
+			monthly_change_eae = -0.2
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 4 }
+			set_temp_variable = { eqc = 1.5 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_calais_focus_on_north = {
+		icon = ger_mefo_bills
+		priority = 3
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FRA_strengthen_ties_with_british 
+			check_variable = { econfocus < maxeconfocus }
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			monthly_change_eib = 0.5
+			monthly_change_eq = -0.3
+			monthly_change_el = 0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = economy_focus_tt
+			add_to_variable = { econfocus = 1 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_to_variable = { econfocus = -1 }
+		}
+	}
+
+	#波尔多
+	Cof_economy_bordeaux_deepwater_port = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Atlantic_trade }
+		state_target = yes
+		target_trigger = { FROM = { state = 19 } }
+		available = { num_of_civilian_factories_available_for_projects > 4 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 4
+			monthly_change_eib = -0.5
+			monthly_change_eip = -0.4
+			monthly_change_ei = -0.2
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 1 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Bordeaux
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.1
+					tooltip = local_building_slots_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_state_production_speed_dockyard_factor = 0.15
+					tooltip = state_production_speed_dockyard_factor_tt
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_state_production_speed_naval_base_factor = 0.15
+					tooltip = state_production_speed_naval_base_factor_tt
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 4 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 1.5 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_bordeaux_modernize_garonne_canal = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Atlantic_trade }
+		state_target = yes
+		target_trigger = { FROM = { state = 19 } }
+		available = { num_of_civilian_factories_available_for_projects > 4 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 4
+			monthly_change_eib = -0.5
+			monthly_change_eip = -0.4
+			monthly_change_ei = -0.2
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 17
+						state = 31
+						state = 22
+					}
+				}
+				set_state_flag = nation_strategy_garonne_canal_yes
+				custom_effect_tooltip = {
+					localization_key = state_strategy_take_what
+					ZONE = local_state_zone
+					STATE_STRATEGY = nation_strategy_garonne_canal_name
+				}
+
+				custom_effect_tooltip = local_state_modifier_tt
+				add_to_variable = {
+					city_state_resources_factor = 0.25
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					city_local_supplies = 0.25
+					tooltip = local_supplies_tooltip
+				}
+			}
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 1 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 3 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_bordeaux_new_world_representative_office = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Atlantic_trade }
+		state_target = yes
+		target_trigger = { FROM = { state = 19 } }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			FROM = {
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Bordeaux
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_weekly_manpower = 60
+					tooltip = weekly_manpower_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 0 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 0 }
+			set_temp_variable = { iri_afic = 0 }
+			set_temp_variable = { iri_amic = 20 }
+			iri_influence_change = yes
+		}
+	}
+
+	Cof_economy_bordeaux_revitalize_occitanie_agri_coops = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_Atlantic_trade }
+		state_target = yes
+		target_trigger = { FROM = { state = 19 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -0.5
+			monthly_change_eam = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 3 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 4 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_bordeaux_focus_on_trade = {
+		icon = ger_mefo_bills
+		priority = 3
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FRA_expand_Atlantic_trade 
+			check_variable = { econfocus < maxeconfocus }
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 9.9 } }
+		custom_cost_text = cost_ep_10
+		days_remove = 90
+		modifier = {
+			monthly_change_ev = 0.9
+			monthly_change_eib = -0.3
+			monthly_change_eaa = -0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -10 }
+			custom_effect_tooltip = economy_focus_tt
+			add_to_variable = { econfocus = 1 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_to_variable = { econfocus = -1 }
+		}
+	}
+
+	#马赛
+	Cof_economy_massay_ciudad_libre_de_nice = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_build_best_port_of_Mediterranean }
+		state_target = yes
+		target_trigger = { FROM = { state = 762 } }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			FROM = {
+				add_victory_points = { province = 9909 value = 5 }
+				state_strategy_judge = yes
+				set_state_flag = nice_strategy_ciudad_libre_de_nice_yes
+				custom_effect_tooltip = {
+					localization_key = state_strategy_take_what
+					ZONE = local_state_zone
+					STATE_STRATEGY = nice_strategy_ciudad_libre_de_nice_name
+				}
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = local_state_modifier_tt
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					city_weekly_manpower = 100
+					tooltip = weekly_manpower_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					city_monthly_population = 0.05
+					tooltip = monthly_population_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					city_stability_factor = -0.025
+					tooltip = stability_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -3 }
+			set_temp_variable = { pc = -2 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = -4 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 10 }
+			set_temp_variable = { iri_asic = 0 }
+			set_temp_variable = { iri_meic = 10 }
+			set_temp_variable = { iri_afic = 20 }
+			set_temp_variable = { iri_amic = 0 }
+			iri_influence_change = yes
+		}
+	}
+
+	Cof_economy_massay_cannes_art_basis = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_build_best_port_of_Mediterranean }
+		state_target = yes
+		target_trigger = { FROM = { state = 21 } }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			FROM = {
+				add_victory_points = { province = 13497 value = 5 }
+
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Massay
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_political_power_factor = 0.05
+					tooltip = political_power_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_war_support_factor = 0.025
+					tooltip = war_support_factor_tooltip
+				}
+			}
+
+			set_country_flag = cannes_art_basis
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 3 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 1 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_society_promote_revolutionary_films
+			custom_effect_tooltip = unlock_in_society
+		}
+	}
+
+	Cof_economy_massay_industrial_complex = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_build_best_port_of_Mediterranean }
+		state_target = yes
+		target_trigger = { FROM = { state = 21 } }
+		available = { num_of_civilian_factories_available_for_projects > 6 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 6
+			monthly_change_eib = -1
+			monthly_change_el = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0.5 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 21
+						state = 32
+						state = 20
+					}
+				}
+				set_state_flag = nation_strategy_massay_industrcomplex_yes
+				custom_effect_tooltip = {
+					localization_key = state_strategy_take_what
+					ZONE = local_state_zone
+					STATE_STRATEGY = nation_strategy_massay_industrcomplex_name
+				}
+
+				custom_effect_tooltip = local_state_modifier_tt
+				add_to_variable = {
+					city_local_factories = 0.1
+					tooltip = local_factories_tooltip
+				}
+				add_to_variable = {
+					city_state_production_speed_buildings_factor = 0.15
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 6 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 4 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_massay_develop_languedoc = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_build_best_port_of_Mediterranean }
+		state_target = yes
+		target_trigger = { FROM = { state = 22 } }
+		available = { num_of_civilian_factories_available_for_projects > 3 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 110
+		modifier = {
+			civilian_factory_use = 3
+			monthly_change_eib = -0.3
+			monthly_change_eam = -0.8
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2.5 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 6 }
+			set_temp_variable = { eaec = 2.5 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_massay_expand_toulon_shipyard = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_build_best_port_of_Mediterranean }
+		state_target = yes
+		target_trigger = { FROM = { state = 21 } }
+		available = { num_of_civilian_factories_available_for_projects > 4 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 4
+			monthly_change_eib = -1
+			monthly_change_eia = -0.7
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = -1 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 2 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 4 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	
+	#交通建设                 
+	Cof_economy_coastal_railroad_construction = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				has_country_flag = coastal_railroad_construction1
+				has_country_flag = coastal_railroad_construction2
+				has_country_flag = coastal_railroad_construction3
+			}
+		}
+		days_remove = 90
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = coastal_railroad_construction1 }
+				build_railway = {
+					path = { 9909 13497 3928 911 11834 11849 11877 9898 6960 3946 9853 }
+					level = 1
+				}
+				clr_country_flag = coastal_railroad_construction1
+			}
+
+			if = {
+				limit = { has_country_flag = coastal_railroad_construction2 }
+				build_railway = {
+					path = { 11548 9500 11420 485 9434 6599 11535 3579 6449 9550 11508 9525 6572 3552 }
+					level = 1
+				}
+				clr_country_flag = coastal_railroad_construction2
+			}
+
+			if = {
+				limit = { has_country_flag = coastal_railroad_construction3 }
+				build_railway = {
+					path = { 743 9710 6777 6621 9737 11565 9597 6657 11600 11616 11465 9510 6536 542 3552 }
+					level = 1
+				}
+				clr_country_flag = coastal_railroad_construction3
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2.5 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_french_national_railway1 = {
+		icon = railroad
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_french_national_railway }
+		available = { num_of_civilian_factories_available_for_projects > 5 }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			set_country_flag = nation_railway_build1
+			build_railway = {
+				path = { 9909 13497 3928 911 11834 11849 958 11713 780 3589 6613 11794 648 3652 9658 11488 11516 5291 3560 9472 3447 11606 11483 3536 11548 }
+				level = 2
+			}
+
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 762 
+						state = 21 
+						state = 32
+						state = 20 
+						state = 27 
+						state = 785 
+						state = 24 
+						state = 980 
+						state = 17 
+					}
+				}
+				set_state_flag = french_national_railway_build1
+				custom_effect_tooltip = {
+					localization_key = state_strategy_strengthen
+					ZONE = local_state_zone
+					STATE_STRATEGY = nation_french_national_railway_name
+				}
+				custom_effect_tooltip = local_state_modifier_tt
+				effect_tooltip = {
+					add_to_variable = {
+						city_local_supplies = 0.1
+						tooltip = local_supplies_tooltip
+					}
+					add_to_variable = {
+						city_army_speed_factor_for_controller = 0.2
+						tooltip = army_speed_factor_for_controller_tooltip
+					}
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_french_national_railway2 = {
+		icon = railroad
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_french_national_railway }
+		available = { num_of_civilian_factories_available_for_projects > 5 }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			set_country_flag = nation_railway_build2
+			build_railway = {
+				path = { 3552 542 6536 9510 11465 503 9478 3671 669 9629 3655 11611 9609 667 3681 3669 3652 9658 11488 11516 }
+				level = 2
+			}
+
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 983 
+						state = 14 
+						state = 30
+						state = 33
+						state = 27 
+						state = 18 
+						state = 785
+					}
+				}
+				set_state_flag = french_national_railway_build2
+				custom_effect_tooltip = {
+					localization_key = state_strategy_strengthen
+					ZONE = local_state_zone
+					STATE_STRATEGY = nation_french_national_railway_name
+				}
+				custom_effect_tooltip = local_state_modifier_tt
+				effect_tooltip = {
+					add_to_variable = {
+						city_local_supplies = 0.1
+						tooltip = local_supplies_tooltip
+					}
+					add_to_variable = {
+						city_army_speed_factor_for_controller = 0.2
+						tooltip = army_speed_factor_for_controller_tooltip
+					}
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_french_national_railway3 = {
+		icon = railroad
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_french_national_railway }
+		available = { num_of_civilian_factories_available_for_projects > 5 }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			set_country_flag = nation_railway_build3
+			build_railway = {
+				path = { 3509 11463 9492 3671 11596 11869 620 6618 9593 590 9748 }
+				level = 2
+			}
+
+			33 = {
+				add_building_construction = {
+					type = supply_node
+					province = 3655
+					level = 1
+					instant_build = yes
+				}
+			}
+
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 983 
+						state = 14 
+						state = 30
+						state = 33
+						state = 27 
+						state = 18 
+						state = 785
+					}
+				}
+				set_state_flag = french_national_railway_build3
+				custom_effect_tooltip = {
+					localization_key = state_strategy_strengthen
+					ZONE = local_state_zone
+					STATE_STRATEGY = nation_french_national_railway_name
+				}
+				custom_effect_tooltip = local_state_modifier_tt
+				effect_tooltip = {
+					add_to_variable = {
+						city_local_supplies = 0.1
+						tooltip = local_supplies_tooltip
+					}
+					add_to_variable = {
+						city_army_speed_factor_for_controller = 0.2
+						tooltip = army_speed_factor_for_controller_tooltip
+					}
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#工厂建设
+	Cof_economy_maritime_industry = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				has_country_flag = maritime_industry1
+				has_country_flag = maritime_industry2
+			}
+		}
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 10 }
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 500
+				producer = FRA
+			}
+
+			if = {
+				limit = { has_country_flag = maritime_industry1 }
+				19 = {
+					set_temp_variable = { sesic = 0 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 2 }
+					Cof_state_economy_situation_change = yes
+
+					custom_effect_tooltip = {
+						localization_key = tooltip_modify_dynmod
+						DYNMOD = Cof_state_Bordeaux
+					}
+					custom_effect_tooltip = tooltip_white_line
+					add_to_variable = {
+						core_consumer_goods_factor = -0.025
+						tooltip = consumer_goods_factor_tooltip
+					}
+				}
+				clr_country_flag = maritime_industry1
+			}
+
+			if = {
+				limit = { has_country_flag = maritime_industry2 }
+				21 = {
+					set_temp_variable = { sesic = 0 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 2 }
+					Cof_state_economy_situation_change = yes
+
+					custom_effect_tooltip = {
+						localization_key = tooltip_modify_dynmod
+						DYNMOD = Cof_state_Massay
+					}
+					custom_effect_tooltip = tooltip_white_line
+					add_to_variable = {
+						core_consumer_goods_factor = -0.025
+						tooltip = consumer_goods_factor_tooltip
+					}
+				}
+				clr_country_flag = maritime_industry2
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 5 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#产业
+	Cof_economy_gien_porcelain_commune = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_urban_rural_continuum }
+		state_target = yes
+		target_trigger = { FROM = { state = 33 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -3 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9644 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_dozom_knives_factory = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_urban_rural_continuum }
+		state_target = yes
+		target_trigger = { FROM = { state = 26 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = -1 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 3594 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 1 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	
+	Cof_economy_degos_slipper_workshop = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_expand_urban_rural_continuum }
+		state_target = yes
+		target_trigger = { FROM = { state = 23 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 3594 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1.5 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 0.5 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_charles_jourdan_shoes = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_block_development_model }
+		state_target = yes
+		target_trigger = { FROM = { state = 23 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 655 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_robert_fuhr_workshop = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_block_development_model }
+		state_target = yes
+		target_trigger = { FROM = { state = 26 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11576 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 1 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_mullca_furniture_youth_coops = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_block_development_model }
+		state_target = yes
+		target_trigger = { FROM = { state = 18 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9505 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_savonnerie_marius_fabre = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_industrial_to_consumer_goods }
+		state_target = yes
+		target_trigger = { FROM = { state = 21 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 3 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 1 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_obut_petanque_coops = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_entertainment_in_the_factory }
+		state_target = yes
+		target_trigger = { FROM = { state = 18 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 3770 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_commune_of_mogadishu_brothers = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_entertainment_in_the_factory }
+		state_target = yes
+		target_trigger = { FROM = { state = 25 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 3771 value = 3 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0.5 }
+			set_temp_variable = { pc = 0.5 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0.5 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_le_guerandais = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_rural_infrastructure_development }
+		state_target = yes
+		target_trigger = { FROM = { state = 14 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9510 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+
+				set_temp_variable = { brittculc = 5 }
+				Cof_brittcul_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_les_ardoisieres_dangers = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_rural_infrastructure_development }
+		state_target = yes
+		target_trigger = { FROM = { state = 30 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+			monthly_change_eip = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9478 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	
+	Cof_economy_roquefort_cheese = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_encouraging_commodity_agriculture }
+		state_target = yes
+		target_trigger = { FROM = { state = 19 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.5
+			monthly_change_eaa = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 929 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_apotex_canned_candied_fruits = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_encouraging_commodity_agriculture }
+		state_target = yes
+		target_trigger = { FROM = { state = 21 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.5
+			monthly_change_eaa = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11875 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_cooperative_isigny_sainte_mere = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_encouraging_commodity_agriculture }
+		state_target = yes
+		target_trigger = { FROM = { state = 15 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.5
+			monthly_change_eaa = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9550 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_maison_troubat = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_encouraging_commodity_agriculture }
+		state_target = yes
+		target_trigger = { FROM = { state = 18 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.5
+			monthly_change_eaa = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11732 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_vierzon_french_enterprises = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_large_scale_mechanized_agriculture }
+		state_target = yes
+		target_trigger = { FROM = { state = 33 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11732 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 6 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_wool_removal_in_mazamay = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_industrialized_rural }
+		state_target = yes
+		target_trigger = { FROM = { state = 22 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 6917 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 1 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_miyos_glove_manufacturing = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_industrialized_rural }
+		state_target = yes
+		target_trigger = { FROM = { state = 22 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11709 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 2 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_laulhere_beret_basque = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_industrialized_rural }
+		state_target = yes
+		target_trigger = { FROM = { state = 779 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11697 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_la_rochere = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_industrialized_rural }
+		state_target = yes
+		target_trigger = { FROM = { state = 27 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 3666 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_michelin_peoples_enterprise = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_rubber_solutions }
+		state_target = yes
+		target_trigger = { FROM = { state = 26 } }
+		available = { num_of_civilian_factories_available_for_projects > 3 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 3
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9748 value = 3 }
+
+				set_temp_variable = { sesic = 2 }
+				set_temp_variable = { sesac = 1 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 3 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 4 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 2 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_verne_caron_shotgun_coops = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_military_industry }
+		state_target = yes
+		target_trigger = { FROM = { state = 20 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 14.9 } }
+		custom_cost_text = cost_ep_15
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eib = -1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -15 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 6786 value = 3 }
+
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 1 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 5 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 2 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_cartoucherie_de_alence = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_military_industry }
+		fire_only_once = yes
+		state_target = yes
+		target_trigger = { FROM = { state = 32 } }
+		available = { num_of_civilian_factories_available_for_projects > 3 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 3
+			monthly_change_eib = -0.8
+			monthly_change_eae = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 780 value = 3 }
+
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 1 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 3 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_ateliers_de_construction_de_tarbes = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_military_industry }
+		fire_only_once = yes
+		state_target = yes
+		target_trigger = { FROM = { state = 984 } }
+		available = { num_of_civilian_factories_available_for_projects > 3 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 3
+			monthly_change_eib = -0.8
+			monthly_change_eae = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9884 value = 3 }
+
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 1 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 3 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_manufacture_darmes_de_chatellerault = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_military_industry }
+		fire_only_once = yes
+		state_target = yes
+		target_trigger = { FROM = { state = 23 } }
+		available = { num_of_civilian_factories_available_for_projects > 3 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 3
+			monthly_change_eib = -0.8
+			monthly_change_eae = -0.5
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11596 value = 3 }
+
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 1 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 3 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_groupe_boussac = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_military_industry }
+		fire_only_once = yes
+		state_target = yes
+		target_trigger = { FROM = { state = 27 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.6
+			monthly_change_eaa = -0.6
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 1 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11628 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 2 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_vilmorin_seed_coops = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_focus_on_agricultural_functions }
+		fire_only_once = yes
+		state_target = yes
+		target_trigger = { FROM = { state = 30 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.6
+			monthly_change_ei = -0.6
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 9492 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 3 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 4 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_champignons_de_paris_saumur = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_focus_on_agricultural_functions }
+		fire_only_once = yes
+		state_target = yes
+		target_trigger = { FROM = { state = 30 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.6
+			monthly_change_eaa = -0.6
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 11613 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 1 }
+			set_temp_variable = { eaac = 4 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_pruneau_dagen = {
+		icon = factories
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_focus_on_agricultural_functions }
+		fire_only_once = yes
+		state_target = yes
+		target_trigger = { FROM = { state = 19 } }
+		available = { num_of_civilian_factories_available_for_projects > 2 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 2
+			monthly_change_eae = -0.6
+			monthly_change_eaa = -0.6
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			FROM = {
+				add_victory_points = { province = 6775 value = 3 }
+
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 1 }
+			set_temp_variable = { eaac = 4 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#乡村建设
+	Cof_economy_rural_develop_start = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_back_to_the_country }
+		highlight_states = {
+			highlight_states_trigger = {
+				has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id }
+			}
+		}
+		ai_will_do = { factor = 0 }
+		fire_only_once = yes
+		available = {
+			set_temp_variable = { current_num = 0 }
+			hidden_trigger = {
+				all_core_state = {
+					if = {
+						limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+						add_to_temp_variable = { FRA.current_num = industrial_complex_level }
+					}
+				}
+				set_temp_variable = { target_num = rural_develop_back_to_the_country }
+				add_to_temp_variable = { target_num = 3 }
+				set_temp_variable = { tnum = 3 }
+			}
+			
+			custom_trigger_tooltip = {
+				tooltip = Cof_economy_rural_develop_start_trigger
+				check_variable = { current_num > target_num }
+			}
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2.5 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 2.5 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2.5 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_back_to_the_country_name
+			}
+			set_country_flag = rural_back_to_the_country_develop1
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_resources_factor = 0.1
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.05
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_recruitable_population_factor = 0.05
+					tooltip = recruitable_population_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = Cof_economy_rural_develop_start_rewards
+			hidden_effect = {	
+				random_core_state = {
+					limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+					set_temp_variable = { sesic = 1 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 0 }
+					Cof_state_economy_situation_change = yes					
+				}
+			}
+		}
+	}
+
+	Cof_economy_rural_develop_go_on = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_back_to_the_country }
+		highlight_states = {
+			highlight_states_trigger = {
+				has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id }
+			}
+		}
+		ai_will_do = { factor = 0 }
+		fire_only_once = yes
+		available = {
+			set_temp_variable = { current_num = 0 }
+			hidden_trigger  = {
+				all_core_state = {
+					if = {
+						limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+						add_to_temp_variable = { FRA.current_num = industrial_complex_level }
+					}
+				}		
+				set_temp_variable = { target_num = rural_develop_back_to_the_country }
+				add_to_temp_variable = { target_num = 7 }
+				set_temp_variable = { tnum = 7 }
+			}
+			
+			custom_trigger_tooltip = {
+				tooltip = Cof_economy_rural_develop_start_trigger
+				check_variable = { current_num > target_num }
+			}
+
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 35 }
+			cof_econ_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 40 }
+			cof_econ_target_more_than_x = yes
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+       		set_temp_variable = { pop_pc = 1 } 
+	        set_temp_variable = { pop_mc = 0 }
+    		set_temp_variable = { pop_sc = 0 }
+        	set_temp_variable = { pop_bc = 0 }
+        	set_temp_variable = { pop_ac = 0 }
+	        class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2.5 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 2 }
+			set_temp_variable = { eaec = 1 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2.5 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_back_to_the_country_name
+			}
+			set_country_flag = rural_back_to_the_country_develop2
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_resources_factor = 0.1
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.05
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_recruitable_population_factor = 0.05
+					tooltip = recruitable_population_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = Cof_economy_rural_develop_start_rewards
+			hidden_effect = {	
+				random_core_state = {
+					limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+					set_temp_variable = { sesic = 1 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 0 }
+					Cof_state_economy_situation_change = yes					
+				}
+			}
+		}
+	}
+
+	Cof_economy_rural_develop_finish = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_back_to_the_country }
+		highlight_states = {
+			highlight_states_trigger = {
+				has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id }
+			}
+		}
+		ai_will_do = { factor = 0 }
+		fire_only_once = yes
+		available = {
+			set_temp_variable = { current_num = 0 }
+			hidden_trigger = {
+				all_core_state = {
+					if = {
+						limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+						add_to_temp_variable = { FRA.current_num = industrial_complex_level }
+					}
+				}		
+				set_temp_variable = { target_num = rural_develop_back_to_the_country }
+				add_to_temp_variable = { target_num = 12 }
+				set_temp_variable = { tnum = 12 }
+			}
+			
+			
+			custom_trigger_tooltip = {
+				tooltip = Cof_economy_rural_develop_start_trigger
+				check_variable = { current_num > target_num }
+			}
+
+			set_temp_variable = { target_t = 4 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 5 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
+
+			set_temp_variable = { target_t = 6 }
+			set_temp_variable = { target_num = 55 }
+			cof_econ_target_more_than_x = yes
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 39.9 } }
+		custom_cost_text = cost_ep_40
+		complete_effect = {
+			add_to_variable = { economy_power = -40 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+       		set_temp_variable = { pop_pc = 2 } 
+	        set_temp_variable = { pop_mc = -1 }
+    		set_temp_variable = { pop_sc = 0 }
+        	set_temp_variable = { pop_bc = 0 }
+        	set_temp_variable = { pop_ac = 0 }
+	        class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2.5 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 2 }
+			set_temp_variable = { eaec = 1 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2.5 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_back_to_the_country_name
+			}
+			set_country_flag = rural_back_to_the_country_develop3
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_resources_factor = 0.1
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.05
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_recruitable_population_factor = 0.05
+					tooltip = recruitable_population_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = Cof_economy_rural_develop_start_rewards
+			hidden_effect = {	
+				random_core_state = {
+					limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+					set_temp_variable = { sesic = 1 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 0 }
+					Cof_state_economy_situation_change = yes					
+				}
+			}
+		}
+	}
+
+	Cof_economy_national_cereal_industry_office = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_focus_on_agricultural_functions }
+		custom_cost_trigger = { check_variable = { economy_power > 49.9 } }
+		custom_cost_text = cost_ep_50
+		complete_effect = {
+			add_to_variable = { economy_power = -50 }
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_focus_on_agricultural_name
+			}
+			set_country_flag = national_cereal_industry_office
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_local_supplies = 0.1
+					tooltip = local_supplies_tooltip
+				}
+				add_to_variable = {
+					rural_supply_consumption_factor = -0.002
+					tooltip = supply_consumption_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 3 }
+			set_temp_variable = { eaac = 2 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		} 
+	}
+
+	Cof_economy_rural_new_frontier1 = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_new_frontier_program }
+		ai_will_do = { factor = 0 }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 10 }
+		remove_effect = {
+			set_country_flag = rural_new_frontier_rank_one
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_new_frontier_program_name
+			}
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.05
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_state_production_speed_industrial_complex_factor = 0.1
+					tooltip = state_production_speed_industrial_complex_factor_tooltip
+				}
+			}
+
+			set_temp_variable = { cost_num = 0.4 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_cost
+				ECONVAR = econ_industry_basic
+			}
+			add_to_variable = { eibcost = -0.4 }
+
+			set_temp_variable = { gain_num = 0.6 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_gain
+				ECONVAR = econ_equal
+			}
+			add_to_variable = { eqcost = 0.6 }
+			
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 3 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_rural_new_frontier2 = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_new_frontier_program }
+		ai_will_do = { factor = 0 }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { 
+			civilian_factory_use = 8 
+			monthly_change_eib = -0.5
+			monthly_change_eip = -0.3
+		}
+		remove_effect = {
+			set_country_flag = rural_new_frontier_rank_two
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_new_frontier_program_name
+			}
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_production_speed_industrial_complex_factor = 0.1
+					tooltip = state_production_speed_industrial_complex_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_arms_factory_factor = 0.05
+					tooltip = state_production_speed_arms_factory_factor_tooltip
+				}
+			}
+
+			set_temp_variable = { cost_num = 0.3 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_cost
+				ECONVAR = econ_industry_process
+			}
+			add_to_variable = { eipcost = -0.3 }
+
+			custom_effect_tooltip = {
+				localization_key = random_get_state_factory
+				STATENUM = 2
+				ZONE = Cof_state_rural_zone
+				GETNUM = 1
+				TYPE = industrial_complex
+			}
+			hidden_effect = {
+				random_core_state = {
+					limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+					set_temp_variable = { sesic = 1 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 0 }
+					Cof_state_economy_situation_change = yes
+					set_state_flag = has_get_factory
+				}
+				random_core_state = {
+					limit = { 
+						has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } 
+						NOT = { has_state_flag = has_get_factory }
+					}
+					set_temp_variable = { sesic = 1 }
+					set_temp_variable = { sesac = 0 }
+					set_temp_variable = { sesdc = 0 }
+					Cof_state_economy_situation_change = yes
+				}
+				every_state = { clr_state_flag = has_get_factory }
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 1 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_rural_new_frontier3 = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_new_frontier_program }
+		ai_will_do = { factor = 0 }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { 
+			civilian_factory_use = 8 
+			monthly_change_eam = -0.5
+			monthly_change_eae = -0.3
+		}
+		remove_effect = {
+			set_country_flag = rural_new_frontier_rank_three
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_new_frontier_program_name
+			}
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_resources_factor = 0.1
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_local_supplies = 0.1
+					tooltip = local_supplies_tooltip
+				}
+			}
+
+			set_temp_variable = { cost_num = 0.3 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_cost
+				ECONVAR = econ_agriculture_chemical
+			}
+			add_to_variable = { eaecost = -0.3 }
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#城镇建设
+	Cof_economy_rural_electrification_campaign = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_robust_urbanization }
+		highlight_states = {
+			highlight_states_trigger = {
+				has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id }
+			}
+		}
+		ai_will_do = { factor = 0 }
+		fire_only_once = yes
+		available = {
+			set_temp_variable = { current_num = 0 }
+			hidden_trigger = {
+				all_core_state = {
+					if = {
+						limit = {
+							has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id }
+							infrastructure > 3
+						}		
+						add_to_temp_variable = { FRA.current_num = 1 }
+					}
+				}
+			}
+			
+			custom_trigger_tooltip = {
+				check_variable  = { current_num > 2 }
+				tooltip = rural_electrification_campaign_trigger_tt
+			}
+
+			set_temp_variable = { target_t = 1 }
+			set_temp_variable = { target_num = 55 }
+			cof_econ_target_more_than_x = yes
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 59.9 } }
+		custom_cost_text = cost_ep_60
+		complete_effect = {
+			add_to_variable = { economy_power = -60 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 4 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 1 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_robust_urbanization_name
+			}
+			set_country_flag = rural_electrification_campaign
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }	
+
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_resources_factor = 0.1
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.1
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_state_production_speed_industrial_complex_factor = 0.1
+					tooltip = state_production_speed_industrial_complex_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = rural_electrification_campaign_effect_tt
+			every_core_state = {
+				limit = {
+					has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id }
+					infrastructure > 3
+				}
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+		}
+	}
+
+	Cof_economy_promote_forestry_coops = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_robust_urbanization }
+		highlight_states = {
+			highlight_states_trigger = {
+				OR = {
+					state = 25
+					state = 26
+					state = 30
+					state = 33
+				}
+			}
+		}
+		ai_will_do = { factor = 0 }
+		fire_only_once = yes
+		available = {
+			set_temp_variable = { current_num = 0 }
+			hidden_trigger = {
+				all_core_state = {
+					if = {
+						limit = {
+							OR = {
+								state = 25
+								state = 26
+								state = 30
+								state = 33
+							}
+						}		
+						add_to_temp_variable = { FRA.current_num = industrial_complex_level }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = promote_forestry_coops_trigger_tt
+				check_variable  = { current_num > 6 }
+			}
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 59.9 } }
+		custom_cost_text = cost_ep_60
+		complete_effect = {
+			add_to_variable = { economy_power = -60 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 2 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 1 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_robust_urbanization_name
+			}
+			set_country_flag = promote_forestry_coops
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }	
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_resources_factor = 0.15
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.05
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 25
+						state = 26
+						state = 30
+						state = 33
+					}
+				}
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+		}
+	}
+
+	Cof_economy_workers_housing_construction = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_robust_urbanization }
+		ai_will_do = { factor = 0 }
+		fire_only_once = yes
+		available = {
+			num_of_civilian_factories_available_for_projects > 5
+		}
+		custom_cost_trigger = { check_variable = { economy_power > 49.9 } }
+		custom_cost_text = cost_ep_50
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 5
+			monthly_change_eib = -1
+		}
+		complete_effect = { add_to_variable = { economy_power = -50 } }
+		remove_effect = {
+			add_political_power = 100
+			add_stability = 0.05
+
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2.5 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_robust_urbanization_name
+			}
+			set_country_flag = workers_housing_construction
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }	
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_recruitable_population_factor = 0.1
+					tooltip = recruitable_population_factor_tooltip
+				}
+				add_to_variable = {
+					rural_monthly_population = 0.01
+					tooltip = monthly_population_tooltip
+				}
+			}
+		}
+	}
+
+	Cof_economy_encourage_urban_workers_return = {
+		icon = ger_mefo_bills
+		priority = 3
+		allowed = { tag = FRA }
+		visible = {
+			has_completed_focus = FRA_robust_urbanization
+			check_variable = { econfocus < maxeconfocus }
+		}
+		days_remove = 90
+		days_re_enable = 90
+		cost = 10
+		modifier = {
+			monthly_change_eib = -0.3
+			monthly_change_eam = 0.3
+			monthly_change_eq = 0.3
+			monthly_change_ei = -0.3
+		}
+		complete_effect = {
+			custom_effect_tooltip = economy_focus_tt
+			add_to_variable = { econfocus = 1 }
+		}
+		remove_effect = {
+			add_to_variable = { econfocus = -1 }
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+			set_temp_variable = { pop_pc = 1 }
+			set_temp_variable = { pop_mc = 0 }
+			set_temp_variable = { pop_sc = 0 }
+			set_temp_variable = { pop_bc = 0 }
+			set_temp_variable = { pop_ac = 0 }
+			class_pop_change = yes
+		}
+	}
+
+	#城市建设
+	Cof_economy_rezoning_of_city = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_urban_renovation }
+		available = { num_of_civilian_factories_available_for_projects > 6 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 180
+		modifier = {
+			economy_power_factor = -0.33
+			civilian_factory_use = 6
+			monthly_change_ev = -0.5
+			monthly_change_eib = -0.6
+			monthly_change_eip = -0.3
+			monthly_change_eq = -0.3
+		}
+		complete_effect = { add_to_variable = { economy_power = -30 } }
+		remove_effect = {
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_city_zone
+				STATE_STRATEGY = city_urban_renovation_name
+			}
+			set_country_flag = rezoning_of_city
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_city_zone
+				}
+				add_to_variable = {
+					city_local_building_slots_factor = 0.1
+					tooltip = local_building_slots_factor_tooltip
+				}
+				add_to_variable = {
+					city_state_production_speed_buildings_factor = 0.05
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					city_local_factories = 0.025
+					tooltip = local_factories_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 2 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 3 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 3 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_solve_housing_problem_of_urban_residents = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_urban_renovation }
+		available = { num_of_civilian_factories_available_for_projects > 4 }
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 4
+			monthly_change_eib = -0.8
+		}
+		complete_effect = { add_to_variable = { economy_power = -20 } }
+		remove_effect = {
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_city_zone
+				STATE_STRATEGY = city_urban_renovation_name
+			}
+			set_country_flag = solve_housing_problem_of_urban_residents
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_city_zone
+				}
+				add_to_variable = {
+					city_recruitable_population_factor = 0.1
+					tooltip = recruitable_population_factor_tooltip
+				}
+				add_to_variable = {
+					city_monthly_population = 0.01
+					tooltip = monthly_population_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 2 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_build_urban_frontier_zone = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_urban_renovation }
+		available = { num_of_civilian_factories_available_for_projects > 10 }
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 180
+		modifier = {
+			civilian_factory_use = 10
+			monthly_change_eib = -1
+			monthly_change_el = -0.5
+			monthly_change_popsp = -0.5
+		}
+		complete_effect = { add_to_variable = { economy_power = -30 } }
+		remove_effect = {
+			custom_effect_tooltip = {
+				localization_key = state_strategy_strengthen
+				ZONE = Cof_state_city_zone
+				STATE_STRATEGY = city_urban_renovation_name
+			}
+			set_country_flag = build_urban_frontier_zone
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_city_zone
+				}
+				add_to_variable = {
+					city_state_production_speed_industrial_complex_factor = 0.15
+					tooltip = state_production_speed_industrial_complex_factor_tooltip
+				}
+				add_to_variable = {
+					city_state_production_speed_arms_factory_factor = 0.05
+					tooltip = state_production_speed_arms_factory_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 2 }
+			set_temp_variable = { eibc = 6 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = -4 }
+			set_temp_variable = { elc = 4 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_economy_patterns_of_urbanrural_linkages = {
+		icon = factories
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { has_completed_focus = FRA_urban_renovation }
+		available = { num_of_civilian_factories_available_for_projects > 4 }
+		custom_cost_trigger = { check_variable = { economy_power > 49.9 } }
+		custom_cost_text = cost_ep_50
+		days_remove = 180
+		modifier = {
+			civilian_factory_use = 4
+			monthly_change_popsw = -0.5
+		}
+		complete_effect = { add_to_variable = { economy_power = -50 } }
+		remove_effect = {
+			custom_effect_tooltip = {
+				localization_key = state_strategy_take_what
+				ZONE = Cof_state_rural_zone
+				STATE_STRATEGY = rural_patterns_of_urbanrural_linkages_name
+			}
+			set_country_flag = patterns_of_urbanrural_linkages
+
+			every_core_state = {
+				limit = { has_dynamic_modifier = { modifier = Cof_state_rural_zone scope = THIS.id } }
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_rural_zone
+				}
+				add_to_variable = {
+					rural_state_resources_factor = 0.2
+					tooltip = state_resources_factor_tooltip
+				}
+				add_to_variable = {
+					rural_state_production_speed_buildings_factor = 0.1
+					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+				}
+				add_to_variable = {
+					rural_recruitable_population_factor = 0.1
+					tooltip = recruitable_population_factor_tooltip
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 6 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#水电建设
+	Cof_economy_hydropower = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = {  
+			has_completed_focus = FRA_hydropower_development
+		}
+		ai_will_do = { factor = 0 }
+		days_remove = 360
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 15 }
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 10 }
+			set_temp_variable = { eibc = 5 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 2.5 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2.5 }
+			set_temp_variable = { eic = 2.5 }
+			cof_econ_target_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+
+			custom_effect_tooltip = {
+				localization_key = state_strategy_take_what
+				ZONE = rhone_river_state
+				STATE_STRATEGY = nation_hydropower_development_name
+			}
+			every_core_state = {
+				limit = {
+					OR = {
+						state = 20
+						state = 32
+						state = 763
+						state = 735
+						state = 27
+						state = 760
+						state = 943
+					}
+				}
+				set_state_flag = state_economy_hydropower
+				custom_effect_tooltip = local_state_modifier_tt
+				if = {
+					limit = { has_dynamic_modifier = { modifier = Cof_state_city_zone scope = THIS.id } }
+					add_to_variable = {
+						city_state_production_speed_buildings_factor = 0.1
+						tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+					}
+					add_to_variable = {
+						city_local_building_slots_factor = 0.05
+						tooltip = local_building_slots_factor_tooltip
+					}
+					add_to_variable = {
+						city_state_resources_factor = 0.1
+						tooltip = state_resources_factor_tooltip
+					}
+					add_to_variable = {
+						city_local_factory_energy_consumption = -0.33
+						tooltip = local_factory_energy_consumption_tt
+					}
+				}
+				else = {
+					add_to_variable = {
+						rural_state_production_speed_buildings_factor = 0.1
+						tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+					}
+					add_to_variable = {
+						rural_local_building_slots_factor = 0.05
+						tooltip = local_building_slots_factor_tooltip
+					}
+					add_to_variable = {
+						rural_state_resources_factor = 0.1
+						tooltip = state_resources_factor_tooltip
+					}
+					add_to_variable = {
+						rural_local_factory_energy_consumption = -0.33
+						tooltip = local_factory_energy_consumption_tt
+					}
+				}
+			}
+
+			set_temp_variable = { gain_num = 0.1 }
+			custom_effect_tooltip = {
+				localization_key = strategy_period_gain
+				ECONVAR = econ_industry_basic
+			}
+			add_to_variable = { eibcost = 0.1 }
+		}
+	}
+
+	#改造自然计划
+	Cof_nature_modifier_plan = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_nature_modifier_plan }
+		ai_will_do = { factor = 0 }
+		days_remove = 360
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 15 }
+		remove_effect = {
+			every_core_state = {
+				limit = {
+					OR = {
+						has_state_category = one
+						has_state_category = two
+						has_state_category = three
+						has_state_category = four
+					}
+				}
+				increase_state_category_by_one_level = yes
+				if = {
+					limit = { infrastructure < 4 }
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+
+				set_temp_variable = { sesic = 1 } 
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 5 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 5 }
+			set_temp_variable = { elc = 2.5 }
+			set_temp_variable = { eic = 2.5 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	#军事经济
+	Cof_mediterranean_naval_base_building = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_mediterranean_naval_base }
+		ai_will_do = { factor = 0 }
+		days_remove = 120
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			navy_experience = 25
+			21 = {
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 3 }
+				Cof_state_economy_situation_change = yes
+			}
+		}
+	}
+
+	Cof_british_naval_cooperation_building = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_mediterranean_naval_base }
+		ai_will_do = { factor = 0 }
+		days_remove = 90
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 3 }
+		remove_effect = {
+			navy_experience = 25
+			17 = {
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 1 }
+				Cof_state_economy_situation_change = yes
+			}
+			ENG = {
+				navy_experience = 25
+				127 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	Cof_sleeping_lion_construction = {
+		icon = eng_trade_unions_support
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_sleeping_lion_strategy }
+		ai_will_do = { factor = 0 }
+		days_remove = 200
+		fire_only_once = yes
+		modifier = { civilian_factory_use = 5 }
+		remove_effect = {
+			27 = {
+				add_building_construction = {
+					type = bunker
+					province = 698
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 6698
+					level = 3
+					instant_build = yes
+				}
+			}
+			785 = {
+				add_building_construction = {
+					type = bunker
+					province = 11642
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 521
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 11516
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 5291
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = bunker
+					province = 3560
+					level = 3
+					instant_build = yes
+				}
+			}
+
+			if = {
+				limit = { has_completed_focus = FRA_fortress_of_verdun }
+				785 = {
+					add_building_construction = {
+						type = bunker
+						province = 9472
+						level = 3
+						instant_build = yes
+					}
+				}
+				24 = {
+					add_building_construction = {
+						type = bunker
+						province = 3447
+						level = 3
+						instant_build = yes
+					}
+				}
+				980 = {
+					add_building_construction = {
+						type = bunker
+						province = 11606
+						level = 3
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = bunker
+						province = 11483
+						level = 3
+						instant_build = yes
+					}
+				}
+				if = {
+					limit = { 29 = { is_owned_by = FRA } }
+					29 = {
+						add_building_construction = {
+							type = bunker
+							province = 575
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+				else = {
+					17 = {
+						add_building_construction = {
+							type = bunker
+							province = 3536
+							level = 3
+							instant_build = yes
+						}
+						add_building_construction = {
+							type = bunker
+							province = 11548
+							level = 3
+							instant_build = yes
+						}
+					}
+				}
+			}
+		}
+	}
+}

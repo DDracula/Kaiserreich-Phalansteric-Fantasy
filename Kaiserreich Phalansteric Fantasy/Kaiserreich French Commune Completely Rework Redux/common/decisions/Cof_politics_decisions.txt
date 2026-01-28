@@ -1,0 +1,2877 @@
+#### 公社政治 ####
+Cof_politics = { 
+	Cof_voting_time_for_bill = {
+		icon = ger_mefo_bills
+		activation = { has_country_flag = voting_for_bill }
+		available = { always = no }
+		is_good = yes
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		timeout_effect = {
+			custom_effect_tooltip = bill_agree_vote_count
+			bill_to_judge = yes
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = current_bill_content
+			bill_effect_tooltips = yes
+		}
+	}
+
+	Cof_enemy_at_the_gates_mission = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = {
+			OR = {
+				has_idea = bill_ten_year_model
+				has_completed_focus = FRA_post_war_democracy_commitments
+			}
+		}
+		is_good = yes
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		complete_effect = {
+			add_political_power = 50
+			add_stability = 0.05
+		}
+		timeout_effect = {
+			add_political_power = -100
+			add_stability = -0.1
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -4 }
+       		set_temp_variable = { pc = -4 } 
+	        set_temp_variable = { mc = -4 }
+    		set_temp_variable = { sc = -4 }
+        	set_temp_variable = { bc = -4 }
+        	set_temp_variable = { ac = -4 }
+	        class_pop_satisfactions_change = yes
+		}
+	}
+
+	Cof_election = {
+		icon = ger_mefo_bills
+		activation = { has_country_flag = election_time }
+		available = { always = no }
+		is_good = yes
+		fixed_random_seed = no
+		days_mission_timeout = 30
+		timeout_effect = {
+			custom_effect_tooltip = Cof_election_tt
+			clr_country_flag = election_time
+			hidden_effect = {
+				if = {
+					limit = {
+						check_variable = { seat_synd > seat_jaco }
+						check_variable = { seat_synd > seat_oppo }
+						check_variable = { seat_synd > seat_sore }
+					}
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.56
+					}
+					else = { country_event = cofpolitics.121 }
+				}
+				
+				if = {
+					limit = {
+						check_variable = { seat_oppo > seat_jaco }
+						check_variable = { seat_oppo > seat_synd }
+						check_variable = { seat_oppo > seat_sore }
+					}
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.57
+					}
+					else = { country_event = cofpolitics.122 }
+				}
+
+				if = {
+					limit = {
+						check_variable = { seat_jaco > seat_synd }
+						check_variable = { seat_jaco > seat_oppo }
+						check_variable = { seat_jaco > seat_sore }
+					}
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.58
+					}
+					else = { country_event = cofpolitics.123 }
+				}
+
+				if = {
+					limit = {
+						check_variable = { seat_sore > seat_jaco }
+						check_variable = { seat_sore > seat_oppo }
+						check_variable = { seat_sore > seat_synd }
+					}
+					if = {
+						limit = { has_country_flag = cof_1941_election_start }
+						country_event = cofpolitics.59
+					}
+					else = { country_event = cofpolitics.124 }
+				}
+			}
+		}
+	}
+
+	#工团派议程
+	Cof_synd_bgt_administrative_change = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_completed_focus = FRA_administrativeization_of_CGT }
+		days_remove = 180
+		fire_only_once = yes
+		modifier = { 
+			political_power_factor = -0.15
+			stability_factor = -0.1
+
+			monthly_change_popsw = 0.6
+			monthly_change_popsb = -0.6
+		}
+		remove_effect = {
+			add_ideas = bill_CGT_administrative
+			add_to_array = { array = FRA.cof_social_bills value = 26 }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = 4 }
+       		set_temp_variable = { pop_pc = -1 }
+	        set_temp_variable = { pop_mc = -0.5 }
+    		set_temp_variable = { pop_sc = -0.5 }
+        	set_temp_variable = { pop_bc = -2 }
+        	set_temp_variable = { pop_ac = 0 }
+	        class_pop_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_target = 1 }   
+			set_temp_variable = { pop_syndc = 3 }
+			set_temp_variable = { pop_oppoc = -1 }
+			set_temp_variable = { pop_jacoc = -1 }
+			set_temp_variable = { pop_sorec = -1 }
+			class_pop_faction_tendency_change = yes
+		}
+	}
+                                             
+	#温和派议程
+	Cof_syndmode_benefit_sorelian = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first 
+			NOT = { has_country_flag = syndmode_benefit_anarchist }
+			NOT = { has_country_flag = syndmode_benefit_technocrat }
+			NOT = { has_country_flag = syndmode_benefit_communist }
+		}
+		available = { 
+			NOT = { has_country_flag = syndmode_benefit_anarchist }
+			NOT = { has_country_flag = syndmode_benefit_technocrat }
+			NOT = { has_country_flag = syndmode_benefit_communist }
+		}
+		days_re_enable = 90
+		days_remove = 90
+		custom_cost_trigger = { has_army_experience > 4.99 }
+		custom_cost_text = decision_cost_ArmXP_5
+		modifier = { experience_gain_army_factor = 0.05 }
+		complete_effect = {
+			set_country_flag = syndmode_benefit_sorelian
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { clr_country_flag = syndmode_benefit_sorelian }
+	}
+	Cof_syndmode_benefit_anarchist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first 
+			NOT = { has_country_flag = syndmode_benefit_sorelian }
+			NOT = { has_country_flag = syndmode_benefit_technocrat }
+			NOT = { has_country_flag = syndmode_benefit_communist }
+		}
+		available = { 
+			NOT = { has_country_flag = syndmode_benefit_sorelian }
+			NOT = { has_country_flag = syndmode_benefit_technocrat }
+			NOT = { has_country_flag = syndmode_benefit_communist }
+		}
+		days_re_enable = 90
+		days_remove = 90
+		cost = 20
+		modifier = { political_power_factor = 0.05 }
+		complete_effect = {
+			set_country_flag = syndmode_benefit_anarchist
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { clr_country_flag = syndmode_benefit_anarchist }
+	}
+	Cof_syndmode_benefit_technocrat = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first 
+			NOT = { has_country_flag = syndmode_benefit_sorelian }
+			NOT = { has_country_flag = syndmode_benefit_anarchist }
+			NOT = { has_country_flag = syndmode_benefit_communist }
+		}
+		available = { 
+			NOT = { has_country_flag = syndmode_benefit_sorelian }
+			NOT = { has_country_flag = syndmode_benefit_anarchist }
+			NOT = { has_country_flag = syndmode_benefit_communist }
+		}
+		days_re_enable = 90
+		days_remove = 90
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		modifier = { economy_power_factor = 0.05 }
+		complete_effect = {
+			set_country_flag = syndmode_benefit_technocrat
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 1 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { clr_country_flag = syndmode_benefit_technocrat }
+	}
+	COf_syndmode_benefit_communist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first 
+			NOT = { has_country_flag = syndmode_benefit_sorelian }
+			NOT = { has_country_flag = syndmode_benefit_anarchist }
+			NOT = { has_country_flag = syndmode_benefit_technocrat }
+		}
+		available = { 
+			NOT = { has_country_flag = syndmode_benefit_sorelian }
+			NOT = { has_country_flag = syndmode_benefit_anarchist }
+			NOT = { has_country_flag = syndmode_benefit_technocrat }
+		}
+		days_re_enable = 90
+		days_remove = 90
+		cost = 20
+		modifier = {
+			monthly_change_popsp = 0.1
+			monthly_change_popsm = 0.1
+			monthly_change_popss = 0.1
+		}
+		complete_effect = {
+			set_country_flag = syndmode_benefit_communist
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { clr_country_flag = syndmode_benefit_communist }
+	}
+	#洽谈
+	Cof_syndmode_meet_anarchist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_revolutionary_tents
+			NOT = { has_country_flag = syndmode_anarchist_first }
+		}
+		fire_only_once = yes
+		cost = 0
+		complete_effect = { country_event = cofpolitics.141 }
+	}
+	Cof_syndmode_meet_technocrat = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_revolutionary_tents
+			NOT = { has_country_flag = syndmode_technocrat_first }
+		}
+		fire_only_once = yes
+		cost = 0
+		complete_effect = { country_event = cofpolitics.148 }
+	}
+	Cof_syndmode_meet_communist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_revolutionary_tents
+			NOT = { has_country_flag = syndmode_communist_first }
+		}
+		fire_only_once = yes
+		cost = 0
+		complete_effect = { country_event = cofpolitics.153 }
+	}
+	#索雷尔主义者
+	Cof_syndmode_bring_in_sorelian_test_of_sincerity = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = { 
+			if = {
+				limit = { check_variable = { sorelian_target_sincerity > 0 } }
+				custom_trigger_tooltip = {
+					tooltip = sorelian_test_of_sincerity_trigger
+					OR = {
+						check_variable = { sorelian_sincerity = sorelian_target_sincerity }
+						check_variable = { sorelian_sincerity > sorelian_target_sincerity }
+					}
+				}
+			}
+			else = { has_idea = bill_national_veterans_horor }
+		}
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 180
+		complete_effect = {
+			set_country_flag = under_tent_sorelian
+			under_tent_number_judge = yes
+			under_the_tent_idea_change = yes
+			country_event = cofpolitics.137
+
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = Cof_under_the_tent_0000
+					add_idea = Cof_under_the_tent_1000
+				}
+			}
+		}
+		timeout_effect = {
+			country_event = cofpolitics.138
+		}
+	}
+	Cof_syndmode_bring_in_sorelian_youth_corps = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_war_support = 0.025
+			add_popularity = { ideology = totalist popularity = 0.03 }
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ssc = 3 }
+			set_temp_variable = { asc = -2 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = -2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -0.5 }
+       		set_temp_variable = { pop_pc = -0.5 }
+	        set_temp_variable = { pop_mc = -0.5 }
+    		set_temp_variable = { pop_sc = -0.5 }
+        	set_temp_variable = { pop_bc = -1 }
+        	set_temp_variable = { pop_ac = 3 }
+    	    set_temp_variable = { pop_aoc = 0 }
+    	    set_temp_variable = { pop_anc = 0 }
+    		set_temp_variable = { pop_asc = 0 }
+	        class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 0 }
+       		set_temp_variable = { pc = 0 } 
+	        set_temp_variable = { mc = 0 }
+    		set_temp_variable = { sc = -2 }
+        	set_temp_variable = { bc = -2 }
+        	set_temp_variable = { ac = 3 }
+	        class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_target = 8 }   
+			set_temp_variable = { pop_syndc = -2 }
+			set_temp_variable = { pop_oppoc = -2 }
+			set_temp_variable = { pop_jacoc = -2 }
+			set_temp_variable = { pop_sorec = 6 }
+			class_pop_faction_tendency_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = -3 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 3 }
+			Cof_army_reform_values_change = yes
+			hidden_effect = { country_event = { id = cofpolitics.139 days = 7 random_days = 3 } } 
+		}
+	}
+	Cof_syndmode_bring_in_sorelian_increase_military_budgets = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		days_re_enable = 30
+		days_remove = 30
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		modifier = { 
+			economy_power_factor = -0.1 
+			production_speed_arms_factory_factor = 0.15
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+
+			set_temp_variable = { ssc = 2 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+       		set_temp_variable = { pc = 0 } 
+	        set_temp_variable = { mc = 0 }
+    		set_temp_variable = { sc = 0 }
+        	set_temp_variable = { bc = 0 }
+        	set_temp_variable = { ac = 1 }
+	        class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 3 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_sorelian_diplomatic_assertion1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		fire_only_once = yes
+		cost = 40
+		complete_effect = {
+			add_war_support = 0.025
+			add_named_threat = {
+				threat = 2.5
+				name = Cof_syndmode_bring_in_sorelian_diplomatic_assertion1
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ssc = 2 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 1 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = -1.5 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 1.5 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_sorelian_diplomatic_assertion2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		fire_only_once = yes
+		cost = 40
+		complete_effect = {
+			add_war_support = 0.025
+			add_named_threat = {
+				threat = 2.5
+				name = Cof_syndmode_bring_in_sorelian_diplomatic_assertion2
+			}
+			
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ssc = 2 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 1 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+		
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = -1.5 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 1.5 }
+			Cof_army_reform_values_change = yes
+		}
+	}       
+
+	Cof_syndmode_bring_in_sorelian_vote_bill_national_veterans_horor = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = need_vote_bill_national_veterans_horor }
+		available = { NOT= { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_national_veterans_horor
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_national_veterans_horor_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 4 }
+       		set_temp_variable = { vtl2 = 2 }
+			set_temp_variable = { vtl3 = 2 } 
+			set_temp_variable = { vtl4 = 0 }
+			set_temp_variable = { vtl5 = 2 }
+			set_temp_variable = { vtl6 = 7 } 
+			set_temp_variable = { vtl7 = 9 }
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_national_veterans_horor
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { ssc = 6 }
+				set_temp_variable = { asc = -2 }
+				set_temp_variable = { tsc = -2 }
+				set_temp_variable = { csc = -2 }
+				syndmode_sincerity_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_wc = -1 }
+				set_temp_variable = { pop_pc = -1 }
+				set_temp_variable = { pop_mc = -1 }
+				set_temp_variable = { pop_sc = -1 }
+				set_temp_variable = { pop_bc = -1 }
+				set_temp_variable = { pop_ac = 5 }
+				set_temp_variable = { pop_aoc = 0 }
+				set_temp_variable = { pop_anc = 0 }
+				set_temp_variable = { pop_asc = 0 }
+				class_pop_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { wc = 0 }
+				set_temp_variable = { pc = 0 }
+				set_temp_variable = { mc = 0 }
+				set_temp_variable = { sc = 0 }
+				set_temp_variable = { bc = 0 }
+				set_temp_variable = { ac = 10 }
+				class_pop_satisfactions_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { pop_target = 8 }   
+				set_temp_variable = { pop_syndc = -2 }
+				set_temp_variable = { pop_oppoc = -2 }
+				set_temp_variable = { pop_jacoc = -2 }
+				set_temp_variable = { pop_sorec = 6 }
+				class_pop_faction_tendency_change = yes
+		
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { aac = 0 }
+				set_temp_variable = { awc = 0 }
+				set_temp_variable = { atc = 0 }
+				set_temp_variable = { aec = 0 }
+				set_temp_variable = { apc = 5 }
+				Cof_army_reform_values_change = yes
+			}
+		}
+	}
+
+	#无政府主义者
+	Cof_syndmode_bring_in_anarchist_test_of_sincerity = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = { 
+			if = {
+				limit = { check_variable = { anarchist_target_sincerity > 0 } }
+				custom_trigger_tooltip = {
+					tooltip = anarchist_test_of_sincerity_trigger
+					OR = {
+						check_variable = { anarchist_sincerity = anarchist_target_sincerity }
+						check_variable = { anarchist_sincerity > anarchist_target_sincerity }
+					}
+				}
+			}
+			else_if = { 
+				limit = { has_country_flag = syndmode_anarchists_cgt_reform }
+				has_idea = bill_CGT_pluralistic
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 360
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = syndmode_anarchists_cgt_reform }
+				set_temp_variable = { ssc = 0 }
+				set_temp_variable = { asc = 6 }
+				set_temp_variable = { tsc = 0 }
+				set_temp_variable = { csc = 0 }
+				syndmode_sincerity_change = yes
+			}
+			set_country_flag = under_tent_anarchist
+			under_tent_number_judge = yes
+			under_the_tent_idea_change = yes
+			country_event = cofpolitics.161
+
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = Cof_under_the_tent_0000
+					add_idea = Cof_under_the_tent_0100
+				}
+			}
+
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_flag = under_tent_anarchist
+						has_country_flag = under_tent_communist
+					}
+					country_event = { id = cofpolitics.172 days = 14 }
+				}
+			}
+		}
+		timeout_effect = {
+			country_event = cofpolitics.162
+		}
+	}
+
+	Cof_syndmode_bring_in_anarchist_relax_regulations = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				check_variable = { anarchist_target_sincerity = 8 } 
+				AND = {
+					check_variable = { anarchist_target_sincerity = 6 }
+					has_country_flag = syndmode_anarchist_autonomy 
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 30
+		days_remove = 60
+		modifier = {
+			political_power_factor = -0.1
+		}
+		complete_effect = {
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = 3 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 1 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = -4 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 4 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = -2 }
+			set_temp_variable = { elc = -2 }
+			set_temp_variable = { eic = 3 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_allocate_to_local = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				check_variable = { anarchist_target_sincerity = 8 } 
+				AND = {
+					check_variable = { anarchist_target_sincerity = 6 }
+					has_country_flag = syndmode_anarchist_autonomy 
+				}
+			}
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 90
+		modifier = {
+			economy_power_factor = -0.05
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -3 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -3 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			17 = {
+				set_temp_variable = { sesic = 1 } 
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 4 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_promote_exchange = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { anarchist_target_sincerity = 6 }
+			has_country_flag = syndmode_anarchist_autonomy 
+		}
+		fire_only_once = yes
+		cost = 15
+		days_remove = 30
+		complete_effect = {
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0.5 }
+			set_temp_variable = { pc = 0.5 }
+			set_temp_variable = { mc = 0.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_provide_assistance = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { anarchist_target_sincerity = 6 }
+			has_country_flag = syndmode_anarchist_autonomy 
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 24.9 } }
+		custom_cost_text = cost_ep_25
+		days_remove = 60
+		complete_effect = {
+			add_to_variable = { economy_power = -25 }
+
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 3 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 3 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_syndmode_bring_in_anarchist_allow_militia_armed = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				check_variable = { anarchist_target_sincerity = 8 } 
+				AND = {
+					check_variable = { anarchist_target_sincerity = 6 }
+					has_country_flag = syndmode_anarchist_militia 
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 25
+		complete_effect = {
+			army_experience = 5
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ssc = -3 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = -4 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = -1 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = -2 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = -2 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_relax_militia_strandard = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				check_variable = { anarchist_target_sincerity = 8 } 
+				AND = {
+					check_variable = { anarchist_target_sincerity = 6 }
+					has_country_flag = syndmode_anarchist_militia 
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+			army_experience = -5
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ssc = -2 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = -1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = -5 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = -5 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 5 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_define_responsibility = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { anarchist_target_sincerity = 6 }
+			has_country_flag = syndmode_anarchist_militia  
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+			army_experience = 5
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ssc = -3 }
+			set_temp_variable = { asc = 3 }
+			set_temp_variable = { tsc = 1 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = -5 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 5 }
+			set_temp_variable = { awc = 0 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 0 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_commendate_outstanding = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { anarchist_target_sincerity = 6 }
+			has_country_flag = syndmode_anarchist_militia  
+		}
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			army_experience = 5
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 5 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 3 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { aac = 0 }
+			set_temp_variable = { awc = 3 }
+			set_temp_variable = { atc = 0 }
+			set_temp_variable = { aec = 0 }
+			set_temp_variable = { apc = 3 }
+			Cof_army_reform_values_change = yes
+		}
+	}
+
+	Cof_syndmode_bring_in_anarchist_reaffirm_internationale = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				check_variable = { anarchist_target_sincerity = 8 } 
+				AND = {
+					check_variable = { anarchist_target_sincerity = 6 }
+					has_country_flag = syndmode_anarchist_diplomacy 
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 1 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { iri_euic = 5 }
+			set_temp_variable = { iri_asic = 5 }
+			set_temp_variable = { iri_meic = 5 }
+			set_temp_variable = { iri_afic = 5 }
+			set_temp_variable = { iri_amic = 5 }
+			iri_influence_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_curb_nationalist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			OR = {
+				check_variable = { anarchist_target_sincerity = 8 } 
+				AND = {
+					check_variable = { anarchist_target_sincerity = 6 }
+					has_country_flag = syndmode_anarchist_diplomacy 
+				}
+			}
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+			set_temp_variable = { ssc = -2 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 0 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -0.5 }
+			set_temp_variable = { pc = -0.5 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = -2 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_anarchist_encourage_volunteer = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { anarchist_target_sincerity = 6 }
+			has_country_flag = syndmode_anarchist_diplomacy  
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
+		custom_cost_text = cost_ep_20
+		days_remove = 365
+		modifier = {
+			send_volunteer_size = 2
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -20 }
+
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 1 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+			set_temp_variable = { pop_pc = -0.5 }
+			set_temp_variable = { pop_mc = 0 }
+			set_temp_variable = { pop_sc = -1 }
+			set_temp_variable = { pop_bc = 0 }
+			set_temp_variable = { pop_ac = 2.5 }
+			set_temp_variable = { pop_aoc = 0 }
+			set_temp_variable = { pop_anc = 0 }
+			set_temp_variable = { pop_asc = 0 }
+			class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = -4 }
+			set_temp_variable = { ac = 2 }
+			class_pop_satisfactions_change = yes
+		}
+
+	}
+	Cof_syndmode_bring_in_anarchist_allocate_resources = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { anarchist_target_sincerity = 6 }
+			has_country_flag = syndmode_anarchist_diplomacy  
+		}
+		target_trigger = { FROM = { tag = ENG } }
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 24.9 } }
+		custom_cost_text = cost_ep_25
+		days_remove = 90
+		modifier = {
+			economy_power_factor = -0.1
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -25 }
+
+			set_temp_variable = { ssc = -2 }
+			set_temp_variable = { asc = 3 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -1 }
+			set_temp_variable = { pc = -1 }
+			set_temp_variable = { mc = -2 }
+			set_temp_variable = { sc = 4 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+
+	#技术官僚
+	Cof_syndmode_bring_in_technocrat_test_of_sincerity = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = { 
+			if = {
+				limit = { check_variable = { technocrat_target_sincerity > 0 } }
+				custom_trigger_tooltip = {
+					tooltip = technocrat_test_of_sincerity_trigger
+					OR = {
+						check_variable = { technocrat_sincerity = technocrat_target_sincerity }
+						check_variable = { technocrat_sincerity > technocrat_target_sincerity }
+					}
+				}
+			}
+			else_if = { 
+				limit = { has_country_flag = syndmode_technocrat_babeltower }
+				has_idea = bill_local_committee_reform
+				has_idea = bill_local_council_reform
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 360
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = syndmode_technocrat_babeltower }
+				weak_central_government_improve = yes
+			}
+			set_country_flag = under_tent_technocrat
+			under_tent_number_judge = yes
+			under_the_tent_idea_change = yes
+			country_event = cofpolitics.163
+
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = Cof_under_the_tent_0000
+					add_idea = Cof_under_the_tent_0010
+				}
+			}
+		}
+		timeout_effect = {
+			country_event = cofpolitics.164
+		}
+	}
+
+	Cof_syndmode_bring_in_technocrat_optimize_selecting_officials = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_efficiency  
+		}
+		fire_only_once = yes
+		cost = 30
+		days_remove = 90
+		modifier = {
+			stability_factor = -0.1
+			political_power_factor = -0.15
+		}
+		complete_effect = {
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = 2 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = -1 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+			set_temp_variable = { pop_pc = -1 }
+			set_temp_variable = { pop_mc = -1 }
+			set_temp_variable = { pop_sc = -1 }
+			set_temp_variable = { pop_bc = 4 }
+			set_temp_variable = { pop_ac = 0 }
+			set_temp_variable = { pop_aoc = 0 }
+			set_temp_variable = { pop_anc = 0 }
+			set_temp_variable = { pop_asc = 0 }
+			class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = -2 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_political_power = 100
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 3 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_cut_local_spending = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_efficiency  
+		}
+		fire_only_once = yes
+		cost = 40
+		complete_effect = {
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = 2 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -1 }
+			set_temp_variable = { pc = -1 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 80 }
+			set_temp_variable = { evc = -3 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_adjust_central_budget = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_efficiency  
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 39.9 } }
+		custom_cost_text = cost_ep_40
+		complete_effect = {
+			add_to_variable = { economy_power = -40 }
+
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = -2 }
+			set_temp_variable = { tsc = 3 }
+			set_temp_variable = { csc = -2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -2 }
+			set_temp_variable = { pc = -2 }
+			set_temp_variable = { mc = -2 }
+			set_temp_variable = { sc = -2 }
+			set_temp_variable = { bc = 6 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 3 }
+			set_temp_variable = { elc = 3 }
+			set_temp_variable = { eic = 3 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_dismiss_employees = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_efficiency  
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 120
+		modifier = {
+			stability_factor = -0.15
+			political_power_factor = -0.2
+		}
+		complete_effect = {
+			set_temp_variable = { ssc = -2 }
+			set_temp_variable = { asc = -2 }
+			set_temp_variable = { tsc = 3 }
+			set_temp_variable = { csc = -2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = -1 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+			set_temp_variable = { pop_pc = -0.5 }
+			set_temp_variable = { pop_mc = -0.5 }
+			set_temp_variable = { pop_sc = -1 }
+			set_temp_variable = { pop_bc = 3 }
+			set_temp_variable = { pop_ac = 0 }
+			set_temp_variable = { pop_aoc = 0 }
+			set_temp_variable = { pop_anc = 0 }
+			set_temp_variable = { pop_asc = 0 }
+			class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = -1 }
+			set_temp_variable = { pc = -1 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = -2 }
+			set_temp_variable = { bc = -4 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			add_political_power = 200
+			add_stability = 0.025
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 2 }
+			set_temp_variable = { eqc = 5 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 3 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_syndmode_bring_in_technocrat_overspend_budget = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_stability  
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 39.9 } }
+		custom_cost_text = cost_ep_40
+		days_remove = 180
+		modifier = {
+			economy_power_factor = -0.1
+
+			monthly_change_ev = 0.2
+			monthly_change_eib = 0.2
+			monthly_change_eq = 0.2
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -40 }
+
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = -2 }
+			set_temp_variable = { tsc = 2 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 5 }
+			set_temp_variable = { eibc = 4 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_establish_national_news = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_stability  
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+			add_stability = 0.025
+
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = 2 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = -1 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			establish_national_news = yes
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_expand_police_department = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_stability  
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_political_power = -50
+			add_stability = 0.025
+			add_to_variable = { economy_power = -30 }
+
+			add_ideas = bill_expanded_police_department
+			add_to_array = { array = FRA.cof_social_bills value = 22 }
+
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = -2 }
+			set_temp_variable = { tsc = 2 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -1 }
+			set_temp_variable = { pc = -1 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = -2 }
+			set_temp_variable = { bc = 1 }
+			set_temp_variable = { ac = 1 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_regulate_boundary = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {  
+			check_variable = { technocrat_target_sincerity > 0 }
+			has_country_flag = syndmode_technocrat_stability  
+		}
+		fire_only_once = yes
+		cost = 60
+		complete_effect = {
+			set_temp_variable = { ssc = -2 }
+			set_temp_variable = { asc = -2 }
+			set_temp_variable = { tsc = 3 }
+			set_temp_variable = { csc = -2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = -1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -2 }
+			set_temp_variable = { pc = -2 }
+			set_temp_variable = { mc = -2 }
+			set_temp_variable = { sc = -4 }
+			set_temp_variable = { bc = 4 }
+			set_temp_variable = { ac = -2 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+
+	Cof_syndmode_bring_in_technocrat_tilt_towards_csp = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = syndmode_technocrat_babeltower 
+			check_variable = { syndmode_technocrats_times < 2 }
+		}
+		days_re_enable = 90
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 90
+		modifier = {
+			political_power_factor = 0.1
+
+			monthly_change_eip = 0.5
+			monthly_change_eq = -0.4 
+			monthly_change_el = 0.5
+		}
+		complete_effect = {
+			add_to_variable = { syndmode_technocrats_times = 1 }
+
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = 2 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { iosc = 5 }
+	        intensity_of_struggle_change = yes 
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 6 }
+			set_temp_variable = { eibc = 4 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 4 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_vote_bill_local_committee_reform = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = syndmode_technocrat_babeltower }
+		available = { NOT= { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_local_committee_reform
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_local_committee_reform_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 4 }
+       		set_temp_variable = { vtl2 = 2 }
+			set_temp_variable = { vtl3 = 2 } 
+			set_temp_variable = { vtl4 = 0 }
+			set_temp_variable = { vtl5 = 9 }
+			set_temp_variable = { vtl6 = 9 } 
+			set_temp_variable = { vtl7 = 3 }
+			set_temp_variable = { vtl8 = 3 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_local_council_reform
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { ssc = -1 }
+				set_temp_variable = { asc = -2 }
+				set_temp_variable = { tsc = 4 }
+				set_temp_variable = { csc = -2 }
+				syndmode_sincerity_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_wc = -1 }
+				set_temp_variable = { pop_pc = -1 }
+				set_temp_variable = { pop_mc = -1 }
+				set_temp_variable = { pop_sc = -1 }
+				set_temp_variable = { pop_bc = 4 }
+				set_temp_variable = { pop_ac = 0 }
+				set_temp_variable = { pop_aoc = 0 }
+				set_temp_variable = { pop_anc = 0 }
+				set_temp_variable = { pop_asc = 0 }
+				class_pop_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { wc = -2 }
+				set_temp_variable = { pc = -2 }
+				set_temp_variable = { mc = -2 }
+				set_temp_variable = { sc = -2 }
+				set_temp_variable = { bc = 8 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
+		}
+	}
+	Cof_syndmode_bring_in_technocrat_vote_bill_local_council_reform = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = syndmode_technocrat_babeltower }
+		available = { NOT= { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_local_council_reform
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_local_council_reform_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 4 }
+       		set_temp_variable = { vtl2 = 2 }
+			set_temp_variable = { vtl3 = 2 } 
+			set_temp_variable = { vtl4 = 0 }
+			set_temp_variable = { vtl5 = 9 }
+			set_temp_variable = { vtl6 = 9 } 
+			set_temp_variable = { vtl7 = 3 }
+			set_temp_variable = { vtl8 = 3 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_local_council_reform
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { ssc = -1 }
+				set_temp_variable = { asc = -2 }
+				set_temp_variable = { tsc = 4 }
+				set_temp_variable = { csc = -2 }
+				syndmode_sincerity_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_wc = -1 }
+				set_temp_variable = { pop_pc = -1 }
+				set_temp_variable = { pop_mc = -1 }
+				set_temp_variable = { pop_sc = -1 }
+				set_temp_variable = { pop_bc = 4 }
+				set_temp_variable = { pop_ac = 0 }
+				set_temp_variable = { pop_aoc = 0 }
+				set_temp_variable = { pop_anc = 0 }
+				set_temp_variable = { pop_asc = 0 }
+				class_pop_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { wc = -2 }
+				set_temp_variable = { pc = -2 }
+				set_temp_variable = { mc = -2 }
+				set_temp_variable = { sc = -2 }
+				set_temp_variable = { bc = 8 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
+		}
+	}
+
+	#共产党人
+	Cof_syndmode_bring_in_communist_test_of_sincerity = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = communist_test_of_sincerity_trigger
+				OR = {
+					check_variable = { communist_sincerity = communist_target_sincerity }
+					check_variable = { communist_sincerity > communist_target_sincerity }
+				}
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 360
+		complete_effect = {
+			set_country_flag = under_tent_communist
+			under_tent_number_judge = yes
+			under_the_tent_idea_change = yes
+			country_event = cofpolitics.165
+
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = Cof_under_the_tent_0000
+					add_idea = Cof_under_the_tent_0001
+				}
+			}
+		}
+		timeout_effect = {
+			country_event = cofpolitics.166
+		}
+	}
+
+	Cof_syndmode_bring_in_communist_subsidize_argi_coop = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			OR = {
+				has_country_flag = syndmode_communist_preasant 
+				has_country_flag = syndmode_communist_all 
+			}
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		days_remove = 180
+		modifier = {
+			economy_power_factor = -0.1
+			
+			monthly_change_popsp = 0.2
+
+			monthly_change_eam = 0.2
+			monthly_change_eae = 0.2
+			monthly_change_eaa = 0.2
+			monthly_change_eq = 0.2
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 4 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 2 }
+			set_temp_variable = { eaec = 2 }
+			set_temp_variable = { eaac = 2 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 3 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_raise_purchase_prise = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			OR = {
+				has_country_flag = syndmode_communist_preasant 
+				has_country_flag = syndmode_communist_all 
+			}
+		}
+		fire_only_once = yes
+		cost = 40
+		complete_effect = {
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -3 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = -1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 3 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -4 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = -2 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 4 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_reduce_agri_taxes = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			has_country_flag = syndmode_communist_preasant 
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_ideas = bill_reduce_agricultural_taxes
+			add_to_array = { array = FRA.cof_social_bills value = 23 }
+
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = -3 }
+			set_temp_variable = { csc = 3 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = -1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 4 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -6 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = -4 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 2 }
+			set_temp_variable = { eqc = 4 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_fund_rural_industry = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			has_country_flag = syndmode_communist_preasant 
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 39.9 } }
+		custom_cost_text = cost_ep_40
+		days_remove = 240
+		modifier = {
+			economy_power_factor = -0.15
+			
+			monthly_change_eib = 0.3
+			monthly_change_eam = 0.3
+			monthly_change_eae = 0.3
+			monthly_change_eaa = 0.3
+			monthly_change_eq = 0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -40 }
+
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = 1 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = 1 }
+			set_temp_variable = { sore_judge = 1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 2 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 4 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 4 }
+			set_temp_variable = { eaec = 4 }
+			set_temp_variable = { eaac = 4 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_syndmode_bring_in_communist_provide_commercial_loans = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { communist_target_sincerity > 0 }
+			OR = {
+				has_country_flag = syndmode_communist_merchant
+				has_country_flag = syndmode_communist_all
+			}
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 59.9 } }
+		custom_cost_text = cost_ep_60
+		days_remove = 365
+		modifier = {
+			economy_power_factor = 0.1
+			
+			monthly_change_popsm = 0.2
+
+			monthly_change_ev = 0.3
+			monthly_change_eip = 0.2
+			monthly_change_el = 0.3
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -60 }
+
+			set_temp_variable = { ssc = -2 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 3 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -4 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 100 }
+			set_temp_variable = { evc = 5 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = -4 }
+			set_temp_variable = { elc = 6 }
+			set_temp_variable = { eic = 6 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_crark_down_monoplies = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { communist_target_sincerity > 0 }
+			OR = {
+				has_country_flag = syndmode_communist_merchant
+				has_country_flag = syndmode_communist_all
+			}
+		}
+		fire_only_once = yes
+		cost = 30
+		days_remove = 180
+		modifier = {
+			stability_factor = -0.05
+			production_factory_max_efficiency_factor = -0.05
+			production_factory_efficiency_gain_factor = -0.05
+			
+			monthly_change_popsm = 0.2
+
+			monthly_change_ev = -0.2
+			monthly_change_eq = 0.3
+			monthly_change_ei = 0.3
+		}
+		complete_effect = {
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0.5 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -3 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 60 }
+			set_temp_variable = { evc = 5 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 4 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_adjust_tariff = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			has_country_flag = syndmode_communist_merchant 
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = -2 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = 0 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = 0 }
+			set_temp_variable = { pop_pc = 0 }
+			set_temp_variable = { pop_mc = 2 }
+			set_temp_variable = { pop_sc = 0 }
+			set_temp_variable = { pop_bc = -2 }
+			set_temp_variable = { pop_ac = 0 }
+			set_temp_variable = { pop_aoc = 0 }
+			set_temp_variable = { pop_anc = 0 }
+			set_temp_variable = { pop_asc = 0 }
+			class_pop_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 4 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_reduce_comsumption_tax = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			has_country_flag = syndmode_communist_merchant
+		}
+		fire_only_once = yes
+		cost = 50
+		complete_effect = {
+			add_ideas = bill_reduce_comsumption_taxes
+			add_to_array = { array = FRA.cof_social_bills value = 24 }
+
+			set_temp_variable = { ssc = -2 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = -3 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = -1 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 2 } 
+			set_temp_variable = { change_num = 2 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 4 }
+			set_temp_variable = { pc = 4 }
+			set_temp_variable = { mc = 6 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = -8 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 4 }
+			set_temp_variable = { eibc = -2 }
+			set_temp_variable = { eipc = -2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			cof_econ_target_change = yes
+		}
+	}
+
+	Cof_syndmode_bring_in_communist_offer_student_loans = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { communist_target_sincerity > 0 }
+			OR = {
+				has_country_flag = syndmode_communist_scholar
+				has_country_flag = syndmode_communist_all
+			}
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 39.9 } }
+		custom_cost_text = cost_ep_40
+		days_remove = 365
+		modifier = {
+			research_speed_factor = 0.1
+			
+			monthly_change_popss = 0.2
+
+			monthly_change_el = 0.3
+			monthly_change_ei = 0.4
+		}
+		complete_effect = {
+			add_to_variable = { economy_power = -40 }
+
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 2 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 3 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 50 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 2 }
+			set_temp_variable = { eic = 4 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_establish_scholarship = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			OR = {
+				has_country_flag = syndmode_communist_scholar
+				has_country_flag = syndmode_communist_all
+			}
+		}
+		fire_only_once = yes
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = 1 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 0 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 2 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_revive_salons = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			has_country_flag = syndmode_communist_scholar 
+		}
+		fire_only_once = yes
+		cost = 20
+		days_remove = 180
+		modifier = {
+			political_power_factor = 0.2
+			stability_factor = -0.025
+
+			monthly_change_popss = 0.4
+			monthly_change_popsb = -0.4
+ 
+			radical_socialist_drift = 0.5
+		}
+		complete_effect = {
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = -3 }
+			set_temp_variable = { csc = 2 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { synd_judge = 0 } 
+			set_temp_variable = { oppo_judge = 1 }
+			set_temp_variable = { jaco_judge = -1 }
+			set_temp_variable = { sore_judge = -1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 2 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0  }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_syndmode_bring_in_communist_extend_education_duration = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			check_variable = { communist_target_sincerity > 0 }
+			has_country_flag = syndmode_communist_scholar 
+		}
+		available = { NOT= { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 40
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_extended_duration_of_education
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_extended_duration_of_education_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 5 }
+			set_temp_variable = { vtl3 = 3 } 
+			set_temp_variable = { vtl4 = 9 }
+			set_temp_variable = { vtl5 = 7 }
+			set_temp_variable = { vtl6 = 5 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 5 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_extended_duration_of_education
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { ssc = 0 }
+				set_temp_variable = { asc = -2 }
+				set_temp_variable = { tsc = 2 }
+				set_temp_variable = { csc = 3 }
+				syndmode_sincerity_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_wc = -1 }
+				set_temp_variable = { pop_pc = -1 }
+				set_temp_variable = { pop_mc = -1 }
+				set_temp_variable = { pop_sc = 3 }
+				set_temp_variable = { pop_bc = 0 }
+				set_temp_variable = { pop_ac = 0 }
+				set_temp_variable = { pop_aoc = 0 }
+				set_temp_variable = { pop_anc = 0 }
+				set_temp_variable = { pop_asc = 0 }
+				class_pop_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { wc = 1 }
+				set_temp_variable = { pc = 1 }
+				set_temp_variable = { mc = 1 }
+				set_temp_variable = { sc = 2 }
+				set_temp_variable = { bc = 0 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
+		}
+	}
+
+	#中道社会
+	Cof_syndmode_midway_society_cooperate_with_sorelian = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_midway_society 
+			has_country_flag = under_tent_sorelian
+			NOT = { has_country_flag = midway_society_cooperation_chosen }
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = sorelian_sincerity_more_than_0
+				check_variable = { sorelian_sincerity > 0 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			experience_gain_army_factor = 0.2
+		}
+		complete_effect = {
+			set_country_flag = midway_society_cooperation_chosen
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { 
+			clr_country_flag = midway_society_cooperation_chosen 
+
+			set_temp_variable = { mwsc = 20 }
+			midway_society_build_change = yes
+		}
+	}
+	Cof_syndmode_midway_society_cooperate_with_anarchist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_midway_society 
+			has_country_flag = under_tent_anarchist
+			NOT = { has_country_flag = midway_society_cooperation_chosen }
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = anarchist_sincerity_more_than_0
+				check_variable = { anarchist_sincerity > 0 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			consumer_goods_factor = -0.15
+		}
+		complete_effect = {
+			set_country_flag = midway_society_cooperation_chosen
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { 
+			clr_country_flag = midway_society_cooperation_chosen 
+
+			set_temp_variable = { mwsc = 20 }
+			midway_society_build_change = yes
+		}
+	}
+	Cof_syndmode_midway_society_cooperate_with_technocrat = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_midway_society 
+			has_country_flag = under_tent_technocrat
+			NOT = { has_country_flag = midway_society_cooperation_chosen }
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = technocrat_sincerity_more_than_0
+				check_variable = { technocrat_sincerity > 0 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			economy_power_factor = 0.15
+		}
+		complete_effect = {
+			set_country_flag = midway_society_cooperation_chosen
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { 
+			clr_country_flag = midway_society_cooperation_chosen 
+
+			set_temp_variable = { mwsc = 20 }
+			midway_society_build_change = yes
+		}
+	}
+	Cof_syndmode_midway_society_cooperate_with_communist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_midway_society 
+			has_country_flag = under_tent_communist
+			NOT = { has_country_flag = midway_society_cooperation_chosen }
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = communist_sincerity_more_than_0
+				check_variable = { communist_sincerity > 0 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = midway_society_cooperation_chosen
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
+		}
+		remove_effect = { 
+			clr_country_flag = midway_society_cooperation_chosen 
+
+			set_temp_variable = { mwsc = 20 }
+			midway_society_build_change = yes
+		}
+	}
+}

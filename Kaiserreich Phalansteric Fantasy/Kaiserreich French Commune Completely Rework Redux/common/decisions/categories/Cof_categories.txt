@@ -43,3 +43,20 @@ Cof_phalanstere_category = {
 	visible = { FRA_is_phalanstere_member = yes }
 	visible_when_empty = yes 
 }
+
+Cof_iri_countermeasures = {
+	icon = generic_political_actions    
+	allowed = { NOT = { tag = FRA } }
+	visible = { 
+		OR = {
+			has_country_flag = COF_IRI_HAD 
+			AND = {
+				OR = {
+					tag = IRE
+					tag = ENG
+				}
+				IRE = { has_country_flag = cof_iri_ireland_revolution }
+			}
+		}
+	}
+}

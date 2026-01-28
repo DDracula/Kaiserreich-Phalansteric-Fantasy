@@ -380,6 +380,13 @@ Cof_phalanstere = {
 	###空军
     experience_gain_air = INT_experience_gain_air
 	experience_gain_air_factor = INT_experience_gain_air_factor
+
+    ###经济投资
+    civilian_factory_use = INT_civilian_factory_use
+    industrial_factory_donations = INT_industrial_factory_donations
+    military_factory_donations = INT_military_factory_donations
+    dockyard_donations = INT_dockyard_donations
+
 }
 
 
@@ -1201,4 +1208,23 @@ Cof_jap_colonial_riot = {
     state_resources_factor = jap_colonial_riot
 	local_factories = jap_colonial_riot
     recruitable_population_factor = jap_colonial_riot
+}
+
+Cof_iri_state_catalonia = {
+    icon = "GFX_decision_SWI_consolidate_council_power"
+    remove_trigger = { is_owned_by = SWF }
+    local_factories = -1
+    recruitable_population_factor = -0.8
+}
+
+Cof_iri_state_ireland_revolution = {
+    icon = "GFX_decision_SWI_consolidate_council_power"
+    remove_trigger = { 
+        OR = {
+            check_variable = { revolution_control = 0 } 
+            has_socialist_government = yes
+        }
+    }
+    local_factories = ire_state_revo1
+    recruitable_population_factor = ire_state_revo2
 }

@@ -1109,4 +1109,169 @@ guiTypes = {
 			alwaystransparent = yes
 		}
 	}
+
+	containerWindowType = {
+		name = "iri_target_window_detail"
+		position = { x = 545 y = 200 }
+		size = { width = 300 height = 400 }
+		
+		origo = upper_left
+		moveable = no
+		clipping = no
+		
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_bg"
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_research_bg"
+		}
+
+		instantTextboxType = { 
+			name = "intro_information"
+			position = { x = 30 y = 150 } 
+			font = "hoi_24header" 
+			text = iri_intro_information
+			maxWidth = 240
+			maxHeight = 400
+			fixedsize = yes 
+			format = centre
+		}
+
+		iconType = {
+			name = "country_flag"
+			quadTextureSprite ="GFX_flag_small2"
+			position = { x = 20 y = 20 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+		
+		iconType = {
+			name = "diplo_countrylist_flag_frame"
+			spriteType = "GFX_diplo_countrylist_flag_frame"
+			position = { x = 15 y = 15 } 
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "name"
+			position = { x = 70 y = 15 }
+			font = "hoi_18mbs" 
+			text = iri_targeted_name
+			maxWidth = 170  
+			maxHeight = 40
+			fixedsize = yes
+		}
+
+		iconType = {
+			name = "iri_detail_ideology_reactionary"
+			quadTextureSprite = "GFX_iri_detail_ideology_reactionary"
+			frame = 0
+			position = { x = 15 y = 95 }          
+			pdx_tooltip = iri_detail_ideology                       
+		}
+		iconType = {
+			name = "iri_detail_ideology_democrat"
+			quadTextureSprite = "GFX_iri_detail_ideology_democrat"
+			frame = 0
+			position = { x = 15 y = 95 }
+			alwaystransparent = yes  
+		}
+		iconType = {
+			name = "iri_detail_ideology_socialist"
+			quadTextureSprite = "GFX_iri_detail_ideology_socialist"
+			frame = 0
+			position = { x = 15 y = 95 }
+			alwaystransparent = yes  
+		}	
+
+
+		iconType = {
+			name = "iri_detail_stability_positive"
+			quadTextureSprite = "GFX_iri_detail_stability_positive"
+			frame = 0
+			position = { x = 15 y = 55 }
+			pdx_tooltip = iri_detail_stability
+		}	 
+		iconType = {
+			name = "iri_detail_stability_negative"
+			quadTextureSprite = "GFX_iri_detail_stability_negative"
+			frame = 0
+			position = { x = 15 y = 55 }
+			alwaystransparent = yes
+		}  	
+
+		iconType = {
+			name = "iri_detail_revolution"
+			quadTextureSprite = "GFX_iri_detail_revolution"
+			frame = 0
+			position = { x = 240 y = 127 } 
+			pdx_tooltip = iri_detail_revolution
+		}	
+  
+		instantTextboxType = { 
+			name = "information"
+			position = { x = 20 y = 150 }
+			font = "hoi_18mbs"
+			text = iri_information
+			maxWidth = 210
+			maxHeight = 250 
+			fixedsize = yes   
+			format = left       
+		}    
+	}
+ 
+	containerWindowType = { 
+		name = "iri_target_list_window"
+		size = { width = 95 height = 380 }
+		position = { x = 836 y = 200 } 
+		clipping = yes  
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_bg"
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_research_bg"
+		}
+
+		verticalScrollbar = "right_vertical_slider"
+
+		gridboxtype = {
+			name = iri_target_list
+			position = { x = 0 y = 0 }
+			size = { width = 440 height = 100% }
+			slotsize = { width = 440 height = 40 }
+			add_horizontal = no
+		}
+	}
+
+	containerWindowType = {
+		name = "iri_target_position"
+		size = { width = 90 height = 80 }
+		clipping = yes
+
+		iconType = {
+			name = "country_choose_button"
+			quadTextureSprite ="GFX_flag_small2"
+			position = { x = 20 y = 20 }
+			Orientation = "UPPER_LEFT"
+		}
+
+		buttonType = {
+			name = "diplo_countrylist_flag_frame_not_choose"
+			spriteType = "GFX_diplo_countrylist_flag_frame"
+			position = { x = 15 y = 15 }
+		}
+
+		buttonType = {
+			name = "diplo_countrylist_flag_frame_choose"
+			spriteType = "GFX_major_country_flag_overlay"
+			position = { x = 20 y = 20 }
+		}
+	}
 }

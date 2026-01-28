@@ -479,6 +479,34 @@ phalanstere_unity_change_monthly = {
     add_to_variable = { phauc_monthly = phauc_monthly2 }
 }
 
+phalanstere_industry_investment_judge = {
+    set_temp_variable = { global.piic = 0 }
+    every_country = {
+        limit = { 
+            mio:FRA_phalanstere_reasearch_organization = {  
+                OR = {
+                    is_mio_trait_completed = mio_phalanstere_industry_investment_factory
+                    is_mio_trait_completed = mio_phalanstere_industry_investment_construction
+                }
+            }
+        }
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_factory } }
+            add_to_temp_variable = { global.piic = 10 }
+        }
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_construction } }
+            add_to_temp_variable = { global.piic = 5 }
+        }
+    }
+    add_to_variable = { global.phalanstere_industry_investment_progress = global.piic }
+    while_loop_effect = {
+        limit = { check_variable = { global.phalanstere_industry_investment_progress > 99.9 } }
+        add_to_variable = { global.phalanstere_industry_investment_num = 1 }
+        add_to_variable = { global.phalanstere_industry_investment_progress = -100 }
+    }
+}
+
 phalanstere_buff_judge = {
     set_temp_variable = { phau = global.phalanstere_unity }
     multiply_temp_variable = { phau = 0.01 }
@@ -581,6 +609,44 @@ phalanstere_buff_judge = {
         set_variable = { INT_experience_gain_army = 0 }
         set_variable = { INT_experience_gain_navy = 0 }
         set_variable = { INT_experience_gain_air = 0 }
+    }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_factory } }
+        set_variable = { INT_civilian_factory_use = 5 }
+    }
+    else = { set_variable = { INT_civilian_factory_use = 0 } }
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_construction } }
+        add_to_variable = { INT_production_speed_industrial_complex_factor = -0.1 }
+    }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_get_back } }
+        set_temp_variable = { t = global.phalanstere_industry_investment_num }
+        modulse_temp_varible = { t = 3 }
+        set_variable = { INT_industrial_factory_donations = global.phalanstere_industry_investment_num }
+        subtract_from_variable = { INT_industrial_factory_donations = t }
+        divide_variable = { INT_industrial_factory_donations = 3 }
+        if = {
+            limit = { check_variable = { t = 1 } }
+            add_to_variable = { INT_industrial_factory_donations = 1 }
+        }
+        set_variable = { INT_military_factory_donations = global.phalanstere_industry_investment_num }
+        subtract_from_variable = { INT_military_factory_donations = t }
+        divide_variable = { INT_military_factory_donations = 3 }
+        if = {
+            limit = { check_variable = { t = 2 } }
+            add_to_variable = { INT_military_factory_donations = 1 }
+        }
+        set_variable = { INT_dockyard_donations = global.phalanstere_industry_investment_num }
+        subtract_from_variable = { INT_dockyard_donations = t }
+        divide_variable = { INT_dockyard_donations = 3 }
+    }
+    else = {
+        set_variable = { INT_industrial_factory_donations = 0 }
+        set_variable = { INT_military_factory_donations = 0 }
+        set_variable = { INT_dockyard_donations = 0 }
     }
 }
 
@@ -710,4 +776,600 @@ jap_colonial_riot_judge = {
     }
     set_variable = { jap_colonial_riot = jap_colonial_riot_level }
     multiply_variable = { jap_colonial_riot = -0.1 }
+}
+
+iri_target_gui_get = {
+    var:FRA.iri_targeted^0 = {
+        set_variable = { FRA.iri_targeted_ideology^1 = THIS.party_popularity_100@syndicalist }
+        add_to_variable = { FRA.iri_targeted_ideology^1 = THIS.party_popularity_100@totalist }
+        add_to_variable = { FRA.iri_targeted_ideology^1 = THIS.party_popularity_100@radical_socialist }
+        set_variable = { FRA.iri_targeted_1 = FRA.iri_targeted_ideology^1 }
+
+        set_variable = { FRA.iri_targeted_ideology^2 = THIS.party_popularity_100@social_democrat }
+        add_to_variable = { FRA.iri_targeted_ideology^2 = THIS.party_popularity_100@social_liberal }
+        set_variable = { FRA.iri_targeted_2 = FRA.iri_targeted_ideology^2 }  
+        add_to_variable = { FRA.iri_targeted_2 = FRA.iri_targeted_1 }
+
+        set_variable = { FRA.iri_targeted_ideology^3 = 100 }
+        subtract_from_variable = { FRA.iri_targeted_ideology^3 = FRA.iri_targeted_ideology^1 }
+        subtract_from_variable = { FRA.iri_targeted_ideology^3 = FRA.iri_targeted_ideology^2 }  
+        
+        set_variable = { FRA.iri_targeted_ideology^0 = THIS.stability }
+        set_variable = { FRA.iri_targeted_3 = THIS.stability }
+        multiply_variable = { FRA.iri_targeted_3 = 50 }
+        add_to_variable = { FRA.iri_targeted_3 = 50 }
+
+        every_country_iri_revolution_judge = yes
+        set_variable = { FRA.iri_targeted_4 = THIS.cof_iri_revolution }
+    }
+}
+
+every_country_iri_revolution_judge = {
+    set_variable = { cof_iri_revolution = 0 }
+
+    set_temp_variable = { t1 = var:THIS.party_popularity_100@syndicalist }
+    add_to_temp_variable = { t1 = var:THIS.party_popularity_100@totalist }
+    add_to_temp_variable = { t1 = var:THIS.party_popularity_100@radical_socialist }
+
+    set_temp_variable = { t2 = var:THIS.party_popularity_100@social_democrat }
+    add_to_temp_variable = { t2 = var:THIS.party_popularity_100@social_liberal }
+
+    set_temp_variable = { t3 = 100 }
+    subtract_from_temp_variable = { t3 = t1 } 
+    subtract_from_temp_variable = { t3 = t2 } 
+
+    if = {
+        limit = { is_monarchy = yes } 
+        set_temp_variable = { d1 = 1 }
+        if = {
+            limit = { has_country_flag = cof_iri_cooperate_with_republic }
+            set_temp_variable = { d2 = 1 }
+        }
+        else = { set_temp_variable = { d2 = 0.5 } }
+        if = {
+            limit = {
+                OR = {
+                    has_government = social_democrat
+                    has_government = social_liberal
+                }
+            }
+            add_to_temp_variable = { d2 = -0.2 }
+        }
+        set_temp_variable = { d3 = -1 }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                has_government = social_democrat
+                has_government = social_liberal
+            }
+        }
+        set_temp_variable = { d1 = 0.8 }
+        set_temp_variable = { d2 = -1 }
+        set_temp_variable = { d3 = -0.4 }
+    }
+    else_if = {
+        limit = { has_dictatorship_government = yes }
+        set_temp_variable = { d1 = 1 }
+        if = {
+            limit = { has_country_flag = cof_iri_cooperate_with_democrat }
+            set_temp_variable = { d2 = 1 }
+        }
+        else = { set_temp_variable = { d2 = 0.5 } }
+        set_temp_variable = { d3 = -1 }
+    }
+    else = {
+        set_temp_variable = { d1 = 1 }
+        set_temp_variable = { d2 = -0.4 }
+        set_temp_variable = { d3 = -0.4 }
+    }
+
+    multiply_temp_variable = { t1 = d1 }
+    multiply_temp_variable = { t2 = d2 }
+    multiply_temp_variable = { t3 = d3 }
+
+    set_temp_variable = { tp = 0 }
+    if = {
+        limit = { check_variable = { t1 > 0 } }
+        add_to_temp_variable = { tp = t1 }
+    }
+    if = {
+        limit = { check_variable = { t2 > 0 } }
+        add_to_temp_variable = { tp = t2 }
+    }
+    set_temp_variable = { dp = THIS.stability }
+    if = {
+        limit = { check_variable = { dp > 0.5 } }
+        add_to_variable = { cof_iri_revolution = tp }
+    }
+    else = {
+        add_to_temp_variable = { dp = -0.5 }
+        multiply_temp_variable = { dp = -4 }
+       
+        multiply_temp_variable = { tp = dp }
+        add_to_variable = { cof_iri_revolution = tp }
+    }
+
+    set_temp_variable = { tn = 0 }
+    if = {
+        limit = { check_variable = { t2 < 0 } }
+        add_to_temp_variable = { tn = t2 }
+    }
+    if = {
+        limit = { check_variable = { t3 < 0 } }
+        add_to_temp_variable = { tn = t3 }
+    }
+    set_temp_variable = { dp = THIS.stability }
+    if = {
+        limit = { check_variable = { dp > 0.5 } }
+        add_to_variable = { cof_iri_revolution = tn }
+    }
+    else = {
+        add_to_temp_variable = { dp = -0.5 }
+        multiply_temp_variable = { dp = 1.2 }
+        add_to_temp_variable = { dp = 1 }
+
+        multiply_temp_variable = { tn = dp }
+        add_to_variable = { cof_iri_revolution = tn }
+    }
+
+    set_temp_variable = { st = THIS.stability }
+    add_to_temp_variable = { st = -0.5 }
+    multiply_temp_variable = { st = -80 }
+    
+    add_to_variable = { cof_iri_revolution = st }
+
+    clamp_variable = { var = cof_iri_revolution max = 100 min = 0 }
+    add_to_variable = { cof_iri_revolution = 5 }
+    clamp_variable = { var = cof_iri_revolution max = 100 min = 0 }
+}
+
+iri_coup_judge = {
+    if = {
+        limit = { tag = POR }
+        POR_remove_monarchy = yes
+        hidden_effect = {
+			if = {
+				limit = { 
+					NFA = { exists = yes }
+					272 = { is_owned_and_controlled_by = NFA }
+				}
+				NFA = { country_event = cofintern.171 }
+			}
+			if = {
+				limit = { 
+					MAF = { exists = yes }
+					881 = { is_owned_and_controlled_by = MAF }
+				}
+				MAF = { country_event = cofintern.171 }
+			}
+			if = {
+				limit = {
+					LEC = { exists = yes }
+					326 = { is_owned_and_controlled_by = LEC }
+				}
+				LEC = { country_event = cofintern.171 }
+			}
+			else = { 592 = { owner = { country_event = cofintern.171 } } }
+            868 = { owner = { country_event = cofintern.171 } }
+            1017 = { owner = { country_event = cofintern.171 } }
+            news_event = { id = cofintern.172 days = 3 }
+        }
+    }
+}
+
+iri_start_war_jugde_not_socialist = {
+    if = {
+        limit = { tag = POR }
+        create_dynamic_country = {
+            original_tag = POR
+            create_country_leader = {
+                name = POR_jose_carlos_rates
+                desc = POR_jose_carlos_rates_leader_desc
+                picture = GFX_portrait_POR_jose_carlos_rates_civilian_large
+                ideology = totalist_subtype
+            }
+            create_country_leader = {
+                name = POR_manuel_joaquim_sousa
+                desc = POR_manuel_joaquim_sousa_leader_desc
+                picture = GFX_Portrait_Europe_Generic_new_3
+                ideology = syndicalist_subtype
+            }
+            create_country_leader = {
+                name = POR_bento_antonio_goncalves
+                desc = POR_bento_antonio_goncalves_leader_desc
+                picture = GFX_portrait_POR_bento_antonio_goncalves_civilian_large
+                ideology = radical_socialist_subtype
+            }
+            create_country_leader = {
+                name = POR_jose_domingues_dos_santos
+                desc = POR_jose_domingues_dos_santos_leader_desc
+                picture = GFX_portrait_POR_jose_domingues_dos_santos_civilian_large
+                ideology = social_democrat_subtype
+            }
+            create_country_leader = {
+                name = POR_liberato_damiao_ribeiro_pinto
+                desc = POR_liberato_damiao_ribeiro_pinto_leader_desc
+                picture = GFX_portrait_POR_liberato_damiao_ribeiro_pinto_civilian_large
+                ideology = social_liberal_subtype
+            }
+            create_country_leader = {
+                name = POR_antonio_joaquim_granjo
+                desc = POR_antonio_joaquim_granjo_leader_desc
+                picture = GFX_portrait_POR_antonio_joaquim_granjo_civilian_large
+                ideology = market_liberal_subtype
+            }
+            create_country_leader = {
+                name = POR_francisco_pinto_da_cunha_leal
+                desc = POR_francisco_pinto_da_cunha_leal_leader_desc
+                picture = GFX_portrait_POR_francisco_pinto_da_cunha_leal_civilian_large
+                ideology = social_conservative_subtype
+            }
+            create_country_leader = {
+                name = POR_antonio_de_oliveira_salazar
+                desc = POR_antonio_de_oliveira_salazar_leader_desc
+                picture = GFX_portrait_POR_antonio_de_oliveira_salazar_civilian_large
+                ideology = authoritarian_democrat_subtype
+            }
+            create_country_leader = {
+                name = POR_antonio_oscar_de_fragoso_carmona
+                desc = POR_antonio_oscar_de_fragoso_carmona_leader_desc
+                picture = GFX_portrait_POR_antonio_oscar_de_fragoso_carmona_army_large
+                ideology = paternal_autocrat_subtype
+            }
+            create_country_leader = {
+                name = POR_francisco_de_barcelos_rolao_preto
+                desc = POR_francisco_de_barcelos_rolao_preto_leader_desc
+                picture = GFX_portrait_POR_francisco_de_barcelos_rolao_preto_civilian_large
+                ideology = national_populist_subtype
+            }
+            
+            set_stability = 0.6
+            set_war_support = 0.5
+
+            set_politics = {
+                ruling_party = social_democrat
+                elections_allowed = yes
+            }
+            set_popularities = {
+                totalist = 6
+                syndicalist = 12
+                radical_socialist = 20
+                social_democrat = 24
+                social_liberal = 17
+                market_liberal = 10
+                social_conservative = 8
+                authoritarian_democrat = 2
+                paternal_autocrat = 0
+                national_populist = 1
+            }
+
+            add_ideas = {
+                war_economy
+                extensive_conscription
+                Cof_new_republic_country
+            }
+
+            division_template = {
+                name = "Millita"
+                template_counter = 68
+                role = infantry
+                regiments = {
+                    militia = { x = 0 y = 0 }
+                    militia = { x = 0 y = 1 }
+                    militia = { x = 0 y = 2 }
+                    militia = { x = 1 y = 0 }
+                    militia = { x = 1 y = 1 }
+                    militia = { x = 1 y = 2 }
+                }
+            }
+
+            PREV = {
+                set_temp_variable = { t = num_core_states }
+                if = {
+                    limit = { has_country_flag = cof_iri_revolution_capital_rev }
+                    add_to_temp_variable = { t = -1 }
+                    capital_scope = { 
+                        transfer_state_to = PREV 
+                        create_unit = {
+                            division = "division_template = \"Millita\" start_experience_factor = 0.8 start_equipment_factor = 1"
+                            owner = PREV
+                            count = 4
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { has_country_flag = cof_iri_revolution_capital_gov }
+                    add_to_temp_variable = { t = -1 }
+                }
+                multiply_temp_variable = { t = 0.5 }
+                set_temp_variable = { x = 0 }
+                while_loop_effect = {
+                    limit = { check_variable = { x < t } }
+                    random_core_state = {
+                        limit = { NOT = { has_state_flag = iri_civil_war_state } }
+                        set_state_flag = iri_civil_war_state
+                    }
+                    add_to_temp_variable = { x = 1 }
+                }
+
+                every_core_state = {
+                    limit = { has_state_flag = iri_civil_war_state }
+                    transfer_state_to = PREV.PREV
+
+                    create_unit = {
+                        division = "division_template = \"Millita\" start_experience_factor = 0.8 start_equipment_factor = 1"
+                        owner = PREV.PREV
+                        count = 4
+                    }
+                }
+            }			
+
+            declare_war_on = {
+                target = PREV
+                type = annex_everything
+            }
+            add_civil_war_target = PREV
+        }
+
+        if = {
+            limit = { 
+                country_exists = NFA 
+                272 = { is_owned_and_controlled_by = NFA }
+            }
+            NFA = { country_event = cofintern.171 }
+        }
+        if = {
+            limit = { 
+                country_exists = MAF 
+                881 = { is_owned_and_controlled_by = MAF }
+            }
+            MAF = { country_event = cofintern.171 }
+        }
+        if = {
+            limit = {
+                country_exists = LEC
+                326 = { is_owned_and_controlled_by = LEC }
+            }
+            LEC = { country_event = cofintern.171 }
+        }
+        else = { 592 = { owner = { country_event = cofintern.171 } } }
+        1017 = { owner = { country_event = cofintern.171 } }
+
+        news_event = { id = cofintern.172 days = 3 }
+    }
+}
+
+iri_start_war_jugde_socialist = {
+    if = {
+        limit = { tag = POR }
+        create_dynamic_country = {
+            original_tag = POR
+            create_country_leader = {
+                name = POR_jose_carlos_rates
+                desc = POR_jose_carlos_rates_leader_desc
+                picture = GFX_portrait_POR_jose_carlos_rates_civilian_large
+                ideology = totalist_subtype
+            }
+            create_country_leader = {
+                name = POR_manuel_joaquim_sousa
+                desc = POR_manuel_joaquim_sousa_leader_desc
+                picture = GFX_Portrait_Europe_Generic_new_3
+                ideology = syndicalist_subtype
+            }
+            create_country_leader = {
+                name = POR_bento_antonio_goncalves
+                desc = POR_bento_antonio_goncalves_leader_desc
+                picture = GFX_portrait_POR_bento_antonio_goncalves_civilian_large
+                ideology = radical_socialist_subtype
+            }
+            create_country_leader = {
+                name = POR_jose_domingues_dos_santos
+                desc = POR_jose_domingues_dos_santos_leader_desc
+                picture = GFX_portrait_POR_jose_domingues_dos_santos_civilian_large
+                ideology = social_democrat_subtype
+            }
+            create_country_leader = {
+                name = POR_liberato_damiao_ribeiro_pinto
+                desc = POR_liberato_damiao_ribeiro_pinto_leader_desc
+                picture = GFX_portrait_POR_liberato_damiao_ribeiro_pinto_civilian_large
+                ideology = social_liberal_subtype
+            }
+            create_country_leader = {
+                name = POR_antonio_joaquim_granjo
+                desc = POR_antonio_joaquim_granjo_leader_desc
+                picture = GFX_portrait_POR_antonio_joaquim_granjo_civilian_large
+                ideology = market_liberal_subtype
+            }
+            create_country_leader = {
+                name = POR_francisco_pinto_da_cunha_leal
+                desc = POR_francisco_pinto_da_cunha_leal_leader_desc
+                picture = GFX_portrait_POR_francisco_pinto_da_cunha_leal_civilian_large
+                ideology = social_conservative_subtype
+            }
+            create_country_leader = {
+                name = POR_antonio_de_oliveira_salazar
+                desc = POR_antonio_de_oliveira_salazar_leader_desc
+                picture = GFX_portrait_POR_antonio_de_oliveira_salazar_civilian_large
+                ideology = authoritarian_democrat_subtype
+            }
+            create_country_leader = {
+                name = POR_antonio_oscar_de_fragoso_carmona
+                desc = POR_antonio_oscar_de_fragoso_carmona_leader_desc
+                picture = GFX_portrait_POR_antonio_oscar_de_fragoso_carmona_army_large
+                ideology = paternal_autocrat_subtype
+            }
+            create_country_leader = {
+                name = POR_francisco_de_barcelos_rolao_preto
+                desc = POR_francisco_de_barcelos_rolao_preto_leader_desc
+                picture = GFX_portrait_POR_francisco_de_barcelos_rolao_preto_civilian_large
+                ideology = national_populist_subtype
+            }
+            
+            set_stability = 0.6
+            set_war_support = 0.5
+
+            set_politics = {
+                ruling_party = syndicalist
+                elections_allowed = no
+            }
+            set_popularities = {
+                totalist = 12
+                syndicalist = 30
+                radical_socialist = 24
+                social_democrat = 15
+                social_liberal = 12
+                market_liberal = 2
+                social_conservative = 1
+                authoritarian_democrat = 2
+                paternal_autocrat = 0
+                national_populist = 2
+            }
+
+            add_ideas = {
+                war_economy
+                extensive_conscription
+                Cof_new_socialist_country
+            }
+            
+            division_template = {
+                name = "Millita"
+                template_counter = 68
+                role = infantry
+                regiments = {
+                    militia = { x = 0 y = 0 }
+                    militia = { x = 0 y = 1 }
+                    militia = { x = 0 y = 2 }
+                    militia = { x = 1 y = 0 }
+                    militia = { x = 1 y = 1 }
+                    militia = { x = 1 y = 2 }
+                }
+            }
+            
+            PREV = {
+                set_temp_variable = { t = num_core_states }
+                if = {
+                    limit = { has_country_flag = cof_iri_revolution_capital_rev }
+                    add_to_temp_variable = { t = -1 }
+                    capital_scope = { 
+                        transfer_state_to = PREV 
+                        create_unit = {
+                            division = "division_template = \"Millita\" start_experience_factor = 0.8 start_equipment_factor = 1"
+                            owner = PREV
+                            count = 4
+                        }
+                    }
+                }
+                else_if = {
+                    limit = { has_country_flag = cof_iri_revolution_capital_gov }
+                    add_to_temp_variable = { t = -1 }
+                }
+                multiply_temp_variable = { t = 0.5 }
+                set_temp_variable = { x = 0 }
+                while_loop_effect = {
+                    limit = { check_variable = { x < t } }
+                    random_core_state = {
+                        limit = { NOT = { has_state_flag = iri_civil_war_state } }
+                        set_state_flag = iri_civil_war_state
+                    }
+                    add_to_temp_variable = { x = 1 }
+                }
+
+                every_core_state = {
+                    limit = { has_state_flag = iri_civil_war_state }
+                    transfer_state_to = PREV.PREV
+
+                    create_unit = {
+                        division = "division_template = \"Millita\" start_experience_factor = 0.8 start_equipment_factor = 1"
+                        owner = PREV.PREV
+                        count = 4
+                    }
+                    clr_state_flag = iri_civil_war_state
+                }
+            }		
+            
+            declare_war_on = {
+                target = PREV
+                type = annex_everything
+            }
+            add_civil_war_target = PREV
+        }
+
+        if = {
+            limit = { 
+                country_exists = NFA 
+                272 = { is_owned_and_controlled_by = NFA }
+            }
+            NFA = { country_event = cofintern.171 }
+        }
+        if = {
+            limit = { 
+                country_exists = MAF 
+                881 = { is_owned_and_controlled_by = MAF }
+            }
+            MAF = { country_event = cofintern.171 }
+        }
+        if = {
+            limit = {
+                country_exists = LEC
+                326 = { is_owned_and_controlled_by = LEC }
+            }
+            LEC = { country_event = cofintern.171 }
+        }
+        else = { 592 = { owner = { country_event = cofintern.171 } } }
+        1017 = { owner = { country_event = cofintern.171 } }
+
+        news_event = { id = cofintern.172 days = 3 }
+    }
+}
+
+activate_countermeasures_decision = {
+    if = { limit = { has_country_flag = COF_IRI_HAD } }
+    else = { set_country_flag = COF_IRI_HAD }
+}
+
+ireland_violend_revolution_army_change = {
+    if = { limit = { check_variable = { t = 0 } } }
+    else = {
+        add_to_variable = {
+            iri_ire_revolution_army = t
+            tooltip = iri_ire_revolution_army_change
+        }
+    }
+    clamp_variable = {
+        var = iri_ire_revolution_army
+        min = 0
+        max = 10
+    }
+    if = {
+        limit = { check_variable = { iri_ire_revolution_army = 0 } }
+        hidden_effect = {
+            FRA = { country_event = cofintern.180 }
+            ENG = { country_event = cofintern.180 }
+            IRE = { country_event = cofintern.180 }
+        }
+    }
+}
+
+cof_count_num_of_volunteers = {
+    set_variable = { FRA.num_of_volunteers = 0 }
+    every_other_country = {
+        limit = {
+            has_volunteers_amount_from = {
+                tag = FRA
+                count > 0
+            }
+        }
+        set_temp_variable = { THIS.vt = 0 }
+        while_loop_effect = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = FRA
+                    count < var:THIS.vt
+                }
+            }
+            add_to_temp_variable = { t = 1 }
+        }
+        add_to_variable = { FRA.num_of_volunteers = t }
+    }
 }

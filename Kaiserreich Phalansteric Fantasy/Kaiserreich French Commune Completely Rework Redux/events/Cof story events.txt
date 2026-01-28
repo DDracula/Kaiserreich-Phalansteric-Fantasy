@@ -1,0 +1,170 @@
+add_namespace = cofstory
+
+country_event = {
+	id = cofstory.1
+	title = cofstory.1.title
+	desc = cofstory.1.desc
+	picture = GFX_report_event_RUS_Young_Pioneers
+	is_triggered_only = yes
+	option = {
+		name = cofstory.1.a
+		ai_chance = { base = 50 }
+		add_political_power = 1
+
+		set_country_flag = Amir_school
+	}	
+	option = {
+		name = cofstory.1.b
+		ai_chance = { base = 50 }
+		add_stability = 0.005
+
+		set_country_flag = Amir_worker
+	}	
+	option = {
+		name = cofstory.1.c
+		ai_chance = { base = 50 }
+		add_manpower = 1
+
+		set_country_flag = Amir_army
+	}	
+	option = {
+		name = cofstory.1.d
+		ai_chance = { base = 50 }
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_target = 2 }   
+		set_temp_variable = { pop_syndc = -0.1 }
+		set_temp_variable = { pop_oppoc = 0.3 }
+		set_temp_variable = { pop_jacoc = -0.1 }
+		set_temp_variable = { pop_sorec = -0.1 }
+		class_pop_faction_tendency_change = yes
+
+		set_country_flag = Amir_local
+	}	
+}
+
+country_event = {
+	id = cofstory.2
+	title = cofstory.2.title
+	desc = cofstory.2.desc
+	picture = GFX_report_event_RUS_Young_Pioneers
+	is_triggered_only = yes
+	option = {
+		name = cofstory.2.a
+		ai_chance = { base = 50 }
+		add_stability = 0.005
+
+		set_country_flag = Adele_worker
+	}	
+	option = {
+		name = cofstory.2.b
+		ai_chance = { base = 50 }
+		add_political_power = 1
+
+		set_country_flag = Adele_school
+	}	
+	option = {
+		name = cofstory.2.c
+		ai_chance = { base = 50 }
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_target = 1 }   
+		set_temp_variable = { pop_syndc = -0.1 }
+		set_temp_variable = { pop_oppoc = 0.3 }
+		set_temp_variable = { pop_jacoc = -0.1 }
+		set_temp_variable = { pop_sorec = -0.1 }
+		class_pop_faction_tendency_change = yes
+
+		set_country_flag = Adele_art
+	}	
+	option = {
+		name = cofstory.2.d
+		ai_chance = { base = 50 }
+		add_war_support = 0.005
+
+		set_country_flag = Adele_nurse
+	}	
+}
+
+country_event = {
+	id = cofstory.3
+	title = cofstory.3.title
+	desc = cofstory.3.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_idea = bill_rural_education_subsidy
+		has_country_flag = Amir_local
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.3.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = cofstory.4
+	title = cofstory.4.title
+	desc = cofstory.4.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_idea = bill_comprehensive_education_program
+		has_country_flag = Amir_school
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.4.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = cofstory.5
+	title = cofstory.5.title
+	desc = cofstory.5.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_completed_focus = FRA_central_brain
+		has_country_flag = Amir_army
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.5.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = cofstory.6
+	title = cofstory.6.title
+	desc = cofstory.6.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_completed_focus = FRA_flexible_joints
+		has_country_flag = Amir_army
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.6.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = cofstory.7
+	title = cofstory.7.title
+	desc = cofstory.7.desc
+	picture = GFX_report_event_generic_diplomacy1
+	trigger = {
+		has_completed_focus = FRA_peripheral_nerve
+		has_country_flag = Amir_army
+	}
+	fire_only_once = yes
+	mean_time_to_happen = { days = 7 }
+	option = {
+		name = cofstory.7.a
+		ai_chance = { base = 50 }
+	}	
+}
