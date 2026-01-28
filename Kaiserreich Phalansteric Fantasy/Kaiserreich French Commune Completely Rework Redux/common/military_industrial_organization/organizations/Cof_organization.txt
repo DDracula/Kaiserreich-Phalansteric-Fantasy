@@ -33,7 +33,7 @@ FRA_phalanstere_reasearch_organization = {
 		name = mio_phalanstere_industry_investment_factory
 		icon = GFX_generic_mio_department_icon_facilities
 		position = { x = 0 y = 0 }
-		available = { num_of_civilian_factories_available_for_projects > 5 }
+		available = { FROM = { num_of_civilian_factories_available_for_projects > 5 } }
 		mutually_exclusive = { mio_phalanstere_industry_investment_construction }
 		on_complete = {
 			FROM = { 
@@ -50,6 +50,9 @@ FRA_phalanstere_reasearch_organization = {
 				}
 			}
 		}
+		organization_modifier = {
+			military_industrial_organization_funds_gain = 0.1
+		}
 	}
 	trait = {
 		token = mio_phalanstere_industry_investment_construction
@@ -57,8 +60,10 @@ FRA_phalanstere_reasearch_organization = {
 		icon = GFX_generic_mio_department_icon_facilities
 		position = { x = 2 y = 0 }
 		mutually_exclusive = { mio_phalanstere_industry_investment_factory }
+		available = { has_political_power = 100 }
 		on_complete = {
 			FROM = { 
+				add_political_power = -100
 				set_temp_variable = { phauc = 2.5 }
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
@@ -72,12 +77,24 @@ FRA_phalanstere_reasearch_organization = {
 				}
 			}
 		}
+		organization_modifier = {
+			military_industrial_organization_design_team_assign_cost = -1
+		}
 	}
 	trait = {
 		token = mio_phalanstere_industry_investment_get_back
 		name = mio_phalanstere_industry_investment_get_back
 		icon = GFX_generic_mio_department_icon_facilities
 		position = { x = 1 y = 1 }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_revolutionary_aid_construction
+				}
+				FRA = { has_country_flag = phalanstere_agree_about_revolutionary_aid_construction }
+			}
+		}
 		any_parent = {
 			mio_phalanstere_industry_investment_factory
 			mio_phalanstere_industry_investment_construction
@@ -86,6 +103,79 @@ FRA_phalanstere_reasearch_organization = {
 			FROM = { 
 				custom_effect_tooltip = phalanstere_industry_tooltip
 			}
+		}
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+		}
+	}
+
+	trait = {
+		token = mio_phalanstere_volunteer_train
+		name = mio_phalanstere_volunteer_train
+		icon = GFX_generic_mio_department_icon_infantry_quality
+		position = { x = 0 y = 1 }
+		available = {
+			FRA = { has_completed_focus = FRA_revolutionary_bases_abroad }
+			FROM = {
+				NOT = { tag = FRA }
+				custom_trigger_tooltip = {
+					tooltip = capital_already_has_revo_bases
+					capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } }
+				}
+				set_temp_variable = { target_num = 5 }
+				custom_trigger_tooltip = {
+					tooltip = judge_num_of_voluteers_more_than_x
+					check_variable = { num_of_volunteers > target_num }
+				}
+			}
+		}
+		on_complete = {
+			FROM = { 
+				set_temp_variable = { phauc = 2.5 }
+				phalanstere_unity_change = yes
+				custom_effect_tooltip = tooltip_white_line
+				capital_scope = { add_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } 
+				hidden_effect = { 
+					add_ideas = Cof_revolutionary_bases_buff 
+					FRA = {
+						if = {
+							limit = { capital_scope = { INT_is_in_europe = yes } } 
+							set_temp_variable = { iri_euic = 5 }
+						}
+						else = { set_temp_variable = { iri_euic = 0 } }
+
+						if = {
+							limit = { capital_scope = { INT_is_in_asia = yes } } 
+							set_temp_variable = { iri_asic = 5 }
+						}
+						else = { set_temp_variable = { iri_asic = 0 } }
+
+						if = {
+							limit = { capital_scope = { INT_is_in_middle_east = yes } }
+							set_temp_variable = { iri_meic = 5 }
+						}
+						else = { set_temp_variable = { iri_meic = 0 } }
+
+						if = {
+							limit = { capital_scope = { INT_is_in_africa = yes } }
+							set_temp_variable = { iri_afic = 5 }
+						}
+						else = { set_temp_variable = { iri_afic = 0 } }
+
+						if = {
+							limit = { capital_scope = { INT_is_in_america = yes } }
+							set_temp_variable = { iri_amic = 5 }
+						}
+						else = { set_temp_variable = { iri_amic = 0 } }
+						iri_influence_change = yes
+					}
+				}
+			}
+		}
+		limit_to_equipment_type = { support_equipment }
+		equipment_bonus = {
+			build_cost_ic = -0.05
+			reliability = 0.05
 		}
 	}
 	

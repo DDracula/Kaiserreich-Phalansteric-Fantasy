@@ -624,7 +624,7 @@ phalanstere_buff_judge = {
     if = {
         limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_get_back } }
         set_temp_variable = { t = global.phalanstere_industry_investment_num }
-        modulse_temp_varible = { t = 3 }
+        modulo_temp_variable = { t = 3 }
         set_variable = { INT_industrial_factory_donations = global.phalanstere_industry_investment_num }
         subtract_from_variable = { INT_industrial_factory_donations = t }
         divide_variable = { INT_industrial_factory_donations = 3 }
@@ -1351,25 +1351,195 @@ ireland_violend_revolution_army_change = {
     }
 }
 
-cof_count_num_of_volunteers = {
-    set_variable = { FRA.num_of_volunteers = 0 }
+count_num_of_volunteers = {
+    set_variable = { num_of_volunteers = 0 }
     every_other_country = {
         limit = {
+            has_socialist_government = yes
             has_volunteers_amount_from = {
-                tag = FRA
+                tag = PREV
                 count > 0
             }
         }
-        set_temp_variable = { THIS.vt = 0 }
-        while_loop_effect = {
+        if = {
             limit = {
                 has_volunteers_amount_from = {
-                    tag = FRA
-                    count < var:THIS.vt
+                    tag = PREV
+                    count > 19
                 }
             }
-            add_to_temp_variable = { t = 1 }
+            add_to_variable = { PREV.num_of_volunteers = 20 }
         }
-        add_to_variable = { FRA.num_of_volunteers = t }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 18
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 19 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 17
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 18 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 16
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 17 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 15
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 16 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 14
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 15 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 13
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 14 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 12
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 13 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 11
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 12 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 10
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 11 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 9
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 10 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 8
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 9 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 7
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 8 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = { 
+                    tag = PREV
+                    count > 6
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 7 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 5
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 6 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 4
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 5 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 3
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 4 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 2
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 3 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 1
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 2 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 0
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 1 }
+        }
     }
 }
