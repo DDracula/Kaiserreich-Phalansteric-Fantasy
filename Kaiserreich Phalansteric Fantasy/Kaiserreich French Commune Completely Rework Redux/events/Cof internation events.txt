@@ -6614,6 +6614,7 @@ country_event = {
 	picture = GFX_report_event_generic_diplomacy1
 	hidden = yes
 	trigger = {
+		country_exists = ALG
 		tag = NFA 
 		has_war_with = ALG 
 		NOT = { has_country_flag = nfa_has_all_gone } 
@@ -8077,22 +8078,6 @@ country_event = {
 		add_popularity = { ideology = totalist popularity = 0.02 }
 		add_popularity = { ideology = syndicalist popularity = 0.02 }
 		add_popularity = { ideology = radical_socialist popularity = 0.02 }
-	}
-}
-
-country_event = {
-	id = cofintern.183
-	title = cofintern.183.title
-	desc = cofintern.183.desc
-	picture = GFX_report_event_generic_diplomacy1
-	is_triggered_only = yes
-	option = {
-		name = cofintern.183.a  
-		if = {
-			limit = { has_idea = Cof_ireland_revolution_strike }
-			modify_timed_idea = { idea = Cof_ireland_revolution_strike days = 40 }
-		}
-		else = { add_timed_idea = { idea = Cof_ireland_revolution_strike days = 30 } }
 	}
 }
 

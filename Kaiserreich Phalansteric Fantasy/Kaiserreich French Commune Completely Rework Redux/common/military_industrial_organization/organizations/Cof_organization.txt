@@ -2,7 +2,14 @@ FRA_phalanstere_reasearch_organization = {
     icon = GFX_dynamic_modifier_Cof_phalanstere
 	background = GFX_MIO_details_background_plane
     allowed = { always = yes }
-    visible = { FROM = { FRA_is_phalanstere_member = yes } } 
+    visible = { 
+		FROM = { 
+			OR = {
+				FRA_is_phalanstere_member = yes 
+				tag = FRA
+			}	
+		} 
+	} 
     equipment_type = {
         convoy_1
 		support_equipment
@@ -60,7 +67,7 @@ FRA_phalanstere_reasearch_organization = {
 		icon = GFX_generic_mio_department_icon_facilities
 		position = { x = 2 y = 0 }
 		mutually_exclusive = { mio_phalanstere_industry_investment_factory }
-		available = { has_political_power = 100 }
+		available = { FROM = { has_political_power > 100 } }
 		on_complete = {
 			FROM = { 
 				add_political_power = -100
@@ -113,7 +120,7 @@ FRA_phalanstere_reasearch_organization = {
 		token = mio_phalanstere_volunteer_train
 		name = mio_phalanstere_volunteer_train
 		icon = GFX_generic_mio_department_icon_infantry_quality
-		position = { x = 0 y = 1 }
+		position = { x = 6 y = 1 }
 		available = {
 			FRA = { has_completed_focus = FRA_revolutionary_bases_abroad }
 			FROM = {
@@ -178,8 +185,136 @@ FRA_phalanstere_reasearch_organization = {
 			reliability = 0.05
 		}
 	}
+
+	trait = {
+		token = mio_phalanstere_active_foreign_trade
+		name = mio_phalanstere_active_foreign_trade
+		icon = GFX_generic_mio_trait_icon_production_capacity
+		position = { x = 2 y = 1 }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_inner_circle_of_socialism
+				}
+				FRA = { has_country_flag = phalanstere_agree_about_inner_circle_of_socialism }
+			}	
+			FROM = {
+				OR = {
+					has_equipment = { convoy_1 > 49 }
+					has_equipment = { train_equipment > 9 }
+				}
+			}
+		}
+		on_complete = {
+			FROM = { 
+				effect_tooltip = {
+					custom_effect_tooltip = if_has_convoy_50
+					add_equipment_to_stockpile = { 
+						type = convoy_1
+						amount = -50
+					}
+					custom_effect_tooltip = if_has_train_10
+					add_equipment_to_stockpile = { 
+						type = train_equipment
+						amount = -10
+					}
+				}
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { phauc = 2.5 }
+		        phalanstere_unity_change = yes
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_phalanstere
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					INT_cic_construction_boost_factor = 0.25
+					tooltip = cic_construction_boost_factor_tt
+				}
+				hidden_effect = {
+					if = {
+						limit = { has_equipment = { convoy_1 > 49 } }
+						add_equipment_to_stockpile = { 
+							type = convoy_1
+							amount = -50
+						}
+					}
+					else = {
+						add_equipment_to_stockpile = { 
+							type = train_equipment
+							amount = -10
+						}
+					}
+				}
+			}
+		}
+		limit_to_equipment_type = { convoy_1 }
+		equipment_bonus = {
+			build_cost_ic = -0.1
+		}
+	}
+
+	trait = {
+		token = mio_phalanstere_reasearch_investment
+		name = mio_phalanstere_reasearch_investment
+		icon = GFX_generic_mio_trait_icon_unique
+		position = { x = 4 y = 0 }
+		available = {
+			FROM = { has_political_power > 50 }
+		}
+		on_complete = {
+			FROM = { 
+				add_political_power = -50
+				custom_effect_tooltip = reasearch_investment_tooltip
+				add_to_variable = { global.pha_reasearch_investment = 1 }
+				hidden_effect = {
+					set_temp_variable = { t = global.pha_reasearch_investment }
+					modulo_temp_variable = { t = 10 }
+					set_temp_variable = { numt = global.pha_reasearch_investment }
+					subtract_from_temp_variable = { numt = t }
+					multiply_temp_variable = { numt = 0.1 }
+					if = {
+						limit = { check_variable = { numt > global.pha_reasearch_slot } }
+						add_research_slot = 1
+						add_to_variable = { global.pha_reasearch_slot = 1 }
+					}
+				}
+			}
+		}
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.05
+			military_industrial_organization_design_team_assign_cost = 0.5
+		}
+	}
+	trait = {
+		token = mio_phalanstere_reasearch_laboratory
+		name = mio_phalanstere_reasearch_laboratory
+		icon = GFX_generic_mio_trait_icon_unique
+		position = { x = 4 y = 1 }
+		all_parents = { mio_phalanstere_reasearch_investment } 
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPROJECT = FRA_international_open_laboratory
+				}
+				FRA = { has_country_flag = phalanstere_agree_about_international_open_laboratory }
+			}	
+		}
+		on_complete = {
+			FROM = { 
+				
+			}
+		}
+		organization_modifier = {
+			military_industrial_organization_research_bonus = 0.1
+			military_industrial_organization_design_team_assign_cost = 0.5
+		}
+	}
+
 	
-	######从这里开始添加（不要删除此条）######
 }
 
 ######从这里开始添加（不要删除此条）######新的MIO

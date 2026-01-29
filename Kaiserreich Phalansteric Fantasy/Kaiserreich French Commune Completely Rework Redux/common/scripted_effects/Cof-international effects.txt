@@ -648,6 +648,12 @@ phalanstere_buff_judge = {
         set_variable = { INT_military_factory_donations = 0 }
         set_variable = { INT_dockyard_donations = 0 }
     }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_active_foreign_trade } }
+        set_variable = { INT_cic_construction_boost_factor = 0.25 }
+    }
+    else = { set_variable = { INT_cic_construction_boost_factor = 0 } }
 }
 
 #改变立场

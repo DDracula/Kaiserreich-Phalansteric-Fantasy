@@ -1,4 +1,226 @@
 ideas = {
+#######################
+######   原版    ######
+#######################
+	country = {
+		FRA_communard_spirit = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_communard_spirit" }
+			modifier = {
+				army_core_defence_factor = 0.1
+				compliance_growth_on_our_occupied_states = -0.25
+				resistance_target_on_our_occupied_states = 0.1
+			}
+		}
+		FRA_vanguard_of_the_revolution_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_vanguard_of_the_revolution_idea" }
+			name = FRA_vanguard_of_the_revolution
+			picture = SOV_soviet_hegemony
+			modifier = {
+				drift_defence_factor = 0.5
+				send_volunteer_size = 1
+			}
+		}
+		FRA_revanchist_rearmament = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_revanchist_rearmament" }
+			picture = NOR_syndicalist_industry_idea
+			allowed = { always = no }
+			modifier = {
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.15
+			}
+		}
+		FRA_renseignements_generaux_lar = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_renseignements_generaux_lar" }
+			picture = generic_spy_intel
+			allowed = { always = no }
+			modifier = {
+				operative_slot = 1
+				intelligence_agency_defense = 0.5
+			}
+		}
+		FRA_renseignements_generaux_lar_2 = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_renseignements_generaux_lar_2" }
+			name = FRA_renseignements_generaux_lar
+			picture = generic_spy_intel
+			allowed = { always = no }
+			modifier = {
+				operative_slot = 3
+				intelligence_agency_defense = 0.5
+				enemy_operative_detection_chance_factor = 0.1
+				enemy_operative_intel_extraction_rate = 0.1
+				enemy_operative_capture_chance_factor = 0.1
+			}
+		}
+		FRA_renseignements_generaux_non_lar = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_renseignements_generaux_non_lar" }
+			name = FRA_renseignements_generaux_lar
+			picture = generic_spy_intel
+			allowed = { always = no }
+			modifier = {
+				encryption_factor = 0.5
+				resistance_growth_on_our_occupied_states = 0.15
+				resistance_damage_to_garrison_on_our_occupied_states = 0.1
+			}
+		}
+
+		FRA_bhartiya_support = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_bhartiya_support" }
+			picture = FRA_scw_intervention_nationalists_focus
+			allowed = { always = no }
+			available = {
+				country_exists = FRA
+			}
+			modifier = {
+				army_org_Factor = 0.05
+			}
+		}
+		FRA_working_women_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_working_women_idea" }
+			picture = UoB_women_soldiers
+			allowed = { always = no }
+			modifier = {
+				industrial_capacity_factory = 0.05
+				conscription_factor = 0.05
+			}
+		}
+		FRA_international_avant_garde_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_international_avant_garde_idea" }
+			picture = generic_syndicalist_medal
+			allowed = { always = no }
+			modifier = {
+				political_power_factor = 0.05
+			}
+		}
+
+		FRA_peaceful_revolution_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_peaceful_revolution_idea" }
+			picture = HOL_syndicalist_neutrality
+			allowed = { always = no }
+			modifier = {
+				stability_factor = 0.15
+				war_support_factor = -0.3
+			}
+		}
+		FRA_revolutionary_spirit = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_revolutionary_spirit" }
+			picture = FRA_scw_intervention_republicans_focus
+			allowed = { always = no }
+			modifier = {
+				justify_war_goal_time = -0.7
+			}
+		}
+
+		FRA_road_construction_efforts = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_road_construction_efforts" }
+			picture = ARG_invest_in_roads
+			allowed = { always = no }
+			modifier = {
+				production_speed_infrastructure_factor = 0.25
+			}
+		}
+		FRA_socialist_education_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_socialist_education_idea" }
+			picture = jap_supremacy_of_will
+			allowed = { always = no }
+			modifier = {
+				research_speed_factor = 0.1
+			}
+		}
+		FRA_large_scale_rural_projects_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_large_scale_rural_projects_idea" }
+			picture = generic_exploit_mines
+			allowed = { always = no }
+			modifier = {
+				consumer_goods_factor = -0.15
+			}
+		}
+		FRA_second_wave_of_mechanisation_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_second_wave_of_mechanisation_idea" }
+			picture = LIT_invested_in_farms
+			allowed = { always = no }
+			modifier = {
+				weekly_manpower = 1000
+				monthly_population = 0.3
+			}
+		}
+		FRA_communal_waterworks_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_communal_waterworks_idea" }
+			picture = SOV_transformation_of_nature
+			allowed = { always = no }
+			modifier = {
+				industrial_capacity_factory = 0.1
+				consumer_goods_factor = -0.1
+			}
+		}
+		FRA_ploughshares_into_swords_idea = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_ploughshares_into_swords_idea" }
+			picture = SOV_fourth_five_year_plan
+			allowed = { always = no }
+			modifier = {
+				industrial_capacity_factory = 0.05
+				conversion_cost_civ_to_mil_factor = -0.3
+			}
+		}
+	}
+	economy = {
+		FRA_autonomous_communes_default = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_autonomous_communes_default" }
+			picture = new_economic_policy
+
+			allowed = { always = no }
+
+			allowed_to_remove = {
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = TRIGGER_HAS_NOT_COMPLETED_FOCUS
+						FOCUS = FRA_support_workers_initiatives
+					}
+					always = no
+				}
+			}
+
+			removal_cost = -1
+			cancel_if_invalid = no
+
+			modifier = {
+				consumer_goods_expected_value = 0.15
+				production_speed_buildings_factor = -0.15
+				unit_limit_law_bonus = 20
+			}
+		}
+		FRA_autonomous_communes_upgraded = {
+			on_add = { log = "[GetLogRoot]: add idea FRA_autonomous_communes_upgraded" }
+			name = FRA_autonomous_communes_default
+			picture = new_economic_policy
+
+			allowed = { always = no }
+
+			allowed_to_remove = {
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = TRIGGER_HAS_NOT_COMPLETED_FOCUS
+						FOCUS = FRA_consumer_cooperatives
+					}
+					always = no
+				}
+			}
+
+			removal_cost = -1
+			cancel_if_invalid = no
+
+			modifier = {
+				consumer_goods_expected_value = 0.10
+				production_speed_buildings_factor = -0.2
+				global_building_slots_factor = 0.1
+				unit_limit_law_bonus = 20
+			}
+		}
+	}
+#######################
+######   原版    ######
+#######################
+
+
 	##############
 	# Companies
 	##############
