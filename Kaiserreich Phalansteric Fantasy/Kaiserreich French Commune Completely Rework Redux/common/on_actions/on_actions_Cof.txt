@@ -584,7 +584,7 @@ on_actions = {
 
                 set_variable = { global.phalanstere_industry_investment_progress = 0 }
                 set_variable = { global.phalanstere_industry_investment_num = 0 }
-                set_variable = { global.pha_reasearch_investment = 0 }
+                
                 set_variable = { global.pha_reasearch_slot = 0 }
                 #
                 add_dynamic_modifier = { modifier = Cof_total_variable_change }
@@ -814,10 +814,87 @@ on_actions = {
             midway_society_build_monthly_change_judge = yes
 
             #internatonale
-            country_event = cofintern.9999 
+            if = {
+                limit = {
+                     OR = {
+                        has_country_flag = iri_euw_show
+                        has_country_flag = iri_ase_show
+                        has_country_flag = iri_mei_show
+                        has_country_flag = iri_amn_show
+                        has_country_flag = iri_afw_show
+
+                        has_country_flag = iri_eum_show
+                        has_country_flag = iri_ass_show
+                        has_country_flag = iri_mea_show
+                        has_country_flag = iri_amm_show
+                        has_country_flag = iri_afe_show
+
+                        has_country_flag = iri_eue_show
+                        has_country_flag = iri_asi_show
+                        has_country_flag = iri_meo_show
+                        has_country_flag = iri_ams_show
+                        has_country_flag = iri_afm_show
+
+                        has_country_flag = iri_eun_show
+                        has_country_flag = iri_mee_show
+                        has_country_flag = iri_afs_show
+                    }
+                }
+                country_event = cofintern.9999
+            }
             every_other_country = {
                 limit = { has_socialist_government = no }
                 every_country_iri_revolution_judge = yes
+            }
+
+            if = {
+                limit = { 
+                    any_country = { 
+                        mio:FRA_phalanstere_reasearch_organization = {  
+                            OR = {
+                                is_mio_trait_completed = mio_phalanstere_reasearch_investment_factory
+                                is_mio_trait_completed = mio_phalanstere_reasearch_investment_speed
+                            }
+                        } 
+                    } 
+                }
+                set_temp_variable = { global.pha_reasearch_investment = 0 }
+                set_variable = { global.pha_reasearch_investment_factory = 0 }
+                set_variable = { global.pha_reasearch_investment_speed = 0 }
+                every_country = {
+                    limit = { has_socialist_government = yes }
+                    if = {
+                        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment } }
+                        add_to_temp_variable = { global.pha_reasearch_investment = 1 }
+                        add_to_variable = { global.pha_reasearch_investment_factory = 1 }
+                    }
+                    if = {
+                        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment } }
+                        add_to_temp_variable = { global.pha_reasearch_investment = 0.25 }
+                        add_to_variable = { global.pha_reasearch_investment_speed = 1 }
+                    }
+                }
+                set_temp_variable = { t = global.pha_reasearch_investment }
+                modulo_temp_variable = { t = 5 }
+                set_temp_variable = { numt = global.pha_reasearch_investment }
+                subtract_from_temp_variable = { numt = t }
+                divide_temp_variable = { numt = 5 }
+
+                if = {
+                    limit = { check_variable = { numt > global.pha_reasearch_slot } }
+                    every_country = {
+                        limit = { 
+                            mio:FRA_phalanstere_reasearch_organization = {  
+                                OR = {
+                                    is_mio_trait_completed = mio_phalanstere_reasearch_investment_factory
+                                    is_mio_trait_completed = mio_phalanstere_reasearch_investment_speed
+                                }
+                            } 
+                        }
+                        add_research_slot = 1
+                    }
+                    add_to_variable = { global.pha_reasearch_slot = 1 }
+                }
             }
 
             if = {

@@ -1639,30 +1639,30 @@ characters = {
 		}
 	}	
 
-	FRA_ernest_pezet = { #欧内斯特·佩泽
-		name = FRA_ernest_pezet
+	FRA_louis_chauvineau = { #路易·肖维诺
+		name = FRA_louis_chauvineau
 		portraits = {
 			army = {
-				small = GFX_portrait_FRA_ernest_pezet_army_small
+				small = GFX_portrait_FRA_louis_chauvineau_army_small
 			}
 		}
 		advisor = {
 			slot = army_chief
-			idea_token = FRA_ernest_pezet_army_chief
+			idea_token = FRA_louis_chauvineau_army_chief
 			allowed = { 
 				custom_trigger_tooltip = {
 					tooltip	= jaco_neos_seat_greater_than_x
 					check_variable = { seat_jaco_neos > bgt_seat_target }
 				}
 			}
-			traits = { FRA_voix_du_combattant }
-			desc = FRA_ernest_pezet_army_chief_desc
+			traits = { FRA_advocate_of_continuous_front }
+			desc = FRA_louis_chauvineau_army_chief_desc
 			cost = 100
 			on_add = {
 				FRA = {
-					if = { limit = { has_country_flag = FRA_ernest_pezet_effect } }
+					if = { limit = { has_country_flag = FRA_louis_chauvineau_effect } }
 					else = {
-						set_country_flag = FRA_ernest_pezet_effect
+						set_country_flag = FRA_louis_chauvineau_effect
 
 						custom_effect_tooltip = effect_military
 						set_temp_variable = { msyndc = -0.3 }

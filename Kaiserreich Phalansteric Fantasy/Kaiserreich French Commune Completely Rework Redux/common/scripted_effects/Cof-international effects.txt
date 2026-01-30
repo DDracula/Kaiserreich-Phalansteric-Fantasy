@@ -617,8 +617,57 @@ phalanstere_buff_judge = {
     }
     else = { set_variable = { INT_civilian_factory_use = 0 } }
     if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment_factory } }
+        add_to_variable = { INT_civilian_factory_use = 5 }
+    }
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment_speed } }
+        add_to_variable = { INT_research_speed_factor = -0.1 }
+    }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_share } }
+        set_variable = { INT_research_sharing_per_country_bonus_factor = 0.2 }
+    }
+    else = { set_variable = { INT_research_sharing_per_country_bonus_factor = 0 } }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_active_foreign_trade } }
+        set_variable = { INT_cic_construction_boost_factor = 0.25 }
+    }
+    else = { set_variable = { INT_cic_construction_boost_factor = 0 } }
+    
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_call_for_investment } }
+        add_to_variable = { INT_political_power_factor = -0.1 }
+        add_to_variable = { INT_consumer_goods_factor = -0.15 }
+        add_to_variable = { INT_cic_construction_boost_factor = 0.25 }
+    }
+
+    if = {
         limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_construction } }
         add_to_variable = { INT_production_speed_industrial_complex_factor = -0.1 }
+    }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_weapon_share } }
+        set_variable = { INT_license_purchase_cost = -1 }
+        set_variable = { INT_license_production_speed = 0.2 }
+    }
+    else = {
+        set_variable = { INT_license_purchase_cost = 0 }
+        set_variable = { INT_license_production_speed = 0 }
+    }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_civilian_new } }
+        set_variable = { INT_production_speed_buildings_factor = 0.1 }
+    }
+    else = { set_variable = { INT_production_speed_buildings_factor = 0 } }
+
+    if = {
+        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_arms_new } }
+        add_to_variable = { INT_production_factory_max_efficiency_factor = 0.1 }
     }
 
     if = {
@@ -648,12 +697,6 @@ phalanstere_buff_judge = {
         set_variable = { INT_military_factory_donations = 0 }
         set_variable = { INT_dockyard_donations = 0 }
     }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_active_foreign_trade } }
-        set_variable = { INT_cic_construction_boost_factor = 0.25 }
-    }
-    else = { set_variable = { INT_cic_construction_boost_factor = 0 } }
 }
 
 #改变立场

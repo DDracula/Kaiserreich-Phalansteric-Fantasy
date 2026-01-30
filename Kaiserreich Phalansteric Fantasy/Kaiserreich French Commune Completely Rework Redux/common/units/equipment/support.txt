@@ -1,0 +1,51 @@
+equipments = {
+
+	support_equipment = {
+		year = 1918
+
+		is_archetype = yes
+		picture = archetype_support_equipment
+		is_buildable = no
+		type = {
+			infantry
+			motorized
+			support
+		}
+		group_by = archetype
+		
+		interface_category = interface_category_land
+		
+		reliability = 0.8
+
+		#Space taken in convoy
+		lend_lease_cost = 1
+
+		build_cost_ic = 4
+		resources = {
+			aluminium = 1
+			steel = 2
+		}
+	}
+
+	support_equipment_1 = {
+		year = 1918
+
+		archetype = support_equipment
+		visual_level = 0
+		priority = 20	
+	}
+
+	composite_support_equipment = {
+		year = 1940
+
+		archetype = support_equipment
+		parent = support_equipment_1
+		visual_level = 1
+		priority = 20
+		
+		soft_attack = 2
+        defense = 4
+
+		build_cost_ic = 4.5
+	}
+}
