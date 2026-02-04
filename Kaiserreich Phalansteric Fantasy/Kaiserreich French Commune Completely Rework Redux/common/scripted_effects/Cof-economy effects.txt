@@ -687,6 +687,14 @@ cof_econ_target_change = {
         min = -100
     }
 	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = cof_econ_values
+			max = 40
+			min = -20
+		}
+	}
+	if = {
 		limit = { check_variable = { cof_econ_values < 0 } }
 		set_variable = { cof_econ_values_bad = cof_econ_values }
 		add_to_variable = { cof_econ_values_bad = 100 }
@@ -696,48 +704,120 @@ cof_econ_target_change = {
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_industry_basic
+			max = 80
+			min = 40
+		}
+	}
 	clamp_variable = {
         var = econ_industry_process
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_industry_process
+			max = 80
+			min = 40
+		}
+	}
 	clamp_variable = {
         var = econ_industry_arms
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_industry_arms
+			max = 80
+			min = 40
+		}
+	}
 
 	clamp_variable = {
         var = econ_agriculture_mechanized
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_agriculture_mechanized
+			max = 80
+			min = 40
+		}
+	}
 	clamp_variable = {
         var = econ_agriculture_chemical
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_agriculture_chemical
+			max = 80
+			min = 40
+		}
+	}
 	clamp_variable = {
         var = econ_agriculture_chain
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_agriculture_chain
+			max = 80
+			min = 40
+		}
+	}
 
 	clamp_variable = {
         var = econ_equal
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_equal
+			max = 80
+			min = 40
+		}
+	}
 	clamp_variable = {
         var = econ_link
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_link
+			max = 80
+			min = 40
+		}
+	}
 	clamp_variable = {
-        var = econ_agriculture_chain
+        var = econ_innovate
         max = 100
         min = 0
     }
+	if = {
+		limit = { is_ai = yes }
+		clamp_variable = {
+			var = econ_innovate
+			max = 80
+			min = 40
+		}
+	}
 
 	economy_period_change_judge = yes
 	Cof_economy_impact_count = yes
@@ -2319,7 +2399,7 @@ state_rural_buff_count = {
 
 	if = {
 		limit = { FRA = { has_completed_focus = FRA_new_frontier_program } }
-		add_to_variable = { rural_political_power_factor = -0.01 }
+		set_variable = { rural_political_power_factor = -0.01 }
 	}
 	else = { set_variable = { rural_political_power_factor = 0 } }
 
@@ -2664,7 +2744,7 @@ idea_supply_chain_crisis_change = {
 	}
 	else_if = {
 		limit = { has_idea = Cof_supply_chain_crisis3 } 
-		remove_ideas = Cof_call_for_economic_reform3
+		remove_ideas = Cof_supply_chain_crisis3
 	}
 	else = {
 		custom_effect_tooltip = idea_supply_chain_crisis_change_tt

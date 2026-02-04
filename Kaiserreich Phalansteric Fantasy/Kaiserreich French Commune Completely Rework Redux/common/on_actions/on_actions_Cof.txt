@@ -815,6 +815,33 @@ on_actions = {
 
             #internatonale
             if = {
+                limit = { is_ai = yes }
+                set_country_flag = iri_euw_show
+                set_country_flag = iri_ase_show
+                set_country_flag = iri_mei_show
+                set_country_flag = iri_amn_show
+                set_country_flag = iri_afw_show
+
+                set_country_flag = iri_eum_show
+                set_country_flag = iri_ass_show
+                set_country_flag = iri_mea_show
+                set_country_flag = iri_amm_show
+                set_country_flag = iri_afe_show
+
+                set_country_flag = iri_eue_show
+                set_country_flag = iri_asi_show
+                set_country_flag = iri_meo_show
+                set_country_flag = iri_ams_show
+                set_country_flag = iri_afm_show
+
+                set_country_flag = iri_eun_show
+                set_country_flag = iri_mee_show
+                set_country_flag = iri_afs_show
+
+                set_country_flag = phalanstere_show
+            }
+
+            if = {
                 limit = {
                      OR = {
                         has_country_flag = iri_euw_show
@@ -1113,7 +1140,7 @@ on_actions = {
                 limit = { 
                     GER = { 
                         has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } 
-                        has_country_flag = has_set_smuggling
+                        NOT = { has_country_flag = has_set_smuggling }
                     } 
                 }
                 GER = {
@@ -1176,6 +1203,7 @@ on_actions = {
                     multiply_variable = { bsg_steel = -1 }
                     multiply_variable = { bsg_tungsten = -1 }
                     multiply_variable = { bsg_coal = -1 }
+                    set_country_flag = has_set_smuggling
                 }
                 set_variable = { bsf_industrial_factory_donations = GER.t }
                 set_variable = { bsf_aluminium = GER.bsg_aluminium }
@@ -1228,12 +1256,12 @@ on_actions = {
             set_temp_variable = { eibc = modifier@monthly_change_eib }
             set_temp_variable = { eipc = modifier@monthly_change_eip }
             set_temp_variable = { eiac = modifier@monthly_change_eia }
-            set_temp_variable = { eam = modifier@monthly_change_eam }
-            set_temp_variable = { eae = modifier@monthly_change_eae }
-            set_temp_variable = { eaa = modifier@monthly_change_eaa }
-            set_temp_variable = { eq = modifier@monthly_change_eq }
-            set_temp_variable = { el = modifier@monthly_change_el }
-            set_temp_variable = { ei = modifier@monthly_change_ei }
+            set_temp_variable = { eamc = modifier@monthly_change_eam }
+            set_temp_variable = { eaec = modifier@monthly_change_eae }
+            set_temp_variable = { eaac = modifier@monthly_change_eaa }
+            set_temp_variable = { eqc = modifier@monthly_change_eq }
+            set_temp_variable = { elc = modifier@monthly_change_el }
+            set_temp_variable = { eic = modifier@monthly_change_ei }
             cof_econ_target_change = yes
 
             set_temp_variable = { atimpc = 0 }
@@ -1255,6 +1283,21 @@ on_actions = {
             Cof_army_reform_values_change = yes
 
             add_to_variable = { Cof_politics_intensity_of_struggle = modifier@monthly_change_ios }
+            clamp_variable = {
+                var = Cof_politics_intensity_of_struggle
+                min = 0
+                max = 100
+            }
+            if = {
+                limit = { is_ai = yes }
+                clamp_variable = {
+                    var = Cof_politics_intensity_of_struggle
+                    max = 0
+                }
+            }
+            set_variable = { gui_ios = Cof_politics_intensity_of_struggle }
+            multiply_variable = { gui_ios = 0.5 }
+            add_to_variable = { gui_ios = 50 }
             add_stability = stabilitycfios
             add_political_power = ppcfios
 

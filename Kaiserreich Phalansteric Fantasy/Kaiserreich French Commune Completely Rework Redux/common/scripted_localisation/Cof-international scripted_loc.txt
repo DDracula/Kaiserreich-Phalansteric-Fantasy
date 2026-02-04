@@ -344,6 +344,13 @@ defined_text = {
         }
         localization_key = iri_information_ire_revolution
     }
+    text = {
+        trigger = { 
+            check_variable = { iri_targeted^0 = BEL } 
+            has_country_flag = iri_bel_cooperate_with_socialist 
+        }
+        localization_key = iri_information_bel_soc
+    }
 }
 
 defined_text = {
@@ -360,6 +367,24 @@ defined_text = {
             }
         }
         localization_key = Cof_iri_countermeasures_IRE
+    }
+    text = {
+        trigger = { tag = HOL }
+        localization_key = Cof_iri_countermeasures_HOL
+    }
+    text = {
+        trigger = { 
+            tag = BEL 
+            FRA = { has_country_flag = iri_bel_cooperate_with_wallonia }
+        }
+        localization_key = Cof_iri_countermeasures_BEL_wal
+    }
+    text = {
+        trigger = { 
+            tag = BEL 
+            FRA = { has_country_flag = iri_bel_cooperate_with_socialist }
+        }
+        localization_key = Cof_iri_countermeasures_BEL_soc
     }
 }
 
@@ -378,6 +403,24 @@ defined_text = {
         }
         localization_key = Cof_iri_countermeasures_desc_IRE
     }
+    text = {
+        trigger = { tag = HOL }
+        localization_key = Cof_iri_countermeasures_desc_HOL
+    }
+    text = {
+        trigger = { 
+            tag = BEL 
+            FRA = { has_country_flag = iri_bel_cooperate_with_wallonia }
+        }
+        localization_key = Cof_iri_countermeasures_desc_BEL_wal
+    }
+    text = {
+        trigger = { 
+            tag = BEL 
+            FRA = { has_country_flag = iri_bel_cooperate_with_socialist }
+        }
+        localization_key = Cof_iri_countermeasures_desc_BEL_soc
+    }
 }
 
 defined_text = {
@@ -394,4 +437,31 @@ defined_text = {
         trigger = { check_variable = { revolution_control = 1 } }
         localization_key = state_ireland_revolution_low
     }
+}
+
+defined_text = {
+    name = bel_ind_plan_republic
+    text = {
+        trigger = { BEL = { has_country_flag = bel_ind_republic_accept_union } }
+        localization_key = bel_ind_republic_accept_union
+    }
+    text = { localization_key = bel_ind_republic_accept_union_no }
+}
+
+defined_text = {
+    name = bel_ind_plan_wallonia
+    text = {
+        trigger = { BEL = { has_country_flag = bel_ind_wallonia_accept_union } }
+        localization_key = bel_ind_wallonia_accept_union
+    }
+    text = { localization_key = bel_ind_wallonia_accept_union_no }
+}
+
+defined_text = {
+    name = bel_ind_plan_police
+    text = {
+        trigger = { BEL = { has_country_flag = bel_ind_police_accept_union } }
+        localization_key = bel_ind_police_accept_union
+    }
+    text = { localization_key = bel_ind_police_accept_union_no }
 }

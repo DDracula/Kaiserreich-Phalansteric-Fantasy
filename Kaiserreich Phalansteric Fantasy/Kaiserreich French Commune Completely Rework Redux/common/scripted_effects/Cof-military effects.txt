@@ -337,25 +337,65 @@ Cof_army_reform_values_change = {
         max = 100
         min = 0
     }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_autonomy
+            max = 80
+			min = 40
+        }
+    }
     clamp_variable = {
         var = Cof_army_willing
         max = 100
         min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_willing
+            max = 80
+			min = 40
+        }
     }
     clamp_variable = {
         var = Cof_army_training
         max = 100
         min = 0
     }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_training
+            max = 80
+			min = 40
+        }
+    }
     clamp_variable = {
         var = Cof_army_equipment
         max = 100
         min = 0
     }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_equipment
+            max = 80
+			min = 40
+        }
+    }
     clamp_variable = {
         var = Cof_army_passionate
         max = 100
         min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_passionate
+            max = 80
+			min = 40
+        }
     }
 
     Cof_military_reform_impact_count = yes
@@ -1670,6 +1710,11 @@ doctrines_fitness = {
             limit = { check_variable = { ard5 < 0 } }
             add_to_variable = { dfw = 1 }
         }
+    }
+
+    if = {
+        limit = { is_ai = yes }
+        set_variable = { dfw = 0 }
     }
 
     set_variable = { dfwbuff = dfw }

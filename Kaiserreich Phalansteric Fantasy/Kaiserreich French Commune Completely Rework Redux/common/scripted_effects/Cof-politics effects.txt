@@ -1562,11 +1562,6 @@ class_pop_satisfactions_change = {
     if = { limit = { check_variable = { wc = 0 } }	}
 	else = {
 		add_to_variable = { pop_satisfaction_workers = wc }
-		clamp_variable = {
-			var = pop_satisfaction_workers
-			max = 100
-			min = 0
-		}
 		custom_effect_tooltip = pop_satisfaction_workers_change
 	}
     if = {
@@ -1576,58 +1571,110 @@ class_pop_satisfactions_change = {
         }
         set_variable = { pop_satisfaction_workers = 50 }
     }
-
-
     if = { limit = { check_variable = { pc = 0 } }	}
 	else = {
 		add_to_variable = { pop_satisfaction_peasants = pc }
-		clamp_variable = {
-			var = pop_satisfaction_peasants
-			max = 100
-			min = 0
-		}
 		custom_effect_tooltip = pop_satisfaction_peasants_change
 	}
     if = { limit = { check_variable = { mc = 0 } }	}
 	else = {
 		add_to_variable = { pop_satisfaction_merchants = mc }
-		clamp_variable = {
-			var = pop_satisfaction_merchants
-			max = 100
-			min = 0
-		}
 		custom_effect_tooltip = pop_satisfaction_merchants_change
 	}
     if = { limit = { check_variable = { sc = 0 } }	}
 	else = {
 		add_to_variable = { pop_satisfaction_scholars = sc }
-		clamp_variable = {
-			var = pop_satisfaction_scholars
-			max = 100
-			min = 0
-		}
 		custom_effect_tooltip = pop_satisfaction_scholars_change
 	}
     if = { limit = { check_variable = { bc = 0 } }	}
 	else = {
 		add_to_variable = { pop_satisfaction_bureaucrats  = bc }
-		clamp_variable = {
-			var = pop_satisfaction_bureaucrats 
-			max = 100
-			min = 0
-		}
 		custom_effect_tooltip = pop_satisfaction_bureaucrats_change
 	}
     if = { limit = { check_variable = { ac = 0 } }	}
 	else = {
 		add_to_variable = { pop_satisfaction_army = ac }
-		clamp_variable = {
-			var = pop_satisfaction_army
-			max = 100
-			min = 0
-		}
 		custom_effect_tooltip = pop_satisfaction_army_change
 	}
+
+    clamp_variable = {
+        var = pop_satisfaction_workers
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = pop_satisfaction_workers
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = pop_satisfaction_peasants
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = pop_satisfaction_peasants
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = pop_satisfaction_merchants
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = pop_satisfaction_merchants
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = pop_satisfaction_scholars
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = pop_satisfaction_scholars
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = pop_satisfaction_bureaucrats 
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = pop_satisfaction_bureaucrats
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = pop_satisfaction_army
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = pop_satisfaction_army
+            max = 80
+			min = 40
+        }
+    }
 
     set_variable = { pop_satisfaction = 0 }
     add_to_variable = { pop_satisfaction = pop_satisfaction_workers }
@@ -3563,6 +3610,13 @@ intensity_of_struggle_change = {
             min = 0
             max = 100
         }
+        if = {
+            limit = { is_ai = yes }
+            clamp_variable = {
+                var = Cof_politics_intensity_of_struggle
+                max = 0
+            }
+        }
     }
 
     set_variable = { gui_ios = Cof_politics_intensity_of_struggle }
@@ -4506,6 +4560,7 @@ bill_effect_tooltips = {
             Cof_economy_model_change = yes
              
             custom_effect_tooltip = tooltip_white_line
+            set_temp_variable = { epc = 0 }
             set_temp_variable = { evc = 5 }
             set_temp_variable = { eibc = 0 }
             set_temp_variable = { eipc = 2.5 }
@@ -5899,6 +5954,7 @@ bill_pass_effect = {
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { epc = 0 }
         set_temp_variable = { evc = 5 }
         set_temp_variable = { eibc = 0 }
         set_temp_variable = { eipc = 2.5 }
@@ -7045,6 +7101,15 @@ CSP_attitude_change = {
         limit = { check_variable = { target_a = 5 } }
         add_to_variable = { CGSC_attitude = change_num }
         clamp_variable = { var = CGSC_attitude max = 5 min = -5 }
+    }
+
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = { var = DFA_attitude max = 5 min = 2 }
+        clamp_variable = { var = DEA_attitude max = 5 min = 2 }
+        clamp_variable = { var = DIS_attitude max = 5 min = 2 }
+        clamp_variable = { var = DSRG_attitude max = 5 min = 2 }
+        clamp_variable = { var = CGSC_attitude max = 5 min = 2 }
     }
 
     hidden_effect = {

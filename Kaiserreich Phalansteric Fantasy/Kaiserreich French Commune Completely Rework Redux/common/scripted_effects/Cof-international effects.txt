@@ -827,6 +827,199 @@ jap_colonial_riot_judge = {
     multiply_variable = { jap_colonial_riot = -0.1 }
 }
 
+count_num_of_volunteers = {
+    set_variable = { num_of_volunteers = 0 }
+    every_other_country = {
+        limit = {
+            has_socialist_government = yes
+            has_volunteers_amount_from = {
+                tag = PREV
+                count > 0
+            }
+        }
+        if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 19
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 20 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 18
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 19 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 17
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 18 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 16
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 17 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 15
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 16 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 14
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 15 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 13
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 14 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 12
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 13 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 11
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 12 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 10
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 11 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 9
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 10 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 8
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 9 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 7
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 8 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = { 
+                    tag = PREV
+                    count > 6
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 7 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 5
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 6 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 4
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 5 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 3
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 4 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 2
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 3 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 1
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 2 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 0
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 1 }
+        }
+    }
+}
+
 iri_target_gui_get = {
     var:FRA.iri_targeted^0 = {
         set_variable = { FRA.iri_targeted_ideology^1 = THIS.party_popularity_100@syndicalist }
@@ -851,6 +1044,11 @@ iri_target_gui_get = {
         every_country_iri_revolution_judge = yes
         set_variable = { FRA.iri_targeted_4 = THIS.cof_iri_revolution }
     }
+}
+
+activate_countermeasures_decision = {
+    if = { limit = { has_country_flag = COF_IRI_HAD } }
+    else = { set_country_flag = COF_IRI_HAD }
 }
 
 every_country_iri_revolution_judge = {
@@ -973,9 +1171,63 @@ every_country_iri_revolution_judge = {
     clamp_variable = { var = cof_iri_revolution max = 100 min = 0 }
 }
 
-iri_coup_judge = {
+iri_cooperate_judge = {
+    if = {
+        limit = { 
+            tag = HOL 
+            has_completed_focus = HOL_work_with_LSP
+        }
+        set_country_flag = hol_leftwing_negotiations_failed
+        custom_effect_tooltip = hol_leftwing_negotiations_failed_tt
+    }
+    if = {
+        limit = { tag = BEL }
+        set_country_flag = bel_ind_republic_accept_union
+        custom_effect_tooltip = bel_ind_republic_accept_union_tt
+    }
+}
+
+iri_not_socialiist_coup_judge = {
     if = {
         limit = { tag = POR }
+        hidden_effect = {
+			meta_effect = {
+				text = {
+					set_politics = {
+						ruling_party = social_democrat
+						last_election = "[CURRENT_DATE]"
+						elections_allowed = yes
+					}
+				}
+				CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			}
+		}
+		effect_tooltip = {
+			set_politics = {
+				ruling_party = social_democrat
+				elections_allowed = yes
+			}
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:syndicalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+
+		add_stability = 0.5
+		add_war_support = 0.3
+
+		add_popularity = { ideology = totalist popularity = 0.05 }
+		add_popularity = { ideology = syndicalist popularity = 0.1 }
+		add_popularity = { ideology = radical_socialist popularity = 0.1 }
+		add_popularity = { ideology = social_democrat popularity = 0.2 }
+		add_popularity = { ideology = social_liberal popularity = 0.15 }
+		add_popularity = { ideology = paternal_autocrat popularity = -0.2 }
+		add_popularity = { ideology = national_populist popularity = -0.25 }
+        
         POR_remove_monarchy = yes
         hidden_effect = {
 			if = {
@@ -1003,6 +1255,116 @@ iri_coup_judge = {
             868 = { owner = { country_event = cofintern.171 } }
             1017 = { owner = { country_event = cofintern.171 } }
             news_event = { id = cofintern.172 days = 3 }
+        }
+    }
+
+    if = {
+        limit = { tag = HOL }
+        add_popularity = { ideology = totalist popularity = 0.05 }
+		add_popularity = { ideology = syndicalist popularity = 0.1 }
+		add_popularity = { ideology = radical_socialist popularity = 0.1 }
+		add_popularity = { ideology = social_democrat popularity = 0.2 }
+		add_popularity = { ideology = social_liberal popularity = 0.15 }
+        complete_national_focus = HOL_left_list_victorious
+        HOL_remove_monarchy = yes
+        country_event = cofintern.201
+        hidden_effect = {
+            uncomplete_national_focus = {
+				focus = HOL_VNH_victory
+				uncomplete_children = yes
+			}
+			uncomplete_national_focus = {
+				focus = HOL_CNA_gamble_worked
+				uncomplete_children = yes
+			}
+            uncomplete_national_focus = {
+                focus = HOL_reijnders_putsch
+                uncomplete_children = yes
+            }
+        }
+    }
+}
+
+iri_socialiist_coup_judge = {
+    if = {
+        limit = { tag = POR }
+        set_politics = {
+			ruling_party = syndicalist
+			elections_allowed = no
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+
+		add_stability = 0.5
+		add_war_support = 0.3
+
+		add_popularity = { ideology = totalist popularity = 0.1 }
+		add_popularity = { ideology = syndicalist popularity = 0.2 }
+		add_popularity = { ideology = radical_socialist popularity = 0.15 }
+		add_popularity = { ideology = paternal_autocrat popularity = -0.2 }
+		add_popularity = { ideology = national_populist popularity = -0.25 }
+
+        POR_remove_monarchy = yes
+        hidden_effect = {
+			if = {
+				limit = { 
+					NFA = { exists = yes }
+					272 = { is_owned_and_controlled_by = NFA }
+				}
+				NFA = { country_event = cofintern.171 }
+			}
+			if = {
+				limit = { 
+					MAF = { exists = yes }
+					881 = { is_owned_and_controlled_by = MAF }
+				}
+				MAF = { country_event = cofintern.171 }
+			}
+			if = {
+				limit = {
+					LEC = { exists = yes }
+					326 = { is_owned_and_controlled_by = LEC }
+				}
+				LEC = { country_event = cofintern.171 }
+			}
+			else = { 592 = { owner = { country_event = cofintern.171 } } }
+            868 = { owner = { country_event = cofintern.171 } }
+            1017 = { owner = { country_event = cofintern.171 } }
+            news_event = { id = cofintern.172 days = 3 }
+        }
+    }
+
+    if = {
+        limit = { tag = HOL }
+        add_popularity = { ideology = totalist popularity = 0.05 }
+		add_popularity = { ideology = syndicalist popularity = 0.1 }
+		add_popularity = { ideology = radical_socialist popularity = 0.1 }
+        complete_national_focus = HOL_left_list_victorious
+        complete_national_focus = HOL_SDAP_RSAP
+        complete_national_focus = HOL_overthrow_the_system
+        hidden_effect = {
+            uncomplete_national_focus = {
+				focus = HOL_VDB_SDAP
+				uncomplete_children = yes
+			}
+			uncomplete_national_focus = {
+				focus = HOL_use_popular_mandate
+				uncomplete_children = yes
+			}
+            uncomplete_national_focus = {
+				focus = HOL_VNH_victory
+				uncomplete_children = yes
+			}
+			uncomplete_national_focus = {
+				focus = HOL_CNA_gamble_worked
+				uncomplete_children = yes
+			}
+            uncomplete_national_focus = {
+                focus = HOL_reijnders_putsch
+                uncomplete_children = yes
+            }
         }
     }
 }
@@ -1372,10 +1734,7 @@ iri_start_war_jugde_socialist = {
     }
 }
 
-activate_countermeasures_decision = {
-    if = { limit = { has_country_flag = COF_IRI_HAD } }
-    else = { set_country_flag = COF_IRI_HAD }
-}
+
 
 ireland_violend_revolution_army_change = {
     if = { limit = { check_variable = { t = 0 } } }
@@ -1400,195 +1759,3 @@ ireland_violend_revolution_army_change = {
     }
 }
 
-count_num_of_volunteers = {
-    set_variable = { num_of_volunteers = 0 }
-    every_other_country = {
-        limit = {
-            has_socialist_government = yes
-            has_volunteers_amount_from = {
-                tag = PREV
-                count > 0
-            }
-        }
-        if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 19
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 20 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 18
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 19 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 17
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 18 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 16
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 17 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 15
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 16 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 14
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 15 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 13
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 14 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 12
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 13 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 11
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 12 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 10
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 11 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 9
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 10 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 8
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 9 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 7
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 8 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = { 
-                    tag = PREV
-                    count > 6
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 7 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 5
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 6 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 4
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 5 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 3
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 4 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 2
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 3 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 1
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 2 }
-        }
-        else_if = {
-            limit = {
-                has_volunteers_amount_from = {
-                    tag = PREV
-                    count > 0
-                }
-            }
-            add_to_variable = { PREV.num_of_volunteers = 1 }
-        }
-    }
-}
