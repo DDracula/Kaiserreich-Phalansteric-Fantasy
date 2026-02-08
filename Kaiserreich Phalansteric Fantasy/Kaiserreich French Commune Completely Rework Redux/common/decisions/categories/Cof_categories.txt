@@ -49,13 +49,30 @@ Cof_iri_countermeasures = {
 	allowed = { NOT = { tag = FRA } }
 	visible = { 
 		OR = {
-			has_country_flag = COF_IRI_HAD 
+			AND = {
+				has_country_flag = COF_IRI_HAD 
+				has_socialist_government = no
+				NOT = { has_country_flag = cof_iri_has_finished }
+			}
 			AND = {
 				OR = {
 					tag = IRE
 					tag = ENG
 				}
 				IRE = { has_country_flag = cof_iri_ireland_revolution }
+			}
+			AND = {
+				OR = {
+					tag = PAP
+					tag = SRI
+				}
+				PAP = { 
+					OR = {
+						has_country_flag = pap_rome_strategy_radical
+						has_country_flag = pap_rome_strategy_normal
+						has_country_flag = pap_rome_strategy_steady
+					}
+				}
 			}
 		}
 	}

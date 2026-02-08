@@ -22732,12 +22732,13 @@ focus_tree = {
 			focus = FRA_post_war_democracy_commitments 
 			focus = FRA_democratic_principle
 		}
+		available = { has_war_with = GER }
 		x = -1
 		y = 1
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-
+			country_event = cofpolitics.61
 		}
 	}
 
@@ -22749,9 +22750,21 @@ focus_tree = {
 		x = -2
 		y = 2
 		ai_will_do = { factor = 10 }
+		available = {
+			has_war_support > 0.7
+			set_temp_variable = { bgt_seat_target = 90 }
+			custom_trigger_tooltip = {
+				tooltip	= sore_oldl_seat_greater_than_x
+				check_variable = { seat_sore_oldl > bgt_seat_target }
+			}
+		}
 		cost = 2
 		completion_reward = {
-
+			if = {
+				limit = { has_idea = Cof_main_contradiction_is_what }
+				remove_ideas = Cof_main_contradiction_is_what
+			}
+			add_ideas = Cof_main_contradiction_is_revenge
 		}
 	}
 
@@ -22763,9 +22776,14 @@ focus_tree = {
 		x = -1
 		y = 3
 		ai_will_do = { factor = 10 }
+		available = { has_war_support > 0.7 }
 		cost = 2
 		completion_reward = {
-
+			if = {
+				limit = { has_idea = Cof_main_contradiction_is_what }
+				remove_ideas = Cof_main_contradiction_is_what
+			}
+			add_ideas = Cof_main_contradiction_is_emancipation
 		}
 	}
 
@@ -22777,9 +22795,21 @@ focus_tree = {
 		x = 0
 		y = 2
 		ai_will_do = { factor = 10 }
+		available = {
+			has_war_support > 0.7
+			set_temp_variable = { bgt_seat_target = 80 }
+			custom_trigger_tooltip = {
+				tooltip	= sore_oldl_seat_greater_than_x
+				check_variable = { seat_sore_oldl > bgt_seat_target }
+			}
+		}
 		cost = 2
 		completion_reward = {
-
+			if = {
+				limit = { has_idea = Cof_main_contradiction_is_what }
+				remove_ideas = Cof_main_contradiction_is_what
+			}
+			add_ideas = Cof_main_contradiction_is_honor
 		}
 	}
 

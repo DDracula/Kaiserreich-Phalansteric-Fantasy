@@ -351,14 +351,14 @@ defined_text = {
         }
         localization_key = iri_information_bel_soc
     }
+    text = {
+        trigger = { check_variable = { iri_targeted^0 = PAP } }
+        localization_key = iri_information_pap
+    }
 }
 
 defined_text = {
     name = Cof_iri_countermeasures_TAG
-    text = {
-        trigger = { tag = POR }
-        localization_key = Cof_iri_countermeasures_POR
-    }
     text = {
         trigger = { 
             OR = {
@@ -386,14 +386,20 @@ defined_text = {
         }
         localization_key = Cof_iri_countermeasures_BEL_soc
     }
+    text = {
+        trigger = { 
+            OR = {
+                tag = PAP
+                tag = SRI
+            }
+        }
+        localization_key = Cof_iri_countermeasures_PAP
+    }
+    text = { localization_key = Cof_iri_countermeasures_GENERAL }
 }
 
 defined_text = {
     name = Cof_iri_countermeasures_desc_TAG
-    text = {
-        trigger = { tag = POR }
-        localization_key = Cof_iri_countermeasures_desc_POR
-    }
     text = {
         trigger = { 
             OR = {
@@ -421,6 +427,17 @@ defined_text = {
         }
         localization_key = Cof_iri_countermeasures_desc_BEL_soc
     }
+    text = {
+        trigger = { 
+            OR = {
+                tag = PAP
+                tag = SRI
+            }
+        }
+        localization_key = Cof_iri_countermeasures_desc_PAP
+    }
+    text = { localization_key = Cof_iri_countermeasures_desc_GENERAL }
+
 }
 
 defined_text = {
@@ -447,7 +464,6 @@ defined_text = {
     }
     text = { localization_key = bel_ind_republic_accept_union_no }
 }
-
 defined_text = {
     name = bel_ind_plan_wallonia
     text = {
@@ -456,7 +472,6 @@ defined_text = {
     }
     text = { localization_key = bel_ind_wallonia_accept_union_no }
 }
-
 defined_text = {
     name = bel_ind_plan_police
     text = {
@@ -464,4 +479,28 @@ defined_text = {
         localization_key = bel_ind_police_accept_union
     }
     text = { localization_key = bel_ind_police_accept_union_no }
+}
+
+defined_text = {
+    name = pap_rome_strategy
+    text = {
+        trigger = { PAP = { has_country_flag = pap_rome_strategy_radical } }
+        localization_key = pap_rome_strategy_radical
+    }
+    text = {
+        trigger = { PAP = { has_country_flag = pap_rome_strategy_normal } }
+        localization_key = pap_rome_strategy_normal
+    }
+    text = {
+        trigger = { PAP = { has_country_flag = pap_rome_strategy_steady } }
+        localization_key = pap_rome_strategy_steady
+    }
+}
+
+defined_text = {
+    name = march_into_rome_variable
+    text = {
+        trigger = { tag = SRI }
+        localization_key = march_into_rome_variable_show
+    }
 }

@@ -6619,7 +6619,7 @@ country_event = {
 	picture = GFX_report_event_generic_diplomacy1
 	hidden = yes
 	trigger = {
-		country_exists = ALG
+		ALG = { exists = yes }
 		tag = NFA 
 		has_war_with = ALG 
 		NOT = { has_country_flag = nfa_has_all_gone } 
@@ -9515,5 +9515,336 @@ country_event = {
 	option = {
 		name = cofintern.235.a  
 		custom_effect_tooltip = bel_ind_plan_failed
+	}
+}
+
+country_event = {
+	id = cofintern.236
+	title = cofintern.236.title
+	desc = cofintern.236.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.236.a  
+		hidden_effect = {
+			PAP = { 
+				set_country_flag = pap_rome_strategy_radical 
+				set_variable = { pap_rome_intelligence = 0 }
+				set_variable = { pap_rome_plan = 0 }
+				country_event = cofintern.238
+			}
+			if = {
+				limit = { tag = FRA }
+				SRI = { country_event = cofintern.237 }
+			}
+			else = { FRA = { country_event = cofintern.237 } }
+		}
+		if = {
+			limit = { tag = SRI }
+			custom_effect_tooltip = pap_march_into_rome_start_tt
+			activate_mission = PAP_sri_mission_march_into_rome
+		}
+		else = { activate_mission = iri_euw_pap_mission_march_into_rome }
+	}
+	option = {
+		name = cofintern.236.b
+		hidden_effect = {
+			PAP = { 
+				set_country_flag = pap_rome_strategy_normal 
+				set_variable = { pap_rome_intelligence = 0 }
+				set_variable = { pap_rome_plan = 0 }
+				country_event = cofintern.238
+			}
+			if = {
+				limit = { tag = FRA }
+				SRI = { country_event = cofintern.237 }
+			}
+			else = { FRA = { country_event = cofintern.237 } }
+		}
+		if = {
+			limit = { tag = SRI }
+			custom_effect_tooltip = pap_march_into_rome_start_tt
+			activate_mission = PAP_sri_mission_march_into_rome
+			hidden_effect = { add_days_mission_timeout = { mission = PAP_sri_mission_march_into_rome days = 90 } }
+		}
+		else = {
+			activate_mission = iri_euw_pap_mission_march_into_rome
+			hidden_effect = { add_days_mission_timeout = { mission = iri_euw_pap_mission_march_into_rome days = 90 } }
+		}
+	}
+	option = {
+		name = cofintern.236.c  
+		hidden_effect = {
+			PAP = { 
+				set_country_flag = pap_rome_strategy_steady 
+				set_variable = { pap_rome_intelligence = 0 }
+				set_variable = { pap_rome_plan = 0 }
+				country_event = cofintern.238
+			}
+			if = {
+				limit = { tag = FRA }
+				SRI = { country_event = cofintern.237 }
+			}
+			else = { FRA = { country_event = cofintern.237 } }
+		}
+		if = {
+			limit = { tag = SRI }
+			custom_effect_tooltip = pap_march_into_rome_start_tt
+			activate_mission = PAP_sri_mission_march_into_rome
+			hidden_effect = { add_days_mission_timeout = { mission = PAP_sri_mission_march_into_rome days = 180 } }
+		}
+		else = {
+			activate_mission = iri_euw_pap_mission_march_into_rome
+			hidden_effect = { add_days_mission_timeout = { mission = iri_euw_pap_mission_march_into_rome days = 180 } }
+		}
+	}
+	option = {
+		name = cofintern.236.d  
+		trigger = { tag = FRA }
+		hidden_effect = { SRI = { country_event = cofintern.236 } }
+	}
+}
+
+country_event = {
+	id = cofintern.237
+	title = cofintern.237.title
+	desc = {
+		text = cofintern.237.desc.a
+		trigger = { PAP = { has_country_flag = pap_rome_strategy_radical } }
+	}
+	desc = {
+		text = cofintern.237.desc.b
+		trigger = { PAP = { has_country_flag = pap_rome_strategy_normal } }
+	}
+	desc = {
+		text = cofintern.237.desc.c
+		trigger = { PAP = { has_country_flag = pap_rome_strategy_steady } }
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.237.a  
+		if = {
+			limit = { tag = SRI }
+			custom_effect_tooltip = pap_march_into_rome_start_tt
+			activate_mission = PAP_sri_mission_march_into_rome
+			hidden_effect = { 
+				if = {
+					limit = { PAP = { has_country_flag = pap_rome_strategy_normal } }
+					add_days_mission_timeout = { mission = PAP_sri_mission_march_into_rome days = 90 }
+				}
+				else_if = {
+					limit = { PAP = { has_country_flag = pap_rome_strategy_steady } }
+					add_days_mission_timeout = { mission = PAP_sri_mission_march_into_rome days = 180 }
+				}
+			}
+		}
+		else = {
+			activate_mission = iri_euw_pap_mission_march_into_rome
+			hidden_effect = {
+				if = {
+					limit = { PAP = { has_country_flag = pap_rome_strategy_normal } }
+					add_days_mission_timeout = { mission = iri_euw_pap_mission_march_into_rome days = 90 }
+				}
+				else_if = {
+					limit = { PAP = { has_country_flag = pap_rome_strategy_steady } }
+					add_days_mission_timeout = { mission = iri_euw_pap_mission_march_into_rome days = 180 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.238
+	title = cofintern.238.title
+	desc = cofintern.238.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.238.a  
+		custom_effect_tooltip = pap_march_into_rome_start_tt
+	}
+}
+
+country_event = {
+	id = cofintern.239
+	title = cofintern.239.title
+	desc = cofintern.239.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.239.a  
+		custom_effect_tooltip = pap_rome_intelligence_strengthen_PAP
+		add_stability = -0.025
+		add_popularity = { ideology = totalist popularity = 0.02 }
+		add_popularity = { ideology = syndicalist popularity = 0.02 }
+		add_popularity = { ideology = radical_socialist popularity = 0.02 }
+	}
+}
+
+country_event = {
+	id = cofintern.240
+	title = cofintern.240.title
+	desc = cofintern.240.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.240.a  
+		add_stability = -0.05
+		add_popularity = { ideology = totalist popularity = 0.01 }
+		add_popularity = { ideology = syndicalist popularity = 0.01 }
+		add_popularity = { ideology = radical_socialist popularity = 0.01 }
+	}
+}
+
+country_event = {
+	id = cofintern.241
+	title = cofintern.241.title
+	desc = cofintern.241.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.241.a  
+		set_country_flag = cof_iri_has_finished
+		add_timed_idea = { idea = Cof_march_into_rome_strike days = 30 }
+		hidden_effect = { country_event = { id = cofintern.242 days = 3 } }
+	}
+}
+
+country_event = {
+	id = cofintern.242
+	title = cofintern.242.title
+	desc = cofintern.242.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.242.a  
+		swap_ideas = { 
+			remove_idea = Cof_march_into_rome_strike
+			add_idea = Cof_march_into_rome_guerrilla
+		}
+		hidden_effect = { country_event = { id = cofintern.243 days = 3 } }
+	}
+}
+
+country_event = {
+	id = cofintern.243
+	title = cofintern.243.title
+	desc = cofintern.243.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.243.a  
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = pap_rome_strategy_radical }
+				multiply_variable = { pap_rome_intelligence = 3 }
+				multiply_variable = { pap_rome_plan = 1 }
+			}
+			else_if = {
+				limit = { has_country_flag = pap_rome_strategy_normal }
+				multiply_variable = { pap_rome_intelligence = 2 }
+				multiply_variable = { pap_rome_plan = 2 }
+			}
+			else_if = {
+				limit = { has_country_flag = pap_rome_strategy_steady }
+				multiply_variable = { pap_rome_intelligence = 1 }
+				multiply_variable = { pap_rome_plan = 3 }
+			}
+			set_temp_variable = { chancet = pap_rome_intelligence }
+			add_to_temp_variable = { chancet = pap_rome_plan }
+			every_country_iri_revolution_judge = yes
+			add_to_temp_variable = { chancet = THIS.cof_iri_revolution }
+			random_list = {
+				var:THIS.chancet = { country_event = { id = cofintern.244 days = 7 } }
+				100 = {
+					modifier = {
+						set_temp_variable = { t = chancet }
+						multiply_temp_variable = { t = -1 }
+						add = t
+					}
+					country_event = { id = cofintern.246 days = 7 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.244
+	title = cofintern.244.title
+	desc = cofintern.244.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.244.a  
+		SRI = { annex_country = { target = PAP transfer_troops = no } } 
+		hidden_effect = {
+			FRA = { country_event = cofintern.245 }
+			SRI = { country_event = cofintern.245 }
+			SIC = { country_event = cofintern.245 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.245
+	title = cofintern.245.title
+	desc = {
+		text = cofintern.245.desc.a
+		trigger = { NOT = { tag = SIC } }
+	}
+	desc = {
+		text = cofintern.245.desc.b
+		trigger = { tag = SIC } 
+	}
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.245.a  
+		trigger = { NOT = { tag = SIC } }
+		if = {
+			limit = { tag = SRI }
+			add_stability = 0.05
+			add_war_support = 0.1
+		}
+		effect_tooltip = { SRI = { annex_country = { target = PAP transfer_troops = no } } }
+	}
+	option = {
+		name = cofintern.245.a  
+		trigger = { tag = SIC } 
+		effect_tooltip = { SRI = { annex_country = { target = PAP transfer_troops = no } } }
+	}
+}
+
+country_event = {
+	id = cofintern.246
+	title = cofintern.246.title
+	desc = cofintern.246.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.246.a  
+		add_stability = 0.3
+		add_popularity = { ideology = totalist popularity = -0.2 }
+		add_popularity = { ideology = syndicalist popularity = -0.15 }
+		add_popularity = { ideology = radical_socialist popularity = -0.15 }
+		hidden_effect = {
+			FRA = { country_event = cofintern.247 }
+			SRI = { country_event = cofintern.247 }
+		}
+	}
+}
+
+country_event = {
+	id = cofintern.247
+	title = cofintern.247.title
+	desc = cofintern.247.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofintern.247.a  
+		
 	}
 }

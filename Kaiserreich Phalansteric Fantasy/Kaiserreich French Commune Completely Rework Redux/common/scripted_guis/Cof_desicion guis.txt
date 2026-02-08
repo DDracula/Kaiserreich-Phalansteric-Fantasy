@@ -585,11 +585,14 @@ scripted_gui = {
         }
         ai_weights = {
             add_pp_with_ep_click = {
-                factor = 0
-                modifier = {
-                    set_temp_variable = { target_num = 200 }
-                    set_temp_variable = { target_t = 15 }
-                    cof_econ_target_more_than_x = yes
+                ai_will_do = {
+                    base = 0
+                    modifier = {
+                        add = 100
+                        set_temp_variable = { target_num = 200 }
+                        set_temp_variable = { target_t = 15 }
+                        cof_econ_target_more_than_x = yes
+                    }
                 }
             }
         }
