@@ -39,6 +39,12 @@ guiTypes = {
 			quadTextureSprite= "GFX_tiled_bg"
 		}
 
+		background = {
+			name = "background2"
+			quadTextureSprite= "GFX_tiled_generic_overlay_bg1"
+			alwaystransparent = yes
+		}
+
 		containerWindowType = {
 			name = "bgt_container_window"   
 			position = { x = 25 y = 30 }
@@ -60,6 +66,13 @@ guiTypes = {
 			spriteType = "GFX_closebutton"
 			clicksound = click_default
 			shortcut = "ESCAPE"
+		}
+
+		buttonType = {
+			name = "bgt_window_switch"
+			position = { x = 13 y = 15 }
+			spriteType = "GFX_backbutton32"
+			clicksound = click_default
 		}
 
 		buttonType = {
@@ -98,6 +111,487 @@ guiTypes = {
 			text = bgt_party_detail_choice
 			maxWidth = 400
 			maxHeight = 20
+		}
+
+		instantTextBoxType = {
+			name ="CSP_title_text"
+			orientation = center
+			position = { x = -105 y = -55 }
+			font = "hoi_24header"
+			text = "[gui_csp_choose_loc]"
+			format = center
+			maxWidth = 200
+		}
+
+		containerWindowType = {
+			name = "CSP_CCSP_portrait_container"
+			orientation = center_up
+			position = { x = -60 y = 30 }
+			size = { width = 123 height = 161 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name = "CSP_CCSP_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large" #Temp
+				orientation = upper_left
+				position = { x = 0 y = 0 }
+				scale = 0.75
+				pdx_tooltip = CSP_CCSP_name_text_long
+			}
+			iconType = {
+				name = "CSP_CCSP_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerposition = yes
+				alwaystransparent = yes
+			}
+			iconType = {
+				name = "CSP_CCSP_name_box"
+				spriteType = "GFX_fuhrer_name_ribbon"
+				orientation = center
+				position = { x = 0 y = 95 }
+				scale = 1.2
+				centerposition = yes
+				pdx_tooltip = CSP_CCSP_name_text_long
+			}
+			instantTextBoxType = {
+				name = "CSP_CCSP_name"
+				orientation = center_down
+				position = { x = -100 y = 0 }
+				font = "hoi_20b" #"hoi_18mbs"
+				text = CSP_CCSP_name_text
+				format = center
+				maxWidth = 200
+			}
+			iconType = {
+				name = "CSP_CCSP_title_box"
+				spriteType = "GFX_trait_box_fuhrer"
+				orientation = center
+				position = { x = 0 y = 111 }
+				centerposition = yes
+				pdx_tooltip = CSP_CCSP_title_text
+			}
+			instantTextBoxType = {
+				name = "CSP_CCSP_title"
+				orientation = center_down
+				position = { x = -100 y = 20 }
+				font = "hoi_16mbs"
+				text = CSP_CCSP_title_text
+				format = center
+				maxWidth = 200
+			}
+		}
+		containerWindowType = {
+			name = "CSP_DFA_container"
+			orientation = center_up
+			position = { x = -230 y = 80 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_DFA_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_DFA_name_text_long
+			}
+			iconType = {
+				name ="CSP_DFA_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_DFA_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_DFA_name_text_long
+			}
+			instantTextBoxType = {
+				name ="CSP_DFA_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_DFA_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_DFA_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_DFA_trait_text_detail 
+			}
+			instantTextBoxType = {
+				name ="CSP_DFA_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_DFA_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_DEA_container"
+			orientation = center_up
+			position = { x = 85 y = 80 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_DEA_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_DEA_name_text_long
+			}
+			iconType = {
+				name ="CSP_DEA_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_DEA_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_DEA_name_text_long
+			}
+			instantTextBoxType = {
+				name ="CSP_DEA_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_DEA_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_DEA_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_DEA_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_DEA_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_DEA_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_DIS_container"
+			orientation = center_up
+			position = { x = -210 y = 270 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_DIS_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_DIS_name_text_long
+			}
+			iconType = {
+				name ="CSP_DIS_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_DIS_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_DIS_name_text_long
+			}
+			instantTextBoxType = {
+				name ="CSP_DIS_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_DIS_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_DIS_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_DIS_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_DIS_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_DIS_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_DSRG_container"
+			orientation = center_up
+			position = { x = -75 y = 270 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_DSRG_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_DSRG_name_text_long
+			}
+			iconType = {
+				name ="CSP_DSRG_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_DSRG_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_DSRG_name_text_long
+			}
+			instantTextBoxType = {
+				name ="CSP_DSRG_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_DSRG_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_DSRG_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_DSRG_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_DSRG_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_DSRG_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_CGSC_container"
+			orientation = center_up
+			position = { x = 60 y = 270 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_CGSC_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_CGSC_name_text_long
+			}
+			iconType = {
+				name ="CSP_CGSC_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_CGSC_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_CGSC_name_text_long
+			}
+			instantTextBoxType = {
+				name ="CSP_CGSC_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_CGSC_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_CGSC_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_CGSC_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_CGSC_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_CGSC_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+
+		instantTextboxType = {
+			name = "ios_ui_box"
+			position = { x = 575 y = 70 }
+			font = "hoi_18mbs"
+			text = ios_ui_text
+			maxWidth = 150
+			maxHeight = 80
+			format = centre
+			pdx_tooltip = politics_ui_ios_text
+			pdx_tooltip_delayed = politics_ui_ios_text_delay
+		}
+
+		instantTextboxType = {
+			name = "bop_ui_box"
+			position = { x = 220 y = 450 }
+			font = "hoi_24header"
+			text = bop_ui_text
+			maxWidth = 300
+			maxHeight = 200
+			format = centre
+			pdx_tooltip = bop_ui_text_tt
+			pdx_tooltip_delayed = bop_ui_tt_delay
+		}
+
+		instantTextboxType = {
+			name = "csp_appointed_trustee"
+			position = { x = 500 y = 430 }
+			font = "hoi_24header"
+			text = csp_appointed_trustee
+			maxWidth = 300
+			maxHeight = 200
+			format = centre
+			pdx_tooltip = csp_appointed_trustee_desc
+		}
+		buttonType = {
+			name ="csp_appointed_trustee_button_no"
+			spriteType = "GFX_generic_checkbox2"
+			orientation = center
+			position = { x = 275 y = 210 }
+			centerposition = yes
+			scale = 2
+			pdx_tooltip = csp_appointed_trustee_desc
+		}
+		buttonType = {
+			name ="csp_appointed_trustee_button_yes"
+			spriteType = "GFX_generic_checkbox2"
+			orientation = center
+			position = { x = 275 y = 210 }
+			centerposition = yes
+			scale = 2
+			pdx_tooltip = csp_appointed_trustee_desc
+		}
+
+		buttonType = {
+			name = "csp_give_more_power"
+			position = { x = 30 y = 90 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = csp_give_more_power
+			pdx_tooltip = csp_give_more_power_desc
+			clicksound = click_default
+		}
+
+		buttonType = {
+			name = "csp_give_less_power"
+			position = { x = 30 y = 140 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = csp_give_less_power
+			pdx_tooltip = csp_give_less_power_desc
+			clicksound = click_default
+		}
+
+		buttonType = {
+			name = "csp_adopt_suggestion"
+			position = { x = 40 y = 270 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = csp_adopt_suggestion
+			pdx_tooltip = csp_adopt_suggestion_desc
+			clicksound = click_default
+		}
+		buttonType = {
+			name = "csp_provide_funding"
+			position = { x = 40 y = 320 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = csp_provide_funding
+			pdx_tooltip = csp_provide_funding_desc
+			clicksound = click_default
+		}
+		buttonType = {
+			name = "csp_cut_the_budget"
+			position = { x = 40 y = 370 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = csp_cut_the_budget
+			pdx_tooltip = csp_cut_the_budget_desc
+			clicksound = click_default
+		}
+		instantTextboxType = {
+			name = "csp_budget_show"
+			position = { x = 30 y = 450 }
+			font = "hoi_18mbs"
+			text = csp_budget_show
+			maxWidth = 300
+			maxHeight = 200
+			format = left
 		}
 	}
 

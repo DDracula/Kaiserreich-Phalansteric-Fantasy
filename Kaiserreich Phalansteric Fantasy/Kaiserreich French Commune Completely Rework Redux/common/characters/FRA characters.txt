@@ -2003,6 +2003,40 @@ characters = {
 		}
 	}
 
+	FRA_victor_barthelemy = { #维克多·巴泰勒米
+		name = FRA_victor_barthelemy
+		portraits = {
+			civilian = {
+				small = GFX_portrait_FRA_victor_barthelemy_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = FRA_victor_barthelemy
+			available = {
+				set_temp_variable = { bgt_seat_target = 80 }
+				custom_trigger_tooltip = {
+					tooltip	= jaco_revo_seat_greater_than_x
+					check_variable = { seat_jaco_revo > bgt_seat_target }
+				}
+			}
+			cost = 200
+			traits = { FRA_mastermind_behind_scenes }
+			desc = FRA_victor_barthelemy_advisor_desc
+			on_add = {
+				FRA = {
+					if = { limit = { has_country_flag = FRA_victor_barthelemy_effect } }
+					else = {
+						set_country_flag = FRA_victor_barthelemy_effect
+						custom_effect_tooltip = effect_politics
+						set_temp_variable = { ppvc = 10 }
+						cof_politics_BGT_vs_CSP_values_change = yes
+					}			
+				}
+			}
+		}
+	}
+
 	FRA_simon_sabiani = { #西蒙·萨比亚尼
 		name = FRA_simon_sabiani
 		portraits = {
@@ -2060,67 +2094,6 @@ characters = {
 						Cof_army_theory_implementation_change = yes		
 					}		
 				}	
-			}
-		}
-	}
-
-	FRA_victor_barthelemy = { #维克多·巴泰勒米
-		name = FRA_victor_barthelemy
-		portraits = {
-			civilian = {
-				small = GFX_portrait_FRA_victor_barthelemy_civilian_small
-			}
-		}
-		advisor = {
-			slot = high_command
-			idea_token = FRA_victor_barthelemy
-			available = {
-				set_temp_variable = { bgt_seat_target = 80 }
-				custom_trigger_tooltip = {
-					tooltip	= jaco_revo_seat_greater_than_x
-					check_variable = { seat_jaco_revo > bgt_seat_target }
-				}
-			}
-			cost = 200
-			traits = { FRA_friends_of_the_red_army_brigade }
-			desc = FRA_victor_barthelemy_high_command_desc
-			on_add = {
-				FRA = {
-					if = { limit = { has_country_flag = FRA_victor_barthelemy_effect } }
-					else = {
-						set_country_flag = FRA_victor_barthelemy_effect
-
-						custom_effect_tooltip = effect_military
-						set_temp_variable = { msyndc = -0.5 }
-						set_temp_variable = { moppoc = -0.5 }
-						set_temp_variable = { mjacoc = 1.5 }
-						set_temp_variable = { msorec = -0.5 }
-						mili_faction_influence_change = yes
-
-						custom_effect_tooltip = tooltip_white_line
-						set_temp_variable = { atsynd1c = 0 }
-						set_temp_variable = { atsynd2c = 0 }
-						set_temp_variable = { atoppo1c = 0 }
-						set_temp_variable = { atoppo2c = 0 }
-						set_temp_variable = { atjaco1c = 1 }
-						set_temp_variable = { atjaco2c = 1 }
-						set_temp_variable = { atsore1c = 0 }
-						set_temp_variable = { atsore2c = 0 }
-						Cof_army_theory_change = yes
-
-						custom_effect_tooltip = tooltip_white_line
-						set_temp_variable = { atimpc = 0 }
-						set_temp_variable = { atimp1c = 0 }
-						set_temp_variable = { atimp2c = 0 }
-						set_temp_variable = { atimp3c = 0 }
-						set_temp_variable = { atimp4c = 0 }
-						set_temp_variable = { atimp5c = 5 }
-						set_temp_variable = { atimp6c = 10 }
-						set_temp_variable = { atimp7c = 0 }
-						set_temp_variable = { atimp8c = 0 }
-						Cof_army_theory_implementation_change = yes		
-					}			
-				}
 			}
 		}
 	}

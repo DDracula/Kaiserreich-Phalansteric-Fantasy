@@ -17,15 +17,951 @@ scripted_gui = {
             }
         }
     }
-    bgt_window_button = {
+    bgt_csp_window_show = {
         context_type = player_context
         window_name = bgt_window
 
         visible = {
 			tag = FRA
-            has_country_flag = bgt_show
+            OR = {
+                has_country_flag = bgt_show
+                has_country_flag = csp_show
+            }
 		}
+        triggers = {
+            bgt_change_model_button_visible = { has_country_flag = bgt_show }
+            bgt_party_detail_box_visible = { has_country_flag = bgt_show }
+            bgt_party_detail_visible = { has_country_flag = bgt_show }
+            bgt_party_detail_choice_visible = { has_country_flag = bgt_show }
+            bgt_seat_icon_visible = { has_country_flag = bgt_show }
+
+            CSP_title_text_visible = { has_country_flag = csp_show }
+
+            CSP_CCSP_portrait_visible = { has_country_flag = csp_show }
+            CSP_CCSP_frame_visible = { has_country_flag = csp_show }
+            CSP_CCSP_name_box_visible = { has_country_flag = csp_show }
+            CSP_CCSP_name_visible = { has_country_flag = csp_show }
+            CSP_CCSP_title_box_visible = { has_country_flag = csp_show }
+            CSP_CCSP_title_visible = { has_country_flag = csp_show }
+
+            CSP_DFA_portrait_visible = { has_country_flag = csp_show }
+            CSP_DFA_frame_visible = { has_country_flag = csp_show }
+            CSP_DFA_name_box_visible = { has_country_flag = csp_show }
+            CSP_DFA_name_visible = { has_country_flag = csp_show }
+            CSP_DFA_trait_box_visible = { has_country_flag = csp_show }
+            CSP_DFA_trait_visible = { has_country_flag = csp_show }
+
+            CSP_DEA_portrait_visible = { has_country_flag = csp_show }
+            CSP_DEA_frame_visible = { has_country_flag = csp_show }
+            CSP_DEA_name_box_visible = { has_country_flag = csp_show }
+            CSP_DEA_name_visible = { has_country_flag = csp_show }
+            CSP_DEA_trait_box_visible = { has_country_flag = csp_show }
+            CSP_DEA_trait_visible = { has_country_flag = csp_show }
+
+            CSP_DIS_portrait_visible = { has_country_flag = csp_show }
+            CSP_DIS_frame_visible = { has_country_flag = csp_show }
+            CSP_DIS_name_box_visible = { has_country_flag = csp_show }
+            CSP_DIS_name_visible = { has_country_flag = csp_show }
+            CSP_DIS_trait_box_visible = { has_country_flag = csp_show }
+            CSP_DIS_trait_visible = { has_country_flag = csp_show }
+
+            CSP_DSRG_portrait_visible = { has_country_flag = csp_show }
+            CSP_DSRG_frame_visible = { has_country_flag = csp_show }
+            CSP_DSRG_name_box_visible = { has_country_flag = csp_show }
+            CSP_DSRG_name_visible = { has_country_flag = csp_show }
+            CSP_DSRG_trait_box_visible = { has_country_flag = csp_show }
+            CSP_DSRG_trait_visible = { has_country_flag = csp_show }
+
+            CSP_CGSC_portrait_visible = { has_country_flag = csp_show }
+            CSP_CGSC_frame_visible = { has_country_flag = csp_show }
+            CSP_CGSC_name_box_visible = { has_country_flag = csp_show }
+            CSP_CGSC_name_visible = { has_country_flag = csp_show }
+            CSP_CGSC_trait_box_visible = { has_country_flag = csp_show }
+            CSP_CGSC_trait_visible = { has_country_flag = csp_show }
+            
+            bop_ui_box_visible = { has_country_flag = csp_show }
+            ios_ui_box_visible = { has_country_flag = csp_show }
+            
+            csp_appointed_trustee_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            csp_appointed_trustee_button_no_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            csp_appointed_trustee_button_yes_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    has_country_flag = appointed_trustee_CCSP
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    has_country_flag = appointed_trustee_DFA
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    has_country_flag = appointed_trustee_DEA
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    has_country_flag = appointed_trustee_DIS
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    has_country_flag = appointed_trustee_DSRG
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    has_country_flag = appointed_trustee_CGSC
+                }
+            }
+
+            csp_give_more_power_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            csp_give_less_power_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+
+            csp_give_more_power_click_enabled = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    NOT = { has_idea = Cof_more_power_to_CCSP }
+                    NOT = { has_idea = Cof_less_power_to_CCSP }
+                    has_political_power > 100
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    NOT = { has_idea = Cof_more_power_to_DFA }
+                    NOT = { has_idea = Cof_less_power_to_DFA }
+                    has_political_power > 50
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    NOT = { has_idea = Cof_more_power_to_DEA }
+                    NOT = { has_idea = Cof_less_power_to_DEA }
+                    has_political_power > 50
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    NOT = { has_idea = Cof_more_power_to_DIS }
+                    NOT = { has_idea = Cof_less_power_to_DIS }
+                    has_political_power > 50
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    NOT = { has_idea = Cof_more_power_to_DSRG }
+                    NOT = { has_idea = Cof_less_power_to_DSRG }
+                    has_political_power > 50
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    NOT = { has_idea = Cof_more_power_to_CGSC }
+                    NOT = { has_idea = Cof_less_power_to_CGSC }
+                    has_political_power > 50
+                }
+            }
+            csp_give_less_power_click_enabled = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    NOT = { has_idea = Cof_more_power_to_CCSP }
+                    NOT = { has_idea = Cof_less_power_to_CCSP }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    NOT = { has_idea = Cof_more_power_to_DFA }
+                    NOT = { has_idea = Cof_less_power_to_DFA }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    NOT = { has_idea = Cof_more_power_to_DEA }
+                    NOT = { has_idea = Cof_less_power_to_DEA }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    NOT = { has_idea = Cof_more_power_to_DIS }
+                    NOT = { has_idea = Cof_less_power_to_DIS }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    NOT = { has_idea = Cof_more_power_to_DSRG }
+                    NOT = { has_idea = Cof_less_power_to_DSRG }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    NOT = { has_idea = Cof_more_power_to_CGSC }
+                    NOT = { has_idea = Cof_less_power_to_CGSC }
+                }
+            }
+
+            csp_adopt_suggestion_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            csp_provide_funding_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            csp_provide_funding_click_enabled = {
+                check_variable = { economy_power > 49.9 }
+            }
+            csp_cut_the_budget_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            csp_cut_the_budget_click_enabled = {
+                has_political_power > 20
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    check_variable = { CSP_budget_CCSP > 0 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    check_variable = { CSP_budget_DFA > 0 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    check_variable = { CSP_budget_DEA > 0 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    check_variable = { CSP_budget_DIS > 0 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    check_variable = { CSP_budget_DSRG > 0 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    check_variable = { CSP_budget_CGSC > 0 }
+                }
+            }
+            csp_budget_show_visible = {
+                has_country_flag = csp_show
+                OR = {
+                    has_country_flag = gui_csp_choose_CCSP
+                    has_country_flag = gui_csp_choose_DFA
+                    has_country_flag = gui_csp_choose_DEA
+                    has_country_flag = gui_csp_choose_DIS
+                    has_country_flag = gui_csp_choose_DSRG
+                    has_country_flag = gui_csp_choose_CGSC
+                }
+            }
+        }
         effects = {
+            csp_appointed_trustee_button_no_click = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    set_country_flag = appointed_trustee_CCSP
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    set_country_flag = appointed_trustee_DFA
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    set_country_flag = appointed_trustee_DEA
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    set_country_flag = appointed_trustee_DIS
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    set_country_flag = appointed_trustee_DSRG
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    set_country_flag = appointed_trustee_CGSC
+                }
+            }
+            csp_appointed_trustee_button_yes_click = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    clr_country_flag = appointed_trustee_CCSP
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    clr_country_flag = appointed_trustee_DFA
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    clr_country_flag = appointed_trustee_DEA
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    clr_country_flag = appointed_trustee_DIS
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    clr_country_flag = appointed_trustee_DSRG
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    clr_country_flag = appointed_trustee_CGSC
+                }
+            }
+
+            CSP_CCSP_portrait_click = { 
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    clr_country_flag = gui_csp_choose_CCSP
+                }
+                else = {
+                    set_country_flag = gui_csp_choose_CCSP
+                    clr_country_flag = gui_csp_choose_DFA
+                    clr_country_flag = gui_csp_choose_DEA
+                    clr_country_flag = gui_csp_choose_DIS
+                    clr_country_flag = gui_csp_choose_DSRG
+                    clr_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            CSP_DFA_portrait_click = { 
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    clr_country_flag = gui_csp_choose_DFA
+                }
+                else = {
+                    clr_country_flag = gui_csp_choose_CCSP
+                    set_country_flag = gui_csp_choose_DFA
+                    clr_country_flag = gui_csp_choose_DEA
+                    clr_country_flag = gui_csp_choose_DIS
+                    clr_country_flag = gui_csp_choose_DSRG
+                    clr_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            CSP_DEA_portrait_click = { 
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    clr_country_flag = gui_csp_choose_DEA
+                }
+                else = {
+                    clr_country_flag = gui_csp_choose_CCSP
+                    clr_country_flag = gui_csp_choose_DFA
+                    set_country_flag = gui_csp_choose_DEA
+                    clr_country_flag = gui_csp_choose_DIS
+                    clr_country_flag = gui_csp_choose_DSRG
+                    clr_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            CSP_DIS_portrait_click = { 
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    clr_country_flag = gui_csp_choose_DIS
+                }
+                else = {
+                    clr_country_flag = gui_csp_choose_CCSP
+                    clr_country_flag = gui_csp_choose_DFA
+                    clr_country_flag = gui_csp_choose_DEA
+                    set_country_flag = gui_csp_choose_DIS
+                    clr_country_flag = gui_csp_choose_DSRG
+                    clr_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            CSP_DSRG_portrait_click = { 
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    clr_country_flag = gui_csp_choose_DSRG
+                }
+                else = {
+                    clr_country_flag = gui_csp_choose_CCSP
+                    clr_country_flag = gui_csp_choose_DFA
+                    clr_country_flag = gui_csp_choose_DEA
+                    clr_country_flag = gui_csp_choose_DIS
+                    set_country_flag = gui_csp_choose_DSRG
+                    clr_country_flag = gui_csp_choose_CGSC
+                }
+            }
+            CSP_CGSC_portrait_click = { 
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    clr_country_flag = gui_csp_choose_CGSC
+                }
+                else = {
+                    clr_country_flag = gui_csp_choose_CCSP
+                    clr_country_flag = gui_csp_choose_DFA
+                    clr_country_flag = gui_csp_choose_DEA
+                    clr_country_flag = gui_csp_choose_DIS
+                    clr_country_flag = gui_csp_choose_DSRG
+                    set_country_flag = gui_csp_choose_CGSC
+                }
+            }
+
+            csp_give_more_power_click = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    add_political_power = -100
+                    add_to_variable = { Cof_BGT_vs_CSP_value = 10 }
+                    add_timed_idea = { idea = Cof_more_power_to_CCSP days = 180 }
+                    if = {
+                        limit = { has_country_flag = CCSP_synd }
+                        if = {
+                            limit = { has_country_flag = DFA_synd }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_synd }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_synd }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_synd }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_synd }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+                    else_if = {
+                        limit = { has_country_flag = CCSP_oppo }
+                        if = {
+                            limit = { has_country_flag = DFA_oppo }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_oppo }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_oppo }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_oppo }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_oppo }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+                    else_if = {
+                        limit = { has_country_flag = CCSP_jaco }
+                        if = {
+                            limit = { has_country_flag = DFA_jaco }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_jaco }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_jaco }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_jaco }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_jaco }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+                    else_if = {
+                        limit = { has_country_flag = CCSP_sore }
+                        if = {
+                            limit = { has_country_flag = DFA_sore }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_sore }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_sore }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_sore }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_sore }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = 1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    add_political_power = -50
+                    set_temp_variable = { target_a = 1 }
+                    set_temp_variable = { change_num = 1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = 5 }
+                    add_timed_idea = { idea = Cof_more_power_to_DFA days = 180 }
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    add_political_power = -50
+                    set_temp_variable = { target_a = 2 }
+                    set_temp_variable = { change_num = 1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = 5 }
+                    add_timed_idea = { idea = Cof_more_power_to_DEA days = 180 }
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    add_political_power = -50
+                    set_temp_variable = { target_a = 3 }
+                    set_temp_variable = { change_num = 1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = 5 }
+                    add_timed_idea = { idea = Cof_more_power_to_DIS days = 180 }
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    add_political_power = -50
+                    set_temp_variable = { target_a = 4 }
+                    set_temp_variable = { change_num = 1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = 5 }
+                    add_timed_idea = { idea = Cof_more_power_to_DSRG days = 180 }
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    add_political_power = -50
+                    set_temp_variable = { target_a = 5 }
+                    set_temp_variable = { change_num = 1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = 5 }
+                    add_timed_idea = { idea = Cof_more_power_to_CGSC days = 180 }
+                }
+            }
+
+            csp_give_less_power_click = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    add_to_variable = { Cof_BGT_vs_CSP_value = -20 }
+                    add_timed_idea = { idea = Cof_less_power_to_CCSP days = 180 }
+                    if = {
+                        limit = { has_country_flag = CCSP_synd }
+                        if = {
+                            limit = { has_country_flag = DFA_synd }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_synd }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_synd }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_synd }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_synd }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+                    else_if = {
+                        limit = { has_country_flag = CCSP_oppo }
+                        if = {
+                            limit = { has_country_flag = DFA_oppo }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_oppo }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_oppo }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_oppo }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_oppo }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+                    else_if = {
+                        limit = { has_country_flag = CCSP_jaco }
+                        if = {
+                            limit = { has_country_flag = DFA_jaco }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_jaco }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_jaco }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_jaco }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_jaco }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+                    else_if = {
+                        limit = { has_country_flag = CCSP_sore }
+                        if = {
+                            limit = { has_country_flag = DFA_sore }
+                            set_temp_variable = { target_a = 1 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DEA_sore }
+                            set_temp_variable = { target_a = 2 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DIS_sore }
+                            set_temp_variable = { target_a = 3 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = DSRG_sore }
+                            set_temp_variable = { target_a = 4 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                        if = {
+                            limit = { has_country_flag = CGSC_sore }
+                            set_temp_variable = { target_a = 5 }
+                            set_temp_variable = { change_num = -1 }
+                            CSP_attitude_change = yes
+                        }
+                    }
+
+                    add_political_power = 100
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    set_temp_variable = { target_a = 1 }
+                    set_temp_variable = { change_num = -1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = -10 }
+                    add_timed_idea = { idea = Cof_less_power_to_DFA days = 180 }
+
+                    add_political_power = 50
+                    set_temp_variable = { iri_euic = 20 }
+                    set_temp_variable = { iri_asic = 20 }
+                    set_temp_variable = { iri_meic = 20 }
+                    set_temp_variable = { iri_afic = 20 }
+                    set_temp_variable = { iri_amic = 20 }
+                    iri_influence_change = yes
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    set_temp_variable = { target_a = 2 }
+                    set_temp_variable = { change_num = -1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = -10 }
+                    add_timed_idea = { idea = Cof_less_power_to_DEA days = 180 }
+
+                    add_political_power = 50
+                    set_temp_variable = { epc = 100 }
+                    set_temp_variable = { evc = 0 }
+                    set_temp_variable = { eibc = 2 }
+                    set_temp_variable = { eipc = 0 }
+                    set_temp_variable = { eiac = 0 }
+                    set_temp_variable = { eamc = 0 }
+                    set_temp_variable = { eaec = 0 }
+                    set_temp_variable = { eaac = 2 }
+                    set_temp_variable = { eqc = 0 }
+                    set_temp_variable = { elc = 0 }
+                    set_temp_variable = { eic = 2 }
+                    cof_econ_target_change = yes
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    set_temp_variable = { target_a = 3 }
+                    set_temp_variable = { change_num = -1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = -10 }
+                    add_timed_idea = { idea = Cof_less_power_to_DIS days = 180 }
+
+                    add_political_power = 50
+                    set_temp_variable = { wc = 1 }
+                    set_temp_variable = { pc = 1 }
+                    set_temp_variable = { mc = 1 }
+                    set_temp_variable = { sc = 1 }
+                    set_temp_variable = { bc = 1 }
+                    set_temp_variable = { ac = 1 }
+                    class_pop_satisfactions_change = yes
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    set_temp_variable = { target_a = 4 }
+                    set_temp_variable = { change_num = -1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = -10 }
+                    add_timed_idea = { idea = Cof_less_power_to_DSRG days = 180 }
+
+                    add_political_power = 50
+                    gain_random_agency_upgrade = yes
+                }
+
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    set_temp_variable = { target_a = 5 }
+                    set_temp_variable = { change_num = -1 }
+                    CSP_attitude_change = yes
+                    add_to_variable = { Cof_BGT_vs_CSP_value = -10 }
+                    add_timed_idea = { idea = Cof_less_power_to_CGSC days = 180 }
+
+                    add_political_power = 50
+                    army_experience = 20
+                    set_temp_variable = { aac = 5 }
+                    set_temp_variable = { awc = 0 }
+                    set_temp_variable = { atc = 0 }
+                    set_temp_variable = { aec = 0 }
+                    set_temp_variable = { apc = 0 }
+                    Cof_army_reform_values_change = yes
+                }
+            }
+            
+            csp_adopt_suggestion_click = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    country_event = cofpolitics.62
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    country_event = cofpolitics.63
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    country_event = cofpolitics.64
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    country_event = cofpolitics.65
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    country_event = cofpolitics.66
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    country_event = cofpolitics.67
+                }
+            }
+            csp_provide_funding_click = {
+                add_to_variable = { economy_power = -50 }
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    add_to_variable = { CSP_budget_CCSP = 1 }
+                    add_to_variable = { CSP_budget = 1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    add_to_variable = { CSP_budget_DFA = 1 }
+                    add_to_variable = { CSP_budget = 1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    add_to_variable = { CSP_budget_DEA = 1 }
+                    add_to_variable = { CSP_budget = 1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    add_to_variable = { CSP_budget_DIS = 1 }
+                    add_to_variable = { CSP_budget = 1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    add_to_variable = { CSP_budget_DSRG = 1 }
+                    add_to_variable = { CSP_budget = 1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    add_to_variable = { CSP_budget_CGSC = 1 }
+                    add_to_variable = { CSP_budget = 1 }
+                }
+            }
+            csp_cut_the_budget_click = {
+                add_political_power = -20
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    add_to_variable = { CSP_budget_CCSP = -1 }
+                    add_to_variable = { CSP_budget = -1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    add_to_variable = { CSP_budget_DFA = -1 }
+                    add_to_variable = { CSP_budget = -1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    add_to_variable = { CSP_budget_DEA = -1 }
+                    add_to_variable = { CSP_budget = -1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    add_to_variable = { CSP_budget_DIS = -1 }
+                    add_to_variable = { CSP_budget = -1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    add_to_variable = { CSP_budget_DSRG = -1 }
+                    add_to_variable = { CSP_budget = -1 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    add_to_variable = { CSP_budget_CGSC = -1 }
+                    add_to_variable = { CSP_budget = -1 }
+                }
+            }
+
             bgt_change_model_button_click = {
                 if = {
                     limit = { has_country_flag = show_bgt_voting }
@@ -51,6 +987,19 @@ scripted_gui = {
             }
             bgt_window_esc_click = {
                 clr_country_flag = bgt_show
+                clr_country_flag = csp_show
+            }
+            bgt_window_switch_click = {
+                if = {
+                    limit = { has_country_flag = bgt_show }
+                    clr_country_flag = bgt_show
+                    set_country_flag = csp_show
+                }
+                else_if = {
+                    limit = { has_country_flag = csp_show }
+                    clr_country_flag = csp_show
+                    set_country_flag = bgt_show
+                }
             }
             bgt_seat_icon_click = {
                 if = {
@@ -176,6 +1125,14 @@ scripted_gui = {
                 y = seat_y_array^seat_idx
                 frame = array_f_array^seat_idx
             }
+            csp_appointed_trustee_button_no = { frame = 1 }
+            csp_appointed_trustee_button_yes = { frame = 2 }
+            CSP_CCSP_portrait = { image = "[gui_CSP_CCSP_loc]" }
+            CSP_DFA_portrait = { image = "[gui_CSP_DFA_loc]" }
+            CSP_DEA_portrait = { image = "[gui_CSP_DEA_loc]" }
+            CSP_DIS_portrait = { image = "[gui_CSP_DIS_loc]" }
+            CSP_DSRG_portrait = { image = "[gui_CSP_DSRG_loc]" }
+            CSP_CGSC_portrait = { image = "[gui_CSP_CGSC_loc]" }
         }
     }
     bgt_voting_party_choice_button = {
@@ -184,6 +1141,7 @@ scripted_gui = {
         window_name = bgt_voting_party_button
 
         visible = {
+            has_country_flag = bgt_show
             NOT = { has_country_flag = show_bgt_voting }
             OR = {
                 has_country_flag = party_CNS_show
@@ -650,6 +1608,7 @@ scripted_gui = {
         visible = {
 			tag = FRA
             has_country_flag = show_bgt_voting 
+            has_country_flag = bgt_show
 		}
         triggers = {
             bgt_voting_preach_visible = {

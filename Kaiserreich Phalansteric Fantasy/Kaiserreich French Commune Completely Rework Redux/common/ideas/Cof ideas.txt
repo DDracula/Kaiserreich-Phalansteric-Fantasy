@@ -360,6 +360,63 @@ ideas = {
             }
         }
 
+        #CSP
+        Cof_more_power_to_CCSP = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_bgt_vs_csp = 1
+                political_power_gain = 1
+                monthly_change_popsb = 0.4
+            }
+        }
+        Cof_more_power_to_DFA = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_bgt_vs_csp = 0.5
+                weekly_change_ieu = 1
+                weekly_change_ias = 1
+                weekly_change_ime = 1
+                weekly_change_iaf = 1
+                weekly_change_iam = 1
+            }
+        }
+        Cof_more_power_to_DEA = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_bgt_vs_csp = 0.5
+                monthly_change_ev = 0.3
+                monthly_change_eib = 0.3
+                monthly_change_el = 0.3
+            }
+        }
+        Cof_more_power_to_DIS = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_bgt_vs_csp = 0.5
+                monthly_change_popsw = 0.2
+                monthly_change_popsp = 0.2
+                monthly_change_popsm = 0.2
+                monthly_change_popss = 0.2
+            }
+        }
+        Cof_more_power_to_DSRG = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_bgt_vs_csp = 0.5
+                intel_network_gain_factor = 0.1
+				operative_slot = 1
+            }
+        }
+        Cof_more_power_to_CGSC = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_bgt_vs_csp = 0.5
+                monthly_change_popsa = 0.3
+                monthly_change_awill = 0.3
+                monthly_change_atrain = 0.5
+            }
+        }
+
         #反CGT游行
         Cof_anti_cgt_record = {
             name = Cof_anti_cgt_record
@@ -513,8 +570,8 @@ ideas = {
             picture = RAJ_kingmaker
             cancel = { has_war = no }
             modifier = {
-                add_war_support = -0.1
-                add_stability = -0.05
+                war_support_factor = -0.1
+                stability_factor = -0.05
                 army_core_attack_factor = -0.05
                 army_core_defence_factor = -0.05
             }
@@ -525,7 +582,7 @@ ideas = {
             targeted_modifier = {
                 tag = GER
                 attack_bonus_against = 0.05
-                attack_bonus_against = 0.1
+                defence_bonus_against = 0.1
             }
         }
         Cof_main_contradiction_is_emancipation = {
@@ -1425,6 +1482,14 @@ ideas = {
 				motorized_equipment = 0.05
 			}
         }
+
+        #CSP less power count
+        Cof_less_power_to_CCSP = { modifier = {  } }
+        Cof_less_power_to_DFA = { modifier = {  } }
+        Cof_less_power_to_DEA = { modifier = {  } }
+        Cof_less_power_to_DIS = { modifier = {  } }
+        Cof_less_power_to_DSRG = { modifier = {  } }
+        Cof_less_power_to_CGSC = { modifier = {  } }
 
         #装备质量
         Cof_army_equipment_buff1 = { #0-10

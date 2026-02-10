@@ -841,18 +841,21 @@ economy_power_judge = {
 
 	add_to_variable = { economy_power_change = modifier@economy_power_gain }
 
-	set_variable = { epfcfev = cof_econ_values }
-	multiply_variable = { epfcfev = 0.5 }
-	multiply_variable = { epfcfev = 0.01 }
+	set_variable = { epfcev = cof_econ_values }
+	multiply_variable = { epfcev = 0.5 }
+	multiply_variable = { epfcev = 0.01 }
+
+	set_variable = { epfcbg = CSP_budget }
+	multiply_variable = { epfcbg = -0.025 }
 
 	set_variable = { epf = modifier@economy_power_factor }
-	add_to_variable = { epf = epfcfev }
+	add_to_variable = { epf = epfcev }
+	add_to_variable = { epf = epfcbg }
 	
 	set_temp_variable = { epft = 1 }
 	add_to_temp_variable = { epft = epf }
 
 	multiply_variable = { economy_power_change = epft }
-
 }
 
 ###		派系经济影响力变化

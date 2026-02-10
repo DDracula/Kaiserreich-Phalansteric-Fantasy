@@ -21785,6 +21785,7 @@ focus_tree = {
 		ai_will_do = { factor = 0 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_politics
 			set_temp_variable = { ppvc = 30 }
 			cof_politics_BGT_vs_CSP_values_change = yes
 		}
@@ -21806,6 +21807,7 @@ focus_tree = {
 		ai_will_do = { factor = 0 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = effect_politics
 			set_temp_variable = { ppvc = -30 }
 			cof_politics_BGT_vs_CSP_values_change = yes
 		}
@@ -22536,7 +22538,13 @@ focus_tree = {
 		}
 		x = -2
 		y = 1
-		ai_will_do = { factor = 10 }
+		ai_will_do = { 
+			factor = 10 
+			modifier = {
+				factor = 50
+				has_idea = Cof_doubt_of_democrazy
+			}
+		}
 		cost = 2
 		completion_reward = {
 			custom_effect_tooltip = {
@@ -22677,7 +22685,13 @@ focus_tree = {
 		available = { NOT= { has_country_flag = voting_for_bill } }
 		x = 2
 		y = 1
-		ai_will_do = { factor = 10 }
+		ai_will_do = { 
+			factor = 10 
+			modifier = {
+				factor = 50
+				has_idea = Cof_doubt_of_democrazy
+			}
+		}
 		cost = 2
 		completion_reward = {
 			custom_effect_tooltip = {
@@ -22749,22 +22763,38 @@ focus_tree = {
 		prerequisite = { focus = FRA_on_the_main_contradiction }
 		x = -2
 		y = 2
-		ai_will_do = { factor = 10 }
-		available = {
-			has_war_support > 0.7
-			set_temp_variable = { bgt_seat_target = 90 }
-			custom_trigger_tooltip = {
-				tooltip	= sore_oldl_seat_greater_than_x
-				check_variable = { seat_sore_oldl > bgt_seat_target }
+		ai_will_do = {
+			factor = 10 
+			modifier = {
+				factor = 50
+				has_idea = Cof_main_contradiction_is_what
 			}
+		}
+		available = {
+			NOT = { has_completed_focus = FRA_is_emancipation }
+			NOT = { has_completed_focus = FRA_is_honor }
+			has_war_support > 0.9
 		}
 		cost = 2
 		completion_reward = {
 			if = {
 				limit = { has_idea = Cof_main_contradiction_is_what }
-				remove_ideas = Cof_main_contradiction_is_what
+				swap_ideas = {
+					remove_idea = Cof_main_contradiction_is_what
+					add_idea = Cof_main_contradiction_is_revenge
+				}	
 			}
-			add_ideas = Cof_main_contradiction_is_revenge
+			else = { add_ideas = Cof_main_contradiction_is_revenge }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 2.5 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2.5 }
+			class_pop_satisfactions_change = yes
 		}
 	}
 
@@ -22775,15 +22805,37 @@ focus_tree = {
 		prerequisite = { focus = FRA_on_the_main_contradiction }
 		x = -1
 		y = 3
-		ai_will_do = { factor = 10 }
-		available = { has_war_support > 0.7 }
+		ai_will_do = { 
+			factor = 10 
+			modifier = {
+				factor = 50
+				has_idea = Cof_main_contradiction_is_what
+			}
+		}
+		available = {
+			NOT = { has_completed_focus = FRA_is_revenge }
+			NOT = { has_completed_focus = FRA_is_honor }
+		}
 		cost = 2
 		completion_reward = {
 			if = {
 				limit = { has_idea = Cof_main_contradiction_is_what }
-				remove_ideas = Cof_main_contradiction_is_what
+				swap_ideas = {
+					remove_idea = Cof_main_contradiction_is_what
+					add_idea = Cof_main_contradiction_is_emancipation
+				}	
 			}
-			add_ideas = Cof_main_contradiction_is_emancipation
+			else = { add_ideas = Cof_main_contradiction_is_emancipation }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2.5 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 2.5 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
 		}
 	}
 
@@ -22794,10 +22846,17 @@ focus_tree = {
 		prerequisite = { focus = FRA_on_the_main_contradiction }
 		x = 0
 		y = 2
-		ai_will_do = { factor = 10 }
+		ai_will_do = { 
+			factor = 10 
+			modifier = {
+				factor = 50
+				has_idea = Cof_main_contradiction_is_what
+			}
+		}
 		available = {
-			has_war_support > 0.7
-			set_temp_variable = { bgt_seat_target = 80 }
+			NOT = { has_completed_focus = FRA_is_revenge }
+			NOT = { has_completed_focus = FRA_is_emancipation }
+			set_temp_variable = { bgt_seat_target = 100 }
 			custom_trigger_tooltip = {
 				tooltip	= sore_oldl_seat_greater_than_x
 				check_variable = { seat_sore_oldl > bgt_seat_target }
@@ -22807,9 +22866,22 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { has_idea = Cof_main_contradiction_is_what }
-				remove_ideas = Cof_main_contradiction_is_what
+				swap_ideas = {
+					remove_idea = Cof_main_contradiction_is_what
+					add_idea = Cof_main_contradiction_is_honor
+				}	
 			}
-			add_ideas = Cof_main_contradiction_is_honor
+			else = { add_ideas = Cof_main_contradiction_is_honor }
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 2.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 2.5 }
+			class_pop_satisfactions_change = yes
 		}
 	}
 
