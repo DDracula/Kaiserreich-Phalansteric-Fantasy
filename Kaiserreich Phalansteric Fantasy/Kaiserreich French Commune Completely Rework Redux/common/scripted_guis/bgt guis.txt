@@ -245,6 +245,33 @@ scripted_gui = {
                     has_country_flag = gui_csp_choose_CGSC
                 }
             }
+            csp_adopt_suggestion_click_enabled = {
+                if = {
+                    limit = { has_country_flag = gui_csp_choose_CCSP }
+                    NOT = { has_country_flag = CCSP_1936 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DFA }
+                    NOT = { has_country_flag = DFA_1936 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DEA }
+                    NOT = { has_country_flag = DEA_1936 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DIS }
+                    NOT = { has_country_flag = DIS_1936 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_DSRG }
+                    NOT = { has_country_flag = DSRG_1936 }
+                }
+                else_if = {
+                    limit = { has_country_flag = gui_csp_choose_CGSC }
+                    NOT = { has_country_flag = CGSC_1936 }
+                }
+            }
+
             csp_provide_funding_visible = {
                 has_country_flag = csp_show
                 OR = {
@@ -973,7 +1000,7 @@ scripted_gui = {
                     clr_country_flag = party_CNS_show
                     clr_country_flag = party_PSF_show
                     clr_country_flag = party_POU_show
-                    clr_country_flag = party_CSR_show
+                    clr_country_flag = party_CGT_show
                     clr_country_flag = party_PCOP_show
                     clr_country_flag = party_AFA_show
                     clr_country_flag = party_LJR_show
@@ -1031,12 +1058,12 @@ scripted_gui = {
 
                 if = {
                     limit = { 
-                        NOT = { has_country_flag = party_CSR_show }
+                        NOT = { has_country_flag = party_CGT_show }
                         check_variable = { array_f_array^seat_idx = 4 } 
                     }
-                    set_country_flag = party_CSR_show
+                    set_country_flag = party_CGT_show
                 }
-                else = { clr_country_flag = party_CSR_show }
+                else = { clr_country_flag = party_CGT_show }
 
                 if = {
                     limit = { 
@@ -1147,7 +1174,7 @@ scripted_gui = {
                 has_country_flag = party_CNS_show
                 has_country_flag = party_PSF_show
                 has_country_flag = party_POU_show
-                has_country_flag = party_CSR_show
+                has_country_flag = party_CGT_show
                 has_country_flag = party_PCOP_show
                 has_country_flag = party_AFA_show
                 has_country_flag = party_LJR_show
@@ -1180,8 +1207,8 @@ scripted_gui = {
                     NOT = { has_country_flag = party_POU_choice }
                 }
                 if = {
-                    limit = { has_country_flag = party_CSR_show }
-                    NOT = { has_country_flag = party_CSR_choice }
+                    limit = { has_country_flag = party_CGT_show }
+                    NOT = { has_country_flag = party_CGT_choice }
                 }
                 if = {
                     limit = { has_country_flag = party_PCOP_show }
@@ -1230,8 +1257,8 @@ scripted_gui = {
                     NOT = { has_country_flag = party_POU_choice }
                 }
                 if = {
-                    limit = { has_country_flag = party_CSR_show }
-                    NOT = { has_country_flag = party_CSR_choice }
+                    limit = { has_country_flag = party_CGT_show }
+                    NOT = { has_country_flag = party_CGT_choice }
                 }
                 if = {
                     limit = { has_country_flag = party_PCOP_show }
@@ -1330,8 +1357,8 @@ scripted_gui = {
                     }
                 }
                 if = {
-                    limit = { has_country_flag = party_CSR_show }
-                    if = { limit = { has_country_flag = party_CSR_choice } }
+                    limit = { has_country_flag = party_CGT_show }
+                    if = { limit = { has_country_flag = party_CGT_choice } }
                     else = { 
                         set_country_flag = party_cost_pp
                         country_event = cofpolitics.1001 
@@ -1428,8 +1455,8 @@ scripted_gui = {
                     }
                 }
                 if = {
-                    limit = { has_country_flag = party_CSR_show }
-                    if = { limit = { has_country_flag = party_CSR_choice } }
+                    limit = { has_country_flag = party_CGT_show }
+                    if = { limit = { has_country_flag = party_CGT_choice } }
                     else = { 
                         set_country_flag = party_cost_economy
                         country_event = cofpolitics.1001 
@@ -1526,8 +1553,8 @@ scripted_gui = {
                     }
                 }
                 if = {
-                    limit = { has_country_flag = party_CSR_show }
-                    if = { limit = { has_country_flag = party_CSR_choice } }
+                    limit = { has_country_flag = party_CGT_show }
+                    if = { limit = { has_country_flag = party_CGT_choice } }
                     else = { 
                         set_country_flag = party_cost_satisfation
                         country_event = cofpolitics.1001 

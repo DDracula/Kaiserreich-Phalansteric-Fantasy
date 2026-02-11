@@ -679,17 +679,22 @@ bgt_seat_change = {
                 }
                 set_temp_variable = { stopt = smc }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { POU_faction^1 = stopt }
+                add_to_variable = { CGT_faction^1 = stopt }
             }
             else = {
                 set_temp_variable = { stopt = smc }
                 add_to_temp_variable = { stopt = -1 }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { POU_faction^1 = stopt }
+                add_to_variable = { CGT_faction^1 = stopt }
                 add_to_temp_variable = { stopt = 1 }
             }
             while_loop_effect = {
                 limit = { check_variable = { stopt > 0 } }
+                if = {
+                    limit = { check_variable = { stopt > 0 } }
+                    add_to_variable = { CGT_faction^1 = 1 }
+                    add_to_temp_variable = { stopt = -1 }
+                }
                 if = {
                     limit = { check_variable = { stopt > 0 } }
                     add_to_variable = { POU_faction^1 = 1 }
@@ -698,11 +703,6 @@ bgt_seat_change = {
                 if = {
                     limit = { check_variable = { stopt > 0 } }
                     add_to_variable = { LJR_faction^1 = 1 }
-                    add_to_temp_variable = { stopt = -1 }
-                }
-                if = {
-                    limit = { check_variable = { stopt > 0 } }
-                    add_to_variable = { CSR_faction^1 = 1 }
                     add_to_temp_variable = { stopt = -1 }
                 }
                 if = {
@@ -737,13 +737,13 @@ bgt_seat_change = {
                 }
                 set_temp_variable = { stopt = smc }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { POU_faction^1 = stopt }
+                add_to_variable = { CGT_faction^1 = stopt }
             }
             else = {
                 set_temp_variable = { stopt = smc }
                 add_to_temp_variable = { stopt = 1 }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { POU_faction^1 = stopt }
+                add_to_variable = { CGT_faction^1 = stopt }
                 add_to_temp_variable = { stopt = -1 }
             }
             while_loop_effect = {
@@ -751,25 +751,9 @@ bgt_seat_change = {
                 if = {
                     limit = { 
                         check_variable = { stopt < 0 }
-                        check_variable = { POU_faction^1 > 0 } 
+                        check_variable = { CGT_faction^1 > 0 } 
                     }
-                    add_to_variable = { POU_faction^1 = -1 }
-                    add_to_temp_variable = { stopt = 1 }
-                }
-                if = {
-                    limit = { 
-                        check_variable = { stopt < 0 }
-                        check_variable = { CSR_faction^1 > 0 } 
-                    }
-                    add_to_variable = { CSR_faction^1 = -1 }
-                    add_to_temp_variable = { stopt = 1 }
-                }
-                if = {
-                    limit = { 
-                        check_variable = { stopt < 0 }
-                        check_variable = { ETC_faction^1 > 0 } 
-                    }
-                    add_to_variable = { ETC_faction^1 = -1 }
+                    add_to_variable = { CGT_faction^1 = -1 }
                     add_to_temp_variable = { stopt = 1 }
                 }
                 if = {
@@ -791,6 +775,14 @@ bgt_seat_change = {
                 if = {
                     limit = { 
                         check_variable = { stopt < 0 }
+                        check_variable = { ETC_faction^1 > 0 } 
+                    }
+                    add_to_variable = { ETC_faction^1 = -1 }
+                    add_to_temp_variable = { stopt = 1 }
+                }
+                if = {
+                    limit = { 
+                        check_variable = { stopt < 0 }
                         check_variable = { FSR_faction^1 > 0 } 
                     }
                     add_to_variable = { FSR_faction^1 = -1 }
@@ -802,6 +794,14 @@ bgt_seat_change = {
                         check_variable = { LJR_faction^1 > 0 } 
                     }
                     add_to_variable = { LJR_faction^1 = -1 }
+                    add_to_temp_variable = { stopt = 1 }
+                }
+                if = {
+                    limit = { 
+                        check_variable = { stopt < 0 }
+                        check_variable = { POU_faction^1 > 0 } 
+                    }
+                    add_to_variable = { POU_faction^1 = -1 }
                     add_to_temp_variable = { stopt = 1 }
                 }
             }
@@ -820,25 +820,25 @@ bgt_seat_change = {
                 }
                 set_temp_variable = { stopt = src }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { CSR_faction^2 = stopt }
+                add_to_variable = { POU_faction^2 = stopt }
             }
             else = {
                 set_temp_variable = { stopt = src }
                 add_to_temp_variable = { stopt = -1 }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { CSR_faction^2 = stopt }
+                add_to_variable = { POU_faction^2 = stopt }
                 add_to_temp_variable = { stopt = 1 }
             }
             while_loop_effect = {
                 limit = { check_variable = { stopt > 0 } }
                 if = {
                     limit = { check_variable = { stopt > 0 } }
-                    add_to_variable = { CSR_faction^2 = 1 }
+                    add_to_variable = { POU_faction^2 = 1 }
                     add_to_temp_variable = { stopt = -1 }
                 }
                 if = {
                     limit = { check_variable = { stopt > 0 } }
-                    add_to_variable = { POU_faction^2 = 1 }
+                    add_to_variable = { CGT_faction^2 = 1 }
                     add_to_temp_variable = { stopt = -1 }
                 }
                 if = {
@@ -863,13 +863,13 @@ bgt_seat_change = {
                 }
                 set_temp_variable = { stopt = src }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { CSR_faction^2 = stopt }
+                add_to_variable = { POU_faction^2 = stopt }
             }
             else = {
                 set_temp_variable = { stopt = src }
                 add_to_temp_variable = { stopt = 1 }
                 multiply_temp_variable = { stopt = 0.5 }
-                add_to_variable = { CSR_faction^2 = stopt }
+                add_to_variable = { POU_faction^2 = stopt }
                 add_to_temp_variable = { stopt = -1 }
             }
             while_loop_effect = {
@@ -877,9 +877,9 @@ bgt_seat_change = {
                 if = {
                     limit = { 
                         check_variable = { stopt < 0 }
-                        check_variable = { CSR_faction^2 > 0 } 
+                        check_variable = { POU_faction^2 > 0 } 
                     }
-                    add_to_variable = { CSR_faction^2 = -1 }
+                    add_to_variable = { CGT_faction^2 = -1 }
                     add_to_temp_variable = { stopt = 1 }
                 }
                 if = {
@@ -901,7 +901,7 @@ bgt_seat_change = {
                 if = {
                     limit = { 
                         check_variable = { stopt < 0 }
-                        check_variable = { POU_faction^2 > 0 } 
+                        check_variable = { CGT_faction^2 > 0 } 
                     }
                     add_to_variable = { POU_faction^2 = -1 }
                     add_to_temp_variable = { stopt = 1 }
@@ -940,12 +940,12 @@ bgt_seat_change = {
                 }
                 if = {
                     limit = { check_variable = { stopt > 0 } }
-                    add_to_variable = { ETC_faction^3 = 1 }
+                    add_to_variable = { LJR_faction^3 = 1 }
                     add_to_temp_variable = { stopt = -1 }
                 }
                 if = {
                     limit = { check_variable = { stopt > 0 } }
-                    add_to_variable = { LJR_faction^3 = 1 }
+                    add_to_variable = { ETC_faction^3 = 1 }
                     add_to_temp_variable = { stopt = -1 }
                 }
                 if = {
@@ -1007,18 +1007,18 @@ bgt_seat_change = {
                 }
                 if = {
                     limit = { 
-                        check_variable = { stopt < 0 } 
-                        check_variable = { LJR_faction^3 > 0 }
-                    }
-                    add_to_variable = { LJR_faction^3 = -1 }
-                    add_to_temp_variable = { stopt = 1 } 
-                }
-                if = {
-                    limit = { 
                         check_variable = { stopt < 0 }
                         check_variable = { ETC_faction^3 > 0 } 
                     }  
                     add_to_variable = { ETC_faction^3 = -1 }
+                    add_to_temp_variable = { stopt = 1 } 
+                }
+                if = {
+                    limit = { 
+                        check_variable = { stopt < 0 } 
+                        check_variable = { LJR_faction^3 > 0 }
+                    }
+                    add_to_variable = { LJR_faction^3 = -1 }
                     add_to_temp_variable = { stopt = 1 } 
                 }
             }
@@ -1065,7 +1065,7 @@ bgt_seat_change = {
                 }
                 if = {
                     limit = { check_variable = { stopt > 0 } }
-                    add_to_variable = { CSR_faction^4 = 1 }
+                    add_to_variable = { CGT_faction^4 = 1 }
                     add_to_temp_variable = { stopt = -1 }
                 }
             }
@@ -1102,9 +1102,9 @@ bgt_seat_change = {
                 if = {
                     limit = { 
                         check_variable = { stopt < 0 }
-                        check_variable = { CSR_faction^4 > 0 }
+                        check_variable = { CGT_faction^4 > 0 }
                     }
-                    add_to_variable = { CSR_faction^4 = -1 }
+                    add_to_variable = { CGT_faction^4 = -1 }
                     add_to_temp_variable = { stopt = 1 }
                 }
                 if = {
@@ -1162,6 +1162,11 @@ bgt_seat_change = {
                 }
                 if = {
                     limit = { check_variable = { stopt > 0 } }
+                    add_to_variable = { LJR_faction^5 = 1 }
+                    add_to_temp_variable = { stopt = -1 }
+                }
+                if = {
+                    limit = { check_variable = { stopt > 0 } }
                     add_to_variable = { ETC_faction^5 = 1 }
                     add_to_temp_variable = { stopt = -1 }
                 }
@@ -1202,6 +1207,14 @@ bgt_seat_change = {
                         check_variable = { ETC_faction^5 > 0 }
                     }
                     add_to_variable = { ETC_faction^5 = -1 }
+                    add_to_temp_variable = { stopt = 1 }
+                }
+                if = {
+                    limit = { 
+                        check_variable = { stopt < 0 }
+                        check_variable = { LJR_faction^5 > 0 }
+                    }
+                    add_to_variable = { LJR_faction^5 = -1 }
                     add_to_temp_variable = { stopt = 1 }
                 }
                 if = {
@@ -1507,9 +1520,9 @@ bgt_seat_change = {
     set_variable = { seat_POU = POU_faction^1 }
     add_to_variable = { seat_POU = POU_faction^2 }
 
-    set_variable = { seat_CSR = CSR_faction^1 }
-    add_to_variable = { seat_CSR = CSR_faction^2 }
-    add_to_variable = { seat_CSR = CSR_faction^4 }
+    set_variable = { seat_CGT = CGT_faction^1 }
+    add_to_variable = { seat_CGT = CGT_faction^2 }
+    add_to_variable = { seat_CGT = CGT_faction^4 }
 
     set_variable = { seat_PCOP = PCOP_faction^3 }
     add_to_variable = { seat_PCOP = PCOP_faction^8 }
@@ -4034,7 +4047,7 @@ bill_to_judge = {
     clr_country_flag = party_CNS_choice
     clr_country_flag = party_PSF_choice
     clr_country_flag = party_POU_choice
-    clr_country_flag = party_CSR_choice
+    clr_country_flag = party_CGT_choice
     clr_country_flag = party_PCOP_choice
     clr_country_flag = party_AFA_choice
     clr_country_flag = party_LJR_choice
@@ -6128,233 +6141,207 @@ CSP_attitude_faction_judge = {
 #CSP采纳意见
 CSP_adopt_suggestion_CCSP = {
     if = {
-        limit = { has_country_flag = CCSP_1936 }
-        
-    }
-    else_if = {
         limit = { has_country_flag = CCSP_synd_mode }
-
+        activate_decision = CCSP_suggestion_synd_mode
     }
     else_if = {
         limit = { has_country_flag = CCSP_synd_radi }
-        
+        activate_decision = CCSP_suggestion_synd_radi
     }
     else_if = {
         limit = { has_country_flag = CCSP_oppp_comm }
-        
+        activate_decision = CCSP_suggestion_oppo_comm
     }
     else_if = {
         limit = { has_country_flag = CCSP_oppo_anar }
-        
+        activate_decision = CCSP_suggestion_oppo_anar
     }
     else_if = {
         limit = { has_country_flag = CCSP_jaco_neos }
-        
+        activate_decision = CCSP_suggestion_jaco_neos
     }
     else_if = {
         limit = { has_country_flag = CCSP_jaco_revo }
-        
+        activate_decision = CCSP_suggestion_jaco_revo
     }
     else_if = {
         limit = { has_country_flag = CCSP_sore_oldl }
-        
+        activate_decision = CCSP_suggestion_sore_oldl
     }
     else_if = {
         limit = { has_country_flag = CCSP_sore_yout }
-        
+        activate_decision = CCSP_suggestion_sore_yout
     }
 }
 CSP_adopt_suggestion_DFA = {
     if = {
-        limit = { has_country_flag = DFA_1936 }
-
-    }
-    else_if = {
         limit = { has_country_flag = DFA_synd_mode }
-
+        activate_decision = DFA_suggestion_synd_mode
     }
     else_if = {
         limit = { has_country_flag = DFA_synd_radi }
-        
+        activate_decision = DFA_suggestion_synd_radi
     }
     else_if = {
         limit = { has_country_flag = DFA_oppp_comm }
-        
+        activate_decision = DFA_suggestion_oppo_comm
     }
     else_if = {
         limit = { has_country_flag = DFA_oppo_anar }
-        
+        activate_decision = DFA_suggestion_oppo_anar
     }
     else_if = {
         limit = { has_country_flag = DFA_jaco_neos }
-        
+        activate_decision = DFA_suggestion_jaco_neos
     }
     else_if = {
         limit = { has_country_flag = DFA_jaco_revo }
-        
+        activate_decision = DFA_suggestion_jaco_revo
     }
     else_if = {
         limit = { has_country_flag = DFA_sore_oldl }
-        
+        activate_decision = DFA_suggestion_sore_oldl
     }
     else_if = {
         limit = { has_country_flag = DFA_sore_yout }
-        
+        activate_decision = DFA_suggestion_sore_yout
     }
 }
 CSP_adopt_suggestion_DEA = {
     if = {
-        limit = { 
-            OR = {
-                has_country_flag = DEA_1936
-                has_country_flag = DEA_synd_radi 
-            }
-        }
-        
+        limit = { has_country_flag = DEA_synd_mode }
+        activate_decision = DEA_suggestion_synd_mode
     }
     else_if = {
-        limit = { has_country_flag = DEA_synd_mode }
-
+        limit = { has_country_flag = DEA_synd_radi }
+        activate_decision = DEA_suggestion_synd_radi
     }
     else_if = {
         limit = { has_country_flag = DEA_oppp_comm }
-        
+        activate_decision = DEA_suggestion_oppo_comm
     }
     else_if = {
         limit = { has_country_flag = DEA_oppo_anar }
-        
+        activate_decision = DEA_suggestion_oppo_anar
     }
     else_if = {
         limit = { has_country_flag = DEA_jaco_neos }
-        
+        activate_decision = DEA_suggestion_jaco_neos
     }
     else_if = {
         limit = { has_country_flag = DEA_jaco_revo }
-        
+        activate_decision = DEA_suggestion_jaco_revo
     }
     else_if = {
-        limit = {  
+        limit = { 
             OR = {
-                has_country_flag = DEA_sore_oldl
+                has_country_flag = DEA_sore_oldl 
                 has_country_flag = DEA_sore_yout
             }
         }
-        
+        activate_decision = DEA_suggestion_sore
     }
 }
 CSP_adopt_suggestion_DIS = {
     if = {
-        limit = { has_country_flag = DIS_1936 }
-
-    }
-    else_if = {
         limit = { has_country_flag = DIS_synd_mode }
-
+        activate_decision = DIS_suggestion_synd_mode
     }
     else_if = {
         limit = { has_country_flag = DIS_synd_radi }
-        
+        activate_decision = DIS_suggestion_synd_radi
     }
     else_if = {
         limit = { has_country_flag = DIS_oppp_comm }
-        
+        activate_decision = DIS_suggestion_oppo_comm
     }
     else_if = {
         limit = { has_country_flag = DIS_oppo_anar }
-        
+        activate_decision = DIS_suggestion_oppo_anar
     }
     else_if = {
         limit = { has_country_flag = DIS_jaco_neos }
-        
+        activate_decision = DIS_suggestion_jaco_neos
     }
     else_if = {
         limit = { has_country_flag = DIS_jaco_revo }
-        
+        activate_decision = DIS_suggestion_jaco_revo
     }
     else_if = {
         limit = { has_country_flag = DIS_sore_oldl }
-        
+        activate_decision = DIS_suggestion_sore_oldl
     }
     else_if = {
         limit = { has_country_flag = DIS_sore_yout }
-        
+        activate_decision = DIS_suggestion_sore_yout
     }
 }
 CSP_adopt_suggestion_DSRG = {
     if = {
-        limit = { has_country_flag = DSRG_1936 }
-
-    }
-    else_if = {
         limit = { has_country_flag = DSRG_synd_mode }
-
+        activate_decision = DSRG_suggestion_synd_mode
     }
     else_if = {
         limit = { has_country_flag = DSRG_synd_radi }
-        
+        activate_decision = DSRG_suggestion_synd_radi
     }
     else_if = {
         limit = { has_country_flag = DSRG_oppp_comm }
-        
+        activate_decision = DSRG_suggestion_oppo_comm
     }
     else_if = {
         limit = { has_country_flag = DSRG_oppo_anar }
-        
+        activate_decision = DSRG_suggestion_oppo_anar
     }
     else_if = {
         limit = { has_country_flag = DSRG_jaco_neos }
-        
+        activate_decision = DSRG_suggestion_jaco_neos
     }
     else_if = {
         limit = { has_country_flag = DSRG_jaco_revo }
-        
+        activate_decision = DSRG_suggestion_jaco_revo
     }
     else_if = {
         limit = { has_country_flag = DSRG_sore_oldl }
-        
+        activate_decision = DSRG_suggestion_sore_oldl
     }
     else_if = {
         limit = { has_country_flag = DSRG_sore_yout }
-        
+        activate_decision = DSRG_suggestion_sore_yout
     }
 }
 CSP_adopt_suggestion_CGSC = {
     if = {
-        limit = { 
-            OR = {
-                has_country_flag = CGSC_1936 
-                has_country_flag = CGSC_synd_mode
-            }
-        }
-
+        limit = { has_country_flag = CGSC_synd_mode }
+        activate_decision = CGSC_suggestion_synd_mode
     }
     else_if = {
         limit = { has_country_flag = CGSC_synd_radi }
-        
+        activate_decision = CGSC_suggestion_synd_radi
     }
     else_if = {
         limit = { has_country_flag = CGSC_oppp_comm }
-        
+        activate_decision = CGSC_suggestion_oppo_comm
     }
     else_if = {
         limit = { has_country_flag = CGSC_oppo_anar }
-        
+        activate_decision = CGSC_suggestion_oppo_anar
     }
     else_if = {
         limit = { has_country_flag = CGSC_jaco_neos }
-        
+        activate_decision = CGSC_suggestion_jaco_neos
     }
     else_if = {
         limit = { has_country_flag = CGSC_jaco_revo }
-        
+        activate_decision = CGSC_suggestion_jaco_revo
     }
     else_if = {
         limit = { has_country_flag = CGSC_sore_oldl }
-        
+        activate_decision = CGSC_suggestion_sore_oldl
     }
     else_if = {
         limit = { has_country_flag = CGSC_sore_yout }
-        
+        activate_decision = CGSC_suggestion_sore_yout
     }
 }
 
@@ -6363,7 +6350,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_synd_mode = CNS_faction^1 }
     add_to_variable = { seat_synd_mode = PSF_faction^1 }
     add_to_variable = { seat_synd_mode = POU_faction^1 }
-    add_to_variable = { seat_synd_mode = CSR_faction^1 }
+    add_to_variable = { seat_synd_mode = CGT_faction^1 }
     add_to_variable = { seat_synd_mode = PCOP_faction^1 }
     add_to_variable = { seat_synd_mode = AFA_faction^1 }
     add_to_variable = { seat_synd_mode = LJR_faction^1 }
@@ -6376,7 +6363,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_synd_radi = CNS_faction^2 }
     add_to_variable = { seat_synd_radi = PSF_faction^2 }
     add_to_variable = { seat_synd_radi = POU_faction^2 }
-    add_to_variable = { seat_synd_radi = CSR_faction^2 }
+    add_to_variable = { seat_synd_radi = CGT_faction^2 }
     add_to_variable = { seat_synd_radi = PCOP_faction^2 }
     add_to_variable = { seat_synd_radi = AFA_faction^2 }
     add_to_variable = { seat_synd_radi = LJR_faction^2 }
@@ -6389,7 +6376,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_oppo_comm = CNS_faction^3 }
     add_to_variable = { seat_oppo_comm = PSF_faction^3 }
     add_to_variable = { seat_oppo_comm = POU_faction^3 }
-    add_to_variable = { seat_oppo_comm = CSR_faction^3 }
+    add_to_variable = { seat_oppo_comm = CGT_faction^3 }
     add_to_variable = { seat_oppo_comm = PCOP_faction^3 }
     add_to_variable = { seat_oppo_comm = AFA_faction^3 }
     add_to_variable = { seat_oppo_comm = LJR_faction^3 }
@@ -6402,7 +6389,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_oppo_anar = CNS_faction^4 }
     add_to_variable = { seat_oppo_anar = PSF_faction^4 }
     add_to_variable = { seat_oppo_anar = POU_faction^4 }
-    add_to_variable = { seat_oppo_anar = CSR_faction^4 }
+    add_to_variable = { seat_oppo_anar = CGT_faction^4 }
     add_to_variable = { seat_oppo_anar = PCOP_faction^4 }
     add_to_variable = { seat_oppo_anar = AFA_faction^4 }
     add_to_variable = { seat_oppo_anar = LJR_faction^4 }
@@ -6415,7 +6402,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_jaco_neos = CNS_faction^5 }
     add_to_variable = { seat_jaco_neos = PSF_faction^5 }
     add_to_variable = { seat_jaco_neos = POU_faction^5 }
-    add_to_variable = { seat_jaco_neos = CSR_faction^5 }
+    add_to_variable = { seat_jaco_neos = CGT_faction^5 }
     add_to_variable = { seat_jaco_neos = PCOP_faction^5 }
     add_to_variable = { seat_jaco_neos = AFA_faction^5 }
     add_to_variable = { seat_jaco_neos = LJR_faction^5 }
@@ -6428,7 +6415,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_jaco_revo = CNS_faction^6 }
     add_to_variable = { seat_jaco_revo = PSF_faction^6 }
     add_to_variable = { seat_jaco_revo = POU_faction^6 }
-    add_to_variable = { seat_jaco_revo = CSR_faction^6 }
+    add_to_variable = { seat_jaco_revo = CGT_faction^6 }
     add_to_variable = { seat_jaco_revo = PCOP_faction^6 }
     add_to_variable = { seat_jaco_revo = AFA_faction^6 }
     add_to_variable = { seat_jaco_revo = LJR_faction^6 }
@@ -6441,7 +6428,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_sore_oldl = CNS_faction^7 }
     add_to_variable = { seat_sore_oldl = PSF_faction^7 }
     add_to_variable = { seat_sore_oldl = POU_faction^7 }
-    add_to_variable = { seat_sore_oldl = CSR_faction^7 }
+    add_to_variable = { seat_sore_oldl = CGT_faction^7 }
     add_to_variable = { seat_sore_oldl = PCOP_faction^7 }
     add_to_variable = { seat_sore_oldl = AFA_faction^7 }
     add_to_variable = { seat_sore_oldl = LJR_faction^7 }
@@ -6454,7 +6441,7 @@ bgt_party_seat_judge = {
     set_variable = { seat_sore_yout = CNS_faction^8 }
     add_to_variable = { seat_sore_yout = PSF_faction^8 }
     add_to_variable = { seat_sore_yout = POU_faction^8 }
-    add_to_variable = { seat_sore_yout = CSR_faction^8 }
+    add_to_variable = { seat_sore_yout = CGT_faction^8 }
     add_to_variable = { seat_sore_yout = PCOP_faction^8 }
     add_to_variable = { seat_sore_yout = AFA_faction^8 }
     add_to_variable = { seat_sore_yout = LJR_faction^8 }
@@ -6473,12 +6460,12 @@ refresh_bgt_seat = {
     resize_array = { array = array_f_array value = 6 size = seatend }
     add_to_temp_variable = { seatend = seat_CNS }
     resize_array = { array = array_f_array value = 1 size = seatend }
-    add_to_temp_variable = { seatend = seat_CSR }
-    resize_array = { array = array_f_array value = 4 size = seatend }
-    add_to_temp_variable = { seatend = seat_PCOP }
-    resize_array = { array = array_f_array value = 5 size = seatend }
     add_to_temp_variable = { seatend = seat_POU }
     resize_array = { array = array_f_array value = 3 size = seatend }
+    add_to_temp_variable = { seatend = seat_PCOP }
+    resize_array = { array = array_f_array value = 5 size = seatend }
+    add_to_temp_variable = { seatend = seat_CGT }
+    resize_array = { array = array_f_array value = 4 size = seatend }
     add_to_temp_variable = { seatend = seat_PSF }
     resize_array = { array = array_f_array value = 2 size = seatend }
     add_to_temp_variable = { seatend = seat_LJR }
@@ -8041,38 +8028,38 @@ party_choice_effect = {
         }
     }
     else_if = {
-        limit = { has_country_flag = party_CSR_show }
-        set_country_flag = party_CSR_choice
+        limit = { has_country_flag = party_CGT_show }
+        set_country_flag = party_CGT_choice
         if = {
-            limit = { check_variable = { CSR_faction^1 > 0 } }
+            limit = { check_variable = { CGT_faction^1 > 0 } }
             set_temp_variable = { vta_smc = vta_tc }
         }
         if = {
-            limit = { check_variable = { CSR_faction^2 > 0 } }
+            limit = { check_variable = { CGT_faction^2 > 0 } }
             set_temp_variable = { vta_src = vta_tc }
         }
         if = {
-            limit = { check_variable = { CSR_faction^3 > 0 } }
+            limit = { check_variable = { CGT_faction^3 > 0 } }
             set_temp_variable = { vta_occ = vta_tc }
         }
         if = {
-            limit = { check_variable = { CSR_faction^4 > 0 } }
+            limit = { check_variable = { CGT_faction^4 > 0 } }
             set_temp_variable = { vta_oac = vta_tc }
         }
         if = {
-            limit = { check_variable = { CSR_faction^5 > 0 } }
+            limit = { check_variable = { CGT_faction^5 > 0 } }
             set_temp_variable = { vta_jnc = vta_tc }
         }
         if = {
-            limit = { check_variable = { CSR_faction^6 > 0 } }
+            limit = { check_variable = { CGT_faction^6 > 0 } }
             set_temp_variable = { vta_jrc = vta_tc }
         }
         if = {
-            limit = { check_variable = { CSR_faction^7 > 0 } }
+            limit = { check_variable = { CGT_faction^7 > 0 } }
             set_temp_variable = { vta_soc = vta_tc }
         }
         if = {
-            limit = { check_variable = { CSR_faction^8 > 0 } }
+            limit = { check_variable = { CGT_faction^8 > 0 } }
             set_temp_variable = { vta_syc = vta_tc }
         }
     }
