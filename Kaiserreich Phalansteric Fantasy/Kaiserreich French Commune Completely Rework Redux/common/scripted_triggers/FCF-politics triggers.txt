@@ -1,0 +1,226 @@
+CSP_attitude_trigger_not_against = {
+    custom_trigger_tooltip = {
+        if = { 
+            limit = { check_variable = { target_t = 1 } }
+            set_temp_variable = { target_v = DFA_attitude }
+        }
+        else_if = { 
+            limit = { check_variable = { target_t = 2 } }
+            set_temp_variable = { target_v = DEA_attitude }
+        }
+        else_if = { 
+            limit = { check_variable = { target_t = 3 } }
+            set_temp_variable = { target_v = DIS_attitude }
+        }
+        else_if = { 	
+            limit = { check_variable = { target_t = 4 } }
+            set_temp_variable = { target_v = DCA_attitude }
+        }    
+        else_if = { 	
+            limit = { check_variable = { target_t = 5 } }
+            set_temp_variable = { target_v = CGSC_attitude }
+        }
+        tooltip = CSP_attitude_trigger_not_against_tt
+        check_variable = { target_v > -2 }
+    }
+}
+
+CSP_attitude_trigger_support = {
+    custom_trigger_tooltip = {
+        if = { 
+            limit = { check_variable = { target_a = 1 } }
+            set_temp_variable = { target_v = DFA_attitude }
+        }
+        else_if = { 
+            limit = { check_variable = { target_a = 2 } }
+            set_temp_variable = { target_v = DEA_attitude }
+        }
+        else_if = { 
+            limit = { check_variable = { target_a = 3 } }
+            set_temp_variable = { target_v = DIS_attitude }
+        }
+        else_if = { 	
+            limit = { check_variable = { target_a = 4 } }
+            set_temp_variable = { target_v = DCA_attitude }
+        }    
+        else_if = { 	
+            limit = { check_variable = { target_a = 5 } }
+            set_temp_variable = { target_v = CGSC_attitude }
+        }
+        tooltip = CSP_attitude_trigger_support_tt
+        check_variable = { target_v > 1 }
+    }
+}
+
+dominant_faction_synd_trigger = {
+    custom_trigger_tooltip = {
+        check_variable = { dominant_faction_synd > var:FRA.dominant_faction_oppo }
+        check_variable = { dominant_faction_synd > var:FRA.dominant_faction_jaco }
+        check_variable = { dominant_faction_synd > var:FRA.dominant_faction_sore }
+        tooltip = CSP_dominant_faction_synd
+    }
+}
+
+dominant_faction_oppo_trigger = {
+    custom_trigger_tooltip = {
+        check_variable = { dominant_faction_oppo > var:FRA.dominant_faction_synd }
+        check_variable = { dominant_faction_oppo > var:FRA.dominant_faction_jaco }
+        check_variable = { dominant_faction_oppo > var:FRA.dominant_faction_sore }
+        tooltip = CSP_dominant_faction_oppo
+    }
+}
+
+dominant_faction_jaco_trigger = {
+    custom_trigger_tooltip = {
+        check_variable = { dominant_faction_jaco > var:FRA.dominant_faction_oppo }
+        check_variable = { dominant_faction_jaco > var:FRA.dominant_faction_synd }
+        check_variable = { dominant_faction_jaco > var:FRA.dominant_faction_sore }
+        tooltip = CSP_dominant_faction_jaco
+    }
+}
+
+dominant_faction_sore_trigger = {
+    custom_trigger_tooltip = {
+        check_variable = { dominant_faction_sore > var:FRA.dominant_faction_oppo }
+        check_variable = { dominant_faction_sore > var:FRA.dominant_faction_jaco }
+        check_variable = { dominant_faction_sore > var:FRA.dominant_faction_synd }
+        tooltip = CSP_dominant_faction_sore
+    }
+}
+
+CSP_dominant_faction_same_as_BGT = {
+    custom_trigger_tooltip = {
+        if = {
+            limit = {
+                OR = {
+                    has_country_flag = CBGT_synd_mode
+                    has_country_flag = CBGT_synd_radi
+                }
+            }
+            dominant_faction_synd_trigger = yes
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_country_flag = CBGT_oppo_comm
+                    has_country_flag = CBGT_oppo_anar
+                }
+            }
+            dominant_faction_oppo_trigger = yes
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_country_flag = CBGT_jaco_neos
+                    has_country_flag = CBGT_jaco_revo
+                }
+            }
+            dominant_faction_jaco_trigger = yes
+        }
+        else_if = {
+            limit = {
+                OR = {
+                    has_country_flag = CBGT_sore_oldl
+                    has_country_flag = CBGT_sore_yout
+                }
+            }
+            dominant_faction_sore_trigger = yes
+        }
+        tooltip = CSP_dominant_faction_same_as_BGT
+    } 
+}
+
+Cof_bgt_vs_csp_judge = {
+    custom_trigger_tooltip = {
+        if = {
+            limit = { check_variable = { target_t = 5 } }
+            check_variable = { Cof_BGT_vs_CSP_value > 90 }
+            check_variable = { Cof_BGT_vs_CSP_value = 90 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = 4 } }
+            check_variable = { Cof_BGT_vs_CSP_value > 70 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = 3 } }
+            check_variable = { Cof_BGT_vs_CSP_value > 50 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = 2 } }
+            check_variable = { Cof_BGT_vs_CSP_value > 30 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = 30 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = 1 } }
+            check_variable = { Cof_BGT_vs_CSP_value > 10 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = 10 } 
+        }
+
+        else_if = {
+            limit = { check_variable = { target_t = -1 } }
+            check_variable = { Cof_BGT_vs_CSP_value < -10 }
+            check_variable = { Cof_BGT_vs_CSP_value = -10 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = -2 } }
+            check_variable = { Cof_BGT_vs_CSP_value < -30 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = -30 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = -3 } }
+            check_variable = { Cof_BGT_vs_CSP_value < -50 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = -4 } }
+            check_variable = { Cof_BGT_vs_CSP_value < -70 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
+        }
+        else_if = {
+            limit = { check_variable = { target_t = -5 } }
+            check_variable = { Cof_BGT_vs_CSP_value < 90 }
+            check_variable = { FRA.Cof_BGT_vs_CSP_value = 90 } 
+        }
+        tooltip = Cof_bgt_vs_csp_judge_tt
+    }
+}
+
+PCOP_AFA_union_unity = {
+    custom_trigger_tooltip = {
+        tooltip = PCOP_AFA_union_unity
+        check_variable = { PCOP_AFA_union < 4 }
+        check_variable = { PCOP_AFA_union > -4 }
+    }
+}
+
+PCOP_AFA_union_to_PCOP = {
+    custom_trigger_tooltip = {
+        tooltip = PCOP_AFA_union_to_PCOP
+        check_variable = { PCOP_AFA_union > 3 }
+    }
+}
+
+PCOP_AFA_union_to_AFA = {
+    custom_trigger_tooltip = {
+        tooltip = PCOP_AFA_union_to_AFA
+        check_variable = { PCOP_AFA_union < -3 }
+    }
+}
+
+oppo_unit_judge_comm = {
+    OR = {
+        PCOP_AFA_union_unity = yes
+        PCOP_AFA_union_to_PCOP = yes
+        has_country_flag = PCOP_leave_the_union
+    }
+}
+
+oppo_unit_judge_anar = {
+    OR = {
+        PCOP_AFA_union_unity = yes
+        PCOP_AFA_union_to_AFA = yes
+        has_country_flag = AFA_leave_the_union
+    }
+}

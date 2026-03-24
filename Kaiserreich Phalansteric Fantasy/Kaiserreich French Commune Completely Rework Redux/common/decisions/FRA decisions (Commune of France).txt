@@ -1,0 +1,253 @@
+###########################
+# Commune of France Decisions
+###########################
+FRA_phalanstere_category = {
+	FRA_join_phalanstere = {
+		icon = generic_research
+		allowed = {
+			NOT = {
+				tag = FRA #added by event
+				tag = ENG
+				tag = GER #can never be socialist
+				tag = GEA
+				tag = MAF
+				tag = NFA
+				tag = SRD
+				tag = SIC
+				tag = ITA
+				tag = PAP
+				tag = ARG
+				tag = USA
+				tag = APG
+				tag = ACC
+				tag = NEE
+				tag = RAJ
+				tag = PRF
+				tag = DEI
+			}
+		}
+		visible = {
+			has_socialist_government = yes
+			is_in_economic_sphere = no
+			FROM = {
+				is_economic_sphere_leader = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		targets = { INT }
+		target_trigger = {
+			has_socialist_government = yes
+			is_in_economic_sphere = no
+			FROM = {
+				is_economic_sphere_leader = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		cost = 0
+		fire_only_once = yes
+		ai_will_do = { factor = 1000 }
+		complete_effect = {
+			log = "[GetLogRoot][GetLogFrom]: Decision complete FRA_join_phalanstere"
+			FRA_add_to_phalanstere = yes
+		}
+		fixed_random_seed = no
+	}
+
+###############################
+	phalanstere_change_vote_agree = {
+		visible = {
+			FRA_is_phalanstere_member = yes
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+			NOT = { has_country_flag = phalanstere_attitude_agree }
+		}
+		icon = generic_operation
+		cost = 5
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 100
+				OR = {
+					AND = {
+						has_government = totalist
+						FRA = { has_government = totalist }
+					}
+					AND = {
+						has_government = syndicalist
+						FRA = { has_government = syndicalist }
+					}
+					AND = {
+						has_government = radical_socialist
+						FRA = { has_government = radical_socialist }
+					}
+				}
+			}
+		}
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_attitude_waiver }
+				phacongress_change_agree_from_waiver = yes
+			}
+			else_if = {
+				limit = { has_country_flag = phalanstere_attitude_oppose }
+				phacongress_change_agree_from_oppose = yes
+			}
+		}
+	}
+	phalanstere_change_vote_oppose = {
+		visible = {
+			FRA_is_phalanstere_member = yes
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+			NOT = { has_country_flag = phalanstere_attitude_oppose }
+		}
+		icon = generic_operation
+		cost = 5
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_attitude_waiver }
+				phacongress_change_oppose_from_waiver = yes
+			}
+			else_if = {
+				limit = { has_country_flag = phalanstere_attitude_agree }
+				phacongress_change_oppose_from_agree = yes
+			}
+		}
+	}
+	phalanstere_change_vote_waiver = {
+		visible = {
+			FRA_is_phalanstere_member = yes
+			NOT = { has_global_flag = phalanstere_congress_adjournment }
+			has_global_flag = phalanstere_congress_in_progress
+			NOT = { has_country_flag = phalanstere_attitude_waiver }
+		}
+		icon = generic_operation
+		cost = 5
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_attitude_agree }
+				phacongress_change_waiver_from_agree = yes
+			}
+			else_if = {
+				limit = { has_country_flag = phalanstere_attitude_oppose }
+				phacongress_change_waiver_from_oppose = yes
+			}
+		}
+	}
+
+	#国际援助
+	phalanstere_member_aid_construction_show = {
+		allowed = { original_tag = ENG }
+		visible = { 
+			FRA_is_phalanstere_member = yes
+			FRA = { has_completed_focus = FRA_revolutionary_aid_construction } 
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = { 
+				limit = { has_country_flag = phalanstere_aid_construction_show }
+				clr_country_flag = phalanstere_aid_construction_show
+			}
+			else = { set_country_flag = phalanstere_aid_construction_show }
+		}
+	}
+	phalanstere_member_aid_construction = {
+		allowed = { original_tag = ENG }
+		visible = {
+			FRA_is_phalanstere_member = yes
+			FRA = { has_completed_focus = FRA_revolutionary_aid_construction }
+			has_country_flag = phalanstere_aid_construction_show
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				NOT = { tag = FRA }
+			}
+		}
+		fire_only_once = yes
+		cost = 50
+		days_remove = 90
+		remove_effect = {
+			FROM = {
+				capital_scope = {
+					if = {
+						limit = { infrastructure < 4 }
+						add_building_construction = {
+							type = infrastructure
+							level = 1
+							instant_build = yes
+						}
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+				add_tech_bonus = {
+					name = phalanstere_aid_construction
+					bonus = 0.75
+					uses = 1
+					category = industry
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { phauc = 5 }
+   		    phalanstere_unity_change = yes
+		}
+	}
+
+	#扫盲远征队
+	phalanstere_member_literacy_expeditionary_force_show = {
+		allowed = { original_tag = ENG }
+		visible = { 
+			FRA_is_phalanstere_member = yes
+			FRA = { has_completed_focus = FRA_literacy_expeditionary_force } 
+		}
+		icon = generic_operation
+		days_re_enable = 0
+		complete_effect = { 
+			if = {
+				limit = { has_country_flag = phalanstere_literacy_expeditionary_force_show }
+				clr_country_flag = phalanstere_literacy_expeditionary_force_show
+			}
+			else = { set_country_flag = phalanstere_literacy_expeditionary_force_show }
+		}
+	}
+	phalanstere_member_literacy_expeditionary_force = {
+		allowed = { original_tag = ENG }
+		visible = {
+			FRA_is_phalanstere_member = yes
+			FRA = { has_completed_focus = FRA_literacy_expeditionary_force }
+			has_country_flag = phalanstere_literacy_expeditionary_force_show
+		}
+		icon = generic_operation
+		target_trigger = {
+			FROM = {
+				FRA_is_phalanstere_member = yes
+				capital_scope = {
+					INT_is_in_europe = no
+					INT_is_in_america_north = no
+				}
+				NOT = { has_idea = Cof_literacy_expeditionary_force }
+			} 
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			FROM = {
+				add_political_power = 50
+				add_timed_idea = { idea = Cof_literacy_expeditionary_force days = 365 }
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { phauc = 2.5 }
+   		    phalanstere_unity_change = yes
+		}
+	}
+}

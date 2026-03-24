@@ -1,0 +1,1546 @@
+add_namespace = cofeconomy
+
+country_event = {
+	id = cofeconomy.1
+	title = cofeconomy.1.title
+	desc = cofeconomy.1.desc
+	picture = GFX_report_event_generic_diplomacy1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.1.a
+		ai_chance = { base = 100 }
+		add_political_power = 150
+		complete_national_focus = FRA_first_five_years_plan
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -5 }
+		set_temp_variable = { eibc = -5 }
+		set_temp_variable = { eipc = -2.5 }
+		set_temp_variable = { eiac = -2.5 }
+		set_temp_variable = { eamc = -2.5 }
+		set_temp_variable = { eaec = -2.5 }
+		set_temp_variable = { eaac = -2.5 }
+		set_temp_variable = { eqc = -2.5 }
+		set_temp_variable = { elc = -2.5 }
+		set_temp_variable = { eic = -2.5 }
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.2
+	title = cofeconomy.2.title
+	desc = cofeconomy.2.desc
+	picture = GFX_report_event_ARG_car51
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.2.a
+		ai_chance = { base = 100 }
+		add_political_power = -50
+		add_ideas = Cof_anti_cgt_record
+
+		hidden_effect = { 
+			country_event = { id = cofeconomy.12 days = 60 random_days = 15 } 
+			country_event = { id = cofeconomy.13 days = 45 random_days = 15 } 
+		}
+	}	
+	option = {
+		name = cofeconomy.2.b
+		ai_chance = { base = 0 }
+		add_political_power = -50
+		add_ideas = Cof_anti_cgt_record
+		country_event = cofeconomy.3
+
+		hidden_effect = { 
+			country_event = { id = cofeconomy.12 days = 60 random_days = 15 } 
+			country_event = { id = cofeconomy.13 days = 45 random_days = 15 } 
+		}
+	}	
+}
+
+country_event = {
+	id = cofeconomy.3
+	title = cofeconomy.3.title
+	desc = cofeconomy.3.desc
+	picture = GFX_report_event_ARG_car22
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.3.a
+		country_event = cofeconomy.4
+	}	
+}
+
+country_event = {
+	id = cofeconomy.4
+	title = cofeconomy.4.title
+	desc = cofeconomy.4.desc
+	picture = GFX_report_event_ARG_car22
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.4.a
+		country_event = cofeconomy.5
+	}	
+}
+
+country_event = {
+	id = cofeconomy.5
+	title = cofeconomy.5.title
+	desc = cofeconomy.5.desc
+	picture = GFX_report_event_ARG_car22
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.5.a
+	}	
+}
+
+country_event = {
+	id = cofeconomy.6
+	title = cofeconomy.6.title
+	desc = cofeconomy.6.desc
+	picture = GFX_report_event_ARG_bla1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.6.a
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = cofeconomy.7 days = 15 random_days = 15 } }
+	}	
+	option = {
+		name = cofeconomy.6.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = cofeconomy.7 days = 15 random_days = 15 } }
+	}	
+}
+
+country_event = {
+	id = cofeconomy.7
+	title = cofeconomy.7.title
+	desc = cofeconomy.7.desc
+	picture = GFX_report_event_ARG_bla1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.7.a
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = cofeconomy.8 days = 15 random_days = 15 } }
+	}	
+	option = {
+		name = cofeconomy.7.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = cofeconomy.8 days = 15 random_days = 15 } }
+	}	
+}
+
+country_event = {
+	id = cofeconomy.8
+	title = cofeconomy.8.title 
+	desc = cofeconomy.8.desc
+	picture = GFX_report_event_ARG_bla1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.8.a
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = cofeconomy.9 days = 15 random_days = 15 } }
+	}	
+	option = {
+		name = cofeconomy.8.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = cofeconomy.9 days = 15 random_days = 15 } }
+	}	
+}
+
+country_event = {
+	id = cofeconomy.9
+	title = cofeconomy.9.title 
+	desc = cofeconomy.9.desc
+	picture = GFX_report_event_ARG_bla1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.9.a
+		ai_chance = { base = 50 }
+	}	
+	option = {
+		name = cofeconomy.9.b
+		ai_chance = { base = 50 }
+	}
+}
+
+country_event = {
+	id = cofeconomy.10
+	title = cofeconomy.10.title 
+	desc = cofeconomy.10.desc
+	picture = GFX_report_event_ARG_bla1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.10.a
+		ai_chance = { base = 50 }
+		add_stability = -0.05
+		add_political_power = -25
+		if = {
+			limit = { has_idea = Cof_anti_cgt_record_waiting }
+			swap_ideas = {
+				remove_idea = Cof_anti_cgt_record_waiting
+				add_idea = Cof_anti_cgt_record_expand
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = Cof_anti_cgt_record
+				add_idea = Cof_anti_cgt_record_expand
+			}
+		}
+		
+	}	
+}
+
+country_event = {
+	id = cofeconomy.11
+	title = cofeconomy.11.title 
+	desc = cofeconomy.11.desc
+	picture = GFX_report_event_ARG_bla1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.11.a
+		ai_chance = { base = 50 }
+		add_stability = -0.05
+		add_political_power = -25
+		if = {
+			limit = { has_idea = Cof_anti_cgt_record_waiting }
+			swap_ideas = {
+				remove_idea = Cof_anti_cgt_record_waiting
+				add_idea = Cof_anti_cgt_record_weaken
+			}
+		}
+		else = {
+			swap_ideas = {
+				remove_idea = Cof_anti_cgt_record
+				add_idea = Cof_anti_cgt_record_weaken
+			}
+		}
+
+		hidden_effect = { country_event = { id = cofeconomy.17 days = 30 random_days = 30 } }
+	}	
+}
+
+country_event = {
+	id = cofeconomy.12
+	title = cofeconomy.12.title 
+	desc = cofeconomy.12.desc
+	picture = GFX_report_event_ARG_bla1
+	trigger = {
+		has_idea = Cof_anti_cgt_record
+		OR = {
+			NOT = { has_completed_focus = FRA_expand_CGT }
+			NOT = { has_completed_focus = FRA_weaken_CGT }
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.12.a
+		ai_chance = { base = 50 }
+		add_stability = -0.1
+		add_political_power = -50
+		swap_ideas = {
+			remove_idea = Cof_anti_cgt_record
+			add_idea = Cof_anti_cgt_record_waiting
+		}
+	}	
+}
+
+country_event = {
+	id = cofeconomy.13
+	title = cofeconomy.13.title 
+	desc = cofeconomy.13.desc
+	picture = GFX_report_event_ARG_bla1
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.13.a
+		ai_chance = { base = 50 }
+		set_country_flag = economy_reform_start
+		add_ideas = Cof_call_for_economic_reform0
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -5 }
+		set_temp_variable = { eibc = -5 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -2.5 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.14
+	title = cofeconomy.14.title 
+	desc = cofeconomy.14.desc
+	picture = GFX_report_event_AST_deportation
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.14.a
+		ai_chance = { base = 50 }
+		add_stability = -0.05
+		add_ideas = Cof_supply_chain_crisis1
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -10 }
+		set_temp_variable = { eibc = -5 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = -2.5 }
+		set_temp_variable = { eaac = -2.5 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = -2.5 }
+		set_temp_variable = { eic = 0 }
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.15
+	title = cofeconomy.15.title 
+	desc = cofeconomy.15.desc
+	picture = GFX_report_event_AST_deportation
+	is_triggered_only = yes
+	after = { hidden_effect = { FRA = { country_event = { id = cofintern.0 hours = 12 random_hours = 12 } } } }
+	option = {
+		name = cofeconomy.15.a
+		ai_chance = { 
+			base = 40
+			modifier = {
+				add = 20
+				has_soclib_or_socdem_government = yes
+			}
+			modifier = {
+				add = 20
+				has_stability < 0.1
+			}
+			modifier = {
+				add = -20
+				has_conservative_government = yes
+			}
+		}
+		set_country_flag = Cof_dip_receive
+		add_timed_idea = { idea = Cof_deal_with_devil days = 180 }
+		every_other_country = {
+			limit = { 
+				is_subject_of = PREV 
+				OR = {
+					naval_base > 0
+					capital_scope = { is_on_continent = europe }
+				}
+			}
+			add_timed_idea = { idea = Cof_deal_with_devil days = 180 }
+		}
+	}	
+	option = { 
+		name = cofeconomy.15.b
+		ai_chance = { 
+			base = 60
+			modifier = {
+				factor = 0
+				has_stability < 0
+			}
+			modifier = {
+				add = -20
+				has_soclib_or_socdem_government = yes
+			}
+			modifier = {
+				add = -20
+				has_stability < 0.1
+			}
+			modifier = {
+				add = 20
+				has_conservative_government = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = cofeconomy.16
+	title = cofeconomy.16.title 
+	desc = cofeconomy.16.desc
+	picture = GFX_report_event_AST_deportation
+	is_triggered_only = yes
+	after = { hidden_effect = { FRA = { country_event = { id = cofintern.0 hours = 12 random_hours = 12 } } } }
+	option = {
+		name = cofeconomy.16.a
+		ai_chance = { 
+			base = 60
+			modifier = {
+				add = -20
+				has_government = totalist
+			}
+		}
+		set_country_flag = Cof_dip_receive
+		add_timed_idea = { idea = Cof_red_economic_circle days = 360 }
+	}	
+	option = { 
+		name = cofeconomy.16.b
+		ai_chance = { 
+			base = 40
+			modifier = {
+				add = 20
+				has_government = totalist
+			}
+		}
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	id = cofeconomy.17
+	title = cofeconomy.17.title 
+	desc = cofeconomy.17.desc
+	picture = GFX_report_event_generic_economic_policy
+	trigger = { NOT = { has_completed_focus = FRA_dont_be_afraid_of_losing_job } }
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.17.a
+		add_ideas = Cof_losing_job_panic 
+	}	
+}
+
+country_event = {
+	id = cofeconomy.18
+	title = {
+		text = cofeconomy.18.title.a
+		trigger = { NOT = { has_country_flag = wrong_bills } }
+	}
+	title = {
+		text = cofeconomy.18.title.b
+		trigger = { has_country_flag = wrong_bills }
+	}
+	desc = {
+		text = cofeconomy.18.desc.a
+		trigger = { NOT = { has_country_flag = wrong_bills } }
+	}
+	desc = {
+		text = cofeconomy.18.desc.b
+		trigger = { has_country_flag = wrong_bills }
+	}
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.18.a
+		trigger = { NOT = { has_country_flag = wrong_bills } }
+		add_political_power = 30
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 0 }
+		set_temp_variable = { pc = 0 } 
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 1 }
+		set_temp_variable = { ac = 0 }
+		class_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		add_to_variable = {
+			cgt_confidence = 1
+			tooltip = cgt_confidence_add
+		}
+	}	
+	option = {
+		name = cofeconomy.18.b
+		trigger = { has_country_flag = wrong_bills } 
+		clr_country_flag = wrong_bills
+		add_political_power = -15
+		add_stability = -0.025
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -0.5 }
+		set_temp_variable = { pc = -0.5 } 
+		set_temp_variable = { mc = -0.5 }
+		set_temp_variable = { sc = -0.5 }
+		set_temp_variable = { bc = -1 }
+		set_temp_variable = { ac = 0 }
+		class_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		add_to_variable = {
+			cgt_confidence = -2
+			tooltip = cgt_confidence_reduce
+		}
+	}	
+}
+
+country_event = {
+	id = cofeconomy.19
+	title = {
+		text = cofeconomy.19.title.a
+		trigger = { NOT = { has_country_flag = cgt_acceptance_of_settlement } }
+	}
+	title = {
+		text = cofeconomy.19.title.b
+		trigger = { has_country_flag = cgt_acceptance_of_settlement }
+	}
+	desc = {
+		text = cofeconomy.19.desc.a
+		trigger = { NOT = { has_country_flag = cgt_acceptance_of_settlement } }
+	}
+	desc = {
+		text = cofeconomy.19.desc.b
+		trigger = { has_country_flag = cgt_acceptance_of_settlement }
+	}
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.19.a
+		trigger = { NOT = { has_country_flag = cgt_acceptance_of_settlement } }
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 3 }
+		set_temp_variable = { pc = 0 } 
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		class_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_target = 1 }   
+		set_temp_variable = { pop_syndc = 3 }
+		set_temp_variable = { pop_oppoc = -1 }
+		set_temp_variable = { pop_jacoc = -1 }
+		set_temp_variable = { pop_sorec = -1 }
+		class_pop_faction_tendency_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		add_to_variable = {
+			cgt_confidence = 2
+			tooltip = cgt_confidence_add2
+		}
+	}	
+	option = {
+		name = cofeconomy.19.b
+		trigger = { has_country_flag = cgt_acceptance_of_settlement } 
+		clr_country_flag = cgt_acceptance_of_settlement
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -2 }
+		set_temp_variable = { pc = -0.5 } 
+		set_temp_variable = { mc = -0.5 }
+		set_temp_variable = { sc = -0.5 }
+		set_temp_variable = { bc = -1 }
+		set_temp_variable = { ac = 0 }
+		class_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_target = 1 }   
+		set_temp_variable = { pop_syndc = -3 }
+		set_temp_variable = { pop_oppoc = 1 }
+		set_temp_variable = { pop_jacoc = 1 }
+		set_temp_variable = { pop_sorec = 1 }
+		class_pop_faction_tendency_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		add_to_variable = {
+			cgt_confidence = -2
+			tooltip = cgt_confidence_reduce
+		}
+	}	
+}
+
+country_event = {
+	id = cofeconomy.20
+	title = {
+		text = cofeconomy.20.title.eng
+		trigger = { tag = ENG }
+	}
+	title = {
+		text = cofeconomy.20.title.frat
+		trigger = { 
+			tag = FRA
+			has_country_flag = calais_eng_receive
+		}
+	}
+	title = {
+		text = cofeconomy.20.title.fraf
+		trigger = { 
+			tag = FRA
+			NOT = { has_country_flag = calais_eng_receive }
+		}
+	}
+	desc = {
+		text = cofeconomy.20.desc.eng
+		trigger = { tag = ENG }
+	}
+	desc = {
+		text = cofeconomy.20.desc.frat
+		trigger = { 
+			tag = FRA
+			has_country_flag = calais_eng_receive
+		}
+	}
+	desc = {
+		text = cofeconomy.20.desc.fraf
+		trigger = { 
+			tag = FRA
+			NOT = { has_country_flag = calais_eng_receive }
+		}
+	}
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.20.engt
+		trigger = { tag = ENG }
+		effect_tooltip = {
+			FRA = { unlock_decision_tooltip = Cof_economy_calais_cross_harbor_tunnel_build }
+			custom_effect_tooltip = calais_cross_harbor_tt
+			17 = {
+				set_temp_variable = { sesic = 3 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 2 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Calais
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.15
+					tooltip = local_building_slots_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_supplies = 0.2
+					tooltip = local_supplies_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_state_production_speed_dockyard_factor = 0.2
+					tooltip = state_production_speed_dockyard_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_resources_factor = 0.2
+					tooltip = local_resources_factor_tooltip
+				}
+			}
+
+			127 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		hidden_effect = { 
+			FRA = { 
+				set_country_flag = calais_eng_receive
+				country_event = cofeconomy.20 
+			} 
+		}
+	}	
+	option = {
+		name = cofeconomy.20.engf
+		trigger = { tag = ENG }
+
+		hidden_effect = { FRA = { country_event = cofeconomy.20 } }
+	}	
+	option = {
+		name = cofeconomy.20.frat
+		trigger = { 
+			tag = FRA
+			has_country_flag = calais_eng_receive
+		}
+		unlock_decision_tooltip = Cof_economy_calais_cross_harbor_tunnel_build 
+		custom_effect_tooltip = calais_cross_harbor_tt
+		effect_tooltip = {
+			17 = {
+				set_temp_variable = { sesic = 3 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 2 }
+				Cof_state_economy_situation_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = {
+					localization_key = tooltip_modify_dynmod
+					DYNMOD = Cof_state_Calais
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_building_slots_factor = 0.15
+					tooltip = local_building_slots_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_supplies = 0.2
+					tooltip = local_supplies_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_state_production_speed_dockyard_factor = 0.2
+					tooltip = state_production_speed_dockyard_factor_tooltip
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					core_local_resources_factor = 0.2
+					tooltip = local_resources_factor_tooltip
+				}
+			}
+
+			127 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}	
+	option = {
+		name = cofeconomy.20.fraf
+		trigger = { 
+			tag = FRA
+			NOT = { has_country_flag = calais_eng_receive }
+		}
+		
+	}	
+}
+
+country_event = {
+	id = cofeconomy.21
+	title = cofeconomy.21.title 
+	desc = cofeconomy.21.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.21.a
+		20 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 2 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.22
+	title = cofeconomy.22.title 
+	desc = cofeconomy.22.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.22.a
+		21 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 1 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 4 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.23
+	title = cofeconomy.23.title 
+	desc = cofeconomy.23.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.23.a
+		785 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+
+			add_resource = {
+				type = steel
+				amount = 30
+			}
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 10 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 4 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.24
+	title = cofeconomy.24.title 
+	desc = cofeconomy.24.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.24.a
+		20 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 1 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 0 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 2 }
+		set_temp_variable = { eiac = 4 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 4 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.25
+	title = cofeconomy.25.title 
+	desc = cofeconomy.25.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.25.a
+		16 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 10 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 2 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.26
+	title = cofeconomy.26.title 
+	desc = cofeconomy.26.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.26.a
+		30 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 20 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 4 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 2 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.27
+	title = cofeconomy.27.title 
+	desc = cofeconomy.27.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.27.a
+		31 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 1 }
+			set_temp_variable = { sesdc = 1 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 2 }
+		set_temp_variable = { eiac = 2 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 4 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.28
+	title = cofeconomy.28.title 
+	desc = cofeconomy.28.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.28.a
+		983 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 1 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 4 }
+		set_temp_variable = { eqc = 2 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.29
+	title = cofeconomy.29.title 
+	desc = cofeconomy.29.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.29.a
+		20 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 1 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 4 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 2 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 2 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.30
+	title = cofeconomy.30.title 
+	desc = cofeconomy.30.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.30.a
+		26 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+
+			add_resource = {
+				type = coal
+				amount = 10
+			}
+			add_resource = {
+				type = aluminium
+				amount = 10
+			}
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 10 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 4 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.31
+	title = cofeconomy.31.title 
+	desc = cofeconomy.31.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.31.a
+		19 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+
+			add_resource = {
+				type = rubber
+				amount = 5
+			}
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 4 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 4 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.32
+	title = cofeconomy.32.title 
+	desc = cofeconomy.32.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.32.a
+		16 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 20 }
+		set_temp_variable = { evc = 0 }
+		set_temp_variable = { eibc = 4 }
+		set_temp_variable = { eipc = 2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 4 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.33
+	title = cofeconomy.33.title 
+	desc = cofeconomy.33.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.33.a
+		15 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+
+			add_resource = {
+				type = aluminium
+				amount = 10
+			}
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 0 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 4 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 4 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 4 }
+		set_temp_variable = { eic = 2 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.34
+	title = cofeconomy.34.title 
+	desc = cofeconomy.34.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.34.a
+		16 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+
+			add_extra_state_shared_building_slots = 2 
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 10 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 4 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 2 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.35
+	title = cofeconomy.35.title 
+	desc = cofeconomy.35.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.35.a
+		16 = {
+			set_temp_variable = { sesic = 1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 40 }
+		set_temp_variable = { evc = 10 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 2 }
+		set_temp_variable = { eiac = 2 }
+		set_temp_variable = { eamc = 2 }
+		set_temp_variable = { eaec = 2 }
+		set_temp_variable = { eaac = 2 }
+		set_temp_variable = { eqc = 2 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 2 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.36
+	title = cofeconomy.36.title 
+	desc = cofeconomy.36.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.36.a
+		15 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 1 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = 10 }
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 4 }
+		set_temp_variable = { eipc = 2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_positive = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.37
+	title = cofeconomy.37.title 
+	desc = cofeconomy.37.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.37.a
+		16 = {
+			set_temp_variable = { sesic = -1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -20 }
+		set_temp_variable = { evc = -4 }
+		set_temp_variable = { eibc = -2 }
+		set_temp_variable = { eipc = -2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.38
+	title = cofeconomy.38.title 
+	desc = cofeconomy.38.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.38.a
+		15 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+
+			add_resource = {
+				type = steel
+				amount = -5
+			}
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -20 }
+		set_temp_variable = { evc = -4 }
+		set_temp_variable = { eibc = -4 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -2 }
+		set_temp_variable = { elc = -4 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.39
+	title = cofeconomy.39.title 
+	desc = cofeconomy.39.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.39.a
+		21 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = -1 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -20 }
+		set_temp_variable = { evc = -6 }
+		set_temp_variable = { eibc = -4 }
+		set_temp_variable = { eipc = -2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -2 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.40
+	title = cofeconomy.40.title 
+	desc = cofeconomy.40.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.40.a
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -3 }
+		set_temp_variable = { pc = -3 }
+		set_temp_variable = { mc = -3 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		class_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -30 }
+		set_temp_variable = { evc = -4 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -4 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.41
+	title = cofeconomy.41.title 
+	desc = cofeconomy.41.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.41.a
+		20 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = -1 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -20 }
+		set_temp_variable = { evc = -4 }
+		set_temp_variable = { eibc = -2 }
+		set_temp_variable = { eipc = -2 }
+		set_temp_variable = { eiac = -4 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -2 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.42
+	title = cofeconomy.42.title 
+	desc = cofeconomy.42.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.42.a
+		735 = {
+			set_temp_variable = { sesic = 0 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -20 }
+		set_temp_variable = { evc = -2 }
+		set_temp_variable = { eibc = -2 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = -2 }
+		set_temp_variable = { eaec = -2 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -4 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.43
+	title = cofeconomy.43.title 
+	desc = cofeconomy.43.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.43.a
+		20 = {
+			set_temp_variable = { sesic = -1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -40 }
+		set_temp_variable = { evc = -4 }
+		set_temp_variable = { eibc = -2 }
+		set_temp_variable = { eipc = -2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = -2 }
+		set_temp_variable = { eaec = -2 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -4 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = 0 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.44
+	title = cofeconomy.44.title 
+	desc = cofeconomy.44.desc
+	picture = GFX_report_event_generic_economic_policy
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.44.a
+		16 = {
+			set_temp_variable = { sesic = -1 }
+			set_temp_variable = { sesac = 0 }
+			set_temp_variable = { sesdc = 0 }
+			Cof_state_economy_situation_change = yes
+		}
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { epc = -30 }
+		set_temp_variable = { evc = -4 }
+		set_temp_variable = { eibc = -4 }
+		set_temp_variable = { eipc = -4 }
+		set_temp_variable = { eiac = -2 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = -2 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = -2 }
+		economic_event_bouns_judge_negative = yes
+		cof_econ_target_change = yes
+	}	
+}
+
+country_event = {
+	id = cofeconomy.45
+	title = cofeconomy.45.title 
+	desc = cofeconomy.45.desc
+	hidden = yes
+	is_triggered_only = yes
+	option = {
+		name = cofeconomy.45.a
+		economic_event_judge = yes
+		if = {
+			limit = { has_completed_focus = FRA_step_by_step }
+			country_event = { id = cofeconomy.45 days = 120 random_days = 60 }
+		}
+		else = { country_event = { id = cofeconomy.45 days = 210 random_days = 60 } }
+	}	
+}

@@ -1,0 +1,1227 @@
+scripted_gui = {
+    factory_switch_button = {
+        context_type = selected_state_context
+        parent_window_name = state_info_window
+        window_name = economy_factory_switch_button_window
+
+        visible = {
+			ROOT = { tag = FRA }
+			is_owned_by = ROOT
+			is_core_of = ROOT
+            ROOT = { has_completed_focus = FRA_monopolization_of_justice }
+		}
+        triggers = {
+            economy_factory_switch_button_click_enabled = {
+                FRA = { has_political_power > 30 }
+                industrial_complex > 1
+            }
+        }
+        effects = {
+            economy_factory_switch_button_click = {
+                remove_building = { type = industrial_complex level = 1 }
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				Cof_state_economy_situation_change = yes
+            }
+        }
+    }
+
+    rbm_action_button = {
+        context_type = selected_state_context
+        parent_window_name = state_info_window
+        window_name = red_black_market_window
+
+        visible = {
+			ROOT = { tag = FRA }
+            FRA = { has_completed_focus = FRA_cake_for_everyone }
+            THIS = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } }
+		}
+        triggers = {
+            propoganda_button_click_enabled = {
+                owner = { NOT = { has_country_flag = rbm_action } }
+                FRA = { has_political_power > 25 }
+            }
+            strike_button_click_enabled = {
+                owner = { NOT = { has_country_flag = rbm_action } }
+                FRA = { has_political_power > 25 }
+            }
+            expansions_button_click_enabled = {
+                owner = { 
+                    NOT = { has_country_flag = rbm_action } 
+                    has_stability < 0.25
+                    set_temp_variable = { t = var:THIS.party_popularity@totalist }
+                    add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
+                    add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
+                    check_variable = { t > 0.15 }
+                }
+                FRA = { has_political_power > 50 }
+                any_neighbor_state = { 
+                    is_core_of = PREV.owner
+                    is_owned_by = PREV.owner
+                    NOT = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } } 
+                }
+            }
+        }
+        effects = {
+            propoganda_button_click = {
+                FRA = { add_political_power = -25 }
+                owner = { 
+                    set_country_flag = rbm_action_propoganda
+                    country_event = cofintern.12
+                }
+            }
+            strike_button_click = {
+                FRA = { add_political_power = -25 }
+                set_state_flag = rbm_damage
+                owner = { 
+                    set_country_flag = rbm_action_strike
+                    country_event = cofintern.12
+                }
+            }
+            expansions_button_click = {
+                FRA = { add_political_power = -50 }
+                set_state_flag = rbm_base
+                owner = { 
+                    set_country_flag = rbm_action_expansions
+                    country_event = cofintern.12
+                }
+            }
+        }
+    }
+
+    #
+    econ_circle_value = {
+        context_type = decision_category
+        window_name = econ_variable_ui_progressbar
+
+        triggers = {
+            ring_progressbar_ev_good_visible = {
+                OR = {
+                    check_variable = { cof_econ_values > 0 }
+                    check_variable = { cof_econ_values = 0 }
+                }
+            }
+            ring_progressbar_ev_bad_visible = {
+                check_variable = { cof_econ_values < 0 }
+            }
+        }
+        properties = {
+            ring_progressbar_eib = { frame = econ_industry_basic }
+            ring_progressbar_eip = { frame = econ_industry_process }
+            ring_progressbar_eia = { frame = econ_industry_arms }
+
+            ring_progressbar_eam = { frame = econ_agriculture_mechanized }
+            ring_progressbar_eae = { frame = econ_agriculture_chemical }
+            ring_progressbar_eaa = { frame = econ_agriculture_chain }
+
+            ring_progressbar_eq = { frame = econ_equal }
+            ring_progressbar_el = { frame = econ_link }
+            ring_progressbar_ei = { frame = econ_innovate }
+
+            ring_progressbar_econ_synd = { frame = gui_econ_synd }
+            ring_progressbar_econ_oppo = { frame = gui_econ_oppo }
+            ring_progressbar_econ_jaco = { frame = gui_econ_jaco }
+            ring_progressbar_econ_sore = { frame = gui_econ_sore }
+
+            gui_econ_DEA_portrait = { image = "[gui_econ_DEA_portrait_loc]" }
+            ring_progressbar_ev_good = { frame = cof_econ_values }
+            ring_progressbar_ev_bad = { frame = cof_econ_values_bad }
+        }
+    }
+
+    pop_circle_value = {
+        context_type = decision_category
+        window_name = society_variable_ui
+
+        triggers = {
+            pop_worker_ui_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+            pop_worker_ui_s_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+            pop_worker_ui_synd_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_worker_ui_oppo_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_worker_ui_jaco_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_worker_ui_sore_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+
+            pop_peasant_ui_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+            pop_peasant_ui_s_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+            pop_peasant_ui_synd_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_peasant_ui_oppo_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_peasant_ui_jaco_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_peasant_ui_sore_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+
+            pop_merchant_ui_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_merchant_ui_s_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_merchant_ui_synd_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_merchant_ui_oppo_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_merchant_ui_jaco_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+            pop_merchant_ui_sore_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+
+            pop_scholar_ui_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_scholar_ui_s_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_scholar_ui_synd_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+            pop_scholar_ui_oppo_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_scholar_ui_jaco_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_scholar_ui_sore_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+
+            pop_bureaucrat_ui_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_bureaucrat_ui_s_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_bureaucrat_ui_synd_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+            pop_bureaucrat_ui_oppo_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_bureaucrat_ui_jaco_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_bureaucrat_ui_sore_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }
+
+            pop_army_ui_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_army_ui_s_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_army_ui_synd_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_army_ui_oppo_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_army_ui_jaco_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_army_ui_sore_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+
+            pop_total_ui_worker_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_total_ui_peasant_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_total_ui_merchant_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_total_ui_scholar_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_total_ui_bureaucrat_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_total_ui_army_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            pop_total_ui_s_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+
+            gui_society_DIS_portrait_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }  
+            gui_society_DIS_box_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            }  
+            gui_society_DCA_portrait_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+            gui_society_DCA_box_visible = { 
+                NOT = { has_country_flag = show_national_news }
+                NOT = { has_country_flag = show_surrealist_moovement }
+            } 
+
+            national_news_open_visible = { NOT = { has_country_flag = show_surrealist_moovement } }
+            national_news_open_click_enabled = { has_country_flag = establish_national_news }
+            national_news_text_visible = { has_country_flag = show_national_news }
+            national_news_buff_text_visible = { has_country_flag = show_national_news }
+            expand_national_news_button_visible = { has_country_flag = show_national_news }
+            expand_national_news_button_click_enabled = { check_variable = { economy_power > 49.9 } }
+            national_news_expand_choice_visible = { has_country_flag = show_national_news }
+            recruit_journalists_visible = { has_country_flag = show_national_news }
+            recruit_copywriting_visible = { has_country_flag = show_national_news }
+            recruit_editor_visible = { has_country_flag = show_national_news }
+            recruit_journalists_click_enabled = { check_variable = { national_news_expand > 0 } }
+            recruit_copywriting_click_enabled = { check_variable = { national_news_expand > 0 } }
+            recruit_editor_click_enabled = { check_variable = { national_news_expand > 0 } }
+            remake_national_news_button_visible = { has_country_flag = show_national_news }
+            remake_national_news_button_click_enabled = { has_political_power > 10 }
+            choose_news_topic_patriotism_visible = { has_country_flag = show_national_news }
+            choose_news_topic_economy_visible = { has_country_flag = show_national_news }
+            choose_news_topic_internationale_visible = { has_country_flag = show_national_news }
+            choose_news_topic_patriotism_click_enabled = { NOT = { has_country_flag = news_topic_patriotism } }
+            choose_news_topic_economy_click_enabled = { NOT = { has_country_flag = news_topic_economy } }
+            choose_news_topic_internationale_click_enabled = { NOT = { has_country_flag = news_topic_internationale } }
+        
+            surrealism_window_open_visible = { NOT = { has_country_flag = show_national_news } }
+        }
+        effects = {
+            national_news_open_click = {
+                if = {
+                    limit = { has_country_flag = show_national_news } 
+                    clr_country_flag = show_national_news
+                }
+                else = { set_country_flag = show_national_news } 
+            }
+            expand_national_news_button_click = {
+                add_to_variable = { economy_power = -50 }
+                add_to_variable = { national_news_expand = 1 }
+            }
+            recruit_journalists_click = {
+                add_to_variable = { national_news_expand = -1 }
+			    add_to_variable = { news_ability_number = 1 }
+            }
+            recruit_copywriting_click = {
+                add_to_variable = { national_news_expand = -1 }
+			    add_to_variable = { news_ability_quality = 1 }
+            }
+            recruit_editor_click = {
+                add_to_variable = { national_news_expand = -1 }
+			    add_to_variable = { news_ability_deal = 1 }
+            }
+            remake_national_news_button_click = {
+                national_news_var_get = yes
+            }
+            choose_news_topic_patriotism_click = {
+                clr_country_flag = news_topic_economy
+                clr_country_flag = news_topic_internationale
+                set_country_flag = news_topic_patriotism
+                national_news_buff_get = yes
+            }
+            choose_news_topic_economy_click = {
+                clr_country_flag = news_topic_patriotism
+                clr_country_flag = news_topic_internationale
+                set_country_flag = news_topic_economy
+                national_news_buff_get = yes
+            }
+            choose_news_topic_internationale_click = {
+                clr_country_flag = news_topic_economy
+                clr_country_flag = news_topic_patriotism
+                set_country_flag = news_topic_internationale
+                national_news_buff_get = yes
+            }
+
+            surrealism_window_open_click = {
+                if = {
+                    limit = { has_country_flag = show_surrealist_moovement } 
+                    clr_country_flag = show_surrealist_moovement
+                }
+                else = { set_country_flag = show_surrealist_moovement } 
+            }
+        }
+        properties = {
+            pop_worker_ui_s = { frame = pop_satisfaction_workers }
+            pop_worker_ui_synd = { frame = gui_popw_synd }
+            pop_worker_ui_oppo = { frame = gui_popw_oppo }
+            pop_worker_ui_jaco = { frame = gui_popw_jaco }
+            pop_worker_ui_sore = { frame = gui_popw_sore }
+
+            pop_peasant_ui_s = { frame = pop_satisfaction_peasants }
+            pop_peasant_ui_synd = { frame = gui_popp_synd }
+            pop_peasant_ui_oppo = { frame = gui_popp_oppo }
+            pop_peasant_ui_jaco = { frame = gui_popp_jaco }
+            pop_peasant_ui_sore = { frame = gui_popp_sore }
+
+            pop_merchant_ui_s = { frame = pop_satisfaction_merchants }
+            pop_merchant_ui_synd = { frame = gui_popm_synd }
+            pop_merchant_ui_oppo = { frame = gui_popm_oppo }
+            pop_merchant_ui_jaco = { frame = gui_popm_jaco }
+            pop_merchant_ui_sore = { frame = gui_popm_sore }
+
+            pop_scholar_ui_s = { frame = pop_satisfaction_scholars }
+            pop_scholar_ui_synd = { frame = gui_pops_synd }
+            pop_scholar_ui_oppo = { frame = gui_pops_oppo }
+            pop_scholar_ui_jaco = { frame = gui_pops_jaco }
+            pop_scholar_ui_sore = { frame = gui_pops_sore }
+
+            pop_bureaucrat_ui_s = { frame = pop_satisfaction_bureaucrats }
+            pop_bureaucrat_ui_synd = { frame = gui_popb_synd }
+            pop_bureaucrat_ui_oppo = { frame = gui_popb_oppo }
+            pop_bureaucrat_ui_jaco = { frame = gui_popb_jaco }
+            pop_bureaucrat_ui_sore = { frame = gui_popb_sore }
+
+            pop_army_ui_s = { frame = pop_satisfaction_army }
+            pop_army_ui_synd = { frame = gui_popa_synd }
+            pop_army_ui_oppo = { frame = gui_popa_oppo }
+            pop_army_ui_jaco = { frame = gui_popa_jaco }
+            pop_army_ui_sore = { frame = gui_popa_sore }
+
+            pop_total_ui_worker = { frame = gui_popw }
+            pop_total_ui_peasant = { frame = gui_popp }
+            pop_total_ui_merchant = { frame = gui_popm }
+            pop_total_ui_scholar = { frame = gui_pops }
+            pop_total_ui_bureaucrat = { frame = gui_popb }
+            pop_total_ui_army = { frame = gui_popa }
+            pop_total_ui_s = { frame = pop_satisfaction }
+
+            gui_society_DIS_portrait = {
+                image = "[gui_society_DIS_portrait_loc]"
+            }
+            gui_society_DCA_portrait = {
+                image = "[gui_society_DCA_portrait_loc]"
+            }
+        }
+    }
+
+    
+    army_circle_value = {
+        context_type = decision_category
+        window_name = military_variable_ui
+
+        properties = {
+            pop_officer_ui = { frame = gui_popao }
+            pop_nco_ui = { frame = gui_popan }
+            pop_soldier_ui = { frame = gui_popas }
+
+            pop_officer_ui_synd = { frame = gui_popao_synd }
+            pop_officer_ui_oppo = { frame = gui_popao_oppo }
+            pop_officer_ui_jaco = { frame = gui_popao_jaco }
+            pop_officer_ui_sore = { frame = gui_popao_sore }
+
+            pop_nco_ui_synd = { frame = gui_popan_synd }
+            pop_nco_ui_oppo = { frame = gui_popan_oppo }
+            pop_nco_ui_jaco = { frame = gui_popan_jaco }
+            pop_nco_ui_sore = { frame = gui_popan_sore }
+
+            pop_soldier_ui_synd = { frame = gui_popas_synd }
+            pop_soldier_ui_oppo = { frame = gui_popas_oppo }
+            pop_soldier_ui_jaco = { frame = gui_popas_jaco }
+            pop_soldier_ui_sore = { frame = gui_popas_sore }
+
+            army_autonomy_ui = { frame = Cof_army_autonomy }
+            army_willing_ui = { frame = Cof_army_willing }
+            army_training_ui = { frame = Cof_army_training }
+            army_equipment_ui = { frame = Cof_army_equipment }
+            army_passionate_ui = { frame = Cof_army_passionate }
+
+            gui_army_CGSC_portrait = { image = "[gui_army_CGSC_portrait_loc]" }
+            theory_ui = { frame = Cof_army_theory_implementation }
+
+            pop_faction_synd = { frame = gui_msynd }
+            pop_faction_oppo = { frame = gui_moppo }
+            pop_faction_jaco = { frame = gui_mjaco }
+            pop_faction_sore = { frame = gui_msore }
+
+            air_reasearch_progress_icon = { frame = air_reasearch_progress }
+        }
+        triggers = {
+            air_research_button_click_enabled = { has_country_flag = FRA_vehicle_concept }
+
+            pop_officer_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_nco_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_soldier_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+
+            pop_officer_ui_synd_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_officer_ui_oppo_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_officer_ui_jaco_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_officer_ui_sore_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+
+            pop_nco_ui_synd_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_nco_ui_oppo_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_nco_ui_jaco_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_nco_ui_sore_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+
+            pop_soldier_ui_synd_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_soldier_ui_oppo_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_soldier_ui_jaco_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_soldier_ui_sore_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+
+            army_autonomy_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_willing_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_training_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_equipment_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_passionate_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+
+            gui_army_CGSC_portrait_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            theory_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+
+            pop_faction_synd_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_faction_oppo_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_faction_jaco_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            pop_faction_sore_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+        
+            army_ui_bg1_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_ui_bg2_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_ui_bg3_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_ui_bg4_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_ui_bg5_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+
+            army_autonomy_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_autonomy_ui_icon_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_willing_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_willing_ui_icon_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_training_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_training_ui_icon_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_equipment_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_equipment_ui_icon_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_passionate_ui_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_passionate_ui_icon_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+        
+            gui_army_CGSC_box_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            theory_ui_box_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            ring_progressbar_faction_background_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+            army_reform_buff_icon_visible = { NOT = { has_country_flag  = show_air_reasearch } }
+        
+            air_ui_box_visible = {  has_country_flag = show_air_reasearch }
+            air_detail_ui_box_visible = {  has_country_flag = show_air_reasearch }
+            air_reasearch_progress_icon_visible = { has_country_flag  = show_air_reasearch }
+        }
+        effects = {
+            army_reform_buff_icon_click = {
+                if = {
+                    limit = { has_country_flag = show_ar_windows }
+                    clr_country_flag = show_ar_windows
+                }
+                else = { set_country_flag = show_ar_windows }
+            }
+            air_research_button_click = {
+                if = {
+                    limit = { has_country_flag = show_air_reasearch }
+                    clr_country_flag = show_air_reasearch
+                }
+                else = { set_country_flag = show_air_reasearch }
+            }
+        }
+    }
+
+    armyreform_show = {
+        context_type = player_context
+        window_name = armyreform_window
+
+        visible = {
+			tag = FRA
+            has_country_flag = show_ar_windows
+		}
+        effects = {
+            armyreform_window_esc_click = {
+                clr_country_flag = show_ar_windows
+            }
+        }
+        dynamic_lists = {
+            army_reform_context = {
+                array = cof_ar_bills
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = army_reform_window
+            }
+        }
+    }
+
+
+    politics_circle_value = {
+        context_type = decision_category
+        window_name = politics_ui
+
+        triggers = {
+            politics_ui_bgt_vs_csp_csp_visible = {
+                OR = {
+                    check_variable = { Cof_BGT_vs_CSP_value > 0 }
+                    check_variable = { Cof_BGT_vs_CSP_value = 0 }
+                }
+            }
+            politics_ui_bgt_vs_csp_bgt_visible = {
+                check_variable = { Cof_BGT_vs_CSP_value < 0 }
+            }
+
+            bgt_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            csp_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            ios_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_synd_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_oppo_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_jaco_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_faction_desc_sore_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            politics_landscape_visible = { has_country_flag = show_politics_landscape }
+        }
+        effects = {
+            open_bgt_windows_click = {
+                if = {        
+                    limit = { has_country_flag = bgt_show }
+                    clr_country_flag = bgt_show
+                }
+                else = { set_country_flag = bgt_show }
+            }
+            open_faction_desc_synd_click = {
+                country_event = cofpolitics.2
+            }
+            open_faction_desc_oppo_click = {
+                country_event = cofpolitics.5
+            }
+            open_faction_desc_jaco_click = {
+                country_event = cofpolitics.8
+            }
+            open_faction_desc_sore_click = {
+                country_event = cofpolitics.11
+            }
+            open_politics_landscape_click = {
+                if = {
+                    limit = { has_country_flag = show_politics_landscape }
+                    clr_country_flag = show_politics_landscape
+                }
+                else = { set_country_flag = show_politics_landscape }
+            }
+        }
+        properties = {
+            politics_ui_bgt_vs_csp_csp = { frame = gui_csp
+            }
+            politics_ui_bgt_vs_csp_bgt = { frame = gui_bgt
+            }
+            politics_ui_ios = { frame = gui_ios
+            }
+
+            politics_faction_synd = { frame = gui_posynd
+            }
+            politics_faction_oppo = { frame = gui_pooppo
+            }
+            politics_faction_jaco = { frame = gui_pojaco
+            }
+            politics_faction_sore = { frame = gui_posore
+            }
+        }
+    }
+
+    economy_power_show = {
+        context_type = player_context
+        window_name = ep_show_window
+        visible = { tag = FRA }
+        triggers = {
+            add_ep_with_pp_click_enabled = {
+                has_political_power > 9.9
+            }
+            add_pp_with_ep_click_enabled = {
+                check_variable = { economy_power > 19.9 }
+            }
+
+            politics_variable_list_show_visible = {
+                NOT = { has_country_flag = show_politics_variable_list }
+            }
+            politics_variable_list_hidden_visible = {
+                has_country_flag = show_politics_variable_list
+            }
+            polbgtvscsp_icon_visible = { has_country_flag = gui_politics_bgtvscsp }
+            polios_icon_visible = { has_country_flag = gui_politics_ios }
+            
+            polsynd_icon_visible = { has_country_flag = gui_politics_synd }
+            poloppo_icon_visible = { has_country_flag = gui_politics_oppo }
+            poljaco_icon_visible = { has_country_flag = gui_politics_jaco }
+            polsore_icon_visible = { has_country_flag = gui_politics_sore }
+
+            gui_politics_vote_text_visible = { has_country_flag = gui_politics_vote }
+
+            polirieu_icon_visible = { has_country_flag = gui_politics_irieu }
+            polirias_icon_visible = { has_country_flag = gui_politics_irias }
+            polirime_icon_visible = { has_country_flag = gui_politics_irime }
+            poliriaf_icon_visible = { has_country_flag = gui_politics_iriaf }
+            poliriam_icon_visible = { has_country_flag = gui_politics_iriam }
+
+            society_influence_list_show_visible = {
+                NOT = { has_country_flag = show_society_influence_list }
+            }
+            society_influence_list_hidden_visible = {
+                has_country_flag = show_society_influence_list
+            }
+            socw_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popw
+                    has_country_flag = gui_society_popsw
+                }
+            }
+            socp_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popp
+                    has_country_flag = gui_society_popsp
+                }
+            }
+            socm_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popm
+                    has_country_flag = gui_society_popsm
+                }
+            }
+            socs_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_pops
+                    has_country_flag = gui_society_popss
+                }
+            }
+            socb_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popb
+                    has_country_flag = gui_society_popsb
+                }
+            }
+            soca_icon_visible = {
+                OR = {
+                    has_country_flag = gui_society_popa
+                    has_country_flag = gui_society_popsa
+                }
+            }
+            socpops_icon_visible = { has_country_flag = gui_society_popsall }
+
+            economy_variable_list_show_visible = {
+                NOT = { has_country_flag = show_economy_variable_list }
+            }
+            economy_variable_list_hidden_visible = {
+                has_country_flag = show_economy_variable_list
+            }
+            econv_icon_visible = { has_country_flag = gui_economy_ev }
+            econib_icon_visible = { has_country_flag = gui_economy_eib }
+            econip_icon_visible = { has_country_flag = gui_economy_eip }
+            econia_icon_visible = { has_country_flag = gui_economy_eia }
+            econam_icon_visible = { has_country_flag = gui_economy_eam }
+            econae_icon_visible = { has_country_flag = gui_economy_eae }
+            econaa_icon_visible = { has_country_flag = gui_economy_eaa }
+            econq_icon_visible = { has_country_flag = gui_economy_eq }
+            econl_icon_visible = { has_country_flag = gui_economy_el }
+            econi_icon_visible = { has_country_flag = gui_economy_ei }
+
+            econsynd_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_coop 
+                    has_country_flag = gui_economy_synd
+                }   
+            }
+            econoppo_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_market 
+                    has_country_flag = gui_economy_oppo
+                }   
+            }
+            econjaco_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_plan
+                    has_country_flag = gui_economy_jaco
+                }   
+            }
+            econsore_icon_visible = { 
+                OR = {
+                    has_country_flag = gui_economy_order 
+                    has_country_flag = gui_economy_sore
+                }   
+            }
+
+            gui_economy_focus_text_visible = { has_country_flag = gui_economy_focus }
+
+            army_reform_variable_list_show_visible = {
+                NOT = { has_country_flag = show_army_reform_variable_list }
+            }
+            army_reform_variable_list_hidden_visible = {
+                has_country_flag = show_army_reform_variable_list
+            }
+            miliao_icon_visible = { has_country_flag = gui_military_popao }
+            milian_icon_visible = { has_country_flag = gui_military_popan }
+            milias_icon_visible = { has_country_flag = gui_military_popas }
+
+            miliaa_icon_visible = { has_country_flag = gui_military_aa }
+            miliaw_icon_visible = { has_country_flag = gui_military_aw }
+            miliat_icon_visible = { has_country_flag = gui_military_at }
+            miliae_icon_visible = { has_country_flag = gui_military_ae }
+            miliap_icon_visible = { has_country_flag = gui_military_ap }
+
+            milisynd_icon_visible = { has_country_flag = gui_military_synd }
+            milioppo_icon_visible = { has_country_flag = gui_military_oppo }
+            milijaco_icon_visible = { has_country_flag = gui_military_jaco }
+            milisore_icon_visible = { has_country_flag = gui_military_sore }
+        }
+        effects = {
+            add_ep_with_pp_click = {
+                add_political_power = -10
+                add_to_variable = { economy_power = 10 }
+            }
+            add_pp_with_ep_click = {
+                add_to_variable = { economy_power = -20 }
+                add_political_power = 10
+            }
+
+            politics_variable_list_show_click = {
+                set_country_flag = show_politics_variable_list 
+            }
+            politics_variable_list_hidden_click = {
+                clr_country_flag = show_politics_variable_list
+            }
+
+            society_influence_list_show_click = {
+                set_country_flag = show_society_influence_list
+            }
+            society_influence_list_hidden_click = {
+                clr_country_flag = show_society_influence_list
+            }
+
+            economy_variable_list_show_click = {
+                set_country_flag = show_economy_variable_list 
+            }
+            economy_variable_list_hidden_click = {
+                clr_country_flag = show_economy_variable_list
+            }
+
+            army_reform_variable_list_show_click = {
+                set_country_flag = show_army_reform_variable_list 
+            }
+            army_reform_variable_list_hidden_click = {
+                clr_country_flag = show_army_reform_variable_list
+            }
+        }
+        ai_weights = {
+            add_pp_with_ep_click = {
+                ai_will_do = {
+                    base = 0
+                    modifier = {
+                        add = 100
+                        set_temp_variable = { target_num = 200 }
+                        set_temp_variable = { target_t = 15 }
+                        cof_econ_target_more_than_x = yes
+                    }
+                }
+            }
+        }
+    }
+
+    show_the_politics_variable_list = {
+        context_type = player_context
+        window_name = politics_variable_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_politics_variable_list
+        }
+        triggers = {
+            bgtvscspicon_chosen_visible = { has_country_flag = gui_politics_bgtvscsp }
+            iosicon_chosen_visible = { has_country_flag = gui_politics_ios }
+            
+            syndicon_chosen_visible = { has_country_flag = gui_politics_synd }
+            oppoicon_chosen_visible = { has_country_flag = gui_politics_oppo }
+            jacoicon_chosen_visible = { has_country_flag = gui_politics_jaco }
+            soreicon_chosen_visible = { has_country_flag = gui_politics_sore }
+
+            voteicon_chosen_visible = { has_country_flag = gui_politics_vote }
+
+            irieuicon_chosen_visible = { has_country_flag = gui_politics_irieu }
+            iriasicon_chosen_visible = { has_country_flag = gui_politics_irias }
+            irimeicon_chosen_visible = { has_country_flag = gui_politics_irime }
+            iriaficon_chosen_visible = { has_country_flag = gui_politics_iriaf }
+            iriamicon_chosen_visible = { has_country_flag = gui_politics_iriam }
+        }
+        effects = {
+            bgtvscsp_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_bgtvscsp
+            }
+            ios_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_ios
+            }
+
+            synd_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_synd
+            }
+            oppo_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_oppo
+            }
+            jaco_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_jaco
+            }
+            sore_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_sore
+            }
+        
+            vote_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_vote
+            }
+
+            irieu_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_irieu
+            }
+            irias_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_irias
+            }
+            irime_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_irime
+            }
+            iriaf_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_iriaf
+            }
+            iriam_bg_click = {
+                clr_gui_politics_flag = yes
+                set_country_flag = gui_politics_iriam
+            }
+        }
+    }
+
+    show_the_society_influence_list = {
+        context_type = player_context
+        window_name = society_influence_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_society_influence_list
+        }
+        triggers = {
+            popwicon_chosen_visible = { has_country_flag = gui_society_popw }
+            poppicon_chosen_visible = { has_country_flag = gui_society_popp }
+            popmicon_chosen_visible = { has_country_flag = gui_society_popm }
+            popsicon_chosen_visible = { has_country_flag = gui_society_pops }
+            popbicon_chosen_visible = { has_country_flag = gui_society_popb }
+            popaicon_chosen_visible = { has_country_flag = gui_society_popa }
+
+            popsallicon_chosen_visible = { has_country_flag = gui_society_popsall }
+
+            popswicon_chosen_visible = { has_country_flag = gui_society_popsw }
+            popspicon_chosen_visible = { has_country_flag = gui_society_popsp }
+            popsmicon_chosen_visible = { has_country_flag = gui_society_popsm }
+            popssicon_chosen_visible = { has_country_flag = gui_society_popss }
+            popsbicon_chosen_visible = { has_country_flag = gui_society_popsb }
+            popsaicon_chosen_visible = { has_country_flag = gui_society_popsa }
+        }
+        effects = {
+            popw_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popw
+            }
+            popp_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popp
+            }
+            popm_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popm
+            }
+            pops_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_pops
+            }
+            popb_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popb
+            }
+            popa_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popa
+            }
+
+            popsall_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsall
+            }
+            popsw_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsw
+            }
+            popsp_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsp
+            }
+            popsm_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsm
+            }
+            popss_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popss
+            }
+            popsb_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsb
+            }
+            popsa_bg_click = {
+                clr_gui_society_flag = yes
+                set_country_flag = gui_society_popsa
+            }
+        }
+    }
+
+    show_the_economy_variable_list = {
+        context_type = player_context
+        window_name = economy_variable_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_economy_variable_list
+        }
+        triggers = {
+            evicon_chosen_visible = { has_country_flag = gui_economy_ev }
+            eibicon_chosen_visible = { has_country_flag = gui_economy_eib }
+            eipicon_chosen_visible = { has_country_flag = gui_economy_eip }
+            eiaicon_chosen_visible = { has_country_flag = gui_economy_eia }
+            eamicon_chosen_visible = { has_country_flag = gui_economy_eam }
+            eaeicon_chosen_visible = { has_country_flag = gui_economy_eae }
+            eaaicon_chosen_visible = { has_country_flag = gui_economy_eaa }
+            eqicon_chosen_visible = { has_country_flag = gui_economy_eq }
+            elicon_chosen_visible = { has_country_flag = gui_economy_el }
+            eiicon_chosen_visible = { has_country_flag = gui_economy_ei }
+
+            coopicon_chosen_visible = { has_country_flag = gui_economy_coop }
+            marketicon_chosen_visible = { has_country_flag = gui_economy_market }
+            planicon_chosen_visible = { has_country_flag = gui_economy_plan }
+            ordericon_chosen_visible = { has_country_flag = gui_economy_order }
+            econfocusicon_chosen_visible = { has_country_flag = gui_economy_focus }
+
+            econsyndicon_chosen_visible = { has_country_flag = gui_economy_synd }
+            econoppoicon_chosen_visible = { has_country_flag = gui_economy_oppo }
+            econjacoicon_chosen_visible = { has_country_flag = gui_economy_jaco }
+            econsoreicon_chosen_visible = { has_country_flag = gui_economy_sore }
+        }
+        effects = {
+            ev_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_ev
+            }
+            eib_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eib
+            }
+            eip_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eip
+            }
+            eia_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eia
+            }
+            eam_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eam
+            }
+            eae_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eae
+            }
+            eaa_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eaa
+            }
+            eq_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_eq
+            }
+            el_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_el
+            }
+            ei_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_ei
+            }
+
+            coop_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_coop
+            }
+            market_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_market
+            }
+            plan_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_plan
+            }
+            order_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_order
+            }
+            econfocus_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_focus
+            }
+
+            econsynd_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_synd
+            }
+            econoppo_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_oppo
+            }
+            econjaco_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_jaco
+            }
+            econsore_bg_click = {
+                clr_gui_economy_flag = yes
+                set_country_flag = gui_economy_sore
+            }
+        }
+    }
+
+    show_the_army_reform_variable_list = {
+        context_type = player_context
+        window_name = army_reform_variable_list
+        visible = { 
+            tag = FRA 
+            has_country_flag = show_army_reform_variable_list
+        }
+        triggers = {
+            popaoicon_chosen_visible = { has_country_flag = gui_military_popao }
+            popanicon_chosen_visible = { has_country_flag = gui_military_popan }
+            popasicon_chosen_visible = { has_country_flag = gui_military_popas }
+
+            aaicon_chosen_visible = { has_country_flag = gui_military_aa }
+            awicon_chosen_visible = { has_country_flag = gui_military_aw }
+            aticon_chosen_visible = { has_country_flag = gui_military_at }
+            aeicon_chosen_visible = { has_country_flag = gui_military_ae }
+            apicon_chosen_visible = { has_country_flag = gui_military_ap }
+
+            milisyndicon_chosen_visible = { has_country_flag = gui_military_synd }
+            milioppoicon_chosen_visible = { has_country_flag = gui_military_oppo }
+            milijacoicon_chosen_visible = { has_country_flag = gui_military_jaco }
+            milisoreicon_chosen_visible = { has_country_flag = gui_military_sore }
+        }
+        effects = {
+            popao_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_popao
+            }
+            popan_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_popan
+            }
+            popas_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_popas
+            }
+
+            aa_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_aa
+            }
+            aw_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_aw
+            }
+            at_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_at
+            }
+            ae_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_ae
+            }
+            ap_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_ap
+            }
+
+            milisynd_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_synd
+            }
+            milioppo_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_oppo
+            }
+            milijaco_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_jaco
+            }
+            milisore_bg_click = {
+                clr_gui_military_flag = yes
+                set_country_flag = gui_military_sore
+            }
+        }
+    }
+}

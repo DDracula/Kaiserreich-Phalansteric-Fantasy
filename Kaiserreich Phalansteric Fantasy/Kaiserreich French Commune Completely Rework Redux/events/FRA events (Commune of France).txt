@@ -90,20 +90,18 @@ country_event = {
 	title = france_events.5.t
 	desc = france_events.5.desc
 	picture = GFX_report_event_worker_protests
-
 	is_triggered_only = yes
 	immediate = { 
 		hidden_effect = { 
-			country_event = { id = france_events.6 days = 7 } 
-			country_event = { id = france_events.7 days = 10 } 
-			country_event = { id = france_events.8 days = 13 } 
-			country_event = { id = france_events.9 days = 16 } 
-			country_event = { id = france_events.10 days = 19 } 
-			country_event = { id = cofpolitics.99 days = 22 }
-			country_event = { id = cofpolitics.100 days = 25 }
+			country_event = { id = cofpolitics.99 days = 6 }
+			country_event = { id = france_events.6 days = 9 } 
+			country_event = { id = france_events.7 days = 12 } 
+			country_event = { id = france_events.8 days = 15 } 
+			country_event = { id = france_events.9 days = 18 } 
+			country_event = { id = france_events.10 days = 21 } 
+			country_event = { id = cofpolitics.100 days = 24 }
 		}
 	}
-
 	option = {
 		name = france_events.5.a
 		add_stability = -0.05
@@ -115,220 +113,26 @@ country_event = {
 	title = france_events.6.t
 	desc = france_events.6.desc
 	picture = GFX_report_event_communists_cheer
-
 	is_triggered_only = yes
-
 	option = {
 		name = france_events.6.a 
 		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_synd_radi
-
-		custom_effect_tooltip = CGSC_synd_radi_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { ard1c = 1 }
-		set_temp_variable = { ard2c = 0 }
-		set_temp_variable = { ard3c = 1 }
-		set_temp_variable = { ard4c = 1 }
-		set_temp_variable = { ard5c = 0 }
-		ard_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atsynd1c = 1 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 0 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 0 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 0 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 20 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 0 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 0 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 0 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		CGSC_trait_synd_radi_get = yes
 	}
-
 	option = {
 		name = france_events.6.b
 		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_oppo_comm
-
-		clr_country_flag = CGSC_synd
-		set_country_flag = CGSC_oppo
-		csp_position_change = yes
-
-		custom_effect_tooltip = CGSC_oppo_comm_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { ard1c = 0 }
-		set_temp_variable = { ard2c = -1 }
-		set_temp_variable = { ard3c = 0 }
-		set_temp_variable = { ard4c = 0 }
-		set_temp_variable = { ard5c = 1 }
-		ard_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { msyndc = -2.5 }
-		set_temp_variable = { moppoc = 2.5 }
-		set_temp_variable = { mjacoc = 0 }
-		set_temp_variable = { msorec = 0 }
-		mili_faction_influence_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atsynd1c = 0 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 1 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 0 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 0 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 0 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 20 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 0 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 0 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		CGSC_trait_oppo_comm_get = yes
 	}
-
 	option = {
 		name = france_events.6.c
 		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_jaco_neos
-
-		clr_country_flag = CGSC_synd
-		set_country_flag = CGSC_jaco
-		csp_position_change = yes
-
-		custom_effect_tooltip = CGSC_jaco_neos_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { ard1c = 0 }
-		set_temp_variable = { ard2c = 1 }
-		set_temp_variable = { ard3c = 1 }
-		set_temp_variable = { ard4c = 0 }
-		set_temp_variable = { ard5c = 0 }
-		ard_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { msyndc = -2.5 }
-		set_temp_variable = { moppoc = 0 }
-		set_temp_variable = { mjacoc = 2.5 }
-		set_temp_variable = { msorec = 0 }
-		mili_faction_influence_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atsynd1c = 0 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 0 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 1 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 0 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 0 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 0 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 20 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 0 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		CGSC_trait_jaco_neos_get = yes
 	}
-
 	option = {
 		name = france_events.6.d
 		ai_chance = { base = 25 }
-		
-		set_variable = { CGSC_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = CGSC_1936
-		set_country_flag = CGSC_sore_oldl
-
-		clr_country_flag = CGSC_synd
-		set_country_flag = CGSC_sore
-		csp_position_change = yes
-
-		custom_effect_tooltip = CGSC_sore_oldl_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_military
-		set_temp_variable = { ard1c = -1 }
-		set_temp_variable = { ard2c = -1 }
-		set_temp_variable = { ard3c = 0 }
-		set_temp_variable = { ard4c = 0 }
-		set_temp_variable = { ard5c = 0 }
-		ard_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { msyndc = -2.5 }
-		set_temp_variable = { moppoc = 0 }
-		set_temp_variable = { mjacoc = 0 }
-		set_temp_variable = { msorec = 2.5 }
-		mili_faction_influence_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atsynd1c = 0 }
-		set_temp_variable = { atsynd2c = 0 }
-		set_temp_variable = { atoppo1c = 0 }
-		set_temp_variable = { atoppo2c = 0 }
-		set_temp_variable = { atjaco1c = 0 }
-		set_temp_variable = { atjaco2c = 0 }
-		set_temp_variable = { atsore1c = 1 }
-		set_temp_variable = { atsore2c = 0 }
-		Cof_army_theory_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { atimpc = 0 }
-		set_temp_variable = { atimp1c = 0 }
-		set_temp_variable = { atimp2c = 0 }
-		set_temp_variable = { atimp3c = 0 }
-		set_temp_variable = { atimp4c = 0 }
-		set_temp_variable = { atimp5c = 0 }
-		set_temp_variable = { atimp6c = 0 }
-		set_temp_variable = { atimp7c = 20 }
-		set_temp_variable = { atimp8c = 0 }
-		Cof_army_theory_implementation_change = yes
+		CGSC_trait_sore_oldl_get = yes
 	}
 }
 
@@ -337,63 +141,26 @@ country_event = {
 	title = france_events.7.t
 	desc = france_events.7.desc
 	picture = GFX_report_event_communists_cheer
-
 	is_triggered_only = yes
-	
 	option = {
 		name = france_events.7.a 
 		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_synd_mode
-
-		clr_country_flag = DSRG_oppo
-		set_country_flag = DSRG_synd
-		csp_position_change = yes
+		DCA_trait_synd_mode_get = yes
 	}
-
 	option = {
 		name = france_events.7.b
 		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_oppo_comm
+		DCA_trait_oppo_anar_get = yes
 	}
-
 	option = {
 		name = france_events.7.c
 		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_jaco_revo
-
-		clr_country_flag = DSRG_oppo
-		set_country_flag = DSRG_jaco
-		csp_position_change = yes
+		DCA_trait_jaco_neos_get = yes
 	}
-
 	option = {
 		name = france_events.7.d
 		ai_chance = { base = 25 }
-		
-		set_variable = { DSRG_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DSRG_1936
-		set_country_flag = DSRG_sore_oldl
-
-		clr_country_flag = DSRG_oppo
-		set_country_flag = DSRG_sore
-		csp_position_change = yes
+		DCA_trait_sore_oldl_get = yes
 	}
 }
 
@@ -402,63 +169,26 @@ country_event = {
 	title = france_events.8.t
 	desc = france_events.8.desc
 	picture = GFX_report_event_communists_cheer
-
 	is_triggered_only = yes
-
 	option = {
 		name = france_events.8.a 
 		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_synd_mode
-
-		clr_country_flag = DIS_oppo
-		set_country_flag = DIS_synd
-		csp_position_change = yes
+		DIS_trait_synd_mode_get = yes
 	}
-
 	option = {
 		name = france_events.8.b
 		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_oppo_comm
+		DIS_trait_oppo_comm_get = yes
 	}
-
 	option = {
 		name = france_events.8.c
 		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_jaco_revo
-
-		clr_country_flag = DIS_oppo
-		set_country_flag = DIS_jaco
-		csp_position_change = yes
+		DIS_trait_jaco_neos_get = yes
 	}
-
 	option = {
 		name = france_events.8.d
 		ai_chance = { base = 25 }
-		
-		set_variable = { DIS_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DIS_1936
-		set_country_flag = DIS_sore_oldl
-
-		clr_country_flag = DIS_oppo
-		set_country_flag = DIS_sore
-		csp_position_change = yes
+		DIS_trait_sore_oldl_get = yes
 	}
 }
 
@@ -467,128 +197,27 @@ country_event = {
 	title = france_events.9.t
 	desc = france_events.9.desc
 	picture = GFX_report_event_communists_cheer
-
 	is_triggered_only = yes
 	after = { hidden_effect = { country_event = { id = cofeconomy.1 days = 60 random_days = 30 } } }
 	option = {
 		name = france_events.9.a 
 		ai_chance = { base = 25 }
-
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_synd_mode
-
-		custom_effect_tooltip = DEA_synd_mode_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 1 }
-		set_temp_variable = { emc = 0 }
-		set_temp_variable = { epc = 0 }
-		set_temp_variable = { eoc = 0 }
-		Cof_economy_model_change = yes
+		DEA_trait_synd_radi_get = yes
 	}
-
 	option = {
 		name = france_events.9.b
 		ai_chance = { base = 25 }
-
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_oppo_anar
-
-		clr_country_flag = DEA_synd
-		set_country_flag = DEA_oppo
-		csp_position_change = yes
-
-		custom_effect_tooltip = DEA_oppo_anar_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 0 }
-		set_temp_variable = { emc = 1 }
-		set_temp_variable = { epc = 0 }
-		set_temp_variable = { eoc = 0 }
-		Cof_economy_model_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { esyndc = -2.5 }
-		set_temp_variable = { eoppoc = 2.5 }
-		set_temp_variable = { ejacoc = 0 }
-		set_temp_variable = { esorec = 0 }
-		econ_faction_influence_change = yes
+		DEA_trait_oppo_comm_get = yes
 	}
-
 	option = {
 		name = france_events.9.c
 		ai_chance = { base = 25 }
-
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_jaco_neos
-
-		clr_country_flag = DEA_synd
-		set_country_flag = DEA_jaco
-		csp_position_change = yes
-
-		custom_effect_tooltip = DEA_jaco_neos_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 0 }
-		set_temp_variable = { emc = 0 }
-		set_temp_variable = { epc = 1 }
-		set_temp_variable = { eoc = 0 }
-		Cof_economy_model_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { esyndc = -2.5 }
-		set_temp_variable = { eoppoc = 0 }
-		set_temp_variable = { ejacoc = 2.5 }
-		set_temp_variable = { esorec = 0 }
-		econ_faction_influence_change = yes
+		DEA_trait_jaco_neos_get = yes
 	}
-
 	option = {
 		name = france_events.9.d
 		ai_chance = { base = 25 }
-
-		set_variable = { DEA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DEA_1936
-		set_country_flag = DEA_sore_oldl
-
-		clr_country_flag = DEA_synd
-		set_country_flag = DEA_sore
-		csp_position_change = yes
-
-		custom_effect_tooltip = DEA_sore_oldl_elect_tips
-
-		custom_effect_tooltip = tooltip_white_line
-
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { ecc = 0 }
-		set_temp_variable = { emc = 0 }
-		set_temp_variable = { epc = 0 }
-		set_temp_variable = { eoc = 1 }
-		Cof_economy_model_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { esyndc = -2.5 }
-		set_temp_variable = { eoppoc = 0 }
-		set_temp_variable = { ejacoc = 0 }
-		set_temp_variable = { esorec = 2.5 }
-		econ_faction_influence_change = yes
+		DEA_trait_sore_oldl_get = yes
 	}
 }
 
@@ -597,63 +226,26 @@ country_event = {
 	title = france_events.10.t
 	desc = france_events.10.desc
 	picture = GFX_report_event_communists_cheer
-
 	is_triggered_only = yes
-
 	option = {
 		name = france_events.10.a 
 		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_synd_radi
+		DFA_trait_synd_radi_get = yes
 	}
-
 	option = {
 		name = france_events.10.b
 		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_oppo_comm
-
-		clr_country_flag = DFA_synd
-		set_country_flag = DFA_oppo
-		csp_position_change = yes
+		DFA_trait_oppo_anar_get = yes
 	}
-
 	option = {
 		name = france_events.10.c
 		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_jaco_neos
-
-		clr_country_flag = DFA_synd
-		set_country_flag = DFA_jaco
-		csp_position_change = yes
+		DFA_trait_jaco_neos_get = yes
 	}
-
 	option = {
 		name = france_events.10.d
 		ai_chance = { base = 25 }
-		
-		set_variable = { DFA_attitude = 0 }
-		hidden_effect = { CSP_attitude_change = yes }
-		
-		clr_country_flag = DFA_1936
-		set_country_flag = DFA_sore_oldl
-
-		clr_country_flag = DFA_synd
-		set_country_flag = DFA_sore
-		csp_position_change = yes
+		DFA_trait_sore_oldl_get = yes
 	}
 }
 
@@ -733,7 +325,7 @@ country_event = {
 
 	is_triggered_only = yes
 
-	option = { #Dammit!
+	option = { # Dammit!
 		log = "[GetLogInfo]: event france_events.27 option france_events.27.a"
 		name = france_events.27.a
 	}
@@ -2185,7 +1777,6 @@ country_event = {
 		if = {
 			limit = { tag = FRA }
 			set_country_flag = FRA_help_chile
-			unlock_decision_tooltip = FRA_help_CHL
 		}
 		FROM = {
 			country_event = france_events.103

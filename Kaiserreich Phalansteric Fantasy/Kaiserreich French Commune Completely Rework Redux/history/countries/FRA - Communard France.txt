@@ -9,6 +9,9 @@ starting_train_buffer = 2
 set_fuel_ratio = 0.8
 add_command_power = 20
 
+set_variable = { country_intro_page_count = 5 }
+set_variable = { country_guide_page_count = 3 }
+
 ### Starting Technologies ###
 set_technology = {
 	### Industry ###
@@ -153,7 +156,7 @@ add_breakthrough_progress = {
 ### Politics ###
 set_politics = {
 	ruling_party = syndicalist
-	last_election = "1932.5.1"
+	last_election = "1931.2.1"
 	election_frequency = 60
 	elections_allowed = yes
 }
@@ -191,7 +194,7 @@ ROOT = {
 	1 = { enable_state_integration_50_compliance = yes } #Corsica
 	17 = { enable_state_integration_50_compliance = yes } #Pas-de-Calais
 	28 = { enable_state_integration_50_compliance = yes } #Alsace-Lorraine
-	29 = { enable_state_integration_50_compliance = yes } #Dunkirk
+	29 = { enable_state_integration_50_compliance = yes } # Dunkirk
 	735 = { enable_state_integration_50_compliance = yes } #Savoy
 	943 = { enable_state_integration_50_compliance = yes } #Upper Savoy
 	980 = { enable_state_integration_50_compliance = yes } #Lille
@@ -205,35 +208,50 @@ add_to_faction = ENG
 recruit_character = FRA_pierre_monatte
 
 #温和派
-recruit_character = FRA_leon_jouhaux
-recruit_character = FRA_robert_bothereau
-recruit_character = FRA_leon_blum
-recruit_character = FRA_louis_lecoin
-recruit_character = FRA_louis_saillant
-recruit_character = FRA_maurice_gamelin
-recruit_character = FRA_jean_zyromski
-recruit_character = FRA_vincent_auriol
+recruit_character = FRA_leon_jouhaux # CBGT
+recruit_character = FRA_joseph_paul_boncour # DFA
+recruit_character = FRA_robert_bothereau # DEA
+recruit_character = FRA_eugene_frot # DIS
+recruit_character = FRA_jean_zay # DCA
+recruit_character = FRA_maurice_gamelin # CGSC
+
+recruit_character = FRA_rene_belin # DFA1936
+recruit_character = FRA_pierre_laval # DEA1936
+recruit_character = FRA_charles_pomaret # DIS1936
+recruit_character = FRA_anatole_de_monzie # DCA1936
+recruit_character = FRA_francois_albert_buisson #市自领袖
+recruit_character = FRA_louis_saillant #other
 recruit_character = FRA_joseph_putz
 recruit_character = FRA_edouard_peisson
-#激进派
-recruit_character = FRA_benoit_frachon
 
-recruit_character = FRA_alphonse_merrheim
-recruit_character = FRA_jean_baptiste_lebas
-recruit_character = FRA_roger_salengro
-recruit_character = FRA_charles_delestraint
-recruit_character = FRA_marceau_pivert
+#激进派
+recruit_character = FRA_benoit_frachon # CBGT
+recruit_character = FRA_maurice_thorez # CCSP
+recruit_character = FRA_alfred_rosmer # DFA
+recruit_character = FRA_gaston_monmousseau # DEA
+recruit_character = FRA_charles_tillon # DIS
+recruit_character = FRA_marceau_pivert # DCA
+recruit_character = FRA_jean_flavigny # CGSC
+
+recruit_character = FRA_alphonse_merrheim #other
+
 
 #共产党
-recruit_character = FRA_marcel_cachin
-recruit_character = FRA_charles_tillon
-recruit_character = FRA_maurice_thorez
-recruit_character = FRA_boris_souvarine
-recruit_character = FRA_jacques_duclos
-recruit_character = FRA_henri_tanguy
-recruit_character = FRA_charles_rappoport
-recruit_character = FRA_andre_marty
+recruit_character = FRA_marcel_cachin # CBGT
+recruit_character = FRA_jean_longuet # CCSP
+recruit_character = FRA_charles_rappoport # DFA
+recruit_character = FRA_jean_baptiste_lebas # DEA
+recruit_character = FRA_roger_salengro # DIS
+recruit_character = FRA_jean_zyromski # DCA
+recruit_character = FRA_henri_gerard # CGSC
+
+recruit_character = FRA_leon_blum #other
+recruit_character = FRA_vincent_auriol 
 recruit_character = FRA_marcel_mauss
+
+recruit_character = FRA_boris_souvarine
+recruit_character = FRA_henri_tanguy
+recruit_character = FRA_andre_marty
 recruit_character = FRA_pierre_jules_cot
 recruit_character = FRA_georges_marrane
 recruit_character = FRA_ernest_petit
@@ -242,60 +260,97 @@ recruit_character = FRA_suzanne_girault
 recruit_character = FRA_florimond_bonte
 
 #无政府
-recruit_character = FRA_sebastien_faure
-recruit_character = FRA_fernand_despres
+recruit_character = FRA_sebastien_faure # CBGT
+recruit_character = FRA_gaston_leval # DFA
+recruit_character = FRA_pierre_besnard # DEA
+recruit_character = FRA_emile_pouget # DIS
+recruit_character = FRA_andre_colomer # DCA
+recruit_character = FRA_nestor_makhno # CGSC
+
+recruit_character = FRA_emile_armand #other
+recruit_character = FRA_jean_grave
 recruit_character = FRA_may_picqueray
-recruit_character = FRA_andre_prudhommeaux
 recruit_character = FRA_rene_fremont
-recruit_character = FRA_gaston_leval
-recruit_character = FRA_emile_armand
-recruit_character = FRA_nestor_makhno
-FRA_nestor_makhno = { set_nationality = FOP }
-recruit_character = FRA_daniel_guerin
+recruit_character = FRA_fernand_despres
+recruit_character = FRA_andre_prudhommeaux
+recruit_character = FRA_louis_lecoin
 
 #新社
-recruit_character = FRA_marcel_deat
-recruit_character = FRA_louis_vallon
-recruit_character = FRA_pierre_renaudel
-recruit_character = FRA_adrien_marquet
-recruit_character = FRA_georges_albertini
-recruit_character = FRA_louis_chauvineau
+recruit_character = FRA_marcel_deat # CBGT
+recruit_character = FRA_adrien_marquet # CCSP
+recruit_character = FRA_pierre_renaudel # DFA
+recruit_character = FRA_albert_thomas # DEA
+recruit_character = FRA_marx_dormoy # DIS
+recruit_character = FRA_louis_vallon # DCA
+recruit_character = FRA_charles_delestraint # CGSC
+
+recruit_character = FRA_georges_albertini #other
 recruit_character = FRA_georges_catroux
 recruit_character = FRA_henri_frenay
 recruit_character = FRA_gabriel_lafaye
-recruit_character = FRA_joseph_paul_boncour
 recruit_character = FRA_rene_olry
 
 #革命行动
-recruit_character = FRA_jacques_doriot
+recruit_character = FRA_jacques_doriot # CCSP
+recruit_character = FRA_alfred_fabre_luce # DFA
+recruit_character = FRA_paul_marion # DEA
+recruit_character = FRA_henri_barbe # DIS
+recruit_character = FRA_bertrand_de_jouvenel # DCA
+
+recruit_character = FRA_jean_fontenoy #other
 recruit_character = FRA_pierre_celor
-recruit_character = FRA_jean_fontenoy
-recruit_character = FRA_henri_barbe
-recruit_character = FRA_simon_sabiani
 recruit_character = FRA_victor_barthelemy
 
 #守旧
-recruit_character = FRA_georges_valois
-recruit_character = FRA_edouard_berth
-recruit_character = FRA_hubert_bourgin
-recruit_character = FRA_marcel_bucar
+recruit_character = FRA_georges_valois # CBGT
+recruit_character = FRA_edouard_berth # CCSP
+recruit_character = FRA_drieu_la_rochelle # DFA
+recruit_character = FRA_hubert_lagardelle # DEA
+recruit_character = FRA_philippe_lamour # DEA
+recruit_character = FRA_simon_sabiani # DIS
+recruit_character = FRA_marcel_bucard # DCA
+recruit_character = FRA_gabriel_bougrain # CGSC
+
+recruit_character = FRA_philippe_barrrs #other
+recruit_character = FRA_le_corbusier
+recruit_character = FRA_antoine_redier
+recruit_character = FRA_sergio_panunzio
+recruit_character = FRA_agosto_lanzillo
+recruit_character = FRA_pierre_dumas
 recruit_character = FRA_gustave_herve
 recruit_character = FRA_diego_brosset
 recruit_character = FRA_marie_pierre_koenig
+recruit_character = FRA_francois_de_linares
+recruit_character = FRA_raoul_salan
+recruit_character = FRA_henri_parisot
 recruit_character = FRA_francois_darlan
 recruit_character = FRA_gabriel_auphan
 recruit_character = FRA_philippe_auboyneau
 
 #青年
-recruit_character = FRA_georges_bataille
-recruit_character = FRA_michel_leiris
-recruit_character = FRA_alphonse_laurencic
-recruit_character = FRA_georges_malraux
-recruit_character = FRA_maurice_duclos
-recruit_character = FRA_andre_breton
-recruit_character = FRA_joseph_vuillemin
-recruit_character = FRA_jacques_lacan
+recruit_character = FRA_rene_crevel # CCSP
+recruit_character = FRA_michel_leiris # DFA
+recruit_character = FRA_robert_desnos # DIS
+recruit_character = FRA_max_ernst # DCA
 
+recruit_character = FRA_georges_bataille #other
+recruit_character = FRA_andre_breton
+recruit_character = FRA_mopsa_sternheim
+recruit_character = FRA_alphonse_laurencic
+recruit_character = FRA_jacques_lacan
+recruit_character = FRA_pierre_naville
+recruit_character = FRA_benjamin_peret
+recruit_character = FRA_antonin_artaud
+recruit_character = FRA_valentine_dencausse
+recruit_character = FRA_georges_malraux
+
+#CGSC 中立
+recruit_character = FRA_antoine_bethouart
+recruit_character = FRA_aime_doumenc
+###政党领袖
+recruit_character = FRA_henri_dorgeres
+recruit_character = FRA_paul_carbone
+###
 recruit_character = FRA_bourse_generale_du_travail
 recruit_character = FRA_comite_de_salut_public
 activate_advisor = FRA_comite_de_salut_public_sic
@@ -306,7 +361,6 @@ recruit_character = FRA_georges_revers
 recruit_character = FRA_andre_boris
 recruit_character = FRA_raoul_magrin_vernerey
 recruit_character = FRA_henri_adeline
-recruit_character = FRA_aime_doumenc
 recruit_character = FRA_georges_blanchard
 recruit_character = FRA_clement_blanc
 recruit_character = FRA_paul_legentilhomme

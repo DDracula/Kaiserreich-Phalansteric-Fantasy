@@ -7,6 +7,6 @@ tags={
 dependencies={
 	"Kaiserreich"
 }
-name="Kaiserreich French Commune Completely Rework Redux"
+name="Kaiserreich: Phalansteric Fantasy"
 picture="Thumbnail.png"
 supported_version="1.17.*"

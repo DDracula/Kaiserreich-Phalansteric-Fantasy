@@ -1,18 +1,25 @@
 FRA_internationale_category = {
 	icon = generic_foreign_policy
 	allowed = { tag = FRA }
-	visible = { always = no }
 }
 
 FRA_phalanstere_category = {
 	icon = generic_political_actions
-	picture = GFX_decision_cat_generic_crate_of_guns
-	visible = { always = no }
+	priority = 10         
+	allowed = { NOT = { tag = FRA } }
+	visible = { 
+		OR = {
+			AND = {
+				has_socialist_government = yes
+				is_in_economic_sphere = no
+				INT = {
+					is_economic_sphere_leader = yes
+					NOT = { has_war_with = ROOT }
+				}
+			}
+			FRA_is_phalanstere_member = yes 
+		}
+	}
+	visible_when_empty = yes 
 }
 
-FRA_liberate_europe_category = {
-	icon = GFX_decision_cat_WIF_rebelion
-	picture = GFX_decision_cat_generic_swi_new_order
-	allowed = { tag = FRA }
-	visible = { always = no }
-}

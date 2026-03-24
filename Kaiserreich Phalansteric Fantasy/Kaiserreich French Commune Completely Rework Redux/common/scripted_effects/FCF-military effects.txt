@@ -1,0 +1,1895 @@
+clr_gui_military_flag = {
+    clr_country_flag = gui_military_popao
+    clr_country_flag = gui_military_popan
+    clr_country_flag = gui_military_popas
+    
+    clr_country_flag = gui_military_aa
+    clr_country_flag = gui_military_aw
+    clr_country_flag = gui_military_at
+    clr_country_flag = gui_military_ae
+    clr_country_flag = gui_military_ap
+
+    clr_country_flag = gui_military_synd
+    clr_country_flag = gui_military_oppo
+    clr_country_flag = gui_military_jaco
+    clr_country_flag = gui_military_sore
+}
+
+#军事改革倾向
+ard_change = {
+    add_to_variable = { ard1 = ard1c }
+    if = {
+        limit = { check_variable = { ard1c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard1
+            SARD = military_nationalization
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard1c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard1
+            SARD = military_politicization
+        }
+    }
+####1
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard1c > 0 } }
+            if = {
+                limit = { check_variable = { ard1 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_unbiased
+                    add_idea = Cof_ard1_nationalization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard1 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_nationalization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard1c < 0 } }
+            if = {
+                limit = { check_variable = { ard1 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_unbiased
+                    add_idea = Cof_ard1_politicization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard1 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_politicization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+        }
+    }
+####2
+    add_to_variable = { ard2 = ard2c }
+    if = {
+        limit = { check_variable = { ard2c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard2
+            SARD = military_centralized_command 
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard2c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard2
+            SARD = military_task_oriented_command
+        }
+    }
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard2c > 0 } }
+            if = {
+                limit = { check_variable = { ard2 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_unbiased
+                    add_idea = Cof_ard2_centralized_command
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard2 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_centralized_command
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard2c < 0 } }
+            if = {
+                limit = { check_variable = { ard2 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_unbiased
+                    add_idea = Cof_ard2_task_oriented_command
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard2 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_task_oriented_command
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+        }
+    }
+####3
+    add_to_variable = { ard3 = ard3c }
+    if = {
+        limit = { check_variable = { ard3c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard3
+            SARD = military_dpecialization
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard3c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard3
+            SARD = military_militarization
+        }
+    }
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard3c > 0 } }
+            if = {
+                limit = { check_variable = { ard3 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_unbiased
+                    add_idea = Cof_ard3_dpecialization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard3 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_dpecialization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard3c < 0 } }
+            if = {
+                limit = { check_variable = { ard3 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_unbiased
+                    add_idea = Cof_ard3_militarization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard3 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_militarization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+        }
+    }
+####4
+    add_to_variable = { ard4 = ard4c }
+    if = {
+        limit = { check_variable = { ard4c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard4
+            SARD = military_armor_dominance
+        }
+    }
+    else_if = {
+         limit = { check_variable = { ard4c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard4
+            SARD = military_artillery_dominance
+        }
+    }
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard4c > 0 } }
+            if = {
+                limit = { check_variable = { ard4 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_unbiased
+                    add_idea = Cof_ard4_armor_dominance
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard4 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_armor_dominance
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard4c < 0 } }
+            if = {
+                limit = { check_variable = { ard4 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_unbiased
+                    add_idea = Cof_ard4_artillery_dominance
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard4 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_artillery_dominance
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+        }
+    }
+####5
+    add_to_variable = { ard5 = ard5c }
+    if = {
+        limit = { check_variable = { ard5c > 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard5
+            SARD = military_motorization
+        }
+    }
+    else_if = {
+        limit = { check_variable = { ard5c < 0 } }
+        custom_effect_tooltip = {
+            localization_key = ard_change
+            ARD = ard5
+            SARD = military_positionization
+        }
+    }
+    effect_tooltip = {
+        if = {
+            limit = { check_variable = { ard5c > 0 } }
+            if = {
+                limit = { check_variable = { ard5 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_unbiased
+                    add_idea = Cof_ard5_motorization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard5 = -1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_motorization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+        }
+        else_if =  {
+            limit = { check_variable = { ard5c < 0 } }
+            if = {
+                limit = { check_variable = { ard5 = 0 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_unbiased
+                    add_idea = Cof_ard5_positionization
+                }
+            }
+            else_if = {
+                limit = { check_variable = { ard5 = 1 } }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_positionization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+        }
+    }
+
+    hidden_effect = {
+        if = {
+            limit = { check_variable = { ard1 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard1_nationalization }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_nationalization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard1_politicization }
+                swap_ideas = {
+                    remove_idea = Cof_ard1_politicization
+                    add_idea = Cof_ard1_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard1_unbiased }
+                if = {
+                    limit = { check_variable = { ard1 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard1_unbiased
+                        add_idea = Cof_ard1_nationalization
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { ard1 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard1_unbiased
+                        add_idea = Cof_ard1_politicization
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard2 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard2_centralized_command }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_centralized_command
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard2_task_oriented_command }
+                swap_ideas = {
+                    remove_idea = Cof_ard2_task_oriented_command
+                    add_idea = Cof_ard2_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard2_unbiased }
+                if = {
+                    limit = { check_variable = { ard2 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard2_unbiased
+                        add_idea = Cof_ard2_centralized_command
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard2 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard2_unbiased
+                        add_idea = Cof_ard2_task_oriented_command
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard3 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard3_dpecialization }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_dpecialization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard3_militarization }
+                swap_ideas = {
+                    remove_idea = Cof_ard3_militarization
+                    add_idea = Cof_ard3_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard3_unbiased }
+                if = {
+                    limit = { check_variable = { ard3 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard3_unbiased
+                        add_idea = Cof_ard3_dpecialization
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard3 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard3_unbiased
+                        add_idea = Cof_ard3_militarization
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard4 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard4_armor_dominance }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_armor_dominance
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard4_artillery_dominance }
+                swap_ideas = {
+                    remove_idea = Cof_ard4_artillery_dominance
+                    add_idea = Cof_ard4_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard4_unbiased }
+                if = {
+                    limit = { check_variable = { ard4 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard4_unbiased
+                        add_idea = Cof_ard4_armor_dominance
+                    }
+                }
+                else_if = {
+                     limit = { check_variable = { ard4 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard4_unbiased
+                        add_idea = Cof_ard4_artillery_dominance
+                    }
+                }
+            }
+        }
+
+        if = {
+            limit = { check_variable = { ard5 = 0 } }
+            if = {
+                limit = { has_idea = Cof_ard5_motorization }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_motorization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard5_positionization }
+                swap_ideas = {
+                    remove_idea = Cof_ard5_positionization
+                    add_idea = Cof_ard5_unbiased
+                }
+            }
+        }
+        else = {
+            if = {
+                limit = { has_idea = Cof_ard5_unbiased }
+                if = {
+                    limit = { check_variable = { ard5 > 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard5_unbiased
+                        add_idea = Cof_ard5_motorization
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { ard5 < 0 } }
+                    swap_ideas = {
+                        remove_idea = Cof_ard5_unbiased
+                        add_idea = Cof_ard5_positionization
+                    }
+                }
+            }
+        }
+    }
+
+    hidden_effect = { 
+        Cof_army_theory_change = yes 
+    }    
+}
+
+###     军队学说改变
+Cof_army_theory_change = {
+    if = {
+        limit = { 
+            has_idea = Cof_ard3_dpecialization
+            has_idea = Cof_ard5_motorization 
+        }
+        if = {
+            limit = { has_idea = Cof_ard4_armor_dominance }
+            if = {
+                limit = { has_idea = Cof_ard2_centralized_command }
+                set_country_flag = Cof_army_theory_centralized_blitzkrieg
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard2_task_oriented_command }
+                set_country_flag = Cof_army_theory_task_oriented_blitzkrieg
+            }
+            else = { set_country_flag = Cof_army_theory_no }
+        }
+        else_if = {
+            limit = { has_idea = Cof_ard4_artillery_dominance }
+            if = {
+                limit = { has_idea = Cof_ard2_centralized_command }
+                set_country_flag = Cof_army_theory_centralized_deep_operation
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard2_task_oriented_command }
+                set_country_flag = Cof_army_theory_task_oriented_deep_operation
+            }
+            else = { set_country_flag = Cof_army_theory_no }
+        }
+        else = { set_country_flag = Cof_army_theory_no }
+    }
+    else_if = {
+        limit = { has_idea = Cof_ard5_positionization }
+        if = {
+            limit = { has_idea = Cof_ard4_armor_dominance }
+            if = {
+                limit = { has_idea = Cof_ard2_centralized_command }
+                set_country_flag = Cof_army_theory_centralized_sustained_operation
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard2_task_oriented_command }
+                set_country_flag = Cof_army_theory_task_oriented_sustained_operation
+            }
+            else = { set_country_flag = Cof_army_theory_no }
+        }
+        else_if = {
+            limit = { has_idea = Cof_ard4_artillery_dominance }
+            if = {
+                limit = { has_idea = Cof_ard2_centralized_command }
+                set_country_flag = Cof_army_theory_centralized_sequential_operation
+            }
+            else_if = {
+                limit = { has_idea = Cof_ard2_task_oriented_command }
+                set_country_flag = Cof_army_theory_task_oriented_sequential_operation
+            }
+            else = { set_country_flag = Cof_army_theory_no }
+        }
+        else = { set_country_flag = Cof_army_theory_no }
+    }
+    else = { set_country_flag = Cof_army_theory_no }
+
+    Cof_army_theory_implementation_judge = yes
+    Cof_military_reform_impact_count = yes
+}
+
+ard_change_CGSC_attitude_change = {
+    set_temp_variable = { target_a = 5 } 
+    set_temp_variable = { mode_judge = 0 } 
+    set_temp_variable = { radi_judge = 0 }
+    set_temp_variable = { comm_judge = 0 }
+    set_temp_variable = { anar_judge = 0 }
+    set_temp_variable = { neos_judge = 0 } 
+    set_temp_variable = { revo_judge = 0 }
+    set_temp_variable = { oldl_judge = 0 }
+    set_temp_variable = { yout_judge = 0 }
+    if = {
+        limit = { check_variable = { ard1c > 0 } }
+        add_to_temp_variable = { mode_judge = 1 } 
+        add_to_temp_variable = { radi_judge = 1 }
+        add_to_temp_variable = { comm_judge = -1 }
+        add_to_temp_variable = { anar_judge = -1 }
+        add_to_temp_variable = { neos_judge = 1 } 
+        add_to_temp_variable = { revo_judge = 1 }
+        add_to_temp_variable = { oldl_judge = 1 }
+        add_to_temp_variable = { yout_judge = -1 }
+    }
+    else_if = {
+        limit = { check_variable = { ard1c < 0 } }
+        add_to_temp_variable = { mode_judge = -1 } 
+        add_to_temp_variable = { radi_judge = -1 }
+        add_to_temp_variable = { comm_judge = 1 }
+        add_to_temp_variable = { anar_judge = 1 }
+        add_to_temp_variable = { neos_judge = -1 } 
+        add_to_temp_variable = { revo_judge = -1 }
+        add_to_temp_variable = { oldl_judge = -1 }
+        add_to_temp_variable = { yout_judge = 1 }
+        add_to_temp_variable = { change_num = 1 } 
+    }
+
+    if = {
+        limit = { check_variable = { ard2c > 0 } }
+        add_to_temp_variable = { mode_judge = 1 } 
+        add_to_temp_variable = { radi_judge = 1 }
+        add_to_temp_variable = { comm_judge = -1 }
+        add_to_temp_variable = { anar_judge = -1 }
+        add_to_temp_variable = { neos_judge = 1 } 
+        add_to_temp_variable = { revo_judge = -1 }
+        add_to_temp_variable = { oldl_judge = -1 }
+        add_to_temp_variable = { yout_judge = 1 }
+    }
+    else_if = {
+        limit = { check_variable = { ard2c < 0 } }
+        add_to_temp_variable = { mode_judge = -1 } 
+        add_to_temp_variable = { radi_judge = -1 }
+        add_to_temp_variable = { comm_judge = 1 }
+        add_to_temp_variable = { anar_judge = 1 }
+        add_to_temp_variable = { neos_judge = -1 } 
+        add_to_temp_variable = { revo_judge = 1 }
+        add_to_temp_variable = { oldl_judge = 1 }
+        add_to_temp_variable = { yout_judge = -1 }
+    }
+
+    if = {
+        limit = { check_variable = { ard3c > 0 } }
+        add_to_temp_variable = { mode_judge = 0 } 
+        add_to_temp_variable = { radi_judge = 0 }
+        add_to_temp_variable = { comm_judge = -1 }
+        add_to_temp_variable = { anar_judge = 1 }
+        add_to_temp_variable = { neos_judge = 1 } 
+        add_to_temp_variable = { revo_judge = 1 }
+        add_to_temp_variable = { oldl_judge = 0 }
+        add_to_temp_variable = { yout_judge = 1 }
+    }
+    else_if = {
+        limit = { check_variable = { ard3c < 0 } }
+        add_to_temp_variable = { mode_judge = 0 } 
+        add_to_temp_variable = { radi_judge = 0 }
+        add_to_temp_variable = { comm_judge = 1 }
+        add_to_temp_variable = { anar_judge = -1 }
+        add_to_temp_variable = { neos_judge = -1 } 
+        add_to_temp_variable = { revo_judge = -1 }
+        add_to_temp_variable = { oldl_judge = 0 }
+        add_to_temp_variable = { yout_judge = -1 }
+    }
+
+    if = {
+        limit = { check_variable = { ard4c > 0 } }
+        add_to_temp_variable = { mode_judge = -1 } 
+        add_to_temp_variable = { radi_judge = 1 }
+        add_to_temp_variable = { comm_judge = -1 }
+        add_to_temp_variable = { anar_judge = 1 }
+        add_to_temp_variable = { neos_judge = 1 } 
+        add_to_temp_variable = { revo_judge = -1 }
+        add_to_temp_variable = { oldl_judge = 1 }
+        add_to_temp_variable = { yout_judge = -1 }
+    }
+    else_if = {
+        limit = { check_variable = { ard4c < 0 } }
+        add_to_temp_variable = { mode_judge = 1 } 
+        add_to_temp_variable = { radi_judge = -1 }
+        add_to_temp_variable = { comm_judge = 1 }
+        add_to_temp_variable = { anar_judge = -1 }
+        add_to_temp_variable = { neos_judge = -1 } 
+        add_to_temp_variable = { revo_judge = 1 }
+        add_to_temp_variable = { oldl_judge = -1 }
+        add_to_temp_variable = { yout_judge = 1 }
+    }
+
+    if = {
+        limit = { check_variable = { ard5c > 0 } }
+        add_to_temp_variable = { mode_judge = -1 } 
+        add_to_temp_variable = { radi_judge = -1 }
+        add_to_temp_variable = { comm_judge = -1 }
+        add_to_temp_variable = { anar_judge = 1 }
+        add_to_temp_variable = { neos_judge = 1 } 
+        add_to_temp_variable = { revo_judge = 1 }
+        add_to_temp_variable = { oldl_judge = -1 }
+        add_to_temp_variable = { yout_judge = 1 }
+    }
+    else_if = {
+        limit = { check_variable = { ard5c < 0 } }
+        add_to_temp_variable = { mode_judge = 1 } 
+        add_to_temp_variable = { radi_judge = 1 }
+        add_to_temp_variable = { comm_judge = 1 }
+        add_to_temp_variable = { anar_judge = -1 }
+        add_to_temp_variable = { neos_judge = -1 } 
+        add_to_temp_variable = { revo_judge = -1 }
+        add_to_temp_variable = { oldl_judge = 1 }
+        add_to_temp_variable = { yout_judge = -1 }
+    }
+
+    if = {
+        limit = { 
+            OR = {
+                has_country_flag = CGSC_synd_mode 
+                has_country_flag = CGSC_1936
+            }
+        }
+        set_temp_variable = { change_num = mode_judge }
+    }
+    else_if = {
+        limit = { has_country_flag = CGSC_synd_radi }
+        set_temp_variable = { change_num = radi_judge }
+    }
+    else_if = {
+        limit = { has_country_flag = CGSC_oppo_comm }
+        set_temp_variable = { change_num = comm_judge }
+    }
+    else_if = {
+        limit = { has_country_flag = CGSC_oppo_anar }
+        set_temp_variable = { change_num = anar_judge }
+    }
+    else_if = {
+        limit = { has_country_flag = CGSC_jaco_neos }
+        set_temp_variable = { change_num = neos_judge }
+    }
+    else_if = {
+        limit = { has_country_flag = CGSC_jaco_revo }
+        set_temp_variable = { change_num = revo_judge }
+    }
+    else_if = {
+        limit = { has_country_flag = CGSC_sore_oldl }
+        set_temp_variable = { change_num = oldl_judge }
+    }
+    else_if = {
+        limit = { has_country_flag = CGSC_sore_yout }
+        set_temp_variable = { change_num = yout_judge }
+    }
+
+    CSP_attitude_change = yes
+}
+
+###     军事理论落实度改变
+#		set_temp_variable = { atimpc = 0 }
+#		set_temp_variable = { atimp1c = 0 }
+#		set_temp_variable = { atimp2c = 0 }
+#		set_temp_variable = { atimp3c = 0 }
+#		set_temp_variable = { atimp4c = 0 }
+#		set_temp_variable = { atimp5c = 0 }
+#		set_temp_variable = { atimp6c = 0 }
+#		set_temp_variable = { atimp7c = 0 }
+#		set_temp_variable = { atimp8c = 0 }
+#		Cof_army_theory_implementation_change = yes
+Cof_army_theory_implementation_change_this = {
+    if = { limit = { check_variable = { atimpc = 0 } } }
+    else = {
+        add_to_variable = { Cof_army_theory_implementation = atimpc }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_this_tips
+        if = {
+            limit = { has_country_flag = Cof_army_theory_centralized_blitzkrieg }
+            set_variable = { atimp1 = Cof_army_theory_implementation }
+        }
+        else_if = { 
+            limit = { has_country_flag = Cof_army_theory_task_oriented_blitzkrieg }
+            set_variable = { atimp2 = Cof_army_theory_implementation }
+        }
+        else_if = { 
+            limit = { has_country_flag = Cof_army_theory_centralized_deep_operation }
+            set_variable = { atimp3 = Cof_army_theory_implementation }
+        }
+        else_if = { 
+            limit = { has_country_flag = Cof_army_theory_task_oriented_deep_operation }
+            set_variable = { atimp4 = Cof_army_theory_implementation }
+        }
+        else_if = { 
+            limit = { has_country_flag = Cof_army_theory_centralized_sustained_operation }
+            set_variable = { atimp5 = Cof_army_theory_implementation }
+        }
+        else_if = { 
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            set_variable = { atimp6 = Cof_army_theory_implementation }
+        }
+        else_if = { 
+            limit = { has_country_flag = Cof_army_theory_centralized_sequential_operation }
+            set_variable = { atimp7 = Cof_army_theory_implementation }
+        }
+        else_if = { 
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sequential_operation }
+            set_variable = { atimp8 = Cof_army_theory_implementation }
+        }
+        else = { set_variable = { atimp0 = Cof_army_theory_implementation } }
+    }
+}
+
+Cof_army_theory_implementation_change = {
+    Cof_army_theory_implementation_change_this = yes
+    
+    if = { limit = { check_variable = { atimp1c = 0 } } }
+    else = {
+        add_to_variable = { atimp1 = atimp1c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips1
+    }
+
+    if = { limit = { check_variable = { atimp2c = 0 } } }
+    else = {
+        add_to_variable = { atimp2 = atimp2c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips2
+    }
+
+    if = { limit = { check_variable = { atimp3c = 0 } } }
+    else = {
+        add_to_variable = { atimp3 = atimp3c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips3
+    }
+
+    if = { limit = { check_variable = { atimp4c = 0 } } }
+    else = {
+        add_to_variable = { atimp4 = atimp4c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips4
+    }
+
+    if = { limit = { check_variable = { atimp5c = 0 } } }
+    else = {
+        add_to_variable = { atimp5 = atimp5c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips5
+    }
+
+    if = { limit = { check_variable = { atimp6c = 0 } } }
+    else = {
+        add_to_variable = { atimp6 = atimp6c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips6
+    }
+
+    if = { limit = { check_variable = { atimp7c = 0 } } }
+    else = {
+        add_to_variable = { atimp7 = atimp7c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips7
+    }
+
+    if = { limit = { check_variable = { atimp8c = 0 } } }
+    else = {
+        add_to_variable = { atimp8 = atimp8c }
+        custom_effect_tooltip = Cof_army_theory_implementation_change_tips8
+    }
+
+    Cof_army_theory_implementation_judge = yes
+    Cof_military_reform_impact_count = yes
+}
+
+Cof_army_theory_implementation_judge = {
+    if = {
+        limit = { has_country_flag = Cof_army_theory_centralized_blitzkrieg }
+        set_variable = { Cof_army_theory_implementation = atimp1 }
+    }
+    if = { 
+        limit = { has_country_flag = Cof_army_theory_task_oriented_blitzkrieg }
+        set_variable = { Cof_army_theory_implementation = atimp2 }
+    }
+    if = { 
+        limit = { has_country_flag = Cof_army_theory_centralized_deep_operation }
+        set_variable = { Cof_army_theory_implementation = atimp3 }
+    }
+    if = { 
+        limit = { has_country_flag = Cof_army_theory_task_oriented_deep_operation }
+        set_variable = { Cof_army_theory_implementation = atimp4 }
+    }
+    if = { 
+        limit = { has_country_flag = Cof_army_theory_centralized_sustained_operation }
+        set_variable = { Cof_army_theory_implementation = atimp5 }
+    }
+    if = { 
+        limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+        set_variable = { Cof_army_theory_implementation = atimp6 }
+    }
+    if = { 
+        limit = { has_country_flag = Cof_army_theory_centralized_sequential_operation }
+        set_variable = { Cof_army_theory_implementation = atimp7 }
+    }
+    if = { 
+        limit = { has_country_flag = Cof_army_theory_task_oriented_sequential_operation }
+        set_variable = { Cof_army_theory_implementation = atimp8 }
+    }
+    if = {
+        limit = {
+            NOT = { has_country_flag = Cof_army_theory_centralized_blitzkrieg }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_blitzkrieg }
+            NOT = { has_country_flag = Cof_army_theory_centralized_deep_operation }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_deep_operation }
+            NOT = { has_country_flag = Cof_army_theory_centralized_sustained_operation }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            NOT = { has_country_flag = Cof_army_theory_centralized_sequential_operation }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_sequential_operation }
+        }
+        set_variable = { Cof_army_theory_implementation = atimp0 }
+    }
+}
+
+###		派系军事影响力变化
+#		set_temp_variable = { msyndc = 0 }
+#		set_temp_variable = { moppoc = 0 }
+#		set_temp_variable = { mjacoc = 0 }
+#		set_temp_variable = { msorec = 0 }
+#		mili_faction_influence_change = yes
+mili_faction_influence_change = {
+	if = { limit = { check_variable = { msyndc = 0 } } }
+	else = {
+		add_to_variable = { military_synd = msyndc }
+		custom_effect_tooltip = military_synd_change_tips
+	}
+	if = { limit = { check_variable = { moppoc = 0 } } }
+	else = {
+		add_to_variable = { military_oppo = moppoc }
+		custom_effect_tooltip = military_oppo_change_tips
+	}
+	if = { limit = { check_variable = { mjacoc = 0 } } }
+	else = {
+		add_to_variable = { military_jaco = mjacoc }
+		custom_effect_tooltip = military_jaco_change_tips
+	}
+	if = { limit = { check_variable = { msorec = 0 } } }
+	else = {
+		add_to_variable = { military_sore = msorec }
+		custom_effect_tooltip = military_sore_change_tips
+	}
+
+    while_loop_effect = {
+		limit = {
+			OR = {
+				check_variable = { FRA.military_synd < 0 }
+				check_variable = { FRA.military_oppo < 0 }
+				check_variable = { FRA.military_jaco < 0 }
+				check_variable = { FRA.military_sore < 0 }
+			}
+		}
+
+		if = {
+			limit = { check_variable = { FRA.military_synd < 0 } }
+			add_to_variable = { FRA.military_synd = 0.3 }
+			add_to_variable = { FRA.military_oppo = -0.1 }
+			add_to_variable = { FRA.military_jaco = -0.1 }
+			add_to_variable = { FRA.military_sore = -0.1 }
+		}
+	
+		if = {
+			limit = { check_variable = { FRA.military_oppo < 0 } }
+			add_to_variable = { FRA.military_synd = -0.1 }
+			add_to_variable = { FRA.military_oppo = -0.3 }
+			add_to_variable = { FRA.military_jaco = -0.1 }
+			add_to_variable = { FRA.military_sore = -0.1 }
+		}
+	
+		if = {
+			limit = { check_variable = { FRA.military_jaco < 0 } }
+			add_to_variable = { FRA.military_synd = -0.1 }
+			add_to_variable = { FRA.military_oppo = -0.1 }
+			add_to_variable = { FRA.military_jaco = 0.3 }
+			add_to_variable = { FRA.military_sore = -0.1 }
+		}
+	
+		if = {
+			limit = { check_variable = { FRA.military_sore < 0 } }
+			add_to_variable = { FRA.military_synd = -0.1 }
+			add_to_variable = { FRA.military_oppo = -0.1 }
+			add_to_variable = { FRA.military_jaco = -0.1 }
+			add_to_variable = { FRA.military_sore = 0.3 }
+		}
+	}
+
+    set_variable = { gui_msynd = military_synd }
+    set_variable = { gui_moppo = gui_msynd }
+    add_to_variable = { gui_moppo = military_oppo }
+    set_variable = { gui_mjaco = gui_moppo }
+    add_to_variable = { gui_mjaco = military_jaco }
+    set_variable = { gui_msore = gui_mjaco }
+    add_to_variable = { gui_msore = military_sore }
+
+	faction_infulences_count = yes
+}
+
+###     军事改革数值变化
+#		set_temp_variable = { aac = 0 }
+#		set_temp_variable = { awc = 0 }
+#		set_temp_variable = { atc = 0 }
+#		set_temp_variable = { aec = 0 }
+#		set_temp_variable = { apc = 0 }
+#		Cof_army_reform_values_change = yes
+Cof_army_reform_values_change = {
+    if = { limit = { check_variable = { aac = 0 } } }
+    else = {
+        add_to_variable = { Cof_army_autonomy = aac }
+        custom_effect_tooltip = Cof_army_autonomy_change_tips
+    }
+
+    if = { limit = { check_variable = { awc = 0 } } }
+    else = {
+        add_to_variable = { Cof_army_willing = awc }
+        custom_effect_tooltip = Cof_army_willing_change_tips
+    }
+
+    if = { limit = { check_variable = { atc = 0 } } }
+    else = {
+        add_to_variable = { Cof_army_training = atc }
+        custom_effect_tooltip = Cof_army_training_change_tips
+    }
+
+    if = { limit = { check_variable = { aec = 0 } } }
+    else = {
+        add_to_variable = { Cof_army_equipment = aec }
+        custom_effect_tooltip = Cof_army_equipment_change_tips
+    }
+
+    if = { limit = { check_variable = { apc = 0 } } }
+    else = {
+        add_to_variable = { Cof_army_passionate = apc }
+        custom_effect_tooltip =  Cof_army_passionate_change_tips
+    }
+
+    clamp_variable = {
+        var = Cof_army_autonomy
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_autonomy
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = Cof_army_willing
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_willing
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = Cof_army_training
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_training
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = Cof_army_equipment
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_equipment
+            max = 80
+			min = 40
+        }
+    }
+    clamp_variable = {
+        var = Cof_army_passionate
+        max = 100
+        min = 0
+    }
+    if = {
+        limit = { is_ai = yes }
+        clamp_variable = {
+            var = Cof_army_passionate
+            max = 80
+			min = 40
+        }
+    }
+
+    Cof_military_reform_impact_count = yes
+}
+
+Cof_military_reform_impact_count = {
+    set_temp_variable = { aa = Cof_army_autonomy }
+    set_temp_variable = { aw = Cof_army_willing }
+    set_temp_variable = { at = Cof_army_training }
+    set_temp_variable = { ae = Cof_army_equipment }
+    set_temp_variable = { ap = Cof_army_passionate }
+
+    #军事理论
+    if = { #综合理论
+        limit = {
+            NOT = { has_country_flag = Cof_army_theory_centralized_blitzkrieg }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_blitzkrieg }
+            NOT = { has_country_flag = Cof_army_theory_centralized_deep_operation }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_deep_operation }
+            NOT = { has_country_flag = Cof_army_theory_centralized_sustained_operation }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            NOT = { has_country_flag = Cof_army_theory_centralized_sequential_operation }
+            NOT = { has_country_flag = Cof_army_theory_task_oriented_sequential_operation }
+        }
+        set_temp_variable = { atno1 = atimp0 }
+        multiply_temp_variable = { atno1 = 0.01 }
+        multiply_temp_variable = { atno1 = 0.3 }
+        set_variable = { atno1_show = atno1 }
+        set_variable = { mili_experience_gain_army_factor = atno1 }
+
+        set_temp_variable = { atno2 = atimp0 }
+        multiply_temp_variable = { atno2 = 0.01 }
+        multiply_temp_variable = { atno2 = -0.4 }
+        set_variable = { atno2_show = atno2 }
+        set_variable = { mili_training_time_factor = atno2 }
+
+        set_temp_variable = { atno3 = atimp0 }
+        multiply_temp_variable = { atno3 = 0.01 }
+        multiply_temp_variable = { atno3 = 0.1 }
+        set_variable = { atno3_show = atno3 }
+        set_variable = { mili_army_core_attack_factor = atno3 }
+
+        set_temp_variable = { atno4 = atimp0 }
+        multiply_temp_variable = { atno4 = 0.01 }
+        multiply_temp_variable = { atno4 = 0.15 }
+        set_variable = { atno4_show = atno4 }
+        set_variable = { mili_army_core_defence_factor = atno4 }
+    }
+    else = {
+        set_variable = { mili_experience_gain_army_factor = 0 }
+        set_variable = { mili_training_time_factor = 0 }
+        set_variable = { mili_army_core_attack_factor = 0 }
+        set_variable = { mili_army_core_defence_factor = 0 }
+    }
+
+    if = {#集成式闪电战
+        limit = { has_country_flag = Cof_army_theory_centralized_blitzkrieg }
+        set_temp_variable = { aty1t1 = atimp1 }
+        multiply_temp_variable = { aty1t1 = 0.01 }
+        multiply_temp_variable = { aty1t1 = 0.15 }
+        set_variable = { aty1t1_show = aty1t1 }
+        set_variable = { mili_army_armor_attack_factor = aty1t1 }
+
+        set_temp_variable = { aty1t2 = atimp1 }
+        multiply_temp_variable = { aty1t2 = 0.01 }
+        multiply_temp_variable = { aty1t2 = 0.15 }
+        set_variable = { aty1t2_show = aty1t2 }
+        set_variable = { mili_army_armor_defence_factor = aty1t2 }
+
+        set_temp_variable = { aty1t3 = atimp1 }
+        multiply_temp_variable = { aty1t3 = 0.01 }
+        multiply_temp_variable = { aty1t3 = 0.1 }
+        set_variable = { aty1t3_show = aty1t3 }
+        set_variable = { mili_max_planning_factor = aty1t3 }
+    }
+    else = {
+        set_variable = { mili_army_armor_attack_factor = 0 }
+        set_variable = { mili_army_armor_defence_factor = 0 }
+        set_variable = { mili_max_planning_factor = 0 }
+    }
+
+    if = {#任务型闪电战
+        limit = { has_country_flag = Cof_army_theory_task_oriented_blitzkrieg }
+        set_temp_variable = { aty2t1 = atimp2 }
+        multiply_temp_variable = { aty2t1 = 0.01 }
+        multiply_temp_variable = { aty2t1 = 0.1 }
+        set_variable = { aty2t1_show = aty2t1 }
+        set_variable = { mili_army_armor_attack_factor = aty2t1 }
+
+        set_temp_variable = { aty2t2 = atimp2 }
+        multiply_temp_variable = { aty2t2 = 0.01 }
+        multiply_temp_variable = { aty2t2 = 0.1 }
+        set_variable = { aty2t2_show = aty2t2 }
+        set_variable = { mili_army_armor_defence_factor = aty2t2 }
+
+        set_temp_variable = { aty2t3 = atimp2 }
+        multiply_temp_variable = { aty2t3 = 0.01 }
+        multiply_temp_variable = { aty2t3 = 0.15 }
+        set_variable = { aty2t3_show = aty2t3 }
+        set_variable = { mili_planning_speed = aty2t3 }
+
+        set_temp_variable = { aty2t4 = atimp2 }
+        multiply_temp_variable = { aty2t4 = 0.01 }
+        multiply_temp_variable = { aty2t4 = 0.15 }
+        set_variable = { aty2t4_show = aty2t4 }
+        set_variable = { mili_army_armor_speed_factor = aty2t4 }
+    }
+    else = {
+        set_variable = { mili_planning_speed = 0 }
+        set_variable = { mili_army_armor_speed_factor = 0 }
+    }
+
+    if = {#大纵深作战
+        limit = { has_country_flag = Cof_army_theory_centralized_deep_operation }
+        set_temp_variable = { aty3t1 = atimp3 }
+        multiply_temp_variable = { aty3t1 = 0.01 }
+        multiply_temp_variable = { aty3t1 = 0.15 }
+        set_variable = { aty3t1_show = aty3t1 }
+        set_variable = { mili_army_artillery_attack_factor = aty3t1 }
+
+        set_temp_variable = { aty3t2 = atimp3 }
+        multiply_temp_variable = { aty3t2 = 0.01 }
+        multiply_temp_variable = { aty3t2 = 0.15 }
+        set_variable = { aty3t2_show = aty3t2 }
+        set_variable = { mili_army_artillery_defence_factor = aty3t2 }
+
+        set_temp_variable = { aty3t3 = atimp3 }
+        multiply_temp_variable = { aty3t3 = 0.01 }
+        multiply_temp_variable = { aty3t3 = 0.15 }
+        set_variable = { aty3t3_show = aty3t3 }
+        set_variable = { mili_breakthrough_factor = aty3t3 }  
+        
+        set_temp_variable = { aty3t4 = atimp3 }
+        multiply_temp_variable = { aty3t4 = 0.01 }
+        multiply_temp_variable = { aty3t4 = 0.15 }
+        set_variable = { aty3t4_show = aty3t4 }
+        set_variable = { mili_army_speed_factor = aty3t4 }
+    }
+    else = {
+        set_variable = { mili_army_artillery_attack_factor = 0 }
+        set_variable = { mili_army_artillery_defence_factor = 0 }
+        set_variable = { mili_breakthrough_factor = 0 }
+        set_variable = { mili_army_speed_factor = 0 }
+    }
+
+    if = {#协同纵深作战
+        limit = { has_country_flag = Cof_army_theory_task_oriented_deep_operation }
+        set_temp_variable = { aty4t1 = atimp4 }
+        multiply_temp_variable = { aty4t1 = 0.01 }
+        multiply_temp_variable = { aty4t1 = 0.1 }
+        set_variable = { aty4t1_show = aty4t1 }
+        set_variable = { mili_army_artillery_attack_factor = aty4t1 }
+
+        set_temp_variable = { aty4t2 = atimp4 }
+        multiply_temp_variable = { aty4t2 = 0.01 }
+        multiply_temp_variable = { aty4t2 = 0.1 }
+        set_variable = { aty4t2_show = aty4t2 }
+        set_variable = { mili_army_artillery_defence_factor = aty4t2 }
+
+        set_temp_variable = { aty4t3 = atimp4 }
+        multiply_temp_variable = { aty4t3 = 0.01 }
+        multiply_temp_variable = { aty4t3 = 0.15 }
+        set_variable = { aty4t3_show = aty4t3 }
+        set_variable = { mili_army_org_factor = aty4t3 } 
+
+        set_temp_variable = { aty4t4 = atimp4 }
+        multiply_temp_variable = { aty4t4 = 0.01 }
+        multiply_temp_variable = { aty4t4 = 0.15 }
+        set_variable = { aty4t4_show = aty4t4 }
+        set_variable = { mili_army_org_regain = aty4t4 }
+    }
+    else = {
+        set_variable = { mili_army_org_factor = 0 }
+        set_variable = { mili_army_org_regain = 0 }
+    }
+
+    if = {#总体持续作战
+        limit = { has_country_flag = Cof_army_theory_centralized_sustained_operation }
+        set_temp_variable = { aty5t1 = atimp5 }
+        multiply_temp_variable = { aty5t1 = 0.01 }
+        multiply_temp_variable = { aty5t1 = 0.1 }
+        set_variable = { aty5t1_show = aty5t1 }
+        set_variable = { mili_max_planning_factor = aty5t1 }
+
+        set_temp_variable = { aty5t2 = atimp5 }
+        multiply_temp_variable = { aty5t2 = 0.01 }
+        multiply_temp_variable = { aty5t2 = 0.15 }
+        set_variable = { aty5t2_show = aty5t2 }
+        set_variable = { mili_max_dig_in_factor = aty5t2 }    
+        
+        set_temp_variable = { aty5t3 = atimp5 }
+        multiply_temp_variable = { aty5t3 = 0.01 }
+        multiply_temp_variable = { aty5t3 = 0.2 }
+        set_variable = { aty5t3_show = aty5t3 }
+        set_variable = { mili_dig_in_speed_factor = aty5t3 }
+
+        set_temp_variable = { aty5t4 = atimp5 }
+        multiply_temp_variable = { aty5t4 = 0.01 }
+        multiply_temp_variable = { aty5t4 = 0.1 }
+        set_variable = { aty5t4_show = aty5t4 }
+        set_variable = { mili_army_armor_defence_factor = aty5t4 }
+    }
+    else = {
+        set_variable = { mili_max_dig_in_factor = 0 } 
+        set_variable = { mili_dig_in_speed_factor = 0 }     
+    }
+
+    if = {#协同连续作战
+        limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+        set_temp_variable = { aty6t1 = atimp6 }
+        multiply_temp_variable = { aty6t1 = 0.01 }
+        multiply_temp_variable = { aty6t1 = 0.2 }
+        set_variable = { aty6t1_show = aty6t1 }
+        set_variable = { mili_max_dig_in_factor = aty6t1 }
+
+        set_temp_variable = { aty6t2 = atimp6 }
+        multiply_temp_variable = { aty6t2 = 0.01 }
+        multiply_temp_variable = { aty6t2 = 0.2 }
+        set_variable = { aty6t2_show = aty6t2 }
+        set_variable = { mili_land_reinforce_rate = aty6t2 }    
+
+        set_temp_variable = { aty6t3 = atimp6 }
+        multiply_temp_variable = { aty6t3 = 0.01 }
+        multiply_temp_variable = { aty6t3 = 0.15 }
+        set_variable = { aty6t3_show = aty6t3 }
+        set_variable = { mili_army_org_regain = aty6t3 }
+    }
+    else = {
+        set_variable = { mili_land_reinforce_rate = 0 }
+    }
+
+    if = {#有条不紊作战
+        limit = { has_country_flag = Cof_army_theory_centralized_sequential_operation }
+        set_temp_variable = { aty7t1 = atimp7 }
+        multiply_temp_variable = { aty7t1 = 0.01 }
+        multiply_temp_variable = { aty7t1 = -0.15 }
+        set_variable = { aty7t1_show = aty7t1 }
+        set_variable = { mili_attrition = aty7t1 }
+
+        set_temp_variable = { aty7t2 = atimp7 }
+        multiply_temp_variable = { aty7t2 = 0.01 }
+        multiply_temp_variable = { aty7t2 = -0.15 }
+        set_variable = { aty7t2_show = aty7t2 }
+        set_variable = { mili_supply_consumption_factor = aty7t2 }    
+
+        set_temp_variable = { aty7t3 = atimp7 }
+        multiply_temp_variable = { aty7t3 = 0.01 }
+        multiply_temp_variable = { aty7t3 = -0.15 }
+        set_variable = { aty7t3_show = aty7t3 }
+        set_variable = { mili_org_loss_when_moving = aty7t3 }
+
+        set_temp_variable = { aty7t4 = atimp7 }
+        multiply_temp_variable = { aty7t4 = 0.01 }
+        multiply_temp_variable = { aty7t4 = 0.1 }
+        set_variable = { aty7t4_show = aty7t4 }
+        set_variable = { mili_terrain_penalty_reduction = aty7t4 }     
+    }
+    else = {
+        set_variable = { mili_attrition = 0 }
+        set_variable = { mili_supply_consumption_factor = 0 }
+        set_variable = { mili_org_loss_when_moving = 0 }
+        set_variable = { mili_terrain_penalty_reduction = 0 }
+    }
+
+    if = {#弹性递进作战
+        limit = { has_country_flag = Cof_army_theory_task_oriented_sequential_operation }
+        set_temp_variable = { aty8t1 = atimp8 }
+        multiply_temp_variable = { aty8t1 = 0.01 }
+        multiply_temp_variable = { aty8t1 = -0.2 }
+        set_variable = { aty8t1_show = aty8t1 }
+        set_variable = { mili_attrition = aty8t1 }
+
+        set_temp_variable = { aty8t2 = atimp8 }
+        multiply_temp_variable = { aty8t2 = 0.01 }
+        multiply_temp_variable = { aty8t2 = -0.2 }
+        set_variable = { aty8t2_show = aty8t2 }
+        set_variable = { mili_supply_consumption_factor = aty8t2 }
+
+        set_temp_variable = { aty8t3 = atimp8 }
+        multiply_temp_variable = { aty8t3 = 0.01 }
+        multiply_temp_variable = { aty8t3 = 0.2 }
+        set_variable = { aty8t3_show = aty8t3 }
+        set_variable = { mili_initiative_factor = aty8t3 }
+    }
+    else = {
+        set_variable = { mili_initiative_factor = 0 }
+    }
+
+    ###
+    #
+    set_temp_variable = { aa1 = aa }
+    if = {
+        limit = { check_variable = { aa1 < 30 } }
+        set_temp_variable = { temp = 50 }
+        subtract_from_temp_variable = { temp = aa1 }
+        multiply_temp_variable = { temp = 0.01 }
+        multiply_temp_variable = { aa1 = 0.02 }
+        multiply_temp_variable = { aa1 = temp }
+        subtract_from_temp_variable = { aa1 = temp }
+    }
+    else = {
+        add_to_temp_variable = { aa1 = -50 }
+        multiply_temp_variable = { aa1 = 0.01 }
+        multiply_temp_variable = { aa1 = 0.2 }
+    }
+    set_variable = { aa1_show = aa1 }
+    set_variable = { mili_stability_factor = aa1 }    
+
+    set_temp_variable = { aa2 = aa }
+    if = {
+        limit = { check_variable = { aa2 < 30 } }
+        set_temp_variable = { temp = 50 }
+        subtract_from_temp_variable = { temp = aa2 }
+        multiply_temp_variable = { temp = 0.01 }
+        multiply_temp_variable = { aa2 = 0.02 }
+        multiply_temp_variable = { aa2 = temp }
+        subtract_from_temp_variable = { aa2 = temp }
+    }
+    else = {
+        add_to_temp_variable = { aa2 = -50 }
+        multiply_temp_variable = { aa2 = 0.01 }
+        multiply_temp_variable = { aa2 = 0.2 }
+    }
+    set_variable = { aa2_show = aa2 }
+    set_variable = { mili_war_support_factor = aa2 } 
+
+    #
+    set_temp_variable = { aw1 = aw }
+    add_to_temp_variable = { aw1 = -40 }
+    multiply_temp_variable = { aw1 = 0.01 }
+    multiply_temp_variable = { aw1 = 0.5 }
+    set_variable = { aw1_show = aw1 }
+    add_to_variable = { mili_land_reinforce_rate = aw1 }   
+
+    #
+    set_temp_variable = { at1 = at }
+    add_to_temp_variable = { at1 = -40 }
+    multiply_temp_variable = { at1 = 0.01 }
+    multiply_temp_variable = { at1 = -0.5 }
+    set_variable = { at1_show = at1 }
+    set_variable = { mili_pocket_penalty = at1 }       
+
+    #装备
+    hidden_effect = {
+        remove_ideas = {
+			Cof_army_equipment_buff1
+			Cof_army_equipment_buff2
+			Cof_army_equipment_buff3
+			Cof_army_equipment_buff4
+			Cof_army_equipment_buff5
+			Cof_army_equipment_buff6
+			Cof_army_equipment_buff7
+			Cof_army_equipment_buff8
+			Cof_army_equipment_buff9
+			Cof_army_equipment_buff10
+		}
+        
+        if = {
+            limit = { check_variable = { ae < 10 } }
+            add_ideas = Cof_army_equipment_buff1
+        }
+        else_if = {
+            limit = { check_variable = { ae < 20 } }
+            add_ideas = Cof_army_equipment_buff2 
+        }
+        else_if = {
+            limit = { check_variable = { ae < 30 } }
+            add_ideas = Cof_army_equipment_buff3 
+        }
+        else_if = {
+            limit = { check_variable = { ae < 40 } }
+            add_ideas = Cof_army_equipment_buff4 
+        }
+        else_if = {
+            limit = { check_variable = { ae < 50 } }
+            add_ideas = Cof_army_equipment_buff5 
+        }
+        else_if = {
+            limit = { check_variable = { ae < 60 } }
+            add_ideas = Cof_army_equipment_buff6 
+        }
+        else_if = {
+            limit = { check_variable = { ae < 70 } }
+            add_ideas = Cof_army_equipment_buff7 
+        }
+        else_if = {
+            limit = { check_variable = { ae < 80 } }
+            add_ideas = Cof_army_equipment_buff8 
+        }
+        else_if = {
+            limit = { check_variable = { ae < 90 } }
+            add_ideas = Cof_army_equipment_buff9 
+        }
+        else = { add_ideas = Cof_army_equipment_buff10 }
+    }
+
+    #
+    set_temp_variable = { ap1 = ap }
+    add_to_temp_variable = { ap1 = -40 }
+    multiply_temp_variable = { ap1 = 0.01 }
+    multiply_temp_variable = { ap1 = 0.5 }
+    set_variable = { ap1_show = ap1 }
+    set_variable = { mili_conscription_factor = ap1 }       
+
+    set_temp_variable = { ap2 = ap }
+    add_to_temp_variable = { ap2 = -40 }
+    multiply_temp_variable = { ap2 = 0.01 }
+    multiply_temp_variable = { ap2 = 0.5 }
+    set_variable = { ap2_show = ap2 }
+    set_variable = { mili_mobilization_speed = ap2 }    
+
+    #extra
+    #军队自主
+    if = {
+        limit = { has_completed_focus = FRA_strike_wherever_one_points }
+        set_temp_variable = { aa3 = aa }
+        add_to_temp_variable = { aa3 = -40 }
+        multiply_temp_variable = { aa3 = 0.01 }
+        multiply_temp_variable = { aa3 = 0.02 }
+        set_variable = { aa3_show = aa3 }
+        add_to_variable = { mili_max_planning = aa3 } 
+    }
+    
+    #战斗意愿
+    if = {
+        limit = { has_completed_focus = FRA_break_up_the_whole_into_pieces }
+        set_temp_variable = { aw2 = aw }
+        add_to_temp_variable = { aw2 = -40 }
+        multiply_temp_variable = { aw2 = 0.01 }
+        multiply_temp_variable = { aw2 = -0.02 }
+        set_variable = { aw2_show = aw2 }
+        add_to_variable = { mili_combat_width_factor = aw2 } 
+    }
+
+
+    ####
+    force_update_dynamic_modifier = yes
+}
+
+military_period_change_judge = {
+    set_variable = { monthly_change_aautoc = 0 }
+    set_variable = { monthly_change_awillc = 0 }
+    set_variable = { monthly_change_atrainc = 0 }
+    set_variable = { monthly_change_aequipc = 0 }
+    set_variable = { monthly_change_apassionc = 0 }
+
+    #自然衰减
+    set_variable = { awcfade = Cof_army_willing }
+    multiply_variable = { awcfade = 0.1 }
+    round_variable = awcfade
+    multiply_variable = { awcfade = -0.1 }
+    add_to_variable = { monthly_change_awillc = awcfade }
+    
+    set_variable = { atcfade = Cof_army_training }
+    multiply_variable = { atcfade = 0.1 }
+    round_variable = atcfade
+    multiply_variable = { atcfade = -0.1 }
+    add_to_variable = { monthly_change_atrainc = atcfade }
+
+    set_variable = { aecfade = Cof_army_equipment }
+    multiply_variable = { aecfade = 0.1 }
+    round_variable = aecfade
+    multiply_variable = { aecfade = -0.1 }
+    add_to_variable = { monthly_change_aequipc = aecfade }
+
+    set_variable = { apcfade = Cof_army_passionate }
+    multiply_variable = { apcfade = 0.2 }
+    round_variable = apcfade
+    multiply_variable = { apcfade = -0.1 }
+    add_to_variable = { monthly_change_apassionc = apcfade }
+    
+    #
+    set_variable = { aacfios = Cof_politics_intensity_of_struggle }
+    multiply_variable = { aacfios = 0.1 }
+    round_variable = aacfios
+    multiply_variable = { aacfios = -0.1 }
+    add_to_variable = { monthly_change_aautoc = aacfios }
+
+    #
+    set_variable = { awcfws = has_war_support }
+    multiply_variable = { awcfws = 10 }
+    round_variable = awcfws
+    multiply_variable = { awcfws = 0.1 }
+    add_to_variable = { monthly_change_awillc = awcfws }
+
+    set_variable = { awcfpopsa = pop_satisfaction_army }
+    add_to_variable = { awcfpopsa = -50 }
+    multiply_variable = { awcfpopsa = 0.2 }
+    round_variable = awcfpopsa
+    multiply_variable = { awcfpopsa = 0.1 }
+    add_to_variable = { monthly_change_awillc = awcfpopsa }
+
+    #
+    if = {
+        limit = {
+             OR = {
+                check_variable = { CGSC_attitude = 5 } 
+                check_variable = { CGSC_attitude = 4 } 
+            }
+        }
+        set_variable = { atcfcgsc = 0.3 }
+    }
+    else_if = {
+        limit = {
+             OR = {
+                check_variable = { CGSC_attitude = 3 } 
+                check_variable = { CGSC_attitude = 2 } 
+            }
+        }
+        set_variable = { atcfcgsc = 0.2 }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                check_variable = { CGSC_attitude = 1 } 
+                check_variable = { CGSC_attitude = 0 } 
+                check_variable = { CGSC_attitude = -1 } 
+            }
+        }
+        set_variable = { atcfcgsc = 0.1 }
+    }
+    else_if = {
+        limit = {
+            OR = {
+                check_variable = { CGSC_attitude = -3 } 
+                check_variable = { CGSC_attitude = -2 } 
+            }
+        }
+        set_variable = { atcfcgsc = 0 }
+    }
+    else_if = {
+        limit = {
+             OR = {
+                check_variable = { CGSC_attitude = -4 } 
+                check_variable = { CGSC_attitude = -5 } 
+            }
+        }
+        set_variable = { atcfcgsc = -0.1 }
+    }
+
+    #
+    set_variable = { aecfeia = econ_industry_arms }
+    multiply_variable = { aecfeia = 0.1 }
+    round_variable = aecfeia
+    multiply_variable = { aecfeia = 0.1 }
+    add_to_variable = { monthly_change_aequipc = aecfeia }
+
+    #
+    set_variable = { apcfws = has_war_support }
+    add_to_variable = { apcfws = -0.2 }
+    multiply_variable = { apcfws = 10 }
+    round_variable = apcfws
+    multiply_variable = { apcfws = 0.1 }
+    add_to_variable = { monthly_change_apassionc = apcfws }
+
+    set_variable = { apcfpops = pop_satisfaction }
+    add_to_variable = { apcfpops = -50 }
+    multiply_variable = { apcfpops = 0.2 }
+    round_variable = apcfpops
+    multiply_variable = { apcfpops = 0.1 }
+    add_to_variable = { monthly_change_apassionc = apcfpops }
+
+
+    set_variable = { billaac = modifier@monthly_change_aauto }
+    subtract_from_variable = { billaac = monthly_change_aautoc }
+
+    set_variable = { billawc = modifier@monthly_change_awill }
+    subtract_from_variable = { billawc = monthly_change_awillc }
+
+    set_variable = { billatc = modifier@monthly_change_atrain }
+    subtract_from_variable = { billatc = monthly_change_atrainc }
+    subtract_from_variable = { billatc = atcfcgsc }
+
+    set_variable = { billaec = modifier@monthly_change_aequip }
+    subtract_from_variable = { billaec = monthly_change_aequipc }
+
+    set_variable = { billapc = modifier@monthly_change_apassion }
+    subtract_from_variable = { billapc = monthly_change_apassionc }
+}
+
+
+#军事契合度
+doctrines_fitness = {
+    set_variable = { dfw = 0 }
+
+    if = {
+        limit = { has_doctrine = new_mobile_warfare }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = grand_battleplan }
+        if = {
+            limit = {
+                OR = {
+                    has_country_flag = Cof_army_theory_centralized_sequential_operation
+                    has_country_flag = Cof_army_theory_task_oriented_sequential_operation
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = mass_assault }
+        if = {
+            limit = {
+                OR = {
+                    has_country_flag = Cof_army_theory_centralized_blitzkrieg
+                    has_country_flag = Cof_army_theory_task_oriented_blitzkrieg
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard4 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    #sub
+    if = {
+        limit = { has_doctrine = mobile_infantry }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = defensive_postures }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_task_oriented_blitzkrieg }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = large_unit_tactics }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sequential_operation }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = commandos }
+        if = {
+            limit = { check_variable = { ard3 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = great_war_infantry }
+        if = {
+            limit = { 
+                OR = {
+                    has_country_flag = Cof_army_theory_centralized_blitzkrieg
+                    has_country_flag = Cof_army_theory_task_oriented_blitzkrieg
+                    has_country_flag = Cof_army_theory_centralized_deep_operation
+                    has_country_flag = Cof_army_theory_centralized_sequential_operation
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = mission_type_tactics }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_centralized_sustained_operation }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = last_stand }
+        if = {
+            limit = { 
+                OR = {
+                    has_country_flag = Cof_army_theory_centralized_blitzkrieg
+                    has_country_flag = Cof_army_theory_task_oriented_blitzkrieg
+                    has_country_flag = Cof_army_theory_centralized_deep_operation
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = infiltration_tactics }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = grand_assault }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_centralized_sequential_operation }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = deep_battle }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = guerilla_war }
+        if = {
+            limit = { 
+                OR = {
+                    has_country_flag = Cof_army_theory_centralized_blitzkrieg 
+                    has_country_flag = Cof_army_theory_task_oriented_blitzkrieg
+                    has_country_flag = Cof_army_theory_task_oriented_sustained_operation
+                }
+            }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard2 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard3 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard4 > 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { has_doctrine = rapid_domination }
+        if = {
+            limit = { has_country_flag = Cof_army_theory_task_oriented_sustained_operation }
+            add_to_variable = { dfw = 1 }
+        }
+        if = {
+            limit = { check_variable = { ard5 < 0 } }
+            add_to_variable = { dfw = 1 }
+        }
+    }
+
+    if = {
+        limit = { is_ai = yes }
+        set_variable = { dfw = 0 }
+    }
+
+    set_variable = { dfwbuff = dfw }
+    multiply_variable = { dfwbuff = -0.05 }
+
+    if = {
+        limit = {
+            check_variable = { dfw > 0 }
+            NOT = { has_dynamic_modifier = { modifier = Cof_doctrines_fitness } }
+        }
+        add_dynamic_modifier = { modifier = Cof_doctrines_fitness }
+    }
+}
+
+###飞行器
+#    set_temp_variable = { vctc = 0 }
+#    set_temp_variable = { vcmc = 0 }
+#    set_temp_variable = { vcec = 0 }
+#    vehicle_concept_variable_change = yes
+vehicle_concept_variable_change = {
+    if = { limit = { check_variable = { vctc = 0 } } }
+    else = {
+        add_to_variable = {
+            vehicle_concept_theory = vctc
+            tooltip = vctc_tt
+        }
+    }
+    if = { limit = { check_variable = { vcmc = 0 } } }
+    else = {
+        add_to_variable = {
+            vehicle_concept_material = vcmc
+            tooltip = vcmc_tt
+        }
+    }
+    if = { limit = { check_variable = { vcec = 0 } } }
+    else = {
+        add_to_variable = {
+            vehicle_concept_engineer = vcec
+            tooltip = vcec_tt
+        }
+    }
+}
