@@ -15717,7 +15717,7 @@ focus_tree = {
 					}
 					damage_building = {
 						type = industrial_complex
-						damage = 2
+						damage = 1
 					}
 					add_dynamic_modifier = { modifier = Cof_french_roit days = 180 }
 				}
@@ -20027,41 +20027,22 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			activate_decision = Cof_synd_bgt_administrative_change
 			custom_effect_tooltip = Cof_synd_bgt_administrative_change_tt
-			effect_tooltip = {
-				add_ideas = bill_CGT_administrative
-
-				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = effect_society
-				set_temp_variable = { pop_wc = 4 }
-				set_temp_variable = { pop_pc = -1 }
-				set_temp_variable = { pop_mc = -0.5 }
-				set_temp_variable = { pop_sc = -0.5 }
-				set_temp_variable = { pop_bc = -2 }
-				set_temp_variable = { pop_ac = 0 }
-				class_pop_change = yes
-				
-				custom_effect_tooltip = tooltip_white_line
-				set_temp_variable = { pop_target = 1 }   
-				set_temp_variable = { pop_syndc = 3 }
-				set_temp_variable = { pop_oppoc = -1 }
-				set_temp_variable = { pop_jacoc = -1 }
-				set_temp_variable = { pop_sorec = -1 }
-				class_pop_faction_tendency_change = yes
-			}
+			effect_tooltip = { add_ideas = bill_CGT_administrative }
 			
+			custom_effect_tooltip = tooltip_dividing_line
 			custom_effect_tooltip = {
 				localization_key = tooltip_if_focus_completed
 				FOCUS = FRA_to_be_change_unity_first
 			}
 			effect_tooltip = {
+				country_event = cofpolitics.183
 				set_temp_variable = { ssc = 1 }
 				set_temp_variable = { asc = -1 }
 				set_temp_variable = { tsc = -1 }
 				set_temp_variable = { csc = -1 }
 				syndmode_sincerity_change = yes
-
+				
 				custom_effect_tooltip = tooltip_white_line
 				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation1
 				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation2
@@ -20083,6 +20064,7 @@ focus_tree = {
 					set_temp_variable = { tsc = -1 }
 					set_temp_variable = { csc = -1 }
 					syndmode_sincerity_change = yes
+					country_event = cofpolitics.183
 					monthly_change_syndicats_stratification_progress_judge = yes
 				}
 				else = {
@@ -20099,43 +20081,46 @@ focus_tree = {
 		prerequisite = { focus = FRA_administrativeization_of_CGT }
 		mutually_exclusive = { focus = FRA_workers_picket_system }
 		available = {
-			has_idea = bill_CGT_administrative
-			
+			OR = {
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = {
+							localization_key = tooltip_if_focus_completed
+							FOCUS = FRA_to_be_change_unity_first
+						}
+						has_completed_focus = FRA_to_be_change_unity_first
+					}
+					custom_trigger_tooltip = {
+						tooltip = {
+							localization_key = var_judge_num
+							TAGVAR = syndicats_stratification_progress
+							JUDGE = more_than
+							TAGNUM = "25.0"
+						}
+						check_variable = { technocrat_sincerity > 25 }
+					}
+				}
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = {
+							localization_key = tooltip_if_focus_completed
+							FOCUS = FRA_to_unite_sacrifice_first
+						}
+						has_completed_focus = FRA_to_unite_sacrifice_first
+					}
+				}
+			}
 		}
 		x = -4
 		y = 3
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = Cof_synd_bgt_administrative_change_tt_more
 			swap_ideas = {
 				remove_idea = bill_CGT_administrative
 				add_idea = bill_CGT_administrative_direct
 			}
-
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_wc = 5 }
-       		set_temp_variable = { pop_pc = -0.5 }
-	        set_temp_variable = { pop_mc = -0.5 }
-    		set_temp_variable = { pop_sc = -0.5 }
-        	set_temp_variable = { pop_bc = -3.5 }
-        	set_temp_variable = { pop_ac = 0 }
-	        class_pop_change = yes
-			
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { pop_target = 1 }   
-			set_temp_variable = { pop_syndc = 6 }
-			set_temp_variable = { pop_oppoc = -2 }
-			set_temp_variable = { pop_jacoc = -2 }
-			set_temp_variable = { pop_sorec = -2 }
-			class_pop_faction_tendency_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { pop_target = 5 }   
-			set_temp_variable = { pop_syndc = -6 }
-			set_temp_variable = { pop_oppoc = 2 }
-			set_temp_variable = { pop_jacoc = 2 }
-			set_temp_variable = { pop_sorec = 2 }
-			class_pop_faction_tendency_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
@@ -20143,11 +20128,18 @@ focus_tree = {
 				FOCUS = FRA_to_be_change_unity_first
 			}
 			effect_tooltip = {
+				country_event = cofpolitics.185
 				set_temp_variable = { ssc = 1 }
 				set_temp_variable = { asc = 1 }
 				set_temp_variable = { tsc = -1 }
 				set_temp_variable = { csc = 1 }
 				syndmode_sincerity_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation21
+				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation22
+				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation23
+				custom_effect_tooltip = unlock_in_politics
 			}
 
 			custom_effect_tooltip = tooltip_white_line
@@ -20164,6 +20156,7 @@ focus_tree = {
 					set_temp_variable = { tsc = -1 }
 					set_temp_variable = { csc = 1 }
 					syndmode_sincerity_change = yes
+					country_event = cofpolitics.185
 				}
 				else = {
 
@@ -20179,42 +20172,72 @@ focus_tree = {
 		prerequisite = { focus = FRA_administrativeization_of_CGT }
 		mutually_exclusive = { focus = FRA_workers_direct_administration }
 		available = {
-			has_idea = bill_CGT_administrative
+			OR = {
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = {
+							localization_key = tooltip_if_focus_completed
+							FOCUS = FRA_to_be_change_unity_first
+						}
+						has_completed_focus = FRA_to_be_change_unity_first
+					}
+					custom_trigger_tooltip = {
+						tooltip = {
+							localization_key = var_judge_num
+							TAGVAR = syndicats_stratification_progress
+							JUDGE = more_than
+							TAGNUM = "25.0"
+						}
+						check_variable = { technocrat_sincerity > 25 }
+					}
+				}
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = {
+							localization_key = tooltip_if_focus_completed
+							FOCUS = FRA_to_unite_sacrifice_first
+						}
+						has_completed_focus = FRA_to_unite_sacrifice_first
+					}
+				}
+			}
 		}
 		x = -2
 		y = 3
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = Cof_synd_bgt_administrative_change_tt_more
 			swap_ideas = {
 				remove_idea = bill_CGT_administrative
 				add_idea = bill_CGT_administrative_picket
-			}	
+			}
 
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_wc = 4 }
-       		set_temp_variable = { pop_pc = -1 }
-	        set_temp_variable = { pop_mc = -1 }
-    		set_temp_variable = { pop_sc = -1 }
-        	set_temp_variable = { pop_bc = -1 }
-        	set_temp_variable = { pop_ac = 0 }
-	        class_pop_change = yes
-			
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { pop_target = 1 }   
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_target = 1 }    
 			set_temp_variable = { pop_syndc = 6 }
 			set_temp_variable = { pop_oppoc = -2 }
 			set_temp_variable = { pop_jacoc = -2 }
 			set_temp_variable = { pop_sorec = -2 }
-			class_pop_faction_tendency_change = yes
+			class_pop_faction_tendency_change = yes			
 
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { pop_target = 5 }   
+			set_temp_variable = { pop_target = 5 }    
 			set_temp_variable = { pop_syndc = -3 }
 			set_temp_variable = { pop_oppoc = 1 }
 			set_temp_variable = { pop_jacoc = 1 }
 			set_temp_variable = { pop_sorec = 1 }
-			class_pop_faction_tendency_change = yes
+			class_pop_faction_tendency_change = yes		
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
@@ -20222,11 +20245,18 @@ focus_tree = {
 				FOCUS = FRA_to_be_change_unity_first
 			}
 			effect_tooltip = {
+				country_event = cofpolitics.184
 				set_temp_variable = { ssc = 1 }
-				set_temp_variable = { asc = -1 }
-				set_temp_variable = { tsc = 1 }
-				set_temp_variable = { csc = -1 }
+				set_temp_variable = { asc = 0 }
+				set_temp_variable = { tsc = 0 }
+				set_temp_variable = { csc = 1 }
 				syndmode_sincerity_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation11
+				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation12
+				unlock_decision_tooltip = Cof_syndmode_syndicats_stratifcation13
+				custom_effect_tooltip = unlock_in_politics
 			}
 
 			custom_effect_tooltip = tooltip_white_line
@@ -20243,6 +20273,7 @@ focus_tree = {
 					set_temp_variable = { tsc = 1 }
 					set_temp_variable = { csc = -1 }
 					syndmode_sincerity_change = yes
+					country_event = cofpolitics.184
 				}
 				else = {
 
@@ -20438,7 +20469,18 @@ focus_tree = {
 		icon = GFX_focus_FRA_trade_union_empowerment_bill
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_midway_society }
-		available = { NOT= { has_country_flag = voting_for_bill } }
+		available = { 
+			NOT= { has_country_flag = voting_for_bill } 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = syndicats_stratification_progress
+					JUDGE = more_than
+					TAGNUM = "90.0"
+				}
+				check_variable = { technocrat_sincerity > 90 }
+			}
+		}
 		x = -2
 		y = 5
 		ai_will_do = { factor = 10 }
@@ -20538,8 +20580,10 @@ focus_tree = {
 		id = FRA_the_great_national_plan
 		icon = GFX_focus_FRA_the_great_national_plan
 		relative_position_id = FRA_another_victory_for_syndicalists
-		prerequisite = { focus = FRA_trade_union_empowerment_bill }
-		prerequisite = { focus = FRA_declaration_of_the_new_normal }
+		prerequisite = { 
+			focus = FRA_trade_union_empowerment_bill 
+			focus = FRA_declaration_of_the_new_normal 
+		}
 		available = {
 			has_idea = Cof_building_midway_society5
 		}
@@ -20618,6 +20662,7 @@ focus_tree = {
 		relative_position_id = FRA_another_victory_for_syndicalists
 		prerequisite = { focus = FRA_midway_society }
 		available = {
+			NOT = { has_dynamic_modifier = { modifier = Cof_extreme_political_group } }
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num

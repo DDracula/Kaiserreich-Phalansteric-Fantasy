@@ -10296,6 +10296,7 @@ clr_gui_politics_flag = {
     clr_country_flag = gui_politics_iriam
 }
 
+#温和派议程
 under_tent_number_judge = {
     set_variable = { under_tent_number = 0 }
     if = {
@@ -10385,6 +10386,55 @@ monthly_change_syndicats_stratification_progress_judge = {
         var = monthly_change_syndicats_stratification_progress
         max = 5
         min = -5
+    }
+}
+
+#        set_temp_variable = { pgsc = 0 }
+#        set_temp_variable = { sdrc = 0 }
+#        set_temp_variable = { smrc = 0 }
+#        set_temp_variable = { serc = 0 }
+#        syndicats_stratifcation_change = yes
+syndicats_stratifcation_change = {
+    if = { limit = { check_variable = { pgsc = 0 } } }
+    else = {
+        add_to_variable = {
+            syndicats_stratification_progress = pgsc
+            tooltip = syndicats_stratification_progress_change_tt
+        }
+    }
+
+    if = { limit = { check_variable = { sdrc = 0 } } }
+    else = {
+        add_to_variable = {
+            syndicats_director = sdrc
+            tooltip = syndicats_director_change_tt
+        }
+    }
+    if = { limit = { check_variable = { smrc = 0 } } }
+    else = {
+        add_to_variable = {
+            syndicats_manager = smrc
+            tooltip = syndicats_manager_change_tt
+        }
+    }
+    if = { limit = { check_variable = { serc = 0 } } }
+    else = {
+        add_to_variable = {
+            syndicats_executor = serc
+            tooltip = syndicats_executor_change_tt
+        }
+    }
+
+    clamp_variable = { var = syndicats_stratification_progress min = 0 max = 100 }
+    clamp_variable = { var = syndicats_director min = 0 max = 100 }
+    clamp_variable = { var = syndicats_manager min = 0 max = 100 }
+    clamp_variable = { var = syndicats_executor min = 0 max = 100 }
+
+    hidden_effect = {
+        if = {
+            limit = { check_variable = { syndicats_stratification_progress = 100 } }
+            country_event = { id = cofpolitics.186 days = 2 }
+        }
     }
 }
 

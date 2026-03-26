@@ -3801,44 +3801,6 @@ Cof_politics = {
 			Cof_army_reform_values_change = yes
 		}
 	}
-
-#工团派议程
-	Cof_synd_bgt_administrative_change = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_completed_focus = FRA_administrativeization_of_CGT }
-		days_remove = 180
-		fire_only_once = yes
-		modifier = { 
-			political_power_factor = -0.15
-			stability_factor = -0.1
-
-			monthly_change_popsw = 0.6
-			monthly_change_popsb = -0.6
-		}          
-		remove_effect = {
-			add_ideas = bill_CGT_administrative
-			add_to_array = { array = FRA.cof_social_bills value = 26 }
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_wc = 4 }
-       		set_temp_variable = { pop_pc = -1 }
-	        set_temp_variable = { pop_mc = -0.5 }
-    		set_temp_variable = { pop_sc = -0.5 }
-        	set_temp_variable = { pop_bc = -2 }
-        	set_temp_variable = { pop_ac = 0 }
-	        class_pop_change = yes
-			
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { pop_target = 1 }   
-			set_temp_variable = { pop_syndc = 3 }
-			set_temp_variable = { pop_oppoc = -1 }
-			set_temp_variable = { pop_jacoc = -1 }
-			set_temp_variable = { pop_sorec = -1 }
-			class_pop_faction_tendency_change = yes
-		}
-	}
                                              
 #温和派议程
 	Cof_syndmode_tent_mission = {
@@ -6896,6 +6858,7 @@ Cof_politics = {
 		visible = { 
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
+			check_variable = { syndicats_stratification_progress < 100 }
 		}
 		available = { 
 			custom_trigger_tooltip = {
@@ -6911,13 +6874,21 @@ Cof_politics = {
 		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
-		
+			political_power_factor = 0.05
 		}
 		complete_effect = {
-			
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = -1 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
 		}
 		remove_effect = { 
-			
+			set_temp_variable = { pgsc = 5 }
+			set_temp_variable = { sdrc = 10 }
+			set_temp_variable = { smrc = -5 }
+			set_temp_variable = { serc = -10 }
+			syndicats_stratifcation_change = yes
 		}
 	}
 	Cof_syndmode_syndicats_stratifcation2 = {
@@ -6926,6 +6897,7 @@ Cof_politics = {
 		visible = { 
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
+			check_variable = { syndicats_stratification_progress < 100 }
 		}
 		available = { 
 			custom_trigger_tooltip = {
@@ -6941,13 +6913,21 @@ Cof_politics = {
 		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
-		
+			political_power_factor = 0.05
 		}
 		complete_effect = {
-			
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = -1 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
 		}
 		remove_effect = { 
-			
+			set_temp_variable = { pgsc = 5 }
+			set_temp_variable = { sdrc = -10 }
+			set_temp_variable = { smrc = -5 }
+			set_temp_variable = { serc = 10 }
+			syndicats_stratifcation_change = yes
 		}
 	}
 	Cof_syndmode_syndicats_stratifcation3 = {
@@ -6956,6 +6936,7 @@ Cof_politics = {
 		visible = { 
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
+			check_variable = { syndicats_stratification_progress < 100 }
 		}
 		available = { 
 			custom_trigger_tooltip = {
@@ -6971,13 +6952,21 @@ Cof_politics = {
 		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
-		
+			political_power_factor = 0.05
 		}
 		complete_effect = {
-			
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = -1 }
+			syndmode_sincerity_change = yes
 		}
 		remove_effect = { 
-			
+			set_temp_variable = { pgsc = 5 }
+			set_temp_variable = { sdrc = -10 }
+			set_temp_variable = { smrc = 10 }
+			set_temp_variable = { serc = -5 }
+			syndicats_stratifcation_change = yes
 		}
 	}
 	Cof_syndmode_syndicats_stratifcation4 = {
@@ -6986,6 +6975,7 @@ Cof_politics = {
 		visible = { 
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
+			check_variable = { syndicats_stratification_progress < 100 }
 		}
 		available = { 
 			custom_trigger_tooltip = {
@@ -7001,13 +6991,209 @@ Cof_politics = {
 		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
-		
+			political_power_factor = 0.05
 		}
 		complete_effect = {
-			
+			set_temp_variable = { ssc = -1 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 0 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
 		}
 		remove_effect = { 
-			
+			set_temp_variable = { pgsc = -5 }
+			set_temp_variable = { sdrc = 3 }
+			set_temp_variable = { smrc = 3 }
+			set_temp_variable = { serc = 3 }
+			syndicats_stratifcation_change = yes
+		}
+	}
+
+	Cof_syndmode_syndicats_stratifcation11 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first
+			has_completed_focus = FRA_workers_picket_system
+			check_variable = { syndicats_stratification_progress < 100 }
+		}
+		fire_only_once = yes
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { pgsc = 0 }
+			set_temp_variable = { sdrc = -5 }
+			set_temp_variable = { smrc = -5 }
+			set_temp_variable = { serc = 10 }
+			syndicats_stratifcation_change = yes
+		}
+	}
+	Cof_syndmode_syndicats_stratifcation12 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first
+			has_completed_focus = FRA_workers_picket_system
+			check_variable = { syndicats_stratification_progress < 100 }
+		}
+		fire_only_once = yes
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { pgsc = 0 }
+			set_temp_variable = { sdrc = -10 }
+			set_temp_variable = { smrc = 5 }
+			set_temp_variable = { serc = 5 }
+			syndicats_stratifcation_change = yes
+		}
+	}
+	Cof_syndmode_syndicats_stratifcation13 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first
+			has_completed_focus = FRA_workers_picket_system
+			check_variable = { syndicats_stratification_progress < 100 }
+		}
+		fire_only_once = yes
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { pgsc = 0 }
+			set_temp_variable = { sdrc = 0 }
+			set_temp_variable = { smrc = 0 }
+			set_temp_variable = { serc = 5 }
+			syndicats_stratifcation_change = yes
+		}
+	}
+
+	Cof_syndmode_syndicats_stratifcation21 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first
+			has_completed_focus = FRA_workers_direct_administration
+			check_variable = { syndicats_stratification_progress < 100 }
+		}
+		fire_only_once = yes
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { pgsc = 0 }
+			set_temp_variable = { sdrc = -10 }
+			set_temp_variable = { smrc = 5 }
+			set_temp_variable = { serc = 5 }
+			syndicats_stratifcation_change = yes
+		}
+	}
+	Cof_syndmode_syndicats_stratifcation22 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first
+			has_completed_focus = FRA_workers_direct_administration
+			check_variable = { syndicats_stratification_progress < 100 }
+		}
+		fire_only_once = yes
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { pgsc = 0 }
+			set_temp_variable = { sdrc = -10 }
+			set_temp_variable = { smrc = 10 }
+			set_temp_variable = { serc = 0 }
+			syndicats_stratifcation_change = yes
+		}
+	}
+	Cof_syndmode_syndicats_stratifcation23 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_to_be_change_unity_first
+			has_completed_focus = FRA_workers_direct_administration
+			check_variable = { syndicats_stratification_progress < 100 }
+		}
+		fire_only_once = yes
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.05
+		}
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 3 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { pgsc = -5 }
+			set_temp_variable = { sdrc = 0 }
+			set_temp_variable = { smrc = 0 }
+			set_temp_variable = { serc = 10 }
+			syndicats_stratifcation_change = yes
 		}
 	}
 	#反官僚游行

@@ -5016,13 +5016,27 @@ country_event = {
 	desc = cofpolitics.183.desc
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
+	after = {
+		hidden_effect = {
+			country_event = { id = cofpolitics.187 days = 40 random_days = 30 }
+			country_event = { id = cofpolitics.188 days = 90 random_days = 60 }
+		}
+	}
 	option = {
 		name = cofpolitics.183.a
-
+		set_temp_variable = { pgsc = 0 }
+        set_temp_variable = { sdrc = 4 }
+        set_temp_variable = { smrc = 4 }
+        set_temp_variable = { serc = 4 }
+        syndicats_stratifcation_change = yes
 	}	
 	option = {
 		name = cofpolitics.183.b
-
+		set_temp_variable = { pgsc = 5 }
+        set_temp_variable = { sdrc = 0 }
+        set_temp_variable = { smrc = 0 }
+        set_temp_variable = { serc = 0 }
+        syndicats_stratifcation_change = yes
 	}	
 }
 
@@ -5034,11 +5048,19 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.184.a
-
+		set_temp_variable = { pgsc = 0 }
+        set_temp_variable = { sdrc = 0 }
+        set_temp_variable = { smrc = 0 }
+        set_temp_variable = { serc = 10 }
+        syndicats_stratifcation_change = yes
 	}	
 	option = {
 		name = cofpolitics.184.b
-
+		set_temp_variable = { pgsc = 0 }
+        set_temp_variable = { sdrc = 0 }
+        set_temp_variable = { smrc = 10 }
+        set_temp_variable = { serc = 0 }
+        syndicats_stratifcation_change = yes
 	}	
 }
 
@@ -5050,11 +5072,19 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.185.a
-
+		set_temp_variable = { pgsc = 0 }
+        set_temp_variable = { sdrc = 5 }
+        set_temp_variable = { smrc = 5 }
+        set_temp_variable = { serc = 0 }
+        syndicats_stratifcation_change = yes
 	}	
 	option = {
 		name = cofpolitics.185.b
-
+		set_temp_variable = { pgsc = 0 }
+        set_temp_variable = { sdrc = 0 }
+        set_temp_variable = { smrc = 0 }
+        set_temp_variable = { serc = 10 }
+        syndicats_stratifcation_change = yes
 	}	
 }
 
@@ -5066,7 +5096,38 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.186.a
+		add_to_array = { array = FRA.cof_social_bills value = 26 }
+		if = {
+			limit = { has_completed_focus = FRA_workers_direct_administration }
+			add_ideas = bill_CGT_administrative_direct
+		}
+		else_if = {
+			limit = { has_completed_focus = FRA_workers_picket_system }
+			add_ideas = bill_CGT_administrative_picket
+		}
+		else = { add_ideas = bill_CGT_administrative }
 
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { smc = 24 }
+		set_temp_variable = { src = -10 }
+		set_temp_variable = { occ = -2 }
+		set_temp_variable = { oac = -2 }
+		set_temp_variable = { jnc = -4 }
+		set_temp_variable = { jrc = -2 }
+		set_temp_variable = { soc = -2 }
+		set_temp_variable = { syc = -2 }
+		bgt_seat_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_wc = 1 }
+		set_temp_variable = { pop_pc = -1 }
+		set_temp_variable = { pop_mc = -1 }
+		set_temp_variable = { pop_sc = -1 }
+		set_temp_variable = { pop_bc = 3 }
+		set_temp_variable = { pop_ac = -1 }
+		class_pop_change = yes
 	}	
 }
 
@@ -5076,9 +5137,22 @@ country_event = {
 	desc = cofpolitics.187.desc
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
+	trigger = { check_variable = { syndicats_stratification_progress < 100 } }
 	option = {
 		name = cofpolitics.187.a
-
+		set_temp_variable = { pgsc = 10 }
+        set_temp_variable = { sdrc = 10 }
+        set_temp_variable = { smrc = 5 }
+        set_temp_variable = { serc = 0 }
+        syndicats_stratifcation_change = yes
+	}	
+	option = {
+		name = cofpolitics.187.b
+		set_temp_variable = { pgsc = 5 }
+        set_temp_variable = { sdrc = 0 }
+        set_temp_variable = { smrc = 10 }
+        set_temp_variable = { serc = 10 }
+        syndicats_stratifcation_change = yes
 	}	
 }
 
@@ -5088,8 +5162,14 @@ country_event = {
 	desc = cofpolitics.188.desc
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
+	trigger = { check_variable = { syndicats_stratification_progress < 100 } }
 	option = {
 		name = cofpolitics.188.a
+		set_temp_variable = { pgsc = 5 }
+        set_temp_variable = { sdrc = 5 }
+        set_temp_variable = { smrc = 5 }
+        set_temp_variable = { serc = 5 }
+        syndicats_stratifcation_change = yes
 	}	
 }
 
