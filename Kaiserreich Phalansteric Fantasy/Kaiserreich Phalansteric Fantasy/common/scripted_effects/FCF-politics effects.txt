@@ -1900,17 +1900,14 @@ intensity_of_struggle_change = {
         add_to_variable = { Cof_politics_intensity_of_struggle = iosc }
         custom_effect_tooltip = intensity_of_struggle_change_tips
 
-        clamp_variable = {
-            var = Cof_politics_intensity_of_struggle
-            min = 0
-            max = 100
-        }
+        clamp_variable = { var = Cof_politics_intensity_of_struggle min = 0 max = 100 }
         if = {
             limit = { is_ai = yes }
-            clamp_variable = {
-                var = Cof_politics_intensity_of_struggle
-                max = 0
-            }
+            clamp_variable = { var = Cof_politics_intensity_of_struggle max = 0 }
+        }
+        if = {
+            limit = { has_idea = bill_syndmode_politics }
+            set_variable = { Cof_politics_intensity_of_struggle = 0 }
         }
     }
 
@@ -2366,7 +2363,6 @@ bill_pass_effect = {
         hidden_effect = { country_event = france_events.5 }
     }
     else = { hidden_effect = { country_event = cofpolitics.1000 } }
-
     #乡村教育资助
     if = {
         limit = { has_country_flag = bill_rural_education_subsidy_vote }
@@ -2410,7 +2406,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 1 }
         cof_econ_target_change = yes
     }
-
     #全面教育计划
     if = {
         limit = { has_country_flag = bill_comprehensive_education_program_vote }
@@ -2452,7 +2447,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 3 }
         cof_econ_target_change = yes      
     }
-
     #大规模减税
     if = {
         limit = { has_country_flag = bill_massive_tax_cuts_vote }
@@ -2501,7 +2495,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #六小时工作制
     if = {
         limit = { has_country_flag = bill_six_hour_workdays_vote }
@@ -2536,7 +2529,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #产业结构优化法案
     if = {
         limit = { has_country_flag = bill_industrial_structure_optimization_act_vote }
@@ -2580,7 +2572,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 5 }
         cof_econ_target_change = yes
     }
-
     #国家产业协同法案
     if = {
         limit = { has_country_flag = bill_national_industrial_synergy_act_vote }
@@ -2615,7 +2606,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = -5 }
         cof_econ_target_change = yes
     }
-
     #联邦劳动交易所
     if = {
         limit = { has_country_flag = bill_national_employment_platform_vote }
@@ -2655,7 +2645,6 @@ bill_pass_effect = {
         }
         Cof_CGT_weaken_update = yes
     }
-
     #《工会非政治化法案》
     if = {
         limit = { has_country_flag = bill_CGT_depoliticized_vote }
@@ -2692,7 +2681,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #《工会多元化法案》
     if = {
         limit = { has_country_flag = bill_CGT_pluralistic_vote }
@@ -2734,7 +2722,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #《总工会正当性法案》
     if = {
         limit = { has_country_flag = bill_CGT_pluralistic_vote }
@@ -2769,7 +2756,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #《社会经济参与促进法》
     if = {
         limit = { has_country_flag = bill_socio_economic_participation_promotion_vote }
@@ -2809,8 +2795,7 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
-     #《绿色工业法案》
+    #《绿色工业法案》
     if = {
         limit = { has_country_flag = bill_green_industry_vote }
         clr_country_flag = bill_green_industry_vote
@@ -2851,7 +2836,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 1 }
         cof_econ_target_change = yes    
     }
-
     #《社会产能整合法》
     if = {
         limit = { has_country_flag = bill_social_capacity_integration_vote }
@@ -2902,7 +2886,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 2 }
         cof_econ_target_change = yes 
     }
-
     #《社会经济平等法》
     if = {
         limit = { has_country_flag = bill_social_economic_equality_vote }
@@ -2945,7 +2928,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes    
     }
-
     #《经济公社精简法案》
     if = {
         limit = { has_country_flag = bill_commune_streamling_vote }
@@ -2988,7 +2970,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes    
     }
-
     #《《工会-公社一体化法案》
     if = {
         limit = { has_country_flag = bill_union_commune_integration_vote }
@@ -3045,7 +3026,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes   
     }
-
     #《自由经济互助法案》
     if = {
         limit = { has_country_flag = bill_free_economic_mutual_assistance_vote }
@@ -3102,7 +3082,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes 
     }
-
     #《经济救援法》
     if = {
         limit = { has_country_flag = bill_economic_relief_act_vote }
@@ -3151,7 +3130,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes  
     }
-
     #《《全民基本福利法》
     if = {
         limit = { has_country_flag = bill_universal_basic_benefits_vote }
@@ -3193,7 +3171,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes    
     }
-
     #《国家老兵荣誉法案》
     if = {
         limit = { has_country_flag = bill_national_veterans_horor_vote }
@@ -3257,7 +3234,6 @@ bill_pass_effect = {
         set_temp_variable = { apc = 5 }
         Cof_army_reform_values_change = yes
     }
-
     #《地方委员会改革草案》
     if = {
         limit = { has_country_flag = bill_local_committee_reform_vote }
@@ -3294,7 +3270,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
     }
-
     #《地方议会改革草案》
     if = {
         limit = { has_country_flag = bill_local_council_reform_vote }
@@ -3332,7 +3307,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
     }
-
     #延长的教育年限
     if = {
         limit = { has_country_flag = bill_extended_duration_of_education_vote }
@@ -3370,7 +3344,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
     }
-
     #《赋权工会法案》
     if = {
         limit = { has_country_flag = bill_trade_union_empowerment_vote }
@@ -3408,8 +3381,13 @@ bill_pass_effect = {
         set_temp_variable = { elc = 0 }
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
-    }
 
+        custom_effect_tooltip = tooltip_white_line
+        unlock_decision_tooltip = Cof_syndmode_midway_society_21
+        unlock_decision_tooltip = Cof_syndmode_midway_society_22
+        unlock_decision_tooltip = Cof_syndmode_midway_society_23
+        custom_effect_tooltip = unlock_in_politics
+    }
     #性别平等法
     if = {
         limit = { has_country_flag = bill_gender_equality_vote }
@@ -3442,7 +3420,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 2.5 }
         cof_econ_target_change = yes
     }
-
     #光荣母亲法案
     if = {
         limit = { has_country_flag = bill_glorious_mothers_vote }
@@ -3475,7 +3452,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #反种族歧视法案
     if = {
         limit = { has_country_flag = bill_anti_discrimination_vote }
@@ -3518,7 +3494,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 2 }
         cof_econ_target_change = yes
     }
-
     #国民移民法案
     if = {
         limit = { has_country_flag = bill_national_immigration_vote }
@@ -3561,7 +3536,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #十年任期制度
     if = {
         limit = { has_country_flag = bill_ten_year_model_vote }
@@ -3585,7 +3559,6 @@ bill_pass_effect = {
         custom_effect_tooltip = tooltip_white_line
         weak_central_government_improve = yes
     }
-
     #《战间特殊状态法》
     if = {
         limit = { has_country_flag = bill_interwar_special_status_vote }
@@ -3606,7 +3579,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
     }
-
     #完全言论自由
     if = {
         limit = { has_country_flag = bill_complete_speech_freedom_vote }
@@ -3639,7 +3611,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 4 }
         cof_econ_target_change = yes
     }
-
     #受审查的言论自由
     if = {
         limit = { has_country_flag = bill_speech_freedom_under_scrutiny_vote }
@@ -3673,7 +3644,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
-
     #言论管制
     if = {
         limit = { has_country_flag = bill_speech_control_vote }
@@ -3707,7 +3677,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = -6 }
         cof_econ_target_change = yes
     }
-
     #自由集会
     if = {
         limit = { has_country_flag = bill_freedom_of_assembly_vote }
@@ -3726,7 +3695,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
     }
-
     #需申报的集会
     if = {
         limit = { has_country_flag = bill_assemblies_requiring_notification_vote }
@@ -3745,7 +3713,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
     }
-
     #国家反间谍法
     if = {
         limit = { has_country_flag = bill_national_counterintelligence_vote }
@@ -3778,7 +3745,6 @@ bill_pass_effect = {
         set_temp_variable = { eic = -2 }
         cof_econ_target_change = yes
     }
-
     #国家无神论
     if = {
         limit = { has_country_flag = bill_state_atheism_vote }
@@ -3798,7 +3764,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = -2 }
         class_pop_satisfactions_change = yes
     }
-
     #天主教的优势地位
     if = {
         limit = { has_country_flag = bill_catholicism_first_vote }
@@ -3818,7 +3783,6 @@ bill_pass_effect = {
         set_temp_variable = { ac = 2 }
         class_pop_satisfactions_change = yes
     }
-
     #《政治稳定法案》
     if = {
         limit = { has_country_flag = bill_political_stability_vote }
@@ -3858,6 +3822,224 @@ bill_pass_effect = {
         set_temp_variable = { ac = -3 }
         class_pop_satisfactions_change = yes
     }
+    #伟大社会五项
+    if = {
+        limit = { has_country_flag = bill_syndmode_politics_vote }
+        clr_country_flag = bill_syndmode_politics_vote
+
+        add_ideas = bill_syndmode_politics
+        add_to_array = { array = FRA.cof_social_bills value = 33 }
+
+        if = {
+            limit = { has_dynamic_modifier = { modifier = Cof_extreme_political_group } }
+            remove_dynamic_modifier = { modifier = Cof_extreme_political_group }
+        }
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_politics
+        set_temp_variable = { smc = 22 }
+		set_temp_variable = { src = -4 }
+		set_temp_variable = { occ = -4 }
+		set_temp_variable = { oac = -2 }
+		set_temp_variable = { jnc = -4 }
+		set_temp_variable = { jrc = -2 }
+		set_temp_variable = { soc = -4 }
+		set_temp_variable = { syc = -2 }
+		bgt_seat_change = yes
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_society_vote }
+        clr_country_flag = bill_syndmode_society_vote
+        
+        add_ideas = bill_syndmode_society
+        add_to_array = { array = FRA.cof_social_bills value = 34 }
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_politics
+        set_temp_variable = { smc = 7 }
+		set_temp_variable = { src = -1 }
+		set_temp_variable = { occ = -1 }
+		set_temp_variable = { oac = -1 }
+		set_temp_variable = { jnc = -1 }
+		set_temp_variable = { jrc = -1 }
+		set_temp_variable = { soc = -1 }
+		set_temp_variable = { syc = -1 }
+		bgt_seat_change = yes
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_economy_vote }
+        clr_country_flag = bill_syndmode_economy_vote
+        
+        add_ideas = bill_syndmode_economy
+        add_to_array = { array = FRA.cof_social_bills value = 35 }
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_politics
+        set_temp_variable = { smc = 7 }
+		set_temp_variable = { src = -1 }
+		set_temp_variable = { occ = -1 }
+		set_temp_variable = { oac = -1 }
+		set_temp_variable = { jnc = -1 }
+		set_temp_variable = { jrc = -1 }
+		set_temp_variable = { soc = -1 }
+		set_temp_variable = { syc = -1 }
+		bgt_seat_change = yes
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_military_vote }
+        clr_country_flag = bill_syndmode_military_vote
+        
+        add_ideas = bill_syndmode_military
+        add_to_array = { array = FRA.cof_social_bills value = 36 }
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_politics
+        set_temp_variable = { smc = 7 }
+		set_temp_variable = { src = -1 }
+		set_temp_variable = { occ = -1 }
+		set_temp_variable = { oac = -1 }
+		set_temp_variable = { jnc = -1 }
+		set_temp_variable = { jrc = -1 }
+		set_temp_variable = { soc = -1 }
+		set_temp_variable = { syc = -1 }
+		bgt_seat_change = yes
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_internation_vote }
+        clr_country_flag = bill_syndmode_internation_vote
+        
+        add_ideas = bill_syndmode_internation
+        add_to_array = { array = FRA.cof_social_bills value = 37 }
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_politics
+        set_temp_variable = { smc = 7 }
+		set_temp_variable = { src = -1 }
+		set_temp_variable = { occ = -1 }
+		set_temp_variable = { oac = -1 }
+		set_temp_variable = { jnc = -1 }
+		set_temp_variable = { jrc = -1 }
+		set_temp_variable = { soc = -1 }
+		set_temp_variable = { syc = -1 }
+		bgt_seat_change = yes
+    }
+    #新社国家化工会
+    if = {
+        limit = { has_country_flag = bill_syndicats_unification_vote }
+        clr_country_flag = bill_syndicats_unification_vote
+        
+        add_ideas = bill_syndicats_unification
+        add_to_array = { array = FRA.cof_social_bills value = 39 }
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { tgprc = 0 }
+        set_temp_variable = { tgotc = 20 }
+        if = {
+            limit = { vulgus_tendency_thomas_trigger = yes }
+            set_temp_variable = { trpc = -5 }
+        }
+        else = { set_temp_variable = { trpc = 10 } }
+        if = {
+            limit = { moderatio_infimorum_syndicat_trigger = yes }
+            set_temp_variable = { trec = -5 }
+        }
+        else = { set_temp_variable = { trec = 10 } }
+        technocrat_government_var_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = 2 }
+        set_temp_variable = { pop_pc = -0.5 }
+        set_temp_variable = { pop_mc = -0.5 }
+        set_temp_variable = { pop_sc = 0 }
+        set_temp_variable = { pop_bc = -1 }
+        set_temp_variable = { pop_ac = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = 2 }
+        set_temp_variable = { pc = -1 }
+        set_temp_variable = { mc = -1 }
+        set_temp_variable = { sc = 0 }
+        set_temp_variable = { bc = -2 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+    }
+    if = {
+        limit = { has_country_flag = bill_federal_syndicats_relations_vote }
+        clr_country_flag = bill_federal_syndicats_relations_vote
+        
+        add_ideas = bill_federal_syndicats_relations
+        add_to_array = { array = FRA.cof_social_bills value = 39 }
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { tgprc = 0 }
+        set_temp_variable = { tgotc = 20 }
+        if = {
+            limit = { vulgus_tendency_marquet_trigger = yes }
+            set_temp_variable = { trpc = -5 }
+        }
+        else = { set_temp_variable = { trpc = 10 } }
+        if = {
+            limit = { moderatio_infimorum_delegate_trigger = yes }
+            set_temp_variable = { trec = -5 }
+        }
+        else = { set_temp_variable = { trec = 10 } }
+        technocrat_government_var_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = -2 }
+        set_temp_variable = { pop_pc = 0 }
+        set_temp_variable = { pop_mc = 0 }
+        set_temp_variable = { pop_sc = 0 }
+        set_temp_variable = { pop_bc = 2 }
+        set_temp_variable = { pop_ac = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = -4 }
+        set_temp_variable = { pc = 0 }
+        set_temp_variable = { mc = 0 }
+        set_temp_variable = { sc = 0 }
+        set_temp_variable = { bc = 2 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+    }
+    #主席授权法
+    if = {
+        limit = { has_country_flag = bill_chairman_authorisation_vote }
+        clr_country_flag = bill_chairman_authorisation
+
+        add_ideas = bill_chairman_authorisation
+        add_to_array = { array = FRA.cof_social_bills value = 40 }
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_politics
+        set_temp_variable = { ppvc = 20 }
+        cof_politics_BGT_vs_CSP_values_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = -1 }
+        set_temp_variable = { pop_mc = -1 }
+        set_temp_variable = { pop_sc = -1 }
+        set_temp_variable = { pop_bc = 4 }
+        set_temp_variable = { pop_ac = 0 }
+        class_pop_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { wc = -5 }
+        set_temp_variable = { pc = -5 }
+        set_temp_variable = { mc = -5 }
+        set_temp_variable = { sc = -5 }
+        set_temp_variable = { bc = 5 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        hidden_effect = { country_event = { id = cofpolitics.199 days = 3 } }
+    }
 }
 
 bill_not_pass_effect = {
@@ -3867,184 +4049,156 @@ bill_not_pass_effect = {
         clr_country_flag = bill_rural_education_subsidy_vote
   
     }
-
     #全面教育计划
     if = {
         limit = { has_country_flag = bill_comprehensive_education_program_vote }
         clr_country_flag = bill_comprehensive_education_program_vote
  
     }
-
     #大规模减税
     if = {
         limit = { has_country_flag = bill_massive_tax_cuts_vote }
         clr_country_flag = bill_massive_tax_cuts_vote
  
     }
-
     #六小时工作制
     if = {
         limit = { has_country_flag = bill_six_hour_workdays_vote }
         clr_country_flag = bill_six_hour_workdays_vote
     
     }
-
     #产业结构优化法案
     if = {
         limit = { has_country_flag = bill_industrial_structure_optimization_act_vote }
         clr_country_flag = bill_industrial_structure_optimization_act_vote
       
     }
-
     #国家产业协同法案
     if = {
         limit = { has_country_flag = bill_national_industrial_synergy_act_vote }
         clr_country_flag = bill_national_industrial_synergy_act_vote
        
     }
-
     #联邦劳动交易所
     if = {
         limit = { has_country_flag = bill_national_employment_platform_vote }
         clr_country_flag = bill_national_employment_platform_vote
         
     }
-
     #《工会非政治化法案》
     if = {
         limit = { has_country_flag = bill_CGT_depoliticized_vote }
         clr_country_flag = bill_CGT_depoliticized_vote
+    
     }
-
     #《工会多元化法案》
     if = {
         limit = { has_country_flag = bill_CGT_pluralistic_vote }
         clr_country_flag = bill_CGT_pluralistic_vote
     }
-
     #《总工会正当性法案》
     if = {
         limit = { has_country_flag = bill_CGT_legitimacy_vote }
         clr_country_flag = bill_CGT_legitimacy_vote
     }
-
     #《社会经济参与促进法》
     if = {
         limit = { has_country_flag = bill_socio_economic_participation_promotion_vote }
         clr_country_flag = bill_socio_economic_participation_promotion_vote
         
     }
-
     #《绿色工业法案》
     if = {
         limit = { has_country_flag = bill_green_industry_vote }
         clr_country_flag = bill_green_industry_vote   
         
     }
-
     #《社会产能整合法》
     if = {
         limit = { has_country_flag = bill_social_capacity_integration_vote }
         clr_country_flag = bill_social_capacity_integration_vote
         
     }
-
     #《社会经济平等法》
     if = {
         limit = { has_country_flag = bill_social_economic_equality_vote }
         clr_country_flag = bill_social_economic_equality_vote
         
     }
-
     #《经济公社精简法案》
     if = {
         limit = { has_country_flag = bill_commune_streamling_vote }
         clr_country_flag = bill_commune_streamling_vote
         
     }
-
     #《《工会-公社一体化法案》
     if = {
         limit = { has_country_flag = bill_union_commune_integration_vote }
         clr_country_flag = bill_union_commune_integration_vote
         
     }
-
     #《自由经济互助法案》
     if = {
         limit = { has_country_flag = bill_free_economic_mutual_assistance_vote }
         clr_country_flag = bill_free_economic_mutual_assistance_vote
-       
     }
-
     #《经济救援法》
     if = {
         limit = { has_country_flag = bill_economic_relief_act_vote }
         clr_country_flag = bill_economic_relief_act_vote
 
     }
-
     #《《全民基本福利法》
     if = {
         limit = { has_country_flag = bill_universal_basic_benefits_vote }
         clr_country_flag = bill_universal_basic_benefits_vote
     
     }
-
     #《国家老兵荣誉法案》
     if = {
         limit = { has_country_flag = bill_national_veterans_horor_vote }
         clr_country_flag = bill_national_veterans_horor_vote
     }
-
     #《地方委员会改革草案》
     if = {
         limit = { has_country_flag = bill_local_committee_reform_vote }
         clr_country_flag = bill_local_committee_reform_vote
     }
-
     #《地方议会改革草案》
     if = {
         limit = { has_country_flag = bill_local_council_reform_vote }
         clr_country_flag = bill_local_council_reform_vote
     }
-
     #延长的教育年限
     if = {
         limit = { has_country_flag = bill_extended_duration_of_education_vote }
         clr_country_flag = bill_extended_duration_of_education_vote
     }
-
      #《赋权工会法案》
     if = {
         limit = { has_country_flag = bill_trade_union_empowerment_vote }
         clr_country_flag = bill_trade_union_empowerment_vote
     }
-
     #性别平等法
     if = {
         limit = { has_country_flag = bill_gender_equality_vote }
         clr_country_flag = bill_gender_equality_vote
     }
-
     #光荣母亲法案
     if = {
         limit = { has_country_flag = bill_glorious_mothers_vote }
         clr_country_flag = bill_glorious_mothers_vote
     }
-
     #反种族歧视法案
     if = {
         limit = { has_country_flag = bill_anti_discrimination_vote }
         clr_country_flag = bill_anti_discrimination_vote
     }
-
     #国民移民法案
     if = {
         limit = { has_country_flag = bill_national_immigration_vote }
         clr_country_flag = bill_national_immigration_vote
     }
-
     #十年任期制度
     if = {
         limit = { has_country_flag = bill_ten_year_model_vote }
@@ -4052,65 +4206,98 @@ bill_not_pass_effect = {
         set_country_flag = ten_year_model_no
         uncomplete_national_focus = { focus = FRA_seven_year_model }
     }
-
     #《战间特殊状态法》
     if = {
         limit = { has_country_flag = bill_interwar_special_status_vote }
         clr_country_flag = bill_interwar_special_status_vote
     }
-
     #完全言论自由
     if = {
         limit = { has_country_flag = bill_complete_speech_freedom_vote }
         clr_country_flag = bill_complete_speech_freedom_vote
     }
-
     #受审查的言论自由
     if = {
         limit = { has_country_flag = bill_speech_freedom_under_scrutiny_vote }
         clr_country_flag = bill_speech_freedom_under_scrutiny_vote
     }
-
     #言论管制
     if = {
         limit = { has_country_flag = bill_speech_control_vote }
         clr_country_flag = bill_speech_control_vote
     }
-
     #自由集会
     if = {
         limit = { has_country_flag = bill_freedom_of_assembly_vote }
         clr_country_flag = bill_freedom_of_assembly_vote
     }
-
     #需申报的集会
     if = {
         limit = { has_country_flag = bill_assemblies_requiring_notification_vote }
         clr_country_flag = bill_assemblies_requiring_notification_vote
     }
-
     #国家反间谍法
     if = {
         limit = { has_country_flag = bill_national_counterintelligence_vote }
         clr_country_flag = bill_national_counterintelligence_vote
     }
-
     #国家无神论
     if = {
         limit = { has_country_flag = bill_state_atheism_vote }
         clr_country_flag = bill_state_atheism_vote
     }
-
     #天主教的优势地位
     if = {
         limit = { has_country_flag = bill_catholicism_first_vote }
         clr_country_flag = bill_catholicism_first_vote
     }
-
     #《政治稳定法案》
     if = {
         limit = { has_country_flag = bill_political_stability_vote }
         clr_country_flag = bill_political_stability_vote
+    }
+    #伟大社会五项
+    if = {
+        limit = { has_country_flag = bill_syndmode_politics_vote }
+        clr_country_flag = bill_syndmode_politics_vote
+        
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_society_vote }
+        clr_country_flag = bill_syndmode_society_vote
+        
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_economy_vote }
+        clr_country_flag = bill_syndmode_economy_vote
+        
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_military_vote }
+        clr_country_flag = bill_syndmode_military_vote
+        
+    }
+    if = {
+        limit = { has_country_flag = bill_syndmode_internation_vote }
+        clr_country_flag = bill_syndmode_internation_vote
+        
+    }
+    #新社国家化工会
+    if = {
+        limit = { has_country_flag = bill_syndicats_unification_vote }
+        clr_country_flag = bill_syndicats_unification_vote
+        
+    }
+    if = {
+        limit = { has_country_flag = bill_federal_syndicats_relations_vote }
+        clr_country_flag = bill_federal_syndicats_relations_vote
+        
+    }
+    #主席授权法
+    if = {
+        limit = { has_country_flag = bill_chairman_authorisation_vote }
+        clr_country_flag = bill_chairman_authorisation
+        hidden_effect = { country_event = { id = cofpolitics.198 days = 4 } }
     }
 }
 
@@ -9757,6 +9944,53 @@ Cof_intensified_urban_rural_conflicts_update = {
     }
 }
 
+weak_central_government_improve = {
+    if = {
+        limit = { has_idea = Cof_weak_central_government }
+        swap_ideas = {
+            remove_idea = Cof_weak_central_government
+            add_idea = Cof_weak_central_government2
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_weak_central_government2 }
+        swap_ideas = {
+            remove_idea = Cof_weak_central_government2
+            add_idea = Cof_weak_central_government3
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_weak_central_government3 }
+        swap_ideas = {
+            remove_idea = Cof_weak_central_government3
+            add_idea = Cof_weak_central_government4
+        }
+    }
+    else_if = {
+        limit = { has_idea = Cof_weak_central_government4 }
+        remove_ideas = Cof_weak_central_government4
+    }
+}
+
+clr_gui_politics_flag = {
+    clr_country_flag = gui_politics_bgtvscsp
+    clr_country_flag = gui_politics_ios
+    
+    clr_country_flag = gui_politics_synd
+    clr_country_flag = gui_politics_oppo
+    clr_country_flag = gui_politics_jaco
+    clr_country_flag = gui_politics_sore
+
+    clr_country_flag = gui_politics_vote
+
+    clr_country_flag = gui_politics_irieu
+    clr_country_flag = gui_politics_irias
+    clr_country_flag = gui_politics_irime
+    clr_country_flag = gui_politics_iriaf
+    clr_country_flag = gui_politics_iriam
+}
+
+##温和派议程
 #大帐篷之下
 #    set_temp_variable = { ssc = 0 }
 #    set_temp_variable = { asc = 0 }
@@ -10250,53 +10484,6 @@ under_the_tent_idea_change = {
     }
 }
 
-weak_central_government_improve = {
-    if = {
-        limit = { has_idea = Cof_weak_central_government }
-        swap_ideas = {
-            remove_idea = Cof_weak_central_government
-            add_idea = Cof_weak_central_government2
-        }
-    }
-    else_if = {
-        limit = { has_idea = Cof_weak_central_government2 }
-        swap_ideas = {
-            remove_idea = Cof_weak_central_government2
-            add_idea = Cof_weak_central_government3
-        }
-    }
-    else_if = {
-        limit = { has_idea = Cof_weak_central_government3 }
-        swap_ideas = {
-            remove_idea = Cof_weak_central_government3
-            add_idea = Cof_weak_central_government4
-        }
-    }
-    else_if = {
-        limit = { has_idea = Cof_weak_central_government4 }
-        remove_ideas = Cof_weak_central_government4
-    }
-}
-
-clr_gui_politics_flag = {
-    clr_country_flag = gui_politics_bgtvscsp
-    clr_country_flag = gui_politics_ios
-    
-    clr_country_flag = gui_politics_synd
-    clr_country_flag = gui_politics_oppo
-    clr_country_flag = gui_politics_jaco
-    clr_country_flag = gui_politics_sore
-
-    clr_country_flag = gui_politics_vote
-
-    clr_country_flag = gui_politics_irieu
-    clr_country_flag = gui_politics_irias
-    clr_country_flag = gui_politics_irime
-    clr_country_flag = gui_politics_iriaf
-    clr_country_flag = gui_politics_iriam
-}
-
-#温和派议程
 under_tent_number_judge = {
     set_variable = { under_tent_number = 0 }
     if = {
@@ -10444,10 +10631,11 @@ midway_society_build_change = {
         tooltip = mws_change_tt
     }
 
-    clamp_variable = {
-        var = mws
-        max = 100
-        min = 0
+    clamp_variable = { var = mws max = 100 min = 0 }
+
+    if = {
+        limit = { has_idea = Cof_building_midway_society5 }
+        set_variable = { mws = 100 }
     }
 
     hidden_effect = {
@@ -10502,12 +10690,397 @@ midway_society_build_monthly_change_judge = {
     multiply_temp_variable = { mwsmc_es2 = -0.5 }
     set_temp_variable = { mwsmc_es3 = mafia_status }
     multiply_temp_variable = { mwsmc_es3 = -0.5 }
+    set_temp_variable = { mwsmc_es4 = mafia_bonnot }
+    multiply_temp_variable = { mwsmc_es4 = -0.5 }
     set_variable = { mwsmc_es = mwsmc_es1 }
     add_to_variable = { mwsmc_es = mwsmc_es2 }
     add_to_variable = { mwsmc_es = mwsmc_es3 }
+    add_to_variable = { mwsmc_es = mwsmc_es4 }
     if = {
         limit = { check_variable = { mwsmc_es = 0 } }
         set_variable = { mwsmc_es = 0.5 }
     }
     add_to_variable = { mwsmc = mwsmc_es }
+
+    set_variable = { mwsmc_ssp = syndicats_stratification_progress }
+    multiply_variable = { mwsmc_ssp = 0.05 }
+    add_to_variable = { mwsmc = mwsmc_ssp }
+}
+
+
+
+
+##新社会议程
+#   set_temp_variable = { tgprc = 0 }
+#   set_temp_variable = { tgotc = 0 }
+#   set_temp_variable = { trpc = 0 }
+#   set_temp_variable = { trec = 0 }
+#   technocrat_government_var_change = yes
+technocrat_government_var_change = {
+    if = { limit = { check_variable = { tgprc = 0 } } }
+    else = {
+        add_to_variable = { technocrat_government_people_resist = tgprc }
+        custom_effect_tooltip = technocrat_government_people_resist_change
+    }
+    if = { limit = { check_variable = { tgotc = 0 } } }
+    else = {
+        add_to_variable = { technocrat_government_opposition_threat = tgotc }
+        custom_effect_tooltip = technocrat_government_opposition_threat_change
+    }
+    if = { limit = { check_variable = { trpc = 0 } } }
+    else = {
+        add_to_variable = { technocrat_reform_progress = trpc }
+        custom_effect_tooltip = technocrat_reform_progress_change
+    }
+    if = { limit = { check_variable = { trec = 0 } } }
+    else = {
+        add_to_variable = { technocrat_reform_efforts = trec }
+        custom_effect_tooltip = technocrat_reform_efforts_change
+    }
+    clamp_variable = { var = technocrat_government_people_resist min = 0 max = 100 }
+    clamp_variable = { var = technocrat_government_opposition_threat min = 0 max = 100 }
+    clamp_variable = { var = technocrat_reform_progress min = 0 max = 100 }
+    clamp_variable = { var = technocrat_reform_efforts min = 0 max = 100 }
+
+    hidden_effect = {
+        if = {
+            limit = {
+                OR = {
+                    check_variable = { technocrat_government_people_resist = 100 }
+                    check_variable = { technocrat_government_opposition_threat = 100 }
+                }
+            }
+            technocrat_reform_failed_effect = yes
+        }
+    }
+}
+technocrat_reform_mission_ing = {
+    if = {
+        limit = { has_country_flag = technocrat_reform_type_syndicats }
+        if = {
+            limit = {
+                OR = {
+                    has_completed_focus = FRA_everything_goes_to_CGT
+                    has_completed_focus = FRA_unions_are_not_just_for_labor
+                    has_completed_focus = FRA_occams_razor_reform
+                }
+            }
+            set_temp_variable = { trpc = 100 }
+        }
+        else = { set_temp_variable = { trpc = 0 } }
+        set_temp_variable = { trec = 0 }
+        if = {
+            limit = { vulgus_tendency_marquet_trigger = yes }
+            add_to_temp_variable = { trec = 5 }
+        }
+        else_if = {
+            limit = { vulgus_tendency_doriot_trigger = yes }
+            add_to_temp_variable = { trec = 2 }
+        }
+
+        if = {
+            limit = { moderatio_infimorum_delegate_trigger = yes }
+            add_to_temp_variable = { trec = 5 }
+        }
+        else_if = {
+            limit = { moderatio_infimorum_syndicat_trigger = yes }
+            add_to_temp_variable = { trec = -3 }
+        }
+
+        if = {
+            limit = {
+                OR = {
+                    has_idea = bill_syndicats_unification
+                    has_idea = bill_federal_syndicats_relations
+                }
+            }
+            add_to_temp_variable = { trec = 3 }
+        }
+    }
+
+
+    if = {
+        limit = { check_variable = { pop_satisfaction < 50 } }
+        set_temp_variable = { tgprc = pop_satisfaction }
+        set_temp_variable = { t = tgprc }
+        modulo_temp_variable = { t = 10 }
+        subtract_from_temp_variable = { tgprc = t }
+        multiply_temp_variable = { tgprc = -0.1 }
+        add_to_temp_variable = { tgprc = 5 }
+    }
+    else = { set_temp_variable = { tgprc = 0 } }
+    
+    set_temp_variable = { tgotc = Cof_politics_intensity_of_struggle }
+    set_temp_variable = { t = tgotc }
+    modulo_temp_variable = { t = 10 }
+    subtract_from_temp_variable = { tgotc = t }
+    multiply_temp_variable = { tgotc = 0.1 }
+
+    if = {
+        limit = { tendency_moderatio_match = no }
+        add_to_temp_variable = { tgprc = 2 }
+        add_to_variable = { tgotc = 2 }   
+    }
+    technocrat_government_var_change = yes
+}
+technocrat_reform_mission_effect = {
+    remove_mission = technocrat_reform_mission
+    if = {
+        limit = { has_country_flag = technocrat_reform_type_syndicats }
+        clr_country_flag = technocrat_reform_type_syndicats
+        set_country_flag = technocrat_reform_type_syndicats_finished
+        set_variable = { technocrat_government_people_resist = 0 }
+        set_variable = { technocrat_government_opposition_threat = 0 }
+        set_variable = { technocrat_reform_progress = 0 }
+        set_variable = { technocrat_reform_efforts = 0 }
+
+        country_event = cofpolitics.196
+        add_to_array = { array = FRA.cof_social_bills value = 38 }
+        if = {
+            limit = { check_variable = { technocrat_reform_efforts > 80 } }
+            add_ideas = bill_syndicats_nationalization_high
+            weak_central_government_improve = yes
+        }
+        else_if = {
+            limit = { check_variable = { technocrat_reform_efforts > 40 } }
+            add_ideas = bill_syndicats_nationalization_medium
+        }
+        else = {
+            add_ideas = bill_syndicats_nationalization_low
+        }
+    }
+}
+technocrat_reform_failed_effect = {
+    remove_mission = technocrat_reform_mission
+    if = {
+        limit = { has_country_flag = technocrat_reform_type_syndicats }
+        clr_country_flag = technocrat_reform_type_syndicats
+        set_country_flag = technocrat_reform_type_syndicats_finished
+        set_variable = { technocrat_government_people_resist = 0 }
+        set_variable = { technocrat_government_opposition_threat = 0 }
+        set_variable = { technocrat_reform_progress = 0 }
+        set_variable = { technocrat_reform_efforts = 0 }
+        country_event = cofpolitics.197
+    }
+}
+
+vulgus_tendency_change_up = {
+    if = {
+        limit = { check_variable = { t = 1 } }
+        add_to_variable = { vulgus_tendency_marquet = 1 }
+        custom_effect_tooltip = {
+            localization_key = vulgus_tendency_change_up
+            WHICH = vulgus_tendency_marquet
+        }
+        if = {
+            limit = { moderatio_infimorum_delegate_trigger = yes }
+            set_temp_variable = { tgprc = 0 }
+            set_temp_variable = { tgotc = -10 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 2 } }
+        add_to_variable = { vulgus_tendency_doriot = 1 }
+        custom_effect_tooltip = {
+            localization_key = vulgus_tendency_change_up
+            WHICH = vulgus_tendency_doriot
+        }
+        if = {
+            limit = { moderatio_infimorum_commando_trigger = yes }
+            set_temp_variable = { tgprc = 0 }
+            set_temp_variable = { tgotc = -10 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 3 } }
+        add_to_variable = { vulgus_tendency_thomas = 1 }
+        custom_effect_tooltip = {
+            localization_key = vulgus_tendency_change_up
+            WHICH = vulgus_tendency_thomas
+        }
+        if = {
+            limit = { moderatio_infimorum_syndicat_trigger = yes }
+            set_temp_variable = { tgprc = 0 }
+            set_temp_variable = { tgotc = -10 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    clamp_variable = { var = vulgus_tendency_marquet min = 0 max = 10 }
+    clamp_variable = { var = vulgus_tendency_doriot min = 0 max = 10 }
+    clamp_variable = { var = vulgus_tendency_thomas min = 0 max = 10 }
+}
+vulgus_tendency_change_down = {
+    if = {
+        limit = { check_variable = { t = 1 } }
+        add_to_variable = { vulgus_tendency_marquet = -1 }
+        custom_effect_tooltip = {
+            localization_key = vulgus_tendency_change_down
+            WHICH = vulgus_tendency_marquet
+        }
+        if = {
+            limit = { moderatio_infimorum_delegate_trigger = yes }
+            set_temp_variable = { tgprc = 0 }
+            set_temp_variable = { tgotc = 5 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 2 } }
+        add_to_variable = { vulgus_tendency_doriot = -1 }
+        custom_effect_tooltip = {
+            localization_key = vulgus_tendency_change_down
+            WHICH = vulgus_tendency_doriot
+        }
+        if = {
+            limit = { moderatio_infimorum_commando_trigger = yes }
+            set_temp_variable = { tgprc = 0 }
+            set_temp_variable = { tgotc = 5 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 3 } }
+        add_to_variable = { vulgus_tendency_thomas = -1 }
+        custom_effect_tooltip = {
+            localization_key = vulgus_tendency_change_down
+            WHICH = vulgus_tendency_thomas
+        }
+        if = {
+            limit = { moderatio_infimorum_syndicat_trigger = yes }
+            set_temp_variable = { tgprc = 0 }
+            set_temp_variable = { tgotc = 5 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    clamp_variable = { var = vulgus_tendency_marquet min = 0 max = 10 }
+    clamp_variable = { var = vulgus_tendency_doriot min = 0 max = 10 }
+    clamp_variable = { var = vulgus_tendency_thomas min = 0 max = 10 }
+}
+moderatio_infimorum_change_up = {
+    if = {
+        limit = { check_variable = { t = 1 } }
+        add_to_variable = { moderatio_infimorum_delegate = 1 }
+        custom_effect_tooltip = {
+            localization_key = moderatio_infimorum_change_up
+            WHICH = moderatio_infimorum_delegate
+        }
+        if = {
+            limit = { vulgus_tendency_marquet_trigger = yes }
+            set_temp_variable = { tgprc = -10 }
+            set_temp_variable = { tgotc = 0 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 2 } }
+        add_to_variable = { moderatio_infimorum_commando = 1 }
+        custom_effect_tooltip = {
+            localization_key = moderatio_infimorum_change_up
+            WHICH = moderatio_infimorum_commando
+        }
+        if = {
+            limit = { vulgus_tendency_doriot_trigger = yes }
+            set_temp_variable = { tgprc = -10 }
+            set_temp_variable = { tgotc = 0 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 3 } }
+        add_to_variable = { moderatio_infimorum_syndicat = 1 }
+        custom_effect_tooltip = {
+            localization_key = moderatio_infimorum_change_up
+            WHICH = moderatio_infimorum_syndicat
+        }
+        if = {
+            limit = { vulgus_tendency_thomas_trigger = yes }
+            set_temp_variable = { tgprc = -10 }
+            set_temp_variable = { tgotc = 0 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    clamp_variable = { var = moderatio_infimorum_delegate min = 0 max = 10 }
+    clamp_variable = { var = moderatio_infimorum_commando min = 0 max = 10 }
+    clamp_variable = { var = moderatio_infimorum_syndicat min = 0 max = 10 }
+}
+moderatio_infimorum_change_down = {
+    if = {
+        limit = { check_variable = { t = 1 } }
+        add_to_variable = { moderatio_infimorum_delegate = -1 }
+        custom_effect_tooltip = {
+            localization_key = moderatio_infimorum_change_down
+            WHICH = moderatio_infimorum_delegate
+        }
+        if = {
+            limit = { vulgus_tendency_marquet_trigger = yes }
+            set_temp_variable = { tgprc = 5 }
+            set_temp_variable = { tgotc = 0 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 2 } }
+        add_to_variable = { moderatio_infimorum_commando = -1 }
+        custom_effect_tooltip = {
+            localization_key = moderatio_infimorum_change_down
+            WHICH = moderatio_infimorum_commando
+        }
+        if = {
+            limit = { vulgus_tendency_doriot_trigger = yes }
+            set_temp_variable = { tgprc = 5 }
+            set_temp_variable = { tgotc = 0 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 3 } }
+        add_to_variable = { moderatio_infimorum_syndicat = -1 }
+        custom_effect_tooltip = {
+            localization_key = moderatio_infimorum_change_down
+            WHICH = moderatio_infimorum_syndicat
+        }
+        if = {
+            limit = { vulgus_tendency_thomas_trigger = yes }
+            set_temp_variable = { tgprc = 5 }
+            set_temp_variable = { tgotc = 0 }
+            set_temp_variable = { trpc = 0 }
+            set_temp_variable = { trec = 0 }
+            technocrat_government_var_change = yes
+        }
+    }
+    clamp_variable = { var = moderatio_infimorum_delegate min = 0 max = 10 }
+    clamp_variable = { var = moderatio_infimorum_commando min = 0 max = 10 }
+    clamp_variable = { var = moderatio_infimorum_syndicat min = 0 max = 10 }
+}
+doriot_attitude_change = {
+    add_to_variable = {
+        doriot_attitude = t
+        tooltip = doriot_attitude_change_tt
+    }
+    clamp_variable = { var = doriot_attitude min = 0 max = 100 }
+
 }

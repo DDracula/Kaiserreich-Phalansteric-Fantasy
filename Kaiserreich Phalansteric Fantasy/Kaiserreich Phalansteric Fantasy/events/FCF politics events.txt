@@ -5279,7 +5279,17 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.193.a
-		
+		clr_country_flag = synd_mode_politics_landscape
+		set_country_flag = synd_mode_politics_landscape_finished
+		custom_effect_tooltip = change_landscape_tt
+		set_country_flag = win_next_election
+		custom_effect_tooltip = win_next_election_tt
+		unlock_decision_tooltip = Cof_syndmode_finished_bill1
+		unlock_decision_tooltip = Cof_syndmode_finished_bill2
+		unlock_decision_tooltip = Cof_syndmode_finished_bill3
+		unlock_decision_tooltip = Cof_syndmode_finished_bill4
+		unlock_decision_tooltip = Cof_syndmode_finished_bill5
+		custom_effect_tooltip = unlock_in_politics
 	}	
 }
 
@@ -5291,7 +5301,31 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.194.a
-		
+		set_country_flag = belua_multorum_capitum_game
+		set_variable = { vulgus_tendency_marquet = 0 }
+		set_variable = { vulgus_tendency_doriot = 0 }
+		set_variable = { vulgus_tendency_thomas = 1 }
+		set_variable = { moderatio_infimorum_delegate = 1 }
+		set_variable = { moderatio_infimorum_commando = 0 }
+		set_variable = { moderatio_infimorum_syndicat = 2 }
+		set_variable = { doriot_attitude = 64 }
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { t = 2 }
+		extremists_attitude_up = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum1
+		unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum2
+		unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum3
+		unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum4
+		custom_effect_tooltip = unlock_in_politics
+
+		custom_effect_tooltip = tooltip_white_line
+		unlock_decision_tooltip = Cof_jaconeos_commando_cooperation1
+		unlock_decision_tooltip = Cof_jaconeos_commando_cooperation2
+		unlock_decision_tooltip = Cof_jaconeos_commando_cooperation3
+		custom_effect_tooltip = unlock_in_society
 	}	
 }
 
@@ -5303,14 +5337,47 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.195.a
-		
+		set_country_flag = jaco_neos_politics_landscape
+		set_country_flag = technocrat_reform_type_syndicats
+		set_variable = { technocrat_government_people_resist = 32 }
+		set_variable = { technocrat_government_opposition_threat = 53 }
+		set_variable = { technocrat_reform_progress = 0 }
+		set_variable = { technocrat_reform_efforts = 0 }
+
+		unlock_decision_tooltip = Cof_jaconeos_reform_general0
+		unlock_decision_tooltip = Cof_jaconeos_reform_general1
+		unlock_decision_tooltip = Cof_jaconeos_reform_general2
+		unlock_decision_tooltip = Cof_jaconeos_reform_general3
+		activate_mission = technocrat_reform_mission
+		unlock_decision_tooltip = Cof_jaconeos_reform_syndicats1
+		unlock_decision_tooltip = Cof_jaconeos_reform_syndicats2
+		unlock_decision_tooltip = Cof_jaconeos_reform_syndicats3
+		unlock_decision_tooltip = Cof_jaconeos_reform_syndicats4
+		unlock_decision_tooltip = Cof_jaconeos_reform_syndicats5
+		custom_effect_tooltip = unlock_in_politics
 	}	
 }
 
 country_event = {
 	id = cofpolitics.196
-	title = cofpolitics.196.title
-	desc = cofpolitics.196.desc
+	title = {
+		text = cofpolitics.196.title.a
+		trigger = { check_variable = { technocrat_reform_efforts > 80 } }
+	}
+	title = {
+		text = cofpolitics.196.title.b
+		trigger = { check_variable = { technocrat_reform_efforts > 40 } }
+	}
+	title = { text = cofpolitics.196.title.c }
+	desc = {
+		text = cofpolitics.196.desc.a
+		trigger = { check_variable = { technocrat_reform_efforts > 80 } }
+	}
+	desc = {
+		text = cofpolitics.196.desc.b
+		trigger = { check_variable = { technocrat_reform_efforts > 40 } }
+	}
+	desc = { text = cofpolitics.196.desc.c }
 	picture = GFX_report_event_ARG_car93
 	is_triggered_only = yes
 	option = {
@@ -5327,7 +5394,17 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.197.a
-		
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { smc = 2 }
+		set_temp_variable = { src = 1 }
+		set_temp_variable = { occ = 2 }
+		set_temp_variable = { oac = 2 }
+		set_temp_variable = { jnc = -8 }
+		set_temp_variable = { jrc = -2 }
+		set_temp_variable = { soc = 2 }
+		set_temp_variable = { syc = 1 }
+		bgt_seat_change = yes
 	}	
 }
 
@@ -5351,7 +5428,19 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = cofpolitics.199.a
-		
+		set_country_flag = technocrat_reform_type_csp
+		activate_mission = technocrat_reform_mission
+		set_variable = { technocrat_government_people_resist = 50 }
+		set_variable = { technocrat_government_opposition_threat = 40 }
+		set_variable = { technocrat_reform_progress = 0 }
+		set_variable = { technocrat_reform_efforts = 0 }
+
+		unlock_decision_tooltip = Cof_jaconeos_reform_csp1
+		unlock_decision_tooltip = Cof_jaconeos_reform_csp2
+		unlock_decision_tooltip = Cof_jaconeos_reform_csp3
+		unlock_decision_tooltip = Cof_jaconeos_reform_csp4
+		unlock_decision_tooltip = Cof_jaconeos_reform_csp5
+		unlock_decision_tooltip = Cof_jaconeos_reform_csp6
 	}	
 }
 

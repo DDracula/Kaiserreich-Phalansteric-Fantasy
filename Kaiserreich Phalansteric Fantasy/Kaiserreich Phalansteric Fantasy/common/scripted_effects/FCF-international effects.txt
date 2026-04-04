@@ -71,6 +71,15 @@ iri_influence_change = {
         add_to_variable = { iri_ami = iri_amic }
         custom_effect_tooltip = iri_influence_change_am
     }
+
+    if = {
+        limit = { has_idea = bill_syndmode_internation }
+        clamp_variable = { var = iri_eui min = 30 }
+        clamp_variable = { var = iri_asi min = 30 }
+        clamp_variable = { var = iri_mei min = 30 }
+        clamp_variable = { var = iri_afi min = 30 }
+        clamp_variable = { var = iri_ami min = 30 }
+    }
 }
 
 #array_choose
@@ -382,11 +391,7 @@ phalanstere_unity_change = {
         add_to_variable = { global.phalanstere_unity = phauc }
         custom_effect_tooltip = phalanstere_unity_change_tt
 
-        clamp_variable = {
-            var = global.phalanstere_unity
-            max = 100
-            min = 0
-        }
+        clamp_variable = { var = global.phalanstere_unity  max = 100 min = 0 }
     }
     phalanstere_buff_judge = yes
 }
@@ -818,11 +823,7 @@ africa_colonial_riot_level_up = {
 }
 
 jap_colonial_riot_judge = {
-    clamp_variable = {
-        var = jap_colonial_riot_level
-        max = 10
-        min = 0
-    }
+    clamp_variable = { var = jap_colonial_riot_level max = 10 min = 0 }
     set_variable = { jap_colonial_riot = jap_colonial_riot_level }
     multiply_variable = { jap_colonial_riot = -0.1 }
 }
@@ -1742,11 +1743,7 @@ ireland_violend_revolution_army_change = {
             tooltip = iri_ire_revolution_army_change
         }
     }
-    clamp_variable = {
-        var = iri_ire_revolution_army
-        min = 0
-        max = 10
-    }
+    clamp_variable = { var = iri_ire_revolution_army min = 0 max = 10 }
     if = {
         limit = { check_variable = { iri_ire_revolution_army = 0 } }
         hidden_effect = {

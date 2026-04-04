@@ -29,13 +29,6 @@ class_pop_satisfactions_change = {
 		add_to_variable = { pop_satisfaction_workers = wc }
 		custom_effect_tooltip = pop_satisfaction_workers_change
 	}
-    if = {
-        limit = { 
-            has_completed_focus = FRA_entertainment_in_the_factory 
-            check_variable = { pop_satisfaction_workers < 50 }
-        }
-        set_variable = { pop_satisfaction_workers = 50 }
-    }
     if = { limit = { check_variable = { pc = 0 } }	}
 	else = {
 		add_to_variable = { pop_satisfaction_peasants = pc }
@@ -62,83 +55,58 @@ class_pop_satisfactions_change = {
 		custom_effect_tooltip = pop_satisfaction_army_change
 	}
 
-    clamp_variable = {
-        var = pop_satisfaction_workers
-        max = 100
-        min = 0
-    }
+    clamp_variable = { var = pop_satisfaction_workers max = 100 min = 0 }
     if = {
         limit = { is_ai = yes }
-        clamp_variable = {
-            var = pop_satisfaction_workers
-            max = 80
-			min = 40
-        }
+        clamp_variable = { var = pop_satisfaction_workers max = 80 min = 40 }
     }
-    clamp_variable = {
-        var = pop_satisfaction_peasants
-        max = 100
-        min = 0
-    }
+    clamp_variable = { var = pop_satisfaction_peasants max = 100 min = 0 }
     if = {
         limit = { is_ai = yes }
-        clamp_variable = {
-            var = pop_satisfaction_peasants
-            max = 80
-			min = 40
-        }
+        clamp_variable = { var = pop_satisfaction_peasants max = 80 min = 40 }
     }
-    clamp_variable = {
-        var = pop_satisfaction_merchants
-        max = 100
-        min = 0
-    }
+    clamp_variable = { var = pop_satisfaction_merchants max = 100 min = 0 }
     if = {
         limit = { is_ai = yes }
-        clamp_variable = {
-            var = pop_satisfaction_merchants
-            max = 80
-			min = 40
-        }
+        clamp_variable = { var = pop_satisfaction_merchants max = 80 min = 40 }
     }
-    clamp_variable = {
-        var = pop_satisfaction_scholars
-        max = 100
-        min = 0
-    }
+    clamp_variable = { var = pop_satisfaction_scholars max = 100 min = 0 }
     if = {
         limit = { is_ai = yes }
-        clamp_variable = {
-            var = pop_satisfaction_scholars
-            max = 80
-			min = 40
-        }
+        clamp_variable = { var = pop_satisfaction_scholars max = 80 min = 40 }
     }
-    clamp_variable = {
-        var = pop_satisfaction_bureaucrats 
-        max = 100
-        min = 0
-    }
+    clamp_variable = { var = pop_satisfaction_bureaucrats  max = 100 min = 0 }
     if = {
         limit = { is_ai = yes }
-        clamp_variable = {
-            var = pop_satisfaction_bureaucrats
-            max = 80
-			min = 40
-        }
+        clamp_variable = { var = pop_satisfaction_bureaucrats max = 80 min = 40 }
     }
-    clamp_variable = {
-        var = pop_satisfaction_army
-        max = 100
-        min = 0
-    }
+    clamp_variable = { var = pop_satisfaction_army max = 100 min = 0 }
     if = {
         limit = { is_ai = yes }
-        clamp_variable = {
-            var = pop_satisfaction_army
-            max = 80
-			min = 40
-        }
+        clamp_variable = { var = pop_satisfaction_army max = 80 min = 40 }
+    }
+
+    if = {
+        limit = { has_completed_focus = FRA_entertainment_in_the_factory }
+        clamp_variable = { var = pop_satisfaction_workers min = 50 }
+    }
+
+    if = {
+        limit = { has_idea = Cof_a_countrys_success }
+        clamp_variable = { var = pop_satisfaction_workers min = 85 }
+        clamp_variable = { var = pop_satisfaction_peasants min = 85 }
+        clamp_variable = { var = pop_satisfaction_merchants min = 85 }
+        clamp_variable = { var = pop_satisfaction_bureaucrats min = 85 }
+        clamp_variable = { var = pop_satisfaction_army min = 85 }
+    }
+
+    if = {
+        limit = { has_idea = bill_syndmode_society }
+        clamp_variable = { var = pop_satisfaction_workers min = 70 }
+        clamp_variable = { var = pop_satisfaction_peasants min = 70 }
+        clamp_variable = { var = pop_satisfaction_merchants min = 70 }
+        clamp_variable = { var = pop_satisfaction_bureaucrats min = 70 }
+        clamp_variable = { var = pop_satisfaction_army min = 70 }
     }
 
     set_variable = { pop_satisfaction = 0 }
@@ -1785,28 +1753,28 @@ extremists_status_down = {
     if = {
         limit = { check_variable = { t = 1 } }
         add_to_variable = {
-            vertes_status = 1
+            vertes_status = -1
             tooltip = vertes_status_down
         }
     }
     else_if = {
         limit = { check_variable = { t = 2 } }
         add_to_variable = {
-            commando_status = 1
+            commando_status = -1
             tooltip = commando_status_down
         }
     }
     else_if = {
         limit = { check_variable = { t = 3 } }
         add_to_variable = {
-            mafia_status = 1
+            mafia_status = -1
             tooltip = mafia_status_down
         }
     }
     else_if = {
         limit = { check_variable = { t = 4 } }
         add_to_variable = {
-            bonnot_status = 1
+            bonnot_status = -1
             tooltip = bonnot_status_down
         }
     }
@@ -1816,7 +1784,87 @@ extremists_status_down = {
     clamp_variable = { var = bonnot_status min = 0 max = 3 }
     extremists_buff_judge = yes
 }
+extremists_attitude_up = {
+    if = {
+        limit = { check_variable = { t = 1 } }
+        add_to_variable = {
+            vertes_attitude = 1
+            tooltip = vertes_attitude_up
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 2 } }
+        add_to_variable = {
+            commando_attitude = 1
+            tooltip = commando_attitude_up
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 3 } }
+        add_to_variable = {
+            mafia_attitude = 1
+            tooltip = mafia_attitude_up
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 4 } }
+        add_to_variable = {
+            bonnot_attitude = 1
+            tooltip = bonnot_attitude_up
+        }
+    }
+    clamp_variable = { var = vertes_attitude min = -1 max = 1 }
+    clamp_variable = { var = commando_attitude min = -1 max = 1 }
+    clamp_variable = { var = mafia_attitude min = -1 max = 1 }
+    clamp_variable = { var = bonnot_attitude min = -1 max = 1 }
+    extremists_buff_judge = yes
+}
+extremists_attitude_down = {
+    if = {
+        limit = { check_variable = { t = 1 } }
+        add_to_variable = {
+            vertes_attitude = -1
+            tooltip = vertes_attitude_down
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 2 } }
+        add_to_variable = {
+            commando_attitude = -1
+            tooltip = commando_attitude_down
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 3 } }
+        add_to_variable = {
+            mafia_attitude = -1
+            tooltip = mafia_attitude_down
+        }
+    }
+    else_if = {
+        limit = { check_variable = { t = 4 } }
+        add_to_variable = {
+            bonnot_attitude = -1
+            tooltip = bonnot_attitude_down
+        }
+    }
+    clamp_variable = { var = vertes_attitude min = -1 max = 1 }
+    clamp_variable = { var = commando_attitude min = -1 max = 1 }
+    clamp_variable = { var = mafia_attitude min = -1 max = 1 }
+    clamp_variable = { var = bonnot_attitude min = -1 max = 1 }
+    extremists_buff_judge = yes
+}
 extremists_buff_judge = {
+    if = {
+        limit = {
+            check_variable = { vertes_status = 0 }
+            check_variable = { commando_status = 0 }
+            check_variable = { mafia_status = 0 }
+            check_variable = { bonnot_status = 0 }
+        }
+        country_event = { id = cofsociety.4 days = 3 }
+    }
+
     set_temp_variable = { t = vertes_status }
     add_to_temp_variable = { t = commando_status }
     add_to_temp_variable = { t = mafia_status }
@@ -1830,28 +1878,63 @@ extremists_buff_judge = {
 
     set_variable = { vertes_buff0 = vertes_status }
     multiply_variable = { vertes_buff0 = 0.1 }
+    if = {
+        limit = { check_variable = { vertes_attitude = -1 } }
+        multiply_variable = { vertes_buff0 = -1 }
+    }
     set_variable = { vertes_buff1 = vertes_status }
     multiply_variable = { vertes_buff1 = -0.015 }
     set_variable = { vertes_buff2 = vertes_status }
     multiply_variable = { vertes_buff2 = -0.02 }
+    if = {
+        limit = { check_variable = { vertes_attitude = 1 } }
+        multiply_variable = { vertes_buff1 = 0 }
+        multiply_variable = { vertes_buff2 = 0 }
+    }
 
     set_variable = { commando_buff0 = commando_status }
     multiply_variable = { commando_buff0 = -0.02 }
+    if = {
+        limit = { check_variable = { commando_attitude = -1 } }
+        multiply_variable = { commando_buff0 = -1 }
+    }
     set_variable = { commando_buff1 = commando_status }
     multiply_variable = { commando_buff1 = -0.01 }
     set_variable = { commando_buff2 = commando_status }
     multiply_variable = { commando_buff2 = -0.01 }
+    if = {
+        limit = { check_variable = { commando_attitude = 1 } }
+        multiply_variable = { commando_buff1 = 0 }
+        multiply_variable = { commando_buff2 = 0 }
+    }
 
     set_variable = { mafia_buff0 = mafia_status }
     multiply_variable = { mafia_buff0 = 0.2 }
+    if = {
+        limit = { check_variable = { mafia_attitude = -1 } }
+        multiply_variable = { mafia_buff0 = -1 }
+    }
     set_variable = { mafia_buff1 = mafia_status }
     multiply_variable = { mafia_buff1 = 0.03 }
     set_variable = { mafia_buff2 = mafia_status }
     multiply_variable = { mafia_buff2 = -0.01 }
+    if = {
+        limit = { check_variable = { mafia_attitude = 1 } }
+        multiply_variable = { mafia_buff1 = 0 }
+        multiply_variable = { mafia_buff2 = 0 }
+    }
 
     set_variable = { bonnot_buff0 = bonnot_status }
     multiply_variable = { bonnot_buff0 = 0.1 }
+    if = {
+        limit = { check_variable = { bonnot_attitude = -1 } }
+        multiply_variable = { bonnot_buff0 = -1 }
+    }
     set_variable = { bonnot_buff1 = bonnot_status }
     multiply_variable = { bonnot_buff1 = -0.1 }
+    if = {
+        limit = { check_variable = { bonnot_attitude = 1 } }
+        multiply_variable = { bonnot_buff1 = 0 }
+    }
 }
 

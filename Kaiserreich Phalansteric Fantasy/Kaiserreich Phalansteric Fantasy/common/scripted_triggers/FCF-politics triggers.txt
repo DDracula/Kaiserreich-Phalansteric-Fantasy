@@ -187,6 +187,7 @@ Cof_bgt_vs_csp_judge = {
     }
 }
 
+#工农派
 PCOP_AFA_union_unity = {
     custom_trigger_tooltip = {
         tooltip = PCOP_AFA_union_unity
@@ -222,5 +223,68 @@ oppo_unit_judge_anar = {
         PCOP_AFA_union_unity = yes
         PCOP_AFA_union_to_AFA = yes
         has_country_flag = AFA_leave_the_union
+    }
+}
+
+#新社
+vulgus_tendency_marquet_trigger = {
+    custom_trigger_tooltip = {
+        tooltip = vulgus_tendency_marquet
+        check_variable = { vulgus_tendency_marquet > vulgus_tendency_doriot } 
+        check_variable = { vulgus_tendency_marquet > vulgus_tendency_thomas }
+    }
+}
+vulgus_tendency_doriot_trigger = {
+    custom_trigger_tooltip = {
+        tooltip = vulgus_tendency_doriot
+        check_variable = { vulgus_tendency_doriot > vulgus_tendency_marquet } 
+        check_variable = { vulgus_tendency_doriot > vulgus_tendency_thomas }
+    }
+}
+vulgus_tendency_thomas_trigger = {
+    custom_trigger_tooltip = {
+        tooltip = vulgus_tendency_thomas
+        check_variable = { vulgus_tendency_thomas > vulgus_tendency_doriot } 
+        check_variable = { vulgus_tendency_thomas > vulgus_tendency_marquet }
+    }
+}
+
+moderatio_infimorum_delegate_trigger = {
+    custom_trigger_tooltip = {
+        tooltip = moderatio_infimorum_delegate
+        check_variable = { moderatio_infimorum_delegate > moderatio_infimorum_commando } 
+        check_variable = { moderatio_infimorum_delegate > moderatio_infimorum_syndicat }
+    }
+}
+moderatio_infimorum_commando_trigger = {
+    custom_trigger_tooltip = {
+        tooltip = moderatio_infimorum_commando
+        check_variable = { moderatio_infimorum_commando > moderatio_infimorum_delegate } 
+        check_variable = { moderatio_infimorum_commando > moderatio_infimorum_syndicat }
+    }
+}
+moderatio_infimorum_syndicat_trigger = {
+    custom_trigger_tooltip = {
+        tooltip = moderatio_infimorum_syndicat
+        check_variable = { moderatio_infimorum_syndicat > moderatio_infimorum_commando } 
+        check_variable = { moderatio_infimorum_syndicat > moderatio_infimorum_delegate }
+    }
+}
+
+tendency_moderatio_match = {
+    custom_trigger_tooltip = {
+        tooltip = tendency_moderatio_match
+        if = {
+            limit = { vulgus_tendency_marquet_trigger = yes }
+            moderatio_infimorum_delegate_trigger = yes
+        }
+        if = {
+            limit = { vulgus_tendency_doriot_trigger = yes }
+            moderatio_infimorum_commando_trigger = yes
+        }
+        if = {
+            limit = { vulgus_tendency_thomas_trigger = yes }
+            moderatio_infimorum_syndicat_trigger = yes
+        }
     }
 }

@@ -1,6 +1,270 @@
 #### 社会阶层 ####
 Cof_social_class = {
-	#cgt改革
+	#极端派系
+	#绿衫军
+	Cof_extremists_vertes_friendly = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = vertes_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+	Cof_extremists_vertes_aganist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = vertes_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+	#突击队
+	Cof_extremists_commando_friendly = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = commando_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+	Cof_extremists_commando_aganist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = commando_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+
+	Cof_jaconeos_commando_cooperation1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = commando_detail_show 
+			has_country_flag = belua_multorum_capitum_game
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = doriot_attitude
+					JUDGE = more_than
+					TAGNUM = 60
+				}
+				check_variable = { doriot_attitude > 60 }
+			}
+		}
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			political_power_factor = 0.05
+		}
+		complete_effect = {
+			set_temp_variable = { t = -5 }
+			doriot_attitude_change = yes
+			add_popularity = { ideology = totalist popularity = 0.01 }
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { smc = -1 }
+			set_temp_variable = { src = -1 }
+			set_temp_variable = { occ = -1 }
+			set_temp_variable = { oac = -1 }
+			set_temp_variable = { jnc = 2 }
+			set_temp_variable = { jrc = 4 }
+			set_temp_variable = { soc = -1 }
+			set_temp_variable = { syc = -1 }
+			bgt_seat_change = yes
+		}
+	}
+	Cof_jaconeos_commando_cooperation2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = commando_detail_show 
+			has_country_flag = belua_multorum_capitum_game
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = doriot_attitude
+					JUDGE = more_than
+					TAGNUM = 60
+				}
+				check_variable = { doriot_attitude > 60 }
+			}
+		}
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			monthly_change_popsw = -0.4
+			monthly_change_eip = 0.2
+			monthly_change_eib = 0.2
+			production_factory_efficiency_gain_factor = 0.05
+		}
+		complete_effect = {
+			set_temp_variable = { t = -5 }
+			doriot_attitude_change = yes
+			add_popularity = { ideology = totalist popularity = 0.01 }
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = -4 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = -2 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_jaconeos_commando_cooperation3 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = commando_detail_show 
+			has_country_flag = belua_multorum_capitum_game
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = doriot_attitude
+					JUDGE = more_than
+					TAGNUM = 60
+				}
+				check_variable = { doriot_attitude > 60 }
+			}
+		}
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			stability_factor = -0.05
+			monthly_change_popsb = -0.4
+		}
+		complete_effect = {
+			set_temp_variable = { t = -5 }
+			doriot_attitude_change = yes
+			add_popularity = { ideology = totalist popularity = 0.01 }
+		}
+		remove_effect = {
+			add_political_power = 150
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { ppvc = 5 }
+	        cof_politics_BGT_vs_CSP_values_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { iosc = 5 }
+ 	        intensity_of_struggle_change = yes
+		}
+	}
+	
+	#黑手党
+	Cof_extremists_mafia_friendly = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = mafia_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+	Cof_extremists_mafia_aganist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = mafia_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+	#追偿派
+	Cof_extremists_bonnot_friendly = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = bonnot_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+	Cof_extremists_bonnot_aganist = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = bonnot_detail_show }
+		days_remove = 60
+		days_re_enable = 60
+		modifier = { 
+			
+		}
+		complete_effect = {
+
+		}
+		remove_effect = {
+		
+		}
+	}
+	#cgt改革                    
 	Cof_economy_re_co_ordination = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
@@ -56,6 +320,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_expand_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 30
 		days_re_enable = 30
@@ -105,6 +374,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_expand_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 90
 		days_re_enable = 60
@@ -151,6 +425,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_expand_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 7
 		days_re_enable = 30
@@ -233,6 +512,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_expand_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		fire_only_once = yes
 		fixed_random_seed = no
@@ -309,6 +593,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_expand_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 30
 		days_re_enable = 60
@@ -355,6 +644,11 @@ Cof_social_class = {
 			has_completed_focus = FRA_expand_CGT
 			has_completed_focus = FRA_new_labor_revolution 
 			NOT = { has_idea = Cof_CGT_expand3 }
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_re_enable = 90
 		fixed_random_seed = no
@@ -388,6 +682,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_weaken_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		available = { num_of_civilian_factories_available_for_projects > 1 }
 		days_remove = 60
@@ -425,6 +724,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_weaken_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 90
 		fire_only_once = yes
@@ -489,6 +793,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_weaken_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 180
 		days_re_enable = 90
@@ -524,6 +833,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_weaken_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		fire_only_once = yes
 		fixed_random_seed = no
@@ -553,6 +867,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_weaken_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 60
 		days_re_enable = 60
@@ -597,6 +916,11 @@ Cof_social_class = {
 			has_country_flag = FRA_cgt_reform_show
 			has_completed_focus = FRA_weaken_CGT
 			has_completed_focus = FRA_new_labor_revolution 
+			NOT = {
+				has_completed_focus = FRA_everything_goes_to_CGT
+				has_completed_focus = FRA_unions_are_not_just_for_labor
+				has_completed_focus = FRA_occams_razor_reform
+			}
 		}
 		days_remove = 7
 		days_re_enable = 14

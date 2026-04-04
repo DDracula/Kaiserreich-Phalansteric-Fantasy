@@ -3830,6 +3830,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			NOT = { has_country_flag = under_tent_sorelian_failed }
 			has_completed_focus = FRA_to_be_change_unity_first 
 			NOT = { has_country_flag = syndmode_benefit_anarchist }
@@ -3864,6 +3865,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			NOT = { has_country_flag = under_tent_anarchist_failed }
 			has_completed_focus = FRA_to_be_change_unity_first 
 			NOT = { has_country_flag = syndmode_benefit_sorelian }
@@ -3897,6 +3899,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			NOT = { has_country_flag = under_tent_technocrat_failed }
 			has_completed_focus = FRA_to_be_change_unity_first 
 			NOT = { has_country_flag = syndmode_benefit_sorelian }
@@ -3914,6 +3917,7 @@ Cof_politics = {
 		custom_cost_text = cost_ep_20
 		modifier = { economy_power_factor = 0.05 }
 		complete_effect = {
+			add_to_variable = { economy_power = -20 }
 			set_country_flag = syndmode_benefit_technocrat
 			set_temp_variable = { ssc = 0 }
 			set_temp_variable = { asc = 0 }
@@ -3931,6 +3935,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			NOT = { has_country_flag = under_tent_communist_failed }
 			has_completed_focus = FRA_to_be_change_unity_first 
 			NOT = { has_country_flag = syndmode_benefit_sorelian }
@@ -3969,6 +3974,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_revolutionary_tents
 			NOT = { has_country_flag = syndmode_anarchist_first }
 		}
@@ -3980,6 +3986,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_revolutionary_tents
 			NOT = { has_country_flag = syndmode_technocrat_first }
 		}
@@ -3991,6 +3998,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_revolutionary_tents
 			NOT = { has_country_flag = syndmode_communist_first }
 		}
@@ -4038,7 +4046,10 @@ Cof_politics = {
 	Cof_syndmode_bring_in_sorelian_1 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			check_variable = { sorelian_target_sincerity > 0 } 
+		}
 		fire_only_once = yes
 		cost = 40
 		complete_effect = {
@@ -4101,7 +4112,10 @@ Cof_politics = {
 	Cof_syndmode_bring_in_sorelian_2 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			check_variable = { sorelian_target_sincerity > 0 } 
+		}
 		cost = 30
 		fire_only_once = yes
 		complete_effect = {
@@ -4150,7 +4164,10 @@ Cof_politics = {
 	Cof_syndmode_bring_in_sorelian_3 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			check_variable = { sorelian_target_sincerity > 0 } 
+		}
 		fire_only_once = yes
 		cost = 30
 		complete_effect = {
@@ -4196,11 +4213,15 @@ Cof_politics = {
 	Cof_syndmode_bring_in_sorelian_4 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			check_variable = { sorelian_target_sincerity > 0 } 
+		}
 		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
 		custom_cost_text = cost_ep_20
 		fire_only_once = yes
 		complete_effect = {
+			add_to_variable = { economy_power = -20 }
 			add_war_support = 0.05
 
 			custom_effect_tooltip = tooltip_white_line
@@ -4244,7 +4265,10 @@ Cof_politics = {
 	Cof_syndmode_bring_in_sorelian_5 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { check_variable = { sorelian_target_sincerity > 0 } }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			check_variable = { sorelian_target_sincerity > 0 } 
+		}
 		fire_only_once = yes
 		custom_cost_trigger = { check_variable = { economy_power > 79.9 } }
 		custom_cost_text = cost_ep_80
@@ -4258,6 +4282,8 @@ Cof_politics = {
 			monthly_change_el = 0.1
 		}
 		complete_effect = {
+			add_to_variable = { economy_power = -80 }
+
 			set_temp_variable = { ssc = 3 }
 			set_temp_variable = { asc = 2 }
 			set_temp_variable = { tsc = 2 }
@@ -4314,7 +4340,10 @@ Cof_politics = {
 	Cof_syndmode_bring_in_sorelian_6 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = need_vote_bill_national_veterans_horor }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_country_flag = need_vote_bill_national_veterans_horor 
+		}
 		available = { NOT= { has_country_flag = voting_for_bill } }
 		fire_only_once = yes
 		cost = 50
@@ -4467,6 +4496,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			OR = {
 				check_variable = { anarchist_target_sincerity = 8 } 
 				AND = {
@@ -4531,6 +4561,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			OR = {
 				check_variable = { anarchist_target_sincerity = 8 } 
 				AND = {
@@ -4606,6 +4637,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { anarchist_target_sincerity = 6 }
 			has_country_flag = syndmode_anarchist_autonomy 
 		}
@@ -4648,6 +4680,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { anarchist_target_sincerity = 6 }
 			has_country_flag = syndmode_anarchist_autonomy 
 		}
@@ -4708,6 +4741,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			OR = {
 				check_variable = { anarchist_target_sincerity = 8 } 
 				AND = {
@@ -4766,6 +4800,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			OR = {
 				check_variable = { anarchist_target_sincerity = 8 } 
 				AND = {
@@ -4824,6 +4859,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { anarchist_target_sincerity = 6 }
 			has_country_flag = syndmode_anarchist_militia  
 		}
@@ -4877,6 +4913,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { anarchist_target_sincerity = 6 }
 			has_country_flag = syndmode_anarchist_militia  
 		}
@@ -4931,6 +4968,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			OR = {
 				check_variable = { anarchist_target_sincerity = 8 } 
 				AND = {
@@ -4986,6 +5024,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			OR = {
 				check_variable = { anarchist_target_sincerity = 8 } 
 				AND = {
@@ -5032,6 +5071,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { anarchist_target_sincerity = 6 }
 			has_country_flag = syndmode_anarchist_diplomacy  
 		}
@@ -5093,6 +5133,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { anarchist_target_sincerity = 6 }
 			has_country_flag = syndmode_anarchist_diplomacy  
 		}
@@ -5189,6 +5230,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_efficiency  
 		}
@@ -5264,6 +5306,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_efficiency  
 		}
@@ -5320,6 +5363,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_efficiency  
 		}
@@ -5379,6 +5423,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_efficiency  
 		}
@@ -5456,6 +5501,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_stability  
 		}
@@ -5523,6 +5569,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_stability  
 		}
@@ -5569,6 +5616,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_stability  
 		}
@@ -5618,6 +5666,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {  
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { technocrat_target_sincerity > 0 }
 			has_country_flag = syndmode_technocrat_stability  
 		}
@@ -5660,6 +5709,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_country_flag = syndmode_technocrat_babeltower 
 			check_variable = { syndmode_technocrats_times < 2 }
 		}
@@ -5675,6 +5725,8 @@ Cof_politics = {
 			monthly_change_el = 0.5
 		}
 		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+
 			add_to_variable = { syndmode_technocrats_times = 1 }
 
 			set_temp_variable = { ssc = -1 }
@@ -5717,7 +5769,10 @@ Cof_politics = {
 	Cof_syndmode_bring_in_technocrat_32 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = syndmode_technocrat_babeltower }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_country_flag = syndmode_technocrat_babeltower 
+		}
 		available = { NOT= { has_country_flag = voting_for_bill } }
 		fire_only_once = yes
 		cost = 50
@@ -5783,7 +5838,10 @@ Cof_politics = {
 	Cof_syndmode_bring_in_technocrat_33 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = syndmode_technocrat_babeltower }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_country_flag = syndmode_technocrat_babeltower 
+		}
 		available = { NOT= { has_country_flag = voting_for_bill } }
 		fire_only_once = yes
 		cost = 50
@@ -5885,6 +5943,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			OR = {
 				has_country_flag = syndmode_communist_preasant 
@@ -5958,6 +6017,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			OR = {
 				has_country_flag = syndmode_communist_preasant 
@@ -6017,6 +6077,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			has_country_flag = syndmode_communist_preasant 
 		}
@@ -6076,6 +6137,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			has_country_flag = syndmode_communist_preasant 
 		}
@@ -6146,6 +6208,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			OR = {
 				has_country_flag = syndmode_communist_merchant
@@ -6218,6 +6281,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			OR = {
 				has_country_flag = syndmode_communist_merchant
@@ -6289,6 +6353,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			has_country_flag = syndmode_communist_merchant 
 		}
@@ -6342,6 +6407,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			has_country_flag = syndmode_communist_merchant
 		}
@@ -6402,6 +6468,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = {
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			OR = {
 				has_country_flag = syndmode_communist_scholar
@@ -6459,6 +6526,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			OR = {
 				has_country_flag = syndmode_communist_scholar
@@ -6469,6 +6537,8 @@ Cof_politics = {
 		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
 		custom_cost_text = cost_ep_30
 		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+
 			set_temp_variable = { ssc = 1 }
 			set_temp_variable = { asc = 1 }
 			set_temp_variable = { tsc = 1 }
@@ -6505,6 +6575,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			has_country_flag = syndmode_communist_scholar 
 		}
@@ -6556,6 +6627,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			check_variable = { communist_target_sincerity > 0 }
 			has_country_flag = syndmode_communist_scholar 
 		}
@@ -6627,6 +6699,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_cutting_dangerous_people
 			check_variable = { vertes_status > 0 }
 		}
@@ -6664,6 +6737,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_cutting_dangerous_people
 			check_variable = { commando_status > 0 }
 		}
@@ -6701,6 +6775,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_cutting_dangerous_people
 			check_variable = { mafia_status > 0 }
 		}
@@ -6740,6 +6815,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_cutting_dangerous_people
 			check_variable = { bonnot_status > 0 }
 		}
@@ -6783,6 +6859,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_cutting_dangerous_people
 			OR = {
 				check_variable = { vertes_status > 0 }
@@ -6856,6 +6933,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -6895,6 +6973,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -6934,6 +7013,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -6973,6 +7053,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_administrativeization_of_CGT
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -7013,6 +7094,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_workers_picket_system
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -7044,6 +7126,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_workers_picket_system
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -7075,6 +7158,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_workers_picket_system
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -7107,6 +7191,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_workers_direct_administration
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -7138,6 +7223,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_workers_direct_administration
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -7169,6 +7255,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_to_be_change_unity_first
 			has_completed_focus = FRA_workers_direct_administration
 			check_variable = { syndicats_stratification_progress < 100 }
@@ -7231,6 +7318,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_midway_society 
 			has_country_flag = under_tent_sorelian
 			NOT = { has_country_flag = midway_society_cooperation_chosen }
@@ -7270,6 +7358,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_midway_society 
 			has_country_flag = under_tent_anarchist
 			NOT = { has_country_flag = midway_society_cooperation_chosen }
@@ -7309,6 +7398,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_midway_society 
 			has_country_flag = under_tent_technocrat
 			NOT = { has_country_flag = midway_society_cooperation_chosen }
@@ -7348,6 +7438,7 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
 			has_completed_focus = FRA_midway_society 
 			has_country_flag = under_tent_communist
 			NOT = { has_country_flag = midway_society_cooperation_chosen }
@@ -7384,8 +7475,539 @@ Cof_politics = {
 		}
 	}
 
+	Cof_syndmode_midway_society_11 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_completed_focus = FRA_midway_society 
+			has_completed_focus = FRA_declaration_of_the_new_normal
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = mws
+					JUDGE = more_than
+					TAGNUM = "50.0"
+				}
+				check_variable = { mws > 50 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			monthly_change_popsw = 0.3
+			monthly_change_popsp = 0.3
+			monthly_change_popsm = 0.3
+			monthly_change_popss = 0.3
+			monthly_change_popsb = 0.3
+			monthly_change_popsa = 0.3
+		}
+		complete_effect = {
+			set_temp_variable = { mwsc = -10 }
+			midway_society_build_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { ssc = 1 }
+			set_temp_variable = { asc = 1 }
+			set_temp_variable = { tsc = 1 }
+			set_temp_variable = { csc = 1 }
+			syndmode_sincerity_change = yes
+		}
+	}
+	Cof_syndmode_midway_society_12 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_completed_focus = FRA_midway_society 
+			has_completed_focus = FRA_declaration_of_the_new_normal
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = mws
+					JUDGE = more_than
+					TAGNUM = "50.0"
+				}
+				check_variable = { mws > 50 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			monthly_change_eib = 0.3
+			monthly_change_eip = 0.3
+			industrial_capacity_factory = 0.1
+			industrial_capacity_dockyard = 0.15
+		}
+		complete_effect = {
+			set_temp_variable = { mwsc = -10 }
+			midway_society_build_change = yes
+		}
+		remove_effect = { 
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -4 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 2 }
+			set_temp_variable = { sc = -2 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { ecc = 0 }
+			set_temp_variable = { emc = 0 }
+			set_temp_variable = { epc = 1 }
+			set_temp_variable = { eoc = 0 }
+			Cof_economy_model_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 4 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 1 }
+			set_temp_variable = { eamc = 1 }
+			set_temp_variable = { eaec = 1 }
+			set_temp_variable = { eaac = 1 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 1 }
+			cof_econ_target_change = yes
+		}
+	}
+	Cof_syndmode_midway_society_13 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_completed_focus = FRA_midway_society 
+			has_completed_focus = FRA_declaration_of_the_new_normal
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = mws
+					JUDGE = more_than
+					TAGNUM = "50.0"
+				}
+				check_variable = { mws > 50 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			political_power_factor = 0.25
+		}
+		complete_effect = {
+			set_temp_variable = { mwsc = -10 }
+			midway_society_build_change = yes
+		}
+		remove_effect = { 
+			add_stability = 0.05
+			add_political_power = 200
+		}
+	}
+
+	Cof_syndmode_midway_society_21 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_completed_focus = FRA_midway_society 
+			has_idea = bill_trade_union_empowerment
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = mws
+					JUDGE = more_than
+					TAGNUM = "50.0"
+				}
+				check_variable = { mws > 50 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			political_power_gain = 0.5
+		}
+		complete_effect = {
+			set_temp_variable = { mwsc = -10 }
+			midway_society_build_change = yes
+		}
+		remove_effect = { 
+			set_temp_variable = { ssc = 0 }
+			set_temp_variable = { asc = 0 }
+			set_temp_variable = { tsc = 1 }
+			set_temp_variable = { csc = 0 }
+			syndmode_sincerity_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = -4 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 4 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_syndmode_midway_society_22 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_completed_focus = FRA_midway_society 
+			has_idea = bill_trade_union_empowerment
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = mws
+					JUDGE = more_than
+					TAGNUM = "50.0"
+				}
+				check_variable = { mws > 50 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			production_speed_industrial_complex_factor = 0.15
+			production_speed_infrastructure_factor = 0.2
+			production_speed_arms_factory_factor = 0.05
+		}
+		complete_effect = {
+			set_temp_variable = { mwsc = -10 }
+			midway_society_build_change = yes
+		}
+		remove_effect = { 
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 1 }
+			set_temp_variable = { bc = 1 }
+			set_temp_variable = { ac = 1 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_syndmode_midway_society_23 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			NOT = { has_country_flag = synd_mode_politics_landscape_finished }
+			has_completed_focus = FRA_midway_society 
+			has_idea = bill_trade_union_empowerment
+		}
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = mws
+					JUDGE = more_than
+					TAGNUM = "50.0"
+				}
+				check_variable = { mws > 50 }
+			}
+		}
+		days_re_enable = 90
+		days_remove = 90
+		modifier = { 
+			monthly_change_ev = 0.5
+			economy_power_gain = 1
+		}
+		complete_effect = {
+			set_temp_variable = { mwsc = -10 }
+			midway_society_build_change = yes
+		}
+		remove_effect = { 
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = 0 }
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 3 }
+			set_temp_variable = { eipc = 3 }
+			set_temp_variable = { eiac = 3 }
+			set_temp_variable = { eamc = 3 }
+			set_temp_variable = { eaec = 3 }
+			set_temp_variable = { eaac = 3 }
+			set_temp_variable = { eqc = 3 }
+			set_temp_variable = { elc = 3 }
+			set_temp_variable = { eic = 3 }
+			cof_econ_target_change = yes
+		}
+	}
 
 
+	Cof_syndmode_finished_bill1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = synd_mode_politics_landscape_finished 
+		}
+		available = { NOT = { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_syndmode_politics
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_syndmode_politics_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 9 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 4 } 
+			set_temp_variable = { vtl4 = 4 }
+			set_temp_variable = { vtl5 = 4 }
+			set_temp_variable = { vtl6 = 4 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line 
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_syndmode_politics
+
+				if = {
+					limit = { has_dynamic_modifier = { modifier = Cof_extreme_political_group } }
+					remove_dynamic_modifier = { modifier = Cof_extreme_political_group }
+				}
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { smc = 22 }
+				set_temp_variable = { src = -4 }
+				set_temp_variable = { occ = -4 }
+				set_temp_variable = { oac = -2 }
+				set_temp_variable = { jnc = -4 }
+				set_temp_variable = { jrc = -2 }
+				set_temp_variable = { soc = -4 }
+				set_temp_variable = { syc = -2 }
+				bgt_seat_change = yes
+			}
+		}
+	}
+	Cof_syndmode_finished_bill2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = synd_mode_politics_landscape_finished 
+		}
+		available = { NOT = { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_syndmode_society
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_syndmode_society_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 9 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 4 } 
+			set_temp_variable = { vtl4 = 4 }
+			set_temp_variable = { vtl5 = 4 }
+			set_temp_variable = { vtl6 = 4 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_syndmode_society
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { smc = 7 }
+				set_temp_variable = { src = -1 }
+				set_temp_variable = { occ = -1 }
+				set_temp_variable = { oac = -1 }
+				set_temp_variable = { jnc = -1 }
+				set_temp_variable = { jrc = -1 }
+				set_temp_variable = { soc = -1 }
+				set_temp_variable = { syc = -1 }
+				bgt_seat_change = yes
+			}
+		}
+	}
+	Cof_syndmode_finished_bill3 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = synd_mode_politics_landscape_finished 
+		}
+		available = { NOT = { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_syndmode_economy
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_syndmode_economy_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 9 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 4 } 
+			set_temp_variable = { vtl4 = 4 }
+			set_temp_variable = { vtl5 = 4 }
+			set_temp_variable = { vtl6 = 4 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_syndmode_economy
+				
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { smc = 7 }
+				set_temp_variable = { src = -1 }
+				set_temp_variable = { occ = -1 }
+				set_temp_variable = { oac = -1 }
+				set_temp_variable = { jnc = -1 }
+				set_temp_variable = { jrc = -1 }
+				set_temp_variable = { soc = -1 }
+				set_temp_variable = { syc = -1 }
+				bgt_seat_change = yes
+			}
+		}
+	}
+	Cof_syndmode_finished_bill4 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = synd_mode_politics_landscape_finished 
+		}
+		available = { NOT = { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_syndmode_military
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_syndmode_military_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 9 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 4 } 
+			set_temp_variable = { vtl4 = 4 }
+			set_temp_variable = { vtl5 = 4 }
+			set_temp_variable = { vtl6 = 4 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_syndmode_military
+				
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { smc = 7 }
+				set_temp_variable = { src = -1 }
+				set_temp_variable = { occ = -1 }
+				set_temp_variable = { oac = -1 }
+				set_temp_variable = { jnc = -1 }
+				set_temp_variable = { jrc = -1 }
+				set_temp_variable = { soc = -1 }
+				set_temp_variable = { syc = -1 }
+				bgt_seat_change = yes
+			}
+		}
+	}
+	Cof_syndmode_finished_bill5 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = synd_mode_politics_landscape_finished 
+		}
+		available = { NOT = { has_country_flag = voting_for_bill } }
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_syndmode_internation
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_syndmode_internation_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 9 }
+       		set_temp_variable = { vtl2 = 4 }
+			set_temp_variable = { vtl3 = 4 } 
+			set_temp_variable = { vtl4 = 4 }
+			set_temp_variable = { vtl5 = 4 }
+			set_temp_variable = { vtl6 = 4 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 4 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_syndmode_internation
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { smc = 7 }
+				set_temp_variable = { src = -1 }
+				set_temp_variable = { occ = -1 }
+				set_temp_variable = { oac = -1 }
+				set_temp_variable = { jnc = -1 }
+				set_temp_variable = { jrc = -1 }
+				set_temp_variable = { soc = -1 }
+				set_temp_variable = { syc = -1 }
+				bgt_seat_change = yes
+			}
+		}
+	}
 #激进派议程
 
 
@@ -7483,6 +8105,7 @@ Cof_politics = {
 					JUDGE = more_than
 					TAGNUM = 40
 				}
+				check_variable = { PCOP_AFA_unity > 40 }
 			}
 		}
 		days_re_enable = 60
@@ -7521,6 +8144,7 @@ Cof_politics = {
 					JUDGE = more_than
 					TAGNUM = 40
 				}
+				check_variable = { PCOP_AFA_unity > 40 }
 			}
 		}
 		days_re_enable = 60
@@ -7541,6 +8165,573 @@ Cof_politics = {
 				PCOP_AFA_union = -1
 				tooltip = PCOP_AFA_union_add_AFA_1
 			}
+		}
+	}
+
+#新社派议程
+	technocrat_reform_mission = {
+		icon = ger_mefo_bills
+		activation = { always = no }
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = technocrat_reform_progress
+					JUDGE = equal_to
+					TAGNUM = 100
+				}
+				check_variable = { technocrat_reform_progress = 100 }
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		days_mission_timeout = 7
+		complete_effect = {
+			custom_effect_tooltip = technocrat_reform_mission_tt
+			technocrat_reform_mission_effect = yes
+		}
+		timeout_effect = {
+			technocrat_reform_mission_ing = yes
+			activate_mission = technocrat_reform_mission
+		}
+	}
+	Cof_jaconeos_reform_general0 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = jaco_neos_politics_landscape }
+		available = { has_country_flag = technocrat_reform_type_syndicats_finished }
+		fire_only_once = yes
+		cost = 25
+		complete_effect = {
+			add_stability = 0.025
+			set_temp_variable = { tgprc = 0 }
+			set_temp_variable = { tgotc = 0 }
+			set_temp_variable = { trpc = -5 }
+			set_temp_variable = { trec = -10 }
+			technocrat_government_var_change = yes
+			set_temp_variable = { t = 2 }
+			vulgus_tendency_change_down = yes
+			set_temp_variable = { t = 3 }
+			vulgus_tendency_change_down = yes
+			set_temp_variable = { t = 2 }
+			moderatio_infimorum_change_down = yes
+			set_temp_variable = { t = 3 }
+			moderatio_infimorum_change_down = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { mode_judge = 1 } 
+       		set_temp_variable = { radi_judge = -1 }
+			set_temp_variable = { comm_judge = 1 }
+			set_temp_variable = { anar_judge = -1 }
+			set_temp_variable = { neos_judge = 1 } 
+			set_temp_variable = { revo_judge = 0 }
+			set_temp_variable = { oldl_judge = 1 }
+			set_temp_variable = { yout_judge = -1 }
+			set_temp_variable = { target_a = 3 } 
+			set_temp_variable = { change_num = 1 } 
+			CSP_attitude_faction_judge = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = -1 }
+			set_temp_variable = { sc = -1 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			country_event = cofsociety.3
+		}
+	}
+	Cof_jaconeos_reform_general1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = jaco_neos_politics_landscape }
+		available = {
+			
+		}
+		days_re_enable = 35
+		days_remove = 35
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { tgprc = 0 }
+			set_temp_variable = { tgotc = 10 }
+			set_temp_variable = { trpc = 5 }
+			set_temp_variable = { trec = 5 }
+			if = {
+				limit = { has_country_flag = next_gov_action_double }
+				multiply_temp_variable = { tgprc = 2 }
+				multiply_temp_variable = { tgotc = 2 }
+				multiply_temp_variable = { trpc = 2 }
+				multiply_temp_variable = { trec = 2 }
+			}
+			technocrat_government_var_change = yes
+		}
+	}
+	Cof_jaconeos_reform_general2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = jaco_neos_politics_landscape }
+		available = {
+			vulgus_tendency_marquet_trigger = yes
+		}
+		days_re_enable = 35
+		days_remove = 35
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { tgprc = 0 }
+			set_temp_variable = { tgotc = 0 }
+			set_temp_variable = { trpc = -10 }
+			set_temp_variable = { trec = -5 }
+			if = {
+				limit = { has_country_flag = next_gov_action_double }
+				multiply_temp_variable = { tgprc = 2 }
+				multiply_temp_variable = { tgotc = 2 }
+				multiply_temp_variable = { trpc = 2 }
+				multiply_temp_variable = { trec = 2 }
+			}
+			technocrat_government_var_change = yes
+		}
+	}
+	Cof_jaconeos_reform_general2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = jaco_neos_politics_landscape }
+		available = {
+			moderatio_infimorum_delegate_trigger = yes
+		}
+		days_re_enable = 35
+		days_remove = 35
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { tgprc = 0 }
+			set_temp_variable = { tgotc = 0 }
+			set_temp_variable = { trpc = -5 }
+			set_temp_variable = { trec = -10 }
+			if = {
+				limit = { has_country_flag = next_gov_action_double }
+				multiply_temp_variable = { tgprc = 2 }
+				multiply_temp_variable = { tgotc = 2 }
+				multiply_temp_variable = { trpc = 2 }
+				multiply_temp_variable = { trec = 2 }
+			}
+			technocrat_government_var_change = yes
+		}
+	}
+	
+
+	#工会国家化
+	Cof_jaconeos_reform_syndicats1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = technocrat_reform_type_syndicats
+		}
+		available = {
+			OR = {
+				has_completed_focus = FRA_weaken_CGT
+				has_completed_focus = FRA_expand_CGT
+			}
+		}
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			add_to_variable = {
+				cgt_confidence = 1
+				tooltip = cgt_confidence_add
+			}
+			add_to_variable = {
+				cgt_monopolization = -10
+				tooltip = cgt_monopolization_change_tt
+			}
+			set_temp_variable = { t = 3 }
+			vulgus_tendency_change_down = yes
+			set_temp_variable = { t = 1 }
+			moderatio_infimorum_change_up = yes
+		}
+	}
+	Cof_jaconeos_reform_syndicats2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = technocrat_reform_type_syndicats
+			NOT = { has_completed_focus = FRA_expand_CGT }
+		}
+		available = {
+			has_completed_focus = FRA_weaken_CGT
+		}
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			add_to_variable = {
+				cgt_monopolization = -10
+				tooltip = cgt_monopolization_change_tt
+			}
+			set_temp_variable = { t = 3 }
+			vulgus_tendency_change_down = yes
+			set_temp_variable = { t = 1 }
+			moderatio_infimorum_change_up = yes
+			set_temp_variable = { t = 2 }
+			moderatio_infimorum_change_up = yes
+		}
+	}
+	Cof_jaconeos_reform_syndicats3 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = technocrat_reform_type_syndicats
+			NOT = { has_completed_focus = FRA_weaken_CGT }
+		}
+		available = {
+			has_completed_focus = FRA_expand_CGT
+		}
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			add_to_variable = {
+				cgt_confidence = 1
+				tooltip = cgt_confidence_add
+			}
+			set_temp_variable = { t = 3 }
+			vulgus_tendency_change_up = yes
+			set_temp_variable = { t = 3 }
+			moderatio_infimorum_change_up = yes
+		}
+	}
+	Cof_jaconeos_reform_syndicats4 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = technocrat_reform_type_syndicats
+			NOT = { has_completed_focus = FRA_weaken_CGT }
+		}
+		available = { 
+			NOT = { has_country_flag = voting_for_bill } 
+			has_completed_focus = FRA_expand_CGT
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_syndicats_unification
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_syndicats_unification_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 6 }
+			set_temp_variable = { vtl3 = 2 } 
+			set_temp_variable = { vtl4 = 2 }
+			set_temp_variable = { vtl5 = 6 }
+			set_temp_variable = { vtl6 = 3 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 2 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_syndicats_unification
+				add_to_array = { array = FRA.cof_social_bills value = 39 }
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { tgprc = 0 }
+				set_temp_variable = { tgotc = 20 }
+				if = {
+					limit = { vulgus_tendency_thomas_trigger = yes }
+					set_temp_variable = { trpc = -5 }
+				}
+				else = { set_temp_variable = { trpc = 10 } }
+				if = {
+					limit = { moderatio_infimorum_syndicat_trigger = yes }
+					set_temp_variable = { trec = -5 }
+				}
+				else = { set_temp_variable = { trec = 10 } }
+				technocrat_government_var_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_wc = 2 }
+				set_temp_variable = { pop_pc = -0.5 }
+				set_temp_variable = { pop_mc = -0.5 }
+				set_temp_variable = { pop_sc = 0 }
+				set_temp_variable = { pop_bc = -1 }
+				set_temp_variable = { pop_ac = 0 }
+				class_pop_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { wc = 2 }
+				set_temp_variable = { pc = -1 }
+				set_temp_variable = { mc = -1 }
+				set_temp_variable = { sc = 0 }
+				set_temp_variable = { bc = -2 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
+		}
+	}
+	Cof_jaconeos_reform_syndicats5 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = technocrat_reform_type_syndicats
+			NOT = { has_completed_focus = FRA_expand_CGT }
+		}
+		available = { 
+			NOT = { has_country_flag = voting_for_bill } 
+			has_completed_focus = FRA_weaken_CGT
+		}
+		fire_only_once = yes
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_federal_syndicats_relations
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_federal_syndicats_relations_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 3 }
+       		set_temp_variable = { vtl2 = 2 }
+			set_temp_variable = { vtl3 = 5 } 
+			set_temp_variable = { vtl4 = 1 }
+			set_temp_variable = { vtl5 = 8 }
+			set_temp_variable = { vtl6 = 3 } 
+			set_temp_variable = { vtl7 = 4 }
+			set_temp_variable = { vtl8 = 2 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_federal_syndicats_relations
+				add_to_array = { array = FRA.cof_social_bills value = 39 }
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { tgprc = 0 }
+				set_temp_variable = { tgotc = 20 }
+				if = {
+					limit = { vulgus_tendency_marquet_trigger = yes }
+					set_temp_variable = { trpc = -5 }
+				}
+				else = { set_temp_variable = { trpc = 10 } }
+				if = {
+					limit = { moderatio_infimorum_delegate_trigger = yes }
+					set_temp_variable = { trec = -5 }
+				}
+				else = { set_temp_variable = { trec = 10 } }
+				technocrat_government_var_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_wc = -2 }
+				set_temp_variable = { pop_pc = 0 }
+				set_temp_variable = { pop_mc = 0 }
+				set_temp_variable = { pop_sc = 0 }
+				set_temp_variable = { pop_bc = 2 }
+				set_temp_variable = { pop_ac = 0 }
+				class_pop_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { wc = -4 }
+				set_temp_variable = { pc = 0 }
+				set_temp_variable = { mc = 0 }
+				set_temp_variable = { sc = 0 }
+				set_temp_variable = { bc = 2 }
+				set_temp_variable = { ac = 0 }
+				class_pop_satisfactions_change = yes
+			}
+		}
+	}
+	#全权化
+	Cof_jaconeos_reform_csp1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = technocrat_reform_type_csp }
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			
+		}
+	}
+	Cof_jaconeos_reform_csp2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = technocrat_reform_type_csp }
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			
+		}
+	}
+	Cof_jaconeos_reform_csp3 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = technocrat_reform_type_csp }
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			
+		}
+	}
+	Cof_jaconeos_reform_csp4 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = technocrat_reform_type_csp }
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			
+		}
+	}
+	Cof_jaconeos_reform_csp5 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = technocrat_reform_type_csp }
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			
+		}
+	}
+	Cof_jaconeos_reform_csp6 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = technocrat_reform_type_csp }
+		days_re_enable = 14
+		days_remove = 14
+		cost = 10
+		complete_effect = {
+			
+		}
+	}
+
+	#多首的怪物
+	Cof_jaconeos_belua_multorum_capitum1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+		}
+		days_remove = 30
+		days_re_enable = 30
+		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			set_temp_variable = { t = 2 }
+			moderatio_infimorum_change_up = yes
+			set_temp_variable = { t = 10 }
+			doriot_attitude_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { t = 2 }
+			extremists_attitude_up = yes
+		}
+	}
+	Cof_jaconeos_belua_multorum_capitum2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+		}
+		days_remove = 30
+		days_re_enable = 30
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { t = 3 }
+			moderatio_infimorum_change_up = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = 0.5 }
+			set_temp_variable = { pop_pc = 0 }
+			set_temp_variable = { pop_mc = 0 }
+			set_temp_variable = { pop_sc = 0 }
+			set_temp_variable = { pop_bc = -0.5 }
+			set_temp_variable = { pop_ac = 0 }
+			class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = -2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_jaconeos_belua_multorum_capitum3 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+		}
+		days_remove = 30
+		days_re_enable = 30
+		cost = 30
+		complete_effect = {
+			set_temp_variable = { t = 1 }
+			moderatio_infimorum_change_up = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -0.5 }
+			set_temp_variable = { pop_pc = 0 }
+			set_temp_variable = { pop_mc = 0 }
+			set_temp_variable = { pop_sc = 0 }
+			set_temp_variable = { pop_bc = 0.5 }
+			set_temp_variable = { pop_ac = 0 }
+			class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { wc = -2 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+		}
+	}
+	Cof_jaconeos_belua_multorum_capitum4 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+		}
+		days_remove = 60
+		days_re_enable = 60
+		cost = 30
+		complete_effect = {
+			set_temp_variable = { t = 1 }
+			vulgus_tendency_change_up = yes
+			custom_effect_tooltip = next_gov_action_double
+			set_country_flag = next_gov_action_double
 		}
 	}
 }

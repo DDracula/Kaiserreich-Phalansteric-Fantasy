@@ -615,235 +615,147 @@ cof_econ_target_change = {
 		add_to_variable = { economy_power = epc }
 		custom_effect_tooltip = economy_power_change_tips
 	}
-
 	if = { limit = { check_variable = { evc = 0 } } }
 	else = {
 		add_to_variable = { cof_econ_values = evc }
 		custom_effect_tooltip = econ_values_change_tips
 	}
-
 	if = { limit = { check_variable = { eibc = 0 } } }
 	else = {
 		add_to_variable = { econ_industry_basic = eibc }
 		custom_effect_tooltip = econ_industry_basic_change_tips
 	}
-
-	if = {
-		limit = { 
-			has_completed_focus = FRA_material_communism 
-			check_variable = { econ_industry_basic < 55 }
-		}
-		set_variable = { econ_industry_basic = 55 }
-	}
-
 	if = { limit = { check_variable = { eipc = 0 } } }
 	else = {
 		add_to_variable = { econ_industry_process = eipc }
 		custom_effect_tooltip = econ_industry_process_change_tips
 	}
-
-	if = {
-		limit = {
-			has_completed_focus = FRA_borrow_from_model
-			check_variable = { econ_industry_process < 55 }
-		}
-		set_variable = { econ_industry_process = 55 }
-	}
-
 	if = { limit = { check_variable = { eiac = 0 } } }
 	else = {
 		add_to_variable = { econ_industry_arms = eiac }
 		custom_effect_tooltip = econ_industry_arms_change_tips
 	}
-
 	if = { limit = { check_variable = { eamc = 0 } } }
 	else = {
 		add_to_variable = { econ_agriculture_mechanized = eamc }
 		custom_effect_tooltip = econ_agriculture_mechanized_change_tips
 	}
-	
 	if = { limit = { check_variable = { eaec = 0 } } }
 	else = {
 		add_to_variable = { econ_agriculture_chemical = eaec }
 		custom_effect_tooltip = econ_agriculture_chemical_change_tips
 	}
-
 	if = { limit = { check_variable = { eaac = 0 } } }
 	else = {
 		add_to_variable = { econ_agriculture_chain = eaac }
 		custom_effect_tooltip = econ_agriculture_chain_change_tips
 	}
-
-	if = {
-		limit = { 
-			has_completed_focus = FRA_industrialized_rural 
-			check_variable = { econ_agriculture_chain < 55 }
-		}
-		set_variable = { econ_agriculture_chain = 55 }
-	}
-
 	if = { limit = { check_variable = { eqc = 0 } } }
 	else = {
 		add_to_variable = { econ_equal = eqc }
 		custom_effect_tooltip = econ_equal_change_tips
 	}
-
 	if = { limit = { check_variable = { elc = 0 } } }
 	else = {
 		add_to_variable = { econ_link = elc }
 		custom_effect_tooltip = econ_link_change_tips
 	}
-
 	if = { limit = { check_variable = { eic = 0 } } }
 	else = {
 		add_to_variable = { econ_innovate = eic }
 		custom_effect_tooltip = econ_innovate_change_tips
 	}
 
-	if = {
-		limit = { 
-			has_completed_focus = FRA_all_rounder 
-			check_variable = { econ_innovate < 55 }
-		}
-		set_variable = { econ_innovate = 55 }
-	}
-
-	clamp_variable = {
-        var = cof_econ_values
-        max = 100
-        min = -100
-    }
+	clamp_variable = { var = cof_econ_values max = 100 min = -100 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = cof_econ_values
-			max = 40
-			min = -20
-		}
+		clamp_variable = { var = cof_econ_values max = 40 min = -20 }
 	}
 	if = {
 		limit = { check_variable = { cof_econ_values < 0 } }
 		set_variable = { cof_econ_values_bad = cof_econ_values }
 		add_to_variable = { cof_econ_values_bad = 100 }
 	}
-	clamp_variable = {
-        var = econ_industry_basic
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_industry_basic max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_industry_basic
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_industry_basic max = 80 min = 40 }
 	}
-	clamp_variable = {
-        var = econ_industry_process
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_industry_process max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_industry_process
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_industry_process max = 80 min = 40 }
 	}
-	clamp_variable = {
-        var = econ_industry_arms
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_industry_arms max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_industry_arms
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_industry_arms max = 80 min = 40 }
 	}
 
-	clamp_variable = {
-        var = econ_agriculture_mechanized
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_agriculture_mechanized max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_agriculture_mechanized
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_agriculture_mechanized max = 80 min = 40 }
 	}
-	clamp_variable = {
-        var = econ_agriculture_chemical
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_agriculture_chemical max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_agriculture_chemical
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_agriculture_chemical max = 80 min = 40 }
 	}
-	clamp_variable = {
-        var = econ_agriculture_chain
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_agriculture_chain max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_agriculture_chain
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_agriculture_chain max = 80 min = 40 }
 	}
 
-	clamp_variable = {
-        var = econ_equal
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_equal max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_equal
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_equal max = 80 min = 40 }
 	}
-	clamp_variable = {
-        var = econ_link
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_link max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_link
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_link max = 80 min = 40 }
 	}
-	clamp_variable = {
-        var = econ_innovate
-        max = 100
-        min = 0
-    }
+	clamp_variable = { var = econ_innovate max = 100 min = 0 }
 	if = {
 		limit = { is_ai = yes }
-		clamp_variable = {
-			var = econ_innovate
-			max = 80
-			min = 40
-		}
+		clamp_variable = { var = econ_innovate max = 80 min = 40 }
+	}
+
+	if = {
+		limit = { has_completed_focus = FRA_material_communism }
+		clamp_variable = { var = econ_industry_basic min = 55 }
+	}
+	if = {
+		limit = { has_completed_focus = FRA_borrow_from_model }
+		clamp_variable = { var = econ_industry_process min = 55 }
+	}
+	if = {
+		limit = { has_completed_focus = FRA_industrialized_rural }
+		clamp_variable = { var =  econ_agriculture_chain min = 55 }
+	}
+	if = {
+		limit = { has_completed_focus = FRA_all_rounder }
+		clamp_variable = { var = econ_innovate min = 55 }
+	}
+
+	if = {
+		limit = { has_idea = bill_syndmode_economy }
+		clamp_variable = { var = cof_econ_values min = 20 }
+
+		clamp_variable = { var = econ_industry_basic min = 60 }
+		clamp_variable = { var = econ_industry_process min = 60 }
+		clamp_variable = { var = econ_industry_arms min = 60 }
+
+		clamp_variable = { var = econ_agriculture_mechanized min = 60 }
+		clamp_variable = { var = econ_agriculture_chemical min = 60 }
+		clamp_variable = { var = econ_agriculture_chain min = 60 }
+
+		clamp_variable = { var = econ_equal min = 60 }
+		clamp_variable = { var = econ_link min = 60 }
+		clamp_variable = { var = econ_innovate min = 60 }
 	}
 
 	economy_period_change_judge = yes

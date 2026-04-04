@@ -2307,18 +2307,18 @@ characters = {
 		}
 	}
 	# DEA
-	FRA_albert_thomas = { #阿尔伯特·托马斯
-		name = FRA_albert_thomas
+	FRA_barthelemy_montagnon = { #巴勒泰米·蒙塔尼翁
+		name = FRA_barthelemy_montagnon
 		portraits = {
 			civilian = {
-				large = GFX_portrait_FRA_albert_thomas_civilian_large
-				small = GFX_portrait_FRA_albert_thomas_civilian_small
+				large = GFX_portrait_FRA_barthelemy_montagnon_civilian_large
+				small = GFX_portrait_FRA_barthelemy_montagnon_civilian_small
 			}
 		}
 		advisor = {
 			slot = political_advisor
-			idea_token = FRA_albert_thomas
-			desc = FRA_albert_thomas_advisor_desc
+			idea_token = FRA_barthelemy_montagnon
+			desc = FRA_barthelemy_montagnon_advisor_desc
 			available = {
 				custom_trigger_tooltip = {
 					tooltip = not_in_csp
@@ -2331,12 +2331,12 @@ characters = {
 				}
 			}
 			cost = 150
-			traits = { FRA_albert_thomas_trait }
+			traits = { FRA_barthelemy_montagnon_trait }
 			on_add = {
 				FRA = {
-					if = { limit = { has_country_flag = FRA_albert_thomas_effect } }
+					if = { limit = { has_country_flag = FRA_barthelemy_montagnon_effect } }
 					else = {
-						set_country_flag = FRA_albert_thomas_effect
+						set_country_flag = FRA_barthelemy_montagnon_effect
 					
 					}	
 				}	
@@ -2494,7 +2494,37 @@ characters = {
 		}
 	}
 	#key members
-	
+	FRA_albert_thomas = { #阿尔伯特·托马斯
+		name = FRA_albert_thomas
+		portraits = {
+			civilian = {
+				small = GFX_portrait_FRA_albert_thomas_civilian_small
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = FRA_albert_thomas
+			desc = FRA_albert_thomas_advisor_desc
+			available = {
+				set_temp_variable = { bgt_seat_target = 80 }
+				custom_trigger_tooltip = {
+					tooltip	= jaco_neos_seat_greater_than_x
+					check_variable = { seat_jaco_neos > bgt_seat_target }
+				}
+			}
+			cost = 150
+			traits = { FRA_albert_thomas_trait }
+			on_add = {
+				FRA = {
+					if = { limit = { has_country_flag = FRA_albert_thomas_effect } }
+					else = {
+						set_country_flag = FRA_albert_thomas_effect
+					
+					}	
+				}	
+			}
+		}
+	}
 
 	
 
