@@ -684,11 +684,19 @@ scripted_gui = {
                     check_variable = { Cof_BGT_vs_CSP_value > 0 }
                     check_variable = { Cof_BGT_vs_CSP_value = 0 }
                 }
+                NOT = { has_country_flag = show_politics_landscape }
             }
             politics_ui_bgt_vs_csp_bgt_visible = {
                 check_variable = { Cof_BGT_vs_CSP_value < 0 }
+                NOT = { has_country_flag = show_politics_landscape }
             }
 
+            bop_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            politics_faction_synd_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            politics_faction_oppo_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            politics_faction_jaco_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            politics_faction_sore_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            politics_ui_ios_visible = { NOT = { has_country_flag = show_politics_landscape } }
             bgt_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
             csp_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
             ios_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
@@ -727,21 +735,14 @@ scripted_gui = {
             }
         }
         properties = {
-            politics_ui_bgt_vs_csp_csp = { frame = gui_csp
-            }
-            politics_ui_bgt_vs_csp_bgt = { frame = gui_bgt
-            }
-            politics_ui_ios = { frame = gui_ios
-            }
+            politics_ui_bgt_vs_csp_csp = { frame = gui_csp }
+            politics_ui_bgt_vs_csp_bgt = { frame = gui_bgt }
+            politics_ui_ios = { frame = gui_ios }
 
-            politics_faction_synd = { frame = gui_posynd
-            }
-            politics_faction_oppo = { frame = gui_pooppo
-            }
-            politics_faction_jaco = { frame = gui_pojaco
-            }
-            politics_faction_sore = { frame = gui_posore
-            }
+            politics_faction_synd = { frame = gui_posynd }
+            politics_faction_oppo = { frame = gui_pooppo }
+            politics_faction_jaco = { frame = gui_pojaco }
+            politics_faction_sore = { frame = gui_posore }
         }
     }
 

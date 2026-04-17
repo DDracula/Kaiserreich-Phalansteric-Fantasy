@@ -24,7 +24,7 @@
   FRA_CSP_buff5:0 "霸权的公安委"
   FRA_CSP_buff4:0 "专政的公安委"
   FRA_CSP_buff3:0 "主导的公安委"
-  FRA_CSP_buff2:0 "占有的公安委"
+  FRA_CSP_buff2:0 "占优的公安委"
   FRA_CSP_buff1:0 "略优的公安委"
   FRA_CSP_buff0:0 "平衡的权力"
   FRA_BGT_buff0:0 "平衡的权力"
@@ -46,7 +46,7 @@
   Cof_funding_rural_commune_tt:0 "所有§Y乡村地区§!追加效果：\n   $MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR$：[?0.05|+=0%]\n   $MODIFIER_LOCAL_RESOURCES$：[?0.1|+=0%]\n   $MODIFIER_GLOBAL_MONTHLY_POPULATION$：[?0.01|+=1%]"
 
   bgt_transfer_management:0 "让渡管理权"
-  bgt_transfer_management_desc:0 "权力倾向向§Y劳总联§!移动§Y10§!\n随机一个地区的§Y工厂§!转化为§Y地方工厂§!\n§Y当地地区§!追加效果：[transfer_management_loc]\n\n执行该行动将花费£pol_power §Y20§!"
+  bgt_transfer_management_desc:0 "权力倾向向§Y劳总联§!移动§Y10§!\n随机一个地区的§Y工厂§!转化为§Y联邦工厂§!\n§Y当地地区§!追加效果：[transfer_management_loc]\n\n执行该行动将花费£pol_power §Y20§!"
   transfer_management_tt:0 "\n   $economy_power_factor$：[?-0.001|+=%.1]\n   $MODIFIER_INDUSTRIAL_CAPACITY_FACTOR$：[?0.001|+=%1]"
 
   bgt_expand_investment:0 "扩大投资权"
@@ -542,7 +542,7 @@
   Cof_syndmode_syndicats_stratifcation22:0 "推行联席共议制"
   Cof_syndmode_syndicats_stratifcation23:0 "实行班组自理契约"
 
-  midway_society_loc:0 "\n\n§C[midway_society_build]§!\n建设进展：[?mws|.1G%]（[?mwsmc|.1+=%%]）\n[?1|.1+=%%]来自基础\n[?mwsmc_tentnum|.1+=%%]来自大帐篷下的盟友数量\n[?mwsmc_es|.1+=%%]来自尚在活跃的极端派系\n[?mwsmc_ssp|.1+=%%]\n[?mwsmc_ios|.1+=%%]来自$Cof_politics_intensity_of_struggle$\n[?mwsmc_popsall|.1+=%%]来自$pop_satisfaction$\n[?mwsmc_ev|.1+=%%]来自$cof_econ_values$\n[?mwsmc_aa|.1+=%%]来自$Cof_army_autonomy$"
+  midway_society_loc:0 "\n\n§C[midway_society_build]§!\n建设进展：[?mws|.1G%]（[?mwsmc|.1+=%%]）\n[?1|.1+=%%]来自基础\n[?mwsmc_tentnum|.1+=%%]来自大帐篷下的盟友数量\n[?mwsmc_es|.1+=%%]来自尚在活跃的极端派系\n[?mwsmc_ssp|.1+=%%]来自科层化进程\n[?mwsmc_ios|.1+=%%]来自$Cof_politics_intensity_of_struggle$\n[?mwsmc_popsall|.1+=%%]来自$pop_satisfaction$\n[?mwsmc_ev|.1+=%%]来自$cof_econ_values$\n[?mwsmc_aa|.1+=%%]来自$Cof_army_autonomy$"
   mws:0 "中道社会的建设进展"
   mws_change_tt:0 "中道社会的建设进展改变[?mwsc|+=.1%%]"
   
@@ -618,7 +618,10 @@
   oppo_anar_politics_landscape:0 "§Y蒲鲁东之梦§!\n§g马克思主义者被证明不值得被信任，他们对于社会主义的认识在根本上就是错误的。正如数十年前蒲鲁东对于马克思的批判一样：马克思主义者们只不过是想要给人民套上另一种教条！没有他们的干扰，我们一样可以建设社会主义，并且比他们要好得多。§!\n"
 
 ##新社会议程
-  jaco_neos_politics_landscape:0 "§Y秩序，权威，国家§!\n§g无政府主义的幽灵在这个伟大的国家肆虐了太久，哲学家们只懂得靠着诡辩在人民面前夸夸其谈，但形而上的概念并不能改变贫瘠的物质现实。我们国家需要的是经济学家、工程师和科学家，而不是只会作秀的政客或花枝招展的艺术家。他们可以为人民的生活点缀，但不能给他们带来面包和葡萄酒。没有先进生产力的社会主义不过是原始部落在现代的重演，而这只会带来灾难。没有坚实的经济基础，革命就无法展现出它的优越性。§!\n当前改革方向：§C[technocrat_reform_type]§!\n$technocrat_government_people_resist$：[?technocrat_government_people_resist|R.1]\n$technocrat_government_opposition_threat$：[?technocrat_government_opposition_threat|R.1]\n\n\n$technocrat_reform_progress$：[?technocrat_reform_progress|.1G%%]\n$technocrat_reform_efforts$：[technocrat_reform_efforts_loc]（[?technocrat_reform_efforts|.1]）§![belua_multorum_capitum]"
+  jaco_neos_politics_landscape:0 "§Y秩序，权威，国家§!\n§g无政府主义的幽灵在这个伟大的国家肆虐了太久，哲学家们只懂得靠着诡辩在人民面前夸夸其谈，但形而上的概念并不能改变贫瘠的物质现实。我们国家需要的是经济学家、工程师和科学家，而不是只会作秀的政客或花枝招展的艺术家。他们可以为人民的生活点缀，但不能给他们带来面包和葡萄酒。没有先进生产力的社会主义不过是原始部落在现代的重演，而这只会带来灾难。没有坚实的经济基础，革命就无法展现出它的优越性。§!\n[technocrat_reform][belua_multorum_capitum][civilservants_country]"
+
+  technocrat_reform_loc:0 "当前改革方向：§C[technocrat_reform_type]§!\n$technocrat_government_people_resist$：[?technocrat_government_people_resist|R.1]\n$technocrat_government_opposition_threat$：[?technocrat_government_opposition_threat|R.1]\n$technocrat_reform_progress$：[?technocrat_reform_progress|.1G%%]\n$technocrat_reform_efforts$：[technocrat_reform_efforts_loc]（[?technocrat_reform_efforts|.1]）§!"
+  technocrat_reform_no:0 "正在等待新的改革目标"
 
   technocrat_government_people_resist:0 "§R人民的抵触情绪§!" 
   technocrat_government_people_resist_change:0 "$technocrat_government_people_resist$改变[?tgprc|.1-=]"
@@ -638,13 +641,17 @@
   technocrat_reform_mission:0 "改革进行时"
   technocrat_reform_mission_tt:0 "$technocrat_government_people_resist$或$technocrat_government_opposition_threat$任意一项达到§R100§!时，都将导致§R改革的失败§!\n§Y民众倾向§!和§Y基层管理§!的错配将导致$technocrat_government_people_resist$和$technocrat_government_opposition_threat$的§R上升§!\n\n[technocrat_reform_mission_loc]\n\n§C可以预见的改革结果：§!"
 
-  Cof_jaconeos_reform_general0:0 "§o政府行动§! 设立国家报社"
-  Cof_jaconeos_reform_general1:0 "§o政府行动§! 邀请外国专家"
-  Cof_jaconeos_reform_general2:0 "§o政府行动§! 组织亲政府集会"
-  Cof_jaconeos_reform_general3:0 "§o政府行动§! 调查地方政局"  
+  Cof_jaconeos_reform_general0:0 "§O政府行动§! 设立国家报社"
+  Cof_jaconeos_reform_general1:0 "§O政府行动§! 邀请外国专家"
+  Cof_jaconeos_reform_general2:0 "§O政府行动§! 组织亲政府集会"
+  Cof_jaconeos_reform_general3:0 "§O政府行动§! 调查地方政局"  
+
+  Cof_jaconeos_reform_adminocrats1:0 "§O政府行动§! 推进改革进程"
+  Cof_jaconeos_reform_adminocrats2:0 "§O政府行动§! 加大改革力度"
+  Cof_jaconeos_reform_adminocrats3:0 "§O政府行动§! 平息反对声音"
 
   technocrat_reform_type_syndicats:0 "工会国家化"
-  technocrat_reform_mission_syndicats:0 "§C改革进度相关§!\n£white_dot  §Y$FRA_everything_goes_to_CGT$§! ~ §G100%§!\n£white_dot  §Y$FRA_unions_are_not_just_for_labor$§! ~ §G100%§!\n£white_dot  §Y$FRA_occams_razor_reform$§! ~ §G100%§!\n\n§C改革力度相关§!\n£white_dot $vulgus_tendency_marquet$ ~ §G5%§!\n£white_dot $vulgus_tendency_doriot$ ~ §G2%§!\n£white_dot $moderatio_infimorum_delegate$ ~ §G5%§!\n£white_dot $moderatio_infimorum_syndicat$ ~ §R-3%§!\n£white_dot $bill_syndicats_unification$ ~ §G3%§!\n£white_dot $bill_federal_syndicats_relations$ ~ §G3%§!"
+  technocrat_reform_mission_syndicats:0 "§C改革进度相关§!\n£white_dot  §Y$FRA_everything_goes_to_CGT$§! ~ §G100%§!\n£white_dot  §Y$FRA_unions_are_not_just_for_labor$§! ~ §G100%§!\n£white_dot  §Y$FRA_occams_razor_reform$§! ~ §G100%§!\n\n§C改革力度相关§!\n£white_dot $vulgus_tendency_marquet$ ~ §G2%§!\n£white_dot $vulgus_tendency_doriot$ ~ §G1%§!\n£white_dot $moderatio_infimorum_delegate$ ~ §G3%§!\n£white_dot $moderatio_infimorum_syndicat$ ~ §R-2%§!\n£white_dot $bill_syndicats_unification$ ~ §G3%§!\n£white_dot $bill_federal_syndicats_relations$ ~ §G3%§!"
   technocrat_reform_type_syndicats_finished:0 "已经完成§Y$technocrat_reform_type_syndicats$§!改革"
 
   Cof_jaconeos_reform_syndicats1:0 "强调政府职责"
@@ -654,16 +661,21 @@
   Cof_jaconeos_reform_syndicats5:0 "递交《联邦工会关系法》"
 
   technocrat_reform_type_csp:0 "公安委全权化"
-  technocrat_reform_mission_csp:0 "§C改革进度相关§!\n£white_dot  §Y$FRA_CSP_buff3$§!或更偏向§Y$CSP_name$§! ~ §G5%§!\n£white_dot  §Y$FRA_BGT_buff1$§!或更偏向§Y$BGT_name$§! ~ §R-5%§\n\n§C改革力度相关§!\n"
+  technocrat_reform_mission_csp:0 "§C改革进度相关§!\n£white_dot  §Y$FRA_CSP_buff3$§!或更偏向§Y$CSP_name$§! ~ §G3%§!\n£white_dot  §Y$FRA_BGT_buff1$§!或更偏向§Y$BGT_name$§! ~ §R-3%§!\n£white_dot  §Y$Cof_civilservants_country_buff3$§! ~ §G3%§!\n£white_dot  §Y$Cof_civilservants_country_buff2$§! ~ §G1%§!\n\n§C改革力度相关§!\n£white_dot  §Y$Cof_civilservants_country_buff3$§! ~ §G3%§!\n£white_dot  §Y$Cof_civilservants_country_buff2$§! ~ §G1%§!"
   technocrat_reform_type_csp_finished:0 "已经完成§Y$technocrat_reform_type_csp$§!改革"
 
-  Cof_jaconeos_reform_csp1:0 "" 
-  Cof_jaconeos_reform_csp2:0 ""
-  Cof_jaconeos_reform_csp3:0 ""
-  Cof_jaconeos_reform_csp4:0 ""
-  Cof_jaconeos_reform_csp5:0 ""
-  Cof_jaconeos_reform_csp6:0 ""
+  Cof_jaconeos_reform_csp1:0 "设立独立官僚委派员" 
+  Cof_jaconeos_reform_csp2:0 "简化劳总联投票程序"
+  Cof_jaconeos_reform_csp3:0 "减少主席令限制"
 
+  Cof_jaconeos_reform_csp11:0 ""
+  Cof_jaconeos_reform_csp12:0 ""
+  Cof_jaconeos_reform_csp13:0 ""
+
+  technocrat_reform_type_technorat:0 "技术官僚化"
+
+  Cof_belua_multorum_capitum_buff:0 "多首的怪物"
+  Cof_belua_multorum_capitum_buff_tt:0 "[vulgus_tendency]\n[moderatio_infimorum]"
   belua_multorum_capitum_loc:0 "\n\n§C多首的怪物§!\n[vulgus_tendency]\n[moderatio_infimorum]\n§N多里奥特的态度§!：[doriot_attitude_loc]"
   tendency_moderatio_match:0 "§Y民众倾向§!和§Y基层管理§!契合"
   vulgus_tendency_marquet:0 "民众倾向§x马凯派§!"
@@ -671,11 +683,12 @@
   vulgus_tendency_thomas:0 "民众倾向§R托马斯派§!"
   vulgus_tendency_netural:0 "民众表现出§Y中立§!"
   vulgus_tendency_change_up:0 "§G更多§!$WHICH$"
-  vulgus_tendency_change_down:0 "§G更少§!$WHICH$"
+  vulgus_tendency_change_down:0 "§R更少§!$WHICH$"
 
   moderatio_infimorum_delegate:0 "§x委派员§!管控基层"
   moderatio_infimorum_commando:0 "§N突击队§!管控基层"
   moderatio_infimorum_syndicat:0 "§R工会§!管控基层"
+  moderatio_infimorum_no:0 "基层控制§Y势均力敌§!"
   moderatio_infimorum_change_up:0 "$WHICH$程度§G加强§!"
   moderatio_infimorum_change_down:0 "$WHICH$程度§R减弱§!"
 
@@ -693,9 +706,46 @@
   Cof_jaconeos_belua_multorum_capitum4:0 "加大中央宣传"
   next_gov_action_double:0 "§G下一个§o政府行动§!效果翻倍§!"
 
-  Cof_jaconeos_commando_cooperation1:0 "§N突击队§! 打击异见者"
-  Cof_jaconeos_commando_cooperation2:0 "§N突击队§! 维持工厂秩序"
-  Cof_jaconeos_commando_cooperation3:0 "§N突击队§! 监控可疑官员"
+  Cof_jaconeos_belua_multorum_capitum_w:0 ""
+  Cof_jaconeos_belua_multorum_capitum_p:0 ""
+  Cof_jaconeos_belua_multorum_capitum_m:0 ""
+  Cof_jaconeos_belua_multorum_capitum_b:0 ""
+
+  civilservants_country_loc:0 "\n\n§C公务员之国§!\n$csc_num$：[csc_num_loc]（[?csc_num|.0]）§!\n$csc_qua$：[csc_qua_loc]（[?csc_qua|.0]）§!\n$csc_adm$：[?csc_adm|G.1%%]\n$csc_eco$：[?csc_eco|G.1%%]\n$csc_cor$：[?csc_cor|R.1%%]"
+  csc_num:0 "§O公务员数量§!"
+  civilservants_country_cscn_change_tt1:0 "$csc_num$改变[?cscn|.0-=]"
+  civilservants_country_cscn_change_tt0:0 "$csc_num$改变[?cscn|.0+=]"
+  csc_num5:0 "§Y冗余"
+  csc_num4:0 "§7过剩"
+  csc_num3:0 "§G均衡"
+  csc_num2:0 "§7过少"
+  csc_num1:0 "§Y紧缺"
+  csc_qua:0 "§O公务员素质§!"
+  civilservants_country_cscq_change_tt:0 "$csc_qua$改变[?cscq|.0+=]"
+  csc_qua5:0 "§G完美"
+  csc_qua4:0 "§7胜任"
+  csc_qua3:0 "§Y平庸"
+  csc_qua2:0 "§R可堪一用"
+  csc_qua1:0 "§r鱼龙混杂"
+  csc_adm:0 "§3行政覆盖范围§!"
+  civilservants_country_csca_change_tt:0 "$csc_adm$改变[?csca|.1+=]"
+  csc_eco:0 "§m经济覆盖范围§!"
+  civilservants_country_csce_change_tt:0 "$csc_eco$改变[?csce|.1+=]"
+  csc_cor:0 "§R官僚腐化程度§!"
+  civilservants_country_cscc_change_tt:0 "$csc_cor$改变[?cscc|.1-=]"
+  Cof_civilservants_country_buff:0 "[Cof_civilservants_country_buff_loc]"
+  Cof_civilservants_country_buff3:0 "行政国家：§G完善§!"
+  Cof_civilservants_country_buff2:0 "行政国家：§7健全§!"
+  Cof_civilservants_country_buff1:0 "行政国家：§R残缺§!"
+
+  Cof_jaconeos_civilservants11:0 "设立联邦行政学院"
+  Cof_jaconeos_civilservants12:0 "引进管理学理论"
+  Cof_jaconeos_civilservants13:0 "吸纳工会官僚"
+
+  Cof_jaconeos_civilservants21:0 ""
+  Cof_jaconeos_civilservants22:0 ""
+  Cof_jaconeos_civilservants23:0 ""
+
 
 ##革行派议程
   jaco_revo_politics_landscape:0 "§Y新罗伯斯庇尔§!\n§g法兰西是一个革命的民族，从大革命开始，再到巴黎公社，最终于法兰西公社联邦作结，法兰西民族始终走在人类文明的前列。然而，革命往往都被背叛、被摧毁、被污蔑。并不是因为革命的理想是错误的，而是革命的领导者们太过软弱、理想主义，对堕落之徒抱有不切实际的幻想，最终被篡夺了革命的果实。现在也是一样，我们已经看到了革命的自我堕落，妥协者们将法兰西民族的希望打包送给反动派，而领袖(Le Chef)要做的，就是拯救革命，拯救法兰西民族！§!\n"
@@ -728,11 +778,12 @@
 
   voting_for_bill:0 "劳总联正在表决"
   if_bill_pass:0 "§C如果议案通过：§!"
-
+  Cof_finish_voting_ahead:0 "提前结束表决"
   var_influence_vote:0 "§C$VAR$将影响投票倾向§!"
   bill_agree_vote_count:0 "§Y总赞成票§!：[?agree_vote|.0G]"
   bill_pass:0 "§G议案将通过§!"
   bill_not_pass:0 "§R议案将被否决§!"
+
 
   bill_impeachment_marceau_pivert:0 "弹劾$FRA_marceau_pivert$"
   bill_impeachment_marceau_pivert_effect:0 "$FRA_marceau_pivert$将被弹劾，新一届公安委选举将提前进行"
@@ -962,11 +1013,12 @@
   bill_chairman_authorisation:0 "《主席授权法》"
   bill_chairman_authorisation_desc:0 ""
 
-  bill_:0 ""
-  bill__desc:0 ""
+  bill_independent_delegate:0 "独立官僚委派员"
+  bill_independent_delegate_desc:0 ""
 
-  bill_:0 ""
-  bill__desc:0 ""
+  bill_simplified_voting_procedures:0 "简化的投票程序"
+  bill_simplified_voting_procedures_desc:0 ""
+  bill_simplified_voting_procedures_tt:0 "§G在确认表决成功的情况下，我们可以提前结束投票§!"
 
   bill_:0 ""
   bill__desc:0 ""
@@ -2084,9 +2136,9 @@
   cofpolitics.199.desc:0 ""
   cofpolitics.199.a:0 "是时候改革了！"
 
-  cofpolitics.200.title:0 ""
+  cofpolitics.200.title:0 "行政国家"
   cofpolitics.200.desc:0 ""
-  cofpolitics.200.a:0 ""
+  cofpolitics.200.a:0 "我们考虑的是一千年后的事。"
 
   cofpolitics.201.title:0 ""
   cofpolitics.201.desc:0 ""

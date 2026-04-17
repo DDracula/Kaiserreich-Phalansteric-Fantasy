@@ -6,7 +6,7 @@ Cof_politics = {
 		available = { always = no }
 		is_good = yes
 		fixed_random_seed = no
-		days_mission_timeout = 30
+		days_mission_timeout = 14
 		timeout_effect = {
 			custom_effect_tooltip = bill_agree_vote_count
 			bill_to_judge = yes
@@ -16,6 +16,31 @@ Cof_politics = {
 		}
 	}
 
+	Cof_finish_voting_ahead = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			has_country_flag = voting_can_be_finished_ahead
+			has_country_flag = voting_for_bill
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = bill_pass
+				if = {
+       				limit = { has_country_flag = bill_pass_need_434 }
+					check_variable = { agree_vote > 434 }
+				}
+				else = { check_variable = { agree_vote > 326 } }
+			}
+		}
+		cost = 20
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = Cof_voting_time_for_bill
+				days = -14
+			}
+		}
+	}
 	#大选
 	Cof_election = {
 		icon = ger_mefo_bills
@@ -3842,7 +3867,6 @@ Cof_politics = {
 			NOT = { has_country_flag = syndmode_benefit_technocrat }
 			NOT = { has_country_flag = syndmode_benefit_communist }
 		}
-		days_re_enable = 60
 		days_remove = 60
 		custom_cost_trigger = { has_army_experience > 4.99 }
 		custom_cost_text = decision_cost_ArmXP_5
@@ -3877,7 +3901,6 @@ Cof_politics = {
 			NOT = { has_country_flag = syndmode_benefit_technocrat }
 			NOT = { has_country_flag = syndmode_benefit_communist }
 		}
-		days_re_enable = 60
 		days_remove = 60
 		cost = 20
 		modifier = { political_power_factor = 0.05 }
@@ -3911,7 +3934,6 @@ Cof_politics = {
 			NOT = { has_country_flag = syndmode_benefit_anarchist }
 			NOT = { has_country_flag = syndmode_benefit_communist }
 		}
-		days_re_enable = 60
 		days_remove = 60
 		custom_cost_trigger = { check_variable = { economy_power > 19.9 } }
 		custom_cost_text = cost_ep_20
@@ -3947,7 +3969,6 @@ Cof_politics = {
 			NOT = { has_country_flag = syndmode_benefit_anarchist }
 			NOT = { has_country_flag = syndmode_benefit_technocrat }
 		}
-		days_re_enable = 60
 		days_remove = 60
 		cost = 20
 		modifier = {
@@ -5713,7 +5734,6 @@ Cof_politics = {
 			has_country_flag = syndmode_technocrat_babeltower 
 			check_variable = { syndmode_technocrats_times < 2 }
 		}
-		days_re_enable = 90
 		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
 		custom_cost_text = cost_ep_30
 		days_remove = 90
@@ -6705,7 +6725,6 @@ Cof_politics = {
 		}
 		cost = crack_down_cost
 		days_remove = 30
-		days_re_enable = 30
 		modifier = { political_power_factor = -0.05 }
 		complete_effect = {
 			custom_effect_tooltip = effect_society
@@ -6743,7 +6762,6 @@ Cof_politics = {
 		}
 		cost = crack_down_cost
 		days_remove = 30
-		days_re_enable = 30
 		modifier = { political_power_factor = -0.05 }
 		complete_effect = {
 			custom_effect_tooltip = effect_society
@@ -6781,7 +6799,6 @@ Cof_politics = {
 		}
 		cost = crack_down_cost
 		days_remove = 30
-		days_re_enable = 30
 		modifier = { political_power_factor = -0.05 }
 		complete_effect = {
 			set_temp_variable = { ssc = -1 }
@@ -6821,7 +6838,6 @@ Cof_politics = {
 		}
 		cost = crack_down_cost
 		days_remove = 30
-		days_re_enable = 30
 		modifier = { political_power_factor = -0.05 }
 		complete_effect = {
 			set_temp_variable = { ssc = 0 }
@@ -6949,7 +6965,6 @@ Cof_politics = {
 				check_variable = { technocrat_sincerity > 4 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			political_power_factor = 0.05
@@ -6989,7 +7004,6 @@ Cof_politics = {
 				check_variable = { anarchist_sincerity > 4 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			political_power_factor = 0.05
@@ -7029,7 +7043,6 @@ Cof_politics = {
 				check_variable = { communist_sincerity > 4 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			political_power_factor = 0.05
@@ -7069,7 +7082,6 @@ Cof_politics = {
 				check_variable = { sorelian_sincerity > 4 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			political_power_factor = 0.05
@@ -7334,7 +7346,6 @@ Cof_politics = {
 				check_variable = { sorelian_sincerity > 0 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			experience_gain_army_factor = 0.2
@@ -7374,7 +7385,6 @@ Cof_politics = {
 				check_variable = { anarchist_sincerity > 0 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			consumer_goods_factor = -0.15
@@ -7414,7 +7424,6 @@ Cof_politics = {
 				check_variable = { technocrat_sincerity > 0 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			economy_power_factor = 0.15
@@ -7454,7 +7463,6 @@ Cof_politics = {
 				check_variable = { communist_sincerity > 0 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			political_power_factor = 0.1
@@ -7494,7 +7502,6 @@ Cof_politics = {
 				check_variable = { mws > 50 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			monthly_change_popsw = 0.3
@@ -7535,7 +7542,6 @@ Cof_politics = {
 				check_variable = { mws > 50 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			monthly_change_eib = 0.3
@@ -7599,7 +7605,6 @@ Cof_politics = {
 				check_variable = { mws > 50 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			political_power_factor = 0.25
@@ -7633,7 +7638,6 @@ Cof_politics = {
 				check_variable = { mws > 50 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			political_power_gain = 0.5
@@ -7679,7 +7683,6 @@ Cof_politics = {
 				check_variable = { mws > 50 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			production_speed_industrial_complex_factor = 0.15
@@ -7720,7 +7723,6 @@ Cof_politics = {
 				check_variable = { mws > 50 }
 			}
 		}
-		days_re_enable = 90
 		days_remove = 90
 		modifier = { 
 			monthly_change_ev = 0.5
@@ -8108,7 +8110,6 @@ Cof_politics = {
 				check_variable = { PCOP_AFA_unity > 40 }
 			}
 		}
-		days_re_enable = 60
 		days_remove = 60
 		cost = 10
 		modifier = {
@@ -8147,7 +8148,6 @@ Cof_politics = {
 				check_variable = { PCOP_AFA_unity > 40 }
 			}
 		}
-		days_re_enable = 60
 		days_remove = 60
 		cost = 10
 		modifier = {
@@ -8249,11 +8249,10 @@ Cof_politics = {
 	Cof_jaconeos_reform_general1 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = jaco_neos_politics_landscape }
-		available = {
-			
+		visible = { 
+			has_country_flag = jaco_neos_politics_landscape 
+			NOT = { has_country_flag = technocrat_reform_no }
 		}
-		days_re_enable = 35
 		days_remove = 35
 		cost = 10
 		complete_effect = {
@@ -8274,18 +8273,20 @@ Cof_politics = {
 	Cof_jaconeos_reform_general2 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = jaco_neos_politics_landscape }
+		visible = { 
+			has_country_flag = jaco_neos_politics_landscape 
+			NOT = { has_country_flag = technocrat_reform_no }
+		}
 		available = {
 			vulgus_tendency_marquet_trigger = yes
 		}
-		days_re_enable = 35
 		days_remove = 35
 		cost = 10
 		complete_effect = {
-			set_temp_variable = { tgprc = 0 }
-			set_temp_variable = { tgotc = 0 }
-			set_temp_variable = { trpc = -10 }
-			set_temp_variable = { trec = -5 }
+			set_temp_variable = { tgprc = -10 }
+			set_temp_variable = { tgotc = -5 }
+			set_temp_variable = { trpc = 0 }
+			set_temp_variable = { trec = 0 }
 			if = {
 				limit = { has_country_flag = next_gov_action_double }
 				multiply_temp_variable = { tgprc = 2 }
@@ -8296,21 +8297,23 @@ Cof_politics = {
 			technocrat_government_var_change = yes
 		}
 	}
-	Cof_jaconeos_reform_general2 = {
+	Cof_jaconeos_reform_general3 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = jaco_neos_politics_landscape }
+		visible = { 
+			has_country_flag = jaco_neos_politics_landscape 
+			NOT = { has_country_flag = technocrat_reform_no }
+		}
 		available = {
 			moderatio_infimorum_delegate_trigger = yes
 		}
-		days_re_enable = 35
 		days_remove = 35
 		cost = 10
 		complete_effect = {
-			set_temp_variable = { tgprc = 0 }
-			set_temp_variable = { tgotc = 0 }
-			set_temp_variable = { trpc = -5 }
-			set_temp_variable = { trec = -10 }
+			set_temp_variable = { tgprc = -5 }
+			set_temp_variable = { tgotc = -10 }
+			set_temp_variable = { trpc = 0 }
+			set_temp_variable = { trec = 0 }
 			if = {
 				limit = { has_country_flag = next_gov_action_double }
 				multiply_temp_variable = { tgprc = 2 }
@@ -8322,6 +8325,96 @@ Cof_politics = {
 		}
 	}
 	
+	Cof_jaconeos_reform_adminocrats1 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = jaco_neos_politics_landscape 
+			has_completed_focus = FRA_administrative_technocrats
+			NOT = { has_country_flag = technocrat_reform_no }
+		}
+		available = {
+			CSP_dominant_faction_same_as_BGT = yes
+			set_temp_variable = { target_t = 2 }
+			Cof_bgt_vs_csp_judge = yes
+		}
+		days_remove = 35
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { tgprc = 0 }
+			set_temp_variable = { tgotc = 0 }
+			set_temp_variable = { trpc = 10 }
+			set_temp_variable = { trec = 0 }
+			if = {
+				limit = { has_country_flag = next_gov_action_double }
+				multiply_temp_variable = { tgprc = 2 }
+				multiply_temp_variable = { tgotc = 2 }
+				multiply_temp_variable = { trpc = 2 }
+				multiply_temp_variable = { trec = 2 }
+			}
+			technocrat_government_var_change = yes
+		}
+	}
+	Cof_jaconeos_reform_adminocrats2 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = jaco_neos_politics_landscape 
+			has_completed_focus = FRA_administrative_technocrats
+			NOT = { has_country_flag = technocrat_reform_no }
+		}
+		available = {
+			CSP_dominant_faction_same_as_BGT = yes
+			set_temp_variable = { target_t = 2 }
+			Cof_bgt_vs_csp_judge = yes
+		}
+		days_remove = 35
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { tgprc = 0 }
+			set_temp_variable = { tgotc = 0 }
+			set_temp_variable = { trpc = 0 }
+			set_temp_variable = { trec = 10 }
+			if = {
+				limit = { has_country_flag = next_gov_action_double }
+				multiply_temp_variable = { tgprc = 2 }
+				multiply_temp_variable = { tgotc = 2 }
+				multiply_temp_variable = { trpc = 2 }
+				multiply_temp_variable = { trec = 2 }
+			}
+			technocrat_government_var_change = yes
+		}
+	}
+	Cof_jaconeos_reform_adminocrats3 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = jaco_neos_politics_landscape 
+			has_completed_focus = FRA_administrative_technocrats
+			NOT = { has_country_flag = technocrat_reform_no }
+		}
+		available = {
+			CSP_dominant_faction_same_as_BGT = yes
+			set_temp_variable = { target_t = 2 }
+			Cof_bgt_vs_csp_judge = yes
+		}
+		days_remove = 35
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { tgprc = -10 }
+			set_temp_variable = { tgotc = -10 }
+			set_temp_variable = { trpc = 0 }
+			set_temp_variable = { trec = 0 }
+			if = {
+				limit = { has_country_flag = next_gov_action_double }
+				multiply_temp_variable = { tgprc = 2 }
+				multiply_temp_variable = { tgotc = 2 }
+				multiply_temp_variable = { trpc = 2 }
+				multiply_temp_variable = { trec = 2 }
+			}
+			technocrat_government_var_change = yes
+		}
+	}
 
 	#工会国家化
 	Cof_jaconeos_reform_syndicats1 = {
@@ -8336,7 +8429,6 @@ Cof_politics = {
 				has_completed_focus = FRA_expand_CGT
 			}
 		}
-		days_re_enable = 14
 		days_remove = 14
 		cost = 10
 		complete_effect = {
@@ -8364,7 +8456,6 @@ Cof_politics = {
 		available = {
 			has_completed_focus = FRA_weaken_CGT
 		}
-		days_re_enable = 14
 		days_remove = 14
 		cost = 10
 		complete_effect = {
@@ -8390,7 +8481,6 @@ Cof_politics = {
 		available = {
 			has_completed_focus = FRA_expand_CGT
 		}
-		days_re_enable = 14
 		days_remove = 14
 		cost = 10
 		complete_effect = {
@@ -8565,62 +8655,253 @@ Cof_politics = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = technocrat_reform_type_csp }
-		days_re_enable = 14
-		days_remove = 14
+		available = {
+			NOT = { has_country_flag = voting_for_bill }
+			has_completed_focus = FRA_first_line_feedback
+		}
+		fire_only_once = yes
 		cost = 10
 		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_independent_delegate
+			}
 			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_independent_delegate_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 2 }
+			set_temp_variable = { vtl3 = 5 } 
+			set_temp_variable = { vtl4 = 1 }
+			set_temp_variable = { vtl5 = 9 }
+			set_temp_variable = { vtl6 = 7 } 
+			set_temp_variable = { vtl7 = 2 }
+			set_temp_variable = { vtl8 = 2 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_independent_delegate
+			
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { tgprc = 0 }
+				set_temp_variable = { tgotc = 10 }
+				set_temp_variable = { trpc = 5 }
+				set_temp_variable = { trec = 10 }
+				technocrat_government_var_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { cscn = 10 }
+				set_temp_variable = { cscq = 0 }
+				set_temp_variable = { csca = 20 }
+				set_temp_variable = { csce = 20 }
+				set_temp_variable = { cscc = 5 }
+				civilservants_country_change = yes
+			}
 		}
 	}
 	Cof_jaconeos_reform_csp2 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = technocrat_reform_type_csp }
-		days_re_enable = 14
-		days_remove = 14
+		available = {
+			NOT = { has_country_flag = voting_for_bill }
+			has_political_power > 100
+		}
+		fire_only_once = yes
 		cost = 10
 		complete_effect = {
+			add_political_power = -100
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_simplified_voting_procedures
+			}
 			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_simplified_voting_procedures_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 2 }
+			set_temp_variable = { vtl3 = 5 } 
+			set_temp_variable = { vtl4 = 1 }
+			set_temp_variable = { vtl5 = 9 }
+			set_temp_variable = { vtl6 = 7 } 
+			set_temp_variable = { vtl7 = 2 }
+			set_temp_variable = { vtl8 = 2 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				add_ideas = bill_simplified_voting_procedures
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { tgprc = 10 }
+				set_temp_variable = { tgotc = 0 }
+				set_temp_variable = { trpc = 5 }
+				set_temp_variable = { trec = 10 }
+				technocrat_government_var_change = yes
+			}
 		}
 	}
 	Cof_jaconeos_reform_csp3 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = technocrat_reform_type_csp }
-		days_re_enable = 14
+		available = {
+			NOT = { has_country_flag = voting_for_bill }
+		}
+		fire_only_once = yes
+		cost = 10
+		complete_effect = {
+			add_political_power = -100
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = Cof_jaconeos_reform_csp3
+			}
+			
+			set_country_flag = voting_for_bill
+			set_country_flag = bill_chairman_authorisation_expand_vote
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { vtl1 = 6 }
+       		set_temp_variable = { vtl2 = 2 }
+			set_temp_variable = { vtl3 = 5 } 
+			set_temp_variable = { vtl4 = 1 }
+			set_temp_variable = { vtl5 = 9 }
+			set_temp_variable = { vtl6 = 7 } 
+			set_temp_variable = { vtl7 = 2 }
+			set_temp_variable = { vtl8 = 2 }
+			Cof_politics_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			activate_mission = Cof_voting_time_for_bill
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = bill_chairman_authorisation
+					add_idea = bill_chairman_authorisation_expand
+				}
+
+				set_temp_variable = { tgprc = 10 }
+				set_temp_variable = { tgotc = 10 }
+				set_temp_variable = { trpc = 10 }
+				set_temp_variable = { trec = 10 }
+				technocrat_government_var_change = yes
+			}
+		}
+	}
+
+	#公务员之国
+	Cof_jaconeos_civilservants11 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_first_line_feedback
+			has_idea = bill_chairman_authorisation	
+		}
+		fire_only_once = yes
+		cost = 25
+		complete_effect = {
+			set_temp_variable = { cscn = 5 }
+			set_temp_variable = { cscq = 10 }
+			set_temp_variable = { csca = 0 }
+			set_temp_variable = { csce = 0 }
+			set_temp_variable = { cscc = -5 }
+			civilservants_country_change = yes
+		}
+	}
+	Cof_jaconeos_civilservants12 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_first_line_feedback
+			has_idea = bill_chairman_authorisation	
+		}
+		available = {
+			vulgus_tendency_marquet_trigger = yes
+		}
+		fire_only_once = yes
+		cost = 20
+		complete_effect = {
+			set_temp_variable = { cscn = -5 }
+			set_temp_variable = { cscq = 10 }
+			set_temp_variable = { csca = 0 }
+			set_temp_variable = { csce = 0 }
+			set_temp_variable = { cscc = -5 }
+			civilservants_country_change = yes
+		}
+	}
+	Cof_jaconeos_civilservants13 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_first_line_feedback
+			has_idea = bill_chairman_authorisation	
+		}
+		available = {
+			OR = {
+				vulgus_tendency_thomas_trigger = yes
+				moderatio_infimorum_syndicat_trigger = yes
+			}
+		}
+		days_remove = 21
+		cost = 10
+		complete_effect = {
+			set_temp_variable = { cscn = 10 }
+			set_temp_variable = { cscq = -5 }
+			set_temp_variable = { csca = 5 }
+			set_temp_variable = { csce = 10 }
+			set_temp_variable = { cscc = 0 }
+			civilservants_country_change = yes
+		}
+	}
+
+	Cof_jaconeos_civilservants21 = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_completed_focus = FRA_first_line_feedback
+			NOT = { has_idea = bill_chairman_authorisation }
+		}
 		days_remove = 14
 		cost = 10
 		complete_effect = {
 			
 		}
 	}
-	Cof_jaconeos_reform_csp4 = {
+	Cof_jaconeos_civilservants22 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = technocrat_reform_type_csp }
-		days_re_enable = 14
+		visible = { 
+			has_completed_focus = FRA_first_line_feedback
+			NOT = { has_idea = bill_chairman_authorisation }
+		}
 		days_remove = 14
 		cost = 10
 		complete_effect = {
 			
 		}
 	}
-	Cof_jaconeos_reform_csp5 = {
+	Cof_jaconeos_civilservants23 = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = technocrat_reform_type_csp }
-		days_re_enable = 14
-		days_remove = 14
-		cost = 10
-		complete_effect = {
-			
+		visible = { 
+			has_completed_focus = FRA_first_line_feedback
+			NOT = { has_idea = bill_chairman_authorisation }
 		}
-	}
-	Cof_jaconeos_reform_csp6 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = technocrat_reform_type_csp }
-		days_re_enable = 14
 		days_remove = 14
 		cost = 10
 		complete_effect = {
@@ -8636,7 +8917,6 @@ Cof_politics = {
 			has_country_flag = belua_multorum_capitum_game
 		}
 		days_remove = 30
-		days_re_enable = 30
 		custom_cost_trigger = { check_variable = { economy_power > 29.9 } }
 		custom_cost_text = cost_ep_30
 		complete_effect = {
@@ -8659,7 +8939,6 @@ Cof_politics = {
 			has_country_flag = belua_multorum_capitum_game
 		}
 		days_remove = 30
-		days_re_enable = 30
 		cost = 10
 		complete_effect = {
 			set_temp_variable = { t = 3 }
@@ -8692,7 +8971,6 @@ Cof_politics = {
 			has_country_flag = belua_multorum_capitum_game
 		}
 		days_remove = 30
-		days_re_enable = 30
 		cost = 30
 		complete_effect = {
 			set_temp_variable = { t = 1 }
@@ -8725,13 +9003,129 @@ Cof_politics = {
 			has_country_flag = belua_multorum_capitum_game
 		}
 		days_remove = 60
-		days_re_enable = 60
 		cost = 30
 		complete_effect = {
 			set_temp_variable = { t = 1 }
 			vulgus_tendency_change_up = yes
 			custom_effect_tooltip = next_gov_action_double
 			set_country_flag = next_gov_action_double
+		}
+	}
+
+	Cof_jaconeos_belua_multorum_capitum_w = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+			has_country_flag = FRA_new_cooperation_theory_w
+		}
+		available = { tendency_moderatio_match = yes }
+		days_remove = 60
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = if_moderatio_infimorum_delegate
+			effect_tooltip = {
+
+			}
+			
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_commmando
+			effect_tooltip = {
+
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_syndicat
+			effect_tooltip = {
+
+			}
+		}
+	}
+	Cof_jaconeos_belua_multorum_capitum_p = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+			has_country_flag = FRA_new_cooperation_theory_p
+		}
+		available = { tendency_moderatio_match = yes }
+		days_remove = 60
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = if_moderatio_infimorum_delegate
+			effect_tooltip = {
+				
+			}
+			
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_commmando
+			effect_tooltip = {
+
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_syndicat
+			effect_tooltip = {
+
+			}
+		}
+	}
+	Cof_jaconeos_belua_multorum_capitum_m = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+			has_country_flag = FRA_new_cooperation_theory_m
+		}
+		available = { tendency_moderatio_match = yes }
+		days_remove = 60
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = if_moderatio_infimorum_delegate
+			effect_tooltip = {
+				
+			}
+			
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_commmando
+			effect_tooltip = {
+
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_syndicat
+			effect_tooltip = {
+
+			}
+		}
+	}
+	Cof_jaconeos_belua_multorum_capitum_b = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { 
+			has_country_flag = belua_multorum_capitum_game
+			has_country_flag = FRA_new_cooperation_theory_b
+		}
+		available = { tendency_moderatio_match = yes }
+		days_remove = 60
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = if_moderatio_infimorum_delegate
+			effect_tooltip = {
+				
+			}
+			
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_commmando
+			effect_tooltip = {
+
+			}
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_syndicat
+			effect_tooltip = {
+
+			}
 		}
 	}
 }

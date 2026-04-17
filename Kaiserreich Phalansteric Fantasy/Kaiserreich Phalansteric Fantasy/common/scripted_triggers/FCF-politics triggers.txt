@@ -134,54 +134,74 @@ Cof_bgt_vs_csp_judge = {
     custom_trigger_tooltip = {
         if = {
             limit = { check_variable = { target_t = 5 } }
-            check_variable = { Cof_BGT_vs_CSP_value > 90 }
-            check_variable = { Cof_BGT_vs_CSP_value = 90 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value > 90 }
+                check_variable = { Cof_BGT_vs_CSP_value = 90 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = 4 } }
-            check_variable = { Cof_BGT_vs_CSP_value > 70 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value > 70 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = 3 } }
-            check_variable = { Cof_BGT_vs_CSP_value > 50 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value > 50 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = 2 } }
-            check_variable = { Cof_BGT_vs_CSP_value > 30 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = 30 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value > 30 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = 30 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = 1 } }
-            check_variable = { Cof_BGT_vs_CSP_value > 10 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = 10 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value > 10 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = 10 } 
+            }
         }
 
         else_if = {
             limit = { check_variable = { target_t = -1 } }
-            check_variable = { Cof_BGT_vs_CSP_value < -10 }
-            check_variable = { Cof_BGT_vs_CSP_value = -10 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value < -10 }
+                check_variable = { Cof_BGT_vs_CSP_value = -10 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = -2 } }
-            check_variable = { Cof_BGT_vs_CSP_value < -30 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = -30 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value < -30 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = -30 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = -3 } }
-            check_variable = { Cof_BGT_vs_CSP_value < -50 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value < -50 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = -4 } }
-            check_variable = { Cof_BGT_vs_CSP_value < -70 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value < -70 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
+            }
         }
         else_if = {
             limit = { check_variable = { target_t = -5 } }
-            check_variable = { Cof_BGT_vs_CSP_value < 90 }
-            check_variable = { FRA.Cof_BGT_vs_CSP_value = 90 } 
+            OR = {
+                check_variable = { Cof_BGT_vs_CSP_value < 90 }
+                check_variable = { FRA.Cof_BGT_vs_CSP_value = 90 } 
+            }
         }
         tooltip = Cof_bgt_vs_csp_judge_tt
     }

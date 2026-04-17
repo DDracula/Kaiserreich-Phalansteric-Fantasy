@@ -1557,7 +1557,7 @@ ideas = {
 				political_power_factor = -0.1
 				consumer_goods_factor = 0.05
 				stability_factor = -0.1
-				global_building_slots_factor = 0.5
+				global_building_slots_factor = 0.1
 				industrial_capacity_factory = 0.03
 				production_factory_max_efficiency_factor = 0.04
 
@@ -1571,13 +1571,13 @@ ideas = {
 			modifier = {
 				political_power_factor = -0.1
 				consumer_goods_factor = 0.05
-				stability_factor = -0.1
+				stability_factor = -0.05
 				global_building_slots_factor = 0.07
 				industrial_capacity_factory = 0.04
 				production_factory_efficiency_gain_factor = 0.06
 				production_factory_max_efficiency_factor = 0.04
 
-				monthly_change_eq = -0.3
+				monthly_change_eq = -0.1
 				monthly_change_el = 0.5
 			}
 		}
@@ -2207,8 +2207,44 @@ ideas = {
 
 		#40
 		bill_chairman_authorisation = {
+			name = bill_chairman_authorisation
 			modifier = {
-				
+				political_power_gain = 0.5
+				political_advisor_cost_factor = -0.33
+				monthly_change_bgt_vs_csp = 1
+			}
+		}
+		bill_chairman_authorisation_expand = {
+			name = bill_chairman_authorisation
+			modifier = {
+				political_power_gain = 0.7
+				political_advisor_cost_factor = -0.5
+				monthly_change_bgt_vs_csp = 2
+			}
+		}
+
+		#41
+		bill_independent_delegate = {
+			modifier = {
+				political_power_factor = 0.03
+				monthly_change_bgt_vs_csp = 0.5
+				monthly_change_ios = -0.5
+				monthly_change_popsb = 0.6
+			}
+		}
+
+		#42
+		bill_simplified_voting_procedures = {
+			modifier = {
+				custom_modifier_tooltip = bill_simplified_voting_procedures_tt
+				stability_factor = -0.03
+				monthly_change_bgt_vs_csp = 0.5
+				monthly_change_ios = 0.3
+				political_power_factor = 0.02
+				monthly_change_popsw = -0.2
+				monthly_change_popsm = -0.2
+				monthly_change_popss = -0.3
+				monthly_change_popsb = 0.2
 			}
 		}
 	}

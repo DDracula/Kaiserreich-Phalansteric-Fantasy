@@ -2724,8 +2724,8 @@ bill_pass_effect = {
     }
     #《总工会正当性法案》
     if = {
-        limit = { has_country_flag = bill_CGT_pluralistic_vote }
-        clr_country_flag = bill_CGT_pluralistic_vote
+        limit = { has_country_flag = bill_CGT_legitimacy_vote }
+        clr_country_flag = bill_CGT_legitimacy_vote
         swap_ideas = {
             remove_idea = bill_CGT_leadership
             add_idea = bill_CGT_legitimacy
@@ -2958,6 +2958,14 @@ bill_pass_effect = {
 
         custom_effect_tooltip = tooltip_white_line
         custom_effect_tooltip = effect_economy
+        set_temp_variable = { ecc = 0 }
+        set_temp_variable = { emc = 0 }
+        set_temp_variable = { epc = 1 }
+        set_temp_variable = { eoc = 1 }
+        Cof_economy_model_change = yes 
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { epc = 0 }
         set_temp_variable = { evc = 5 }
         set_temp_variable = { eibc = 0 }
         set_temp_variable = { eipc = 2.5 }
@@ -2968,7 +2976,7 @@ bill_pass_effect = {
         set_temp_variable = { eqc = -3 }
         set_temp_variable = { elc = 2.5 }
         set_temp_variable = { eic = 0 }
-        cof_econ_target_change = yes    
+        cof_econ_target_change = yes   
     }
     #《《工会-公社一体化法案》
     if = {
@@ -4040,6 +4048,58 @@ bill_pass_effect = {
 
         hidden_effect = { country_event = { id = cofpolitics.199 days = 3 } }
     }
+    #独立官僚委派员
+    if = {
+        limit = { has_country_flag = bill_independent_delegate_vote }
+        clr_country_flag = bill_independent_delegate_vote
+        add_ideas = bill_independent_delegate
+        add_to_array = { array = FRA.cof_social_bills value = 41 }
+    
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { tgprc = 0 }
+        set_temp_variable = { tgotc = 10 }
+        set_temp_variable = { trpc = 5 }
+        set_temp_variable = { trec = 10 }
+        technocrat_government_var_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { cscn = 10 }
+        set_temp_variable = { cscq = 0 }
+        set_temp_variable = { csca = 20 }
+        set_temp_variable = { csce = 20 }
+        set_temp_variable = { cscc = 5 }
+        civilservants_country_change = yes
+    }
+    #简化投票程序
+    if = {
+        limit = { has_country_flag = bill_simplified_voting_procedures_vote }
+        clr_country_flag = bill_simplified_voting_procedures_vote
+        add_ideas = bill_simplified_voting_procedures
+        add_to_array = { array = FRA.cof_social_bills value = 42 }
+
+        set_country_flag = voting_can_be_finished_ahead
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { tgprc = 10 }
+        set_temp_variable = { tgotc = 0 }
+        set_temp_variable = { trpc = 5 }
+        set_temp_variable = { trec = 10 }
+        technocrat_government_var_change = yes
+    }
+    #减少主席令限制
+    if = {
+        limit = { has_country_flag = bill_chairman_authorisation_expand_vote }
+        clr_country_flag = bill_chairman_authorisation_expand_vote
+        swap_ideas = {
+            remove_idea = bill_chairman_authorisation
+            add_idea = bill_chairman_authorisation_expand
+        }
+
+        set_temp_variable = { tgprc = 10 }
+        set_temp_variable = { tgotc = 10 }
+        set_temp_variable = { trpc = 10 }
+        set_temp_variable = { trec = 10 }
+        technocrat_government_var_change = yes
+    }
 }
 
 bill_not_pass_effect = {
@@ -4298,6 +4358,21 @@ bill_not_pass_effect = {
         limit = { has_country_flag = bill_chairman_authorisation_vote }
         clr_country_flag = bill_chairman_authorisation
         hidden_effect = { country_event = { id = cofpolitics.198 days = 4 } }
+    }
+    #独立官僚委派员
+    if = {
+        limit = { has_country_flag = bill_independent_delegate_vote }
+        clr_country_flag = bill_independent_delegate_vote
+    }
+    #简化投票程序
+    if = {
+        limit = { has_country_flag = bill_simplified_voting_procedures_vote }
+        clr_country_flag = bill_simplified_voting_procedures_vote
+    }
+    #减少主席令限制
+    if = {
+        limit = { has_country_flag = bill_chairman_authorisation_expand_vote }
+        clr_country_flag = bill_chairman_authorisation_expand_vote
     }
 }
 
@@ -4918,11 +4993,11 @@ DFA_trait_synd_mode_get = {
     else = {
         set_country_flag = DFA_trait_synd_mode_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
+        set_temp_variable = { iri_euic = 20 }
         set_temp_variable = { iri_asic = 0 }
-        set_temp_variable = { iri_meic = 0 }
+        set_temp_variable = { iri_meic = 10 }
         set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_amic = 20 }
         iri_influence_change = yes
     }
 }
@@ -4944,11 +5019,11 @@ DFA_trait_synd_radi_get = {
     else = {
         set_country_flag = DFA_trait_synd_radi_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
-        set_temp_variable = { iri_asic = 0 }
-        set_temp_variable = { iri_meic = 0 }
-        set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_euic = 15 }
+        set_temp_variable = { iri_asic = 5 }
+        set_temp_variable = { iri_meic = 10 }
+        set_temp_variable = { iri_afic = 5 }
+        set_temp_variable = { iri_amic = 15 }
         iri_influence_change = yes
     }
 }
@@ -4970,11 +5045,11 @@ DFA_trait_oppo_comm_get = {
     else = {
         set_country_flag = DFA_trait_oppo_comm_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
-        set_temp_variable = { iri_asic = 0 }
-        set_temp_variable = { iri_meic = 0 }
-        set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_euic = 10 }
+        set_temp_variable = { iri_asic = 10 }
+        set_temp_variable = { iri_meic = 10 }
+        set_temp_variable = { iri_afic = 10 }
+        set_temp_variable = { iri_amic = 10 }
         iri_influence_change = yes
     }
 }
@@ -4996,11 +5071,11 @@ DFA_trait_oppo_anar_get = {
     else = {
         set_country_flag = DFA_trait_oppo_anar_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
-        set_temp_variable = { iri_asic = 0 }
-        set_temp_variable = { iri_meic = 0 }
-        set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_euic = 5 }
+        set_temp_variable = { iri_asic = 15 }
+        set_temp_variable = { iri_meic = 10 }
+        set_temp_variable = { iri_afic = 15 }
+        set_temp_variable = { iri_amic = 5 }
         iri_influence_change = yes
     }
 }
@@ -5022,11 +5097,11 @@ DFA_trait_jaco_neos_get = {
     else = {
         set_country_flag = DFA_trait_jaco_neos_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
+        set_temp_variable = { iri_euic = 30 }
         set_temp_variable = { iri_asic = 0 }
-        set_temp_variable = { iri_meic = 0 }
+        set_temp_variable = { iri_meic = 10 }
         set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_amic = 10 }
         iri_influence_change = yes
     }
 }
@@ -5048,11 +5123,11 @@ DFA_trait_jaco_revo_get = {
     else = {
         set_country_flag = DFA_trait_jaco_revo_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
+        set_temp_variable = { iri_euic = 40 }
         set_temp_variable = { iri_asic = 0 }
         set_temp_variable = { iri_meic = 0 }
         set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_amic = 10 }
         iri_influence_change = yes
     }
 }
@@ -5074,11 +5149,11 @@ DFA_trait_sore_oldl_get = {
     else = {
         set_country_flag = DFA_trait_sore_oldl_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
-        set_temp_variable = { iri_asic = 0 }
-        set_temp_variable = { iri_meic = 0 }
-        set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_euic = 15 }
+        set_temp_variable = { iri_asic = 5 }
+        set_temp_variable = { iri_meic = 5 }
+        set_temp_variable = { iri_afic = 20 }
+        set_temp_variable = { iri_amic = 5 }
         iri_influence_change = yes
     }
 }
@@ -5100,11 +5175,11 @@ DFA_trait_sore_yout_get = {
     else = {
         set_country_flag = DFA_trait_sore_yout_got
         custom_effect_tooltip = effect_internation
-        set_temp_variable = { iri_euic = 0 }
-        set_temp_variable = { iri_asic = 0 }
-        set_temp_variable = { iri_meic = 0 }
-        set_temp_variable = { iri_afic = 0 }
-        set_temp_variable = { iri_amic = 0 }
+        set_temp_variable = { iri_euic = 15 }
+        set_temp_variable = { iri_asic = 5 }
+        set_temp_variable = { iri_meic = 10 }
+        set_temp_variable = { iri_afic = 5 }
+        set_temp_variable = { iri_amic = 15 }
         iri_influence_change = yes
     }
 }
@@ -5134,19 +5209,19 @@ DEA_trait_synd_mode_get = {
         econ_faction_influence_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { ecc = 0 }
+        set_temp_variable = { ecc = 1 }
         set_temp_variable = { emc = 0 }
         set_temp_variable = { epc = 0 }
         set_temp_variable = { eoc = 0 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
+        set_temp_variable = { eibc = 4 }
+        set_temp_variable = { eipc = 4 }
         set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
+        set_temp_variable = { eamc = 2 }
         set_temp_variable = { eaec = 0 }
         set_temp_variable = { eaac = 0 }
         set_temp_variable = { eqc = 0 }
@@ -5180,23 +5255,23 @@ DEA_trait_synd_radi_get = {
         econ_faction_influence_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { ecc = 0 }
+        set_temp_variable = { ecc = 1 }
         set_temp_variable = { emc = 0 }
         set_temp_variable = { epc = 0 }
         set_temp_variable = { eoc = 0 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
+        set_temp_variable = { eibc = 2 }
+        set_temp_variable = { eipc = 4 }
         set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
+        set_temp_variable = { eamc = 2 }
         set_temp_variable = { eaec = 0 }
         set_temp_variable = { eaac = 0 }
         set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
+        set_temp_variable = { elc = 2 }
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
@@ -5227,23 +5302,23 @@ DEA_trait_oppo_comm_get = {
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { ecc = 0 }
-        set_temp_variable = { emc = 0 }
+        set_temp_variable = { emc = 1 }
         set_temp_variable = { epc = 0 }
         set_temp_variable = { eoc = 0 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
+        set_temp_variable = { eibc = 2 }
+        set_temp_variable = { eipc = 2 }
         set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
+        set_temp_variable = { eamc = 2 }
         set_temp_variable = { eaec = 0 }
         set_temp_variable = { eaac = 0 }
         set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 0 }
+        set_temp_variable = { elc = 2 }
+        set_temp_variable = { eic = 2 }
         cof_econ_target_change = yes
     }
 }
@@ -5273,23 +5348,23 @@ DEA_trait_oppo_anar_get = {
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { ecc = 0 }
-        set_temp_variable = { emc = 0 }
+        set_temp_variable = { emc = 1 }
         set_temp_variable = { epc = 0 }
         set_temp_variable = { eoc = 0 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
+        set_temp_variable = { eibc = 2 }
         set_temp_variable = { eipc = 0 }
         set_temp_variable = { eiac = 0 }
         set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
+        set_temp_variable = { eaec = 2 }
         set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 0 }
+        set_temp_variable = { eqc = 2 }
+        set_temp_variable = { elc = 2 }
+        set_temp_variable = { eic = 2 }
         cof_econ_target_change = yes
     }
 }
@@ -5320,21 +5395,21 @@ DEA_trait_jaco_neos_get = {
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { ecc = 0 }
         set_temp_variable = { emc = 0 }
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 1 }
         set_temp_variable = { eoc = 0 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
+        set_temp_variable = { eibc = 4 }
+        set_temp_variable = { eipc = 2 }
         set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
+        set_temp_variable = { eamc = 2 }
         set_temp_variable = { eaec = 0 }
         set_temp_variable = { eaac = 0 }
         set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
+        set_temp_variable = { elc = 2 }
         set_temp_variable = { eic = 0 }
         cof_econ_target_change = yes
     }
@@ -5366,19 +5441,19 @@ DEA_trait_jaco_revo_get = {
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { ecc = 0 }
         set_temp_variable = { emc = 0 }
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 1 }
         set_temp_variable = { eoc = 0 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
+        set_temp_variable = { eibc = 2 }
+        set_temp_variable = { eipc = 2 }
+        set_temp_variable = { eiac = 2 }
         set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
+        set_temp_variable = { eaec = 2 }
+        set_temp_variable = { eaac = 2 }
         set_temp_variable = { eqc = 0 }
         set_temp_variable = { elc = 0 }
         set_temp_variable = { eic = 0 }
@@ -5413,17 +5488,17 @@ DEA_trait_sore_oldl_get = {
         set_temp_variable = { ecc = 0 }
         set_temp_variable = { emc = 0 }
         set_temp_variable = { epc = 0 }
-        set_temp_variable = { eoc = 0 }
+        set_temp_variable = { eoc = 1 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
+        set_temp_variable = { eibc = 3 }
         set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
+        set_temp_variable = { eiac = 3 }
+        set_temp_variable = { eamc = 2 }
+        set_temp_variable = { eaec = 2 }
         set_temp_variable = { eaac = 0 }
         set_temp_variable = { eqc = 0 }
         set_temp_variable = { elc = 0 }
@@ -5459,17 +5534,17 @@ DEA_trait_sore_yout_get = {
         set_temp_variable = { ecc = 0 }
         set_temp_variable = { emc = 0 }
         set_temp_variable = { epc = 0 }
-        set_temp_variable = { eoc = 0 }
+        set_temp_variable = { eoc = 1 }
         Cof_economy_model_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { epc = 0 }
+        set_temp_variable = { epc = 20 }
         set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
+        set_temp_variable = { eibc = 3 }
         set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
+        set_temp_variable = { eiac = 5 }
         set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
+        set_temp_variable = { eaec = 2 }
         set_temp_variable = { eaac = 0 }
         set_temp_variable = { eqc = 0 }
         set_temp_variable = { elc = 0 }
@@ -5505,9 +5580,9 @@ DIS_trait_synd_mode_get = {
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 0 }
-        set_temp_variable = { pc = 0 }
-        set_temp_variable = { mc = 0 }
+        set_temp_variable = { wc = 4 }
+        set_temp_variable = { pc = 1 }
+        set_temp_variable = { mc = 1 }
         set_temp_variable = { sc = 0 }
         set_temp_variable = { bc = 0 }
         set_temp_variable = { ac = 0 }
@@ -5515,10 +5590,10 @@ DIS_trait_synd_mode_get = {
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_syndc = 3 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5540,29 +5615,37 @@ DIS_trait_synd_radi_get = {
     else = {
         set_country_flag = DIS_trait_synd_radi_got
         custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = 0 }
+        set_temp_variable = { pop_wc = 2 }
         set_temp_variable = { pop_pc = 0 }
         set_temp_variable = { pop_mc = 0 }
         set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 0 }
+        set_temp_variable = { pop_bc = -2 }
         set_temp_variable = { pop_ac = 0 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 0 }
+        set_temp_variable = { wc = 6 }
         set_temp_variable = { pc = 0 }
         set_temp_variable = { mc = 0 }
-        set_temp_variable = { sc = 0 }
-        set_temp_variable = { bc = 0 }
+        set_temp_variable = { sc = 1 }
+        set_temp_variable = { bc = -1 }
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_syndc = 6 }
+        set_temp_variable = { pop_oppoc = -2 }
+        set_temp_variable = { pop_jacoc = -2 }
+        set_temp_variable = { pop_sorec = -2 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = 3 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5584,29 +5667,53 @@ DIS_trait_oppo_comm_get = {
     else = {
         set_country_flag = DIS_trait_oppo_comm_got
         custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = 0 }
-        set_temp_variable = { pop_pc = 0 }
-        set_temp_variable = { pop_mc = 0 }
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = 1 }
+        set_temp_variable = { pop_mc = 1 }
         set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 0 }
+        set_temp_variable = { pop_bc = -1 }
         set_temp_variable = { pop_ac = 0 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 0 }
-        set_temp_variable = { pc = 0 }
-        set_temp_variable = { mc = 0 }
-        set_temp_variable = { sc = 0 }
+        set_temp_variable = { wc = 1 }
+        set_temp_variable = { pc = 2 }
+        set_temp_variable = { mc = 2 }
+        set_temp_variable = { sc = 1 }
         set_temp_variable = { bc = 0 }
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 2 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 3 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+        
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5629,28 +5736,60 @@ DIS_trait_oppo_anar_get = {
         set_country_flag = DIS_trait_oppo_anar_got
         custom_effect_tooltip = effect_society
         set_temp_variable = { pop_wc = 0 }
-        set_temp_variable = { pop_pc = 0 }
-        set_temp_variable = { pop_mc = 0 }
+        set_temp_variable = { pop_pc = 1 }
+        set_temp_variable = { pop_mc = 1 }
         set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 0 }
+        set_temp_variable = { pop_bc = -2 }
         set_temp_variable = { pop_ac = 0 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 0 }
-        set_temp_variable = { pc = 0 }
-        set_temp_variable = { mc = 0 }
-        set_temp_variable = { sc = 0 }
-        set_temp_variable = { bc = 0 }
+        set_temp_variable = { wc = 1 }
+        set_temp_variable = { pc = 3 }
+        set_temp_variable = { mc = 2 }
+        set_temp_variable = { sc = 2 }
+        set_temp_variable = { bc = -2 }
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 2 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 3 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 5 }    
+        set_temp_variable = { pop_syndc = 1 }
+        set_temp_variable = { pop_oppoc = -3 }
+        set_temp_variable = { pop_jacoc = 1 }
+        set_temp_variable = { pop_sorec = 1 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5672,29 +5811,37 @@ DIS_trait_jaco_neos_get = {
     else = {
         set_country_flag = DIS_trait_jaco_neos_got
         custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = 0 }
-        set_temp_variable = { pop_pc = 0 }
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = -1 }
         set_temp_variable = { pop_mc = 0 }
-        set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 0 }
-        set_temp_variable = { pop_ac = 0 }
+        set_temp_variable = { pop_sc = 1 }
+        set_temp_variable = { pop_bc = 2 }
+        set_temp_variable = { pop_ac = -1 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { wc = 0 }
         set_temp_variable = { pc = 0 }
         set_temp_variable = { mc = 0 }
-        set_temp_variable = { sc = 0 }
-        set_temp_variable = { bc = 0 }
+        set_temp_variable = { sc = 2 }
+        set_temp_variable = { bc = 4 }
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 5 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5716,18 +5863,18 @@ DIS_trait_jaco_revo_get = {
     else = {
         set_country_flag = DIS_trait_jaco_revo_got
         custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = 0 }
-        set_temp_variable = { pop_pc = 0 }
-        set_temp_variable = { pop_mc = 0 }
-        set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 0 }
+        set_temp_variable = { pop_wc = -1 }
+        set_temp_variable = { pop_pc = 2 }
+        set_temp_variable = { pop_mc = 1 }
+        set_temp_variable = { pop_sc = -1 }
+        set_temp_variable = { pop_bc = -1 }
         set_temp_variable = { pop_ac = 0 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 0 }
-        set_temp_variable = { pc = 0 }
-        set_temp_variable = { mc = 0 }
+        set_temp_variable = { wc = 2 }
+        set_temp_variable = { pc = 2 }
+        set_temp_variable = { mc = 2 }
         set_temp_variable = { sc = 0 }
         set_temp_variable = { bc = 0 }
         set_temp_variable = { ac = 0 }
@@ -5735,10 +5882,26 @@ DIS_trait_jaco_revo_get = {
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 2 }    
+        set_temp_variable = { pop_syndc = -2 }
+        set_temp_variable = { pop_oppoc = -2 }
+        set_temp_variable = { pop_jacoc = 6 }
+        set_temp_variable = { pop_sorec = -2 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 3 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5764,8 +5927,8 @@ DIS_trait_sore_oldl_get = {
         set_temp_variable = { pop_pc = 0 }
         set_temp_variable = { pop_mc = 0 }
         set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 0 }
-        set_temp_variable = { pop_ac = 0 }
+        set_temp_variable = { pop_bc = -2 }
+        set_temp_variable = { pop_ac = 2 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
@@ -5774,15 +5937,31 @@ DIS_trait_sore_oldl_get = {
         set_temp_variable = { mc = 0 }
         set_temp_variable = { sc = 0 }
         set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = 0 }
+        set_temp_variable = { ac = 6 }
         class_pop_satisfactions_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_target = 6 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 7 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 8 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5807,26 +5986,26 @@ DIS_trait_sore_yout_get = {
         set_temp_variable = { pop_wc = 0 }
         set_temp_variable = { pop_pc = 0 }
         set_temp_variable = { pop_mc = 0 }
-        set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 0 }
-        set_temp_variable = { pop_ac = 0 }
+        set_temp_variable = { pop_sc = 2 }
+        set_temp_variable = { pop_bc = -1 }
+        set_temp_variable = { pop_ac = -1 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { wc = 0 }
         set_temp_variable = { pc = 0 }
         set_temp_variable = { mc = 0 }
-        set_temp_variable = { sc = 0 }
+        set_temp_variable = { sc = 6 }
         set_temp_variable = { bc = 0 }
         set_temp_variable = { ac = 0 }
         class_pop_satisfactions_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { pop_target = 1 }    
-        set_temp_variable = { pop_syndc = 0 }
-        set_temp_variable = { pop_oppoc = 0 }
-        set_temp_variable = { pop_jacoc = 0 }
-        set_temp_variable = { pop_sorec = 0 }
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
         class_pop_faction_tendency_change = yes
     }
 }
@@ -5848,6 +6027,30 @@ DCA_trait_synd_mode_get = {
     if = { limit = { has_country_flag = DCA_trait_synd_mode_got } }
     else = {
         set_country_flag = DCA_trait_synd_mode_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 1 }
+        set_temp_variable = { pc = 1 }
+        set_temp_variable = { mc = 1 }
+        set_temp_variable = { sc = 1 }
+        set_temp_variable = { bc = 1 }
+        set_temp_variable = { ac = 1 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 1 }    
+        set_temp_variable = { pop_syndc = 3 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = 3 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
     }
 }
 DCA_trait_synd_radi_get = {
@@ -5867,6 +6070,30 @@ DCA_trait_synd_radi_get = {
     if = { limit = { has_country_flag = DCA_trait_synd_radi_got } }
     else = {
         set_country_flag = DCA_trait_synd_radi_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 2 }
+        set_temp_variable = { pc = 0 }
+        set_temp_variable = { mc = 0 }
+        set_temp_variable = { sc = 2 }
+        set_temp_variable = { bc = 1 }
+        set_temp_variable = { ac = 1 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 1 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
+        class_pop_faction_tendency_change = yes
     }
 }
 DCA_trait_oppo_comm_get = {
@@ -5886,6 +6113,30 @@ DCA_trait_oppo_comm_get = {
     if = { limit = { has_country_flag = DCA_trait_oppo_comm_got } }
     else = {
         set_country_flag = DCA_trait_oppo_comm_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 1 }
+        set_temp_variable = { pc = 2 }
+        set_temp_variable = { mc = 2 }
+        set_temp_variable = { sc = 1 }
+        set_temp_variable = { bc = 0 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 2 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 3 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
     }
 }
 DCA_trait_oppo_anar_get = {
@@ -5905,6 +6156,38 @@ DCA_trait_oppo_anar_get = {
     if = { limit = { has_country_flag = DCA_trait_oppo_anar_got } }
     else = {
         set_country_flag = DCA_trait_oppo_anar_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 1 }
+        set_temp_variable = { pc = 2 }
+        set_temp_variable = { mc = 2 }
+        set_temp_variable = { sc = 2 }
+        set_temp_variable = { bc = -1 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 2 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 3 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = 3 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
     }
 }
 DCA_trait_jaco_neos_get = {
@@ -5924,6 +6207,30 @@ DCA_trait_jaco_neos_get = {
     if = { limit = { has_country_flag = DCA_trait_jaco_neos_got } }
     else = {
         set_country_flag = DCA_trait_jaco_neos_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 0 }
+        set_temp_variable = { pc = 0 }
+        set_temp_variable = { mc = 1 }
+        set_temp_variable = { sc = 2 }
+        set_temp_variable = { bc = 3 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 5 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
     }
 }
 DCA_trait_jaco_revo_get = {
@@ -5943,6 +6250,38 @@ DCA_trait_jaco_revo_get = {
     if = { limit = { has_country_flag = DCA_trait_jaco_revo_got } }
     else = {
         set_country_flag = DCA_trait_jaco_revo_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 2 }
+        set_temp_variable = { pc = 2 }
+        set_temp_variable = { mc = 3 }
+        set_temp_variable = { sc = -1 }
+        set_temp_variable = { bc = 0 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 1 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 2 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 3 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = 3 }
+        set_temp_variable = { pop_sorec = -1 }
+        class_pop_faction_tendency_change = yes
     }
 }
 DCA_trait_sore_oldl_get = {
@@ -5962,6 +6301,38 @@ DCA_trait_sore_oldl_get = {
     if = { limit = { has_country_flag = DCA_trait_sore_oldl_got } }
     else = {
         set_country_flag = DCA_trait_sore_oldl_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 1 }
+        set_temp_variable = { pc = 1 }
+        set_temp_variable = { mc = 0 }
+        set_temp_variable = { sc = 1 }
+        set_temp_variable = { bc = -1 }
+        set_temp_variable = { ac = 4 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 6 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 7 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
+        class_pop_faction_tendency_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 8 }    
+        set_temp_variable = { pop_syndc = -1 }
+        set_temp_variable = { pop_oppoc = -1 }
+        set_temp_variable = { pop_jacoc = -1 }
+        set_temp_variable = { pop_sorec = 3 }
+        class_pop_faction_tendency_change = yes
     }
 }
 DCA_trait_sore_yout_get = {
@@ -5981,6 +6352,22 @@ DCA_trait_sore_yout_get = {
     if = { limit = { has_country_flag = DCA_trait_sore_yout_got } }
     else = {
         set_country_flag = DCA_trait_sore_yout_got
+        custom_effect_tooltip = effect_society
+        set_temp_variable = { wc = 0 }
+        set_temp_variable = { pc = 0 }
+        set_temp_variable = { mc = 0 }
+        set_temp_variable = { sc = 6 }
+        set_temp_variable = { bc = 0 }
+        set_temp_variable = { ac = 0 }
+        class_pop_satisfactions_change = yes
+
+        custom_effect_tooltip = tooltip_white_line
+        set_temp_variable = { pop_target = 4 }    
+        set_temp_variable = { pop_syndc = -2 }
+        set_temp_variable = { pop_oppoc = -2 }
+        set_temp_variable = { pop_jacoc = -2 }
+        set_temp_variable = { pop_sorec = 6 }
+        class_pop_faction_tendency_change = yes
     }
 }
 # CGSC
@@ -6051,9 +6438,9 @@ CGSC_trait_synd_mode_get = {
         Cof_army_theory_implementation_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { aac = 0 }
+        set_temp_variable = { aac = 1 }
         set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
+        set_temp_variable = { atc = 4 }
         set_temp_variable = { aec = 0 }
         set_temp_variable = { apc = 0 }
         Cof_army_reform_values_change = yes
@@ -6085,9 +6472,9 @@ CGSC_trait_synd_radi_get = {
     else = {
         set_country_flag = CGSC_trait_synd_radi_got
         custom_effect_tooltip = effect_military
-        set_temp_variable = { pop_aoc = 0 }
-        set_temp_variable = { pop_anc = 0 }
-        set_temp_variable = { pop_asc = 0 }
+        set_temp_variable = { pop_aoc = 0.5 }
+        set_temp_variable = { pop_anc = 0.5 }
+        set_temp_variable = { pop_asc = -1 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
@@ -6126,10 +6513,10 @@ CGSC_trait_synd_radi_get = {
         Cof_army_theory_implementation_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { aac = 0 }
+        set_temp_variable = { aac = 1 }
         set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
-        set_temp_variable = { aec = 0 }
+        set_temp_variable = { atc = 3 }
+        set_temp_variable = { aec = 1 }
         set_temp_variable = { apc = 0 }
         Cof_army_reform_values_change = yes
     }
@@ -6160,9 +6547,9 @@ CGSC_trait_oppo_comm_get = {
     else = {
         set_country_flag = CGSC_trait_oppo_comm_got
         custom_effect_tooltip = effect_military
-        set_temp_variable = { pop_aoc = 0 }
-        set_temp_variable = { pop_anc = 0 }
-        set_temp_variable = { pop_asc = 0 }
+        set_temp_variable = { pop_aoc = -2 }
+        set_temp_variable = { pop_anc = 1 }
+        set_temp_variable = { pop_asc = 1 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
@@ -6201,11 +6588,11 @@ CGSC_trait_oppo_comm_get = {
         Cof_army_theory_implementation_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { aac = 0 }
-        set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
+        set_temp_variable = { aac = -2 }
+        set_temp_variable = { awc = 4 }
+        set_temp_variable = { atc = 2 }
         set_temp_variable = { aec = 0 }
-        set_temp_variable = { apc = 0 }
+        set_temp_variable = { apc = 1 }
         Cof_army_reform_values_change = yes
     }
 }
@@ -6235,9 +6622,9 @@ CGSC_trait_oppo_anar_get = {
     else = {
         set_country_flag = CGSC_trait_oppo_anar_got
         custom_effect_tooltip = effect_military
-        set_temp_variable = { pop_aoc = 0 }
-        set_temp_variable = { pop_anc = 0 }
-        set_temp_variable = { pop_asc = 0 }
+        set_temp_variable = { pop_aoc = -2 }
+        set_temp_variable = { pop_anc = 0.5 }
+        set_temp_variable = { pop_asc = 1.5 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
@@ -6277,9 +6664,9 @@ CGSC_trait_oppo_anar_get = {
 
         custom_effect_tooltip = tooltip_white_line
         set_temp_variable = { aac = 0 }
-        set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
-        set_temp_variable = { aec = 0 }
+        set_temp_variable = { awc = 2 }
+        set_temp_variable = { atc = 1 }
+        set_temp_variable = { aec = 2 }
         set_temp_variable = { apc = 0 }
         Cof_army_reform_values_change = yes
     }
@@ -6310,9 +6697,9 @@ CGSC_trait_jaco_neos_get = {
     else = {
         set_country_flag = CGSC_trait_jaco_neos_got
         custom_effect_tooltip = effect_military
-        set_temp_variable = { pop_aoc = 0 }
-        set_temp_variable = { pop_anc = 0 }
-        set_temp_variable = { pop_asc = 0 }
+        set_temp_variable = { pop_aoc = 2 }
+        set_temp_variable = { pop_anc = -1 }
+        set_temp_variable = { pop_asc = -1 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
@@ -6351,10 +6738,10 @@ CGSC_trait_jaco_neos_get = {
         Cof_army_theory_implementation_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { aac = 0 }
+        set_temp_variable = { aac = 2 }
         set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
-        set_temp_variable = { aec = 0 }
+        set_temp_variable = { atc = 1 }
+        set_temp_variable = { aec = 2 }
         set_temp_variable = { apc = 0 }
         Cof_army_reform_values_change = yes
     }
@@ -6385,9 +6772,9 @@ CGSC_trait_jaco_revo_get = {
     else = {
         set_country_flag = CGSC_trait_jaco_revo_got
         custom_effect_tooltip = effect_military
-        set_temp_variable = { pop_aoc = 0 }
-        set_temp_variable = { pop_anc = 0 }
-        set_temp_variable = { pop_asc = 0 }
+        set_temp_variable = { pop_aoc = -1 }
+        set_temp_variable = { pop_anc = 0.5 }
+        set_temp_variable = { pop_asc = 0.5 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
@@ -6419,9 +6806,9 @@ CGSC_trait_jaco_revo_get = {
         Cof_army_theory_implementation_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { aac = 0 }
-        set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
+        set_temp_variable = { aac = 1 }
+        set_temp_variable = { awc = 2 }
+        set_temp_variable = { atc = 2 }
         set_temp_variable = { aec = 0 }
         set_temp_variable = { apc = 0 }
         Cof_army_reform_values_change = yes
@@ -6453,9 +6840,9 @@ CGSC_trait_sore_oldl_get = {
     else = {
         set_country_flag = CGSC_trait_sore_oldl_got
         custom_effect_tooltip = effect_military
-        set_temp_variable = { pop_aoc = 0 }
-        set_temp_variable = { pop_anc = 0 }
-        set_temp_variable = { pop_asc = 0 }
+        set_temp_variable = { pop_aoc = 0.5 }
+        set_temp_variable = { pop_anc = 0.5 }
+        set_temp_variable = { pop_asc = -1 }
         class_pop_change = yes
 
         custom_effect_tooltip = tooltip_white_line
@@ -6494,11 +6881,11 @@ CGSC_trait_sore_oldl_get = {
         Cof_army_theory_implementation_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { aac = 0 }
-        set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
+        set_temp_variable = { aac = -2 }
+        set_temp_variable = { awc = 2 }
+        set_temp_variable = { atc = 2 }
         set_temp_variable = { aec = 0 }
-        set_temp_variable = { apc = 0 }
+        set_temp_variable = { apc = 2 }
         Cof_army_reform_values_change = yes
     }
 }
@@ -6524,8 +6911,8 @@ CGSC_trait_sore_yout_get = {
     else = {
         set_country_flag = CGSC_trait_sore_yout_got
         custom_effect_tooltip = effect_military
-        set_temp_variable = { pop_aoc = 0 }
-        set_temp_variable = { pop_anc = 0 }
+        set_temp_variable = { pop_aoc = 1 }
+        set_temp_variable = { pop_anc = -1 }
         set_temp_variable = { pop_asc = 0 }
         class_pop_change = yes
 
@@ -6558,9 +6945,9 @@ CGSC_trait_sore_yout_get = {
         Cof_army_theory_implementation_change = yes
 
         custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { aac = 0 }
-        set_temp_variable = { awc = 0 }
-        set_temp_variable = { atc = 0 }
+        set_temp_variable = { aac = 3 }
+        set_temp_variable = { awc = 1 }
+        set_temp_variable = { atc = 1 }
         set_temp_variable = { aec = 0 }
         set_temp_variable = { apc = 0 }
         Cof_army_reform_values_change = yes
@@ -10771,20 +11158,20 @@ technocrat_reform_mission_ing = {
         set_temp_variable = { trec = 0 }
         if = {
             limit = { vulgus_tendency_marquet_trigger = yes }
-            add_to_temp_variable = { trec = 5 }
+            add_to_temp_variable = { trec = 2 }
         }
         else_if = {
             limit = { vulgus_tendency_doriot_trigger = yes }
-            add_to_temp_variable = { trec = 2 }
+            add_to_temp_variable = { trec = 1 }
         }
 
         if = {
             limit = { moderatio_infimorum_delegate_trigger = yes }
-            add_to_temp_variable = { trec = 5 }
+            add_to_temp_variable = { trec = 3 }
         }
         else_if = {
             limit = { moderatio_infimorum_syndicat_trigger = yes }
-            add_to_temp_variable = { trec = -3 }
+            add_to_temp_variable = { trec = -2 }
         }
 
         if = {
@@ -10796,6 +11183,42 @@ technocrat_reform_mission_ing = {
             }
             add_to_temp_variable = { trec = 3 }
         }
+    }
+
+    if = {  
+        limit = { has_country_flag = technocrat_reform_type_csp }
+        if = {
+            limit = {
+                set_temp_variable = { target_t = 3 }
+			    Cof_bgt_vs_csp_judge = yes
+            }
+            set_temp_variable = { trpc = 3 }
+        }
+        else_if = {
+            limit = {
+                set_temp_variable = { target_t = -1 }
+			    Cof_bgt_vs_csp_judge = yes
+            }
+            set_temp_variable = { trpc = -3 }
+        }
+        else = { set_temp_variable = { trpc = 0 } }
+        if = {
+            limit = { check_variable = { csc_level > 60 } }
+            add_to_temp_variable = { trpc = 3 }
+        }
+        else_if = {
+            limit = { check_variable = { csc_level > 30 } }
+            add_to_temp_variable = { trpc = 1 }
+        }
+
+        if = {
+            limit = { check_variable = { csc_level > 60 } }
+            set_temp_variable = { trec = 3 }
+        }
+        else_if = {
+            limit = { check_variable = { csc_level > 30 } }
+            set_temp_variable = { trec = 1 }
+        } 
     }
 
 
@@ -10829,11 +11252,7 @@ technocrat_reform_mission_effect = {
         limit = { has_country_flag = technocrat_reform_type_syndicats }
         clr_country_flag = technocrat_reform_type_syndicats
         set_country_flag = technocrat_reform_type_syndicats_finished
-        set_variable = { technocrat_government_people_resist = 0 }
-        set_variable = { technocrat_government_opposition_threat = 0 }
-        set_variable = { technocrat_reform_progress = 0 }
-        set_variable = { technocrat_reform_efforts = 0 }
-
+        set_country_flag = technocrat_reform_no
         country_event = cofpolitics.196
         add_to_array = { array = FRA.cof_social_bills value = 38 }
         if = {
@@ -10851,7 +11270,7 @@ technocrat_reform_mission_effect = {
     }
 }
 technocrat_reform_failed_effect = {
-    remove_mission = technocrat_reform_mission
+    hidden_effect = { remove_mission = technocrat_reform_mission }
     if = {
         limit = { has_country_flag = technocrat_reform_type_syndicats }
         clr_country_flag = technocrat_reform_type_syndicats
@@ -10916,6 +11335,8 @@ vulgus_tendency_change_up = {
     clamp_variable = { var = vulgus_tendency_marquet min = 0 max = 10 }
     clamp_variable = { var = vulgus_tendency_doriot min = 0 max = 10 }
     clamp_variable = { var = vulgus_tendency_thomas min = 0 max = 10 }
+
+    belua_multorum_capitum_buff_judge = yes
 }
 vulgus_tendency_change_down = {
     if = {
@@ -10969,6 +11390,8 @@ vulgus_tendency_change_down = {
     clamp_variable = { var = vulgus_tendency_marquet min = 0 max = 10 }
     clamp_variable = { var = vulgus_tendency_doriot min = 0 max = 10 }
     clamp_variable = { var = vulgus_tendency_thomas min = 0 max = 10 }
+
+    belua_multorum_capitum_buff_judge = yes
 }
 moderatio_infimorum_change_up = {
     if = {
@@ -11022,6 +11445,8 @@ moderatio_infimorum_change_up = {
     clamp_variable = { var = moderatio_infimorum_delegate min = 0 max = 10 }
     clamp_variable = { var = moderatio_infimorum_commando min = 0 max = 10 }
     clamp_variable = { var = moderatio_infimorum_syndicat min = 0 max = 10 }
+
+    belua_multorum_capitum_buff_judge = yes
 }
 moderatio_infimorum_change_down = {
     if = {
@@ -11075,6 +11500,8 @@ moderatio_infimorum_change_down = {
     clamp_variable = { var = moderatio_infimorum_delegate min = 0 max = 10 }
     clamp_variable = { var = moderatio_infimorum_commando min = 0 max = 10 }
     clamp_variable = { var = moderatio_infimorum_syndicat min = 0 max = 10 }
+
+    belua_multorum_capitum_buff_judge = yes
 }
 doriot_attitude_change = {
     add_to_variable = {
@@ -11082,5 +11509,247 @@ doriot_attitude_change = {
         tooltip = doriot_attitude_change_tt
     }
     clamp_variable = { var = doriot_attitude min = 0 max = 100 }
+}
+belua_multorum_capitum_buff_judge = {
+    if = {
+        limit = { tendency_moderatio_match = yes }
+        set_variable = { bmc_stability_factor = 0.025 }
+        set_variable = { bmc_war_support_factor = 0.025 }
+    }
+    else = {
+        set_variable = { bmc_stability_factor = -0.025 }
+        set_variable = { bmc_war_support_factor = -0.025 }
+    }
 
+    if = {
+        limit = { vulgus_tendency_marquet_trigger = yes }
+        set_variable = { bmc_political_power_factor = 0.02 }
+        set_variable = { bmc_monthly_change_popsb = 0.2 }
+    }
+    else = { 
+        set_variable = { bmc_political_power_factor = 0 } 
+        set_variable = { bmc_monthly_change_popsb = 0 }
+    }
+    if = {
+        limit = { vulgus_tendency_doriot_trigger = yes }
+        add_to_variable = { bmc_stability_factor = -0.02 }
+        set_variable = { bmc_monthly_change_popsw = 0.2 }
+        set_variable = { bmc_monthly_change_popsp = 0.2 }
+        set_variable = { bmc_monthly_change_popsm = 0.2 }
+    }
+    else = {
+        set_variable = { bmc_monthly_change_popsw = 0 }
+        set_variable = { bmc_monthly_change_popsp = 0 }
+        set_variable = { bmc_monthly_change_popsm = 0 }
+    }
+    if = {
+        limit = { vulgus_tendency_thomas_trigger = yes }
+        set_variable = { bmc_industrial_capacity_factory = 0.025 }
+        add_to_variable = { bmc_monthly_change_popsw = 0.3 }
+    }
+    else = {
+        set_variable = { bmc_industrial_capacity_factory = 0 }
+    }
+
+    if = {
+        limit = { moderatio_infimorum_delegate_trigger = yes }
+        add_to_variable = { bmc_political_power_factor = 0.03 }
+        set_variable = { bmc_monthly_change_eq = 0.2 }
+        set_variable = { bmc_monthly_change_el = 0.2 } 
+    }
+    else = {
+        set_variable = { bmc_monthly_change_eq = 0 }
+        set_variable = { bmc_monthly_change_el = 0 } 
+    }
+    if = {
+        limit = { moderatio_infimorum_commando_trigger = yes }
+        add_to_variable = { bmc_war_support_factor = 0.025 }
+        set_variable = { bmc_monthly_change_eam = 0.1 }
+        set_variable = { bmc_monthly_change_eaa = 0.1 }
+    }
+    else = {
+        set_variable = { bmc_monthly_change_eam = 0 }
+        set_variable = { bmc_monthly_change_eaa = 0 }
+    }
+    if = {
+        limit = { moderatio_infimorum_syndicat_trigger = yes }
+        set_variable = { bmc_monthly_change_eib = 0.2 }
+        set_variable = { bmc_monthly_change_eip = 0.2 } 
+        set_variable = { bmc_local_resources_factor = 0.025 }
+    }
+    else = {
+        set_variable = { bmc_monthly_change_eib = 0 }
+        set_variable = { bmc_monthly_change_eip = 0 } 
+        set_variable = { bmc_local_resources_factor = 0 }
+    }
+
+    set_variable = { bmc_economy_power_factor = 0 }
+    if = {
+        limit = { has_completed_focus = FRA_new_cooperation_theory }
+        if = {
+            limit = {
+                set_temp_variable = { target_pop = 1 }
+			    class_pop_the_most = yes
+            }
+            if = {
+                limit = { vulgus_tendency_marquet_trigger = yes }
+                add_to_variable = { bmc_monthly_change_eip = 0.1 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_doriot_trigger = yes }
+                add_to_variable = { bmc_local_resources_factor = 0.02 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_thomas_trigger = yes }
+                add_to_variable = { bmc_industrial_capacity_factory = 0.02 }
+            }
+            else = { add_to_variable = { bmc_monthly_change_popsw = 0.1 } }
+        }
+        else_if = {
+            limit = {
+                set_temp_variable = { target_pop = 2 }
+			    class_pop_the_most = yes
+            }
+            if = {
+                limit = { vulgus_tendency_marquet_trigger = yes }
+                add_to_variable = { bmc_monthly_change_eam = 0.1 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_doriot_trigger = yes }
+                add_to_variable = { bmc_monthly_change_eaa = 0.1 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_thomas_trigger = yes }
+                add_to_variable = { bmc_local_resources_factor = 0.02 }
+            }
+            else = { add_to_variable = { bmc_monthly_change_popsp = 0.1 } }
+        }
+        else_if = {
+            limit = {
+                set_temp_variable = { target_pop = 3 }
+			    class_pop_the_most = yes
+            }
+            if = {
+                limit = { vulgus_tendency_marquet_trigger = yes }
+                add_to_variable = { bmc_economy_power_factor = 0.1 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_doriot_trigger = yes }
+                add_to_variable = { bmc_monthly_change_eaa = 0.1 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_thomas_trigger = yes }
+                add_to_variable = { bmc_industrial_capacity_factory = 0.02 }
+            }
+            else = { add_to_variable = { bmc_monthly_change_popsm = 0.1 } }
+        }
+        else_if = {
+            limit = {
+                set_temp_variable = { target_pop = 5 }
+			    class_pop_the_most = yes
+            }
+            if = {
+                limit = { vulgus_tendency_marquet_trigger = yes }
+                add_to_variable = { bmc_political_power_factor = 0.05 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_doriot_trigger = yes }
+                add_to_variable = { bmc_stability_factor = 0.025 }
+                add_to_variable = { bmc_war_support_factor = 0.025 }
+            }
+            else_if = {
+                limit = { vulgus_tendency_thomas_trigger = yes }
+                add_to_variable = { bmc_economy_power_factor = 0.05 }
+                add_to_variable = { bmc_industrial_capacity_factory = 0.02 }
+            }
+            else = { add_to_variable = { bmc_monthly_change_popsb = 0.1 } }
+        }
+        else = {
+            add_to_variable = { bmc_stability_factor = 0.01 }
+            add_to_variable = { bmc_war_support_factor = 0.01 }
+        }
+    }
+}
+
+#    set_temp_variable = { cscn = 0 }
+#    set_temp_variable = { cscq = 0 }
+#    set_temp_variable = { csca = 0 }
+#    set_temp_variable = { csce = 0 }
+#    set_temp_variable = { cscc = 0 }
+#    civilservants_country_change = yes
+civilservants_country_change = {
+    if = { limit = { check_variable = { cscn = 0 } } }
+    else = {
+        add_to_variable = { csc_num = cscn }
+        if = {
+            limit = { check_variable = { csc_num > 50 } }
+            custom_effect_tooltip = civilservants_country_cscn_change_tt1
+        }
+        else = { custom_effect_tooltip = civilservants_country_cscn_change_tt0 }
+    }
+    if = { limit = { check_variable = { cscq = 0 } } }
+    else = {
+        add_to_variable = { csc_qua = cscq }
+        custom_effect_tooltip = civilservants_country_cscq_change_tt
+    }
+    if = { limit = { check_variable = { csca = 0 } } }
+    else = {
+        add_to_variable = { csc_adm = csca }
+        custom_effect_tooltip = civilservants_country_csca_change_tt
+    }
+    if = { limit = { check_variable = { csce = 0 } } }
+    else = {
+        add_to_variable = { csc_eco = csce }
+        custom_effect_tooltip = civilservants_country_csce_change_tt
+    }
+    if = { limit = { check_variable = { cscc = 0 } } }
+    else = {
+        add_to_variable = { csc_cor = cscc }
+        custom_effect_tooltip = civilservants_country_cscc_change_tt
+    }
+}
+civilservants_country_buff_judge = {
+    set_temp_variable = { t = 50 }
+    subtract_from_temp_variable = { t = csc_num }
+    if = { limit = { check_variable = { t < 0 } } }
+    else = { multiply_temp_variable = { t = -1 } }
+    multiply_temp_variable = { t = 0.02 }
+    add_to_temp_variable = { t = 1 }
+
+    set_variable = { csc_level = csc_cor }
+    multiply_variable = { csc_level = -0.01 }
+    add_to_variable = { csc_level = 1 }
+    multiply_variable = { csc_level = t }
+    multiply_variable = { csc_level = csc_qua }
+
+    set_temp_variable = { csc_ll = csc_level }
+    add_to_temp_variable = { csc_ll = -10 }
+    multiply_temp_variable = { csc_ll = -0.01 }
+    set_variable = { csc_stability_factor = csc_ll }
+    if = {
+        limit = { check_variable = { csc_stability_factor < 0 }  }
+        multiply_variable = { csc_stability_factor = 0.5 }
+    }
+    set_variable = { csc_monthly_change_popsb = csc_ll }
+    multiply_variable = { csc_monthly_change_popsb = 2 }
+
+    set_temp_variable = { csc_pl = csc_adm }
+    multiply_temp_variable = { csc_pl = csc_ll }
+    multiply_temp_variable = { csc_pl = 0.02 }
+    set_variable = { csc_political_power_factor = csc_pl }
+    multiply_variable = { csc_political_power_factor = 0.5 }
+    set_variable = { csc_monthly_change_popsw = csc_pl }
+    set_variable = { csc_monthly_change_popsp = csc_pl }
+    set_variable = { csc_monthly_change_popsm = csc_pl }
+    set_variable = { csc_monthly_change_popss = csc_pl }
+
+    set_temp_variable = { csc_el = csc_eco }
+    multiply_temp_variable = { csc_el = csc_ll }
+    multiply_temp_variable = { csc_el = 0.02 }
+    set_variable = { csc_economy_power_factor = csc_el }
+    multiply_variable = { csc_economy_power_factor = 0.5 }
+    set_variable = { csc_monthly_change_eib = csc_el }
+    set_variable = { csc_monthly_change_eip = csc_el }
+    set_variable = { csc_monthly_change_eq = csc_el }
+    set_variable = { csc_monthly_change_el = csc_el }
 }

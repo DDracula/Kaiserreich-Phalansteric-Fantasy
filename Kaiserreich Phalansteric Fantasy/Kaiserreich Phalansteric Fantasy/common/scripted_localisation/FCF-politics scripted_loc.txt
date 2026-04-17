@@ -5293,6 +5293,18 @@ defined_text = {
         trigger = { has_country_flag = bill_chairman_authorisation_vote }
 		localization_key = bill_chairman_authorisation
     }
+    text = {
+        trigger = { has_country_flag = bill_independent_delegate_vote }
+		localization_key = bill_independent_delegate
+    }
+    text = {
+        trigger = { has_country_flag = bill_simplified_voting_procedures_vote }
+		localization_key = bill_simplified_voting_procedures
+    }
+    text = {
+        trigger = { has_country_flag = bill_chairman_authorisation_expand_vote }
+		localization_key = Cof_jaconeos_reform_csp3
+    }
 }
 
 defined_text = {
@@ -5320,8 +5332,10 @@ defined_text = {
         trigger = { 
             check_variable = { v = 1 } 
             FRA = { 
-                has_idea = bill_CGT_depoliticized 
-                has_idea = bill_CGT_depoliticized_update
+                OR = {
+                    has_idea = bill_CGT_depoliticized 
+                    has_idea = bill_CGT_depoliticized_update
+                }
             }
         }
         localization_key = bill_CGT_depoliticized
@@ -5770,21 +5784,21 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_low
+            FRA = { has_idea = bill_syndicats_nationalization_low }
         }
         localization_key = bill_syndicats_nationalization_low
     }
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_medium
+            FRA = { has_idea = bill_syndicats_nationalization_medium }
         }
         localization_key = bill_syndicats_nationalization_medium
     }
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_high
+            FRA = { has_idea = bill_syndicats_nationalization_high }
         }
         localization_key = bill_syndicats_nationalization_high
     }
@@ -5792,14 +5806,14 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { v = 39 }
-            has_idea = bill_syndicats_unification
+            FRA = { has_idea = bill_syndicats_unification }
         }
         localization_key = bill_syndicats_unification
     }
     text = {
         trigger = {
             check_variable = { v = 39 }
-            has_idea = bill_federal_syndicats_relations
+            FRA = { has_idea = bill_federal_syndicats_relations }
         }
         localization_key = bill_federal_syndicats_relations
     }
@@ -5807,6 +5821,16 @@ defined_text = {
     text = {
         trigger = { check_variable = { v = 40 } }
         localization_key = bill_chairman_authorisation
+    }
+
+    text = {
+        trigger = { check_variable = { v = 41 } }
+        localization_key = bill_independent_delegate
+    }
+
+    text = {
+        trigger = { check_variable = { v = 42 } }
+        localization_key = bill_simplified_voting_procedures
     }
 }
 
@@ -6378,21 +6402,21 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_low
+            FRA = { has_idea = bill_syndicats_nationalization_low }
         }
         localization_key = idea_desc|bill_syndicats_nationalization_low
     }
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_medium
+            FRA = { has_idea = bill_syndicats_nationalization_medium }
         }
         localization_key = idea_desc|bill_syndicats_nationalization_medium
     }
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_high
+            FRA = { has_idea = bill_syndicats_nationalization_high }
         }
         localization_key = idea_desc|bill_syndicats_nationalization_high
     }
@@ -6400,14 +6424,14 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { v = 39 }
-            has_idea = bill_syndicats_unification
+            FRA = { has_idea = bill_syndicats_unification }
         }
         localization_key = idea_desc|bill_syndicats_unification
     }
     text = {
         trigger = {
             check_variable = { v = 39 }
-            has_idea = bill_federal_syndicats_relations
+            FRA = { has_idea = bill_federal_syndicats_relations }
         }
         localization_key = idea_desc|bill_federal_syndicats_relations
     }
@@ -6415,9 +6439,26 @@ defined_text = {
     text = {
         trigger = { 
             check_variable = { v = 40 } 
-            has_idea = bill_chairman_authorisation
+            FRA = { has_idea = bill_chairman_authorisation }
         }
         localization_key = idea_desc|bill_chairman_authorisation
+    }
+    text = {
+        trigger = { 
+            check_variable = { v = 40 } 
+            FRA = { has_idea = bill_chairman_authorisation_expand }
+        }
+        localization_key = idea_desc|bill_chairman_authorisation_expand
+    }
+
+    text = {
+        trigger = { check_variable = { v = 41 } }
+        localization_key = idea_desc|bill_independent_delegate
+    }
+
+    text = {
+        trigger = { check_variable = { v = 42 } }
+        localization_key = idea_desc|bill_simplified_voting_procedures
     }
 }
 
@@ -6862,21 +6903,21 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_low
+            FRA = { has_idea = bill_syndicats_nationalization_low }
         }
         localization_key = bill_syndicats_nationalization_low_desc
     }
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_medium
+            FRA = { has_idea = bill_syndicats_nationalization_medium }
         }
         localization_key = bill_syndicats_nationalization_medium_desc
     }
     text = {
         trigger = {
             check_variable = { v = 38 }
-            has_idea = bill_syndicats_nationalization_high
+            FRA = { has_idea = bill_syndicats_nationalization_high }
         }
         localization_key = bill_syndicats_nationalization_high_desc
     }
@@ -6884,14 +6925,14 @@ defined_text = {
     text = {
         trigger = {
             check_variable = { v = 39 }
-            has_idea = bill_syndicats_unification
+            FRA = { has_idea = bill_syndicats_unification }
         }
         localization_key = bill_syndicats_unification_desc
     }
     text = {
         trigger = {
             check_variable = { v = 39 }
-            has_idea = bill_federal_syndicats_relations
+            FRA = { has_idea = bill_federal_syndicats_relations }
         }
         localization_key = bill_federal_syndicats_relations_desc
     }
@@ -6899,6 +6940,16 @@ defined_text = {
     text = {
         trigger = { check_variable = { v = 40 } }
         localization_key = bill_chairman_authorisation_desc
+    }
+
+    text = {
+        trigger = { check_variable = { v = 41 } }
+        localization_key = bill_independent_delegate_desc
+    }
+
+    text = {
+        trigger = { check_variable = { v = 42 } }
+        localization_key = bill_simplified_voting_procedures_desc
     }
 }
 
@@ -7376,19 +7427,12 @@ defined_text = {
 
 #新社会主义
 defined_text = {
-    name = technocrat_type
+    name = technocrat_reform
     text = {
-        trigger = { has_country_flag = technocrat_type_economist }
-        localization_key = technocrat_type_economist
+        trigger = { has_country_flag = technocrat_reform_no }
+        localization_key = technocrat_reform_no
     }
-    text = {
-        trigger = { has_country_flag = technocrat_type_engineer }
-        localization_key = technocrat_type_engineer
-    }
-    text = {
-        trigger = { has_country_flag = technocrat_type_scientist }
-        localization_key = technocrat_type_scientist
-    }
+    text = { localization_key = technocrat_reform_loc }
 }
 
 defined_text = {
@@ -7402,6 +7446,7 @@ defined_text = {
         localization_key = technocrat_reform_type_csp
     }
 }
+
 defined_text = {
     name = technocrat_reform_mission_loc
     text = {
@@ -7474,6 +7519,7 @@ defined_text = {
         trigger = { moderatio_infimorum_syndicat_trigger = yes }
         localization_key = moderatio_infimorum_syndicat
     }
+    text = { localization_key = moderatio_infimorum_no }
 }
 
 defined_text = {
@@ -7495,4 +7541,67 @@ defined_text = {
         localization_key = doriot_attitude5
     }
     text = { localization_key = doriot_attitude1 }
+}
+
+defined_text = {
+    name = civilservants_country
+    text = {
+        trigger = { has_completed_focus = FRA_first_line_feedback }
+        localization_key = civilservants_country_loc
+    }
+}
+
+defined_text = {
+    name = csc_num_loc
+    text = {
+        trigger = { check_variable = { csc_num > 80 } }
+        localization_key = csc_num5
+    }
+    text = {
+        trigger = { check_variable = { csc_num > 60 } }
+        localization_key = csc_num4
+    }
+    text = {
+        trigger = { check_variable = { csc_num > 40 } }
+        localization_key = csc_num3
+    }
+    text = {
+        trigger = { check_variable = { csc_num > 20 } }
+        localization_key = csc_num2
+    }
+    text = { localization_key = csc_num1 }
+}
+
+defined_text = {
+    name = csc_qua_loc
+    text = {
+        trigger = { check_variable = { csc_qua > 80 } }
+        localization_key = csc_qua5
+    }
+    text = {
+        trigger = { check_variable = { csc_qua > 60 } }
+        localization_key = csc_qua4
+    }
+    text = {
+        trigger = { check_variable = { csc_qua > 40 } }
+        localization_key = csc_qua3
+    }
+    text = {
+        trigger = { check_variable = { csc_qua > 20 } }
+        localization_key = csc_qua2
+    }
+    text = { localization_key = csc_qua1 }
+}
+
+defined_text = {
+    name = Cof_civilservants_country_buff_loc
+    text = {
+        trigger = { check_variable = { csc_level > 60 } }
+        localization_key = Cof_civilservants_country_buff3
+    }
+    text = {
+        trigger = { check_variable = { csc_level > 30 } }
+        localization_key = Cof_civilservants_country_buff2
+    }
+    text = { localization_key = Cof_civilservants_country_buff1 }
 }

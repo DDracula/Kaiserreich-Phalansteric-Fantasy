@@ -50,7 +50,7 @@ on_actions = {
 
                 country_event = { id = cofeconomy.2 days = 132 random_hours = 18 }
                 country_event = { id = cofeconomy.6 days = 60 random_days = 30 }
-                country_event = { id = cofeconomy.14 days = 140 random_days = 30 }
+                country_event = { id = cofeconomy.14 days = 210 random_days = 30 }
 
                 country_event = { id = cofmilitary.1 days = 445 random_hours = 12 }
 
@@ -103,7 +103,7 @@ on_actions = {
                 activate_mission = Cof_voting_time_for_bill
                 add_days_mission_timeout = {
                     mission = Cof_voting_time_for_bill
-                    days = -23
+                    days = -10
                 }
                 set_variable = { seat_synd_mode = 118 }
                 set_variable = { seat_synd_radi = 117 }
@@ -872,7 +872,10 @@ on_actions = {
             }
 
             #mode
-            midway_society_build_monthly_change_judge = yes
+            if = {
+                limit = { has_completed_focus = FRA_midway_society }
+                midway_society_build_monthly_change_judge = yes
+            }
             if = {
                 limit = {
                     has_completed_focus = FRA_to_be_change_unity_first
@@ -881,6 +884,12 @@ on_actions = {
                 monthly_change_syndicats_stratification_progress_judge = yes
             }
 
+            #neos
+            if = {
+                limit = { has_completed_focus = FRA_first_line_feedback }
+                civilservants_country_buff_judge = yes
+            }
+            
             #internatonale
             if = {
                 limit = { is_ai = yes }
@@ -1378,7 +1387,8 @@ on_actions = {
 
             if = {
                 limit = { has_completed_focus = FRA_midway_society }
-                add_to_variable = { mws = mwsmc }
+                set_temp_variable = { mwsc = mwsmc }
+                midway_society_build_change = yes
             }
         }
     }

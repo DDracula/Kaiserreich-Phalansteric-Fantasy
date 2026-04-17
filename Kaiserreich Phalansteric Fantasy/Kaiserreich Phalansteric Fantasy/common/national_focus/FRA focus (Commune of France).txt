@@ -107,7 +107,7 @@ focus_tree = {
 		relative_position_id = FRA_expand_CGT
 		prerequisite = { focus = FRA_expand_CGT }
 		available = {
-			has_political_power > 200
+			has_political_power > 50
 			has_stability > 0.5
 		}
 		x = 0
@@ -115,7 +115,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -200
+			add_political_power = -50
 			custom_effect_tooltip = tooltip_white_line
 			
 			custom_effect_tooltip = effect_economy
@@ -956,7 +956,6 @@ focus_tree = {
 			}
 
 			has_stability > 0.55
-			has_political_power > 200
 
 			set_temp_variable = { target_t = 1 }
 			set_temp_variable = { target_num = 25 }
@@ -1546,16 +1545,15 @@ focus_tree = {
 		prerequisite = { focus = FRA_dont_be_afraid_of_losing_job }
 		available = {
 			OR = {
-				has_political_power > 300
+				has_political_power > 100
 				AND = {
 					set_temp_variable = { target_t = 1 }
 					cof_econ_values_location_more = yes
-					has_political_power > 200
+					has_political_power > 50
 				}
 				AND = {
 					set_temp_variable = { target_t = 2 }
 					cof_econ_values_location_more = yes
-					has_political_power > 100
 				}
 			}
 
@@ -1566,16 +1564,13 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			if = {
-				limit = { check_variable = { cof_econ_values > 30 } }
-				add_political_power = -100
-			}
+			if = { limit = { check_variable = { cof_econ_values > 30 } } }
 			else_if = {
 				limit = { check_variable = { cof_econ_values > 10 } }
-				add_political_power = -200
+				add_political_power = -50
 			}
 			else = {
-				add_political_power = -300
+				add_political_power = -100
 			}
 
 			custom_effect_tooltip = tooltip_white_line
@@ -3598,7 +3593,9 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = FRA_new_frontier_program }
 		available = {
-			has_political_power > 200
+			set_temp_variable = { target_t = 15 }
+			set_temp_variable = { target_num = 50 }
+			cof_econ_target_more_than_x = yes
 			Cof_economy_model_co_ops_advantage = no
 		}
 		x = 5
@@ -3607,8 +3604,6 @@ focus_tree = {
 		cost = 2
 		completion_reward = {
 			Cof_intensified_urban_rural_conflicts_update = yes
-
-			add_political_power = -200
 
 			custom_effect_tooltip = effect_society
 			set_temp_variable = { pop_wc = -1.5 }
@@ -3627,6 +3622,11 @@ focus_tree = {
         	set_temp_variable = { bc = 0 }
         	set_temp_variable = { ac = 0 }
 	        class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { epc = -50 }
+			cof_econ_target_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
@@ -4632,10 +4632,10 @@ focus_tree = {
 		available = {
 			OR = {
 				AND = {
-					has_political_power > 200
+					has_political_power > 50
 					Cof_economy_model_market_advantage = yes
 				}
-				has_political_power > 300
+				has_political_power > 100
 			}
 		}
 		x = 2
@@ -4645,9 +4645,9 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { Cof_economy_model_market_advantage = yes }
-				add_political_power = -200
+				add_political_power = -50
 			}
-			else = { add_political_power = -300 }
+			else = { add_political_power = -100 }
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
@@ -4867,14 +4867,14 @@ focus_tree = {
 		relative_position_id = FRA_first_five_years_plan
 		prerequisite = { focus = FRA_non_directive_assistance }
 		available = {
-			has_political_power > 200
+			has_political_power > 75
 		}
 		x = 2
 		y = 5
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -200
+			add_political_power = -75
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_society
@@ -5749,10 +5749,10 @@ focus_tree = {
 		prerequisite = { focus = FRA_first_five_years_plan }
 		available = {
 			OR = {
-				has_political_power > 150
+				has_political_power > 50
 				AND = {
 					Cof_economy_model_plan_advantage = yes
-					has_political_power > 100
+					has_political_power > 25
 				}
 			}
 		}
@@ -5763,9 +5763,9 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { Cof_economy_model_plan_advantage = yes }
-				add_political_power = -100
+				add_political_power = -25
 			}
-			else = { add_political_power = -150 }
+			else = { add_political_power = -50 }
 
 			custom_effect_tooltip = effect_society
 			set_temp_variable = { pop_wc = -1.5 }
@@ -6275,7 +6275,7 @@ focus_tree = {
 			set_temp_variable = { target_t = -1 }
 			cof_econ_values_location_less = yes
 
-			has_political_power > 250
+			has_political_power > 50
 			NOT= { has_country_flag = voting_for_bill }
 		}
 		x = 4
@@ -6283,7 +6283,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -250
+			add_political_power = -50
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = {
@@ -7088,6 +7088,7 @@ focus_tree = {
 				Cof_economy_model_change = yes 
 	
 				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { epc = 0 }
 				set_temp_variable = { evc = 5 }
 				set_temp_variable = { eibc = 0 }
 				set_temp_variable = { eipc = 2.5 }
@@ -7611,14 +7612,14 @@ focus_tree = {
 		prerequisite = { focus = FRA_abandonment_of_backward_industries }
 		available = {
 			has_idea = bill_industrial_structure_optimization_act1
-			has_political_power > 300
+			has_political_power > 50
 		}
 		x = -3
 		y = 4
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -300
+			add_political_power = -50
 
 			swap_ideas = {
 				remove_idea = bill_industrial_structure_optimization_act1
@@ -7945,14 +7946,14 @@ focus_tree = {
 
 			Cof_economy_model_market_advantage = no
 
-			has_political_power > 200
+			has_political_power > 75
 		}
 		x = 5
 		y = 4
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -200
+			add_political_power = -75
 
 			custom_effect_tooltip = tooltip_white_line
 			random_core_state = {
@@ -8008,14 +8009,14 @@ focus_tree = {
 			set_temp_variable = { target_num = 60 }
 			cof_econ_target_more_than_x = yes
 
-			has_political_power > 150
+			has_political_power > 50
 		}
 		x = 5
 		y = 5
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -150
+			add_political_power = -50
 			swap_ideas = {
 				remove_idea = bill_social_capacity_integration1
 				add_idea = bill_social_capacity_integration2
@@ -9742,7 +9743,7 @@ focus_tree = {
 		prerequisite = { focus = FRA_take_over_the_chain_of_command }
 		available = {
 			has_army_experience > 75
-			has_political_power > 100
+			has_political_power > 50
 			ard_trigger_centralization = yes
 
 			set_temp_variable = { target_a = 5 }
@@ -9762,7 +9763,7 @@ focus_tree = {
 		cost = 2
 		completion_reward = {
 			army_experience = -75
-			add_political_power = -100
+			add_political_power = -50
 
 			swap_ideas = {
 				remove_idea = Cof_take_over_command
@@ -9909,7 +9910,7 @@ focus_tree = {
 		prerequisite = { focus = FRA_strike_wherever_one_points }
 		available = {
 			has_army_experience > 100
-			has_political_power > 150
+			has_political_power > 75
 			has_war_support > 0.75
 			ard_trigger_dpecialization = yes
 
@@ -9926,7 +9927,7 @@ focus_tree = {
 		cost = 2
 		completion_reward = {
 			army_experience = -100
-			add_political_power = -150
+			add_political_power = -75
 			
 			activate_decision = Cof_operating_table
 			add_ideas = Cof_operating_table_war_diagnose
@@ -10109,14 +10110,14 @@ focus_tree = {
 			set_temp_variable = { target_num = 45 }
 			cof_politics_more_than_x = yes
 
-			has_political_power > 100
+			has_political_power > 50
 		}
 		x = 5
 		y = 2
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -100
+			add_political_power = -50
 			add_ideas = Cof_decentralized_chain_of_command
 			add_to_array = { array = FRA.cof_ar_bills value = 8 }
 
@@ -10345,14 +10346,14 @@ focus_tree = {
 			set_temp_variable = { target_num = 40 }
 			cof_politics_more_than_x = no
 
-			has_political_power > 75
+			has_political_power > 25
 		}
 		x = 9
 		y = 2
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -75
+			add_political_power = -25
 
 			add_ideas = Cof_rejecting_bullying 
 			add_to_array = { array = FRA.cof_ar_bills value = 7 }
@@ -10546,14 +10547,14 @@ focus_tree = {
 		prerequisite = { focus = FRA_safety_in_numbers }
 		available = {
 			has_war_support > 0.85
-			has_political_power > 200
+			has_political_power > 75
 		}
 		x = 5
 		y = 4
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -200
+			add_political_power = -75
 			add_ideas = Cof_cultivating_comradeship 
 			add_to_array = { array = FRA.Cof_cultivating_comradeship value = 13 }
 		
@@ -10586,7 +10587,7 @@ focus_tree = {
 		prerequisite = { focus = FRA_safety_in_numbers }
 		available = {
 			has_idea = bill_free_immigration
-			has_political_power > 100
+			has_political_power > 50
 			has_stability > 0.75
 			set_temp_variable = { target_t = 14 }
 			set_temp_variable = { target_num = 35 }
@@ -10597,7 +10598,7 @@ focus_tree = {
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-			add_political_power = -100
+			add_political_power = -50
 			add_stability = -0.1
 			add_ideas = Cof_world_army 
 			add_to_array = { array = FRA.cof_ar_bills value = 12 }
@@ -15734,7 +15735,7 @@ focus_tree = {
 			has_war = no
 		}
 		bypass = {
-			29 = { is_owned_by = FRA }
+			29 = { owner = { is_socialist_government = yes } }
 		}
 		x = 6
 		y = 4
@@ -15758,7 +15759,7 @@ focus_tree = {
 			1 = { is_owned_and_controlled_by = NFA }
 		}
 		bypass = {
-			1 = { is_owned_by = FRA }
+			1 = { owner = { is_socialist_government = yes } }
 		}
 		x = 7
 		y = 5
@@ -15838,8 +15839,8 @@ focus_tree = {
 			}
 		}
 		bypass = {
-			34 = { is_owned_by = FRA }
-			948 = { is_owned_by = FRA }
+			34 = { owner = { is_socialist_government = yes } }
+			948 = { owner = { is_socialist_government = yes } }
 		}
 		x = 10
 		y = 4
@@ -20098,7 +20099,7 @@ focus_tree = {
 							JUDGE = more_than
 							TAGNUM = "25.0"
 						}
-						check_variable = { technocrat_sincerity > 25 }
+						check_variable = { syndicats_stratification_progress > 25 }
 					}
 				}
 				AND = {
@@ -20214,7 +20215,7 @@ focus_tree = {
 							JUDGE = more_than
 							TAGNUM = "25.0"
 						}
-						check_variable = { technocrat_sincerity > 25 }
+						check_variable = { syndicats_stratification_progress > 25 }
 					}
 				}
 				AND = {
@@ -21047,7 +21048,8 @@ focus_tree = {
 		icon = GFX_focus_FRA_direct_democracy
 		relative_position_id = FRA_the_opposition_goes_against_the_grain
 		prerequisite = { focus = FRA_bottom_up_solidarity }
-		x = -1
+		prerequisite = { focus = FRA_resist_political_monopoly }
+		x = 0
 		y = 7
 		ai_will_do = { factor = 10 }
 		cost = 2
@@ -21061,7 +21063,8 @@ focus_tree = {
 		icon = GFX_focus_FRA_dont_matter_about_politics
 		relative_position_id = FRA_the_opposition_goes_against_the_grain
 		prerequisite = { focus = FRA_bottom_up_solidarity }
-		x = 1
+		prerequisite = { focus = FRA_resist_political_monopoly }
+		x = 2
 		y = 7
 		ai_will_do = { factor = 10 }
 		cost = 2
@@ -21388,7 +21391,24 @@ focus_tree = {
 		ai_will_do = { factor = 0 }
 		cost = 2
 		completion_reward = {
-			
+			set_temp_variable = { t = 1 }
+			moderatio_infimorum_change_up = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+			set_temp_variable = { pop_pc = -0.5 }
+			set_temp_variable = { pop_mc = -0.5 }
+			set_temp_variable = { pop_sc = -0.5 }
+			set_temp_variable = { pop_bc = 2.5 }
+			set_temp_variable = { pop_ac = 0 }
+			class_pop_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			unlock_decision_tooltip = Cof_jaconeos_reform_adminocrats1
+			unlock_decision_tooltip = Cof_jaconeos_reform_adminocrats2
+			unlock_decision_tooltip = Cof_jaconeos_reform_adminocrats3
+			custom_effect_tooltip = unlock_in_politics
 		}
 	}
 
@@ -21404,6 +21424,7 @@ focus_tree = {
 		mutually_exclusive = { focus = FRA_presence_is_reason }
 		mutually_exclusive = { focus = FRA_harmonization_executive_legislative_powers }
 		available = {
+			NOT = { has_country_flag = voting_for_bill }
 			set_temp_variable = { target_t = 2 }
 			Cof_bgt_vs_csp_judge = yes
 			has_country_flag = technocrat_reform_type_syndicats_finished
@@ -21506,7 +21527,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FRA_community_cooperation_theory
+		id = FRA_unity_is_power
 		icon = GFX_goal_POR_burden_empire
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_benevolent_dictatorship }
@@ -21524,7 +21545,7 @@ focus_tree = {
 		icon = GFX_focus_FRA_acting_is_better_than_thinking
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_jesus_revolutionary_theory }
-		prerequisite = { focus = FRA_community_cooperation_theory }
+		prerequisite = { focus = FRA_unity_is_power }
 		x = 2
 		y = 5
 		ai_will_do = { factor = 10 }
@@ -21545,13 +21566,43 @@ focus_tree = {
 				tooltip = CCSP_is_adrien_marquet
 				has_country_flag = CCSP_jaco_neos
 			}
+			moderatio_infimorum_delegate_trigger = yes
 		}
 		x = -2
 		y = 3
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
+			country_event = cofpolitics.200
+			set_temp_variable = { tgprc = -10 }
+			set_temp_variable = { tgotc = -5 }
+			set_temp_variable = { trpc = 0 } 
+			set_temp_variable = { trec = 0 } 
+			technocrat_government_var_change = yes
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 1 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 2 }
+			set_temp_variable = { ac = 0 }
+			class_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_has_pass_chairman_authorisation
+			unlock_decision_tooltip = Cof_jaconeos_civilservants11
+			unlock_decision_tooltip = Cof_jaconeos_civilservants12
+			unlock_decision_tooltip = Cof_jaconeos_civilservants13
+			custom_effect_tooltip = unlock_in_politics
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_not_pass_chairman_authorisation
+			unlock_decision_tooltip = Cof_jaconeos_civilservants21
+			unlock_decision_tooltip = Cof_jaconeos_civilservants22
+			unlock_decision_tooltip = Cof_jaconeos_civilservants23
+			custom_effect_tooltip = unlock_in_politics
 		}
 	}
 
@@ -21560,12 +21611,38 @@ focus_tree = {
 		icon = GFX_focus_FRA_constructing_revolutionary_manifesto
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_first_line_feedback }
+		available = {
+			Cof_economy_model_plan_advantage = yes
+			OR = {
+				moderatio_infimorum_delegate_trigger = yes
+				moderatio_infimorum_syndicat_trigger = yes
+			}
+		}
 		x = -3
 		y = 4
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = if_moderatio_infimorum_delegate
+			effect_politics = {
+				set_temp_variable = { cscn = 10 }
+				set_temp_variable = { cscq = 0 }
+				set_temp_variable = { csca = 5 }
+				set_temp_variable = { csce = 0 }
+				set_temp_variable = { cscc = 0 }
+				civilservants_country_change = yes
+			}	
 
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_moderatio_infimorum_syndicat
+			effect_politics = {
+				set_temp_variable = { cscn = 0 }
+				set_temp_variable = { cscq = 0 }
+				set_temp_variable = { csca = 0 }
+				set_temp_variable = { csce = 0 }
+				set_temp_variable = { cscc = -5 }
+				civilservants_country_change = yes
+			}
 		}
 	}
 
@@ -21575,12 +21652,191 @@ focus_tree = {
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_first_line_feedback }
 		prerequisite = { focus = FRA_administrative_technocrats }
+		available = {
+			set_temp_variable = { target_t = 20 }
+			set_temp_variable = { target_num = 55 }
+			cof_politics_more_than_x = yes
+
+			set_temp_variable = { target_pop = 4 }
+			class_pop_the_most = no
+
+			set_temp_variable = { target_pop = 6 }
+			class_pop_the_most = no
+		}
 		x = -1
 		y = 4
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = FRA_new_cooperation_theory_tt
 
+			custom_effect_tooltip = if_worker_pop_the_most
+			effect_tooltip = {
+				set_temp_variable = { t = 3 }
+				vulgus_tendency_change_up = yes 
+				set_temp_variable = { t = 3 }
+				moderatio_infimorum_change_up = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_target = 1 }    
+				set_temp_variable = { pop_syndc = -1 }
+				set_temp_variable = { pop_oppoc = -1 }
+				set_temp_variable = { pop_jacoc = 3 }
+				set_temp_variable = { pop_sorec = -1 }
+				class_pop_faction_tendency_change = yes
+			}
+			unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum_w
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_peasant_pop_the_most
+			effect_tooltip = {
+				set_temp_variable = { t = 2 }
+				vulgus_tendency_change_up = yes 
+				set_temp_variable = { t = 2 }
+				moderatio_infimorum_change_up = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_target = 2 }    
+				set_temp_variable = { pop_syndc = -1 }
+				set_temp_variable = { pop_oppoc = -1 }
+				set_temp_variable = { pop_jacoc = 3 }
+				set_temp_variable = { pop_sorec = -1 }
+				class_pop_faction_tendency_change = yes
+			}
+			unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum_p
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_merchant_pop_the_most
+			effect_tooltip = {
+				set_temp_variable = { t = 1 }
+				vulgus_tendency_change_up = yes 
+				set_temp_variable = { t = 1 }
+				moderatio_infimorum_change_up = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_target = 3 }    
+				set_temp_variable = { pop_syndc = -1 }
+				set_temp_variable = { pop_oppoc = -1 }
+				set_temp_variable = { pop_jacoc = 3 }
+				set_temp_variable = { pop_sorec = -1 }
+				class_pop_faction_tendency_change = yes
+			}
+			unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum_m
+
+			custom_effect_tooltip = tooltip_dividing_line
+			custom_effect_tooltip = if_bureaucrat_pop_the_most	
+			effect_tooltip = {
+				set_temp_variable = { t = 1 }
+				moderatio_infimorum_change_up = yes
+
+				set_temp_variable = { cscn = 0 }
+				set_temp_variable = { cscq = 0 }
+				set_temp_variable = { csca = 5 }
+				set_temp_variable = { csce = 5 }
+				set_temp_variable = { cscc = 0 }
+				civilservants_country_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_target = 5 }    
+				set_temp_variable = { pop_syndc = -1 }
+				set_temp_variable = { pop_oppoc = -1 }
+				set_temp_variable = { pop_jacoc = 3 }
+				set_temp_variable = { pop_sorec = -1 }
+				class_pop_faction_tendency_change = yes
+			}		
+			unlock_decision_tooltip = Cof_jaconeos_belua_multorum_capitum_b
+
+			hidden_effect = {
+				if = {
+					limit = {
+						set_temp_variable = { target_pop = 1 }
+						class_pop_the_most = yes
+					}
+					set_country_flag = FRA_new_cooperation_theory_w
+					set_temp_variable = { t = 3 }
+					vulgus_tendency_change_up = yes 
+					set_temp_variable = { t = 3 }
+					moderatio_infimorum_change_up = yes
+
+					custom_effect_tooltip = tooltip_white_line
+					custom_effect_tooltip = effect_society
+					set_temp_variable = { pop_target = 1 }    
+					set_temp_variable = { pop_syndc = -1 }
+					set_temp_variable = { pop_oppoc = -1 }
+					set_temp_variable = { pop_jacoc = 3 }
+					set_temp_variable = { pop_sorec = -1 }
+					class_pop_faction_tendency_change = yes
+				}
+				else_if = {
+					limit = {
+						set_temp_variable = { target_pop = 2 }
+						class_pop_the_most = yes
+					}
+					set_country_flag = FRA_new_cooperation_theory_p
+					set_temp_variable = { t = 2 }
+					vulgus_tendency_change_up = yes 
+					set_temp_variable = { t = 2 }
+					moderatio_infimorum_change_up = yes
+
+					custom_effect_tooltip = tooltip_white_line
+					custom_effect_tooltip = effect_society
+					set_temp_variable = { pop_target = 2 }    
+					set_temp_variable = { pop_syndc = -1 }
+					set_temp_variable = { pop_oppoc = -1 }
+					set_temp_variable = { pop_jacoc = 3 }
+					set_temp_variable = { pop_sorec = -1 }
+					class_pop_faction_tendency_change = yes
+				}
+				else_if = {
+					limit = {
+						set_temp_variable = { target_pop = 3 }
+						class_pop_the_most = yes
+					}
+					set_country_flag = FRA_new_cooperation_theory_m
+					set_temp_variable = { t = 1 }
+					vulgus_tendency_change_up = yes 
+					set_temp_variable = { t = 1 }
+					moderatio_infimorum_change_up = yes
+
+					custom_effect_tooltip = tooltip_white_line
+					custom_effect_tooltip = effect_society
+					set_temp_variable = { pop_target = 3 }    
+					set_temp_variable = { pop_syndc = -1 }
+					set_temp_variable = { pop_oppoc = -1 }
+					set_temp_variable = { pop_jacoc = 3 }
+					set_temp_variable = { pop_sorec = -1 }
+					class_pop_faction_tendency_change = yes
+				}
+				else_if = {
+					limit = {
+						set_temp_variable = { target_pop = 5 }
+						class_pop_the_most = yes
+					}
+					set_country_flag = FRA_new_cooperation_theory_b
+					set_temp_variable = { t = 1 }
+					moderatio_infimorum_change_up = yes
+
+					set_temp_variable = { cscn = 0 }
+					set_temp_variable = { cscq = 0 }
+					set_temp_variable = { csca = 5 }
+					set_temp_variable = { csce = 5 }
+					set_temp_variable = { cscc = 0 }
+					civilservants_country_change = yes
+
+					custom_effect_tooltip = tooltip_white_line
+					custom_effect_tooltip = effect_society
+					set_temp_variable = { pop_target = 5 }    
+					set_temp_variable = { pop_syndc = -1 }
+					set_temp_variable = { pop_oppoc = -1 }
+					set_temp_variable = { pop_jacoc = 3 }
+					set_temp_variable = { pop_sorec = -1 }
+					class_pop_faction_tendency_change = yes
+				}
+			}
 		}
 	}
 
@@ -21588,14 +21844,22 @@ focus_tree = {
 		id = FRA_cybernetic_society
 		icon = GFX_focus_FRA_cybernetic_society
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_constructing_revolutionary_manifesto }
-		prerequisite = { focus = FRA_new_cooperation_theory }
+		prerequisite = { 
+			focus = FRA_constructing_revolutionary_manifesto 
+			focus = FRA_new_cooperation_theory
+		}
 		x = -2
 		y = 5
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_has_pass_chairman_authorisation
+			custom_effect_tooltip = unlock_in_politics
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_not_pass_chairman_authorisation
+			custom_effect_tooltip = unlock_in_politics
 		}
 	}
 
@@ -21605,14 +21869,23 @@ focus_tree = {
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { 
 			focus = FRA_first_line_feedback 
-			focus = FRA_benevolent_dictatorship 
+			focus = FRA_benevolent_dictatorship
 		}
 		x = 0
 		y = 5
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_if_focus_completed
+				FOCUS = FRA_first_line_feedback
+			}
 
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_if_focus_completed
+				FOCUS = FRA_benevolent_dictatorship
+			}
 		}
 	}
 
@@ -21621,7 +21894,7 @@ focus_tree = {
 		icon = GFX_focus_FRA_solidarity_front
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_lessons_from_robespierre }
-		x = -4
+		x = -1
 		y = 6
 		ai_will_do = { factor = 10 }
 		cost = 2
@@ -21631,26 +21904,25 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FRA_anti_democratic_alliance
-		icon = GFX_focus_FRA_anti_democratic_alliance
+		id = FRA_one_and_done
+		icon = GFX_focus_FRA_one_and_done
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_solidarity_front }
-		prerequisite = { focus = FRA_a_republic_not_a_democracy }
-		x = -3
+		prerequisite = { focus = FRA_lord_of_the_people }
+		x = 2
 		y = 7
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
 
-		}
+		} 
 	}
 
 	focus = {
-		id = FRA_the_window_of_injustice
-		icon = GFX_focus_FRA_the_window_of_injustice
+		id = FRA_think_for_the_people
+		icon = GFX_focus_FRA_think_for_the_people
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_solidarity_front }
-		x = -5
+		prerequisite = { focus = FRA_lord_of_the_people }
+		x = 4
 		y = 7
 		ai_will_do = { factor = 10 }
 		cost = 2
@@ -21660,11 +21932,11 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FRA_a_republic_not_a_democracy
-		icon = GFX_focus_FRA_a_republic_not_a_democracy
+		id = FRA_lord_of_the_people
+		icon = GFX_focus_FRA_lord_of_the_people
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_lessons_from_robespierre }
-		x = -1
+		prerequisite = { focus = FRA_acting_is_better_than_thinking }
+		x = 3
 		y = 6
 		ai_will_do = { factor = 10 }
 		cost = 2
@@ -21677,9 +21949,9 @@ focus_tree = {
 		id = FRA_remove_a_tumor
 		icon = GFX_focus_FRA_remove_a_tumor
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_a_republic_not_a_democracy }
+		prerequisite = { focus = FRA_solidarity_front }
 		x = -2
-		y = 8
+		y = 7
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
@@ -21691,9 +21963,10 @@ focus_tree = {
 		id = FRA_order_order_order
 		icon = GFX_focus_FRA_order_order_order
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_a_republic_not_a_democracy }
-		x = -1
-		y = 7
+		prerequisite = { focus = FRA_acting_is_better_than_thinking }
+		
+		x = 1
+		y = 6
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
@@ -21705,9 +21978,9 @@ focus_tree = {
 		id = FRA_reward_of_the_loyalist
 		icon = GFX_focus_FRA_reward_of_the_loyalist
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_a_republic_not_a_democracy }
+		prerequisite = { focus = FRA_solidarity_front }
 		x = 0
-		y = 8
+		y = 7
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
@@ -21719,13 +21992,27 @@ focus_tree = {
 		id = FRA_peoples_education_program
 		icon = GFX_focus_FRA_peoples_education_program
 		relative_position_id = FRA_french_styke_revolution
-		prerequisite = { focus = FRA_lessons_from_robespierre }
-		x = 2
-		y = 6
+		prerequisite = { focus = FRA_constructing_revolutionary_manifesto }
+		available = {
+			OR = {
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = if_has_pass_chairman_authorisation
+						OR = {
+							has_idea = bill_chairman_authorisation
+							has_idea = bill_chairman_authorisation_expand
+						}
+					}
+					has_country_flag = technocrat_reform_type_csp_finished
+				}
+			}
+		}
+		x = -4
+		y = 5
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
-
+			custom_effect_tooltip = technocrat_reform_focus_on_technocrat
 		}
 	}
 
@@ -21734,8 +22021,9 @@ focus_tree = {
 		icon = GFX_focus_FRA_thousands_paths_to_technician
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_peoples_education_program }
-		x = 1
-		y = 7
+		prerequisite = { focus = FRA_cybernetic_society }
+		x = -3
+		y = 6
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
@@ -21749,8 +22037,8 @@ focus_tree = {
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_principle_of_orthodoxy }
 		prerequisite = { focus = FRA_thousands_paths_to_technician }
-		x = 2
-		y = 8
+		x = -4
+		y = 7
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
@@ -21763,8 +22051,8 @@ focus_tree = {
 		icon = GFX_focus_FRA_principle_of_orthodoxy
 		relative_position_id = FRA_french_styke_revolution
 		prerequisite = { focus = FRA_peoples_education_program }
-		x = 3
-		y = 7
+		x = -5
+		y = 6
 		ai_will_do = { factor = 10 }
 		cost = 2
 		completion_reward = {
