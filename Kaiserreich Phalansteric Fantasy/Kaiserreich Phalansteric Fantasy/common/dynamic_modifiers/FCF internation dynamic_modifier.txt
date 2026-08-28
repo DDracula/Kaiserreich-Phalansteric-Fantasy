@@ -1,11 +1,9 @@
-
-Cof_phalanstere = {
-    icon = "GFX_dynamic_modifier_Cof_phalanstere"
+FCF_phalanstere = {
+    icon = "GFX_dynamic_modifier_FCF_phalanstere"
     remove_trigger = { has_socialist_government = no }
-    custom_modifier_tooltip = Cof_phalanstere_buff_tt
+    custom_modifier_tooltip = FCF_phalanstere_tt
 	###政治 
     political_power_gain = INT_political_power_gain
-    political_power_cost = INT_political_power_cost
 	political_power_factor = INT_political_power_factor
 	stability_factor = INT_stability_factor 
 	war_support_factor = INT_war_support_factor 
@@ -13,6 +11,9 @@ Cof_phalanstere = {
 	syndicalist_drift = INT_syndicalist_drift
 	totalist_drift = INT_totalist_drift
 	radical_socialist_drift = INT_radical_socialist_drift
+
+    weekly_manpower = INT_weekly_manpower
+    monthly_population = INT_monthly_population
 
     ###科技
 	research_speed_factor = INT_research_speed_factor
@@ -22,8 +23,10 @@ Cof_phalanstere = {
 	global_building_slots_factor = INT_global_building_slots_factor
 	production_speed_buildings_factor = INT_production_speed_buildings_factor
 	production_speed_infrastructure_factor = INT_production_speed_infrastructure_factor
-	production_speed_industrial_complex_factor = INT_production_speed_industrial_complex_factor
 	production_speed_rail_way_factor = INT_production_speed_rail_way_factor
+    production_speed_industrial_complex_factor = INT_production_speed_industrial_complex_factor
+    production_speed_arms_factory_factor = INT_production_speed_arms_factory_factor
+    production_speed_dockyard_factor = INT_production_speed_dockyard_factor
 
 	production_factory_start_efficiency_factor = INT_production_factory_start_efficiency_factor
 	production_factory_max_efficiency_factor = INT_production_factory_max_efficiency_factor 
@@ -36,12 +39,8 @@ Cof_phalanstere = {
 	consumer_goods_factor = INT_consumer_goods_factor 
 	local_resources_factor = INT_local_resources_factor
 
-    production_speed_arms_factory_factor = INT_production_speed_arms_factory_factor
-    production_speed_dockyard_factor = INT_production_speed_dockyard_factor
-
 	###陆军
 	send_volunteer_size = INT_send_volunteer_size
-	weekly_manpower = INT_weekly_manpower
 
     experience_gain_army = INT_experience_gain_army
 	experience_gain_army_factor = INT_experience_gain_army_factor
@@ -70,16 +69,16 @@ Cof_phalanstere = {
     license_production_speed = INT_license_production_speed
 }
 
-Cof_revolutionary_bases = {
+FCF_revolutionary_bases = {
     icon = "GFX_modifiers_SOV_invaders_must_die"
     enable = { owner = { has_socialist_government = yes } }
     remove_trigger = { is_capital = no }
     training_time_factor = -0.1
     send_volunteer_size = 2
-    custom_modifier_tooltip = Cof_revolutionary_bases_tt
+    custom_modifier_tooltip = FCF_revolutionary_bases_tt
 }
 
-Cof_french_roit = {
+FCF_french_roit = {
     icon = "GFX_decision_SWI_consolidate_council_power"
     remove_trigger = { is_owned_by = FRA }
     local_factories = -0.1
@@ -87,7 +86,7 @@ Cof_french_roit = {
     state_resources_factor = -0.25
 }
 
-Cof_state_red_black_market = {
+FCF_state_red_black_market = {
     icon = "GFX_decision_generic_wreckers"
     remove_trigger = {
         owner = {
@@ -103,7 +102,7 @@ Cof_state_red_black_market = {
             }
         }
     }
-    custom_modifier_tooltip = Cof_state_red_black_market_tt
+    custom_modifier_tooltip = FCF_state_red_black_market_tt
 
     local_factories = rbm_local_factories
     state_resource_aluminium = rbm_state_resource_aluminium
@@ -115,7 +114,7 @@ Cof_state_red_black_market = {
     temporary_state_resource_coal = rbm_state_resource_coal
 }
 
-Cof_red_black_market = {
+FCF_red_black_market = {
     icon = "GFX_idea_generic_coins"
 
     industrial_factory_donations = rbm_industrial
@@ -132,8 +131,8 @@ Cof_red_black_market = {
 }
 
 #边境走私
-Cof_border_smuggling_ger = {
-    icon = "GFX_dynamic_modifier_Cof_border_smuggling"
+FCF_border_smuggling_ger = {
+    icon = "GFX_dynamic_modifier_FCF_border_smuggling"
     remove_trigger = {
         OR = {  
             has_stability > 0.6
@@ -143,7 +142,7 @@ Cof_border_smuggling_ger = {
             check_variable = { ck < 0.05 }
         }
     }
-    custom_modifier_tooltip = Cof_border_smuggling_ger_tt
+    custom_modifier_tooltip = FCF_border_smuggling_ger_tt
     civilian_factory_use = bsg_civilian_factory_use
     consumer_goods_factor = bsg_consumer_goods_factor
     
@@ -156,9 +155,9 @@ Cof_border_smuggling_ger = {
     country_resource_coal = bsg_coal
 }
 
-Cof_border_smuggling_fra = {
-    icon = "GFX_dynamic_modifier_Cof_border_smuggling"
-    remove_trigger = { GER = { NOT = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } } } }
+FCF_border_smuggling_fra = {
+    icon = "GFX_dynamic_modifier_FCF_border_smuggling"
+    remove_trigger = { GER = { NOT = { has_dynamic_modifier = { modifier = FCF_border_smuggling_ger } } } }
     industrial_factory_donations = bsf_industrial_factory_donations
     consumer_goods_factor = bsf_consumer_goods_factor
     
@@ -171,17 +170,17 @@ Cof_border_smuggling_fra = {
     country_resource_coal = bsf_coal
 }
 
-Cof_african_colonial_riot = {
+FCF_african_colonial_riot = {
     icon = "GFX_decision_SWI_consolidate_council_power"
-    enable = { is_controlled_by = MFA }
-	remove_trigger = { NOT = { is_owned_by = MFA } }
-    custom_modifier_tooltip = Cof_african_colonial_riot_tt
+    enable = { is_controlled_by = MAF }
+	remove_trigger = { NOT = { is_owned_by = MAF } }
+    custom_modifier_tooltip = FCF_african_colonial_riot_tt
     state_resources_factor = -0.5
 	local_factories = -0.5
     recruitable_population_factor = -0.5
 }
 
-Cof_jap_colonial_riot = {
+FCF_jap_colonial_riot = {
     icon = "GFX_decision_SWI_consolidate_council_power"
     enable = { is_controlled_by = JAP }
 	remove_trigger = { 
@@ -190,20 +189,20 @@ Cof_jap_colonial_riot = {
         JAP = { has_stability > 0.85 }
         NOT = { is_owned_by = JAP }
     }
-    custom_modifier_tooltip = Cof_jap_colonial_riot_tt
+    custom_modifier_tooltip = FCF_jap_colonial_riot_tt
     state_resources_factor = jap_colonial_riot
 	local_factories = jap_colonial_riot
     recruitable_population_factor = jap_colonial_riot
 }
 
-Cof_iri_state_catalonia = {
+FCF_iri_state_catalonia = {
     icon = "GFX_decision_SWI_consolidate_council_power"
     remove_trigger = { is_owned_by = SWF }
     local_factories = -1
     recruitable_population_factor = -0.8
 }
 
-Cof_iri_state_ireland_revolution = {
+FCF_iri_state_ireland_revolution = {
     icon = "GFX_decision_SWI_consolidate_council_power"
     remove_trigger = { 
         OR = {

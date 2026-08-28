@@ -1,6 +1,5 @@
-Cof_total_variable_change = {
-    monthly_change_bgt_vs_csp = monthly_change_bgt_vs_cspc
-    monthly_change_ios = monthly_change_iosc
+FCF_new_variable_count = {
+    monthly_change_cgf_vs_csp = monthly_change_cgf_vs_cspc
 
     monthly_change_popsw = monthly_change_popswc
     monthly_change_popsp = monthly_change_popspc
@@ -48,10 +47,48 @@ Cof_total_variable_change = {
     weekly_change_iam = weekly_change_iamc
 }
 
+FCF_CGF_vs_CSP_modifier = {
+    icon = "GFX_idea_FCF_CGF_vs_CSP_modifier"
+    custom_modifier_tooltip = FRA_CGF_vs_CSP_modifier_desc
+
+    political_power_factor = cvc_political_power_factor
+
+    stability_factor = cvc_stability_factor
+    war_support_factor = cvc_war_support_factor
+
+    industrial_capacity_factory = cvc_industrial_capacity_factory
+    consumer_goods_factor = cvc_consumer_goods_factor
+
+    production_speed_buildings_factor = cvc_production_speed_buildings_factor
+    production_factory_max_efficiency_factor = cvc_production_factory_max_efficiency_factor
+    production_factory_efficiency_gain_factor = cvc_production_factory_efficiency_gain_factor
+
+    monthly_change_cgf_vs_csp = cvc_monthly_change_cgf_vs_csp
+
+    monthly_change_popsw = cvc_monthly_change_popsw
+    monthly_change_popsp = cvc_monthly_change_popsp
+    monthly_change_popsm = cvc_monthly_change_popsm
+    monthly_change_popss = cvc_monthly_change_popss
+    monthly_change_popsb = cvc_monthly_change_popsb
+
+    monthly_change_ev = cvc_monthly_change_ev
+    monthly_change_eib = cvc_monthly_change_eib
+    monthly_change_eip = cvc_monthly_change_eip
+    monthly_change_eia = cvc_monthly_change_eia
+    monthly_change_eam = cvc_monthly_change_eam
+    monthly_change_eae = cvc_monthly_change_eae
+    monthly_change_eaa = cvc_monthly_change_eaa
+    monthly_change_eq = cvc_monthly_change_eq
+    monthly_change_el = cvc_monthly_change_el
+    monthly_change_ei = cvc_monthly_change_ei
+
+    monthly_change_aauto = cvc_monthly_change_aauto
+}
+
 ### +意味增益 -意味减益 与后续buff数值增减无关
-Cof_politics_pop_impact = {
-    icon = "GFX_dynamic_modifier_Cof_politics_pop_impact"
-    custom_modifier_tooltip = Cof_politics_pop_impact_tt
+FCF_pop_modifier = {
+    icon = "GFX_dynamic_modifier_FCF_pop_modifier"
+    custom_modifier_tooltip = FCF_pop_modifier_tt
     #平均 +稳定
     stability_factor = pop_stability_factor
     #工人 +生产基础 +效率增长 35%+工厂产出
@@ -70,13 +107,16 @@ Cof_politics_pop_impact = {
     research_speed_factor = pop_research_speed_factor
     compliance_gain = pop_compliance_gain
     production_factory_max_efficiency_factor = pop_production_factory_max_efficiency_factor #影响>35%
-    #官僚 +政治点百分比获取 +政治顾问消耗 35%+政治点增长
+    #官僚 +政治点百分比获取 +经济点百分比获取 35%+政治点增长
     political_power_factor = pop_political_power_factor
-    political_advisor_cost_factor = pop_political_advisor_cost_factor
+    economy_power_factor = pop_economy_power_factor
     political_power_gain = pop_political_power_gain #影响>35%
     #军队 军官+最大计划 士官+组织度 士兵+移动组织度损失 35%+陆军攻击
     max_planning = pop_max_planning #军官
+    
     army_org_factor = pop_army_org_factor #士官
+    army_attack_speed_factor = pop_army_attack_speed_factor 
+
     org_loss_when_moving = pop_org_loss_when_moving #士兵
     army_attack_factor = pop_army_attack_factor #影响>35%
 
@@ -84,38 +124,47 @@ Cof_politics_pop_impact = {
     production_speed_buildings_factor = pop_production_speed_buildings_factor
     global_building_slots_factor = pop_global_building_slots_factor
 }
+FCF_extreme_political_group = {
+    icon = "GFX_idea_SPR_political_violence"
+    custom_modifier_tooltip = FCF_extreme_political_group_tt
+    political_power_cost = extremist_political_power_cost
+    stability_factor = extremist_stability_factor
+    
+    monthly_change_popsp = vertes_buff0
+    conscription_factor = vertes_buff1
+    local_resources_factor = vertes_buff2
 
-Cof_economy_impact = {
-    icon = "GFX_dynamic_modifier_Cof_economy_impact"
-    custom_modifier_tooltip = Cof_economy_impact_tt
-    ##经济模式
-    #混合经济 +基建建设 +民工建设
-    production_speed_infrastructure_factor = econ_production_speed_infrastructure_factor
+    training_time_factor = commando_buff0
+    army_org_factor = commando_buff1
+    army_org_regain = commando_buff2
 
-    #合作社经济 +基础生产 +生产增长 
-    production_factory_start_efficiency_factor = econ_production_factory_start_efficiency_factor
-    production_factory_efficiency_gain_factor = econ_production_factory_efficiency_gain_factor
+    monthly_change_ev = mafia_buff0
+    consumer_goods_factor = mafia_buff1
+    industrial_capacity_factory = mafia_buff2
 
-    #市场经济 +生活消费品 +民工建设
-    consumer_goods_factor = econ_consumer_goods_factor
-    production_speed_industrial_complex_factor = econ_production_speed_industrial_complex_factor
+    #赤卫队buff要改
+    monthly_change_eq = red_guard_buff0 
+    monthly_change_popsm = red_guard_buff1
+    monthly_change_popsb = red_guard_buff1
+}
 
-    #计划经济 +生产上限 +工厂产出 -生产增长
-    production_factory_max_efficiency_factor = econ_production_factory_max_efficiency_factor
-    industrial_capacity_factory = econ_industrial_capacity_factory
-
-    #统制经济 +军工建设 +资源效率
-    production_speed_arms_factory_factor = econ_production_speed_arms_factory_factor
-    local_resources_factor = econ_local_resources_factor
+FCF_economy_modifier = {
+    icon = "GFX_dynamic_modifier_FCF_economy_modifier"
+    custom_modifier_tooltip = FCF_economy_modifier_tt
+    economy_power_gain = econ_economy_power_gain
+    political_power_gain = econ_political_power_gain
 
     ##工业指标
     #工业基础 +生产基础 +民工建设 +资源获取 
-
+    production_speed_industrial_complex_factor = econ_production_speed_industrial_complex_factor
+    local_resources_factor = econ_local_resources_factor
     #流程标准化 +生产保持 +生产增长 -能源消耗
     line_change_production_efficiency_factor = econ_line_change_production_efficiency_factor
+    production_factory_efficiency_gain_factor = econ_production_factory_efficiency_gain_factor
     factory_energy_consumption = econ_factory_energy_consumption
     
     #军事工业 +军工建设 +转换速度
+    production_speed_arms_factory_factor = econ_production_speed_arms_factory_factor
     conversion_cost_civ_to_mil_factor = econ_conversion_cost_civ_to_mil_factor
     attrition = econ_attrition
 
@@ -126,22 +175,43 @@ Cof_economy_impact = {
     supply_consumption_factor = econ_supply_consumption_factor
     energy_gain_factor = econ_energy_gain_factor
     #农副产业链 +生活消费品
+    consumer_goods_factor = econ_consumer_goods_factor
 
     ##其他指标
     #经济平等 +稳定度 +生产上限 +生活消费品
     stability_factor = econ_stability_factor
+    production_factory_max_efficiency_factor = econ_production_factory_max_efficiency_factor
     #产业协作 +生产上限 +生产增长 +基础生产
-
+    production_factory_start_efficiency_factor = econ_production_factory_start_efficiency_factor
     #创新能力 +科研速度
     research_speed_factor = econ_research_speed_factor
 
     #extra
     global_building_slots_factor = econ_global_building_slots_factor
+    industrial_capacity_factory = econ_industrial_capacity_factory
+    production_speed_infrastructure_factor = econ_production_speed_infrastructure_factor
+}
+FCF_supply_chain_issues_modifier = {
+    icon = "GFX_idea_FCF_supply_chain_crisis"
+    custom_modifier_tooltip = FCF_supply_chain_issues_modifier_tt
+
+    industrial_capacity_factory = sci_industrial_capacity_factory
+    local_resources_factor = sci_local_resources_factor
+    consumer_goods_factor = sci_consumer_goods_factor
+    production_speed_buildings_factor = sci_production_speed_buildings_factor
+    production_factory_max_efficiency_factor = sci_production_factory_max_efficiency_factor
+
+    monthly_change_eib = sci_monthly_change_eib
+    monthly_change_eia = sci_monthly_change_eia
+
+    monthly_change_eam = sci_monthly_change_eam
+    monthly_change_eae = sci_monthly_change_eae
+    monthly_change_eaa = sci_monthly_change_eaa
 }
 
-Cof_military_reform_impact = {
-    icon = "GFX_dynamic_modifier_Cof_military_reform_impact"
-    custom_modifier_tooltip = Cof_military_reform_impact_tt
+FCF_military_modifier = {
+    icon = "GFX_dynamic_modifier_FCF_military_modifier"
+    custom_modifier_tooltip = FCF_military_modifier_tt
     ##军事理论
     #综合学说 +陆军xp +训练时间 +核心攻防
     experience_gain_army_factor = mili_experience_gain_army_factor
@@ -214,9 +284,13 @@ Cof_military_reform_impact = {
     monthly_change_apassion = mili_monthly_change_apassion
 }
 
-Cof_naval_buff = {
-    icon = "GFX_idea_AUS_naval_efficiency_idea"
+FCF_navy_modifier = {
+    icon = "GFX_dynamic_modifier_FCF_navy_modifier"
+    custom_modifier_tooltip = FCF_navy_modifier_tt
+    economy_power_factor = fnavy_economy_power_factor
+
     experience_gain_navy = fnavy_experience_gain_navy
+    experience_gain_navy_factor = fnavy_experience_gain_navy_factor
     industrial_capacity_dockyard = fnavy_industrial_capacity_dockyard
     naval_equipment_upgrade_xp_cost = fnavy_naval_equipment_upgrade_xp_cost
 
@@ -233,13 +307,10 @@ Cof_naval_buff = {
 
     #对岸炮击
     shore_bombardment_bonus = fnavy_shore_bombardment_bonus
-
     #主力舰攻击
 	navy_capital_ship_attack_factor = fnavy_navy_capital_ship_attack_factor
-
     #对海轰炸
 	naval_strike_attack_factor = fnavy_naval_strike_attack_factor
-
     #潜艇攻击
 	navy_submarine_attack_factor = fnavy_navy_submarine_attack_factor
     #潜艇防御
@@ -248,37 +319,31 @@ Cof_naval_buff = {
     naval_critical_score_chance_factor = fnavy_naval_critical_score_chance_factor
 	#阵位
     positioning = fnavy_positioning
-
     #袭击运输船任务效率
 	convoy_raiding_efficiency_factor = fnavy_convoy_raiding_efficiency_factor
-
     #海军命中率
 	naval_hit_chance = fnavy_naval_hit_chance
     #海军对空攻击
 	navy_anti_air_attack_factor = fnavy_navy_anti_air_attack_factor
-
     #两栖登陆速度
 	amphibious_invasion = fnavy_amphibious_invasion
     #登陆作战上限
 	naval_invasion_capacity = fnavy_naval_invasion_capacity
+    naval_invasion_plan_cap = fnavy_naval_invasion_plan_cap
     #登陆准备时间
 	invasion_preparation = fnavy_invasion_preparation
-
     #海军组织度恢复速率
 	naval_morale_factor = fnavy_naval_morale_factor
     #打击舰队组织度损失
 	strike_force_movement_org_loss = fnavy_strike_force_movement_org_loss
-
     #屏卫效率
 	screening_efficiency = fnavy_screening_efficiency
     #屏卫进攻
     navy_screen_attack_factor = fnavy_navy_screen_attack_factor
-
     #海军情报
 	navy_intel_factor = fnavy_navy_intel_factor
     #海军探测
 	naval_detection = fnavy_naval_detection
-
     #布雷效率
 	mines_planting_by_fleets_factor = fnavy_mines_planting_by_fleets_factor
 	#扫雷效率
@@ -287,17 +352,14 @@ Cof_naval_buff = {
     naval_mine_hit_chance = fnavy_naval_mine_hit_chance
 	#水雷伤害
     naval_mines_damage_factor = fnavy_naval_mines_damage_factor
-
     #舰队协同性
 	naval_coordination = fnavy_naval_coordination
 	#夜间索敌
     spotting_chance = fnavy_spotting_chance
-
     #鱼雷穿透屏卫舰
 	naval_torpedo_screen_penetration_factor = fnavy_naval_torpedo_screen_penetration_factor
-    #鱼类命中几率
+    #鱼雷命中几率
     naval_torpedo_hit_chance_factor = fnavy_naval_torpedo_hit_chance_factor
-
     ships_at_battle_start = fnavy_ships_at_battle_start
     #航母
     carrier_traffic = fnavy_carrier_traffic
@@ -309,9 +371,16 @@ Cof_naval_buff = {
     navy_carrier_air_agility_factor = fnavy_navy_carrier_air_agility_factor
 }
 
-Cof_air_buff = {
-    icon = "GFX_idea_generic_air_fighter"
+FCF_air_modifier = {
+    icon = "GFX_dynamic_modifier_FCF_air_modifier"
+    custom_modifier_tooltip = FCF_air_modifier_tt
+    economy_power_factor = fair_economy_power_factor
+
     experience_gain_air_factor = fair_experience_gain_air_factor
+
+    small_plane_airframe_design_cost_factor = fair_small_plane_airframe_design_cost_factor
+    medium_plane_airframe_design_cost_factor = fair_medium_plane_airframe_design_cost_factor
+    large_plane_airframe_design_cost_factor = fair_large_plane_airframe_design_cost_factor
 
     air_maximum_speed_factor = fair_air_max_speed_factor
     air_attack_factor = fair_air_attack_factor
@@ -320,43 +389,34 @@ Cof_air_buff = {
     air_bombing_targetting = fair_air_bombing_targetting
     air_power_projection_factor = fair_air_power_projection_factor
 
-    air_superiority_efficiency  = fair_air_superiority_efficienc
-    
+    air_superiority_efficiency  = fair_air_superiority_efficiency
+
+    air_escort_efficiency = fair_air_escort_efficiency
     #本地空域防卫修正系数
 	air_home_defence_factor = fair_air_home_defence_factor
-
     #恶劣天气惩罚
 	air_weather_penalty = fair_air_weather_penalty
     #空军事故几率
 	air_accidents_factor = fair_air_accidents_factor
-
     #对海机动
 	naval_strike_agility_factor = fair_naval_strike_agility_factor
     #对海轰炸
 	naval_strike_attack_factor = fair_naval_strike_attack_factor
-
     #空军航程
 	air_range_factor = fair_air_range_factor
-
 	air_agility_factor = fair_air_agility_factor
     #空军燃料消耗
 	air_fuel_consumption_factor = fair_air_fuel_consumption_factor
-
     #王牌飞行员产生几率
 	air_ace_generation_chance_factor = fair_air_ace_generation_chance_factor
 	#空军联队任务经验增长
     air_mission_xp_gain_factor = fair_air_mission_xp_gain_factor
     #空军联队训练经验增长
 	air_training_xp_gain_factor = fair_air_training_xp_gain_factor
-
     #夜间行动惩罚
 	air_night_penalty = fair_air_night_penalty
     #夜间战略轰炸惩罚
 	air_strategic_bomber_night_penalty = fair_air_strategic_bomber_night_penalty
-
-	strategic_bomb_visibility = fair_strategic_bomb_visibility
-	air_strategic_bomber_bombing_factor = fair_air_strategic_bomber_bombing_factor
-
     #战斗中空优加成
 	air_superiority_bonus_in_combat = fair_air_superiority_bonus_in_combat
     #对地攻击系数
@@ -366,116 +426,7 @@ Cof_air_buff = {
 }
 
 
-Cof_bill_number_cost = {
+FCF_bill_number_cost = {
     political_power_factor = bills_cost
-}
-
-Cof_piece_rate_economy_buff = {
-    enable = { FRA = { check_variable = { econ_industry_basic > 50 } } }
-    industrial_capacity_factory = pren_industrial_capacity_factory
-    production_factory_max_efficiency_factor = pren_production_factory_max_efficiency_factor
-    production_factory_efficiency_gain_factor = pren_production_factory_efficiency_gain_factor
-    monthly_change_eib = pren_monthly_change_eib
-}
-
-Cof_each_takes_what_needs = {
-    icon = "GFX_dynamic_modifier_Cof_centrally_planned_economy"
-    consumer_goods_factor = 0.3
-    custom_modifier_tooltip = Cof_each_takes_what_needs_tt
-    industrial_capacity_factory = factory_used_in_consumer
-}
-
-Cof_great_leap_forward = {
-    icon = "GFX_dynamic_modifier_Cof_centrally_planned_economy"
-    consumer_goods_factor = 0.3
-    custom_modifier_tooltip = Cof_great_leap_forward_tt
-    production_speed_buildings_factor = factory_used_in_consumer
-}
-
-Cof_more_than_just_the_future = {
-    icon = "GFX_dynamic_modifier_Cof_centrally_planned_economy"
-    consumer_goods_factor = 0.3
-    custom_modifier_tooltip = Cof_more_than_just_the_future_tt
-    research_speed_factor = factory_used_in_consumer
-}
-
-Cof_doctrines_fitness = {
-    icon = "GFX_idea_bul_zveno"
-    remove_trigger = { check_variable = { dfw = 0 } }
-    custom_modifier_tooltip = Cof_doctrines_fitness_tt
-
-    experience_gain_army_factor = dfwbuff
-    army_core_attack_factor = dfwbuff
-    army_core_defence_factor = dfwbuff
-    army_speed_factor= dfwbuff
-    max_planning_factor = dfwbuff
-    max_dig_in_factor = dfwbuff
-    dig_in_speed_factor = dfwbuff
-    army_org_factor = dfwbuff
-}
-
-Cof_extreme_political_group = {
-    icon = "GFX_idea_SPR_political_violence"
-    custom_modifier_tooltip = Cof_extreme_political_group_tt
-    political_power_cost = extremist_political_power_cost
-    stability_factor = extremist_stability_factor
-    
-    monthly_change_popsp = vertes_buff0
-    conscription_factor = vertes_buff1
-    local_resources_factor = vertes_buff2
-
-    training_time_factor = commando_buff0
-    army_org_factor = commando_buff1
-    army_org_regain = commando_buff2
-
-    monthly_change_ev = mafia_buff0
-    consumer_goods_factor = mafia_buff1
-    industrial_capacity_factory = mafia_buff2
-
-    monthly_change_eq = bonnot_buff0
-    monthly_change_popsm = bonnot_buff1
-    monthly_change_popsb = bonnot_buff1
-}
-
-Cof_civilservants_country_buff = {
-    icon = "GFX_idea_HOL_syndicalist_neutrality"
-
-    political_power_factor = csc_political_power_factor
-    economy_power_factor = csc_economy_power_factor
-    stability_factor = csc_stability_factor
-
-    monthly_change_popsw = csc_monthly_change_popsw
-    monthly_change_popsp = csc_monthly_change_popsp
-    monthly_change_popsm = csc_monthly_change_popsm
-    monthly_change_popss = csc_monthly_change_popss
-    monthly_change_popsb = csc_monthly_change_popsb
-
-    monthly_change_eib = csc_monthly_change_eib
-    monthly_change_eip = csc_monthly_change_eip
-    monthly_change_eq = csc_monthly_change_eq
-    monthly_change_el = csc_monthly_change_el
-}
-
-Cof_belua_multorum_capitum_buff = {
-    icon = "GFX_idea_army_cooperation"
-    custom_modifier_tooltip = Cof_belua_multorum_capitum_buff_tt
-    stability_factor = bmc_stability_factor
-    war_support_factor = bmc_war_support_factor
-
-    political_power_factor = bmc_political_power_factor
-    economy_power_factor = bmc_economy_power_factor
-    industrial_capacity_factory = bmc_industrial_capacity_factory
-    local_resources_factor = bmc_local_resources_factor
-
-    monthly_change_popsw = bmc_monthly_change_popsw
-    monthly_change_popsp = bmc_monthly_change_popsp
-    monthly_change_popsm = bmc_monthly_change_popsm
-    monthly_change_popsb = bmc_monthly_change_popsb
-
-    monthly_change_eib = bmc_monthly_change_eib
-    monthly_change_eip = bmc_monthly_change_eip
-    monthly_change_eam = bmc_monthly_change_eam
-    monthly_change_eaa = bmc_monthly_change_eaa
-    monthly_change_eq = bmc_monthly_change_eq
-    monthly_change_el = bmc_monthly_change_el
+    economy_power_factor = bills_cost
 }

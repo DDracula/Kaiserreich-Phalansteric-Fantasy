@@ -1,16 +1,16 @@
-add_namespace = cofsociety
+add_namespace = fcf_society_event
 
 country_event = {
-	id = cofsociety.1
-	title = cofsociety.1.title
-	desc = cofsociety.1.desc
-	picture = GFX_report_event_AST_protest2
+	id = fcf_society_event.1
+	title = fcf_society_event.1.title
+	desc = fcf_society_event.1.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofsociety.1.a
+		name = fcf_society_event.1.a
         ai_chance = { base = 50 }
 		add_political_power = -50
-		add_ideas = Cof_intensified_urban_rural_conflicts1
+		add_ideas = FCF_intensified_urban_rural_conflicts1
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_society
@@ -20,7 +20,7 @@ country_event = {
 		set_temp_variable = { sc = 0 }
 		set_temp_variable = { bc = 0 }
 		set_temp_variable = { ac = 0 }
-		class_pop_satisfactions_change = yes
+		society_pop_satisfactions_change = yes
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_economy
@@ -34,13 +34,13 @@ country_event = {
 		set_temp_variable = { eqc = -3 }
 		set_temp_variable = { elc = 0 }
 		set_temp_variable = { eic = 0 }
-		cof_econ_target_change = yes
+		economy_variable_change = yes
 	}
 	option = {
-		name = cofsociety.1.b
+		name = fcf_society_event.1.b
         ai_chance = { base = 50 }
 		add_political_power = -25
-		add_ideas = Cof_intensified_urban_rural_conflicts1
+		add_ideas = FCF_intensified_urban_rural_conflicts1
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_society
@@ -50,7 +50,7 @@ country_event = {
 		set_temp_variable = { sc = 0 }
 		set_temp_variable = { bc = 0 }
 		set_temp_variable = { ac = 0 }
-		class_pop_satisfactions_change = yes
+		society_pop_satisfactions_change = yes
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_economy
@@ -64,32 +64,68 @@ country_event = {
 		set_temp_variable = { eqc = -3 }
 		set_temp_variable = { elc = 0 }
 		set_temp_variable = { eic = 0 }
-		cof_econ_target_change = yes
+		economy_variable_change = yes
 	}
 }
 
 country_event = {
-	id = cofsociety.2
-	title = cofsociety.2.title
-	desc = cofsociety.2.desc
-	picture = GFX_report_event_generic_books
+	id = fcf_society_event.2
+	title = fcf_society_event.2.title
+	desc = fcf_society_event.2.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofsociety.2.a
+		name = fcf_society_event.2.a
         add_stability = -0.1
 		add_political_power = -50
-		complete_national_focus = FRA_womens_day_parade
+		if = {
+			limit = { has_completed_focus = FCF_examine_womens_issues }
+			add_ideas = FCF_womens_day_parade_weaken
+		}
+		else = { add_ideas = FCF_womens_day_parade }
 	}
 }
 
 country_event = {
-	id = cofsociety.3
-	title = cofsociety.3.title
-	desc = cofsociety.3.desc
-	picture = GFX_report_event_generic_books
+	id = fcf_society_event.3 
+	title = fcf_society_event.3.title
+	desc = fcf_society_event.3.desc
+	
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = { country_event = { id = fcf_society_event.4 days = 5 } }
+	}
+	option = {
+		name = fcf_society_event.3.a
+		add_stability = 0.01
+
+		custom_effect_tooltip = effect_society
+        set_temp_variable = { srtc_edu = 0 }
+        set_temp_variable = { srtc_reg = 0 }
+        set_temp_variable = { srtc_fem = 0 }
+        set_temp_variable = { srtc_imm = -1 }
+        set_temp_variable = { srtc_rel = 0 }
+        society_reform_tendency_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_society_event.4
+	title = fcf_society_event.4.title
+	desc = fcf_society_event.4.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofsociety.3.a
-		establish_national_news = yes
+		name = fcf_society_event.4.a
+		if = {
+			limit = { 
+				OR = {
+					has_completed_focus = FCF_state_of_all_workers 
+					has_completed_focus = FCF_beware_of_political_infiltration 
+				}
+			}
+			add_ideas = FCF_police_enforcement_parade_weaken
+		}
+		else = { add_ideas = FCF_police_enforcement_parade }
 	}
 }

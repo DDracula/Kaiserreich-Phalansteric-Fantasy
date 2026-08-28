@@ -1,0 +1,386 @@
+on_actions = {
+	on_startup = {
+		effect = {
+			FRA = {
+				set_temp_variable = { coalition_partner_var = token:social_democrat }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:social_liberal }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:market_liberal }
+				add_to_coalition = yes
+				set_temp_variable = { coalition_partner_var = token:social_conservative }
+				add_to_coalition = yes
+			}
+			SRI = {
+				set_temp_variable = { coalition_partner_var = token:totalist }
+				remove_from_coalition = yes
+				swap_ideas = {
+					remove_idea = SRI_dannunzian_coalition
+					add_idea = SRI_broken_orthodoxy
+				}
+			}
+
+			#FRA Flag game rule
+			if = {
+				limit = { has_game_rule = { rule = FRA_flag option = FRA_FLAG_RED } }
+				FRA = { set_cosmetic_tag = FRA_red }
+			}
+			else_if = {
+				limit = { has_game_rule = { rule = FRA_flag option = FRA_FLAG_ALT } }
+				FRA = { set_cosmetic_tag = FRA_alternate }
+			}
+		}
+	}
+
+	#ROOT is winner #FROM gets annexed - For civil wars on_civil_war_end is also fired
+	on_annex = {
+		effect = {
+			FROM = {
+				if = {
+					limit = { tag = INT }
+					#dismantle the Phalanstere
+					INT_disable_phalanstere = yes
+
+					# Reset the INT alias
+					FRA = { save_global_event_target_as = KR_internationale_leader }
+				}
+				else = {
+					FRA_remove_from_phalanstere = yes
+				}
+
+				#Return Rokossowski to neutral Poland, if applicable
+				if = {
+					limit = {
+						has_character = POL_konstanty_rokossowski
+						NOT = { original_tag = POL }
+						POL = {
+							has_soclib_or_socdem_government = yes
+							NOT = { is_in_faction_with = GER }
+						}
+					}
+					POL = { POL_return_rokossowski = yes }
+				}
+			}
+		}
+	}
+
+	# ROOT is the new faction leader FROM is the old faction leader
+	on_assume_faction_leadership = {
+		effect = {
+			if = {
+				limit = { FROM = { tag = INT } }
+				if = {
+					limit = { FROM = { tag = event_target:INT_phalanstere_leader } }
+					INT_move_phalanstere_leadership = yes
+				}
+				save_global_event_target_as = KR_internationale_leader
+			}
+		}
+	}
+
+	# ROOT is capitulated country, FROM is winner
+	on_capitulation_immediate = {
+		effect = {
+			# Move the Internationale leader
+			if = {
+				limit = {
+					tag = INT
+					NOT = {
+						any_allied_country = {
+							is_major = yes
+							has_capitulated = no
+							num_of_owned_factories > 50
+						}
+					}
+				}
+				### if socialist Russia exists, merge the factions
+				if = {
+					limit = {
+						RUS = {
+							has_socialist_government = yes
+							is_faction_leader = yes
+						}
+						NOT = { any_allied_country = { has_war_with = RUS } }
+					}
+					every_allied_country = {
+						limit = {
+							is_subject = no
+							has_capitulated = no
+						}
+						set_global_flag = TEMPORARY_CSIABLED_FACTION_POPUP
+						RUS = {
+							add_to_faction = PREV
+							diplomatic_relation = {
+								country = PREV
+								relation = guarantee
+								active = no
+							}
+							diplomatic_relation = {
+								country = PREV
+								relation = non_aggression_pact
+								active = no
+							}
+							diplomatic_relation = {
+								country = PREV
+								relation = military_access
+								active = no
+							}
+						}
+						diplomatic_relation = {
+							country = RUS
+							relation = guarantee
+							active = no
+						}
+						diplomatic_relation = {
+							country = RUS
+							relation = military_access
+							active = no
+						}
+					}
+					RUS = {
+						set_faction_leader = yes
+						set_faction_name = faction_third_internationale
+						save_global_event_target_as = KR_internationale_leader
+						if = {
+							limit = { ROOT = { tag = event_target:INT_phalanstere_leader } }
+							INT_move_phalanstere_leadership = yes
+						}
+					}
+				}
+				### collapse the Internationale if no true majors are left
+				else = {
+					every_allied_country = {
+						limit = {
+							has_capitulated = no
+							OR = {
+								is_subject = no
+								overlord = { has_capitulated = yes }
+							}
+						}
+						faction_collapse_member_peace_effect = yes
+						country_event = france_events.301
+					}
+					INT_disable_phalanstere = yes
+					dismantle_faction = yes
+					news_event = { id = france_events.302 hours = 30 }
+					if = {
+						limit = {
+							RUS = {
+								has_socialist_government = yes
+								is_faction_leader = yes
+							}
+						}
+						RUS = { set_faction_name = faction_fourth_internationale }
+					}
+					FRA = { save_global_event_target_as = KR_internationale_leader } #reset INT alias
+					IRE = {
+						country_event = { id = ireland_events.3450 days = 2 }	# IRE capstone event		### IRE TEMP = wait for on_action fix
+					}
+				}
+			}
+		}
+	}
+
+	#ROOT is winner, FROM is loser (called for all winners against all losers)
+	on_before_peace_conference_start = {
+		effect = {
+			# Move the Internationale leader
+			FROM = {
+				if = {
+					limit = {
+						tag = INT
+						surrender_progress > 0.9
+					}
+					every_allied_country = {
+						limit = {
+							has_capitulated = no
+							OR = {
+								is_subject = no
+								overlord = { has_capitulated = yes }
+							}
+						}
+						faction_collapse_member_peace_effect = yes
+						country_event = france_events.301
+					}
+					INT_disable_phalanstere = yes
+					dismantle_faction = yes
+					news_event = { id = france_events.302 hours = 30 }
+					if = {
+						limit = {
+							RUS = {
+								has_socialist_government = yes
+								is_faction_leader = yes
+							}
+						}
+						RUS = { set_faction_name = faction_fourth_internationale }
+					}
+					FRA = { save_global_event_target_as = KR_internationale_leader } #reset INT alias
+					IRE = {
+						country_event = { id = ireland_events.3450 days = 2 }	# IRE capstone event		### IRE TEMP = wait for on_action fix
+					}
+				}
+			}
+		}
+	}
+
+	#used when liberating in a peace conference
+	#ROOT = nation being liberated, FROM = liberator
+	on_liberate = {
+		effect = {
+			if = {
+				limit = { exists = no }
+				if = {
+					limit = { FROM = { FRA_is_phalanstere_member = yes } }
+					FRA_add_to_phalanstere = yes
+				}
+				if = {
+					limit = {
+						FROM = {
+							is_in_faction = yes
+							faction_leader = { has_socialist_government = yes }
+						}
+					}
+					for_each_scope_loop = {
+						array = FROM.faction_members
+						if = {
+							limit = {
+								is_major = yes
+								is_subject = no
+								naval_base > 0
+							}
+							give_guarantee = ROOT
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_new_term_election = {
+		effect = {
+			if = {
+				limit = {
+					tag = FRP
+					FRP = { has_idea = FRP_coalition_of_expertise }
+				}
+				country_event = france_puppet_events.3
+			}
+			else_if = {
+				limit = {
+					tag = FRP
+					FRP = {
+						OR = {
+							has_idea = FRP_republican_front
+							has_idea = FRP_new_national_bloc
+							has_idea = FRP_bloc_of_rights
+							has_idea = FRP_bloc_of_rights_authdem
+						}
+					}
+				}
+				country_event = france_puppet_events.2
+			}
+		}
+	}
+
+	on_ruling_party_change = {
+		# temp var old_ideology_token is available for effects
+		effect = {
+			if = {
+				limit = {
+					has_socialist_government = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							faction_leader = { has_socialist_government = yes }
+						}
+					}
+				}
+				FRA_remove_from_phalanstere = yes
+			}
+		}
+	}
+
+	#FROM is country getting invited.
+	on_offer_join_faction = {
+		effect = {
+			if = {
+				limit = {
+					tag = RUS
+					has_socialist_government = yes
+					is_faction_leader = yes
+					INT = {
+						is_faction_leader = yes
+						NOT = {
+							has_war_with = ROOT
+							has_war_with = FROM
+						}
+					}
+				}
+				INT = {
+					diplomatic_relation = {
+						country = FROM
+						relation = non_aggression_pact
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					tag = INT
+					RUS = {
+						has_socialist_government = yes
+						is_faction_leader = yes
+						NOT = {
+							has_war_with = ROOT
+							has_war_with = FROM
+						}
+					}
+				}
+				RUS = {
+					diplomatic_relation = {
+						country = FROM
+						relation = non_aggression_pact
+					}
+				}
+			}
+		}
+	}
+
+	#ROOT is winner #FROM is loser
+	on_peaceconference_ended = {
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						tag = INT
+						exists = no #exclude scripted peaces
+					}
+				}
+				FROM = { INT_disable_phalanstere = yes }
+				# Reset the INT alias
+				FRA = { save_global_event_target_as = KR_internationale_leader }
+			}
+		}
+	}
+
+	#ROOT = attacking side
+	#FROM = defending side
+	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
+	on_war_relation_added = {
+		effect = {
+			if = {
+				limit = {
+					FRA_is_phalanstere_member = yes
+					INT = { is_ally_with = FROM }
+				}
+				FRA_remove_from_phalanstere = yes
+			}
+			else_if = {
+				limit = {
+					FROM = { FRA_is_phalanstere_member = yes }
+					is_ally_with = INT
+				}
+				FROM = { FRA_remove_from_phalanstere = yes }
+			}
+		}
+	}
+}

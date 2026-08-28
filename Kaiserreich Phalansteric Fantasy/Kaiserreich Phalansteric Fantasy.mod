@@ -9,5 +9,5 @@ dependencies={
 }
 name="Kaiserreich: Phalansteric Fantasy"
 picture="Thumbnail.png"
-supported_version="1.17.*"
+supported_version="1.19.*"
 path="E:/Documents/Paradox Interactive/Hearts of Iron IV/mod/Kaiserreich Phalansteric Fantasy"

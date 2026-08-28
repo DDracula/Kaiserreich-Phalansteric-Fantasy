@@ -1,1027 +1,823 @@
-defined_text = {
-    name = class_tendency_target_pop
-    text = {
-        trigger = { check_variable = { pop_target = 1 } }
-        localization_key = class_pop_workers
-    }
-    text = {
-        trigger = { check_variable = { pop_target = 2 } }
-        localization_key = class_pop_peasants
-    }
-    text = {
-        trigger = { check_variable = { pop_target = 3 } }
-        localization_key = class_pop_merchants
-    }
-    text = {
-        trigger = { check_variable = { pop_target = 4 } }
-        localization_key = class_pop_scholars
-    }
-    text = {
-        trigger = { check_variable = { pop_target = 5 } }
-        localization_key = class_pop_bureaucrats
-    }
-    text = {
-        trigger = { check_variable = { pop_target = 6 } }
-        localization_key = class_pop_officers
-    }
-    text = {
-        trigger = { check_variable = { pop_target = 7 } }
-        localization_key = class_pop_ncos
-    }
-    text = {
-        trigger = { check_variable = { pop_target = 8 } }
-        localization_key = class_pop_soldiers
-    }
-}
+#ui
+    defined_text = {
+        name = gui_society
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popw } }
+            localization_key = gui_socpopw
+        }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popp } }
+            localization_key = gui_socpopp
+        }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popm } }
+            localization_key = gui_socpopm
+        }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_pops } }
+            localization_key = gui_socpops
+        }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popb } }
+            localization_key = gui_socpopb
+        }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popa } }
+            localization_key = gui_socpopa
+        }
 
-defined_text = {
-    name = class_pop_target
-    text = {
-        trigger = { check_variable = { target_pop = 1 } }
-        localization_key = pop_workers
-    }
-    text = {
-        trigger = { check_variable = { target_pop = 2 } }
-        localization_key = pop_peasants
-    }
-    text = {
-        trigger = { check_variable = { target_pop = 3 } }
-        localization_key = pop_merchants
-    }
-    text = {
-        trigger = { check_variable = { target_pop = 4 } }
-        localization_key = pop_scholars
-    }
-    text = {
-        trigger = { check_variable = { target_pop = 5 } }
-        localization_key = pop_bureaucrats
-    }
-    text = {
-        trigger = { check_variable = { target_pop = 6 } }
-        localization_key = pop_army
-    }
-}
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popsall } }
+            localization_key = gui_socpopsall
+        }
 
-defined_text = {
-	name = Cof_politics_workers_tendency
-    text = {
-        trigger = { pop_tendency_workers_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_workers_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_workers_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_workers_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_peasants_tendency
-    text = {
-        trigger = { pop_tendency_peasants_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_peasants_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_peasants_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_peasants_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_merchants_tendency
-    text = {
-        trigger = { pop_tendency_merchants_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_merchants_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_merchants_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_merchants_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_scholars_tendency
-    text = {
-        trigger = { pop_tendency_scholars_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_scholars_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_scholars_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_scholars_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_bureaucrats_tendency
-    text = {
-        trigger = { pop_tendency_bureaucrats_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_bureaucrats_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_bureaucrats_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_bureaucrats_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_army_tendency
-    text = {
-        trigger = { pop_tendency_army_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_army_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_army_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_army_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_officers_tendency
-    text = {
-        trigger = { pop_tendency_officers_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_officers_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_officers_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_officers_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_ncos_tendency
-    text = {
-        trigger = { pop_tendency_ncos_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_ncos_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_ncos_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_ncos_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = Cof_politics_soldiers_tendency
-    text = {
-        trigger = { pop_tendency_soldiers_synd = yes }
-        localization_key = faction_synd
-    }
-    text = {
-        trigger = { pop_tendency_soldiers_oppo = yes }
-        localization_key = faction_oppo
-    }
-    text = {
-        trigger = { pop_tendency_soldiers_jaco = yes }
-        localization_key = faction_jaco
-    }
-    text = {
-        trigger = { pop_tendency_soldiers_sore = yes }
-        localization_key = faction_sore
-    }
-    text = { localization_key = faction_no }
-}
-
-defined_text = {
-	name = cof_politics_more_than_x_target
-    
-	text = {
-		trigger = { check_variable = { target_t = 1 } }
-		localization_key = infulence_synd
-	}
-    text = {
-		trigger = { check_variable = { target_t = 2 } }
-		localization_key = infulence_oppo
-	}
-    text = {
-		trigger = { check_variable = { target_t = 3 } }
-		localization_key = infulence_jaco
-	}
-    text = {
-		trigger = { check_variable = { target_t = 4 } }
-		localization_key = infulence_sore
-	}
-
-    text = {
-		trigger = { check_variable = { target_t = 11 } }
-		localization_key = pop_workers
-	}
-    text = {
-		trigger = { check_variable = { target_t = 12 } }
-		localization_key = pop_peasants
-	}
-    text = {
-		trigger = { check_variable = { target_t = 13 } }
-		localization_key = pop_merchants
-	}
-    text = {
-		trigger = { check_variable = { target_t = 14 } }
-		localization_key = pop_scholars
-	}
-    text = {
-		trigger = { check_variable = { target_t = 15 } }
-		localization_key = pop_bureaucrats
-	}
-    text = {
-		trigger = { check_variable = { target_t = 16 } }
-		localization_key = pop_army
-	}
-
-    text = {
-		trigger = { check_variable = { target_t = 17 } }
-		localization_key = pop_army_officers
-	}
-    text = {
-		trigger = { check_variable = { target_t = 18 } }
-		localization_key = pop_army_ncos
-	}
-    text = {
-		trigger = { check_variable = { target_t = 19 } }
-		localization_key = pop_army_soldiers
-	}
-
-    text = {
-		trigger = { check_variable = { target_t = 20 } }
-		localization_key = pop_satisfaction
-	}
-    text = {
-		trigger = { check_variable = { target_t = 21 } }
-		localization_key = pop_satisfaction_workers
-	}
-    text = {
-		trigger = { check_variable = { target_t = 22 } }
-		localization_key = pop_satisfaction_peasants
-	}
-    text = {
-		trigger = { check_variable = { target_t = 23 } }
-		localization_key = pop_satisfaction_merchants
-	}
-    text = {
-		trigger = { check_variable = { target_t = 24 } }
-		localization_key = pop_satisfaction_scholars
-	}
-    text = {
-		trigger = { check_variable = { target_t = 25 } }
-		localization_key = pop_satisfaction_bureaucrats
-	}
-    text = {
-		trigger = { check_variable = { target_t = 26 } }
-		localization_key = pop_satisfaction_army
-	}
-}
-
-defined_text = {
-    name = gui_popsynd
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popw
-                    has_country_flag = gui_society_popsw
-                }
-            }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popsw } }
+            localization_key = gui_socpopsw
         }
-        localization_key = gui_popsyndw
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popp
-                    has_country_flag = gui_society_popsp
-                }
-            }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popsp } }
+            localization_key = gui_socpopsp
         }
-        localization_key = gui_popsyndp
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popm
-                    has_country_flag = gui_society_popsm
-                }
-            }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popsm } }
+            localization_key = gui_socpopsm
         }
-        localization_key = gui_popsyndm
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_pops
-                    has_country_flag = gui_society_popss
-                }
-            }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popss } }
+            localization_key = gui_socpopss
         }
-        localization_key = gui_popsynds
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popb
-                    has_country_flag = gui_society_popsb
-                }
-            }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popsb } }
+            localization_key = gui_socpopsb
         }
-        localization_key = gui_popsyndb
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popa
-                    has_country_flag = gui_society_popsa
-                }
-            }
+        text = {
+            trigger = { FRA = { has_country_flag = gui_society_popsa } }
+            localization_key = gui_socpopsa
         }
-        localization_key = gui_popsynda
     }
-}
-
-defined_text = {
-    name = gui_popoppo
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popw
-                    has_country_flag = gui_society_popsw
-                }
-            }
-        }
-        localization_key = gui_popoppow
+    defined_text = {
+        name = pop_total_text_loc
+        text = { localization_key = pop_total_text }
     }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popp
-                    has_country_flag = gui_society_popsp
-                }
-            }
-        }
-        localization_key = gui_popoppop
+    defined_text = {
+        name = pop_worker_ui_text_loc
+        text = { localization_key = pop_worker_ui_text }
     }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popm
-                    has_country_flag = gui_society_popsm
-                }
-            }
-        }
-        localization_key = gui_popoppom
+    defined_text = {
+        name = pop_peasant_ui_text_loc
+        text = { localization_key = pop_peasant_ui_text }
     }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_pops
-                    has_country_flag = gui_society_popss
-                }
-            }
-        }
-        localization_key = gui_popoppos
+    defined_text = {
+        name = pop_merchant_ui_text_loc
+        text = { localization_key = pop_merchant_ui_text }
     }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popb
-                    has_country_flag = gui_society_popsb
-                }
-            }
-        }
-        localization_key = gui_popoppob
+    defined_text = {
+        name = pop_scholar_ui_text_loc
+        text = { localization_key = pop_scholar_ui_text }
     }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popa
-                    has_country_flag = gui_society_popsa
-                }
-            }
-        }
-        localization_key = gui_popoppoa
+    defined_text = {
+        name = pop_bureaucrat_ui_text_loc
+        text = { localization_key = pop_bureaucrat_ui_text }
     }
-}
-
-defined_text = {
-    name = gui_popjaco
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popw
-                    has_country_flag = gui_society_popsw
-                }
-            }
-        }
-        localization_key = gui_popjacow
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popp
-                    has_country_flag = gui_society_popsp
-                }
-            }
-        }
-        localization_key = gui_popjacop
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popm
-                    has_country_flag = gui_society_popsm
-                }
-            }
-        }
-        localization_key = gui_popjacom
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_pops
-                    has_country_flag = gui_society_popss
-                }
-            }
-        }
-        localization_key = gui_popjacos
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popb
-                    has_country_flag = gui_society_popsb
-                }
-            }
-        }
-        localization_key = gui_popjacob
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popa
-                    has_country_flag = gui_society_popsa
-                }
-            }
-        }
-        localization_key = gui_popjacoa
-    }
-}
-
-defined_text = {
-    name = gui_popsore
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popw
-                    has_country_flag = gui_society_popsw
-                }
-            }
-        }
-        localization_key = gui_popsorew
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popp
-                    has_country_flag = gui_society_popsp
-                }
-            }
-        }
-        localization_key = gui_popsorep
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popm
-                    has_country_flag = gui_society_popsm
-                }
-            }
-        }
-        localization_key = gui_popsorem
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_pops
-                    has_country_flag = gui_society_popss
-                }
-            }
-        }
-        localization_key = gui_popsores
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popb
-                    has_country_flag = gui_society_popsb
-                }
-            }
-        }
-        localization_key = gui_popsoreb
-    }
-    text = {
-        trigger = {
-            FRA = {
-                OR = {
-                    has_country_flag = gui_society_popa
-                    has_country_flag = gui_society_popsa
-                }
-            }
-        }
-        localization_key = gui_popsorea
-    }
-}
-
-defined_text = {
-    name = gui_society
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popw } }
-        localization_key = gui_socpopw
-    }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popp } }
-        localization_key = gui_socpopp
-    }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popm } }
-        localization_key = gui_socpopm
-    }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_pops } }
-        localization_key = gui_socpops
-    }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popb } }
-        localization_key = gui_socpopb
-    }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popa } }
-        localization_key = gui_socpopa
+    defined_text = {
+        name = pop_army_ui_text_loc
+        text = { localization_key = pop_army_ui_text }
     }
 
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popsall } }
-        localization_key = gui_socpopsall
+    defined_text = {
+        name = FCF_society_categories_loc
+        text = {
+            trigger = { has_country_flag = show_extreme_political_group }
+            localization_key = FCF_society_categories_extreme
+        }
+        text = {
+            trigger = { has_country_flag = show_surrealism_movement }
+            localization_key = FCF_society_categories_surrealism
+        }
+        text = { localization_key = FCF_society_categories_main }
+    }
+    defined_text = {
+        name = FCF_society_categories_desc_loc
+        text = {
+            trigger = { has_country_flag = show_extreme_political_group }
+            localization_key = FCF_society_categories_desc_extreme
+        }
+        text = {
+            trigger = { has_country_flag = show_surrealism_movement }
+            localization_key = FCF_society_categories_desc_surrealism
+        }
+        text = { localization_key = FCF_society_categories_desc_main }
+    }
+#改革倾向
+    defined_text = {
+        name = gui_society_reform_tendency_education
+        text = {
+            trigger = { FRA = { check_variable = { srt_edu = -3 } } }
+            localization_key = "GFX_indcation_reform_tendency_right3"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_edu = -2 } } }
+            localization_key = "GFX_indcation_reform_tendency_right2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_edu = -1 } } }
+            localization_key = "GFX_indcation_reform_tendency_right1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_edu = 0 } } }
+            localization_key = "GFX_indcation_reform_tendency_empty"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_edu = 1 } } }
+            localization_key = "GFX_indcation_reform_tendency_left1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_edu = 2 } } }
+            localization_key = "GFX_indcation_reform_tendency_left2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_edu = 3 } } }
+            localization_key = "GFX_indcation_reform_tendency_left3"
+        }
+    }
+    defined_text = {
+        name = gui_society_reform_tendency_regulation
+        text = {
+            trigger = { FRA = { check_variable = { srt_reg = -3 } } }
+            localization_key = "GFX_indcation_reform_tendency_right3"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_reg = -2 } } }
+            localization_key = "GFX_indcation_reform_tendency_right2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_reg = -1 } } }
+            localization_key = "GFX_indcation_reform_tendency_right1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_reg = 0 } } }
+            localization_key = "GFX_indcation_reform_tendency_empty"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_reg = 1 } } }
+            localization_key = "GFX_indcation_reform_tendency_left1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_reg = 2 } } }
+            localization_key = "GFX_indcation_reform_tendency_left2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_reg = 3 } } }
+            localization_key = "GFX_indcation_reform_tendency_left3"
+        }
+    }
+    defined_text = {
+        name = gui_society_reform_tendency_femright
+        text = {
+            trigger = { FRA = { check_variable = { srt_fem = -3 } } }
+            localization_key = "GFX_indcation_reform_tendency_right3"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_fem = -2 } } }
+            localization_key = "GFX_indcation_reform_tendency_right2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_fem = -1 } } }
+            localization_key = "GFX_indcation_reform_tendency_right1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_fem = 0 } } }
+            localization_key = "GFX_indcation_reform_tendency_empty"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_fem = 1 } } }
+            localization_key = "GFX_indcation_reform_tendency_left1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_fem = 2 } } }
+            localization_key = "GFX_indcation_reform_tendency_left2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_fem = 3 } } }
+            localization_key = "GFX_indcation_reform_tendency_left3"
+        }
+    }
+    defined_text = {
+        name = gui_society_reform_tendency_immigrant
+        text = {
+            trigger = { FRA = { check_variable = { srt_imm = -3 } } }
+            localization_key = "GFX_indcation_reform_tendency_right3"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_imm = -2 } } }
+            localization_key = "GFX_indcation_reform_tendency_right2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_imm = -1 } } }
+            localization_key = "GFX_indcation_reform_tendency_right1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_imm = 0 } } }
+            localization_key = "GFX_indcation_reform_tendency_empty"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_imm = 1 } } }
+            localization_key = "GFX_indcation_reform_tendency_left1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_imm = 2 } } }
+            localization_key = "GFX_indcation_reform_tendency_left2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_imm = 3 } } }
+            localization_key = "GFX_indcation_reform_tendency_left3"
+        }
+    }
+    defined_text = {
+        name = gui_society_reform_tendency_religion
+        text = {
+            trigger = { FRA = { check_variable = { srt_rel = -3 } } }
+            localization_key = "GFX_indcation_reform_tendency_right3"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_rel = -2 } } }
+            localization_key = "GFX_indcation_reform_tendency_right2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_rel = -1 } } }
+            localization_key = "GFX_indcation_reform_tendency_right1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_rel = 0 } } }
+            localization_key = "GFX_indcation_reform_tendency_empty"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_rel = 1 } } }
+            localization_key = "GFX_indcation_reform_tendency_left1"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_rel = 2 } } }
+            localization_key = "GFX_indcation_reform_tendency_left2"
+        }
+        text = {
+            trigger = { FRA = { check_variable = { srt_rel = 3 } } }
+            localization_key = "GFX_indcation_reform_tendency_left3"
+        }
+    }
+    defined_text = {
+        name = reform_tendency_society_education_loc
+        text = {
+            trigger = { check_variable = { srt_edu > 0 } }
+            localization_key = srt_edu_left
+        }
+        text = {
+            trigger = { check_variable = { srt_edu < 0 } }
+            localization_key = srt_edu_right
+        }
+        text = {
+            trigger = { check_variable = { srt_edu = 0 } }
+            localization_key = reform_tendency_unbiased
+        }
+    }
+    defined_text = {
+        name = reform_tendency_society_education_idea
+        text = {
+            trigger = { check_variable = { srt_edu = 3 } }
+            localization_key = idea_desc|srt_edu_left3
+        }
+        text = {
+            trigger = { check_variable = { srt_edu = 2 } }
+            localization_key = idea_desc|srt_edu_left2
+        }
+        text = {
+            trigger = { check_variable = { srt_edu = 1 } }
+            localization_key = idea_desc|srt_edu_left1
+        }
+        text = {
+            trigger = { check_variable = { srt_edu = 0 } }
+            localization_key = idea_desc|srt_edu_0
+        }
+        text = {
+            trigger = { check_variable = { srt_edu = -1 } }
+            localization_key = idea_desc|srt_edu_right1
+        }
+        text = {
+            trigger = { check_variable = { srt_edu = -2 } }
+            localization_key = idea_desc|srt_edu_right2
+        }
+        text = {
+            trigger = { check_variable = { srt_edu = -3 } }
+            localization_key = idea_desc|srt_edu_right3
+        }
     }
 
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popsw } }
-        localization_key = gui_socpopsw
+    defined_text = {
+        name = reform_tendency_society_regulation_loc
+        text = {
+            trigger = { check_variable = { srt_reg > 0 } }
+            localization_key = srt_reg_left
+        }
+        text = {
+            trigger = { check_variable = { srt_reg < 0 } }
+            localization_key = srt_reg_right
+        }
+        text = {
+            trigger = { check_variable = { srt_reg = 0 } }
+            localization_key = reform_tendency_unbiased
+        }
     }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popsp } }
-        localization_key = gui_socpopsp
+    defined_text = {
+        name = reform_tendency_society_regulation_idea
+        text = {
+            trigger = { check_variable = { srt_reg = 3 } }
+            localization_key = idea_desc|srt_reg_left3
+        }
+        text = {
+            trigger = { check_variable = { srt_reg = 2 } }
+            localization_key = idea_desc|srt_reg_left2
+        }
+        text = {
+            trigger = { check_variable = { srt_reg = 1 } }
+            localization_key = idea_desc|srt_reg_left1
+        }
+        text = {
+            trigger = { check_variable = { srt_reg = 0 } }
+            localization_key = idea_desc|srt_reg_0
+        }
+        text = {
+            trigger = { check_variable = { srt_reg = -1 } }
+            localization_key = idea_desc|srt_reg_right1
+        }
+        text = {
+            trigger = { check_variable = { srt_reg = -2 } }
+            localization_key = idea_desc|srt_reg_right2
+        }
+        text = {
+            trigger = { check_variable = { srt_reg = -3 } }
+            localization_key = idea_desc|srt_reg_right3
+        }
     }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popsm } }
-        localization_key = gui_socpopsm
+
+    defined_text = {
+        name = reform_tendency_society_femright_loc
+        text = {
+            trigger = { check_variable = { srt_fem > 0 } }
+            localization_key = srt_fem_left
+        }
+        text = {
+            trigger = { check_variable = { srt_fem < 0 } }
+            localization_key = srt_fem_right
+        }
+        text = {
+            trigger = { check_variable = { srt_fem = 0 } }
+            localization_key = reform_tendency_unbiased
+        }
     }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popss } }
-        localization_key = gui_socpopss
+    defined_text = {
+        name = reform_tendency_society_femright_idea
+        text = {
+            trigger = { check_variable = { srt_fem = 3 } }
+            localization_key = idea_desc|srt_fem_left3
+        }
+        text = {
+            trigger = { check_variable = { srt_fem = 2 } }
+            localization_key = idea_desc|srt_fem_left2
+        }
+        text = {
+            trigger = { check_variable = { srt_fem = 1 } }
+            localization_key = idea_desc|srt_fem_left1
+        }
+        text = {
+            trigger = { check_variable = { srt_fem = 0 } }
+            localization_key = idea_desc|srt_fem_0
+        }
+        text = {
+            trigger = { check_variable = { srt_fem = -1 } }
+            localization_key = idea_desc|srt_fem_right1
+        }
+        text = {
+            trigger = { check_variable = { srt_fem = -2 } }
+            localization_key = idea_desc|srt_fem_right2
+        }
+        text = {
+            trigger = { check_variable = { srt_fem = -3 } }
+            localization_key = idea_desc|srt_fem_right3
+        }
     }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popsb } }
-        localization_key = gui_socpopsb
+
+    defined_text = {
+        name = reform_tendency_society_immigrant_loc
+        text = {
+            trigger = { check_variable = { srt_imm > 0 } }
+            localization_key = srt_imm_left
+        }
+        text = {
+            trigger = { check_variable = { srt_imm < 0 } }
+            localization_key = srt_imm_right
+        }
+        text = {
+            trigger = { check_variable = { srt_imm = 0 } }
+            localization_key = reform_tendency_unbiased
+        }
     }
-    text = {
-        trigger = { FRA = { has_country_flag = gui_society_popsa } }
-        localization_key = gui_socpopsa
+    defined_text = {
+        name = reform_tendency_society_immigrant_idea
+        text = {
+            trigger = { check_variable = { srt_imm = 3 } }
+            localization_key = idea_desc|srt_imm_left3
+        }
+        text = {
+            trigger = { check_variable = { srt_imm = 2 } }
+            localization_key = idea_desc|srt_imm_left2
+        }
+        text = {
+            trigger = { check_variable = { srt_imm = 1 } }
+            localization_key = idea_desc|srt_imm_left1
+        }
+        text = {
+            trigger = { check_variable = { srt_imm = 0 } }
+            localization_key = idea_desc|srt_imm_0
+        }
+        text = {
+            trigger = { check_variable = { srt_imm = -1 } }
+            localization_key = idea_desc|srt_imm_right1
+        }
+        text = {
+            trigger = { check_variable = { srt_imm = -2 } }
+            localization_key = idea_desc|srt_imm_right2
+        }
+        text = {
+            trigger = { check_variable = { srt_imm = -3 } }
+            localization_key = idea_desc|srt_imm_right3
+        }
     }
-}
+
+    defined_text = {
+        name = reform_tendency_society_religion_loc
+        text = {
+            trigger = { check_variable = { srt_rel > 0 } }
+            localization_key = srt_rel_left
+        }
+        text = {
+            trigger = { check_variable = { srt_rel < 0 } }
+            localization_key = srt_rel_right
+        }
+        text = {
+            trigger = { check_variable = { srt_rel = 0 } }
+            localization_key = reform_tendency_unbiased
+        }
+    }
+    defined_text = {
+        name = reform_tendency_society_religion_idea
+        text = {
+            trigger = { check_variable = { srt_rel = 3 } }
+            localization_key = idea_desc|srt_rel_left3
+        }
+        text = {
+            trigger = { check_variable = { srt_rel = 2 } }
+            localization_key = idea_desc|srt_rel_left2
+        }
+        text = {
+            trigger = { check_variable = { srt_rel = 1 } }
+            localization_key = idea_desc|srt_rel_left1
+        }
+        text = {
+            trigger = { check_variable = { srt_rel = 0 } }
+            localization_key = idea_desc|srt_rel_0
+        }
+        text = {
+            trigger = { check_variable = { srt_rel = -1 } }
+            localization_key = idea_desc|srt_rel_right1
+        }
+        text = {
+            trigger = { check_variable = { srt_rel = -2 } }
+            localization_key = idea_desc|srt_rel_right2
+        }
+        text = {
+            trigger = { check_variable = { srt_rel = -3 } }
+            localization_key = idea_desc|srt_rel_right3
+        }
+    }
 
 #buff显示
-defined_text = {
-    name = pop_civilian_science_funding
-    text = {
-        trigger = { has_completed_focus = FRA_civilian_science_funding }
-        localization_key = pop_civilian_science_funding_tt
-    }
-}
-
-defined_text = {
-	name = Cof_politics_pop_impact_w
-    text = {
-        trigger = { 
-            OR = {
-                check_variable = { pop_workers > 35 } 
-                check_variable = { pop_workers = 35 } 
+    defined_text = {
+        name = FCF_pop_modifier_w
+        text = {
+            trigger = { 
+                OR = {
+                    check_variable = { pop_workers > 30 } 
+                    check_variable = { pop_workers = 30 } 
+                }
             }
+            localization_key = FCF_pop_modifier_w_t
         }
-        localization_key = Cof_politics_pop_impact_w_t
     }
-}
-
-defined_text = {
-	name = pop_new_proletariat_workers
-    text = {
-        trigger = { 
-            has_completed_focus = FRA_everything_goes_to_CGT
-            has_completed_focus = FRA_new_proletariat 
-        }
-        localization_key = pop_new_proletariat_workers_tt
-    }
-}
-
-defined_text = {
-	name = Cof_politics_pop_impact_p
-    text = {
-        trigger = { 
-            OR = {
-                check_variable = { pop_peasants > 35 } 
-                check_variable = { pop_peasants = 35 } 
+    defined_text = {
+        name = FCF_pop_modifier_p
+        text = {
+            trigger = { 
+                OR = {
+                    check_variable = { pop_peasants > 30 } 
+                    check_variable = { pop_peasants = 30 } 
+                }
             }
+            localization_key = FCF_pop_modifier_p_t
         }
-        localization_key = Cof_politics_pop_impact_p_t
     }
-}
-
-defined_text = {
-	name = pop_new_proletariat_peasants
-    text = {
-        trigger = { 
-            has_completed_focus = FRA_unions_are_not_just_for_labor
-            has_completed_focus = FRA_new_proletariat 
-        }
-        localization_key = pop_new_proletariat_peasants_tt
-    }
-}
-
-defined_text = {
-	name = pop_subsidizing_subsistence_farmers
-    text = {
-        trigger = { has_completed_focus = FRA_subsidizing_subsistence_farmers }
-        localization_key = pop_subsidizing_subsistence_farmers_tt
-    }
-}
-
-defined_text = {
-	name = Cof_politics_pop_impact_m
-    text = {
-        trigger = { 
-            OR = {
-                check_variable = { pop_merchants > 35 } 
-                check_variable = { pop_merchants = 35 } 
+    defined_text = {
+        name = FCF_pop_modifier_m
+        text = {
+            trigger = { 
+                OR = {
+                    check_variable = { pop_merchants > 30 } 
+                    check_variable = { pop_merchants = 30 } 
+                }
             }
+            localization_key = FCF_pop_modifier_m_t
         }
-        localization_key = Cof_politics_pop_impact_m_t
     }
-}
-
-defined_text = {
-	name = pop_new_proletariat_merchants
-    text = {
-        trigger = {
-            has_completed_focus = FRA_unions_are_not_just_for_labor
-            has_completed_focus = FRA_new_proletariat 
-        }
-        localization_key = pop_new_proletariat_merchants_tt
-    }
-}
-
-defined_text = {
-	name = Cof_politics_pop_impact_s
-    text = {
-        trigger = { 
-            OR = {
-                check_variable = { pop_scholars > 35 } 
-                check_variable = { pop_scholars = 35 } 
+    defined_text = {
+        name = FCF_pop_modifier_s
+        text = {
+            trigger = { 
+                OR = {
+                    check_variable = { pop_scholars > 30 } 
+                    check_variable = { pop_scholars = 30 } 
+                }
             }
+            localization_key = FCF_pop_modifier_s_t
         }
-        localization_key = Cof_politics_pop_impact_s_t
     }
-}
-
-defined_text = {
-	name = Cof_politics_pop_impact_b
-    text = {
-        trigger = { 
-            OR = {
-                check_variable = { pop_bureaucrats > 35 } 
-                check_variable = { pop_bureaucrats = 35 } 
+    defined_text = {
+        name = FCF_pop_modifier_b
+        text = {
+            trigger = { 
+                OR = {
+                    check_variable = { pop_bureaucrats > 30 } 
+                    check_variable = { pop_bureaucrats = 30 } 
+                }
             }
+            localization_key = FCF_pop_modifier_b_t
         }
-        localization_key = Cof_politics_pop_impact_b_t
     }
-}
-
-defined_text = {
-	name = pop_central_planning_commission
-    text = {
-        trigger = { has_completed_focus = FRA_central_planning_commission }
-        localization_key = pop_central_planning_commission_tt
-    }
-}
-
-defined_text = {
-	name = pop_industrial_technocrat
-    text = {
-        trigger = { has_completed_focus = FRA_industrial_technocrat }
-        localization_key = pop_industrial_technocrat_tt
-    }
-}
-
-defined_text = {
-	name = Cof_politics_pop_impact_a
-    text = {
-        trigger = { 
-            OR = {
-                check_variable = { pop_army > 35 } 
-                check_variable = { pop_army = 35 } 
+    defined_text = {
+        name = FCF_pop_modifier_a
+        text = {
+            trigger = { 
+                OR = {
+                    check_variable = { pop_army > 30 } 
+                    check_variable = { pop_army = 30 } 
+                }
             }
+            localization_key = FCF_pop_modifier_a_t
         }
-        localization_key = Cof_politics_pop_impact_a_t
     }
-}
 
-defined_text = {
-    name = pop_total_text_loc
-    text = { localization_key = pop_total_text }
-}
-defined_text = {
-    name = pop_worker_ui_text_loc
-    text = { localization_key = pop_worker_ui_text }
-}
-defined_text = {
-    name = pop_peasant_ui_text_loc
-    text = { localization_key = pop_peasant_ui_text }
-}
-defined_text = {
-    name = pop_merchant_ui_text_loc
-    text = { localization_key = pop_merchant_ui_text }
-}
-defined_text = {
-    name = pop_scholar_ui_text_loc
-    text = { localization_key = pop_scholar_ui_text }
-}
-defined_text = {
-    name = pop_bureaucrat_ui_text_loc
-    text = { localization_key = pop_bureaucrat_ui_text }
-}
-defined_text = {
-    name = pop_army_ui_text_loc
-    text = { localization_key = pop_army_ui_text }
-}
+    defined_text = {
+        name = an2_show_loc
+        text = {
+            trigger = { has_idea = FCF_official_NCO_status }
+            localization_key = an2_show_tt
+        }
+    }
+#超现实主义
+    defined_text = {
+        name = surrealism_character_list
+        text = {
+            trigger = { check_variable = { v = 0 } }
+            localization_key = ""
+        }
+        text = {
+            trigger = { check_variable = { v = 1 } }
+            localization_key = FRA_rene_crevel
+        }
+        text = {
+            trigger = { check_variable = { v = 2 } }
+            localization_key = FRA_robert_desnos
+        }
+        text = {
+            trigger = { check_variable = { v = 3 } }
+            localization_key = FRA_claude_cahun
+        }
+        text = {
+            trigger = { check_variable = { v = 4 } }
+            localization_key = FRA_salvador_dali
+        }
+        text = {
+            trigger = { check_variable = { v = 5 } }
+            localization_key = FRA_joan_miro
+        }
+        text = {
+            trigger = { check_variable = { v = 6 } }
+            localization_key = FRA_georges_malraux
+        }
+        text = {
+            trigger = { check_variable = { v = 7 } }
+            localization_key = FRA_alphonse_laurencic
+        }
 
-defined_text = {
-    name = news_topic
-    text = {
-        trigger = { has_country_flag = news_topic_patriotism }
-        localization_key = news_topic_patriotism
-    }
-    text = {
-        trigger = { has_country_flag = news_topic_economy }
-        localization_key = news_topic_economy
-    }
-    text = {
-        trigger = { has_country_flag = news_topic_internationale }
-        localization_key = news_topic_internationale
-    }
-}
+        text = {
+            trigger = { check_variable = { v = 11 } }
+            localization_key = FRA_andre_breton
+        }
+        text = {
+            trigger = { check_variable = { v = 12 } }
+            localization_key = FRA_benjamin_peret
+        }
+        text = {
+            trigger = { check_variable = { v = 13 } }
+            localization_key = FRA_pierre_naville
+        }
+        text = {
+            trigger = { check_variable = { v = 14 } }
+            localization_key = FRA_paul_eluard
+        }
+        text = {
+            trigger = { check_variable = { v = 15 } }
+            localization_key = FRA_louis_aragon
+        }
+        text = {
+            trigger = { check_variable = { v = 16 } }
+            localization_key = FRA_max_ernst
+        }
+        text = {
+            trigger = { check_variable = { v = 17 } }
+            localization_key = FRA_rene_magritte
+        }
 
-defined_text = {
-    name = national_news_buff_text_loc
-    text = {
-        trigger = { FRA = { has_country_flag = news_topic_patriotism } }
-        localization_key = national_news_buff_patriotism
+        text = {
+            trigger = { check_variable = { v = 21 } }
+            localization_key = FRA_georges_bataille
+        }
+        text = {
+            trigger = { check_variable = { v = 22 } }
+            localization_key = FRA_michel_leiris
+        }
+        text = {
+            trigger = { check_variable = { v = 23 } }
+            localization_key = FRA_andre_masson
+        }
+        text = {
+            trigger = { check_variable = { v = 24 } }
+            localization_key = FRA_raymond_queneau
+        }
+        text = {
+            trigger = { check_variable = { v = 25 } }
+            localization_key = FRA_jacques_lacan
+        }
+        text = {
+            trigger = { check_variable = { v = 26 } }
+            localization_key = FRA_antonin_artaud
+        }
+        text = {
+            trigger = { check_variable = { v = 27 } }
+            localization_key = FRA_luis_bunuel
+        }
     }
-    text = {
-        trigger = { FRA = { has_country_flag = news_topic_economy } }
-        localization_key = national_news_buff_economy
+#激进派系
+    defined_text = {
+        name = vertes_status
+        text = {
+            trigger = { check_variable = { vertes_status = 0 } }
+            localization_key = extremists_status0
+        }
+        text = {
+            trigger = { check_variable = { vertes_status < 2 } }
+            localization_key = extremists_status1
+        }
+        text = {
+            trigger = { check_variable = { vertes_status < 3 } }
+            localization_key = extremists_status2
+        }
+        text = { localization_key = extremists_status3 }
     }
-    text = {
-        trigger = { FRA = { has_country_flag = news_topic_internationale } }
-        localization_key = national_news_buff_internationale
+    defined_text = {
+        name = vertes_attitude
+        text = {
+            trigger = { check_variable = { vertes_attitude = 1 } }
+            localization_key = extremists_attitude1
+        }
+        text = {
+            trigger = { check_variable = { vertes_attitude = -1 } }
+            localization_key = extremists_attitude_1
+        }
+        text = { localization_key = extremists_attitude0 }
     }
-}
+    defined_text = {
+        name = vertes_information
+        text = {
+            trigger = { check_variable = { vertes_status > 0 } }
+            localization_key = vertes_information_tt
+        }
+    }
 
-defined_text = {
-    name = vertes_status
-    text = {
-        trigger = { check_variable = { vertes_status = 0 } }
-        localization_key = extremists_status0
+    defined_text = {
+        name = commando_status
+        text = {
+            trigger = { check_variable = { commando_status = 0 } }
+            localization_key = extremists_status0
+        }
+        text = {
+            trigger = { check_variable = { commando_status < 2 } }
+            localization_key = extremists_status1
+        }
+        text = {
+            trigger = { check_variable = { commando_status < 3 } }
+            localization_key = extremists_status2
+        }
+        text = { localization_key = extremists_status3 }
     }
-    text = {
-        trigger = { check_variable = { vertes_status < 2 } }
-        localization_key = extremists_status1
+    defined_text = {
+        name = commando_attitude
+        text = {
+            trigger = { check_variable = { commando_attitude = 1 } }
+            localization_key = extremists_attitude1
+        }
+        text = {
+            trigger = { check_variable = { commando_attitude = -1 } }
+            localization_key = extremists_attitude_1
+        }
+        text = { localization_key = extremists_attitude0 }
     }
-    text = {
-        trigger = { check_variable = { vertes_status < 3 } }
-        localization_key = extremists_status2
+    defined_text = {
+        name = commando_information
+        text = {
+            trigger = { check_variable = { commando_status > 0 } }
+            localization_key = commando_information_tt
+        }
     }
-    text = { localization_key = extremists_status3 }
-}
-defined_text = {
-    name = vertes_attitude
-    text = {
-        trigger = { check_variable = { vertes_attitude = 1 } }
-        localization_key = extremists_attitude1
-    }
-    text = {
-        trigger = { check_variable = { vertes_attitude = -1 } }
-        localization_key = extremists_attitude_1
-    }
-    text = { localization_key = extremists_attitude0 }
-}
-defined_text = {
-    name = vertes_information
-    text = {
-        trigger = { check_variable = { vertes_status > 0 } }
-        localization_key = vertes_information_tt
-    }
-}
 
-defined_text = {
-    name = commando_status
-    text = {
-        trigger = { check_variable = { commando_status = 0 } }
-        localization_key = extremists_status0
+    defined_text = {
+        name = mafia_status
+        text = {
+            trigger = { check_variable = { mafia_status = 0 } }
+            localization_key = extremists_status0
+        }
+        text = {
+            trigger = { check_variable = { mafia_status < 2 } }
+            localization_key = extremists_status1
+        }
+        text = {
+            trigger = { check_variable = { mafia_status < 3 } }
+            localization_key = extremists_status2
+        }
+        text = { localization_key = extremists_status3 }
     }
-    text = {
-        trigger = { check_variable = { commando_status < 2 } }
-        localization_key = extremists_status1
+    defined_text = {
+        name = mafia_attitude
+        text = {
+            trigger = { check_variable = { mafia_attitude = 1 } }
+            localization_key = extremists_attitude1
+        }
+        text = {
+            trigger = { check_variable = { mafia_attitude = -1 } }
+            localization_key = extremists_attitude_1
+        }
+        text = { localization_key = extremists_attitude0 }
     }
-    text = {
-        trigger = { check_variable = { commando_status < 3 } }
-        localization_key = extremists_status2
+    defined_text = {
+        name = mafia_information
+        text = {
+            trigger = { check_variable = { mafia_status > 0 } }
+            localization_key = mafia_information_tt
+        }
     }
-    text = { localization_key = extremists_status3 }
-}
-defined_text = {
-    name = commando_attitude
-    text = {
-        trigger = { check_variable = { commando_attitude = 1 } }
-        localization_key = extremists_attitude1
-    }
-    text = {
-        trigger = { check_variable = { commando_attitude = -1 } }
-        localization_key = extremists_attitude_1
-    }
-    text = { localization_key = extremists_attitude0 }
-}
-defined_text = {
-    name = commando_information
-    text = {
-        trigger = { check_variable = { commando_status > 0 } }
-        localization_key = commando_information_tt
-    }
-}
 
-defined_text = {
-    name = mafia_status
-    text = {
-        trigger = { check_variable = { mafia_status = 0 } }
-        localization_key = extremists_status0
+    defined_text = {
+        name = red_guard_status
+        text = {
+            trigger = { check_variable = { red_guard_status = 0 } }
+            localization_key = extremists_status0
+        }
+        text = {
+            trigger = { check_variable = { red_guard_status < 2 } }
+            localization_key = extremists_status1
+        }
+        text = {
+            trigger = { check_variable = { red_guard_status < 3 } }
+            localization_key = extremists_status2
+        }
+        text = { localization_key = extremists_status3 }
     }
-    text = {
-        trigger = { check_variable = { mafia_status < 2 } }
-        localization_key = extremists_status1
+    defined_text = {
+        name = red_guard_attitude
+        text = {
+            trigger = { check_variable = { red_guard_attitude = 1 } }
+            localization_key = extremists_attitude1
+        }
+        text = {
+            trigger = { check_variable = { red_guard_attitude = -1 } }
+            localization_key = extremists_attitude_1
+        }
+        text = { localization_key = extremists_attitude0 }
     }
-    text = {
-        trigger = { check_variable = { mafia_status < 3 } }
-        localization_key = extremists_status2
+    defined_text = {
+        name = red_guard_information
+        text = {
+            trigger = { check_variable = { red_guard_status > 0 } }
+            localization_key = red_guard_information_tt
+        }
     }
-    text = { localization_key = extremists_status3 }
-}
-defined_text = {
-    name = mafia_attitude
-    text = {
-        trigger = { check_variable = { mafia_attitude = 1 } }
-        localization_key = extremists_attitude1
-    }
-    text = {
-        trigger = { check_variable = { mafia_attitude = -1 } }
-        localization_key = extremists_attitude_1
-    }
-    text = { localization_key = extremists_attitude0 }
-}
-defined_text = {
-    name = mafia_information
-    text = {
-        trigger = { check_variable = { mafia_status > 0 } }
-        localization_key = mafia_information_tt
-    }
-}
+###
 
-defined_text = {
-    name = bonnot_status
-    text = {
-        trigger = { check_variable = { bonnot_status = 0 } }
-        localization_key = extremists_status0
-    }
-    text = {
-        trigger = { check_variable = { bonnot_status < 2 } }
-        localization_key = extremists_status1
-    }
-    text = {
-        trigger = { check_variable = { bonnot_status < 3 } }
-        localization_key = extremists_status2
-    }
-    text = { localization_key = extremists_status3 }
-}
-defined_text = {
-    name = bonnot_attitude
-    text = {
-        trigger = { check_variable = { bonnot_attitude = 1 } }
-        localization_key = extremists_attitude1
-    }
-    text = {
-        trigger = { check_variable = { bonnot_attitude = -1 } }
-        localization_key = extremists_attitude_1
-    }
-    text = { localization_key = extremists_attitude0 }
-}
-defined_text = {
-    name = bonnot_information
-    text = {
-        trigger = { check_variable = { bonnot_status > 0 } }
-        localization_key = bonnot_information_tt
-    }
-}

@@ -1,310 +1,304 @@
-CSP_attitude_trigger_not_against = {
-    custom_trigger_tooltip = {
-        if = { 
-            limit = { check_variable = { target_t = 1 } }
-            set_temp_variable = { target_v = DFA_attitude }
+###CSP代表态度
+    CSP_attitude_trigger_not_against = {
+        custom_trigger_tooltip = {
+            if = { 
+                limit = { check_variable = { target_csp = 1 } }
+                set_temp_variable = { target_v = CAE_attitude }
+            }
+            else_if = { 
+                limit = { check_variable = { target_csp = 2 } }
+                set_temp_variable = { target_v = CE_attitude }
+            }
+            else_if = { 
+                limit = { check_variable = { target_csp = 3 } }
+                set_temp_variable = { target_v = CSI_attitude }
+            }
+            else_if = { 	
+                limit = { check_variable = { target_csp = 4 } }
+                set_temp_variable = { target_v = CC_attitude }
+            }    
+            else_if = { 	
+                limit = { check_variable = { target_csp = 5 } }
+                set_temp_variable = { target_v = CGFF_attitude }
+            }
+            tooltip = CSP_attitude_trigger_not_against_tt
+            check_variable = { target_v > -2 }
         }
-        else_if = { 
-            limit = { check_variable = { target_t = 2 } }
-            set_temp_variable = { target_v = DEA_attitude }
-        }
-        else_if = { 
-            limit = { check_variable = { target_t = 3 } }
-            set_temp_variable = { target_v = DIS_attitude }
-        }
-        else_if = { 	
-            limit = { check_variable = { target_t = 4 } }
-            set_temp_variable = { target_v = DCA_attitude }
-        }    
-        else_if = { 	
-            limit = { check_variable = { target_t = 5 } }
-            set_temp_variable = { target_v = CGSC_attitude }
-        }
-        tooltip = CSP_attitude_trigger_not_against_tt
-        check_variable = { target_v > -2 }
     }
-}
 
-CSP_attitude_trigger_support = {
-    custom_trigger_tooltip = {
-        if = { 
-            limit = { check_variable = { target_a = 1 } }
-            set_temp_variable = { target_v = DFA_attitude }
+    CSP_attitude_trigger_support = {
+        custom_trigger_tooltip = {
+            if = { 
+                limit = { check_variable = { target_csp = 1 } }
+                set_temp_variable = { target_v = CAE_attitude }
+            }
+            else_if = { 
+                limit = { check_variable = { target_csp = 2 } }
+                set_temp_variable = { target_v = CE_attitude }
+            }
+            else_if = { 
+                limit = { check_variable = { target_csp = 3 } }
+                set_temp_variable = { target_v = CSI_attitude }
+            }
+            else_if = { 	
+                limit = { check_variable = { target_csp = 4 } }
+                set_temp_variable = { target_v = CC_attitude }
+            }    
+            else_if = { 	
+                limit = { check_variable = { target_csp = 5 } }
+                set_temp_variable = { target_v = CGFF_attitude }
+            }
+            tooltip = CSP_attitude_trigger_support_tt
+            check_variable = { target_v > 1 }
         }
-        else_if = { 
-            limit = { check_variable = { target_a = 2 } }
-            set_temp_variable = { target_v = DEA_attitude }
-        }
-        else_if = { 
-            limit = { check_variable = { target_a = 3 } }
-            set_temp_variable = { target_v = DIS_attitude }
-        }
-        else_if = { 	
-            limit = { check_variable = { target_a = 4 } }
-            set_temp_variable = { target_v = DCA_attitude }
-        }    
-        else_if = { 	
-            limit = { check_variable = { target_a = 5 } }
-            set_temp_variable = { target_v = CGSC_attitude }
-        }
-        tooltip = CSP_attitude_trigger_support_tt
-        check_variable = { target_v > 1 }
     }
-}
-
-dominant_faction_synd_trigger = {
-    custom_trigger_tooltip = {
-        check_variable = { dominant_faction_synd > var:FRA.dominant_faction_oppo }
-        check_variable = { dominant_faction_synd > var:FRA.dominant_faction_jaco }
-        check_variable = { dominant_faction_synd > var:FRA.dominant_faction_sore }
-        tooltip = CSP_dominant_faction_synd
-    }
-}
-
-dominant_faction_oppo_trigger = {
-    custom_trigger_tooltip = {
-        check_variable = { dominant_faction_oppo > var:FRA.dominant_faction_synd }
-        check_variable = { dominant_faction_oppo > var:FRA.dominant_faction_jaco }
-        check_variable = { dominant_faction_oppo > var:FRA.dominant_faction_sore }
-        tooltip = CSP_dominant_faction_oppo
-    }
-}
-
-dominant_faction_jaco_trigger = {
-    custom_trigger_tooltip = {
-        check_variable = { dominant_faction_jaco > var:FRA.dominant_faction_oppo }
-        check_variable = { dominant_faction_jaco > var:FRA.dominant_faction_synd }
-        check_variable = { dominant_faction_jaco > var:FRA.dominant_faction_sore }
-        tooltip = CSP_dominant_faction_jaco
-    }
-}
-
-dominant_faction_sore_trigger = {
-    custom_trigger_tooltip = {
-        check_variable = { dominant_faction_sore > var:FRA.dominant_faction_oppo }
-        check_variable = { dominant_faction_sore > var:FRA.dominant_faction_jaco }
-        check_variable = { dominant_faction_sore > var:FRA.dominant_faction_synd }
-        tooltip = CSP_dominant_faction_sore
-    }
-}
-
-CSP_dominant_faction_same_as_BGT = {
-    custom_trigger_tooltip = {
-        if = {
-            limit = {
+###权力平衡
+    FCF_cgf_vs_csp_judge = {
+        custom_trigger_tooltip = {
+            if = {
+                limit = { check_variable = { target_t = 5 } }
                 OR = {
-                    has_country_flag = CBGT_synd_mode
-                    has_country_flag = CBGT_synd_radi
+                    check_variable = { FCF_CGF_vs_CSP_value > 90 }
+                    check_variable = { FCF_CGF_vs_CSP_value = 90 } 
                 }
             }
-            dominant_faction_synd_trigger = yes
-        }
-        else_if = {
-            limit = {
+            else_if = {
+                limit = { check_variable = { target_t = 4 } }
                 OR = {
-                    has_country_flag = CBGT_oppo_comm
-                    has_country_flag = CBGT_oppo_anar
+                    check_variable = { FCF_CGF_vs_CSP_value > 70 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = 70 } 
                 }
             }
-            dominant_faction_oppo_trigger = yes
-        }
-        else_if = {
-            limit = {
+            else_if = {
+                limit = { check_variable = { target_t = 3 } }
                 OR = {
-                    has_country_flag = CBGT_jaco_neos
-                    has_country_flag = CBGT_jaco_revo
+                    check_variable = { FCF_CGF_vs_CSP_value > 50 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = 50 } 
                 }
             }
-            dominant_faction_jaco_trigger = yes
-        }
-        else_if = {
-            limit = {
+            else_if = {
+                limit = { check_variable = { target_t = 2 } }
                 OR = {
-                    has_country_flag = CBGT_sore_oldl
-                    has_country_flag = CBGT_sore_yout
+                    check_variable = { FCF_CGF_vs_CSP_value > 30 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = 30 } 
                 }
             }
-            dominant_faction_sore_trigger = yes
-        }
-        tooltip = CSP_dominant_faction_same_as_BGT
-    } 
-}
-
-Cof_bgt_vs_csp_judge = {
-    custom_trigger_tooltip = {
-        if = {
-            limit = { check_variable = { target_t = 5 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value > 90 }
-                check_variable = { Cof_BGT_vs_CSP_value = 90 } 
+            else_if = {
+                limit = { check_variable = { target_t = 1 } }
+                OR = {
+                    check_variable = { FCF_CGF_vs_CSP_value > 10 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = 10 } 
+                }
             }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = 4 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value > 70 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
-            }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = 3 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value > 50 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
-            }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = 2 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value > 30 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = 30 } 
-            }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = 1 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value > 10 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = 10 } 
-            }
-        }
 
-        else_if = {
-            limit = { check_variable = { target_t = -1 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value < -10 }
-                check_variable = { Cof_BGT_vs_CSP_value = -10 } 
+            else_if = {
+                limit = { check_variable = { target_t = -1 } }
+                OR = {
+                    check_variable = { FCF_CGF_vs_CSP_value < -10 }
+                    check_variable = { FCF_CGF_vs_CSP_value = -10 } 
+                }
             }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = -2 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value < -30 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = -30 } 
+            else_if = {
+                limit = { check_variable = { target_t = -2 } }
+                OR = {
+                    check_variable = { FCF_CGF_vs_CSP_value < -30 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = -30 } 
+                }
             }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = -3 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value < -50 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = 50 } 
+            else_if = {
+                limit = { check_variable = { target_t = -3 } }
+                OR = {
+                    check_variable = { FCF_CGF_vs_CSP_value < -50 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = 50 } 
+                }
             }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = -4 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value < -70 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = 70 } 
+            else_if = {
+                limit = { check_variable = { target_t = -4 } }
+                OR = {
+                    check_variable = { FCF_CGF_vs_CSP_value < -70 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = 70 } 
+                }
             }
-        }
-        else_if = {
-            limit = { check_variable = { target_t = -5 } }
-            OR = {
-                check_variable = { Cof_BGT_vs_CSP_value < 90 }
-                check_variable = { FRA.Cof_BGT_vs_CSP_value = 90 } 
+            else_if = {
+                limit = { check_variable = { target_t = -5 } }
+                OR = {
+                    check_variable = { FCF_CGF_vs_CSP_value < 90 }
+                    check_variable = { FRA.FCF_CGF_vs_CSP_value = 90 } 
+                }
             }
-        }
-        tooltip = Cof_bgt_vs_csp_judge_tt
-    }
-}
-
-#工农派
-PCOP_AFA_union_unity = {
-    custom_trigger_tooltip = {
-        tooltip = PCOP_AFA_union_unity
-        check_variable = { PCOP_AFA_union < 4 }
-        check_variable = { PCOP_AFA_union > -4 }
-    }
-}
-
-PCOP_AFA_union_to_PCOP = {
-    custom_trigger_tooltip = {
-        tooltip = PCOP_AFA_union_to_PCOP
-        check_variable = { PCOP_AFA_union > 3 }
-    }
-}
-
-PCOP_AFA_union_to_AFA = {
-    custom_trigger_tooltip = {
-        tooltip = PCOP_AFA_union_to_AFA
-        check_variable = { PCOP_AFA_union < -3 }
-    }
-}
-
-oppo_unit_judge_comm = {
-    OR = {
-        PCOP_AFA_union_unity = yes
-        PCOP_AFA_union_to_PCOP = yes
-        has_country_flag = PCOP_leave_the_union
-    }
-}
-
-oppo_unit_judge_anar = {
-    OR = {
-        PCOP_AFA_union_unity = yes
-        PCOP_AFA_union_to_AFA = yes
-        has_country_flag = AFA_leave_the_union
-    }
-}
-
-#新社
-vulgus_tendency_marquet_trigger = {
-    custom_trigger_tooltip = {
-        tooltip = vulgus_tendency_marquet
-        check_variable = { vulgus_tendency_marquet > vulgus_tendency_doriot } 
-        check_variable = { vulgus_tendency_marquet > vulgus_tendency_thomas }
-    }
-}
-vulgus_tendency_doriot_trigger = {
-    custom_trigger_tooltip = {
-        tooltip = vulgus_tendency_doriot
-        check_variable = { vulgus_tendency_doriot > vulgus_tendency_marquet } 
-        check_variable = { vulgus_tendency_doriot > vulgus_tendency_thomas }
-    }
-}
-vulgus_tendency_thomas_trigger = {
-    custom_trigger_tooltip = {
-        tooltip = vulgus_tendency_thomas
-        check_variable = { vulgus_tendency_thomas > vulgus_tendency_doriot } 
-        check_variable = { vulgus_tendency_thomas > vulgus_tendency_marquet }
-    }
-}
-
-moderatio_infimorum_delegate_trigger = {
-    custom_trigger_tooltip = {
-        tooltip = moderatio_infimorum_delegate
-        check_variable = { moderatio_infimorum_delegate > moderatio_infimorum_commando } 
-        check_variable = { moderatio_infimorum_delegate > moderatio_infimorum_syndicat }
-    }
-}
-moderatio_infimorum_commando_trigger = {
-    custom_trigger_tooltip = {
-        tooltip = moderatio_infimorum_commando
-        check_variable = { moderatio_infimorum_commando > moderatio_infimorum_delegate } 
-        check_variable = { moderatio_infimorum_commando > moderatio_infimorum_syndicat }
-    }
-}
-moderatio_infimorum_syndicat_trigger = {
-    custom_trigger_tooltip = {
-        tooltip = moderatio_infimorum_syndicat
-        check_variable = { moderatio_infimorum_syndicat > moderatio_infimorum_commando } 
-        check_variable = { moderatio_infimorum_syndicat > moderatio_infimorum_delegate }
-    }
-}
-
-tendency_moderatio_match = {
-    custom_trigger_tooltip = {
-        tooltip = tendency_moderatio_match
-        if = {
-            limit = { vulgus_tendency_marquet_trigger = yes }
-            moderatio_infimorum_delegate_trigger = yes
-        }
-        if = {
-            limit = { vulgus_tendency_doriot_trigger = yes }
-            moderatio_infimorum_commando_trigger = yes
-        }
-        if = {
-            limit = { vulgus_tendency_thomas_trigger = yes }
-            moderatio_infimorum_syndicat_trigger = yes
+            tooltip = FCF_cgf_vs_csp_judge_tt
         }
     }
-}
+
+###党派态度
+    #set_temp_variable = { party_var = 1-9 }
+    #set_temp_variable = { target_attitude = 1-5 }
+    #party_attitude_judge = yes
+    party_attitude_judge = {
+        meta_trigger = {
+            text = {
+                custom_trigger_tooltip = {
+                    if = { 
+                        limit = { check_variable = { target_attitude = 5 } }
+                        check_variable = { [PARTY]_attitude > 6 }
+                    }
+                    else_if = { 
+                        limit = { check_variable = { target_attitude = 4 } }
+                        check_variable = { [PARTY]_attitude < 7 }
+                        check_variable = { [PARTY]_attitude > 2 }
+                    }
+                    else_if = { 
+                        limit = { check_variable = { target_attitude = 3 } }
+                        check_variable = { [PARTY]_attitude < 3}
+                        check_variable = { [PARTY]_attitude > -3 }
+                    }
+                    else_if = { 	
+                        limit = { check_variable = { target_attitude = 2 } }
+                        check_variable = { [PARTY]_attitude < -2 }
+                        check_variable = { [PARTY]_attitude > -7 }
+                    }    
+                    else_if = { 	
+                        limit = { check_variable = { target_attitude = 1 } }
+                        check_variable = { [PARTY]_attitude < -6 }
+                    }
+                    tooltip = {
+                        localization_key = party_attitude_judge_tt
+                        PARTY = party_[PARTY]
+                    }
+                }
+            }
+            PARTY = "[party_var_name]"
+        }
+    }
+###党派主导
+    #set_temp_variable = { party_var = 1-10 }
+    #set_temp_variable = { target_faction = 1-5 }
+    #party_dominated_faction_judge = yes
+    party_dominated_faction_judge = {
+        meta_trigger = {
+            text = {
+                custom_trigger_tooltip = {
+                    check_variable = { [PARTY]_faction^0 = target_faction }
+                    tooltip = {
+                        localization_key = party_dominated_faction_judge_tt
+                        PARTY = party_[PARTY]
+                        FACTION = [PARTY]_faction_[FACTION]
+                    }
+                }
+            }
+            PARTY = "[party_var_name]"
+            FACTION = "[?target_faction]"
+        }
+    }
+###CSP更换代表目标
+    CNS_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 6 }
+            check_variable = { csp_change_member_variable = 107 }
+            check_variable = { csp_change_member_variable = 207 }
+            check_variable = { csp_change_member_variable = 208 }
+            check_variable = { csp_change_member_variable = 306 }
+            check_variable = { csp_change_member_variable = 407 }
+        }
+    }
+    PSF_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 4 }
+            check_variable = { csp_change_member_variable = 5 }
+            check_variable = { csp_change_member_variable = 9 }
+            check_variable = { csp_change_member_variable = 105 }
+            check_variable = { csp_change_member_variable = 106 }
+            check_variable = { csp_change_member_variable = 205 }
+            check_variable = { csp_change_member_variable = 206 }
+            check_variable = { csp_change_member_variable = 211 }
+            check_variable = { csp_change_member_variable = 304 }
+            check_variable = { csp_change_member_variable = 305 }
+            check_variable = { csp_change_member_variable = 310 }
+            check_variable = { csp_change_member_variable = 311 }
+            check_variable = { csp_change_member_variable = 406 }
+            check_variable = { csp_change_member_variable = 411 }
+        }
+    }
+    POU_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 1 }
+            check_variable = { csp_change_member_variable = 2 }
+            check_variable = { csp_change_member_variable = 102 }
+            check_variable = { csp_change_member_variable = 108 }
+            check_variable = { csp_change_member_variable = 202 }
+            check_variable = { csp_change_member_variable = 209 }
+            check_variable = { csp_change_member_variable = 302 }
+            check_variable = { csp_change_member_variable = 307 }
+            check_variable = { csp_change_member_variable = 413 }
+            check_variable = { csp_change_member_variable = 414 }
+            check_variable = { csp_change_member_variable = 502 }
+            check_variable = { csp_change_member_variable = 508 }
+        }
+    }
+    CGT_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 0 }
+            check_variable = { csp_change_member_variable = 7 }
+            check_variable = { csp_change_member_variable = 200 }
+            check_variable = { csp_change_member_variable = 201 }
+        }
+    }
+    PCOP_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 3 }
+            check_variable = { csp_change_member_variable = 8 }
+            check_variable = { csp_change_member_variable = 10 }
+            check_variable = { csp_change_member_variable = 103 }
+            check_variable = { csp_change_member_variable = 109 }
+            check_variable = { csp_change_member_variable = 203 }
+            check_variable = { csp_change_member_variable = 210 }
+            check_variable = { csp_change_member_variable = 303 }
+            check_variable = { csp_change_member_variable = 308 }
+            check_variable = { csp_change_member_variable = 402 }
+            check_variable = { csp_change_member_variable = 409 }
+            check_variable = { csp_change_member_variable = 503 }
+        }
+    }
+    UA_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 104 }
+            check_variable = { csp_change_member_variable = 204 }
+            check_variable = { csp_change_member_variable = 309 }
+            check_variable = { csp_change_member_variable = 404 }
+            check_variable = { csp_change_member_variable = 410 }
+            check_variable = { csp_change_member_variable = 504 }
+        }
+    }
+    URSRS_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 100 }
+            check_variable = { csp_change_member_variable = 101 }
+            check_variable = { csp_change_member_variable = 300 }
+            check_variable = { csp_change_member_variable = 301 }
+            check_variable = { csp_change_member_variable = 400 }
+            check_variable = { csp_change_member_variable = 401 }
+            check_variable = { csp_change_member_variable = 501 }
+        }
+    }
+    LJR_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 110 }
+            check_variable = { csp_change_member_variable = 212 }
+            check_variable = { csp_change_member_variable = 412 }
+            check_variable = { csp_change_member_variable = 505 }
+            check_variable = { csp_change_member_variable = 506 }
+            check_variable = { csp_change_member_variable = 507 }
+        }
+    }
+    PAPF_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 213 }
+        }
+    }
+    ETC_target_change_member = {
+        OR = {
+            check_variable = { csp_change_member_variable = 403 }
+            check_variable = { csp_change_member_variable = 405 }
+            check_variable = { csp_change_member_variable = 408 }
+        }
+    }

@@ -1,5 +1,5 @@
 FRA_phalanstere_reasearch_organization = {
-    icon = GFX_dynamic_modifier_Cof_phalanstere
+    icon = GFX_dynamic_modifier_FCF_phalanstere
 	background = GFX_MIO_details_background_plane
     allowed = { always = yes }
     visible = { 
@@ -45,7 +45,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -72,7 +72,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -94,9 +94,16 @@ FRA_phalanstere_reasearch_organization = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what
-					COOPROJECT = FRA_revolutionary_aid_construction
+					COOPERATION = phalanstere_cooperation_no_tariffs
 				}
-				FRA = { has_country_flag = phalanstere_agree_about_revolutionary_aid_construction }
+				has_global_flag = phalanstere_cooperation_no_tariffs 
+			}
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = phalanstere_agree_about_what
+					COOPERATION = phalanstere_cooperation_no_border
+				}
+				has_global_flag = phalanstere_cooperation_no_border 
 			}
 		}
 		any_parent = {
@@ -137,7 +144,7 @@ FRA_phalanstere_reasearch_organization = {
 				}
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -176,7 +183,7 @@ FRA_phalanstere_reasearch_organization = {
 				}
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -196,12 +203,10 @@ FRA_phalanstere_reasearch_organization = {
 		icon = GFX_generic_mio_department_icon_infantry_quality
 		position = { x = 6 y = 2 }
 		available = {
-			FRA = { has_completed_focus = FRA_revolutionary_bases_abroad }
 			FROM = {
-				NOT = { tag = FRA }
 				custom_trigger_tooltip = {
 					tooltip = capital_already_has_revo_bases
-					capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } }
+					capital_scope = { NOT = { has_dynamic_modifier = { modifier = FCF_revolutionary_bases scope = THIS.id } } }
 				}
 				set_temp_variable = { target_num = 5 }
 				custom_trigger_tooltip = {
@@ -215,42 +220,8 @@ FRA_phalanstere_reasearch_organization = {
 				set_temp_variable = { phauc = 2.5 }
 				phalanstere_unity_change = yes
 				custom_effect_tooltip = tooltip_white_line
-				capital_scope = { add_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } 
-				hidden_effect = { 
-					add_ideas = Cof_revolutionary_bases_buff 
-					FRA = {
-						if = {
-							limit = { FROM = { capital_scope = { INT_is_in_europe = yes } } } 
-							set_temp_variable = { iri_euic = 5 }
-						}
-						else = { set_temp_variable = { iri_euic = 0 } }
-
-						if = {
-							limit = { FROM = { capital_scope = { INT_is_in_asia = yes } } }
-							set_temp_variable = { iri_asic = 5 }
-						}
-						else = { set_temp_variable = { iri_asic = 0 } }
-
-						if = {
-							limit = { FROM = { capital_scope = { INT_is_in_middle_east = yes } } }
-							set_temp_variable = { iri_meic = 5 }
-						}
-						else = { set_temp_variable = { iri_meic = 0 } }
-
-						if = {
-							limit = { FROM = { capital_scope = { INT_is_in_africa = yes } } }
-							set_temp_variable = { iri_afic = 5 }
-						}
-						else = { set_temp_variable = { iri_afic = 0 } }
-
-						if = {
-							limit = { FROM = { capital_scope = { INT_is_in_america = yes } } }
-							set_temp_variable = { iri_amic = 5 }
-						}
-						else = { set_temp_variable = { iri_amic = 0 } }
-						iri_influence_change = yes
-					}
-				}
+				capital_scope = { add_dynamic_modifier = { modifier = FCF_revolutionary_bases scope = THIS.id } } 
+				hidden_effect = { add_ideas = FCF_revolutionary_bases_buff }
 			}
 		}
 		limit_to_equipment_type = { support_equipment }
@@ -269,10 +240,10 @@ FRA_phalanstere_reasearch_organization = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what
-					COOPROJECT = FRA_inner_circle_of_socialism
+					COOPERATION = phalanstere_cooperation_no_tariffs
 				}
-				FRA = { has_country_flag = phalanstere_agree_about_inner_circle_of_socialism }
-			}	
+				has_global_flag = phalanstere_cooperation_no_tariffs 
+			}
 			FROM = {
 				OR = {
 					has_equipment = { convoy_1 > 49 }
@@ -300,7 +271,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -344,7 +315,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -387,7 +358,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -419,7 +390,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -450,9 +421,9 @@ FRA_phalanstere_reasearch_organization = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = phalanstere_agree_about_what
-					COOPROJECT = FRA_international_open_laboratory
+					COOPERATION = phalanstere_cooperation_laboratory
 				}
-				FRA = { has_country_flag = phalanstere_agree_about_international_open_laboratory }
+				has_global_flag = phalanstere_cooperation_laboratory 
 			}	
 			custom_trigger_tooltip = {
 				tooltip = mio_phalanstere_reasearch_laboratory_trigger_tt
@@ -468,7 +439,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -509,7 +480,7 @@ FRA_phalanstere_reasearch_organization = {
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -586,15 +557,15 @@ FRA_phalanstere_reasearch_organization = {
 			mio_phalanstere_weapon_support
 		}
 		available = { FROM = { has_army_experience > 10 } }
-		on_complete = { FROM = { army_experience = -10 } }
 		position = { x = 8 y = 2 }
 		on_complete = {
 			FROM = {
+				army_experience = -10 
 				set_temp_variable = { phauc = 2.5 }
 		        phalanstere_unity_change = yes
 				custom_effect_tooltip = {
 					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_phalanstere
+					DYNMOD = FCF_phalanstere
 				}
 				custom_effect_tooltip = tooltip_white_line
 				add_to_variable = {
@@ -673,8 +644,7 @@ FRA_phalanstere_reasearch_organization = {
 		on_complete = { 
 			FROM = { 
 				army_experience = -20 
-				set_technology = { composite_support_equipment = 1 popup = no }
-				
+				set_technology = { tech_composite_support_equipment = 1 popup = no }
 			} 
 		}
 		limit_to_equipment_type = { support_equipment }

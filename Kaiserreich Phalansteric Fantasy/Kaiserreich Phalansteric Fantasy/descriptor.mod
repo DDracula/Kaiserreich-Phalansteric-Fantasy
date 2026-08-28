@@ -9,4 +9,4 @@ dependencies={
 }
 name="Kaiserreich: Phalansteric Fantasy"
 picture="Thumbnail.png"
-supported_version="1.17.*"
+supported_version="1.19.*"

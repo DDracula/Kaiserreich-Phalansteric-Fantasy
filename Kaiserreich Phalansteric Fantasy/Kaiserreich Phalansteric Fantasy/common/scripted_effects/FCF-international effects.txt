@@ -4,9 +4,8 @@ clr_all_flag = {
     clr_country_flag = iri_me_show
     clr_country_flag = iri_af_show
     clr_country_flag = iri_am_show
-
     clr_tag_flag = yes
-    clr_country_flag = phalanstere_show
+    clr_country_flag = iri_targeted_chosen
 }
 
 clr_tag_flag = {
@@ -34,792 +33,689 @@ clr_tag_flag = {
     clr_country_flag = iri_ams_show
 }
 
-###     影响力改变
-#       set_temp_variable = { iri_euic = 0 }
-#       set_temp_variable = { iri_asic = 0 }
-#       set_temp_variable = { iri_meic = 0 }
-#       set_temp_variable = { iri_afic = 0 }
-#       set_temp_variable = { iri_amic = 0 }
-#       iri_influence_change = yes
-iri_influence_change = {
-    if = { limit = { check_variable = { iri_euic = 0 } } }
-    else = {
-        add_to_variable = { iri_eui = iri_euic }
-        custom_effect_tooltip = iri_influence_change_eu
-    }
-
-    if = { limit = { check_variable = { iri_asic = 0 } } }
-    else = {
-        add_to_variable = { iri_asi = iri_asic }
-        custom_effect_tooltip = iri_influence_change_as
-    }
-
-    if = { limit = { check_variable = { iri_meic = 0 } } }
-    else = {
-        add_to_variable = { iri_mei = iri_meic }
-        custom_effect_tooltip = iri_influence_change_me
-    }
-
-    if = { limit = { check_variable = { iri_afic = 0 } } }
-    else = {
-        add_to_variable = { iri_afi = iri_afic }
-        custom_effect_tooltip = iri_influence_change_af
-    }
-
-    if = { limit = { check_variable = { iri_amic = 0 } } }
-    else = {
-        add_to_variable = { iri_ami = iri_amic }
-        custom_effect_tooltip = iri_influence_change_am
-    }
-
-    if = {
-        limit = { has_idea = bill_syndmode_internation }
-        clamp_variable = { var = iri_eui min = 30 }
-        clamp_variable = { var = iri_asi min = 30 }
-        clamp_variable = { var = iri_mei min = 30 }
-        clamp_variable = { var = iri_afi min = 30 }
-        clamp_variable = { var = iri_ami min = 30 }
-    }
-}
-
-#array_choose
-phalanstere_member_list_choose = {
-    clear_array = global.phalanstere_totalist
-    clear_array = global.phalanstere_syndicalist
-    clear_array = global.phalanstere_radical_socialist
-    clear_array = global.phalanstere_social_democrat
-
-    every_country = {
-        limit = { FRA_is_phalanstere_member = yes }
+###影响力改变
+    #       set_temp_variable = { iri_euic = 0 }
+    #       set_temp_variable = { iri_asic = 0 }
+    #       set_temp_variable = { iri_meic = 0 }
+    #       set_temp_variable = { iri_afic = 0 }
+    #       set_temp_variable = { iri_amic = 0 }
+    #       iri_influence_change = yes
+    iri_influence_change = {
         if = {
-            limit = { has_government = totalist }
-            add_to_array = {
-				array = global.phalanstere_totalist
-				value = THIS  
-			}
-        }
-
-        if = {
-            limit = { has_government = syndicalist }
-            add_to_array = {
-				array = global.phalanstere_syndicalist
-				value = THIS  
-			}
-        }
-
-        if = {
-            limit = { has_government = radical_socialist }
-            add_to_array = {
-				array = global.phalanstere_radical_socialist
-				value = THIS  
-			}
-        }
-
-        if = {
-            limit = { has_government = social_democrat }
-            add_to_array = {
-				array = global.phalanstere_social_democrat
-				value = THIS  
-			}
-        } 
-    }
-
-    clear_array = global.phalanstere_member_list
-    every_country = {
-        limit = { FRA_is_phalanstere_member = yes }
+            limit = { NOT = { check_variable = { iri_euic = 0 } } }
         
-        add_to_array = {
-            array = global.phalanstere_member_list
-            value = THIS  
+            add_to_variable = { global.iri_eui = iri_euic }
+            custom_effect_tooltip = iri_influence_change_eu
+        }
+
+        if = {
+            limit = { NOT = { check_variable = { iri_asic = 0 } } }
+        
+            add_to_variable = { global.iri_asi = iri_asic }
+            custom_effect_tooltip = iri_influence_change_as
+        }
+
+        if = {
+            limit = { NOT = { check_variable = { iri_meic = 0 } } }
+
+            add_to_variable = { global.iri_mei = iri_meic }
+            custom_effect_tooltip = iri_influence_change_me
+        }
+
+        if = {
+            limit = { NOT = { check_variable = { iri_afic = 0 } } }
+        
+            add_to_variable = { global.iri_afi = iri_afic }
+            custom_effect_tooltip = iri_influence_change_af
+        }
+
+        if = {
+            limit = { NOT = { check_variable = { iri_amic = 0 } } }
+        
+            add_to_variable = { global.iri_ami = iri_amic }
+            custom_effect_tooltip = iri_influence_change_am
         }
     }
 
-    if = {
-        limit = { FRA = { has_country_flag = phalanstere_member_list_totalist } }
-        clear_array = global.phalanstere_member_list
-        every_country = {
-            limit = { 
-                FRA_is_phalanstere_member = yes 
-                has_government = totalist
+
+###外交变革倾向
+    #    set_temp_variable = { drtc_pos = 0 }
+    #    set_temp_variable = { drtc_str = 0 }
+    #    set_temp_variable = { drtc_ene = 0 }
+    #    diplomacy_reform_tendency_change = yes
+    diplomacy_reform_tendency_change = {
+        add_to_variable = { drt_pos = drtc_pos }
+        if = {
+            limit = { check_variable = { drtc_pos > 0 } }
+            custom_effect_tooltip = {
+                localization_key = reform_tendency_change_tt
+                REFTEND = drt_pos
+                TENDENCY = drt_pos_left
             }
-            add_to_array = {
-                array = global.phalanstere_member_list
-                value = THIS  
+        }
+        else_if = {
+            limit = { check_variable = { drtc_pos < 0 } }
+            custom_effect_tooltip = {
+                localization_key = reform_tendency_change_tt
+                REFTEND = drt_pos
+                TENDENCY = drt_pos_right
+            }
+        }
+        clamp_variable = { var = drt_pos min = -3 max = 3 }
+
+        add_to_variable = { drt_str = drtc_str }
+        if = {
+            limit = { check_variable = { drtc_str > 0 } }
+            custom_effect_tooltip = {
+                localization_key = reform_tendency_change_tt
+                REFTEND = drt_str
+                TENDENCY = drt_str_left
+            }
+        }
+        else_if = {
+            limit = { check_variable = { drtc_str < 0 } }
+            custom_effect_tooltip = {
+                localization_key = reform_tendency_change_tt
+                REFTEND = drt_str
+                TENDENCY = drt_str_right
+            }
+        }
+        clamp_variable = { var = drt_str min = -3 max = 3 }
+        
+        add_to_variable = { drt_ene = drtc_ene }
+        if = {
+            limit = { check_variable = { drtc_ene > 0 } }
+            custom_effect_tooltip = {
+                localization_key = reform_tendency_change_tt
+                REFTEND = drt_ene
+                TENDENCY = drt_ene_left
+            }
+        }
+        else_if = {
+            limit = { check_variable = { drtc_ene < 0 } }
+            custom_effect_tooltip = {
+                localization_key = reform_tendency_change_tt
+                REFTEND = drt_ene
+                TENDENCY = drt_ene_right
+            }
+        }
+        clamp_variable = { var = drt_ene min = -3 max = 3 }
+
+        csp_member_diplomacy_tendency_attitude_change = yes
+
+        hidden_effect = {
+            if = {
+                limit = { check_variable = { drt_pos = 0 } }
+                add_ideas = drt_pos_0
+            }
+            else_if = {
+                limit = { check_variable = { drt_pos = 1 } }
+                add_ideas = drt_pos_left1
+            }
+            else_if = {
+                limit = { check_variable = { drt_pos = 2 } }
+                add_ideas = drt_pos_left2
+            }
+            else_if = {
+                limit = { check_variable = { drt_pos = 3 } }
+                add_ideas = drt_pos_left3
+            }
+            else_if = {
+                limit = { check_variable = { drt_pos = -1 } }
+                add_ideas = drt_pos_right1
+            }
+            else_if = {
+                limit = { check_variable = { drt_pos = -2 } }
+                add_ideas = drt_pos_right2
+            }
+            else_if = {
+                limit = { check_variable = { drt_pos = -3 } }
+                add_ideas = drt_pos_right3
+            }
+
+            if = {
+                limit = { check_variable = { drt_str = 0 } }
+                add_ideas = drt_str_0
+            }
+            else_if = {
+                limit = { check_variable = { drt_str = 1 } }
+                add_ideas = drt_str_left1
+            }
+            else_if = {
+                limit = { check_variable = { drt_str = 2 } }
+                add_ideas = drt_str_left2
+            }
+            else_if = {
+                limit = { check_variable = { drt_str = 3 } }
+                add_ideas = drt_str_left3
+            }
+            else_if = {
+                limit = { check_variable = { drt_str = -1 } }
+                add_ideas = drt_str_right1
+            }
+            else_if = {
+                limit = { check_variable = { drt_str = -2 } }
+                add_ideas = drt_str_right2
+            }
+            else_if = {
+                limit = { check_variable = { drt_str = -3 } }
+                add_ideas = drt_str_right3
+            }
+
+            if = {
+                limit = { check_variable = { drt_ene = 0 } }
+                add_ideas = drt_ene_0
+            }
+            else_if = {
+                limit = { check_variable = { drt_ene = 1 } }
+                add_ideas = drt_ene_left1
+            }
+            else_if = {
+                limit = { check_variable = { drt_ene = 2 } }
+                add_ideas = drt_ene_left2
+            }
+            else_if = {
+                limit = { check_variable = { drt_ene = 3 } }
+                add_ideas = drt_ene_left3
+            }
+            else_if = {
+                limit = { check_variable = { drt_ene = -1 } }
+                add_ideas = drt_ene_right1
+            }
+            else_if = {
+                limit = { check_variable = { drt_ene = -2 } }
+                add_ideas = drt_ene_right2
+            }
+            else_if = {
+                limit = { check_variable = { drt_ene = -3 } }
+                add_ideas = drt_ene_right3
             }
         }
     }
 
-    if = {
-        limit = { FRA = { has_country_flag = phalanstere_member_list_syndicalist } }
-        clear_array = global.phalanstere_member_list
-        every_country = {
-            limit = { 
-                FRA_is_phalanstere_member = yes 
-                has_government = syndicalist
-            }
-            add_to_array = {
-                array = global.phalanstere_member_list
-                value = THIS  
-            }
+###法伦施泰尔团结度改变  
+    #       set_temp_variable = { phauc = 0 }
+    #       phalanstere_unity_change = yes
+    phalanstere_unity_change = {
+        if = {
+            limit = { NOT = { check_variable = { phauc = 0 } } }
+        
+            add_to_variable = { global.phalanstere_unity = phauc }
+            custom_effect_tooltip = phalanstere_unity_change_tt
+
+            clamp_variable = { var = global.phalanstere_unity  max = 100 min = 0 }
         }
+        phalanstere_modifier_judge = yes
     }
 
-    if = {
-        limit = { FRA = { has_country_flag = phalanstere_member_list_radical_socialist } }
-        clear_array = global.phalanstere_member_list
-        every_country = {
-            limit = { 
-                FRA_is_phalanstere_member = yes 
-                has_government = radical_socialist
-            }
-            add_to_array = {
-                array = global.phalanstere_member_list
-                value = THIS  
-            }
-        }
-    }
-
-    if = {
-        limit = { FRA = { has_country_flag = phalanstere_member_list_social_democrat } }
-        clear_array = global.phalanstere_member_list
-        every_country = {
-            limit = { 
-                FRA_is_phalanstere_member = yes 
-                has_government = social_democrat
-            }
-            add_to_array = {
-                array = global.phalanstere_member_list
-                value = THIS  
-            }
-        }
-    }
-
-    if = {
-        limit = { FRA = { has_country_flag = phalanstere_member_list_agree } }
-        clear_array = global.phalanstere_member_list
-        every_country = {
-            limit = { 
-                FRA_is_phalanstere_member = yes 
-                has_country_flag = phalanstere_attitude_agree
-            }
-            add_to_array = {
-                array = global.phalanstere_member_list
-                value = THIS  
-            }
-        }
-    }
-
-    if = {
-        limit = { FRA = { has_country_flag = phalanstere_member_list_oppose } }
-        clear_array = global.phalanstere_member_list
-        every_country = {
-            limit = { 
-                FRA_is_phalanstere_member = yes 
-                has_country_flag = phalanstere_attitude_oppose
-            }
-            add_to_array = {
-                array = global.phalanstere_member_list
-                value = THIS  
-            }
-        }
-    }
-
-    if = {
-        limit = { FRA = { has_country_flag = phalanstere_member_list_waiver } }
-        clear_array = global.phalanstere_member_list
-        every_country = {
-            limit = { 
-                FRA_is_phalanstere_member = yes 
-                has_country_flag = phalanstere_attitude_waiver
-            }
-            add_to_array = {
-                array = global.phalanstere_member_list
-                value = THIS  
-            }
-        }
-    }
-}
-
-clr_vote_all = {
-    clr_country_flag = phalanstere_attitude_agree
-    remove_from_array = {
-        array = global.phalanstere_vote_agree
-        value = THIS.id
-    }
-
-    clr_country_flag = phalanstere_attitude_oppose
-    remove_from_array = {
-        array = global.phalanstere_vote_oppose
-        value = THIS.id
-    }
-
-    clr_country_flag = phalanstere_attitude_waiver
-    remove_from_array = {
-        array = global.phalanstere_vote_waiver
-        value = THIS.id
-    }
-}
-
-INT_trade_cost_idea_get = {
-    hidden_effect = {
+    phalanstere_member_judge = {
+        clear_array = global.phalanstere_member
+        clear_array = global.phalanstere_totalist
+        clear_array = global.phalanstere_syndicalist
+        clear_array = global.phalanstere_radical_socialist
         every_country = {
             limit = { FRA_is_phalanstere_member = yes }
-            add_ideas = {
-                INT_trade_cost_25_tag0
-                INT_trade_cost_25_tag1
-                INT_trade_cost_25_tag2
-                INT_trade_cost_25_tag3
-                INT_trade_cost_25_tag4
-                INT_trade_cost_25_tag5
-                INT_trade_cost_25_tag6
-                INT_trade_cost_25_tag7
-                INT_trade_cost_25_tag8
-                INT_trade_cost_25_tag9
-                INT_trade_cost_25_tag10
-                INT_trade_cost_25_tag11
-                INT_trade_cost_25_tag12
-                INT_trade_cost_25_tag13
-                INT_trade_cost_25_tag14
-                INT_trade_cost_25_tag15
-                INT_trade_cost_25_tag16
-                INT_trade_cost_25_tag17
-                INT_trade_cost_25_tag18
-                INT_trade_cost_25_tag19
-                INT_trade_cost_25_tag20
-                INT_trade_cost_25_tag21
-                INT_trade_cost_25_tag22
-                INT_trade_cost_25_tag23
-                INT_trade_cost_25_tag24
-                INT_trade_cost_25_tag25
-                INT_trade_cost_25_tag26
-                INT_trade_cost_25_tag27
-                INT_trade_cost_25_tag28
-                INT_trade_cost_25_tag29
-                INT_trade_cost_25_tag30
-                INT_trade_cost_25_tag31
-                INT_trade_cost_25_tag32
-                INT_trade_cost_25_tag33
-                INT_trade_cost_25_tag34
-                INT_trade_cost_25_tag35
-                INT_trade_cost_25_tag36
-                INT_trade_cost_25_tag37
-                INT_trade_cost_25_tag38
-                INT_trade_cost_25_tag39
-                INT_trade_cost_25_tag40
-                INT_trade_cost_25_tag41
-                INT_trade_cost_25_tag42
-                INT_trade_cost_25_tag43
-                INT_trade_cost_25_tag44
-                INT_trade_cost_25_tag45
-                INT_trade_cost_25_tag46
-                INT_trade_cost_25_tag47
-                INT_trade_cost_25_tag48
-                INT_trade_cost_25_tag49
+            add_to_array = { array = global.phalanstere_member value = THIS.id }
+            if = {
+                limit = { has_government = totalist }
+                add_to_array = {
+                    array = global.phalanstere_totalist
+                    value = THIS.id
+                }
             }
-        }
-    }
-}
-
-phalanstere_vote_judge_effect = {
-    if = {
-        limit = { 
-            has_country_flag = phalanstere_discuss_about_inner_circle_of_socialism
-            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
-        }
-        clr_country_flag = phalanstere_discuss_about_inner_circle_of_socialism
-        set_country_flag = phalanstere_agree_about_inner_circle_of_socialism
-    }
-    else = { clr_country_flag = phalanstere_discuss_about_inner_circle_of_socialism }
-
-    if = {
-        limit = { 
-            has_country_flag = phalanstere_discuss_about_revolutionary_aid_construction
-            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
-        }
-        clr_country_flag = phalanstere_discuss_about_revolutionary_aid_construction
-        set_country_flag = phalanstere_agree_about_revolutionary_aid_construction
-    }
-    else = { clr_country_flag = phalanstere_discuss_about_revolutionary_aid_construction }
-
-    if = {
-        limit = { 
-            has_country_flag = phalanstere_discuss_about_international_union_of_socialist_students
-            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
-        }
-        clr_country_flag = phalanstere_discuss_about_international_union_of_socialist_students
-        set_country_flag = phalanstere_agree_about_international_union_of_socialist_students
-    }
-    else = { clr_country_flag = phalanstere_discuss_about_international_union_of_socialist_students }
-
-    if = {
-        limit = { 
-            has_country_flag = phalanstere_discuss_about_abolition_of_bourgeois_jurisdiction
-            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
-        }
-        clr_country_flag = phalanstere_discuss_about_abolition_of_bourgeois_jurisdiction
-        set_country_flag = phalanstere_agree_about_abolition_of_bourgeois_jurisdiction
-    }
-    else = { clr_country_flag = phalanstere_discuss_about_abolition_of_bourgeois_jurisdiction }
-
-    if = {
-        limit = { 
-            has_country_flag = phalanstere_discuss_about_literacy_expeditionary_force
-            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
-        }
-        clr_country_flag = phalanstere_discuss_about_literacy_expeditionary_force
-        set_country_flag = phalanstere_agree_about_literacy_expeditionary_force
-    }
-    else = { clr_country_flag = phalanstere_discuss_about_literacy_expeditionary_force }
-
-    if = {
-        limit = { 
-            has_country_flag = phalanstere_discuss_about_international_open_laboratory
-            check_variable = { global.phalanstere_vote_agree^num > global.phalanstere_vote_oppose^num }
-        }
-        clr_country_flag = phalanstere_discuss_about_international_open_laboratory
-        set_country_flag = phalanstere_agree_about_international_open_laboratory
-    }
-    else = { clr_country_flag = phalanstere_discuss_about_international_open_laboratory }
-}
-
-###     法伦施泰尔团结度改变  
-#       set_temp_variable = { phauc = 0 }
-#       phalanstere_unity_change = yes
-phalanstere_unity_change = {
-    if = { limit = { check_variable = { phauc = 0 } } }
-    else = {
-        add_to_variable = { global.phalanstere_unity = phauc }
-        custom_effect_tooltip = phalanstere_unity_change_tt
-
-        clamp_variable = { var = global.phalanstere_unity  max = 100 min = 0 }
-    }
-    phalanstere_buff_judge = yes
-}
-
-phalanstere_unity_change_monthly = {
-    clear_array = global.phalanstere_totalist
-    clear_array = global.phalanstere_syndicalist
-    clear_array = global.phalanstere_radical_socialist
-    clear_array = global.phalanstere_social_democrat
-    every_country = {
-        limit = { FRA_is_phalanstere_member = yes }
-        if = {
-            limit = { has_government = totalist }
-            add_to_array = {
-				array = global.phalanstere_totalist
-				value = THIS  
-			}
-        }
-
-        if = {
-            limit = { has_government = syndicalist }
-            add_to_array = {
-				array = global.phalanstere_syndicalist
-				value = THIS  
-			}
-        }
-
-        if = {
-            limit = { has_government = radical_socialist }
-            add_to_array = {
-				array = global.phalanstere_radical_socialist
-				value = THIS  
-			}
-        }
-
-        if = {
-            limit = { has_government = social_democrat }
-            add_to_array = {
-				array = global.phalanstere_social_democrat
-				value = THIS  
-			}
-        } 
-    }
-
-    set_variable = { phauc_monthly1 = global.phalanstere_member^num }
-    multiply_variable = { phauc_monthly1 = 0.1 }
-    multiply_variable = { phauc_monthly1 = 5 }
-
-    if = {
-        limit = { phalanstere_totalist_advantage = yes }
-        set_variable = { phauc_monthly2 = global.phalanstere_syndicalist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_radical_socialist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_social_democrat^num }
-        multiply_variable  = { phauc_monthly2 = -0.1 }
-    }
-    if = {
-        limit = { phalanstere_syndicalist_advantage = yes }
-        set_variable = { phauc_monthly2 = global.phalanstere_totalist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_radical_socialist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_social_democrat^num }
-        multiply_variable  = { phauc_monthly2 = -0.1 }
-    }
-    if = {
-        limit = { phalanstere_radical_socialist_advantage = yes }
-        set_variable = { phauc_monthly2 = global.phalanstere_totalist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_radical_socialist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_social_democrat^num }
-        multiply_variable  = { phauc_monthly2 = -0.1 }
-    }
-    if = {
-        limit = { phalanstere_social_democrat_advantage = yes }
-        set_variable = { phauc_monthly2 = global.phalanstere_totalist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_radical_socialist^num }
-        add_to_variable = { phauc_monthly2 = global.phalanstere_social_democrat^num }
-        multiply_variable  = { phauc_monthly2 = -0.1 }
-    }
-    if = {
-        limit = {
-            phalanstere_totalist_advantage = no
-            phalanstere_syndicalist_advantage = no
-            phalanstere_radical_socialist_advantage = no
-            phalanstere_social_democrat_advantage = no
-        }
-        set_variable = { phauc_monthly2 = global.phalanstere_member^num }
-        multiply_variable  = { phauc_monthly2 = -0.1 }
-    }
-    multiply_variable = { phauc_monthly2 = 5 }
-
-    set_variable = { phauc_monthly = phauc_monthly1 }
-    add_to_variable = { phauc_monthly = phauc_monthly2 }
-}
-
-phalanstere_industry_investment_judge = {
-    set_temp_variable = { global.piic = 0 }
-    every_country = {
-        limit = { 
-            mio:FRA_phalanstere_reasearch_organization = {  
-                OR = {
-                    is_mio_trait_completed = mio_phalanstere_industry_investment_factory
-                    is_mio_trait_completed = mio_phalanstere_industry_investment_construction
+            if = {
+                limit = { has_government = syndicalist }
+                add_to_array = {
+                    array = global.phalanstere_syndicalist
+                    value = THIS.id
+                }
+            }
+            if = {
+                limit = { has_government = radical_socialist }
+                add_to_array = {
+                    array = global.phalanstere_radical_socialist
+                    value = THIS.id
                 }
             }
         }
+    }
+
+    phalanstere_unity_change_monthly = {
+        phalanstere_member_judge = yes
+
+        set_variable = { global.phauc_monthly1 = global.phalanstere_member^num }
+        multiply_variable = { global.phauc_monthly1 = 0.1 }
+        multiply_variable = { global.phauc_monthly1 = 5 }
+
+        if = {
+            limit = { phalanstere_totalist_advantage = yes }
+            set_variable = { global.phauc_monthly2 = global.phalanstere_syndicalist^num }
+            add_to_variable = { global.phauc_monthly2 = global.phalanstere_radical_socialist^num }
+            multiply_variable  = { global.phauc_monthly2 = -0.1 }
+        }
+        if = {
+            limit = { phalanstere_syndicalist_advantage = yes }
+            set_variable = { global.phauc_monthly2 = global.phalanstere_totalist^num }
+            add_to_variable = { global.phauc_monthly2 = global.phalanstere_radical_socialist^num }
+            multiply_variable  = { global.phauc_monthly2 = -0.1 }
+        }
+        if = {
+            limit = { phalanstere_radical_socialist_advantage = yes }
+            set_variable = { global.phauc_monthly2 = global.phalanstere_totalist^num }
+            add_to_variable = { global.phauc_monthly2 = global.phalanstere_radical_socialist^num }
+            multiply_variable  = { global.phauc_monthly2 = -0.1 }
+        }
+        if = {
+            limit = {
+                phalanstere_totalist_advantage = no
+                phalanstere_syndicalist_advantage = no
+                phalanstere_radical_socialist_advantage = no
+            }
+            set_variable = { global.phauc_monthly2 = global.phalanstere_member^num }
+            multiply_variable  = { global.phauc_monthly2 = -0.1 }
+        }
+        multiply_variable = { global.phauc_monthly2 = 5 }
+
+        set_variable = { global.phauc_monthly = global.phauc_monthly1 }
+        add_to_variable = { global.phauc_monthly = global.phauc_monthly2 }
+    }
+
+    phalanstere_industry_investment_judge = {
+        set_temp_variable = { global.piic = 0 }
+        every_country = {
+            limit = { 
+                mio:FRA_phalanstere_reasearch_organization = {  
+                    OR = {
+                        is_mio_trait_completed = mio_phalanstere_industry_investment_factory
+                        is_mio_trait_completed = mio_phalanstere_industry_investment_construction
+                    }
+                }
+            }
+            if = {
+                limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_factory } }
+                add_to_temp_variable = { global.piic = 10 }
+            }
+            if = {
+                limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_construction } }
+                add_to_temp_variable = { global.piic = 5 }
+            }
+        }
+        add_to_variable = { global.phalanstere_industry_investment_progress = global.piic }
+        while_loop_effect = {
+            limit = { check_variable = { global.phalanstere_industry_investment_progress > 99.9 } }
+            add_to_variable = { global.phalanstere_industry_investment_num = 1 }
+            add_to_variable = { global.phalanstere_industry_investment_progress = -100 }
+        }
+    }
+
+    phalanstere_modifier_judge = {
+        set_temp_variable = { phau = global.phalanstere_unity }
+        multiply_temp_variable = { phau = 0.01 }
+
+        set_variable = { INT_political_power_gain = phau }
+    #
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_infrastructure }
+            set_variable = { INT_production_speed_infrastructure_factor = 0.15 }
+            set_variable = { INT_production_speed_rail_way_factor = 0.25 }
+        }
+        else = { 
+            set_variable = { INT_production_speed_infrastructure_factor = 0 } 
+            set_variable = { INT_production_speed_rail_way_factor = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_complex }
+            set_variable = { INT_production_speed_dockyard_factor = 0.1 }
+            set_variable = { INT_production_speed_industrial_complex_factor = 0.15 }
+        }
+        else = { 
+            set_variable = { INT_production_speed_dockyard_factor = 0 }
+            set_variable = { INT_production_speed_industrial_complex_factor = 0 } 
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_arms }
+            set_variable = { INT_production_speed_arms_factory_factor = 0.15 }
+        }
+        else = { set_variable = { INT_production_speed_arms_factory_factor = 0 } }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_finance }
+            set_variable = { INT_political_power_factor = 0.1 }
+            set_variable = { INT_consumer_goods_factor = -0.15 }
+        }
+        else = { 
+            set_variable = { INT_political_power_factor = 0 }
+            set_variable = { INT_consumer_goods_factor = 0 } 
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_expert }
+            set_variable = { INT_research_speed_factor = 0.1 }
+            set_variable = { INT_research_sharing_per_country_bonus_factor = 0.2 }
+        }
+        else = { 
+            set_variable = { INT_research_speed_factor = 0 }
+            set_variable = { INT_research_sharing_per_country_bonus_factor = 0 } 
+        }
+
+        if = {
+            limit = { 
+                has_global_flag = phalanstere_cooperation_no_tariffs 
+                NOT = { has_idea = INT_trade_cost_33_tag }
+            }
+            add_ideas = INT_trade_cost_33_tag
+        }
+        
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_no_border }
+            set_variable = { INT_weekly_manpower = 20 }
+            set_variable = { INT_monthly_population = 0.02 }
+            set_variable = { INT_industrial_capacity_factory = 0.025 }
+            set_variable = { INT_industrial_capacity_dockyard = 0.025 }
+            add_to_variable = { INT_consumer_goods_factor = -0.05 }
+        }
+        else = { 
+            set_variable = { INT_weekly_manpower = 0 }
+            set_variable = { INT_monthly_population = 0 }
+            set_variable = { INT_industrial_capacity_factory = 0 }
+            set_variable = { INT_industrial_capacity_dockyard = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_university }
+            add_to_variable = { INT_research_speed_factor = 0.05 }
+            add_to_variable = { INT_research_sharing_per_country_bonus_factor = 0.1 }
+            if = {
+                limit = { has_country_flag = phalanstere_research_slot_1 }
+                add_research_slot = 1
+            }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_laboratory }
+            add_to_variable = { INT_research_speed_factor = 0.05 }
+            set_variable = { INT_specialization_air_speed_factor = 0.1 }
+            set_variable = { INT_specialization_land_speed_factor = 0.1 }
+            set_variable = { INT_specialization_naval_speed_factor = 0.1 }
+            set_variable = { INT_specialization_nuclear_speed_factor = 0.1 }
+            if = {
+                limit = { has_country_flag = phalanstere_special_reasearch }
+                capital_scope = {
+                    if = {
+                        limit = { 
+                            land_facility < 1
+                            can_construct_building = land_facility 
+                        }
+                        construct_building_in_random_province = { land_facility = 1 }
+                    }
+                }
+            }
+        }
+        else = {
+            set_variable = { INT_specialization_air_speed_factor = 0 }
+            set_variable = { INT_specialization_land_speed_factor = 0 }
+            set_variable = { INT_specialization_naval_speed_factor = 0 }
+            set_variable = { INT_specialization_nuclear_speed_factor = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_liteary_art }
+            add_to_variable = { INT_political_power_factor = 0.1 }
+            set_variable = { INT_stability_factor = 0.05 }
+            set_variable = { INT_war_support_factor = 0.05 }
+            set_variable = { INT_syndicalist_drift = 0.05 }
+            set_variable = { INT_totalist_drift = 0.05 }
+            set_variable = { INT_radical_socialist_drift = 0.05 }
+        }
+        else = {
+            set_variable = { INT_stability_factor = 0 }
+            set_variable = { INT_war_support_factor = 0 }
+            set_variable = { INT_syndicalist_drift = 0 }
+            set_variable = { INT_totalist_drift = 0 }
+            set_variable = { INT_radical_socialist_drift = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_no_patent }
+            add_to_variable = { INT_research_speed_factor = 0.025 }
+            add_to_variable = { INT_research_sharing_per_country_bonus_factor = 0.25 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_weight_measure }
+            set_variable = { INT_production_factory_start_efficiency_factor = 0.05 }
+            set_variable = { INT_production_factory_efficiency_gain_factor = 0.1 }
+            set_variable = { INT_production_factory_max_efficiency_factor = 0.025 }
+        }
+        else = {
+            set_variable = { INT_production_factory_start_efficiency_factor = 0 }
+            set_variable = { INT_production_factory_efficiency_gain_factor = 0 }
+            set_variable = { INT_production_factory_max_efficiency_factor = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_specialized_industry }
+            set_temp_variable = { global.phaeuind = 0 }
+            set_temp_variable = { global.phaasind = 0 }
+            set_temp_variable = { global.phameind = 0 }
+            set_temp_variable = { global.phaafind = 0 }
+            set_temp_variable = { global.phaamind = 0 }
+            every_country = {
+                limit = { FRA_is_phalanstere_member = yes }
+                if = {
+                    limit = { capital_scope = { INT_is_in_europe = yes } }
+                    add_to_temp_variable = { global.phaeuind = num_of_factories }
+                }
+                else_if = {
+                    limit = { capital_scope = { INT_is_in_asia = yes } }
+                    add_to_temp_variable = { global.phaasind = num_of_factories }
+                }
+                else_if = {
+                    limit = { capital_scope = { INT_is_in_middle_east = yes } }
+                    add_to_temp_variable = { global.phameind = num_of_factories }
+                }
+                else_if = {
+                    limit = { capital_scope = { INT_is_in_africa = yes } }
+                    add_to_temp_variable = { global.phaafind = num_of_factories }
+                }
+                else_if = {
+                    limit = { capital_scope = { INT_is_in_america = yes } }
+                    add_to_temp_variable = { global.phaamind = num_of_factories }
+                }
+            }
+            add_to_variable = { INT_production_factory_max_efficiency_factor = { value = global.phaeuind multiply = 0.0002 } }
+            add_to_variable = { INT_production_factory_efficiency_gain_factor = { value = global.phaasind multiply = 0.0005 } }
+            set_variable = { INT_local_resources_factor = { value = global.phameind multiply = 0.001 } }
+            add_to_variable = { INT_industrial_capacity_factory = { value = global.phaafind multiply = 0.0005 } }
+            set_variable = { INT_production_speed_buildings_factor = { value = global.phaamind multiply = 0.0005 } }
+        }
+        else = {
+            set_variable = { INT_local_resources_factor = 0 }
+            set_variable = { INT_production_speed_buildings_factor = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_independent_industry }
+            clear_array = global.phalanstere_industry_num
+            every_country = {
+                limit = { FRA_is_phalanstere_member = yes }
+                add_to_array = { global.phalanstere_industry_num = num_of_factories }
+            }
+            find_highest_in_array = { array = global.phalanstere_industry_num value = highest_num }
+            if = {
+                limit = { check_variable = { num_of_factories < highest_num } }
+                add_to_variable = { INT_production_speed_buildings_factor = { value = highest_num subtract = num_of_factories multiply = 0.001 } }
+            }
+            else = { add_to_variable = { INT_industrial_capacity_factory = { value = global.phalanstere_member^num multiply = 0.005 } } }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_bank }
+            add_to_variable = { INT_political_power_gain = -0.5 }
+            add_to_variable = { global.phalanstere_bank = 0.5 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_resource }
+            add_to_variable = { INT_local_resources_factor = 0.25 }
+            set_variable = { INT_production_lack_of_resource_penalty_factor = -0.05 }
+        }
+        else = { set_variable = { INT_production_lack_of_resource_penalty_factor = 0 } }
+        
+        if = { 
+            limit = { has_global_flag = phalanstere_cooperation_language }
+            add_to_variable = { INT_research_speed_factor = 0.05 }
+            add_to_variable = { INT_research_sharing_per_country_bonus_factor = 0.1 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_comprehensive }
+            set_variable = { INT_experience_gain_army_factor = 0.05 }
+            set_variable = { INT_experience_gain_navy_factor = 0.05 }
+            set_variable = { INT_experience_gain_air_factor = 0.05 }
+        }
+        else = {
+            set_variable = { INT_experience_gain_army_factor = 0 }
+            set_variable = { INT_experience_gain_navy_factor = 0 }
+            set_variable = { INT_experience_gain_air_factor = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_command }
+            set_variable = { INT_max_planning_factor = 0.05 }
+            set_variable = { INT_army_org_factor = 0.1 }
+        }
+        else = {
+            set_variable = { INT_max_planning_factor = 0 }
+            set_variable = { INT_army_org_factor = 0 }
+        }
+
+        if = {
+            limit = { has_global_flag = phalanstere_cooperation_brigades }
+            set_variable = { INT_send_volunteer_size = 4 }
+        }
+        else = { set_variable = { INT_send_volunteer_size = 0 } }
+
+    ###########################
         if = {
             limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_factory } }
-            add_to_temp_variable = { global.piic = 10 }
+            set_variable = { INT_civilian_factory_use = 5 }
         }
+        else = { set_variable = { INT_civilian_factory_use = 0 } }
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment_factory } }
+            add_to_variable = { INT_civilian_factory_use = 5 }
+        }
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment_speed } }
+            add_to_variable = { INT_research_speed_factor = -0.1 }
+        }
+
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_share } }
+            add_to_variable = { INT_research_sharing_per_country_bonus_factor = 0.2 }
+        }
+
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_active_foreign_trade } }
+            set_variable = { INT_cic_construction_boost_factor = 0.25 }
+        }
+        else = { set_variable = { INT_cic_construction_boost_factor = 0 } }
+        
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_call_for_investment } }
+            add_to_variable = { INT_political_power_factor = -0.1 }
+            add_to_variable = { INT_consumer_goods_factor = -0.15 }
+            add_to_variable = { INT_cic_construction_boost_factor = 0.25 }
+        }
+
         if = {
             limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_construction } }
-            add_to_temp_variable = { global.piic = 5 }
+            add_to_variable = { INT_production_speed_industrial_complex_factor = -0.1 }
         }
-    }
-    add_to_variable = { global.phalanstere_industry_investment_progress = global.piic }
-    while_loop_effect = {
-        limit = { check_variable = { global.phalanstere_industry_investment_progress > 99.9 } }
-        add_to_variable = { global.phalanstere_industry_investment_num = 1 }
-        add_to_variable = { global.phalanstere_industry_investment_progress = -100 }
-    }
-}
 
-phalanstere_buff_judge = {
-    set_temp_variable = { phau = global.phalanstere_unity }
-    multiply_temp_variable = { phau = 0.01 }
-
-    set_variable = { INT_political_power_gain = phau }
-
-    set_variable = { INT_political_power_cost = FRA.pha_coop_num }
-    multiply_variable = { INT_political_power_cost = 0.05 } 
-
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_inner_circle_of_socialism } }
-        set_variable = { INT_consumer_goods_factor = -0.1 }
-        set_variable = { INT_local_resources_factor = 0.1 }
-        set_variable = { INT_trade_cost = -0.25 }
-    }
-    else = { 
-        set_variable = { INT_consumer_goods_factor = 0 } 
-        set_variable = { INT_local_resources_factor = 0 }
-        set_variable = { INT_trade_cost = 0 }
-    }
-
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_revolutionary_aid_construction } }
-        set_variable = { INT_production_speed_industrial_complex_factor = phau }
-        multiply_variable = { INT_production_speed_industrial_complex_factor = 0.1 }
-
-        set_variable = { INT_production_speed_infrastructure_factor = 0.1 }
-		set_variable = { INT_production_speed_industrial_complex_factor = 0.05 }
-    }
-    else = { 
-        set_variable = { INT_production_speed_industrial_complex_factor = 0 } 
-        set_variable = { INT_production_speed_infrastructure_factor = 0 }
-		set_variable = { INT_production_speed_industrial_complex_factor = 0 }
-    }
-    
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_international_union_of_socialist_students } }
-        add_to_variable = { INT_consumer_goods_factor = -0.05 }
-		set_variable = { INT_political_power_factor = 0.1 }
-
-        set_variable = { INT_research_speed_factor = phau }
-        multiply_variable = { INT_research_speed_factor = 0.05 }
-    }
-    else = { 
-        set_variable = { INT_political_power_factor = 0 }
-        set_variable = { INT_research_speed_factor = 0 }
-    }
-
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_international_union_of_socialist_students } }
-        set_variable = { INT_production_factory_max_efficiency_factor = 0.05 }
-		set_variable = { INT_production_factory_start_efficiency_factor = 0.05 }
-    }
-    else = { 
-        set_variable = { INT_production_factory_max_efficiency_factor = 0 }
-        set_variable = { INT_production_factory_start_efficiency_factor = 0 }
-    }
-
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_international_union_of_socialist_students } }
-        set_variable = { INT_stability_factor = 0.05 }
-		set_variable = { INT_war_support_factor = 0.05 }
-		set_variable = { INT_production_factory_efficiency_gain_factor = 0.1 }
-    }
-    else = { 
-        set_variable = { INT_stability_factor = 0 }
-        set_variable = { INT_war_support_factor = 0 }
-        set_variable = { INT_production_factory_efficiency_gain_factor = 0 }
-    }
-
-    set_variable = { INT_research_speed_factor = phau }
-    multiply_variable = { INT_research_speed_factor = 0.05 }
-    multiply_variable = { INT_research_speed_factor = phatechcoop }
-
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_international_open_laboratory } }
-        set_variable = { INT_research_sharing_per_country_bonus = 0.5 }
-		add_to_variable = { INT_production_factory_max_efficiency_factor = 0.05 }
-		add_to_variable = { INT_production_factory_efficiency_gain_factor = 0.05 }
-    }
-    else = { set_variable = { INT_research_sharing_per_country_bonus = 0 } }
-
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_international_open_laboratory } }
         if = {
-            limit = { tag = FRA }
-            set_variable = { INT_industrial_capacity_factory = 0.15 }
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_weapon_share } }
+            set_variable = { INT_license_purchase_cost = -1 }
+            set_variable = { INT_license_production_speed = 0.2 }
         }
-        else = { add_to_variable = { INT_consumer_goods_factor = -0.1 } }
-    }
-    else = { set_variable = { INT_industrial_capacity_factory = 0 } }
+        else = {
+            set_variable = { INT_license_purchase_cost = 0 }
+            set_variable = { INT_license_production_speed = 0 }
+        }
 
-    if = {
-        limit = { FRA = { has_completed_focus = FRA_international_open_laboratory } }
-        set_variable = { INT_experience_gain_army = 0.03 }
-        set_variable = { INT_experience_gain_navy = 0.03 }
-        set_variable = { INT_experience_gain_air = 0.03 }
-    }
-    else = { 
-        set_variable = { INT_experience_gain_army = 0 }
-        set_variable = { INT_experience_gain_navy = 0 }
-        set_variable = { INT_experience_gain_air = 0 }
-    }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_factory } }
-        set_variable = { INT_civilian_factory_use = 5 }
-    }
-    else = { set_variable = { INT_civilian_factory_use = 0 } }
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment_factory } }
-        add_to_variable = { INT_civilian_factory_use = 5 }
-    }
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_investment_speed } }
-        add_to_variable = { INT_research_speed_factor = -0.1 }
-    }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_reasearch_share } }
-        set_variable = { INT_research_sharing_per_country_bonus_factor = 0.2 }
-    }
-    else = { set_variable = { INT_research_sharing_per_country_bonus_factor = 0 } }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_active_foreign_trade } }
-        set_variable = { INT_cic_construction_boost_factor = 0.25 }
-    }
-    else = { set_variable = { INT_cic_construction_boost_factor = 0 } }
-    
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_call_for_investment } }
-        add_to_variable = { INT_political_power_factor = -0.1 }
-        add_to_variable = { INT_consumer_goods_factor = -0.15 }
-        add_to_variable = { INT_cic_construction_boost_factor = 0.25 }
-    }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_construction } }
-        add_to_variable = { INT_production_speed_industrial_complex_factor = -0.1 }
-    }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_weapon_share } }
-        set_variable = { INT_license_purchase_cost = -1 }
-        set_variable = { INT_license_production_speed = 0.2 }
-    }
-    else = {
-        set_variable = { INT_license_purchase_cost = 0 }
-        set_variable = { INT_license_production_speed = 0 }
-    }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_civilian_new } }
-        set_variable = { INT_production_speed_buildings_factor = 0.1 }
-    }
-    else = { set_variable = { INT_production_speed_buildings_factor = 0 } }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_arms_new } }
-        add_to_variable = { INT_production_factory_max_efficiency_factor = 0.1 }
-    }
-
-    if = {
-        limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_get_back } }
-        set_temp_variable = { t = global.phalanstere_industry_investment_num }
-        modulo_temp_variable = { t = 3 }
-        set_variable = { INT_industrial_factory_donations = global.phalanstere_industry_investment_num }
-        subtract_from_variable = { INT_industrial_factory_donations = t }
-        divide_variable = { INT_industrial_factory_donations = 3 }
         if = {
-            limit = { check_variable = { t = 1 } }
-            add_to_variable = { INT_industrial_factory_donations = 1 }
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_civilian_new } }
+            add_to_variable = { INT_production_speed_buildings_factor = 0.1 }
         }
-        set_variable = { INT_military_factory_donations = global.phalanstere_industry_investment_num }
-        subtract_from_variable = { INT_military_factory_donations = t }
-        divide_variable = { INT_military_factory_donations = 3 }
+
         if = {
-            limit = { check_variable = { t = 2 } }
-            add_to_variable = { INT_military_factory_donations = 1 }
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_arms_new } }
+            add_to_variable = { INT_production_factory_max_efficiency_factor = 0.1 }
         }
-        set_variable = { INT_dockyard_donations = global.phalanstere_industry_investment_num }
-        subtract_from_variable = { INT_dockyard_donations = t }
-        divide_variable = { INT_dockyard_donations = 3 }
-    }
-    else = {
-        set_variable = { INT_industrial_factory_donations = 0 }
-        set_variable = { INT_military_factory_donations = 0 }
-        set_variable = { INT_dockyard_donations = 0 }
-    }
-}
 
-#改变立场
-phacongress_change_agree_from_waiver = {
-    custom_effect_tooltip = phacongress_change_agree_from_waiver
-    clr_country_flag = phalanstere_attitude_waiver
-    remove_from_array = {
-        array = global.phalanstere_vote_waiver
-        value = THIS.id
+        if = {
+            limit = { mio:FRA_phalanstere_reasearch_organization = { is_mio_trait_completed = mio_phalanstere_industry_investment_get_back } }
+            set_temp_variable = { t = global.phalanstere_industry_investment_num }
+            modulo_temp_variable = { t = 3 }
+            set_variable = { INT_industrial_factory_donations = global.phalanstere_industry_investment_num }
+            subtract_from_variable = { INT_industrial_factory_donations = t }
+            divide_variable = { INT_industrial_factory_donations = 3 }
+            if = {
+                limit = { check_variable = { t = 1 } }
+                add_to_variable = { INT_industrial_factory_donations = 1 }
+            }
+            set_variable = { INT_military_factory_donations = global.phalanstere_industry_investment_num }
+            subtract_from_variable = { INT_military_factory_donations = t }
+            divide_variable = { INT_military_factory_donations = 3 }
+            if = {
+                limit = { check_variable = { t = 2 } }
+                add_to_variable = { INT_military_factory_donations = 1 }
+            }
+            set_variable = { INT_dockyard_donations = global.phalanstere_industry_investment_num }
+            subtract_from_variable = { INT_dockyard_donations = t }
+            divide_variable = { INT_dockyard_donations = 3 }
+        }
+        else = {
+            set_variable = { INT_industrial_factory_donations = 0 }
+            set_variable = { INT_military_factory_donations = 0 }
+            set_variable = { INT_dockyard_donations = 0 }
+        }
     }
-    set_country_flag = phalanstere_attitude_agree
-    add_to_array = {
-        array = global.phalanstere_vote_agree
-        value = THIS.id
-    }
-}
 
-phacongress_change_agree_from_oppose = {
-    custom_effect_tooltip = phacongress_change_agree_from_oppose
-    clr_country_flag = phalanstere_attitude_oppose
-    remove_from_array = {
-        array = global.phalanstere_vote_oppose
-        value = THIS.id
-    }
-    set_country_flag = phalanstere_attitude_agree
-    add_to_array = {
-        array = global.phalanstere_vote_agree
-        value = THIS.id
-    }
-}
-
-phacongress_change_oppose_from_waiver = {
-    custom_effect_tooltip = phacongress_change_oppose_from_waiver
-    clr_country_flag = phalanstere_attitude_waiver
-    remove_from_array = {
-        array = global.phalanstere_vote_waiver
-        value = THIS.id
-    }
-    set_country_flag = phalanstere_attitude_oppose
-    add_to_array = {
-        array = global.phalanstere_vote_oppose
-        value = THIS.id
-    }
-}
-
-phacongress_change_oppose_from_agree = {
-    custom_effect_tooltip = phacongress_change_oppose_from_agree
-    clr_country_flag = phalanstere_attitude_agree
-    remove_from_array = {
-        array = global.phalanstere_vote_agree
-        value = THIS.id
-    }
-    set_country_flag = phalanstere_attitude_oppose
-    add_to_array = {
-        array = global.phalanstere_vote_oppose
-        value = THIS.id
-    }
-}
-
-phacongress_change_waiver_from_agree = {
-    custom_effect_tooltip = phacongress_change_waiver_from_agree
-    clr_country_flag = phalanstere_attitude_agree
-    remove_from_array = {
-        array = global.phalanstere_vote_agree
-        value = THIS.id
-    }
-    set_country_flag = phalanstere_attitude_waiver
-    add_to_array = {
-        array = global.phalanstere_vote_waiver
-        value = THIS.id
-    }
-}
-
-phacongress_change_waiver_from_oppose = {
-    custom_effect_tooltip = phacongress_change_waiver_from_oppose
-    clr_country_flag = phalanstere_attitude_oppose
-    remove_from_array = {
-        array = global.phalanstere_vote_oppose
-        value = THIS.id
-    }
-    set_country_flag = phalanstere_attitude_waiver
-    add_to_array = {
-        array = global.phalanstere_vote_waiver
-        value = THIS.id
-    }
-}
-
-#非洲殖民地骚乱
+###非洲殖民地骚乱
 africa_colonial_riot_level_up = {
     if = {
-        limit = { has_idea = Cof_africa_colonial_riot4 }
+        limit = { has_idea = FCF_africa_colonial_riot4 }
         swap_ideas = {
-            remove_idea = Cof_africa_colonial_riot4
-            add_idea = Cof_africa_colonial_riot5
+            remove_idea = FCF_africa_colonial_riot4
+            add_idea = FCF_africa_colonial_riot5
         }
     }
     else_if = {
-        limit = { has_idea = Cof_africa_colonial_riot3 }
+        limit = { has_idea = FCF_africa_colonial_riot3 }
         swap_ideas = {
-            remove_idea = Cof_africa_colonial_riot3
-            add_idea = Cof_africa_colonial_riot4
+            remove_idea = FCF_africa_colonial_riot3
+            add_idea = FCF_africa_colonial_riot4
         }
     }
     else_if = {
-        limit = { has_idea = Cof_africa_colonial_riot2 }
+        limit = { has_idea = FCF_africa_colonial_riot2 }
         swap_ideas = {
-            remove_idea = Cof_africa_colonial_riot2
-            add_idea = Cof_africa_colonial_riot3
+            remove_idea = FCF_africa_colonial_riot2
+            add_idea = FCF_africa_colonial_riot3
         }
     }
     else_if = {
-        limit = { has_idea = Cof_africa_colonial_riot1 }
+        limit = { has_idea = FCF_africa_colonial_riot1 }
         swap_ideas = {
-            remove_idea = Cof_africa_colonial_riot1
-            add_idea = Cof_africa_colonial_riot2
+            remove_idea = FCF_africa_colonial_riot1
+            add_idea = FCF_africa_colonial_riot2
         }
     }
-    else = { add_ideas = Cof_africa_colonial_riot1 }
+    else = { add_ideas = FCF_africa_colonial_riot1 }
 }
 
 jap_colonial_riot_judge = {
@@ -839,6 +735,96 @@ count_num_of_volunteers = {
             }
         }
         if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 29
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 30 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 28
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 29 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 27
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 28 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 26
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 27 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 25
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 26 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 24
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 25 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 23
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 24 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 22
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 23 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 21
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 22 }
+        }
+        else_if = {
+            limit = {
+                has_volunteers_amount_from = {
+                    tag = PREV
+                    count > 20
+                }
+            }
+            add_to_variable = { PREV.num_of_volunteers = 21 }
+        }
+        else_if = {
             limit = {
                 has_volunteers_amount_from = {
                     tag = PREV
@@ -1022,34 +1008,34 @@ count_num_of_volunteers = {
 }
 
 iri_target_gui_get = {
-    var:FRA.iri_targeted^0 = {
-        set_variable = { FRA.iri_targeted_ideology^1 = THIS.party_popularity_100@syndicalist }
-        add_to_variable = { FRA.iri_targeted_ideology^1 = THIS.party_popularity_100@totalist }
-        add_to_variable = { FRA.iri_targeted_ideology^1 = THIS.party_popularity_100@radical_socialist }
-        set_variable = { FRA.iri_targeted_1 = FRA.iri_targeted_ideology^1 }
+    set_variable = { FROM.iri_targeted_ideology^1 = THIS.party_popularity_100@syndicalist }
+    add_to_variable = { FROM.iri_targeted_ideology^1 = THIS.party_popularity_100@totalist }
+    add_to_variable = { FROM.iri_targeted_ideology^1 = THIS.party_popularity_100@radical_socialist }
+    set_variable = { FROM.iri_targeted_1 = FROM.iri_targeted_ideology^1 }
 
-        set_variable = { FRA.iri_targeted_ideology^2 = THIS.party_popularity_100@social_democrat }
-        add_to_variable = { FRA.iri_targeted_ideology^2 = THIS.party_popularity_100@social_liberal }
-        set_variable = { FRA.iri_targeted_2 = FRA.iri_targeted_ideology^2 }  
-        add_to_variable = { FRA.iri_targeted_2 = FRA.iri_targeted_1 }
+    set_variable = { FROM.iri_targeted_ideology^2 = THIS.party_popularity_100@social_democrat }
+    add_to_variable = { FROM.iri_targeted_ideology^2 = THIS.party_popularity_100@social_liberal }
+    set_variable = { FROM.iri_targeted_2 = FROM.iri_targeted_ideology^2 }  
+    add_to_variable = { FROM.iri_targeted_2 = FROM.iri_targeted_1 }
 
-        set_variable = { FRA.iri_targeted_ideology^3 = 100 }
-        subtract_from_variable = { FRA.iri_targeted_ideology^3 = FRA.iri_targeted_ideology^1 }
-        subtract_from_variable = { FRA.iri_targeted_ideology^3 = FRA.iri_targeted_ideology^2 }  
-        
-        set_variable = { FRA.iri_targeted_ideology^0 = THIS.stability }
-        set_variable = { FRA.iri_targeted_3 = THIS.stability }
-        multiply_variable = { FRA.iri_targeted_3 = 50 }
-        add_to_variable = { FRA.iri_targeted_3 = 50 }
+    set_variable = { FROM.iri_targeted_ideology^3 = 100 }
+    subtract_from_variable = { FROM.iri_targeted_ideology^3 = FROM.iri_targeted_ideology^1 }
+    subtract_from_variable = { FROM.iri_targeted_ideology^3 = FROM.iri_targeted_ideology^2 }  
+    
+    set_variable = { FROM.iri_targeted_ideology^0 = THIS.stability }
+    set_variable = { FROM.iri_targeted_3 = THIS.stability }
+    multiply_variable = { FROM.iri_targeted_3 = 50 }
+    add_to_variable = { FROM.iri_targeted_3 = 50 }
 
-        every_country_iri_revolution_judge = yes
-        set_variable = { FRA.iri_targeted_4 = THIS.cof_iri_revolution }
-    }
+    every_country_iri_revolution_judge = yes
+    set_variable = { FROM.iri_targeted_4 = THIS.cof_iri_revolution }
 }
 
 activate_countermeasures_decision = {
-    if = { limit = { has_country_flag = COF_IRI_HAD } }
-    else = { set_country_flag = COF_IRI_HAD }
+    if = {
+        limit = { NOT = { has_country_flag = COF_IRI_HAD } }
+        set_country_flag = COF_IRI_HAD 
+    }
 }
 
 every_country_iri_revolution_judge = {
@@ -1236,26 +1222,26 @@ iri_not_socialiist_coup_judge = {
 					NFA = { exists = yes }
 					272 = { is_owned_and_controlled_by = NFA }
 				}
-				NFA = { country_event = cofintern.171 }
+				NFA = { country_event = fcf_internation_event.171 }
 			}
 			if = {
 				limit = { 
 					MAF = { exists = yes }
 					881 = { is_owned_and_controlled_by = MAF }
 				}
-				MAF = { country_event = cofintern.171 }
+				MAF = { country_event = fcf_internation_event.171 }
 			}
 			if = {
 				limit = {
 					LEC = { exists = yes }
 					326 = { is_owned_and_controlled_by = LEC }
 				}
-				LEC = { country_event = cofintern.171 }
+				LEC = { country_event = fcf_internation_event.171 }
 			}
-			else = { 592 = { owner = { country_event = cofintern.171 } } }
-            868 = { owner = { country_event = cofintern.171 } }
-            1017 = { owner = { country_event = cofintern.171 } }
-            news_event = { id = cofintern.172 days = 3 }
+			else = { 592 = { owner = { country_event = fcf_internation_event.171 } } }
+            868 = { owner = { country_event = fcf_internation_event.171 } }
+            1017 = { owner = { country_event = fcf_internation_event.171 } }
+            news_event = { id = fcf_internation_event.172 days = 3 }
         }
     }
 
@@ -1268,7 +1254,7 @@ iri_not_socialiist_coup_judge = {
 		add_popularity = { ideology = social_liberal popularity = 0.15 }
         complete_national_focus = HOL_left_list_victorious
         HOL_remove_monarchy = yes
-        country_event = cofintern.201
+        country_event = fcf_internation_event.201
         hidden_effect = {
             uncomplete_national_focus = {
 				focus = HOL_VNH_victory
@@ -1314,26 +1300,26 @@ iri_socialiist_coup_judge = {
 					NFA = { exists = yes }
 					272 = { is_owned_and_controlled_by = NFA }
 				}
-				NFA = { country_event = cofintern.171 }
+				NFA = { country_event = fcf_internation_event.171 }
 			}
 			if = {
 				limit = { 
 					MAF = { exists = yes }
 					881 = { is_owned_and_controlled_by = MAF }
 				}
-				MAF = { country_event = cofintern.171 }
+				MAF = { country_event = fcf_internation_event.171 }
 			}
 			if = {
 				limit = {
 					LEC = { exists = yes }
 					326 = { is_owned_and_controlled_by = LEC }
 				}
-				LEC = { country_event = cofintern.171 }
+				LEC = { country_event = fcf_internation_event.171 }
 			}
-			else = { 592 = { owner = { country_event = cofintern.171 } } }
-            868 = { owner = { country_event = cofintern.171 } }
-            1017 = { owner = { country_event = cofintern.171 } }
-            news_event = { id = cofintern.172 days = 3 }
+			else = { 592 = { owner = { country_event = fcf_internation_event.171 } } }
+            868 = { owner = { country_event = fcf_internation_event.171 } }
+            1017 = { owner = { country_event = fcf_internation_event.171 } }
+            news_event = { id = fcf_internation_event.172 days = 3 }
         }
     }
 
@@ -1459,7 +1445,7 @@ iri_start_war_jugde_not_socialist = {
             add_ideas = {
                 war_economy
                 extensive_conscription
-                Cof_new_republic_country
+                FCF_new_republic_country
             }
 
             division_template = {
@@ -1529,26 +1515,26 @@ iri_start_war_jugde_not_socialist = {
                 country_exists = NFA 
                 272 = { is_owned_and_controlled_by = NFA }
             }
-            NFA = { country_event = cofintern.171 }
+            NFA = { country_event = fcf_internation_event.171 }
         }
         if = {
             limit = { 
                 country_exists = MAF 
                 881 = { is_owned_and_controlled_by = MAF }
             }
-            MAF = { country_event = cofintern.171 }
+            MAF = { country_event = fcf_internation_event.171 }
         }
         if = {
             limit = {
                 country_exists = LEC
                 326 = { is_owned_and_controlled_by = LEC }
             }
-            LEC = { country_event = cofintern.171 }
+            LEC = { country_event = fcf_internation_event.171 }
         }
-        else = { 592 = { owner = { country_event = cofintern.171 } } }
-        1017 = { owner = { country_event = cofintern.171 } }
+        else = { 592 = { owner = { country_event = fcf_internation_event.171 } } }
+        1017 = { owner = { country_event = fcf_internation_event.171 } }
 
-        news_event = { id = cofintern.172 days = 3 }
+        news_event = { id = fcf_internation_event.172 days = 3 }
     }
 }
 
@@ -1641,7 +1627,7 @@ iri_start_war_jugde_socialist = {
             add_ideas = {
                 war_economy
                 extensive_conscription
-                Cof_new_socialist_country
+                FCF_new_socialist_country
             }
             
             division_template = {
@@ -1712,32 +1698,33 @@ iri_start_war_jugde_socialist = {
                 country_exists = NFA 
                 272 = { is_owned_and_controlled_by = NFA }
             }
-            NFA = { country_event = cofintern.171 }
+            NFA = { country_event = fcf_internation_event.171 }
         }
         if = {
             limit = { 
                 country_exists = MAF 
                 881 = { is_owned_and_controlled_by = MAF }
             }
-            MAF = { country_event = cofintern.171 }
+            MAF = { country_event = fcf_internation_event.171 }
         }
         if = {
             limit = {
                 country_exists = LEC
                 326 = { is_owned_and_controlled_by = LEC }
             }
-            LEC = { country_event = cofintern.171 }
+            LEC = { country_event = fcf_internation_event.171 }
         }
-        else = { 592 = { owner = { country_event = cofintern.171 } } }
-        1017 = { owner = { country_event = cofintern.171 } }
+        else = { 592 = { owner = { country_event = fcf_internation_event.171 } } }
+        1017 = { owner = { country_event = fcf_internation_event.171 } }
 
-        news_event = { id = cofintern.172 days = 3 }
+        news_event = { id = fcf_internation_event.172 days = 3 }
     }
 }
 
 ireland_violend_revolution_army_change = {
-    if = { limit = { check_variable = { t = 0 } } }
-    else = {
+    if = {
+        limit = { NOT = { check_variable = { t = 0 } } }
+       
         add_to_variable = {
             iri_ire_revolution_army = t
             tooltip = iri_ire_revolution_army_change
@@ -1747,9 +1734,9 @@ ireland_violend_revolution_army_change = {
     if = {
         limit = { check_variable = { iri_ire_revolution_army = 0 } }
         hidden_effect = {
-            FRA = { country_event = cofintern.180 }
-            ENG = { country_event = cofintern.180 }
-            IRE = { country_event = cofintern.180 }
+            FRA = { country_event = fcf_internation_event.180 }
+            ENG = { country_event = fcf_internation_event.180 }
+            IRE = { country_event = fcf_internation_event.180 }
         }
     }
 }
@@ -2011,10 +1998,11 @@ economic_crisis_immigration_event = {
             if = {
                 limit = { has_country_flag = economic_crisis_immigration_not_show }
                 economic_crisis_immigration_judge = yes
-                if = { limit = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
-                else = { FRA = { country_event = { id = cofintern.264 days = event_days } } }
+                if = {
+                    limit = { NOT = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
+                    FRA = { country_event = { id = fcf_internation_event.264 days = event_days } } }
             }
-            else = { country_event = { id = cofintern.263 days = event_days } }
+            else = { country_event = { id = fcf_internation_event.263 days = event_days } }
         }
         if = {
             limit = { 
@@ -2037,10 +2025,11 @@ economic_crisis_immigration_event = {
             if = {
                 limit = { has_country_flag = economic_crisis_immigration_not_show }
                 economic_crisis_immigration_judge = yes
-                if = { limit = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
-                else = { FRA = { country_event = { id = cofintern.264 days = event_days } } }
+                if = {
+                    limit = { NOT = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
+                    FRA = { country_event = { id = fcf_internation_event.264 days = event_days } } }
             }
-            else = { country_event = { id = cofintern.263 days = event_days } }
+            else = { country_event = { id = fcf_internation_event.263 days = event_days } }
         }
         if = {
             limit = { 
@@ -2063,10 +2052,11 @@ economic_crisis_immigration_event = {
             if = {
                 limit = { has_country_flag = economic_crisis_immigration_not_show }
                 economic_crisis_immigration_judge = yes
-                if = { limit = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
-                else = { FRA = { country_event = { id = cofintern.264 days = event_days } } }
+                if = {
+                    limit = { NOT = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
+                    FRA = { country_event = { id = fcf_internation_event.264 days = event_days } } }
             }
-            else = { country_event = { id = cofintern.263 days = event_days } }
+            else = { country_event = { id = fcf_internation_event.263 days = event_days } }
         }
         if = {
             limit = { 
@@ -2089,10 +2079,11 @@ economic_crisis_immigration_event = {
             if = {
                 limit = { has_country_flag = economic_crisis_immigration_not_show }
                 economic_crisis_immigration_judge = yes
-                if = { limit = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
-                else = { FRA = { country_event = { id = cofintern.264 days = event_days } } }
+                if = {
+                    limit = { NOT = { FRA = { has_country_flag = economic_crisis_immigration_not_show_fra } } }
+                    FRA = { country_event = { id = fcf_internation_event.264 days = event_days } } }
             }
-            else = { country_event = { id = cofintern.263 days = event_days } }
+            else = { country_event = { id = fcf_internation_event.263 days = event_days } }
         }
     }
 }

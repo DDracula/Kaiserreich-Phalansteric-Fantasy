@@ -1,0 +1,251 @@
+technologies = {
+    tech_logistics_enhancement = {
+        allow = { always = no }
+
+        logistics_company = {
+			supply_consumption_factor = -0.1
+		    fuel_consumption_factor = -0.05
+		}
+    }
+
+    tech_radio_advantage = { 
+        allow = { always = no }
+
+        signal_company = {
+			initiative = 0.2
+            default_morale = 0.2
+            max_strength = 0.25
+		}
+    }
+
+    tech_battlefield_angels = {
+        allow = { always = no }
+
+        field_hospital = {
+            supply_consumption = 0.05
+            battalion_mult = {
+                category = category_all_infantry
+                max_strength = 0.15
+            }
+        }
+    }
+
+    tech_elite_infantry = {
+		allow = { always = no }
+
+		research_cost = 1
+		start_year = 1936
+
+		enable_subunits = {
+			elite_infantry
+		}
+	}
+
+	tech_simplify_formation = {
+		allow = { always = no }
+
+		research_cost = 1
+		start_year = 1936
+
+		enable_subunits = {
+			simplify_formation
+			simplify_formation_more
+			simplify_formation_max
+		}
+	}
+
+	tech_composite_support_equipment = {
+		allow = { always = no }
+
+		research_cost = 1
+		start_year = 1940
+
+		enable_equipments = {
+			composite_support_equipment
+		}
+	}
+
+	tech_ncos_autonomy_in_command = {
+		allow = { always = no }
+
+        category_army = {
+			initiative = 0.05
+			max_strength = 0.05
+		}
+	}
+
+	tech_wedge_breakthrough = {
+		allow = { always = no }
+
+		category_tanks = {
+			breakthrough = 0.1
+			hard_attack = 0.05
+			soft_attack = 0.05
+			maximum_speed = 0.1
+		}
+	}
+
+	tech_pocket_defense = {
+		allow = { always = no }
+		
+		category_all_infantry = {
+			max_strength = 0.1
+			default_morale = 0.05
+		}
+		category_artillery = {
+			soft_attack = 0.1
+			hard_attack = 0.05
+		}
+	}
+
+	tech_layered_attack = {
+		allow = { always = no }
+		
+		category_all_infantry = {
+			max_strength = 0.05
+			default_morale = 0.05
+		} 
+		category_artillery = {
+			soft_attack = 0.05
+			hard_attack = 0.05
+		}
+		artillery_brigade = {
+			battalion_mult = {
+				category = category_all_infantry
+				soft_attack = 0.04
+			}
+		}
+	}
+
+	tech_planned_defense = {
+		allow = { always = no }
+		
+		category_front_line = {
+			recon = 0.1
+			entrenchment = 0.1
+
+			max_strength = 0.05
+			max_organisation = 1
+
+			experience_loss_factor = -0.01
+			casualty_trickleback = 0.01
+		}
+	}
+
+	tech_special_forces_instructor = {
+		allow = { always = no }
+
+		enable_subunits = {
+			special_forces_instructor
+		}
+	}
+
+	tech_desert_adaptation_training = {
+		allow = { always = no }
+
+		special_forces_instructor = {
+			desert = {
+				movement = 0.1
+				attack = 0.1
+				defence = 0.15
+			}
+		}
+	}
+	
+	tech_cold_adaptation_training = {
+		allow = { always = no }
+		
+		enable_subunits = {
+			winter_logistics_support
+		}
+		special_forces_instructor = {
+			snow = {
+				movement = 0.1
+				attack = 0.1
+				defence = 0.15
+			}
+		}
+	}
+
+	tech_jungle_adaptation_training = {
+		allow = { always = no }
+		
+		category_rangers = {
+			max_organisation = 1
+			max_strength = 0.05
+		}
+		special_forces_instructor = {
+			forest = {
+				movement = 0.1
+				attack = 0.05
+				defence = 0.1
+			}
+			jungle = {
+				movement = 0.1
+				attack = 0.05
+				defence = 0.1
+			}
+		}
+	}
+
+	tech_mountain_adaptation_training = {
+		allow = { always = no }
+
+		category_mountaineers = {
+			max_strength = 0.05
+		}
+		special_forces_instructor = {
+			hills = {
+				movement = 0.1
+				attack = 0.05
+				defence = 0.1
+			}
+			mountain = {
+				movement = 0.1
+				attack = 0.05
+				defence = 0.1
+			}
+		}
+	}
+
+	tech_alpine_paratroopers = {
+		allow = { always = no }
+
+		paratrooper = {
+			max_organisation = 1
+			supply_consumption = -0.02
+
+			hills = {
+				movement = 0.1
+				attack = 0.05
+				defence = 0.1
+			}
+			mountain = {
+				movement = 0.1
+				attack = 0.05
+				defence = 0.1
+			}
+		}
+	}
+
+	tech_les_marsouins_marine = {
+		allow = { always = no }
+
+		marine = {
+			max_organisation = 1
+			max_strength = 0.05
+			soft_attack = 0.05
+
+			river = { 
+				movement = 0.1
+				attack = 0.1
+				defence = 0.15
+			}
+			amphibious = { 
+				movement = 0.1
+				attack = 0.1
+				defence = 0.15
+			}
+		}
+	}
+}

@@ -1,0 +1,824 @@
+scripted_gui = {
+#政治
+    politics_decision_gui = {
+        context_type = decision_category
+        window_name = politics_decision_window
+
+        triggers = {
+            politics_ui_cgf_vs_csp_csp_visible = {
+                OR = {
+                    check_variable = { FCF_CGF_vs_CSP_value > 0 }
+                    check_variable = { FCF_CGF_vs_CSP_value = 0 }
+                }
+                NOT = { has_country_flag = show_politics_landscape }
+            }
+            politics_ui_cgf_vs_csp_cgf_visible = {
+                check_variable = { FCF_CGF_vs_CSP_value < 0 }
+                NOT = { has_country_flag = show_politics_landscape }
+            }
+
+            bop_text_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            cgf_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            csp_ui_box_visible = { NOT = { has_country_flag = show_politics_landscape } }
+            open_cgf_and_csp_button_visible = {  NOT = { has_country_flag = show_politics_landscape } }
+            politics_landscape_visible = { has_country_flag = show_politics_landscape }
+        }
+        effects = {
+            open_cgf_and_csp_button_click = {
+                if = {        
+                    limit = { has_country_flag = cgf_show }
+                    clr_country_flag = cgf_show
+                }
+                else = { set_country_flag = cgf_show }
+            }
+
+            open_politics_landscape_click = {
+                if = {
+                    limit = { has_country_flag = show_politics_landscape }
+                    clr_country_flag = show_politics_landscape
+                }
+                else = { set_country_flag = show_politics_landscape }
+            }
+        }
+        properties = {
+            politics_ui_cgf_vs_csp_csp = { frame = gui_csp }
+            politics_ui_cgf_vs_csp_cgf = { frame = gui_cgf }
+        }
+    }
+#社会
+    society_decision_gui = {
+        context_type = decision_category
+        window_name = society_decision_window
+
+        triggers = {
+            pop_worker_ui_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            pop_worker_ui_s_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+
+            pop_peasant_ui_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            pop_peasant_ui_s_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+
+            pop_merchant_ui_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_merchant_ui_s_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+
+            pop_scholar_ui_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_scholar_ui_s_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+
+            pop_bureaucrat_ui_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_bureaucrat_ui_s_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+
+            pop_army_ui_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_army_ui_s_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+
+            pop_total_ui_worker_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_total_ui_peasant_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_total_ui_merchant_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_total_ui_scholar_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_total_ui_bureaucrat_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_total_ui_army_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            pop_total_ui_s_visible = { 
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            } 
+            reform_tendency_society_education_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_education_bg_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_regulation_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_regulation_bg_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_femright_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_femright_bg_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_immigrant_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_immigrant_bg_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_religion_visible = {
+                NOT = { has_country_flag = show_surrealism_movement }
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+            reform_tendency_society_religion_bg_visible = {
+                NOT = { has_country_flag = show_surrealism_movement } 
+                NOT = { has_country_flag = show_extreme_political_group }
+            }
+
+            gui_society_CSI_portrait_visible = { NOT = { has_country_flag = show_surrealism_movement } }  
+            gui_society_CSI_text_visible = { NOT = { has_country_flag = show_surrealism_movement } }  
+            CSI_portrait_frame_visible = { NOT = { has_country_flag = show_surrealism_movement } }  
+
+            gui_society_CC_portrait_visible = { NOT = { has_country_flag = show_extreme_political_group } } 
+            gui_society_CC_text_visible = { NOT = { has_country_flag = show_extreme_political_group } } 
+            CC_portrait_frame_visible = { NOT = { has_country_flag = show_extreme_political_group } }  
+
+            surrealism_window_open_visible = { NOT = { has_country_flag = show_extreme_political_group } }
+            surrealism_window_hidden_visible = { NOT = {has_country_flag = show_surrealism_movement } }
+            surrealism_character_button_enabled_visible = { is_in_array = { FRA.surrealism_character_enabled = v } }
+            surrealism_character_button_click_enabled = {
+                custom_trigger_tooltip = {
+                    tooltip = surrealism_character_can_enabled_more
+                    check_variable = { FRA.surrealism_character_enabled^num < FRA.surrealism_character_enabled_max }
+                }
+                meta_trigger = {
+                    text = { surrealism_character_[VAR]_enable_trigger = yes }
+                    VAR = "[?v]"
+                }
+            }
+
+            extreme_political_group_window_open_visible = { NOT = { has_country_flag = show_surrealism_movement } }
+            vertes_detail_button_visible = { has_country_flag = show_extreme_political_group }
+            commando_detail_button_visible = { has_country_flag = show_extreme_political_group }
+            mafia_detail_button_visible = { has_country_flag = show_extreme_political_group }
+            red_guard_detail_button_visible = { has_country_flag = show_extreme_political_group }
+            gui_vertes_detail_box_visible = { has_country_flag = show_extreme_political_group }
+            gui_commando_detail_box_visible = { has_country_flag = show_extreme_political_group }
+            gui_mafia_detail_box_visible = { has_country_flag = show_extreme_political_group }
+            gui_red_guard_detail_box_visible = { has_country_flag = show_extreme_political_group }
+            extreme_political_group_window_open_click_enabled = { has_dynamic_modifier = { modifier = FCF_extreme_political_group } }
+            vertes_detail_button_click_enabled = { check_variable = { vertes_status > 0 } }
+            commdo_detail_button_click_enabled = { check_variable = { commando_status > 0 } }
+            mafia_detail_button_click_enabled = { check_variable = { mafia_status > 0 } }
+            red_guard_detail_button_click_enabled = { check_variable = { red_guard_status > 0 } }
+        }
+        effects = {
+            surrealism_window_open_click = {
+                if = {
+                    limit = { has_country_flag = show_surrealism_movement } 
+                    clr_country_flag = show_surrealism_movement
+                }
+                else = { set_country_flag = show_surrealism_movement } 
+            }
+            surrealism_character_button_click = {
+                add_to_array = { FRA.surrealism_character_enabled = v }
+                custom_effect_tooltip = after_enabled_monthly_effect
+                effect_tooltip = {
+                    meta_effect = {
+                        text = { surrealism_character_[VAR]_effect = yes }
+                        VAR = "[?v]"
+                    }
+                }
+            }
+            surrealism_character_button_enabled_click = {
+                remove_from_array = { FRA.surrealism_character_enabled = v }
+            }
+            surrealism_movement_monthly_effect_click = {
+                effect_tooltip = {
+                    if = {
+                        limit = { check_variable = { surrealism_character_enabled^0 > 0 } }
+                        set_temp_variable = { v = surrealism_character_enabled^0 }
+                        custom_effect_tooltip = "[surrealism_character_list]"
+                        meta_effect = { 
+                            text = { surrealism_character_[VAR]_effect = yes }
+                            VAR = "[?surrealism_character_enabled^0]"
+                        }
+                    }
+                    if = {
+                        limit = { check_variable = { surrealism_character_enabled^1 > 0 } }
+                        custom_effect_tooltip = tooltip_white_line
+                        set_temp_variable = { v = surrealism_character_enabled^1 }
+                        custom_effect_tooltip = "[surrealism_character_list]"
+                        meta_effect = { 
+                            text = { surrealism_character_[VAR]_effect = yes }
+                            VAR = "[?surrealism_character_enabled^1]"
+                        }
+                    }
+                    if = {
+                        limit = { check_variable = { surrealism_character_enabled^2 > 0 } }
+                        custom_effect_tooltip = tooltip_white_line
+                        set_temp_variable = { v = surrealism_character_enabled^2 }
+                        custom_effect_tooltip = "[surrealism_character_list]"
+                        meta_effect = { 
+                            text = { surrealism_character_[VAR]_effect = yes }
+                            VAR = "[?surrealism_character_enabled^2]"
+                        }
+                    }
+                    if = {
+                        limit = { check_variable = { surrealism_character_enabled^3 > 0 } }
+                        custom_effect_tooltip = tooltip_white_line
+                        set_temp_variable = { v = surrealism_character_enabled^3 }
+                        custom_effect_tooltip = "[surrealism_character_list]"
+                        meta_effect = { 
+                            text = { surrealism_character_[VAR]_effect = yes }
+                            VAR = "[?surrealism_character_enabled^3]"
+                        }
+                    }
+                    if = {
+                        limit = { check_variable = { surrealism_character_enabled^4 > 0 } }
+                        custom_effect_tooltip = tooltip_white_line
+                        set_temp_variable = { v = surrealism_character_enabled^4 }
+                        custom_effect_tooltip = "[surrealism_character_list]"
+                        meta_effect = { 
+                            text = { surrealism_character_[VAR]_effect = yes }
+                            VAR = "[?surrealism_character_enabled^4]"
+                        }
+                    }
+                    if = {
+                        limit = { check_variable = { surrealism_character_enabled^5 > 0 } }
+                        custom_effect_tooltip = tooltip_white_line
+                        set_temp_variable = { v = surrealism_character_enabled^5 }
+                        custom_effect_tooltip = "[surrealism_character_list]"
+                        meta_effect = { 
+                            text = { surrealism_character_[VAR]_effect = yes }
+                            VAR = "[?surrealism_character_enabled^5]"
+                        }
+                    }
+
+                    custom_effect_tooltip = tooltip_dividing_line
+                    add_to_variable = {
+                        surrealism_movement_passion = surrealism_movement_passion_change
+                        tooltip = surrealism_movement_passion_change_tt
+                    }
+                    add_to_variable = {
+                        surrealism_movement_acceptance = surrealism_movement_acceptance_change
+                        tooltip = surrealism_movement_acceptance_change_tt
+                    }
+                }
+            }
+
+            extreme_political_group_window_open_click = {
+                if = {
+                    limit = { has_country_flag = show_extreme_political_group } 
+                    clr_country_flag = show_extreme_political_group
+                    clr_country_flag = vertes_detail_show
+                    clr_country_flag = commando_detail_show
+                    clr_country_flag = mafia_detail_show
+                    clr_country_flag = red_guard_detail_show
+                }
+                else = { set_country_flag = show_extreme_political_group } 
+            }
+            vertes_detail_button_click = {
+                if = {
+                    limit = { has_country_flag = vertes_detail_show }
+                    clr_country_flag = vertes_detail_show
+                }
+                else = {
+                    set_country_flag = vertes_detail_show
+                    clr_country_flag = commando_detail_show
+                    clr_country_flag = mafia_detail_show
+                    clr_country_flag = red_guard_detail_show
+                }
+            }
+            commando_detail_button_click = {
+                if = {
+                    limit = { has_country_flag = commando_detail_show }
+                    clr_country_flag = commando_detail_show
+                }
+                else = {
+                    clr_country_flag = vertes_detail_show
+                    set_country_flag = commando_detail_show
+                    clr_country_flag = mafia_detail_show
+                    clr_country_flag = red_guard_detail_show
+                }
+            }
+            mafia_detail_button_click = {
+                if = {
+                    limit = { has_country_flag = mafia_detail_show }
+                    clr_country_flag = mafia_detail_show
+                }
+                else = {
+                    clr_country_flag = vertes_detail_show
+                    clr_country_flag = commando_detail_show
+                    set_country_flag = mafia_detail_show
+                    clr_country_flag = red_guard_detail_show
+                }
+            }
+            red_guard_detail_button_click = {
+                if = {
+                    limit = { has_country_flag = red_guard_detail_show }
+                    clr_country_flag = red_guard_detail_show
+                }
+                else = {
+                    clr_country_flag = vertes_detail_show
+                    clr_country_flag = commando_detail_show
+                    clr_country_flag = mafia_detail_show
+                    set_country_flag = red_guard_detail_show
+                }
+            }
+        }
+        dynamic_lists = {
+            surrealism_character_list_crevel = {
+                array = surrealism_character_list_crevel
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = surrealism_character_container
+            }
+            surrealism_character_list_breton = {
+                array = surrealism_character_list_breton
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = surrealism_character_container
+            }   
+            surrealism_character_list_bataille = {
+                array = surrealism_character_list_bataille
+                index = idx
+                value = v 
+                change_scope = yes
+                entry_container = surrealism_character_container
+            }
+        }
+        properties = {
+            pop_worker_ui_s = { frame = pop_satisfaction_workers }
+            pop_peasant_ui_s = { frame = pop_satisfaction_peasants }
+            pop_merchant_ui_s = { frame = pop_satisfaction_merchants }
+            pop_scholar_ui_s = { frame = pop_satisfaction_scholars }
+            pop_bureaucrat_ui_s = { frame = pop_satisfaction_bureaucrats }
+            pop_army_ui_s = { frame = pop_satisfaction_army }
+
+            pop_total_ui_worker = { frame = gui_popw }
+            pop_total_ui_peasant = { frame = gui_popp }
+            pop_total_ui_merchant = { frame = gui_popm }
+            pop_total_ui_scholar = { frame = gui_pops }
+            pop_total_ui_bureaucrat = { frame = gui_popb }
+            pop_total_ui_army = { frame = gui_popa }
+            pop_total_ui_s = { frame = pop_satisfaction }
+
+            gui_society_CSI_portrait = { image = "[gui_CSP_CSI_loc]" }
+            gui_society_CC_portrait = { image = "[gui_CSP_CC_loc]" }
+
+            reform_tendency_society_education_bg = { image = "[gui_society_reform_tendency_education]" }
+            reform_tendency_society_regulation_bg = { image = "[gui_society_reform_tendency_regulation]" }
+            reform_tendency_society_femright_bg = { image = "[gui_society_reform_tendency_femright]" }
+            reform_tendency_society_immigrant_bg = { image = "[gui_society_reform_tendency_immigrant]" }
+            reform_tendency_society_religion_bg = { image = "[gui_society_reform_tendency_religion]" }
+        
+            surrealism_character_button = { frame = 2 }
+            surrealism_character_button_enabled = { frame = 1 }
+        }
+    }
+#经济
+    economy_decision_gui = {
+        context_type = decision_category
+        window_name = economy_decision_window
+
+        triggers = {
+            ring_progressbar_ev_good_visible = {
+                OR = {
+                    check_variable = { economy_values > 0 }
+                    check_variable = { economy_values = 0 }
+                }
+            }
+            ring_progressbar_ev_bad_visible = {
+                check_variable = { economy_power > 20 }
+                check_variable = { economy_values < 0 }
+            }
+            less_economy_focus_click_enabled = {
+                has_political_power > 10
+                check_variable = { maxeconfocus > econfocus } 
+            }
+        }
+        effects = {
+            more_economy_focus_click = { 
+                add_to_variable = { economy_power = -20 }
+                add_to_variable = { maxeconfocus = 1 } 
+            }
+            less_economy_focus_click = { 
+                add_political_power = -10 
+                add_to_variable = { maxeconfocus = -1 } 
+            }
+            sci_stiuation_show_next_click = {
+                if = {
+                    limit = { check_variable = { sci_resources_id = 19 } }
+                    set_variable = { sci_resources_id = 1 }
+                }
+                else = { add_to_variable = { sci_resources_id = 1 } }
+
+                clear_array = sci_resources_country
+                if = {
+                    limit = { check_variable = { sci_resources_id = 1 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_manganese_important
+                                    has_state_flag = resources_manganese
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 2 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_lead_important
+                                    has_state_flag = resources_lead
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 3 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_sulfur_important
+                                    has_state_flag = resources_sulfur
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 4 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_cotton_important
+                                    has_state_flag = resources_cotton
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 5 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_niter_important
+                                    has_state_flag = resources_niter
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 6 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_copper_important
+                                    has_state_flag = resources_copper
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 7 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_mercury_important
+                                    has_state_flag = resources_mercury
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 8 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_mica_important
+                                    has_state_flag = resources_mica
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 9 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_oil_important
+                                    has_state_flag = resources_oil
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 10 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_bromine_important
+                                    has_state_flag = resources_bromine
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 11 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_antimony_important
+                                    has_state_flag = resources_antimony
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 12 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_zinc_important
+                                    has_state_flag = resources_zinc
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 13 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_phosphate_important
+                                    has_state_flag = resources_phosphate
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 14 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_diamond_important
+                                    has_state_flag = resources_diamond
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 15 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_cobalt_important
+                                    has_state_flag = resources_cobalt
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 16 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_asbestos_important
+                                    has_state_flag = resources_asbestos
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 17 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_vanadium_important
+                                    has_state_flag = resources_vanadium
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 18 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_platinum_important
+                                    has_state_flag = resources_platinum
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+                else_if = {
+                    limit = { check_variable = { sci_resources_id = 19 } }
+                    every_country = {
+                        limit = {
+                            any_controlled_state = {
+                                OR = {
+                                    has_state_flag = resources_potassium_salt_important
+                                    has_state_flag = resources_potassium_salt
+                                }
+                            }
+                        }
+                        add_to_array = { FRA.sci_resources_country = THIS.id }
+                    }
+                }
+            }
+        }
+        dynamic_lists = {
+            sci_resources_country = {
+                array = sci_resources_country
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = sci_resources_country
+            }
+        }
+        properties = {
+            ring_progressbar_eib = { frame = economy_industry_basic }
+            ring_progressbar_eip = { frame = economy_industry_process }
+            ring_progressbar_eia = { frame = economy_industry_arms }
+
+            ring_progressbar_eam = { frame = economy_agriculture_mechanized }
+            ring_progressbar_eae = { frame = economy_agriculture_chemical }
+            ring_progressbar_eaa = { frame = economy_agriculture_chain }
+
+            ring_progressbar_eq = { frame = economy_equal }
+            ring_progressbar_el = { frame = economy_link }
+            ring_progressbar_ei = { frame = economy_innovate }
+
+            gui_economy_CE_portrait = { image = "[gui_CSP_CE_loc]" }
+            ring_progressbar_ev_good = { frame = economy_values }
+            ring_progressbar_ev_bad = { frame = economy_values_bad }
+
+            reform_tendency_economy_dominance_bg = { image = "[gui_economy_reform_tendency_dominance]" }
+            reform_tendency_economy_structure_bg = { image = "[gui_economy_reform_tendency_structure]" }
+            reform_tendency_economy_management_bg = { image = "[gui_economy_reform_tendency_management]" }
+            reform_tendency_economy_production_bg = { image = "[gui_economy_reform_tendency_production]" }
+            reform_tendency_economy_exchange_bg = { image = "[gui_economy_reform_tendency_exchange]" }
+            reform_tendency_economy_consumption_bg = { image = "[gui_economy_reform_tendency_consumption]" }
+            reform_tendency_economy_development_bg = { image = "[gui_economy_reform_tendency_development]" }
+
+            country_flag = { image = "[?v.GetFlag]" }
+        }
+    }
+#军事
+    military_decision_gui = {
+        context_type = decision_category
+        window_name = military_decision_window
+
+        properties = {
+            pop_officer_ui = { frame = gui_popao }
+            pop_nco_ui = { frame = gui_popan }
+            pop_soldier_ui = { frame = gui_popas }
+
+            army_autonomy_ui = { frame = FCF_army_autonomy }
+            army_willing_ui = { frame = FCF_army_willing }
+            army_training_ui = { frame = FCF_army_training }
+            army_equipment_ui = { frame = FCF_army_equipment }
+            army_passionate_ui = { frame = FCF_army_passionate }
+
+            gui_army_CGFF_portrait = { image = "[gui_CSP_CGFF_loc]" }
+            military_theory = { frame = FCF_army_theory_implementation }
+
+            reform_tendency_military_system_bg = { image = "[gui_military_reform_tendency_system]" }
+            reform_tendency_military_command_bg = { image = "[gui_military_reform_tendency_command]" }
+            reform_tendency_military_organization_bg = { image = "[gui_military_reform_tendency_organization]" }
+            reform_tendency_military_equipment_bg = { image = "[gui_military_reform_tendency_equipment]" }
+            reform_tendency_military_tactics_bg = { image = "[gui_military_reform_tendency_tactics]" }
+        }
+        effects = {
+            military_bill_box_open_button_click = {
+                if = {
+                    limit = { has_country_flag = show_ar_windows }
+                    clr_country_flag = show_ar_windows
+                }
+                else = { set_country_flag = show_ar_windows }
+            }
+            
+        }
+    }
+
+    military_bill_list_button = {
+        context_type = player_context
+        window_name = military_bill_window
+
+        visible = {
+			tag = FRA
+            has_country_flag = show_ar_windows
+		}
+        effects = {
+            military_bill_window_esc_click = {
+                clr_country_flag = show_ar_windows
+            }
+        }
+        dynamic_lists = {
+            military_bill_context = {
+                array = FCF_military_bills
+                index = idx
+                value = v
+                change_scope = yes
+                entry_container = military_bill_box
+            }
+        }
+    }
+}

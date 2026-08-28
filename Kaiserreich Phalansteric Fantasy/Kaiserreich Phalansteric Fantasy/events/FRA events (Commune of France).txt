@@ -48,7 +48,6 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = { has_country_leader = { character = FRA_pierre_monatte } }
-				NOT = { has_country_leader = { character = FRA_conseil_de_defense_federal } }
 			}
 		}
 		hidden_effect = {
@@ -64,7 +63,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				NOT = { has_country_leader = { character = FRA_leon_jouhaux } }
-				NOT = { has_country_leader = { character = FRA_georges_valois } }
+				NOT = { has_country_leader = { character = FRA_georges_gressent } }
 			}
 		}
 		hidden_effect = {
@@ -91,161 +90,9 @@ country_event = {
 	desc = france_events.5.desc
 	picture = GFX_report_event_worker_protests
 	is_triggered_only = yes
-	immediate = { 
-		hidden_effect = { 
-			country_event = { id = cofpolitics.99 days = 6 }
-			country_event = { id = france_events.6 days = 9 } 
-			country_event = { id = france_events.7 days = 12 } 
-			country_event = { id = france_events.8 days = 15 } 
-			country_event = { id = france_events.9 days = 18 } 
-			country_event = { id = france_events.10 days = 21 } 
-			country_event = { id = cofpolitics.100 days = 24 }
-		}
-	}
 	option = {
 		name = france_events.5.a
 		add_stability = -0.05
-	}
-}
-
-country_event = {
-	id = france_events.6
-	title = france_events.6.t
-	desc = france_events.6.desc
-	picture = GFX_report_event_communists_cheer
-	is_triggered_only = yes
-	option = {
-		name = france_events.6.a 
-		ai_chance = { base = 25 }
-		CGSC_trait_synd_radi_get = yes
-	}
-	option = {
-		name = france_events.6.b
-		ai_chance = { base = 25 }
-		CGSC_trait_oppo_comm_get = yes
-	}
-	option = {
-		name = france_events.6.c
-		ai_chance = { base = 25 }
-		CGSC_trait_jaco_neos_get = yes
-	}
-	option = {
-		name = france_events.6.d
-		ai_chance = { base = 25 }
-		CGSC_trait_sore_oldl_get = yes
-	}
-}
-
-country_event = {
-	id = france_events.7
-	title = france_events.7.t
-	desc = france_events.7.desc
-	picture = GFX_report_event_communists_cheer
-	is_triggered_only = yes
-	option = {
-		name = france_events.7.a 
-		ai_chance = { base = 25 }
-		DCA_trait_synd_mode_get = yes
-	}
-	option = {
-		name = france_events.7.b
-		ai_chance = { base = 25 }
-		DCA_trait_oppo_anar_get = yes
-	}
-	option = {
-		name = france_events.7.c
-		ai_chance = { base = 25 }
-		DCA_trait_jaco_neos_get = yes
-	}
-	option = {
-		name = france_events.7.d
-		ai_chance = { base = 25 }
-		DCA_trait_sore_oldl_get = yes
-	}
-}
-
-country_event = {
-	id = france_events.8
-	title = france_events.8.t
-	desc = france_events.8.desc
-	picture = GFX_report_event_communists_cheer
-	is_triggered_only = yes
-	option = {
-		name = france_events.8.a 
-		ai_chance = { base = 25 }
-		DIS_trait_synd_mode_get = yes
-	}
-	option = {
-		name = france_events.8.b
-		ai_chance = { base = 25 }
-		DIS_trait_oppo_comm_get = yes
-	}
-	option = {
-		name = france_events.8.c
-		ai_chance = { base = 25 }
-		DIS_trait_jaco_neos_get = yes
-	}
-	option = {
-		name = france_events.8.d
-		ai_chance = { base = 25 }
-		DIS_trait_sore_oldl_get = yes
-	}
-}
-
-country_event = {
-	id = france_events.9
-	title = france_events.9.t
-	desc = france_events.9.desc
-	picture = GFX_report_event_communists_cheer
-	is_triggered_only = yes
-	after = { hidden_effect = { country_event = { id = cofeconomy.1 days = 60 random_days = 30 } } }
-	option = {
-		name = france_events.9.a 
-		ai_chance = { base = 25 }
-		DEA_trait_synd_radi_get = yes
-	}
-	option = {
-		name = france_events.9.b
-		ai_chance = { base = 25 }
-		DEA_trait_oppo_comm_get = yes
-	}
-	option = {
-		name = france_events.9.c
-		ai_chance = { base = 25 }
-		DEA_trait_jaco_neos_get = yes
-	}
-	option = {
-		name = france_events.9.d
-		ai_chance = { base = 25 }
-		DEA_trait_sore_oldl_get = yes
-	}
-}
-
-country_event = {
-	id = france_events.10
-	title = france_events.10.t
-	desc = france_events.10.desc
-	picture = GFX_report_event_communists_cheer
-	is_triggered_only = yes
-	option = {
-		name = france_events.10.a 
-		ai_chance = { base = 25 }
-		DFA_trait_synd_radi_get = yes
-	}
-	option = {
-		name = france_events.10.b
-		ai_chance = { base = 25 }
-		DFA_trait_oppo_anar_get = yes
-	}
-	option = {
-		name = france_events.10.c
-		ai_chance = { base = 25 }
-		DFA_trait_jaco_neos_get = yes
-	}
-	option = {
-		name = france_events.10.d
-		ai_chance = { base = 25 }
-		DFA_trait_sore_oldl_get = yes
 	}
 }
 
@@ -254,14 +101,8 @@ country_event = {
 	title = france_events.22.t
 	desc = france_events.22.desc
 	picture = GFX_report_event_SPA_CNT_FAI
-
 	fire_only_once = yes
 	is_triggered_only = yes
-
-	trigger = {
-		NOT = { has_country_flag = FRA_front_populaire }
-	}
-
 	option = {
 		log = "[GetLogInfo]: event france_events.22 option france_events.22.a"
 		name = france_events.22.a
@@ -273,11 +114,8 @@ country_event = {
 	id = france_events.25
 	title = france_events.25.t
 	desc = france_events.25.desc
-
 	picture = GFX_report_event_generic_diplomacy3
-
 	is_triggered_only = yes
-
 	option = { #Establish the Damocles Project !
 		log = "[GetLogInfo]: event france_events.25 option france_events.25.a"
 		name = france_events.25.a
@@ -290,7 +128,6 @@ country_event = {
 			country_event = france_events.26
 		}
 	}
-
 	option = { #We wont waste money on such absurdity !
 		log = "[GetLogInfo]: event france_events.25 option france_events.25.b"
 		name = france_events.25.b
@@ -304,9 +141,7 @@ country_event = {
 	title = france_events.26.t
 	desc = france_events.26.desc
 	picture = GFX_report_event_generic_diplomacy1
-
 	is_triggered_only = yes
-
 	option = { #Excellent
 		log = "[GetLogInfo]: event france_events.26 option france_events.26.a"
 		name = france_events.26.a
@@ -322,9 +157,7 @@ country_event = {
 	title = france_events.27.t
 	desc = france_events.27.desc
 	picture = GFX_report_event_ENG_uobflag
-
 	is_triggered_only = yes
-
 	option = { # Dammit!
 		log = "[GetLogInfo]: event france_events.27 option france_events.27.a"
 		name = france_events.27.a
@@ -340,9 +173,7 @@ country_event = {
 	title = france_events.28.t
 	desc = france_events.28.desc
 	picture = GFX_report_event_generic_conference2
-
 	is_triggered_only = yes
-
 	option = { #The Congress Will Be Held a week after May Day as planned!
 		log = "[GetLogInfo]: event france_events.28 option france_events.28.a"
 		name = france_events.28.a
@@ -412,12 +243,7 @@ country_event = {
 		}
 		add_stability = 0.05
 		hidden_effect = {
-			random_other_country = {
-				news_event = {
-					id = france_events.1037
-					days = 1
-				}
-			}
+			random_other_country = { news_event = { id = france_events.1037 days = 1 } }
 			country_event = { id = france_events.29 days = 12 }
 		}
 	}
@@ -652,10 +478,6 @@ country_event = {
 		reverse_add_opinion_modifier = {
 			target = USA
 			modifier = KR_hates_govt
-		}
-		if = {
-			limit = { tag = FRA }
-			complete_national_focus = FRA_the_new_world
 		}
 	}
 
@@ -945,7 +767,7 @@ country_event = {
 		if = {
 			limit = { tag = FRA }
 			add_political_power = 30
-			complete_national_focus = FRA_the_congress_of_the_internationale
+			complete_national_focus = FCF_international_congress
 		}
 		else_if = {
 			limit = { tag = HND }
@@ -967,7 +789,7 @@ country_event = {
 		name = france_events.62.a
 		army_experience = 25
 		add_war_support = 0.05
-		add_ideas = Cof_french_military_support
+		add_ideas = FCF_french_military_support
 		add_doctrine_cost_reduction = {
 			name = france_events.62.t
 			cost_reduction = 0.5
@@ -1422,7 +1244,7 @@ country_event = {
 country_event = {
 	id = france_events.86
 	title = france_events.86.t
-	desc = france_events.86.desc
+	desc = france_events.86.d
 	picture = GFX_report_event_generic_conference2
 
 	is_triggered_only = yes
@@ -1439,10 +1261,7 @@ country_event = {
 		add_stability = 0.06
 		hidden_effect = {
 			random_other_country = {
-				news_event = {
-					id = france_events.1038
-					days = 1
-				}
+				news_event = { id = france_events.1038 days = 1 }
 			}
 		}
 		reverse_add_opinion_modifier = {
@@ -1460,8 +1279,8 @@ country_event = {
 					WCA = {
 						OR = {
 							has_war_with = USA
-							has_war_with = TEX
-							has_war_with = PSA
+							has_war_with = APG
+							has_war_with = ACC
 						}
 					}
 				}
@@ -1477,7 +1296,7 @@ country_event = {
 			}
 			### Hemingway's Speech
 			country_event = { id = france_events.97 days = 2 }
-			### USA/TEX/PSA reaction event
+			### USA/APG/ACC reaction event
 			every_other_country = {
 				limit = {
 					is_american_tag = yes
@@ -1895,8 +1714,7 @@ country_event = {
 		}
 		add_manpower = 1000
 		add_ideas = SWF_advisors_france
-		custom_effect_tooltip = received_equipment_1000
-		FROM_send_volunteers_to_ROOT = yes
+		custom_effect_tooltip = { localization_key = tooltip_received_equipment QUANTITY = 1000 }
 	}
 }
 
@@ -2011,9 +1829,6 @@ country_event = {
 		}
 	}
 }
-###########
-## END OF THE ELECTIONS
-##########
 
 country_event = {
 	id = france_events.159
@@ -2454,24 +2269,25 @@ news_event = {
 	}
 }
 
-# 1941 election result decision
+
 
 country_event = { #Capitalist Economies colapse - by Omanisch
 	id = france_events.999
 	title = france_events.999.t
 	desc = france_events.999.desc
 	picture = GFX_report_event_SWI_socialist2
-
 	is_triggered_only = yes
-
 	major = yes
 	show_major = {
 		has_socialist_government = yes
 		NOT = { tag = CHI }
 	}
-
-	immediate = { hidden_effect = { CHI = { country_event = CHI.introgame.009 } } } #LKMT version of this event, because their economy isn't coupled to Germany.
-
+	immediate = { 
+		hidden_effect = { 
+			country_event = { id = fcf_politics_event.22 days = 2 }
+			CHI = { country_event = CHI.introgame.009 } 
+		} 
+	} #LKMT version of this event, because their economy isn't coupled to Germany.
 	option = {
 		log = "[GetLogInfo]: event france_events.999 option france_events.999.a"
 		name = france_events.999.a
@@ -2632,15 +2448,10 @@ news_event = {
 	title = france_events.1037.t
 	desc = france_events.1037.desc
 	picture = GFX_news_event_internationale
-
 	major = yes
 	fire_for_sender = no
 	is_triggered_only = yes
-
-	trigger = {
-		wants_world_news = yes
-	}
-
+	trigger = { wants_world_news = yes }
 	option = {
 		name = france_events.1037.a
 	}

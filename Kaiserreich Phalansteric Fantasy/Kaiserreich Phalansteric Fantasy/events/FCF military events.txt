@@ -1,15 +1,3895 @@
-add_namespace = cofmilitary
+add_namespace = fcf_military_event
 
 country_event = {
-	id = cofmilitary.1
-	title = cofmilitary.1.title
-	desc = cofmilitary.1.desc
-	picture = GFX_report_event_generic_diplomacy1
+	id = fcf_military_event.1
+	title = fcf_military_event.1.title
+	desc = fcf_military_event.1.desc
 	is_triggered_only = yes
 	option = {
-		name = cofmilitary.1.a
-		add_war_support = 0.025
-		complete_national_focus = FRA_toulon_naval_declaration
+		name = fcf_military_event.1.a
+		set_country_flag = set_soldiers_appeal_right
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			add_ideas = FCF_soldiers_appeal_right
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = -1 }
+			set_temp_variable = { pop_anc = -1 }
+			set_temp_variable = { pop_asc = 2 }
+			class_pop_change = yes
+		}
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { FCF_army_training < 60 } }
+				country_event = { id = fcf_military_event.2 days = 20 }
+			}
+			country_event = { id = fcf_military_event.3 days = 40 }
+		}
 	}
 }
 
+country_event = {
+	id = fcf_military_event.2
+	title = fcf_military_event.2.title
+	desc = fcf_military_event.2.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.2.a
+		set_country_flag = set_coordination_training_committee
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			add_ideas = FCF_coordination_training_committee
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 1 }
+			society_pop_satisfactions_change = yes
+		}
+	}
+	option = {
+		name = fcf_military_event.2.b
+		clr_country_flag = set_soldiers_appeal_right
+		set_country_flag = set_soldiers_appeal_right_weaken
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = FCF_soldiers_appeal_right
+					add_idea = FCF_soldiers_appeal_right_weaken
+				}
+
+				custom_effect_tooltip = effect_military
+				set_temp_variable = { pop_aoc = 0 }
+				set_temp_variable = { pop_anc = 1 }
+				set_temp_variable = { pop_asc = -1 }
+				class_pop_change = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = fcf_military_event.3
+	title = fcf_military_event.3.title
+	desc = fcf_military_event.3.desc
+	is_triggered_only = yes
+	after = { 
+		hidden_effect = { 
+			country_event = { id = fcf_military_event.7 days = 50 } 
+			country_event = { id = fcf_military_event.8 days = 80 } 
+		} 
+	}
+	option = {
+		name = fcf_military_event.3.a
+		set_country_flag = set_supervisory_of_soldier_committee
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			soldier_committee_reform_supervisory = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = -1 }
+			set_temp_variable = { pop_anc = -1 }
+			set_temp_variable = { pop_asc = 2 }
+			class_pop_change = yes
+		}
+
+		hidden_effect = { country_event = { id = fcf_military_event.6 days = 20 } }
+	}
+	option = {
+		name = fcf_military_event.3.b
+		set_country_flag = set_rookie_adjustment_period
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			add_ideas = FCF_rookie_adjustment_period
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = -0.5 }
+			set_temp_variable = { pop_anc = -0.5 }
+			set_temp_variable = { pop_asc = 1 }
+			class_pop_change = yes
+		}
+
+		hidden_effect = { country_event = { id = fcf_military_event.4 days = 20 } }
+	}
+	option = {
+		name = fcf_military_event.3.c
+		set_country_flag = set_ncos_responsibility
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			add_ideas = FCF_ncos_responsibility_to_bully
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = -0.5 }
+			set_temp_variable = { pop_anc = 1 }
+			set_temp_variable = { pop_asc = -0.5 }
+			class_pop_change = yes
+		}
+
+		hidden_effect = { country_event = { id = fcf_military_event.5 days = 20 } }
+	}
+}
+
+country_event = {
+	id = fcf_military_event.4
+	title = fcf_military_event.4.title
+	desc = fcf_military_event.4.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.4.a
+		set_country_flag = set_grassroots_rotation
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_rookie_adjustment_period
+				add_idea = FCF_rookie_adjustment_period_rotation
+			}
+		}
+	}
+	option = {
+		name = fcf_military_event.4.b
+		set_country_flag = set_grassroots_education
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_rookie_adjustment_period
+				add_idea = FCF_rookie_adjustment_period_education
+			}
+
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = 0 }
+			set_temp_variable = { pop_anc = 1 }
+			set_temp_variable = { pop_asc = -1 }
+			class_pop_change = yes
+		}
+	}
+}
+
+country_event = {
+	id = fcf_military_event.5
+	title = fcf_military_event.5.title
+	desc = fcf_military_event.5.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.5.a
+		army_experience = 20
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 0 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = -2 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_military
+		set_temp_variable = { pop_aoc = 0.5 }
+		set_temp_variable = { pop_anc = 1 }
+		set_temp_variable = { pop_asc = -1.5 }
+		class_pop_change = yes
+	}
+	option = {
+		name = fcf_military_event.5.b
+		set_country_flag = set_limit_ncos_responsibility
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_ncos_responsibility_to_bully
+				add_idea = FCF_ncos_responsibility_to_bully_limit
+			}
+
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = 0 }
+			set_temp_variable = { pop_anc = -1 }
+			set_temp_variable = { pop_asc = 1 }
+			class_pop_change = yes
+		}
+	}
+	option = {
+		name = fcf_military_event.5.c
+		set_country_flag = set_reform_ncos_responsibility
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_ncos_responsibility_to_bully
+				add_idea = FCF_ncos_responsibility_to_bully_reform
+			}
+
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = -1 }
+			set_temp_variable = { pop_anc = 0.5 }
+			set_temp_variable = { pop_asc = 0.5 }
+			class_pop_change = yes
+		}
+	}
+}
+
+country_event = {
+	id = fcf_military_event.6
+	title = fcf_military_event.6.title
+	desc = fcf_military_event.6.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.6.a
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 0 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = -2 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_military
+		set_temp_variable = { pop_aoc = 0 }
+		set_temp_variable = { pop_anc = 0.5 }
+		set_temp_variable = { pop_asc = -0.5 }
+		class_pop_change = yes
+	}
+	option = {
+		name = fcf_military_event.6.b
+		set_country_flag = set_committee_inherent_seat
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		custom_effect_tooltip = tooltip_soldier_committee_function_modify
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_soldier_committee_representative
+				add_idea = FCF_soldier_committee_representative_inherent_seat
+			}
+
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = -1 }
+			set_temp_variable = { pop_anc = -1 }
+			set_temp_variable = { pop_asc = 2 }
+			class_pop_change = yes
+		}
+	}
+	option = {
+		name = fcf_military_event.6.c
+		set_country_flag = set_committee_reduce_standard
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		custom_effect_tooltip = tooltip_soldier_committee_function_modify
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_soldier_committee_supervisory
+				add_idea = FCF_soldier_committee_supervisory_reduce_standard
+			}
+
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { pop_aoc = -0.5 }
+			set_temp_variable = { pop_anc = -0.5 }
+			set_temp_variable = { pop_asc = 1 }
+			class_pop_change = yes
+		}
+	}
+}
+
+country_event = {
+	id = fcf_military_event.7
+	title = fcf_military_event.7.title
+	desc = fcf_military_event.7.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.7.a
+		set_country_flag = set_supervisory_law_equal
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		custom_effect_tooltip = tooltip_soldier_committee_function_modify
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_soldier_committee_supervisory
+				add_idea = FCF_soldier_committee_supervisory_equal
+			}
+
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = -2 }
+			society_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { mrtc_sys = 1 }
+		    set_temp_variable = { mrtc_com = 0 }
+		    set_temp_variable = { mrtc_org = 0 }
+		    set_temp_variable = { mrtc_equ = 0 }
+		    set_temp_variable = { mrtc_tac = 0 }
+		    military_reform_tendency_change = yes
+		}
+	}
+	option = {
+		name = fcf_military_event.7.b
+		add_political_power = 20
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 0 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = -1 }
+		society_pop_satisfactions_change = yes
+	}
+	option = {
+		name = fcf_military_event.7.c
+		set_country_flag = set_supervisory_law_political
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		custom_effect_tooltip = tooltip_soldier_committee_function_modify
+		effect_tooltip = {
+			swap_ideas = {
+				remove_idea = FCF_soldier_committee_supervisory
+				add_idea = FCF_soldier_committee_supervisory_political
+			}
+
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 0 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 1 }
+			society_pop_satisfactions_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_military
+			set_temp_variable = { mrtc_sys = -1 }
+		    set_temp_variable = { mrtc_com = 0 }
+		    set_temp_variable = { mrtc_org = 0 }
+		    set_temp_variable = { mrtc_equ = 0 }
+		    set_temp_variable = { mrtc_tac = 0 }
+		    military_reform_tendency_change = yes
+		}	
+	}
+}
+
+country_event = {
+	id = fcf_military_event.8
+	title = fcf_military_event.8.title
+	desc = fcf_military_event.8.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.8.a
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = -5 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_military
+		set_temp_variable = { pop_aoc = -1 }
+		set_temp_variable = { pop_anc = -1 }
+		set_temp_variable = { pop_asc = 2 }
+		class_pop_change = yes
+	}
+	option = {
+		name = fcf_military_event.8.b
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = -3 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_military
+		set_temp_variable = { pop_wc = 0 }
+		set_temp_variable = { pop_pc = 0 }
+		set_temp_variable = { pop_mc = 0 }
+		set_temp_variable = { pop_sc = 0 }
+		set_temp_variable = { pop_bc = 0 }
+		set_temp_variable = { pop_ac = 0 }
+		set_temp_variable = { pop_aoc = -0.5 }
+		set_temp_variable = { pop_anc = -0.5 }
+		set_temp_variable = { pop_asc = 1 }
+		class_pop_change = yes
+	}
+	option = {
+		name = fcf_military_event.8.c
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_wc = 0.5 }
+		set_temp_variable = { pop_pc = 0.5 }
+		set_temp_variable = { pop_mc = 0 }
+		set_temp_variable = { pop_sc = 1 }
+		set_temp_variable = { pop_bc = 0 }
+		set_temp_variable = { pop_ac = -2 }
+		class_pop_change = yes
+		
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { wc = 0.5 }
+		set_temp_variable = { pc = 0.5 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = -2 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_military
+		set_temp_variable = { pop_wc = 0 }
+		set_temp_variable = { pop_pc = 0 }
+		set_temp_variable = { pop_mc = 0 }
+		set_temp_variable = { pop_sc = 0 }
+		set_temp_variable = { pop_bc = 0 }
+		set_temp_variable = { pop_ac = 0 }
+		set_temp_variable = { pop_aoc = -0.5 }
+		set_temp_variable = { pop_anc = -0.5 }
+		set_temp_variable = { pop_asc = 1 }
+		class_pop_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_country_flag = set_joint_investigation
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			add_ideas = FCF_joint_investigation_committee
+		}
+	}
+	option = {
+		name = fcf_military_event.8.d
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_wc = 1 }
+		set_temp_variable = { pop_pc = 1 }
+		set_temp_variable = { pop_mc = 1 }
+		set_temp_variable = { pop_sc = 1 }
+		set_temp_variable = { pop_bc = 0 }
+		set_temp_variable = { pop_ac = -4 }
+		class_pop_change = yes
+		
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 1 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = 1 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = -5 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_military
+		set_temp_variable = { pop_wc = 0 }
+		set_temp_variable = { pop_pc = 0 }
+		set_temp_variable = { pop_mc = 0 }
+		set_temp_variable = { pop_sc = 0 }
+		set_temp_variable = { pop_bc = 0 }
+		set_temp_variable = { pop_ac = 0 }
+		set_temp_variable = { pop_aoc = -1 }
+		set_temp_variable = { pop_anc = -1 }
+		set_temp_variable = { pop_asc = 2 }
+		class_pop_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_country_flag = set_social_investigation
+		custom_effect_tooltip = FCF_soldiers_stop_bullying_effect_tt
+		effect_tooltip = {
+			add_ideas = FCF_social_investigation_committee
+		}
+	}
+}
+
+country_event = {
+	id = fcf_military_event.9
+	title = fcf_military_event.9.title
+	desc = fcf_military_event.9.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.9.a
+		trigger = { any_army_leader = { attack_skill_level < 5 } }
+		set_country_flag = has_chosen_train_attack_skill
+	}
+	option = {
+		name = fcf_military_event.9.b
+		trigger = { any_army_leader = { defense_skill_level < 5 } }
+		set_country_flag = has_chosen_train_defense_skill
+	}
+	option = {
+		name = fcf_military_event.9.c
+		trigger = { any_army_leader = { planning_skill_level < 5 } }
+		set_country_flag = has_chosen_train_planning_skill
+	}
+	option = {
+		name = fcf_military_event.9.d
+		trigger = { any_army_leader = { logistics_skill_level < 5 } }
+		set_country_flag = has_chosen_train_logistics_skill
+	}
+}
+
+country_event = {
+	id = fcf_military_event.10
+	title = fcf_military_event.10.title
+	desc = fcf_military_event.10.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.10.a
+		set_country_flag = improve_infantry_weapons_bolt_action
+	}
+	option = {
+		name = fcf_military_event.10.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_infantry_weapons_semi_automatic
+		
+	}
+	option = {
+		name = fcf_military_event.10.c
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_infantry_weapons_fully_automatic
+	}
+}
+
+country_event = {
+	id = fcf_military_event.11
+	title = fcf_military_event.11.title
+	desc = fcf_military_event.11.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.11.a
+		set_country_flag = improve_infantry_weapons_weight_balance
+	}
+	option = {
+		name = fcf_military_event.11.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_infantry_weapons_weight_light
+		
+	}
+	option = {
+		name = fcf_military_event.11.c
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_infantry_weapons_weight_heavy
+	}
+}
+
+country_event = {
+	id = fcf_military_event.12
+	title = fcf_military_event.12.title
+	desc = fcf_military_event.12.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.12.a
+		set_country_flag = improve_infantry_weapons_production_balance
+	}
+	option = {
+		name = fcf_military_event.12.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_infantry_weapons_production_quality
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { ertc_dom = 0 }
+		set_temp_variable = { ertc_str = 0 }
+		set_temp_variable = { ertc_man = 0 }
+		set_temp_variable = { ertc_pro = 1 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+	}
+	option = {
+		name = fcf_military_event.12.c
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_infantry_weapons_production_quantity
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { ertc_dom = 0 }
+		set_temp_variable = { ertc_str = 0 }
+		set_temp_variable = { ertc_man = 0 }
+		set_temp_variable = { ertc_pro = -1 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+	}
+	option = {
+		name = fcf_military_event.12.d
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_infantry_weapons_general_parts
+	}
+}
+
+country_event = {
+	id = fcf_military_event.13
+	title = fcf_military_event.13.title
+	desc = fcf_military_event.13.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.13.a
+		clr_country_flag = existing_improvement_project
+		custom_effect_tooltip = improvement_project_final_result_tooltip
+		effect_tooltip = { improve_infantry_weapons_result = yes }
+	}
+	option = {
+		name = fcf_military_event.13.b
+		custom_effect_tooltip = improvement_project_delay_more
+		set_variable = { improving_project_progress = 80 }
+	}
+}
+
+country_event = {
+	id = fcf_military_event.14
+	title = fcf_military_event.14.title
+	desc = fcf_military_event.14.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.14.a
+		set_country_flag = improve_artillery_57mm
+	}
+	option = {
+		name = fcf_military_event.14.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_artillery_75mm
+		
+	}
+	option = {
+		name = fcf_military_event.14.c
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_artillery_105mm
+	}
+}
+
+country_event = {
+	id = fcf_military_event.15
+	title = fcf_military_event.15.title
+	desc = fcf_military_event.15.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.15.a
+		set_country_flag = improve_artillery_towed
+	}
+	option = {
+		name = fcf_military_event.15.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_artillery_self_propelled
+		
+	}
+	option = {
+		name = fcf_military_event.15.c
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_artillery_both_towed_self_propelled
+	}
+}
+
+country_event = {
+	id = fcf_military_event.16
+	title = fcf_military_event.16.title
+	desc = fcf_military_event.16.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.16.a
+		set_country_flag = improve_artillery_length_long
+	}
+	option = {
+		name = fcf_military_event.16.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_artillery_length_short
+		
+	}
+	option = {
+		name = fcf_military_event.16.c
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_artillery_length_medium
+	}
+}
+
+country_event = {
+	id = fcf_military_event.17
+	title = fcf_military_event.17.title
+	desc = fcf_military_event.17.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.17.a
+		clr_country_flag = existing_improvement_project
+		custom_effect_tooltip = improvement_project_final_result_tooltip
+		effect_tooltip = { improve_artillery_result = yes }
+	}
+	option = {
+		name = fcf_military_event.17.b
+		custom_effect_tooltip = improvement_project_delay_more
+		set_variable = { improving_project_progress = 80 }
+	}
+}
+
+country_event = {
+	id = fcf_military_event.18
+	title = fcf_military_event.18.title
+	desc = fcf_military_event.18.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.18.a
+		set_country_flag = improve_armor_infantry
+	}
+	option = {
+		name = fcf_military_event.18.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_armor_cavalry
+	}
+	option = {
+		name = fcf_military_event.18.c
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_armor_focus
+	}
+}
+
+country_event = {
+	id = fcf_military_event.19
+	title = fcf_military_event.19.title
+	desc = fcf_military_event.19.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.19.a
+		set_country_flag = improve_armor_production_effient
+	}
+	option = {
+		name = fcf_military_event.19.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_armor_production_quality
+	}
+	option = {
+		name = fcf_military_event.19.c
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_armor_production_universal_design
+	}
+}
+
+country_event = {
+	id = fcf_military_event.20
+	title = fcf_military_event.20.title
+	desc = fcf_military_event.20.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.20.a
+		set_country_flag = improve_armor_main_gun_75mm
+	}
+	option = {
+		name = fcf_military_event.20.b
+		custom_effect_tooltip = improvement_project_delay
+		add_to_variable = { improving_project_progress = -10 }
+		set_country_flag = improve_armor_main_gun_105mm
+	}
+	option = {
+		name = fcf_military_event.20.c
+		trigger = { has_country_flag = improve_armor_infantry }
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_armor_main_gun_multi_turret
+	}
+	option = {
+		name = fcf_military_event.20.f
+		trigger = { has_country_flag = improve_armor_cavalry }
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_armor_main_gun_57mm
+	}
+	option = {
+		name = fcf_military_event.20.e
+		trigger = { has_country_flag = improve_armor_focus }
+		custom_effect_tooltip = improvement_project_delay_more
+		add_to_variable = { improving_project_progress = -20 }
+		set_country_flag = improve_armor_main_gun_suitable
+	}
+}
+
+country_event = {
+	id = fcf_military_event.21
+	title = fcf_military_event.21.title
+	desc = fcf_military_event.21.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.21.a
+		clr_country_flag = existing_improvement_project
+		custom_effect_tooltip = improvement_project_final_result_tooltip
+		effect_tooltip = { improve_armor_result = yes }
+	}
+	option = {
+		name = fcf_military_event.21.b
+		custom_effect_tooltip = improvement_project_delay_more
+		set_variable = { improving_project_progress = 80 }
+	}
+}
+
+country_event = {
+	id = fcf_military_event.22
+	title = fcf_military_event.22.title
+	desc = fcf_military_event.22.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.22.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.23
+	title = fcf_military_event.23.title
+	desc = fcf_military_event.23.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.23.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.24
+	title = fcf_military_event.24.title
+	desc = fcf_military_event.24.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.24.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.25
+	title = fcf_military_event.25.title
+	desc = fcf_military_event.25.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.25.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.26
+	title = fcf_military_event.26.title
+	desc = fcf_military_event.26.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.26.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.27
+	title = fcf_military_event.27.title
+	desc = fcf_military_event.27.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.27.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.28
+	title = fcf_military_event.28.title
+	desc = fcf_military_event.28.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.28.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.29
+	title = fcf_military_event.29.title
+	desc = fcf_military_event.29.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.29.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.30
+	title = fcf_military_event.30.title
+	desc = fcf_military_event.30.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.30.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.31
+	title = fcf_military_event.31.title
+	desc = fcf_military_event.31.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.31.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.32
+	title = fcf_military_event.32.title
+	desc = fcf_military_event.32.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.32.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.33
+	title = fcf_military_event.33.title
+	desc = fcf_military_event.33.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.33.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.34
+	title = fcf_military_event.34.title
+	desc = fcf_military_event.34.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.34.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.35
+	title = fcf_military_event.35.title
+	desc = fcf_military_event.35.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.35.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.36
+	title = fcf_military_event.36.title
+	desc = fcf_military_event.36.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.36.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.37
+	title = fcf_military_event.37.title
+	desc = fcf_military_event.37.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.37.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.38
+	title = fcf_military_event.38.title
+	desc = fcf_military_event.38.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.38.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.39
+	title = fcf_military_event.39.title
+	desc = fcf_military_event.39.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.39.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.40
+	title = fcf_military_event.40.title
+	desc = fcf_military_event.40.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.40.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.41
+	title = fcf_military_event.41.title
+	desc = fcf_military_event.41.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.41.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.42
+	title = fcf_military_event.42.title
+	desc = fcf_military_event.42.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.42.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.43
+	title = fcf_military_event.43.title
+	desc = fcf_military_event.43.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.43.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.44
+	title = fcf_military_event.44.title
+	desc = fcf_military_event.44.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.44.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.45
+	title = fcf_military_event.45.title
+	desc = fcf_military_event.45.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.45.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.46
+	title = fcf_military_event.46.title
+	desc = fcf_military_event.46.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.46.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.47
+	title = fcf_military_event.47.title
+	desc = fcf_military_event.47.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.47.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.48
+	title = fcf_military_event.48.title
+	desc = fcf_military_event.48.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.48.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.49
+	title = fcf_military_event.49.title
+	desc = fcf_military_event.49.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.49.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.50
+	title = fcf_military_event.50.title
+	desc = fcf_military_event.50.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.50.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.51
+	title = fcf_military_event.51.title
+	desc = fcf_military_event.51.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.51.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.52
+	title = fcf_military_event.52.title
+	desc = fcf_military_event.52.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.52.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.53
+	title = fcf_military_event.53.title
+	desc = fcf_military_event.53.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.53.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.54
+	title = fcf_military_event.54.title
+	desc = fcf_military_event.54.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.54.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.55
+	title = fcf_military_event.55.title
+	desc = fcf_military_event.55.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.55.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.56
+	title = fcf_military_event.56.title
+	desc = fcf_military_event.56.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.56.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.57
+	title = fcf_military_event.57.title
+	desc = fcf_military_event.57.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.57.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.58
+	title = fcf_military_event.58.title
+	desc = fcf_military_event.58.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.58.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.59
+	title = fcf_military_event.59.title
+	desc = fcf_military_event.59.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.59.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.60
+	title = fcf_military_event.60.title
+	desc = fcf_military_event.60.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.60.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.61
+	title = fcf_military_event.61.title
+	desc = fcf_military_event.61.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.61.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.62
+	title = fcf_military_event.62.title
+	desc = fcf_military_event.62.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.62.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.63
+	title = fcf_military_event.63.title
+	desc = fcf_military_event.63.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.63.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.64
+	title = fcf_military_event.64.title
+	desc = fcf_military_event.64.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.64.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.65
+	title = fcf_military_event.65.title
+	desc = fcf_military_event.65.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.65.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.66
+	title = fcf_military_event.66.title
+	desc = fcf_military_event.66.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.66.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.67
+	title = fcf_military_event.67.title
+	desc = fcf_military_event.67.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.67.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.68
+	title = fcf_military_event.68.title
+	desc = fcf_military_event.68.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.68.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.69
+	title = fcf_military_event.69.title
+	desc = fcf_military_event.69.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.69.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.70
+	title = fcf_military_event.70.title
+	desc = fcf_military_event.70.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.70.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.71
+	title = fcf_military_event.71.title
+	desc = fcf_military_event.71.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.71.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.72
+	title = fcf_military_event.72.title
+	desc = fcf_military_event.72.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.72.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.73
+	title = fcf_military_event.73.title
+	desc = fcf_military_event.73.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.73.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.74
+	title = fcf_military_event.74.title
+	desc = fcf_military_event.74.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.74.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.75
+	title = fcf_military_event.75.title
+	desc = fcf_military_event.75.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.75.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.76
+	title = fcf_military_event.76.title
+	desc = fcf_military_event.76.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.76.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.77
+	title = fcf_military_event.77.title
+	desc = fcf_military_event.77.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.77.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.78
+	title = fcf_military_event.78.title
+	desc = fcf_military_event.78.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.78.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.79
+	title = fcf_military_event.79.title
+	desc = fcf_military_event.79.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.79.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.80
+	title = fcf_military_event.80.title
+	desc = fcf_military_event.80.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.80.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.81
+	title = fcf_military_event.81.title
+	desc = fcf_military_event.81.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.81.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.82
+	title = fcf_military_event.82.title
+	desc = fcf_military_event.82.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.82.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.83
+	title = fcf_military_event.83.title
+	desc = fcf_military_event.83.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.83.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.84
+	title = fcf_military_event.84.title
+	desc = fcf_military_event.84.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.84.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.85
+	title = fcf_military_event.85.title
+	desc = fcf_military_event.85.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.85.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.86
+	title = fcf_military_event.86.title
+	desc = fcf_military_event.86.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.86.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.87
+	title = fcf_military_event.87.title
+	desc = fcf_military_event.87.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.87.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.88
+	title = fcf_military_event.88.title
+	desc = fcf_military_event.88.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.88.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.89
+	title = fcf_military_event.89.title
+	desc = fcf_military_event.89.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.89.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.90
+	title = fcf_military_event.90.title
+	desc = fcf_military_event.90.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.90.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.91
+	title = fcf_military_event.91.title
+	desc = fcf_military_event.91.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.91.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.92
+	title = fcf_military_event.92.title
+	desc = fcf_military_event.92.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.92.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.93
+	title = fcf_military_event.93.title
+	desc = fcf_military_event.93.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.93.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.94
+	title = fcf_military_event.94.title
+	desc = fcf_military_event.94.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.94.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.95
+	title = fcf_military_event.95.title
+	desc = fcf_military_event.95.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.95.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.96
+	title = fcf_military_event.96.title
+	desc = fcf_military_event.96.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.96.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.97
+	title = fcf_military_event.97.title
+	desc = fcf_military_event.97.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.97.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.98
+	title = fcf_military_event.98.title
+	desc = fcf_military_event.98.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.98.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.99
+	title = fcf_military_event.99.title
+	desc = fcf_military_event.99.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.99.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.100
+	title = fcf_military_event.100.title
+	desc = fcf_military_event.100.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.100.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.101
+	title = fcf_military_event.101.title
+	desc = fcf_military_event.101.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.101.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.102
+	title = fcf_military_event.102.title
+	desc = fcf_military_event.102.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.102.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.103
+	title = fcf_military_event.103.title
+	desc = fcf_military_event.103.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.103.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.104
+	title = fcf_military_event.104.title
+	desc = fcf_military_event.104.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.104.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.105
+	title = fcf_military_event.105.title
+	desc = fcf_military_event.105.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.105.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.106
+	title = fcf_military_event.106.title
+	desc = fcf_military_event.106.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.106.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.107
+	title = fcf_military_event.107.title
+	desc = fcf_military_event.107.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.107.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.108
+	title = fcf_military_event.108.title
+	desc = fcf_military_event.108.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.108.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.109
+	title = fcf_military_event.109.title
+	desc = fcf_military_event.109.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.109.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.110
+	title = fcf_military_event.110.title
+	desc = fcf_military_event.110.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.110.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.111
+	title = fcf_military_event.111.title
+	desc = fcf_military_event.111.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.111.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.112
+	title = fcf_military_event.112.title
+	desc = fcf_military_event.112.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.112.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.113
+	title = fcf_military_event.113.title
+	desc = fcf_military_event.113.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.113.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.114
+	title = fcf_military_event.114.title
+	desc = fcf_military_event.114.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.114.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.115
+	title = fcf_military_event.115.title
+	desc = fcf_military_event.115.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.115.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.116
+	title = fcf_military_event.116.title
+	desc = fcf_military_event.116.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.116.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.117
+	title = fcf_military_event.117.title
+	desc = fcf_military_event.117.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.117.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.118
+	title = fcf_military_event.118.title
+	desc = fcf_military_event.118.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.118.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.119
+	title = fcf_military_event.119.title
+	desc = fcf_military_event.119.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.119.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.120
+	title = fcf_military_event.120.title
+	desc = fcf_military_event.120.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.120.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.121
+	title = fcf_military_event.121.title
+	desc = fcf_military_event.121.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.121.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.122
+	title = fcf_military_event.122.title
+	desc = fcf_military_event.122.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.122.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.123
+	title = fcf_military_event.123.title
+	desc = fcf_military_event.123.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.123.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.124
+	title = fcf_military_event.124.title
+	desc = fcf_military_event.124.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.124.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.125
+	title = fcf_military_event.125.title
+	desc = fcf_military_event.125.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.125.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.126
+	title = fcf_military_event.126.title
+	desc = fcf_military_event.126.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.126.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.127
+	title = fcf_military_event.127.title
+	desc = fcf_military_event.127.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.127.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.128
+	title = fcf_military_event.128.title
+	desc = fcf_military_event.128.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.128.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.129
+	title = fcf_military_event.129.title
+	desc = fcf_military_event.129.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.129.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.130
+	title = fcf_military_event.130.title
+	desc = fcf_military_event.130.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.130.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.131
+	title = fcf_military_event.131.title
+	desc = fcf_military_event.131.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.131.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.132
+	title = fcf_military_event.132.title
+	desc = fcf_military_event.132.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.132.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.133
+	title = fcf_military_event.133.title
+	desc = fcf_military_event.133.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.133.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.134
+	title = fcf_military_event.134.title
+	desc = fcf_military_event.134.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.134.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.135
+	title = fcf_military_event.135.title
+	desc = fcf_military_event.135.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.135.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.136
+	title = fcf_military_event.136.title
+	desc = fcf_military_event.136.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.136.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.137
+	title = fcf_military_event.137.title
+	desc = fcf_military_event.137.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.137.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.138
+	title = fcf_military_event.138.title
+	desc = fcf_military_event.138.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.138.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.139
+	title = fcf_military_event.139.title
+	desc = fcf_military_event.139.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.139.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.140
+	title = fcf_military_event.140.title
+	desc = fcf_military_event.140.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.140.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.141
+	title = fcf_military_event.141.title
+	desc = fcf_military_event.141.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.141.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.142
+	title = fcf_military_event.142.title
+	desc = fcf_military_event.142.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.142.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.143
+	title = fcf_military_event.143.title
+	desc = fcf_military_event.143.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.143.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.144
+	title = fcf_military_event.144.title
+	desc = fcf_military_event.144.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.144.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.145
+	title = fcf_military_event.145.title
+	desc = fcf_military_event.145.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.145.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.146
+	title = fcf_military_event.146.title
+	desc = fcf_military_event.146.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.146.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.147
+	title = fcf_military_event.147.title
+	desc = fcf_military_event.147.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.147.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.148
+	title = fcf_military_event.148.title
+	desc = fcf_military_event.148.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.148.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.149
+	title = fcf_military_event.149.title
+	desc = fcf_military_event.149.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.149.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.150
+	title = fcf_military_event.150.title
+	desc = fcf_military_event.150.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.150.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.151
+	title = fcf_military_event.151.title
+	desc = fcf_military_event.151.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.151.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.152
+	title = fcf_military_event.152.title
+	desc = fcf_military_event.152.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.152.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.153
+	title = fcf_military_event.153.title
+	desc = fcf_military_event.153.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.153.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.154
+	title = fcf_military_event.154.title
+	desc = fcf_military_event.154.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.154.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.155
+	title = fcf_military_event.155.title
+	desc = fcf_military_event.155.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.155.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.156
+	title = fcf_military_event.156.title
+	desc = fcf_military_event.156.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.156.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.157
+	title = fcf_military_event.157.title
+	desc = fcf_military_event.157.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.157.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.158
+	title = fcf_military_event.158.title
+	desc = fcf_military_event.158.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.158.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.159
+	title = fcf_military_event.159.title
+	desc = fcf_military_event.159.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.159.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.160
+	title = fcf_military_event.160.title
+	desc = fcf_military_event.160.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.160.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.161
+	title = fcf_military_event.161.title
+	desc = fcf_military_event.161.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.161.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.162
+	title = fcf_military_event.162.title
+	desc = fcf_military_event.162.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.162.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.163
+	title = fcf_military_event.163.title
+	desc = fcf_military_event.163.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.163.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.164
+	title = fcf_military_event.164.title
+	desc = fcf_military_event.164.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.164.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.165
+	title = fcf_military_event.165.title
+	desc = fcf_military_event.165.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.165.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.166
+	title = fcf_military_event.166.title
+	desc = fcf_military_event.166.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.166.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.167
+	title = fcf_military_event.167.title
+	desc = fcf_military_event.167.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.167.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.168
+	title = fcf_military_event.168.title
+	desc = fcf_military_event.168.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.168.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.169
+	title = fcf_military_event.169.title
+	desc = fcf_military_event.169.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.169.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.170
+	title = fcf_military_event.170.title
+	desc = fcf_military_event.170.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.170.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.171
+	title = fcf_military_event.171.title
+	desc = fcf_military_event.171.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.171.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.172
+	title = fcf_military_event.172.title
+	desc = fcf_military_event.172.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.172.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.173
+	title = fcf_military_event.173.title
+	desc = fcf_military_event.173.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.173.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.174
+	title = fcf_military_event.174.title
+	desc = fcf_military_event.174.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.174.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.175
+	title = fcf_military_event.175.title
+	desc = fcf_military_event.175.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.175.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.176
+	title = fcf_military_event.176.title
+	desc = fcf_military_event.176.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.176.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.177
+	title = fcf_military_event.177.title
+	desc = fcf_military_event.177.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.177.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.178
+	title = fcf_military_event.178.title
+	desc = fcf_military_event.178.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.178.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.179
+	title = fcf_military_event.179.title
+	desc = fcf_military_event.179.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.179.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.180
+	title = fcf_military_event.180.title
+	desc = fcf_military_event.180.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.180.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.181
+	title = fcf_military_event.181.title
+	desc = fcf_military_event.181.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.181.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.182
+	title = fcf_military_event.182.title
+	desc = fcf_military_event.182.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.182.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.183
+	title = fcf_military_event.183.title
+	desc = fcf_military_event.183.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.183.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.184
+	title = fcf_military_event.184.title
+	desc = fcf_military_event.184.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.184.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.185
+	title = fcf_military_event.185.title
+	desc = fcf_military_event.185.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.185.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.186
+	title = fcf_military_event.186.title
+	desc = fcf_military_event.186.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.186.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.187
+	title = fcf_military_event.187.title
+	desc = fcf_military_event.187.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.187.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.188
+	title = fcf_military_event.188.title
+	desc = fcf_military_event.188.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.188.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.189
+	title = fcf_military_event.189.title
+	desc = fcf_military_event.189.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.189.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.190
+	title = fcf_military_event.190.title
+	desc = fcf_military_event.190.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.190.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.191
+	title = fcf_military_event.191.title
+	desc = fcf_military_event.191.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.191.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.192
+	title = fcf_military_event.192.title
+	desc = fcf_military_event.192.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.192.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.193
+	title = fcf_military_event.193.title
+	desc = fcf_military_event.193.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.193.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.194
+	title = fcf_military_event.194.title
+	desc = fcf_military_event.194.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.194.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.195
+	title = fcf_military_event.195.title
+	desc = fcf_military_event.195.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.195.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.196
+	title = fcf_military_event.196.title
+	desc = fcf_military_event.196.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.196.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.197
+	title = fcf_military_event.197.title
+	desc = fcf_military_event.197.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.197.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.198
+	title = fcf_military_event.198.title
+	desc = fcf_military_event.198.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.198.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.199
+	title = fcf_military_event.199.title
+	desc = fcf_military_event.199.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.199.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.200
+	title = fcf_military_event.200.title
+	desc = fcf_military_event.200.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.200.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.201
+	title = fcf_military_event.201.title
+	desc = fcf_military_event.201.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.201.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.202
+	title = fcf_military_event.202.title
+	desc = fcf_military_event.202.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.202.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.203
+	title = fcf_military_event.203.title
+	desc = fcf_military_event.203.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.203.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.204
+	title = fcf_military_event.204.title
+	desc = fcf_military_event.204.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.204.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.205
+	title = fcf_military_event.205.title
+	desc = fcf_military_event.205.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.205.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.206
+	title = fcf_military_event.206.title
+	desc = fcf_military_event.206.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.206.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.207
+	title = fcf_military_event.207.title
+	desc = fcf_military_event.207.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.207.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.208
+	title = fcf_military_event.208.title
+	desc = fcf_military_event.208.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.208.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.209
+	title = fcf_military_event.209.title
+	desc = fcf_military_event.209.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.209.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.210
+	title = fcf_military_event.210.title
+	desc = fcf_military_event.210.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.210.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.211
+	title = fcf_military_event.211.title
+	desc = fcf_military_event.211.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.211.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.212
+	title = fcf_military_event.212.title
+	desc = fcf_military_event.212.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.212.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.213
+	title = fcf_military_event.213.title
+	desc = fcf_military_event.213.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.213.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.214
+	title = fcf_military_event.214.title
+	desc = fcf_military_event.214.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.214.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.215
+	title = fcf_military_event.215.title
+	desc = fcf_military_event.215.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.215.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.216
+	title = fcf_military_event.216.title
+	desc = fcf_military_event.216.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.216.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.217
+	title = fcf_military_event.217.title
+	desc = fcf_military_event.217.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.217.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.218
+	title = fcf_military_event.218.title
+	desc = fcf_military_event.218.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.218.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.219
+	title = fcf_military_event.219.title
+	desc = fcf_military_event.219.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.219.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.220
+	title = fcf_military_event.220.title
+	desc = fcf_military_event.220.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.220.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.221
+	title = fcf_military_event.221.title
+	desc = fcf_military_event.221.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.221.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.222
+	title = fcf_military_event.222.title
+	desc = fcf_military_event.222.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.222.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.223
+	title = fcf_military_event.223.title
+	desc = fcf_military_event.223.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.223.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.224
+	title = fcf_military_event.224.title
+	desc = fcf_military_event.224.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.224.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.225
+	title = fcf_military_event.225.title
+	desc = fcf_military_event.225.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.225.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.226
+	title = fcf_military_event.226.title
+	desc = fcf_military_event.226.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.226.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.227
+	title = fcf_military_event.227.title
+	desc = fcf_military_event.227.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.227.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.228
+	title = fcf_military_event.228.title
+	desc = fcf_military_event.228.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.228.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.229
+	title = fcf_military_event.229.title
+	desc = fcf_military_event.229.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.229.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.230
+	title = fcf_military_event.230.title
+	desc = fcf_military_event.230.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.230.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.231
+	title = fcf_military_event.231.title
+	desc = fcf_military_event.231.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.231.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.232
+	title = fcf_military_event.232.title
+	desc = fcf_military_event.232.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.232.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.233
+	title = fcf_military_event.233.title
+	desc = fcf_military_event.233.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.233.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.234
+	title = fcf_military_event.234.title
+	desc = fcf_military_event.234.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.234.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.235
+	title = fcf_military_event.235.title
+	desc = fcf_military_event.235.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.235.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.236
+	title = fcf_military_event.236.title
+	desc = fcf_military_event.236.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.236.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.237
+	title = fcf_military_event.237.title
+	desc = fcf_military_event.237.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.237.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.238
+	title = fcf_military_event.238.title
+	desc = fcf_military_event.238.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.238.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.239
+	title = fcf_military_event.239.title
+	desc = fcf_military_event.239.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.239.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.240
+	title = fcf_military_event.240.title
+	desc = fcf_military_event.240.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.240.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.241
+	title = fcf_military_event.241.title
+	desc = fcf_military_event.241.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.241.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.242
+	title = fcf_military_event.242.title
+	desc = fcf_military_event.242.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.242.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.243
+	title = fcf_military_event.243.title
+	desc = fcf_military_event.243.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.243.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.244
+	title = fcf_military_event.244.title
+	desc = fcf_military_event.244.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.244.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.245
+	title = fcf_military_event.245.title
+	desc = fcf_military_event.245.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.245.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.246
+	title = fcf_military_event.246.title
+	desc = fcf_military_event.246.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.246.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.247
+	title = fcf_military_event.247.title
+	desc = fcf_military_event.247.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.247.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.248
+	title = fcf_military_event.248.title
+	desc = fcf_military_event.248.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.248.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.249
+	title = fcf_military_event.249.title
+	desc = fcf_military_event.249.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.249.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.250
+	title = fcf_military_event.250.title
+	desc = fcf_military_event.250.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.250.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.251
+	title = fcf_military_event.251.title
+	desc = fcf_military_event.251.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.251.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.252
+	title = fcf_military_event.252.title
+	desc = fcf_military_event.252.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.252.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.253
+	title = fcf_military_event.253.title
+	desc = fcf_military_event.253.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.253.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.254
+	title = fcf_military_event.254.title
+	desc = fcf_military_event.254.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.254.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.255
+	title = fcf_military_event.255.title
+	desc = fcf_military_event.255.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.255.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.256
+	title = fcf_military_event.256.title
+	desc = fcf_military_event.256.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.256.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.257
+	title = fcf_military_event.257.title
+	desc = fcf_military_event.257.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.257.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.258
+	title = fcf_military_event.258.title
+	desc = fcf_military_event.258.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.258.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.259
+	title = fcf_military_event.259.title
+	desc = fcf_military_event.259.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.259.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.260
+	title = fcf_military_event.260.title
+	desc = fcf_military_event.260.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.260.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.261
+	title = fcf_military_event.261.title
+	desc = fcf_military_event.261.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.261.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.262
+	title = fcf_military_event.262.title
+	desc = fcf_military_event.262.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.262.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.263
+	title = fcf_military_event.263.title
+	desc = fcf_military_event.263.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.263.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.264
+	title = fcf_military_event.264.title
+	desc = fcf_military_event.264.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.264.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.265
+	title = fcf_military_event.265.title
+	desc = fcf_military_event.265.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.265.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.266
+	title = fcf_military_event.266.title
+	desc = fcf_military_event.266.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.266.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.267
+	title = fcf_military_event.267.title
+	desc = fcf_military_event.267.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.267.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.268
+	title = fcf_military_event.268.title
+	desc = fcf_military_event.268.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.268.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.269
+	title = fcf_military_event.269.title
+	desc = fcf_military_event.269.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.269.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.270
+	title = fcf_military_event.270.title
+	desc = fcf_military_event.270.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.270.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.271
+	title = fcf_military_event.271.title
+	desc = fcf_military_event.271.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.271.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.272
+	title = fcf_military_event.272.title
+	desc = fcf_military_event.272.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.272.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.273
+	title = fcf_military_event.273.title
+	desc = fcf_military_event.273.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.273.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.274
+	title = fcf_military_event.274.title
+	desc = fcf_military_event.274.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.274.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.275
+	title = fcf_military_event.275.title
+	desc = fcf_military_event.275.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.275.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.276
+	title = fcf_military_event.276.title
+	desc = fcf_military_event.276.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.276.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.277
+	title = fcf_military_event.277.title
+	desc = fcf_military_event.277.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.277.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.278
+	title = fcf_military_event.278.title
+	desc = fcf_military_event.278.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.278.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.279
+	title = fcf_military_event.279.title
+	desc = fcf_military_event.279.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.279.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.280
+	title = fcf_military_event.280.title
+	desc = fcf_military_event.280.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.280.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.281
+	title = fcf_military_event.281.title
+	desc = fcf_military_event.281.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.281.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.282
+	title = fcf_military_event.282.title
+	desc = fcf_military_event.282.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.282.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.283
+	title = fcf_military_event.283.title
+	desc = fcf_military_event.283.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.283.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.284
+	title = fcf_military_event.284.title
+	desc = fcf_military_event.284.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.284.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.285
+	title = fcf_military_event.285.title
+	desc = fcf_military_event.285.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.285.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.286
+	title = fcf_military_event.286.title
+	desc = fcf_military_event.286.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.286.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.287
+	title = fcf_military_event.287.title
+	desc = fcf_military_event.287.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.287.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.288
+	title = fcf_military_event.288.title
+	desc = fcf_military_event.288.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.288.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.289
+	title = fcf_military_event.289.title
+	desc = fcf_military_event.289.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.289.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.290
+	title = fcf_military_event.290.title
+	desc = fcf_military_event.290.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.290.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.291
+	title = fcf_military_event.291.title
+	desc = fcf_military_event.291.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.291.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.292
+	title = fcf_military_event.292.title
+	desc = fcf_military_event.292.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.292.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.293
+	title = fcf_military_event.293.title
+	desc = fcf_military_event.293.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.293.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.294
+	title = fcf_military_event.294.title
+	desc = fcf_military_event.294.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.294.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.295
+	title = fcf_military_event.295.title
+	desc = fcf_military_event.295.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.295.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.296
+	title = fcf_military_event.296.title
+	desc = fcf_military_event.296.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.296.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.297
+	title = fcf_military_event.297.title
+	desc = fcf_military_event.297.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.297.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.298
+	title = fcf_military_event.298.title
+	desc = fcf_military_event.298.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.298.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_military_event.299
+	title = fcf_military_event.299.title
+	desc = fcf_military_event.299.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_military_event.299.a
+		
+	}
+}

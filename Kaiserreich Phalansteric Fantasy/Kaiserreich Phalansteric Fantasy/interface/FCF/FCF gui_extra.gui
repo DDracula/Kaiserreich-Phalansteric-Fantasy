@@ -1,0 +1,4099 @@
+guiTypes = {
+###CGF CSP
+	containerWindowType = {
+		name = "open_cgf_and_csp_button_window"
+		position = { x = -2 y = -120 }
+		size = { width = 80 height = 80 }
+		moveable = no
+		clipping = yes
+		background = { 
+			name = "background1"
+			quadTextureSprite= "GFX_tiled_paper_bg2"
+		}
+		background = { 
+			name = "background2"
+			quadTextureSprite= "GFX_tiled_research_bg"
+		} 
+		buttonType = {
+			name = "open_cgf_and_csp_button"
+			position = { x = 6 y = 3 }
+			scale = 1.1
+			spriteType = "GFX_idea_government"
+			clicksound = click_default
+			pdx_tooltip = open_cgf_and_csp_window_tt
+		}
+	}
+
+	containerWindowType = {
+		name = "cgf_and_csp_window"
+		orientation = upper_left
+		position = { x = 537 y = 120 }
+		size = { width = 750 height = 550 }
+		moveable = yes
+		clipping = no
+  
+		background = { 
+			name = "background1"
+			quadTextureSprite= "GFX_tiled_bg"
+		}
+
+		background = {
+			name = "background2"
+			quadTextureSprite= "GFX_tiled_generic_overlay_bg1"
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "cgf_container_window"   
+			position = { x = 25 y = 30 }
+			size = { width = 600 height = 700 }
+
+			gridboxtype = {
+				name = "parliament_diagram"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 100%% height = 0 }
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+
+		buttonType = {
+			name = "cgf_and_csp_window_esc"
+			position = { x = 705 y = 15 }
+			spriteType = "GFX_closebutton"
+			clicksound = click_default
+			shortcut = "ESCAPE"
+		}
+
+		buttonType = {
+			name = "cgf_and_csp_window_switch"
+			position = { x = 13 y = 15 }
+			scale = 2
+			spriteType = "GFX_change_template_button"
+			clicksound = click_default
+		}
+
+		buttonType = {
+			name = "cgf_model_switch"
+			position = { x = 339 y = 313 }
+			scale = 1.2
+			spriteType = "GFX_idea_government"
+			clicksound = click_default
+			pdx_tooltip = cgf_change_model_tt
+		}
+
+		iconType = {
+			name = "cgf_party_detail_text_box"
+			spriteType = "GFX_fuhrer_name_ribbon"
+			orientation = center
+			position = { x = 0 y = 142 }
+			scale = 1.7
+			centerposition = yes
+		}
+
+		instantTextboxType = {
+			name = "cgf_party_detail_text"
+			format = center
+			position = { x = 175 y = 400 }
+			font = "hoi_24header"
+			text = cgf_party_detail_text
+			maxWidth = 400
+			maxHeight = 20
+		}
+
+		instantTextboxType = {
+			name = "cgf_party_attitude_text"
+			format = center
+			position = { x = 175 y = 430 }
+			font = "hoi_18mbs"
+			text = cgf_party_attitude_text
+			maxWidth = 400
+			maxHeight = 20
+		}
+		
+		buttonType = {
+			name = "cgf_funding_city"
+			position = { x = 80 y = 410 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = cgf_funding_city
+			pdx_tooltip = cgf_funding_city_desc
+			clicksound = click_default
+		}
+		buttonType = {
+			name = "cgf_funding_rural"
+			position = { x = 80 y = 470 } 
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = cgf_funding_rural
+			pdx_tooltip = cgf_funding_rural_desc 
+			clicksound = click_default
+		}
+
+		buttonType = {
+			name = "cgf_transfer_management"
+			position = { x = 560 y = 410 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = cgf_transfer_management
+			pdx_tooltip = cgf_transfer_management_desc
+			clicksound = click_default
+		}
+		buttonType = {
+			name = "cgf_expand_investment"
+			position = { x = 560 y = 470 } 
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = cgf_expand_investment
+			pdx_tooltip = cgf_expand_investment_desc 
+			clicksound = click_default
+		}
+
+		instantTextBoxType = {
+			name ="CSP_title_text"
+			orientation = center
+			position = { x = -105 y = -65 }   
+			font = "hoi_24header"
+			text = "[gui_csp_choose_loc]"
+			format = center
+			maxWidth = 200
+		}
+
+		containerWindowType = {
+			name = "CSP_PCSP_portrait_container"
+			orientation = center_up
+			position = { x = -60 y = 30 }
+			size = { width = 123 height = 161 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name = "CSP_PCSP_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large" #Temp
+				orientation = upper_left
+				position = { x = 0 y = 0 }
+				scale = 0.75
+				pdx_tooltip = CSP_PCSP_name_text_long
+				pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+			}
+			iconType = {
+				name = "CSP_PCSP_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerposition = yes
+				alwaystransparent = yes
+			}
+			iconType = {
+				name = "CSP_PCSP_name_box"
+				spriteType = "GFX_fuhrer_name_ribbon" 
+				orientation = center  
+				position = { x = 0 y = 95 }
+				scale = 1.2
+				centerposition = yes
+				pdx_tooltip = CSP_PCSP_name_text_long
+				pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+			}
+			instantTextBoxType = {
+				name = "CSP_PCSP_name"
+				orientation = center_down
+				position = { x = -100 y = 0 }
+				font = "hoi_20b" #"hoi_18mbs"
+				text = CSP_PCSP_name_text
+				format = center
+				maxWidth = 200
+			}
+			iconType = {
+				name = "CSP_PCSP_title_box"
+				spriteType = "GFX_trait_box_fuhrer"  
+				orientation = center
+				position = { x = 0 y = 111 }
+				centerposition = yes
+				pdx_tooltip = CSP_PCSP_title_text
+			}
+			instantTextBoxType = {
+				name = "CSP_PCSP_title"
+				orientation = center_down
+				position = { x = -100 y = 20 }
+				font = "hoi_16mbs"
+				text = CSP_PCSP_title_text
+				format = center
+				maxWidth = 200
+			}
+		}
+		containerWindowType = {
+			name = "CSP_CAE_container"
+			orientation = center_up
+			position = { x = -230 y = 80 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_CAE_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_CAE_name_text_long
+				pdx_tooltip_delayed = CSP_CAE_name_delay_text
+			}
+			iconType = {
+				name ="CSP_CAE_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_CAE_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_CAE_name_text_long
+				pdx_tooltip_delayed = CSP_CAE_name_delay_text
+			}
+			instantTextBoxType = {
+				name ="CSP_CAE_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_CAE_name_text_short
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_CAE_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_CAE_trait_text_detail 
+			}
+			instantTextBoxType = {
+				name ="CSP_CAE_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_CAE_trait_text
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_CE_container"
+			orientation = center_up
+			position = { x = 85 y = 80 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_CE_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_CE_name_text_long
+				pdx_tooltip_delayed = CSP_CE_name_delay_text
+			}
+			iconType = {
+				name ="CSP_CE_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_CE_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_CE_name_text_long
+				pdx_tooltip_delayed = CSP_CE_name_delay_text
+			}
+			instantTextBoxType = {
+				name ="CSP_CE_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_CE_name_text_short
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_CE_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_CE_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_CE_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_CE_trait_text
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_CSI_container"
+			orientation = center_up
+			position = { x = -210 y = 270 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_CSI_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_CSI_name_text_long
+				pdx_tooltip_delayed = CSP_CSI_name_delay_text
+			}
+			iconType = {
+				name ="CSP_CSI_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_CSI_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_CSI_name_text_long
+				pdx_tooltip_delayed = CSP_CSI_name_delay_text
+			}
+			instantTextBoxType = {
+				name ="CSP_CSI_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_CSI_name_text_short
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_CSI_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_CSI_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_CSI_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_CSI_trait_text
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_CC_container"
+			orientation = center_up
+			position = { x = -75 y = 270 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_CC_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_CC_name_text_long
+				pdx_tooltip_delayed = CSP_CC_name_delay_text
+			}
+			iconType = {
+				name ="CSP_CC_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_CC_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_CC_name_text_long
+				pdx_tooltip_delayed = CSP_CC_name_delay_text
+			}
+			instantTextBoxType = {
+				name ="CSP_CC_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_CC_name_text_short
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_CC_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_CC_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_CC_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				alwaystransparent = yes
+				text = CSP_CC_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "CSP_CGFF_container"
+			orientation = center_up
+			position = { x = 60 y = 270 }
+			size = { width = 150 height = 120 }
+			clipping = no
+			scale = 0.9
+
+			buttonType = {
+				name ="CSP_CGFF_portrait"
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				position = { x = 30 y = -10 }
+				scale = 0.6
+				pdx_tooltip = CSP_CGFF_name_text_long
+				pdx_tooltip_delayed = CSP_CGFF_name_delay_text
+			}
+			iconType = {
+				name ="CSP_CGFF_frame"
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				position = { x = 0 y = 0 }
+				centerPosition = yes
+				scale = 0.85
+				alwaystransparent = yes
+			}
+			iconType = {
+				name ="CSP_CGFF_name_box"
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				position = { x = 0	 y = 71 }
+				centerposition = yes
+				pdx_tooltip = CSP_CGFF_name_text_long
+				pdx_tooltip_delayed = CSP_CGFF_name_delay_text
+			}
+			instantTextBoxType = {
+				name ="CSP_CGFF_name"
+				orientation = center_down
+				position = { x = -75 y = 0 }
+				font = "hoi_20b"
+				text = CSP_CGFF_name_text_short
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name ="CSP_CGFF_trait_box"
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				position = { x = 0	 y = 102 }
+				centerposition = yes
+				pdx_tooltip = CSP_CGFF_trait_text_detail
+			}
+			instantTextBoxType = {
+				name ="CSP_CGFF_trait"
+				orientation = center_down
+				position = { x = -75 y = 23 }
+				font = "hoi_18mbs"
+				text = CSP_CGFF_trait_text
+				alwaystransparent = yes
+				format = center
+				maxWidth = 150
+			}
+		}
+
+		instantTextboxType = {
+			name = "bop_text"
+			position = { x = 220 y = 450 }
+			font = "hoi_24header"
+			text = bop_text
+			maxWidth = 300
+			maxHeight = 100
+			format = centre
+			pdx_tooltip = bop_change_text
+			pdx_tooltip_delayed = bop_delay_text
+		}
+
+		buttonType = {
+			name = "csp_give_more_power"
+			position = { x = 30 y = 90 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = csp_give_more_power
+			pdx_tooltip = csp_give_more_power_effect
+			pdx_tooltip_delayed = csp_give_more_power_trigger
+			clicksound = click_default
+		}
+		buttonType = {
+			name = "csp_give_less_power"
+			position = { x = 30 y = 140 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = csp_give_less_power
+			pdx_tooltip = csp_give_less_power_effect
+			pdx_tooltip_delayed = csp_give_less_power_trigger
+			clicksound = click_default
+		}
+
+		instantTextboxType = {
+			name = "csp_member_change_text"
+			position = { x = 600 y = 60 }
+			font = "hoi_24header"
+			text = csp_member_change_text
+			maxWidth = 300  
+			maxHeight = 200
+			format = left
+		}
+
+		instantTextboxType = {
+			name = "party_faction_information"
+			position = { x = 30 y = 450 }
+			font = "hoi_18mbs"
+			text = party_faction_information
+			maxWidth = 1000  
+			maxHeight = 200
+			format = left
+		}
+	}
+
+	containerWindowType = {
+		name = "cgf_seat_container"
+		position = { x = 0 y = 0 }
+ 
+		buttonType = {  
+			name = "cgf_seat_icon"
+			quadTextureSprite = "GFX_cgf_seat"
+			pdx_tooltip = CGF_seat_intro   
+			pdx_tooltip_delayed = CGF_seat_intro_long
+		}	
+	}
+
+	containerWindowType = {
+		name = "CSP_member_change_container"
+		orientation = center
+		position = { x = 215 y = -190 }
+		size = { width = 140 height = 350 }
+		clipping = yes
+		background = { 
+			name = "CSP_member_change_container_bg"
+			quadTextureSprite= "GFX_tiled_bg"
+		}
+		
+		containerWindowType = {
+			name = "CSP_member_change_container_list"
+			position = { x = 0 y = 15 }
+			size = { width = 140 height = 320 }
+			clipping = yes
+			background = { 
+				name = "background1"
+				quadTextureSprite= "GFX_tiled_window_transparent"
+			}
+			verticalScrollbar = "right_vertical_slider"
+			gridboxtype = {
+				name = csp_change_member_list
+				position = { x = 0 y = 0 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 140 }
+				add_horizontal = no
+			}
+		}
+	}
+	
+	containerWindowType = {
+		name = "CSP_change_member_container"
+		size = { width = 150 height = 140 }
+		clipping = no
+		
+		scale = 0.9
+
+		buttonType = {
+			name ="CSP_change_member_portrait"
+			spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+			orientation = upper_left
+			position = { x = 30 y = 10 }
+			scale = 0.6  
+			pdx_tooltip = csp_change_member_tt 
+		} 
+		iconType = {
+			name ="CSP_change_member_frame"
+			spriteType = "GFX_rectangular_frame_councillor_prf"
+			orientation = center
+			position = { x = 0 y = 10 }
+			centerPosition = yes
+			scale = 0.85
+			alwaystransparent = yes
+		}
+		iconType = {
+			name ="CSP_change_member_name_box"
+			spriteType = "GFX_ascended_advisor_name_box"
+			orientation = center
+			position = { x = 0 y = 71 }
+			centerposition = yes
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name ="CSP_change_member_name"
+			orientation = center_down
+			position = { x = -75 y = -10 }
+			font = "hoi_20b"
+			alwaystransparent = yes
+			text = CSP_change_member_name_text_short
+			format = center
+			maxWidth = 150
+		}
+	}
+
+###国际
+	containerWindowType = {
+		name = "internationale_icon"
+		position = { x = 70 y = -5 }
+		size = { width = 70 height = 65 }
+		
+		origo = upper_left
+		moveable = no
+		clipping = no
+
+		iconType = {
+			name = "internationale_icon"
+			spriteType = "GFX_internationale_icon"
+			position = { x = -75 y = 5 }
+			scale = 0.26
+			alwaystransparent = yes
+		} 
+	}
+
+	containerWindowType = {
+		name = "internationale_window"
+		position = { x = -4 y = -5 }
+		size = { width = 510 height = 150 } 
+		
+		origo = upper_left 
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_gui_internationale_bg"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "internationale_people_icon"
+			position = { x = 480 y = 58 }
+			quadTextureSprite ="GFX_gui_internationale_button"
+		}
+
+		instantTextboxType = {
+			name = "internationale_header_text"
+			position = { x = 450 y = 12 }
+			font = "hoi_36header"
+			text = internationale_header_text
+			maxWidth = 700
+			maxHeight = 40
+			format = centre
+		}
+
+		iconType = {
+			name = "gui_unity_phalanstere"
+			quadTextureSprite = "GFX_unity_phalanstere"
+			frame = 0
+			position = { x = 965 y = 60 } 
+			pdx_tooltip = phalanstere_unity_detail
+		}	 
+
+		containerWindowType = {
+			name = "phalanstere_member_num_list"
+			position = { x = 570 y = 155 }
+
+			iconType = {
+				name = "totalist_icon"
+				quadTextureSprite = "GFX_goal_ideology_totalist"
+				position = { x = 0 y = 0 } 
+				scale = 0.7
+			}	 
+			iconType = {
+				name = "syndicalist_icon"
+				quadTextureSprite = "GFX_goal_ideology_syndicalist"
+				position = { x = 0 y = 85 } 
+				scale = 0.7
+			}	 
+			iconType = {
+				name = "radical_socialist_icon"
+				quadTextureSprite = "GFX_goal_ideology_radical_socialist"
+				position = { x = 0 y = 170 } 
+				scale = 0.7
+			}	 
+			instantTextboxType = {
+				name = "phalanstere_member_num1"
+				position = { x = 0 y = 55 }
+				font = "hoi_24header"
+				text = "[?global.phalanstere_totalist^num|.0]"
+				maxWidth = 60
+				maxHeight = 100
+				format = centre
+			}
+			instantTextboxType = {
+				name = "phalanstere_member_num2"
+				position = { x = 0 y = 145 }
+				font = "hoi_24header"
+				text = "[?global.phalanstere_syndicalist^num|.0]"
+				maxWidth = 60
+				maxHeight = 100
+				format = centre
+			}
+			instantTextboxType = {
+				name = "phalanstere_member_num3"
+				position = { x = 0 y = 230 }
+				font = "hoi_24header"
+				text = "[?global.phalanstere_radical_socialist^num|.0]"
+				maxWidth = 60
+				maxHeight = 100
+				format = centre
+			}
+		}
+
+		containerWindowType = { 
+			name = "gui_diplomacy_CAE"
+			position = { x = 70 y = 630 }
+			iconType = {
+				name = "gui_diplomacy_CAE_portrait"
+				position = { x = 5 y = 5 }
+				scale = 0.5
+				pdx_tooltip = CSP_CAE_name_text_long
+				pdx_tooltip_delayed = gui_diplomacy_CAE_detail
+			}
+			iconType = {
+				name = "CAE_portrait_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.67
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "gui_diplomacy_CAE_text"
+				position = { x = -30 y = 120 }
+				font = "hoi_16mbs"
+				text = gui_diplomacy_CAE
+				maxWidth = 150
+				maxHeight = 40
+				format = centre
+				pdx_tooltip = gui_diplomacy_CAE_detail
+			}
+		}
+
+		containerWindowType = { 
+			name = "diplomacy_reform_ui"
+			position = { x = 215 y = 626 }
+			scale = 0.97
+			iconType = {
+				name = "reform_tendency_diplomacy_posture_bg"
+				position = { x = 24 y = 16 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_diplomacy_posture_tt
+			}
+			iconType = {
+				name = "reform_tendency_diplomacy_posture"
+				position = { x = 0 y = 0 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_diplomacy_posture"
+				pdx_tooltip = reform_tendency_diplomacy_posture_tt
+			}
+ 
+			iconType = { 
+				name = "reform_tendency_diplomacy_strategy_bg"
+				position = { x = 24 y = 68 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_diplomacy_strategy_tt
+			}
+			iconType = {
+				name = "reform_tendency_diplomacy_strategy"
+				position = { x = 1 y = 57 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_diplomacy_strategy"
+				pdx_tooltip = reform_tendency_diplomacy_strategy_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_diplomacy_enemy_bg"
+				position = { x = 23 y = 125 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_diplomacy_enemy_tt
+			}
+			iconType = {
+				name = "reform_tendency_diplomacy_enemy"
+				position = { x = -1 y = 110 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_diplomacy_enemy"
+				pdx_tooltip = reform_tendency_diplomacy_enemy_tt
+			}
+		}
+
+		instantTextboxType = {
+			name = "internationale_show_influence"
+			format = center
+			position = { x = 610 y = 430 } 
+			font = "hoi_24header" 
+			text = internationale_show_influence 
+			maxWidth = 400
+			maxHeight = 20
+		}
+
+		containerWindowType = {
+			name = "internationale_intervention_button"
+			position = { x = 565 y = 524 }
+
+			buttonType = {
+				name = "internationale_europe_button"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_asia_button"
+				position = { x = 90 y = 33 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_middle_east_button"
+				position = { x = 180 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_middle_east
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_africa_button"
+				position = { x = 270 y = 33 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_america_button"
+				position = { x = 360 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america
+				clicksound = click_default
+			}
+		} 
+
+		containerWindowType = {
+			name = "phalanstere_cooperation_button"
+			position = { x = 565 y = 595 }
+			scale = 0.9
+			buttonType = {
+				name = "get_unity_with_pp"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = get_unity_with_pp
+				clicksound = click_default
+				pdx_tooltip = get_unity_with_pp_tt
+			}
+			buttonType = {
+				name = "get_pp_from_bank"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = get_pp_from_bank
+				clicksound = click_default
+				pdx_tooltip = get_pp_from_bank_tt
+			}
+		}
+
+		containerWindowType = {
+			name = "internationale_intervention_detail_button"
+			position = { x = 565 y = 595 }
+			scale = 0.9
+
+			buttonType = {
+				name = "international_europe_western_show"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_western
+				clicksound = click_default
+				pdx_tooltip = international_europe_western_tt
+			}
+			buttonType = {
+				name = "international_europe_middle_show"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_middle
+				clicksound = click_default
+				pdx_tooltip = international_europe_middle_tt
+			}
+			buttonType = {
+				name = "international_europe_eastern_show"
+				position = { x = 275 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_eastern
+				clicksound = click_default
+				pdx_tooltip = international_europe_eastern_tt
+			}
+			buttonType = {
+				name = "international_europe_northern_show"
+				position = { x = 410 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_northern
+				clicksound = click_default
+				pdx_tooltip = international_europe_northern_tt
+			}
+
+			buttonType = {
+				name = "international_asia_eastern_show"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia_eastern
+				
+				clicksound = click_default
+				pdx_tooltip = international_asia_eastern_tt
+			}
+			buttonType = {
+				name = "international_asia_southern_show"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia_southern
+				
+				clicksound = click_default
+				pdx_tooltip = international_asia_southern_tt
+			}
+			buttonType = {
+				name = "international_asia_india_show"
+				position = { x = 275 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia_india
+				
+				clicksound = click_default
+				pdx_tooltip = international_asia_india_tt
+			}
+
+			buttonType = {
+				name = "international_me_iran_show"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_iran
+				
+				clicksound = click_default
+				pdx_tooltip = international_me_iran_tt
+			}
+			buttonType = {
+				name = "international_me_arab_show"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_arab
+				
+				clicksound = click_default
+				pdx_tooltip = international_me_arab_tt
+			}
+			buttonType = {
+				name = "international_me_ottoman_show"
+				position = { x = 275 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_ottoman
+				
+				clicksound = click_default
+				pdx_tooltip = international_me_ottoman_tt
+			}
+			buttonType = {
+				name = "international_me_egypt_show"
+				position = { x = 410 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_egypt
+				
+				clicksound = click_default
+				pdx_tooltip = international_me_egypt_tt
+			}
+
+			buttonType = {
+				name = "international_africa_western_show"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_western
+				
+				clicksound = click_default
+				pdx_tooltip = international_africa_western_tt
+			}
+			buttonType = {
+				name = "international_africa_eastern_show"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_eastern
+				
+				clicksound = click_default
+				pdx_tooltip = international_africa_eastern_tt
+			}
+			buttonType = {
+				name = "international_africa_middle_show"
+				position = { x = 275 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_middle
+				
+				clicksound = click_default
+				pdx_tooltip = international_africa_middle_tt
+			}
+			buttonType = {
+				name = "international_africa_southern_show"
+				position = { x = 410 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_southern
+				
+				clicksound = click_default
+				pdx_tooltip = international_africa_southern_tt
+			}
+
+			buttonType = {
+				name = "international_america_northern_show"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america_northern
+				
+				clicksound = click_default
+				pdx_tooltip = international_america_northern_tt
+			}
+			buttonType = {
+				name = "international_america_middle_show"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america_middle
+				
+				clicksound = click_default
+				pdx_tooltip = international_america_middle_tt
+			}
+			buttonType = {
+				name = "international_america_southern_show"
+				position = { x = 275 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america_southern
+				
+				clicksound = click_default
+				pdx_tooltip = international_america_southern_tt
+			}
+		}
+ 
+		containerWindowType = {
+			name = "iri_target_detail_window"
+			position = { x = 0 y = 0 }
+
+			instantTextboxType = { 
+				name = "intro_information"
+				position = { x = 20 y = 80 } 
+				font = "hoi_24header" 
+				text = iri_intro_information
+				maxWidth = 440
+				maxHeight = 200
+				fixedsize = yes 
+				format = centre  
+			}
+
+			containerWindowType = {
+				name = "iri_target_detail_window_flag"
+				position = { x = 480 y = 145 }
+				scale = 1.4
+
+				iconType = {
+					name = "country_flag"
+					quadTextureSprite ="GFX_flag_small2"
+					position = { x = 5 y = 5 }
+					Orientation = "UPPER_LEFT"
+					alwaystransparent = yes
+				}
+				iconType = {
+					name = "diplo_countrylist_flag_frame"
+					spriteType = "GFX_diplo_countrylist_flag_frame"
+					position = { x = 0 y = 0 } 
+					alwaystransparent = yes
+				}
+			}
+			instantTextboxType = {
+				name = "name"
+				position = { x = 310 y = 153 }
+				font = "hoi_18mbs" 
+				text = iri_targeted_name
+				format = right  
+				maxWidth = 170  
+				maxHeight = 40
+				fixedsize = yes
+			} 
+			
+			containerWindowType = {
+				name = "iri_detail_ideology_window"
+				position = { x = 200 y = 65 }
+				iconType = {
+					name = "iri_detail_ideology_reactionary"
+					quadTextureSprite = "GFX_iri_detail_ideology_reactionary"
+					frame = 0
+					position = { x = 0 y = 0 }          
+					pdx_tooltip = iri_detail_ideology                       
+				}
+				iconType = {
+					name = "iri_detail_ideology_democrat"
+					quadTextureSprite = "GFX_iri_detail_ideology_democrat"
+					frame = 0
+					position = { x = 0 y = 0 }
+					alwaystransparent = yes  
+				}
+				iconType = {
+					name = "iri_detail_ideology_socialist"
+					quadTextureSprite = "GFX_iri_detail_ideology_socialist"
+					frame = 0
+					position = { x = 0 y = 0 }
+					alwaystransparent = yes  
+				}	
+
+				iconType = {
+					name = "iri_detail_stability_positive"
+					quadTextureSprite = "GFX_iri_detail_stability_positive"
+					frame = 0
+					position = { x = 0 y = -40 }
+					pdx_tooltip = iri_detail_stability
+				}	 
+				iconType = {
+					name = "iri_detail_stability_negative"
+					quadTextureSprite = "GFX_iri_detail_stability_negative"
+					frame = 0
+					position = { x = 0 y = -40 }
+					alwaystransparent = yes
+				}  	
+
+				iconType = {
+					name = "iri_detail_revolution"
+					quadTextureSprite = "GFX_iri_detail_revolution"
+					frame = 0
+					position = { x = 0 y = 42 } 
+					pdx_tooltip = iri_detail_revolution
+				}	
+			}
+	
+			instantTextboxType = { 
+				name = "information"
+				position = { x = 20 y = 25 }
+				font = "hoi_16mbs"
+				text = iri_information
+				maxWidth = 169
+				maxHeight = 167 
+				format = left       
+				scrollbarType = "standardtext_slider"
+				fixedsize = no
+			}    
+		} 
+ 
+		containerWindowType = {
+			name = "phalanstere_button_list_window"
+			position = { x = 654 y = 140 }
+			instantTextboxType = {
+				name = "phalanstere_cooperation_detail"
+				format = left
+				position = { x = 0 y = -70 }
+				font = "hoi_24header"
+				text = phalanstere_cooperation_detail
+				maxWidth = 400
+				maxHeight = 100
+				alwaystransparent = yes
+			}
+			       
+			buttonType = {
+				name = "phalanstere_button_cooperation11"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation11
+                pdx_tooltip = phalanstere_button_cooperation11_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation12"
+				position = { x = 0 y = 40 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation12
+                pdx_tooltip = phalanstere_button_cooperation12_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation13"
+				position = { x = 0 y = 80 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation13
+                pdx_tooltip = phalanstere_button_cooperation13_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation14"
+				position = { x = 0 y = 120 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation14
+                pdx_tooltip = phalanstere_button_cooperation14_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation15"
+				position = { x = 0 y = 160 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation15
+                pdx_tooltip = phalanstere_button_cooperation15_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation16"
+				position = { x = 0 y = 200 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation16
+                pdx_tooltip = phalanstere_button_cooperation16_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation17"
+				position = { x = 0 y = 240 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation17
+                pdx_tooltip = phalanstere_button_cooperation17_tt
+				clicksound = click_default
+			}
+
+			buttonType = {
+				name = "phalanstere_button_cooperation21"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation21
+                pdx_tooltip = phalanstere_button_cooperation21_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation22"
+				position = { x = 135 y = 40 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation22
+                pdx_tooltip = phalanstere_button_cooperation22_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation23"
+				position = { x = 135 y = 80 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation23
+                pdx_tooltip = phalanstere_button_cooperation23_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation24"
+				position = { x = 135 y = 120 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation24
+                pdx_tooltip = phalanstere_button_cooperation24_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation25"
+				position = { x = 135 y = 160 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation25
+                pdx_tooltip = phalanstere_button_cooperation25_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation26"
+				position = { x = 135 y = 200 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation26
+                pdx_tooltip = phalanstere_button_cooperation26_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation27"
+				position = { x = 135 y = 240 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation27
+                pdx_tooltip = phalanstere_button_cooperation27_tt
+				clicksound = click_default
+			} 
+
+			buttonType = {
+				name = "phalanstere_button_cooperation31"
+				position = { x = 270 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation31
+                pdx_tooltip = phalanstere_button_cooperation31_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation32"
+				position = { x = 270 y = 40 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation32
+                pdx_tooltip = phalanstere_button_cooperation32_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation33"
+				position = { x = 270 y = 80 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation33
+                pdx_tooltip = phalanstere_button_cooperation33_tt
+				clicksound = click_default
+			}   
+			buttonType = { 
+				name = "phalanstere_button_cooperation34"
+				position = { x = 270 y = 120 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation34
+				pdx_tooltip = phalanstere_button_cooperation34_tt
+				clicksound = click_default 
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation35"
+				position = { x = 270 y = 160 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation35
+				pdx_tooltip = phalanstere_button_cooperation35_tt 
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation36"
+				position = { x = 270 y = 200 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation36
+				pdx_tooltip = phalanstere_button_cooperation36_tt 
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation37"
+				position = { x = 270 y = 240 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation37
+				pdx_tooltip = phalanstere_button_cooperation37_tt 
+				clicksound = click_default
+			}
+		}
+
+		containerWindowType = {
+			name = "phalanstere_ideology_window"
+			position = { x = 565 y = 460 }
+
+			iconType = {
+				name = "phalanstere_ideology_1"
+				spriteType = "GFX_phalanstere_ideology_1"
+				position = { x = 0 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_1_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_2"
+				spriteType = "GFX_phalanstere_ideology_2"
+				position = { x = 60 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_2_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_3"
+				spriteType = "GFX_phalanstere_ideology_3"
+				position = { x = 120 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_3_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_4"
+				spriteType = "GFX_phalanstere_ideology_4"
+				position = { x = 180 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_4_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_5"
+				spriteType = "GFX_phalanstere_ideology_5"
+				position = { x = 240 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_5_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_6"
+				spriteType = "GFX_phalanstere_ideology_6"
+				position = { x = 300 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_6_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_7"
+				spriteType = "GFX_phalanstere_ideology_7"
+				position = { x = 360 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_7_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_8"
+				spriteType = "GFX_phalanstere_ideology_8"
+				position = { x = 420 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_8_tt
+			}
+		}
+	}
+	containerWindowType = {
+		name = "international_chosen1"
+		position = { x = 560 y = 585 }
+		size = { width = 118 height = 40 }
+		
+		origo = upper_left
+		moveable = no
+		clipping = no
+		scale = 0.9
+		background = {
+			name = "international_chosen"
+			spriteType = "GFX_tiled_research_bg"
+			alwaystransparent = yes
+		}
+	}
+	containerWindowType = {
+		name = "international_chosen2"
+		position = { x = 682 y = 585 }
+		size = { width = 118 height = 40 }
+		
+		origo = upper_left
+		moveable = no
+		clipping = no
+		scale = 0.9
+		background = {
+			name = "international_chosen"
+			spriteType = "GFX_tiled_research_bg"
+			alwaystransparent = yes
+		}
+	}
+	containerWindowType = {
+		name = "international_chosen3"
+		position = { x = 808 y = 585 }
+		size = { width = 118 height = 40 }
+		
+		origo = upper_left
+		moveable = no
+		clipping = no
+		scale = 0.9
+		background = {
+			name = "international_chosen"
+			spriteType = "GFX_tiled_research_bg"
+			alwaystransparent = yes
+		}
+	}
+	containerWindowType = {
+		name = "international_chosen4"
+		position = { x = 930 y = 585 }
+		size = { width = 118 height = 40 }
+		
+		origo = upper_left
+		moveable = no
+		clipping = no
+		scale = 0.9
+		background = {
+			name = "international_chosen"
+			spriteType = "GFX_tiled_research_bg"
+			alwaystransparent = yes
+		}  
+	}
+	containerWindowType = { 
+		name = "iri_target_list_window"
+		position = { x = 560 y = 148 } 
+		size = { width = 90 height = 260 }
+		clipping = yes
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_no_frame_bg"
+		}
+
+		verticalScrollbar = "right_vertical_slider"
+		gridboxtype = {
+			name = iri_target_list
+			position = { x = -12 y = -10 }
+			size = { width = 440 height = 100% }
+			slotsize = { width = 440 height = 35 }
+			add_horizontal = no
+		}
+	}
+	containerWindowType = {
+		name = "iri_target_position"
+		size = { width = 90 height = 80 }
+		clipping = yes
+
+		iconType = {
+			name = "country_choose_button"
+			quadTextureSprite ="GFX_flag_small2"
+			position = { x = 20 y = 20 }
+			Orientation = "UPPER_LEFT"
+		}
+
+		buttonType = {
+			name = "diplo_countrylist_flag_frame_not_choose"
+			spriteType = "GFX_diplo_countrylist_flag_frame"
+			position = { x = 15 y = 15 }
+		}
+
+		buttonType = {
+			name = "diplo_countrylist_flag_frame_choose"
+			spriteType = "GFX_major_country_flag_overlay"
+			position = { x = 20 y = 20 }
+		}
+	}
+#其他国家的法伦施泰尔
+	containerWindowType = {
+		name = "internationale_other_button_window"
+		position = { x = -2 y = -120 }
+		size = { width = 80 height = 80 }
+		moveable = no
+		clipping = yes
+		background = { 
+			name = "background1"
+			quadTextureSprite= "GFX_tiled_paper_bg2"
+		}
+		background = { 
+			name = "background2"
+			quadTextureSprite= "GFX_tiled_research_bg"
+		} 
+		buttonType = {
+			name = "open_internation_button"
+			position = { x = 10 y = 7 }
+			scale = 1
+			spriteType = "GFX_idea_FRA_phalanstere"
+			clicksound = click_default
+			pdx_tooltip = open_cgf_and_csp_window_tt
+		}
+	}
+
+	containerWindowType = {
+		name = "internationale_other_window"
+		position = { x = 1000 y = 120 }
+		size = { width = 510 height = 150 } 
+		
+		moveable = yes
+		clipping = no
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_gui_internationale_other_bg"
+		}
+
+		instantTextboxType = {
+			name = "internationale_header_text"
+			position = { x = 184 y = 12 }
+			font = "hoi_36header"
+			text = internationale_header_text
+			maxWidth = 300
+			maxHeight = 40
+			format = centre
+		}
+
+		iconType = {
+			name = "internationale_people_icon"
+			position = { x = 14 y = 59 }
+			quadTextureSprite ="GFX_gui_internationale_button"
+			clicksound = click_default
+		}
+
+		instantTextboxType = {
+			name = "phalanstere_cooperation_detail"
+			format = left
+			position = { x = 195 y = 73 }
+			font = "hoi_24header"
+			text = phalanstere_cooperation_detail
+			maxWidth = 400
+			maxHeight = 100
+		}
+
+		iconType = {
+			name = "gui_unity_phalanstere"
+			quadTextureSprite = "GFX_unity_phalanstere"
+			frame = 0
+			position = { x = 499 y = 60 } 
+			pdx_tooltip = phalanstere_unity_detail
+		}	    
+
+		containerWindowType = {
+			name = "phalanstere_member_num_list"
+			position = { x = 110 y = 155 }
+
+			iconType = {
+				name = "totalist_icon"
+				quadTextureSprite = "GFX_goal_ideology_totalist"
+				position = { x = 0 y = 0 } 
+				scale = 0.7
+			}	 
+			iconType = {
+				name = "syndicalist_icon"
+				quadTextureSprite = "GFX_goal_ideology_syndicalist"
+				position = { x = 0 y = 85 } 
+				scale = 0.7
+			}	 
+			iconType = {
+				name = "radical_socialist_icon"
+				quadTextureSprite = "GFX_goal_ideology_radical_socialist"
+				position = { x = 0 y = 170 } 
+				scale = 0.7
+			}	 
+			instantTextboxType = {
+				name = "phalanstere_member_num1"
+				position = { x = 0 y = 55 }
+				font = "hoi_24header"
+				text = "[?global.phalanstere_totalist^num|.0]"
+				maxWidth = 60
+				maxHeight = 100
+				format = centre
+			}
+			instantTextboxType = {
+				name = "phalanstere_member_num2"
+				position = { x = 0 y = 145 }
+				font = "hoi_24header"
+				text = "[?global.phalanstere_syndicalist^num|.0]"
+				maxWidth = 60
+				maxHeight = 100
+				format = centre
+			}
+			instantTextboxType = {
+				name = "phalanstere_member_num3"
+				position = { x = 0 y = 230 }
+				font = "hoi_24header"
+				text = "[?global.phalanstere_radical_socialist^num|.0]"
+				maxWidth = 60
+				maxHeight = 100
+				format = centre
+			}
+		}
+
+		containerWindowType = {
+			name = "internationale_intervention_button"
+			position = { x = 100 y = 530 }
+
+			instantTextboxType = {
+				name = "internationale_show_influence"
+				format = center
+				position = { x = 45 y = -100 } 
+				font = "hoi_24header" 
+				text = internationale_show_influence
+				maxWidth = 400
+				maxHeight = 20
+			}
+			buttonType = {
+				name = "internationale_europe_button"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_asia_button"
+				position = { x = 90 y = 33 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_middle_east_button"
+				position = { x = 180 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_middle_east
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_africa_button"
+				position = { x = 270 y = 33 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "internationale_america_button"
+				position = { x = 360 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america
+				clicksound = click_default
+			}
+		}
+
+		containerWindowType = {
+			name = "phalanstere_cooperation_button"
+			position = { x = 100 y = 605 }
+			scale = 0.9
+			buttonType = {
+				name = "get_unity_with_pp"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = get_unity_with_pp
+				clicksound = click_default
+				pdx_tooltip = get_unity_with_pp_tt
+			}
+			buttonType = {
+				name = "get_pp_from_bank"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = get_pp_from_bank
+				clicksound = click_default
+				pdx_tooltip = get_pp_from_bank_tt
+			}
+		}
+
+		containerWindowType = {
+			name = "phalanstere_ideology_window"
+			position = { x = 98 y = 460 }
+
+			iconType = {
+				name = "phalanstere_ideology_1"
+				spriteType = "GFX_phalanstere_ideology_1"
+				position = { x = 0 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_1_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_2"
+				spriteType = "GFX_phalanstere_ideology_2"
+				position = { x = 60 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_2_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_3"
+				spriteType = "GFX_phalanstere_ideology_3"
+				position = { x = 120 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_3_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_4"
+				spriteType = "GFX_phalanstere_ideology_4"
+				position = { x = 180 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_4_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_5"
+				spriteType = "GFX_phalanstere_ideology_5"
+				position = { x = 240 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_5_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_6"
+				spriteType = "GFX_phalanstere_ideology_6"
+				position = { x = 300 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_6_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_7"
+				spriteType = "GFX_phalanstere_ideology_7"
+				position = { x = 360 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_7_tt
+			}
+			iconType = {
+				name = "phalanstere_ideology_8"
+				spriteType = "GFX_phalanstere_ideology_8"
+				position = { x = 420 y = 0 } 
+				pdx_tooltip = phalanstere_ideology_8_tt
+			}
+		}
+  
+		containerWindowType = {
+			name = "phalanstere_button_list_window"
+			position = { x = 190 y = 140 }
+			buttonType = {
+				name = "phalanstere_button_cooperation11"
+				position = { x = 0 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation11
+                pdx_tooltip = phalanstere_button_cooperation11_tt
+				clicksound = click_default
+			}
+			buttonType = { 
+				name = "phalanstere_button_cooperation12"
+				position = { x = 0 y = 40 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation12
+                pdx_tooltip = phalanstere_button_cooperation12_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation13"
+				position = { x = 0 y = 80 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation13
+                pdx_tooltip = phalanstere_button_cooperation13_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation14"
+				position = { x = 0 y = 120 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation14
+                pdx_tooltip = phalanstere_button_cooperation14_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation15"
+				position = { x = 0 y = 160 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation15
+                pdx_tooltip = phalanstere_button_cooperation15_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation16"
+				position = { x = 0 y = 200 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation16
+                pdx_tooltip = phalanstere_button_cooperation16_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation17"
+				position = { x = 0 y = 240 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation17
+                pdx_tooltip = phalanstere_button_cooperation17_tt
+				clicksound = click_default
+			}
+
+			buttonType = {
+				name = "phalanstere_button_cooperation21"
+				position = { x = 135 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation21
+                pdx_tooltip = phalanstere_button_cooperation21_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation22"
+				position = { x = 135 y = 40 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation22
+                pdx_tooltip = phalanstere_button_cooperation22_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation23"
+				position = { x = 135 y = 80 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation23
+                pdx_tooltip = phalanstere_button_cooperation23_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation24"
+				position = { x = 135 y = 120 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation24
+                pdx_tooltip = phalanstere_button_cooperation24_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation25"
+				position = { x = 135 y = 160 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation25
+                pdx_tooltip = phalanstere_button_cooperation25_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation26"
+				position = { x = 135 y = 200 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation26
+                pdx_tooltip = phalanstere_button_cooperation26_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation27"
+				position = { x = 135 y = 240 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation27
+                pdx_tooltip = phalanstere_button_cooperation27_tt
+				clicksound = click_default
+			}
+
+			buttonType = {
+				name = "phalanstere_button_cooperation31"
+				position = { x = 270 y = 0 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation31
+                pdx_tooltip = phalanstere_button_cooperation31_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation32"
+				position = { x = 270 y = 40 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation32
+                pdx_tooltip = phalanstere_button_cooperation32_tt
+				clicksound = click_default
+			} 
+			buttonType = {
+				name = "phalanstere_button_cooperation33"
+				position = { x = 270 y = 80 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation33
+                pdx_tooltip = phalanstere_button_cooperation33_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation34"
+				position = { x = 270 y = 120 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation34
+                pdx_tooltip = phalanstere_button_cooperation34_tt
+				clicksound = click_default
+				pdx_tooltip = phalanstere_button_cooperation34_tt
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation35"
+				position = { x = 270 y = 160 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation35
+                pdx_tooltip = phalanstere_button_cooperation35_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation36"
+				position = { x = 270 y = 200 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation36
+                pdx_tooltip = phalanstere_button_cooperation36_tt
+				clicksound = click_default
+			}
+			buttonType = {
+				name = "phalanstere_button_cooperation37"
+				position = { x = 270 y = 240 }
+				quadTextureSprite ="GFX_strategic_air_sort"
+				font = "hoi_16mbs"
+				text = phalanstere_button_cooperation37
+                pdx_tooltip = phalanstere_button_cooperation37_tt
+				clicksound = click_default
+			}
+		}
+	}
+###社会法案
+	containerWindowType = {
+		name = "socialbills_button_window"
+		position = { x = 400 y = 408 }
+		size = { width = 10 height = 55 }
+		origo = upper_left
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "background"
+			spriteType = "GFX_show_power_balance_button"
+		}
+
+		iconType = {
+			name = "bills_icon"
+			spriteType = "GFX_decision_ger_mefo_bills"
+			position = { x = 10 y = 5 }
+			scale = 1.5
+			pdx_tooltip = social_bills_number
+		}
+
+		buttonType = {
+			name = "socialbills_hidden_button"
+			position = { x = 75 y = 10 }
+			scale = 1.2
+			spriteType = "GFX_production_line_arrow_left"
+			clicksound = click_default
+			pdx_tooltip = hidden_social_bills
+		}
+		 
+		buttonType = {
+			name = "socialbills_show_button"
+			position = { x = 75 y = 10 }
+			scale = 1.2
+			spriteType = "GFX_production_line_arrow_right"
+			clicksound = click_default
+			pdx_tooltip = show_social_bills
+		}
+	}
+
+	containerWindowType = {
+		name = "socialbills_list_window"
+		position = { x = 538 y = 85 }
+		size = { width = 380 height = 700 }
+		origo = upper_left
+		moveable = yes
+		clipping = yes
+
+		fade_time = 300
+		fade_type = linear
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_window2_1b_border"
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite ="GFX_tiled_generic_overlay_bg1_small"				
+		}
+
+		containerWindowType = {
+			name = "socialbills_detail_window"
+			position = { x = 10 y = 30 }
+			size = { width = 362 height = 662 }
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+			verticalScrollbar = "right_vertical_slider"
+			gridboxtype = {
+				name = socialbills_context
+				position = { x = 10 y = 8 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 1 }
+				add_horizontal = no
+			}
+		}
+
+		iconType = {
+			name = "header_title"
+			spriteType = "GFX_category_header"
+			position = { x = 5 y = -6 }
+			Orientation = "upper_left"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "header_icon"
+			spriteType = "GFX_decision_category_ger_mefo_bills"
+			scale = 0.9
+			position = { x = 5 y = 0 }
+			Orientation = "upper_left"
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "socialbills_list_window_esc"
+			position = { x = 345 y = 0 }
+			spriteType = "GFX_closebutton"
+			clicksound = click_default
+			shortcut = "ESCAPE"
+		}
+
+		instantTextboxType = {
+			name = "title"
+			position = { x = 50 y = 3 }
+			font = "hoi_24header"
+			text = socialbills_desc
+			maxWidth = 300
+			maxHeight = 20
+			format = left 
+		}
+		
+	}
+
+	containerWindowType = {
+		name = "social_bill_window"
+		size = { width = 328 height = 80 }
+
+		clipping = yes
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_paper_w_frame_bg"
+		}
+
+		instantTextboxType = {
+			name = "bill_title"
+			position = { x = 16 y = 28 }
+			font = "hoi_24header"
+			text = bill_name
+			maxWidth = 300
+			maxHeight = 40
+			format = center
+			pdx_tooltip = bill_buff
+			pdx_tooltip_delayed = bill_delayed
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_research_bg"
+		}
+	}
+
+###切换PCSP和PCGF
+	containerWindowType = {
+		name = "country_leader_protrait_switch_window"
+		position = { x = 0 y = 0 }
+		size = { width = 10 height = 55 }
+		origo = upper_left
+		moveable = no
+		clipping = no
+
+		iconType = {
+			name = "leader_portrait"
+			position = { x = 18 y = 58 }
+			spriteType = "GFX_leader_unknown"
+			pdx_tooltip = CSP_PCSP_name_text_long
+			pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+		}
+		
+		iconType = {
+			name = "leader_name_bg"
+			spriteType = "GFX_pol_leader_frame"
+			position = { x = 10 y = 44 }		
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "leader_PCSP_name"
+			position = { x = 18 y = 262 }
+			font = "hoi_18mbs"
+			text = "[PCSP_leader_loc]"
+			maxWidth = 155
+			maxHeight = 36
+			format = center
+			vertical_alignment = center
+			alwaystransparent = yes
+		}
+	
+		buttonType = {
+			name = "leader_portrait_switch_button"
+			position = { x = 143 y = 233 }
+			spriteType = "GFX_change_template_button"
+			clicksound = click_default
+		}
+	}
+
+	containerWindowType = {
+		name = "country_leader_protrait_switch_diplo_window"
+		position = { x = 0 y = 110 }
+		size = { width = 10 height = 55 }
+		origo = upper_left
+		moveable = no
+		clipping = no
+
+		iconType = {
+			name = "leader_portrait"
+			position = { x = 20 y = 10 }
+			spriteType = "GFX_leader_unknown"
+			scale = 0.74
+			pdx_tooltip = CSP_PCSP_name_text_long
+			pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+		}
+
+		iconType = {
+			name = "diplo_leader_frame"
+			position = { x = 13 y = 0 }
+			spriteType = "GFX_diplo_leader_frame"
+			alwaystransparent = yes
+		}
+	
+		buttonType = {
+			name = "leader_portrait_switch_button"
+			position = { x = 105 y = 130 }
+			spriteType = "GFX_change_template_button"
+			clicksound = click_default
+		}
+	}
+###顶栏新按钮
+	containerWindowType = {
+		name = "economy_power_window"
+		position = { x = 1065 y = 5 }
+		size = { width = 70 height = 65 }
+		origo = upper_left
+		moveable = no
+		clipping = no
+		
+		iconType ={
+			name ="economy_power_window_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 0 y = 0 }
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = economy_power_gain_daily_tt    
+		}
+		iconType = {
+			name = "epicon"
+			spriteType = "GFX_economy_power_texticon"
+			position = { x = 2 y = 2 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="econ_power"
+			position = { x = 18 y = 2 }
+			font = "hoi_18mbs"
+			text = "[?economy_power|.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 50
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType = {
+			name = "add_ep_with_pp"
+			position = { x = 71 y = 2 }
+			quadTextureSprite ="GFX_boost_building_button"
+			clicksound = click_default
+			pdx_tooltip = add_ep_with_pp_tt
+		} 
+
+		iconType = {
+			name = "polpicon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = -45 y = -3 }
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "add_pp_with_ep"
+			position = { x = -23 y = 2 }
+			quadTextureSprite ="GFX_boost_building_button"
+			clicksound = click_default
+			pdx_tooltip = add_pp_with_ep_tt
+		} 
+
+		#政治
+		iconType ={
+			name = "politics_variable_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 95 y = 0 }
+			Orientation = "UPPER_LEFT" 
+		}
+		buttonType = {
+			name = "politics_variable_list_show"
+			position = { x = 165 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "politics_variable_list_hidden"
+			position = { x = 165 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+		#头标
+		iconType = {
+			name = "polcgfvscsp_icon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 98 y = -3 }
+			alwaystransparent = yes
+		} 
+
+		iconType = {
+			name = "polirieu_icon"
+			spriteType = "GFX_international_europe_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "polirias_icon"
+			spriteType = "GFX_international_asia_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "polirime_icon"
+			spriteType = "GFX_international_middle_east_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "poliriaf_icon"
+			spriteType = "GFX_international_africa_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "poliriam_icon"
+			spriteType = "GFX_international_america_texticon"
+			position = { x = 98 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		instantTextBoxType = {
+			name ="gui_politics_text"
+			position = { x = 111 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_politics]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		instantTextBoxType = {
+			name ="gui_politics_vote_text"
+			position = { x = 100 y = 2 }
+			font = "hoi_18mbs"
+			text = "[?agree_vote|.0G]/650"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		#社会
+		iconType ={
+			name = "society_influence_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 189 y = 0 }
+			Orientation = "UPPER_LEFT" 
+		}
+		buttonType = {
+			name = "society_influence_list_show"
+			position = { x = 259 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "society_influence_list_hidden"
+			position = { x = 259 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small" 
+		} 
+
+		#头标
+		#workers
+		iconType = {
+			name = "socw_icon"
+			spriteType = "GFX_pop_worker_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		}
+		#peasants
+		iconType = {
+			name = "socp_icon"
+			spriteType = "GFX_pop_peasant_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#merchants
+		iconType = {
+			name = "socm_icon"
+			spriteType = "GFX_pop_merchant_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#scholars
+		iconType = {
+			name = "socs_icon"
+			spriteType = "GFX_pop_scholar_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#bureaucrats
+		iconType = {
+			name = "socb_icon"
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#armys
+		iconType = {
+			name = "soca_icon"
+			spriteType = "GFX_pop_army_texticon"
+			position = { x = 192 y = 2 }
+			alwaystransparent = yes
+		} 
+		#popsatiftion
+		iconType = {
+			name = "socpops_icon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 192 y = -3 }
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name ="gui_society_text"
+			position = { x = 205 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_society]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		#经济
+		iconType ={
+			name = "economy_variable_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 283 y = 0 }
+			Orientation = "UPPER_LEFT"
+		}
+		buttonType = {
+			name = "economy_variable_list_show"
+			position = { x = 353 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "economy_variable_list_hidden"
+			position = { x = 353 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small" 
+		} 
+
+		#头标
+		iconType = {
+			name = "econv_icon"
+			spriteType = "GFX_economy_value_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econib_icon"
+			spriteType = "GFX_economy_industry_basic_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econip_icon"
+			spriteType = "GFX_economy_industry_process_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econia_icon"
+			spriteType = "GFX_economy_industry_arms_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econam_icon"
+			spriteType = "GFX_economy_agriculture_mechanized_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econae_icon"
+			spriteType = "GFX_economy_agriculture_chemical_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econaa_icon"
+			spriteType = "GFX_economy_agriculture_chain_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econq_icon"
+			spriteType = "GFX_economy_equal_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econl_icon"
+			spriteType = "GFX_economy_link_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "econi_icon"
+			spriteType = "GFX_economy_innovate_texticon"
+			position = { x = 286 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		instantTextBoxType = {
+			name ="gui_economy_text"
+			position = { x = 299 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_economy]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		instantTextBoxType = {
+			name ="gui_economy_focus_text"
+			position = { x = 288 y = 2 }
+			font = "hoi_18mbs"
+			text = "[?econfocus|G.0]/[?maxeconfocus|R.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		#军事
+		iconType ={
+			name = "army_reform_variable_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 377 y = 0 }
+			Orientation = "UPPER_LEFT"  
+		}
+		buttonType = {
+			name = "army_reform_variable_list_show"
+			position = { x = 447 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "army_reform_variable_list_hidden"
+			position = { x = 447 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+		#头标
+		iconType = {
+			name = "miliao_icon"
+			spriteType = "GFX_pop_officer_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "milian_icon"
+			spriteType = "GFX_pop_nco_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "milias_icon"
+			spriteType = "GFX_pop_soldier_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		iconType = {
+			name = "miliaa_icon"
+			spriteType = "GFX_army_autonomy_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliaw_icon"
+			spriteType = "GFX_army_willing_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliat_icon"
+			spriteType = "GFX_army_training_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliae_icon"
+			spriteType = "GFX_army_equipment_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+		iconType = {
+			name = "miliap_icon"
+			spriteType = "GFX_army_passionate_texticon"
+			position = { x = 380 y = 2 }
+			alwaystransparent = yes
+		} 
+
+		instantTextBoxType = {
+			name ="gui_military_text"
+			position = { x = 393 y = 2 }
+			font = "hoi_18mbs"
+			text = "[gui_military]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+	}
+
+		
+	###数值显示
+	#政治
+	containerWindowType = {
+		name = "politics_variable_list"
+		position = { x = 1150 y = 30 }
+		size = { width = 92 height = 240 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#cgf vs csp
+		buttonType ={
+			name = "cgfvscsp_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "cgfvscspicon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 12 y = 8 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="cgfvscsp_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?FCF_CGF_vs_CSP_value|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "cgfvscspicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+	
+		#议会
+		buttonType ={
+			name = "vote_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		instantTextBoxType = {
+			name ="vote_text"
+			position = { x = 14 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?agree_vote|.0G]/650"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "voteicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#国际
+		buttonType ={
+			name = "irieu_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 80 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "irieuicon"
+			spriteType = "GFX_international_europe_texticon"
+			position = { x = 12 y = 82 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="irieu_text"
+			position = { x = 24 y = 82 }
+			font = "hoi_18mbs"
+			text = "[?global.iri_eui|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "irieuicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 79 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "irias_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 110 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "iriasicon"
+			spriteType = "GFX_international_asia_texticon"
+			position = { x = 12 y = 112 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="irias_text"
+			position = { x = 24 y = 112 }
+			font = "hoi_18mbs"
+			text = "[?global.iri_asi|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "iriasicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 109 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "irime_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 140 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "irimeicon"
+			spriteType = "GFX_international_middle_east_texticon"
+			position = { x = 12 y = 142 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="irime_text"
+			position = { x = 24 y = 142 }
+			font = "hoi_18mbs"
+			text = "[?global.iri_mei|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "irimeicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 139 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "iriaf_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 170 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "iriaficon"
+			spriteType = "GFX_international_africa_texticon"
+			position = { x = 12 y = 172 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="iriaf_text"
+			position = { x = 24 y = 172 }
+			font = "hoi_18mbs"
+			text = "[?global.iri_afi|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "iriaficon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 169 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "iriam_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 200 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "iriamicon"
+			spriteType = "GFX_international_america_texticon"
+			position = { x = 12 y = 202 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="iriam_text"
+			position = { x = 24 y = 202 }
+			font = "hoi_18mbs"
+			text = "[?global.iri_ami|C.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "iriamicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 199 }
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+
+	#社会
+	containerWindowType = {
+		name = "society_influence_list"
+		position = { x = 1244 y = 30 }
+		size = { width = 92 height = 420 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#影响力
+		#workers
+		buttonType ={
+			name = "popw_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popwicon"
+			spriteType = "GFX_pop_worker_texticon"
+			position = { x = 12 y = 12 }
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name ="popw_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?pop_workers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popwicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#peasants
+		buttonType ={
+			name = "popp_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "poppicon"
+			spriteType = "GFX_pop_peasant_texticon"
+			position = { x = 12 y = 42 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popp_text"
+			position = { x = 24 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?pop_peasants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "poppicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#merchants
+		buttonType ={
+			name = "popm_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 70 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popmicon"
+			spriteType = "GFX_pop_merchant_texticon"
+			position = { x = 12 y = 72 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popm_text"
+			position = { x = 24 y = 72 }
+			font = "hoi_18mbs"
+			text = "[?pop_merchants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popmicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 69 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#scholars
+		buttonType ={
+			name = "pops_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 100 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsicon"
+			spriteType = "GFX_pop_scholar_texticon"
+			position = { x = 12 y = 102 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="pops_text"
+			position = { x = 24 y = 102 }
+			font = "hoi_18mbs"
+			text = "[?pop_scholars|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 99 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#bureaucrats
+		buttonType ={
+			name = "popb_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 130 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popbicon"
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			position = { x = 12 y = 132 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popb_text"
+			position = { x = 24 y = 132 }
+			font = "hoi_18mbs"
+			text = "[?pop_bureaucrats|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popbicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 129 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#armys
+		buttonType ={
+			name = "popa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 160 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popaicon"
+			spriteType = "GFX_pop_army_texticon"
+			position = { x = 12 y = 162 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popa_text"
+			position = { x = 24 y = 162 }
+			font = "hoi_18mbs"
+			text = "[?pop_army|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 159 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+
+		#满意度
+		buttonType ={
+			name = "popsall_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 200 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsallicon"
+			spriteType = "GFX_pol_power_icon"
+			position = { x = 10 y = 198 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsall_text"
+			position = { x = 24 y = 202 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsallicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 199 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#workers
+		buttonType ={
+			name = "popsw_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 230 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popswicon"
+			spriteType = "GFX_pop_worker_texticon"
+			position = { x = 12 y = 232 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsw_text"
+			position = { x = 24 y = 232 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_workers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popswicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 229 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#peasants
+		buttonType ={
+			name = "popsp_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 260 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popspicon"
+			spriteType = "GFX_pop_peasant_texticon"
+			position = { x = 12 y = 262 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsp_text"
+			position = { x = 24 y = 262 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_peasants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popspicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 259 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#merchants
+		buttonType ={
+			name = "popsm_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 290 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsmicon"
+			spriteType = "GFX_pop_merchant_texticon"
+			position = { x = 12 y = 292 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsm_text"
+			position = { x = 24 y = 292 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_merchants|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsmicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 289 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#scholars
+		buttonType ={
+			name = "popss_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 320 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popssicon"
+			spriteType = "GFX_pop_scholar_texticon"
+			position = { x = 12 y = 322 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popss_text"
+			position = { x = 24 y = 322 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_scholars|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popssicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 319 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#bureaucrats
+		buttonType ={
+			name = "popsb_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 350 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsbicon"
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			position = { x = 12 y = 352 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsb_text"
+			position = { x = 24 y = 352 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_bureaucrats|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsbicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 349 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#armys
+		buttonType ={
+			name = "popsa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 380 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popsaicon"
+			spriteType = "GFX_pop_army_texticon"
+			position = { x = 12 y = 382 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popsa_text"
+			position = { x = 24 y = 382 }
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_army|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popsaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 379 }
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+
+	#经济
+	containerWindowType = {
+		name = "economy_variable_list"
+		position = { x = 1338 y = 30 }
+		size = { width = 92 height = 360 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#经济指标
+		#ev
+		buttonType ={
+			name = "ev_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "evicon"
+			spriteType = "GFX_economy_value_texticon"
+			position = { x = 12 y = 12 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ev_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?cof_economy_values|.1+=]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "evicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eib
+		buttonType ={
+			name = "eib_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eibicon"
+			spriteType = "GFX_economy_industry_basic_texticon"
+			position = { x = 12 y = 42 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eib_text"
+			position = { x = 24 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?economy_industry_basic|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eibicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eip
+		buttonType ={
+			name = "eip_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 70 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eipicon"
+			spriteType = "GFX_economy_industry_process_texticon"
+			position = { x = 12 y = 72 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eip_text"
+			position = { x = 24 y = 72 }
+			font = "hoi_18mbs"
+			text = "[?economy_industry_process|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eipicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 69 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eia
+		buttonType ={
+			name = "eia_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 100 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eiaicon"
+			spriteType = "GFX_economy_industry_arms_texticon"
+			position = { x = 12 y = 102 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eia_text"
+			position = { x = 24 y = 102 }
+			font = "hoi_18mbs"
+			text = "[?economy_industry_arms|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eiaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 99 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eam
+		buttonType ={
+			name = "eam_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 130 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eamicon"
+			spriteType = "GFX_economy_agriculture_mechanized_texticon"
+			position = { x = 12 y = 132 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eam_text"
+			position = { x = 24 y = 132 }
+			font = "hoi_18mbs"
+			text = "[?economy_agriculture_mechanized|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eamicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 129 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eae
+		buttonType ={
+			name = "eae_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 160 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eaeicon"
+			spriteType = "GFX_economy_agriculture_chemical_texticon"
+			position = { x = 12 y = 162 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eae_text"
+			position = { x = 24 y = 162 }
+			font = "hoi_18mbs"
+			text = "[?economy_agriculture_chemical|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eaeicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 159 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eaa
+		buttonType ={
+			name = "eaa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 190 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eaaicon"
+			spriteType = "GFX_economy_agriculture_chain_texticon"
+			position = { x = 12 y = 192 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eaa_text"
+			position = { x = 24 y = 192 }
+			font = "hoi_18mbs"
+			text = "[?economy_agriculture_chain|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eaaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 189 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#eq
+		buttonType ={
+			name = "eq_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 220 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eqicon"
+			spriteType = "GFX_economy_equal_texticon"
+			position = { x = 12 y = 222 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="eq_text"
+			position = { x = 24 y = 222 }
+			font = "hoi_18mbs"
+			text = "[?economy_equal|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eqicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 219 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#el
+		buttonType ={
+			name = "el_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 250 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "elicon"
+			spriteType = "GFX_economy_link_texticon"
+			position = { x = 12 y = 252 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="el_text"
+			position = { x = 24 y = 252 }
+			font = "hoi_18mbs"
+			text = "[?economy_link|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "elicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 249 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#ei
+		buttonType ={
+			name = "ei_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 280 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "eiicon"
+			spriteType = "GFX_economy_innovate_texticon"
+			position = { x = 12 y = 282 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ei_text"
+			position = { x = 24 y = 282 }
+			font = "hoi_18mbs"
+			text = "[?economy_innovate|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "eiicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 279 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "econfocus_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 320 }
+			Orientation = "UPPER_LEFT" 
+		}
+		instantTextBoxType = {
+			name ="econfocus_text"
+			position = { x = 14 y = 322 }
+			font = "hoi_18mbs"
+			text = "[?econfocus|G.0]/[?maxeconfocus|R.0]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "econfocusicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 319 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	}
+
+	#军事
+	containerWindowType = {
+		name = "army_reform_variable_list"
+		position = { x = 1434 y = 30 }
+		size = { width = 92 height = 270 }
+		
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+		#军事数值
+		buttonType ={
+			name = "aa_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 10 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "aaicon"
+			spriteType = "GFX_army_autonomy_texticon"
+			position = { x = 12 y = 12 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="aa_text"
+			position = { x = 24 y = 12 }
+			font = "hoi_18mbs"
+			text = "[?FCF_army_autonomy|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "aaicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 9 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "aw_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 40 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "awicon"
+			spriteType = "GFX_army_willing_texticon"
+			position = { x = 12 y = 42 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="aw_text"
+			position = { x = 24 y = 42 }
+			font = "hoi_18mbs"
+			text = "[?FCF_army_willing|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "awicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 39 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "at_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 70 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "aticon"
+			spriteType = "GFX_army_training_texticon"
+			position = { x = 12 y = 72 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="at_text"
+			position = { x = 24 y = 72 }
+			font = "hoi_18mbs"
+			text = "[?FCF_army_training|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "aticon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 69 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "ae_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 100 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "aeicon"
+			spriteType = "GFX_army_equipment_texticon"
+			position = { x = 12 y = 102 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ae_text"
+			position = { x = 24 y = 102 }
+			font = "hoi_18mbs"
+			text = "[?FCF_army_equipment|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "aeicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 99 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType ={
+			name = "ap_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 130 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "apicon"
+			spriteType = "GFX_army_passionate_texticon"
+			position = { x = 12 y = 132 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="ap_text"
+			position = { x = 24 y = 132 }
+			font = "hoi_18mbs"
+			text = "[?FCF_army_passionate|Y.1]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "apicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 129 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#officers
+		buttonType ={
+			name = "popao_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 170 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popaoicon"
+			spriteType = "GFX_pop_officer_texticon"
+			position = { x = 12 y = 172 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popao_text"
+			position = { x = 24 y = 172 }
+			font = "hoi_18mbs"
+			text = "[?pop_army_officers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popaoicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 169 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#ncos
+		buttonType ={
+			name = "popan_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 200 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popanicon"
+			spriteType = "GFX_pop_nco_texticon"
+			position = { x = 12 y = 202 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popan_text"
+			position = { x = 24 y = 202 }
+			font = "hoi_18mbs"
+			text = "[?pop_army_ncos|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popanicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 199 }
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		#soldiers
+		buttonType ={
+			name = "popas_bg"
+			spriteType = "GFX_generic_box_smallest"
+			position = { x = 10 y = 230 }
+			Orientation = "UPPER_LEFT" 
+		}
+		iconType = {
+			name = "popasicon"
+			spriteType = "GFX_pop_soldier_texticon"
+			position = { x = 12 y = 232 }
+			alwaystransparent = yes
+		} 
+		instantTextBoxType = {
+			name ="popas_text"
+			position = { x = 24 y = 232 }
+			font = "hoi_18mbs"
+			text = "[?pop_army_soldiers|Y.1%%]"
+			alwaystransparent = yes
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "popasicon_chosen"
+			spriteType = "GFX_BoP_left_texticon"
+			position = { x = 70 y = 249 }
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+###地块
+	containerWindowType = {
+		name = "state_situation_window"
+		position = { x = 420 y = -50 }
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "state_bg"
+			quadTextureSprite = "GFX_state_situation_window"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "selected_state_flag"
+			spriteType = "GFX_state_1_flag"
+			position = { x = 250 y = 210 }
+		}
+		containerWindowType = {
+			name = "state_strategy_context_window"
+			position = { x = 40 y = 215 }
+			size = { width = 215 height = 340 }
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+			verticalScrollbar = "right_vertical_slider"
+			gridboxtype = {
+				name = state_strategy_context
+				position = { x = 5 y = 0 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 1 }
+				add_horizontal = no
+			}
+		}
+
+		instantTextboxType = { 
+			name = "state_information"
+			position = { x = 55 y = 55 }
+			font = "hoi_16mbs"
+			text = state_information
+			maxWidth = 169
+			maxHeight = 150
+			format = left       
+			scrollbarType = "standardtext_slider"
+			fixedsize = no 
+		}    
+		instantTextboxType = { 
+			name = "local_information"
+			position = { x = 245 y = 55 } 
+			font = "hoi_18mbs"
+			text = local_information 
+			maxWidth = 90
+			maxHeight = 150
+			format = left       
+			fixedsize = no
+		}   
+	} 
+	containerWindowType = {
+		name = "state_strategy_container"
+		size = { width = 200 height = 85 }
+		clipping = bi
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_state_strategy_container"
+		}
+		instantTextboxType = {
+			name = "state_strategy_title"
+			position = { x = 10 y = 25 } 
+			font = "hoi_24header"
+			text = state_strategy_name
+			maxWidth = 170
+			maxHeight = 100
+			format = centre
+			pdx_tooltip = state_strategy_modifier
+		}
+	}
+
+	containerWindowType = {
+		name = "economy_factory_switch_button_window"
+		position = { x = 23 y = -290 }
+		orientation = lower_left
+		moveable = no
+
+		buttonType = {
+			name = "economy_factory_switch_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = monopolization 
+			clicksound = click_default
+			pdx_tooltip = monopolization_tt
+		}
+	} 
+
+	containerWindowType = {
+		name = "red_black_market_window"
+		position = { x = 23 y = -290 }
+		orientation = lower_left
+		moveable = no
+
+		buttonType = { 
+			name = "propoganda_button"
+			position = { x = 0 y = -10 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = rbm_propoganda 
+			clicksound = click_default
+			pdx_tooltip = rbm_propoganda_tt
+		}
+
+		buttonType = {
+			name = "strike_button" 
+			position = { x = 0 y = 25 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = rbm_strike 
+			clicksound = click_default
+			pdx_tooltip = rbm_strike_tt 
+		}
+   
+		buttonType = {
+			name = "expansions_button"
+			position = { x = 0 y = 60 }
+			quadTextureSprite ="GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = rbm_expansions
+			clicksound = click_default
+			pdx_tooltip = rbm_expansions_tt
+		}
+	}
+}

@@ -8,18 +8,12 @@ FRA_phalanstere_category = {
 	priority = 10         
 	allowed = { NOT = { tag = FRA } }
 	visible = { 
-		OR = {
-			AND = {
-				has_socialist_government = yes
-				is_in_economic_sphere = no
-				INT = {
-					is_economic_sphere_leader = yes
-					NOT = { has_war_with = ROOT }
-				}
-			}
-			FRA_is_phalanstere_member = yes 
+		has_socialist_government = yes
+		is_in_economic_sphere = no
+		INT = {
+			is_economic_sphere_leader = yes
+			NOT = { has_war_with = ROOT }
 		}
 	}
-	visible_when_empty = yes 
 }
 

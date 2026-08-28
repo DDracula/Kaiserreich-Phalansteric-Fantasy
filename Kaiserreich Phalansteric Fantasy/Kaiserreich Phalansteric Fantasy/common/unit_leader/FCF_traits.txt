@@ -1,0 +1,42 @@
+leader_traits = {
+	FCF_limit_promotions_trait = {
+		type = { land navy }
+		trait_type = personality_trait
+		new_commander_weight = {
+			factor = 0
+		}
+		modifier = {
+			experience_gain_factor = -0.25
+			promote_cost_factor = 10
+		}
+	}
+
+	###非新增
+	militias_officer = {
+		type = corps_commander
+		trait_type = personality_trait
+		unit_type = {
+			type = militia
+		}
+		unit_trigger = {
+			division_has_majority_template = militia
+			owner = {
+				NOT = {
+					has_idea = best_of_the_best_spirit
+					has_idea = academy_scholarships_spirit
+				}
+			}
+		}
+		modifier = {
+			modifier_army_sub_unit_militia_defence_factor = 0.05
+			modifier_army_sub_unit_militia_speed_factor = 0.05
+			modifier_army_sub_unit_militia_max_org_factor = 0.05
+			out_of_supply_factor = -0.1
+		}
+		new_commander_weight = {
+			base = 0
+		}
+		defense_skill_factor = 1
+		planning_skill_factor = 1
+	}
+}

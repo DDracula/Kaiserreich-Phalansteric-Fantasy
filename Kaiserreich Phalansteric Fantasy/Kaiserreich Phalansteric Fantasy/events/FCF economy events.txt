@@ -1,630 +1,530 @@
-add_namespace = cofeconomy
+add_namespace = fcf_economy_event
 
 country_event = {
-	id = cofeconomy.1
-	title = cofeconomy.1.title
-	desc = cofeconomy.1.desc
-	picture = GFX_report_event_generic_diplomacy1
+	id = fcf_economy_event.1
+	title = fcf_economy_event.1.title
+	desc = fcf_economy_event.1.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.1.a
+		name = fcf_economy_event.1.a
 		ai_chance = { base = 100 }
-		add_political_power = 150
-		complete_national_focus = FRA_first_five_years_plan
 
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { evc = -5 }
-		set_temp_variable = { eibc = -5 }
-		set_temp_variable = { eipc = -2.5 }
-		set_temp_variable = { eiac = -2.5 }
-		set_temp_variable = { eamc = -2.5 }
-		set_temp_variable = { eaec = -2.5 }
-		set_temp_variable = { eaac = -2.5 }
-		set_temp_variable = { eqc = -2.5 }
-		set_temp_variable = { elc = -2.5 }
-		set_temp_variable = { eic = -2.5 }
-		cof_econ_target_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.2
-	title = cofeconomy.2.title
-	desc = cofeconomy.2.desc
-	picture = GFX_report_event_ARG_car51
+	id = fcf_economy_event.2
+	title = fcf_economy_event.2.title
+	desc = fcf_economy_event.2.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.2.a
+		name = fcf_economy_event.2.a
 		ai_chance = { base = 100 }
 		add_political_power = -50
-		add_ideas = Cof_anti_cgt_record
-
-		hidden_effect = { 
-			country_event = { id = cofeconomy.12 days = 60 random_days = 15 } 
-			country_event = { id = cofeconomy.13 days = 45 random_days = 15 } 
-		}
-	}	
-	option = {
-		name = cofeconomy.2.b
-		ai_chance = { base = 0 }
-		add_political_power = -50
-		add_ideas = Cof_anti_cgt_record
-		country_event = cofeconomy.3
-
-		hidden_effect = { 
-			country_event = { id = cofeconomy.12 days = 60 random_days = 15 } 
-			country_event = { id = cofeconomy.13 days = 45 random_days = 15 } 
-		}
+		add_ideas = FCF_anti_cgt_record
+		hidden_effect = { country_event = { id = fcf_economy_event.3 days = 90 } }
 	}	
 }
 
 country_event = {
-	id = cofeconomy.3
-	title = cofeconomy.3.title
-	desc = cofeconomy.3.desc
-	picture = GFX_report_event_ARG_car22
+	id = fcf_economy_event.3
+	title = fcf_economy_event.3.title
+	desc = fcf_economy_event.3.desc
+	
+	trigger = { NOT = { has_completed_focus = FCF_cgt_issues } }
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.3.a
-		country_event = cofeconomy.4
-	}	
-}
-
-country_event = {
-	id = cofeconomy.4
-	title = cofeconomy.4.title
-	desc = cofeconomy.4.desc
-	picture = GFX_report_event_ARG_car22
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.4.a
-		country_event = cofeconomy.5
-	}	
-}
-
-country_event = {
-	id = cofeconomy.5
-	title = cofeconomy.5.title
-	desc = cofeconomy.5.desc
-	picture = GFX_report_event_ARG_car22
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.5.a
-	}	
-}
-
-country_event = {
-	id = cofeconomy.6
-	title = cofeconomy.6.title
-	desc = cofeconomy.6.desc
-	picture = GFX_report_event_ARG_bla1
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.6.a
-		ai_chance = { base = 50 }
-		hidden_effect = { country_event = { id = cofeconomy.7 days = 15 random_days = 15 } }
-	}	
-	option = {
-		name = cofeconomy.6.b
-		ai_chance = { base = 50 }
-		hidden_effect = { country_event = { id = cofeconomy.7 days = 15 random_days = 15 } }
-	}	
-}
-
-country_event = {
-	id = cofeconomy.7
-	title = cofeconomy.7.title
-	desc = cofeconomy.7.desc
-	picture = GFX_report_event_ARG_bla1
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.7.a
-		ai_chance = { base = 50 }
-		hidden_effect = { country_event = { id = cofeconomy.8 days = 15 random_days = 15 } }
-	}	
-	option = {
-		name = cofeconomy.7.b
-		ai_chance = { base = 50 }
-		hidden_effect = { country_event = { id = cofeconomy.8 days = 15 random_days = 15 } }
-	}	
-}
-
-country_event = {
-	id = cofeconomy.8
-	title = cofeconomy.8.title 
-	desc = cofeconomy.8.desc
-	picture = GFX_report_event_ARG_bla1
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.8.a
-		ai_chance = { base = 50 }
-		hidden_effect = { country_event = { id = cofeconomy.9 days = 15 random_days = 15 } }
-	}	
-	option = {
-		name = cofeconomy.8.b
-		ai_chance = { base = 50 }
-		hidden_effect = { country_event = { id = cofeconomy.9 days = 15 random_days = 15 } }
-	}	
-}
-
-country_event = {
-	id = cofeconomy.9
-	title = cofeconomy.9.title 
-	desc = cofeconomy.9.desc
-	picture = GFX_report_event_ARG_bla1
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.9.a
-		ai_chance = { base = 50 }
-	}	
-	option = {
-		name = cofeconomy.9.b
-		ai_chance = { base = 50 }
-	}
-}
-
-country_event = {
-	id = cofeconomy.10
-	title = cofeconomy.10.title 
-	desc = cofeconomy.10.desc
-	picture = GFX_report_event_ARG_bla1
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.10.a
-		ai_chance = { base = 50 }
-		add_stability = -0.05
-		add_political_power = -25
-		if = {
-			limit = { has_idea = Cof_anti_cgt_record_waiting }
-			swap_ideas = {
-				remove_idea = Cof_anti_cgt_record_waiting
-				add_idea = Cof_anti_cgt_record_expand
-			}
-		}
-		else = {
-			swap_ideas = {
-				remove_idea = Cof_anti_cgt_record
-				add_idea = Cof_anti_cgt_record_expand
-			}
-		}
-		
-	}	
-}
-
-country_event = {
-	id = cofeconomy.11
-	title = cofeconomy.11.title 
-	desc = cofeconomy.11.desc
-	picture = GFX_report_event_ARG_bla1
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.11.a
-		ai_chance = { base = 50 }
-		add_stability = -0.05
-		add_political_power = -25
-		if = {
-			limit = { has_idea = Cof_anti_cgt_record_waiting }
-			swap_ideas = {
-				remove_idea = Cof_anti_cgt_record_waiting
-				add_idea = Cof_anti_cgt_record_weaken
-			}
-		}
-		else = {
-			swap_ideas = {
-				remove_idea = Cof_anti_cgt_record
-				add_idea = Cof_anti_cgt_record_weaken
-			}
-		}
-
-		hidden_effect = { country_event = { id = cofeconomy.17 days = 30 random_days = 30 } }
-	}	
-}
-
-country_event = {
-	id = cofeconomy.12
-	title = cofeconomy.12.title 
-	desc = cofeconomy.12.desc
-	picture = GFX_report_event_ARG_bla1
-	trigger = {
-		has_idea = Cof_anti_cgt_record
-		OR = {
-			NOT = { has_completed_focus = FRA_expand_CGT }
-			NOT = { has_completed_focus = FRA_weaken_CGT }
-		}
-	}
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.12.a
-		ai_chance = { base = 50 }
-		add_stability = -0.1
-		add_political_power = -50
+		name = fcf_economy_event.3.a
 		swap_ideas = {
-			remove_idea = Cof_anti_cgt_record
-			add_idea = Cof_anti_cgt_record_waiting
+			remove_idea = FCF_anti_cgt_record
+			add_idea = FCF_anti_cgt_record_waiting
 		}
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { change_num = -5 }
+		cgf_seat_change_in_gov = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.13
-	title = cofeconomy.13.title 
-	desc = cofeconomy.13.desc
-	picture = GFX_report_event_ARG_bla1
+	id = fcf_economy_event.4
+	title = fcf_economy_event.4.title
+	desc = fcf_economy_event.4.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.13.a
-		ai_chance = { base = 50 }
-		set_country_flag = economy_reform_start
-		add_ideas = Cof_call_for_economic_reform0
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { evc = -5 }
-		set_temp_variable = { eibc = -5 }
-		set_temp_variable = { eipc = 0 }
-		set_temp_variable = { eiac = 0 }
-		set_temp_variable = { eamc = 0 }
-		set_temp_variable = { eaec = 0 }
-		set_temp_variable = { eaac = 0 }
-		set_temp_variable = { eqc = -2.5 }
-		set_temp_variable = { elc = 0 }
-		set_temp_variable = { eic = 0 }
-		cof_econ_target_change = yes
-	}	
-}
-
-country_event = {
-	id = cofeconomy.14
-	title = cofeconomy.14.title 
-	desc = cofeconomy.14.desc
-	picture = GFX_report_event_AST_deportation
-	is_triggered_only = yes
-	option = {
-		name = cofeconomy.14.a
-		ai_chance = { base = 50 }
-		add_stability = -0.05
-		add_ideas = Cof_supply_chain_crisis1
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { evc = -10 }
-		set_temp_variable = { eibc = -5 }
-		set_temp_variable = { eipc = 0 }
-		set_temp_variable = { eiac = 0 }
-		set_temp_variable = { eamc = 0 }
-		set_temp_variable = { eaec = -2.5 }
-		set_temp_variable = { eaac = -2.5 }
-		set_temp_variable = { eqc = 0 }
-		set_temp_variable = { elc = -2.5 }
-		set_temp_variable = { eic = 0 }
-		cof_econ_target_change = yes
-	}	
-}
-
-country_event = {
-	id = cofeconomy.15
-	title = cofeconomy.15.title 
-	desc = cofeconomy.15.desc
-	picture = GFX_report_event_AST_deportation
-	is_triggered_only = yes
-	after = { hidden_effect = { FRA = { country_event = { id = cofintern.0 hours = 12 random_hours = 12 } } } }
-	option = {
-		name = cofeconomy.15.a
-		ai_chance = { 
-			base = 40
-			modifier = {
-				add = 20
-				has_soclib_or_socdem_government = yes
-			}
-			modifier = {
-				add = 20
-				has_stability < 0.1
-			}
-			modifier = {
-				add = -20
-				has_conservative_government = yes
-			}
+		name = fcf_economy_event.4.a
+		add_to_variable = {
+			economy_power = -50
+			tooltip = economy_power_change_tt
 		}
-		set_country_flag = Cof_dip_receive
-		add_timed_idea = { idea = Cof_deal_with_devil days = 180 }
-		every_other_country = {
-			limit = { 
-				is_subject_of = PREV 
-				OR = {
-					naval_base > 0
-					capital_scope = { is_on_continent = europe }
+		add_to_variable = { CGT_confidence = -1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seatc_CNS = 1 }
+		set_temp_variable = { seatc_PSF = 0 }
+		set_temp_variable = { seatc_POU = 0 }
+		set_temp_variable = { seatc_CGT = -6 }
+		set_temp_variable = { seatc_PCOP = 0 }
+		set_temp_variable = { seatc_UA = 0 }
+		set_temp_variable = { seatc_URSRS = 0 }
+		set_temp_variable = { seatc_LJR = 5 }
+		set_temp_variable = { seatc_PAPF = 0 }
+		set_temp_variable = { seatc_ETC = 0 }
+		cgf_seat_change = yes
+
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = LJR_in_gov }
+				random = {
+					chance = 50
+					country_event = { id = fcf_economy_event.5 days = 40 random_days = 20 }
 				}
 			}
-			add_timed_idea = { idea = Cof_deal_with_devil days = 180 }
 		}
 	}	
-	option = { 
-		name = cofeconomy.15.b
-		ai_chance = { 
-			base = 60
-			modifier = {
-				factor = 0
-				has_stability < 0
-			}
-			modifier = {
-				add = -20
-				has_soclib_or_socdem_government = yes
-			}
-			modifier = {
-				add = -20
-				has_stability < 0.1
-			}
-			modifier = {
-				add = 20
-				has_conservative_government = yes
-			}
-		}
-	}
-}
-
-country_event = {
-	id = cofeconomy.16
-	title = cofeconomy.16.title 
-	desc = cofeconomy.16.desc
-	picture = GFX_report_event_AST_deportation
-	is_triggered_only = yes
-	after = { hidden_effect = { FRA = { country_event = { id = cofintern.0 hours = 12 random_hours = 12 } } } }
 	option = {
-		name = cofeconomy.16.a
-		ai_chance = { 
-			base = 60
-			modifier = {
-				add = -20
-				has_government = totalist
+		name = fcf_economy_event.4.b
+		add_to_variable = {
+			economy_power = -50
+			tooltip = economy_power_change_tt
+		}
+		add_to_variable = { CGT_confidence = -1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seatc_CNS = 0 }
+		set_temp_variable = { seatc_PSF = 0 }
+		set_temp_variable = { seatc_POU = 0 }
+		set_temp_variable = { seatc_CGT = -6 }
+		set_temp_variable = { seatc_PCOP = 0 }
+		set_temp_variable = { seatc_UA = 6 }
+		set_temp_variable = { seatc_URSRS = 0 }
+		set_temp_variable = { seatc_LJR = 0 }
+		set_temp_variable = { seatc_PAPF = 0 }
+		set_temp_variable = { seatc_ETC = 0 }
+		cgf_seat_change = yes
+
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = UA_in_gov }
+				random = {
+					chance = 50
+					country_event = { id = fcf_economy_event.5 days = 40 random_days = 20 }
+				}
 			}
 		}
-		set_country_flag = Cof_dip_receive
-		add_timed_idea = { idea = Cof_red_economic_circle days = 360 }
 	}	
-	option = { 
-		name = cofeconomy.16.b
-		ai_chance = { 
-			base = 40
-			modifier = {
-				add = 20
-				has_government = totalist
-			}
+	option = {
+		name = fcf_economy_event.4.c
+		add_to_variable = {
+			economy_power = -100
+			tooltip = economy_power_change_tt
 		}
-		add_political_power = 50
-	}
+		add_to_variable = { CGT_confidence = -2 }
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seatc_CNS = 1 }
+		set_temp_variable = { seatc_PSF = 0 }
+		set_temp_variable = { seatc_POU = 1 }
+		set_temp_variable = { seatc_CGT = -10 }
+		set_temp_variable = { seatc_PCOP = 0 }
+		set_temp_variable = { seatc_UA = 4 }
+		set_temp_variable = { seatc_URSRS = 0 }
+		set_temp_variable = { seatc_LJR = 4 }
+		set_temp_variable = { seatc_PAPF = 0 }
+		set_temp_variable = { seatc_ETC = 0 }
+		cgf_seat_change = yes
+	}	
 }
 
 country_event = {
-	id = cofeconomy.17
-	title = cofeconomy.17.title 
-	desc = cofeconomy.17.desc
-	picture = GFX_report_event_generic_economic_policy
-	trigger = { NOT = { has_completed_focus = FRA_dont_be_afraid_of_losing_job } }
+	id = fcf_economy_event.5
+	title = fcf_economy_event.5.title
+	desc = fcf_economy_event.5.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.17.a
-		add_ideas = Cof_losing_job_panic 
+		name = fcf_economy_event.5.a
+		add_stability = -0.05
+
+		add_to_variable = { CGT_confidence = 2 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { change_num = -2 }
+		cgf_seat_change_in_gov = yes
 	}	
+	option = {
+		name = fcf_economy_event.5.b
+		add_political_power = -30
+
+		add_to_variable = { CGT_confidence = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seatc_CNS = 0 }
+		set_temp_variable = { seatc_PSF = 0 }
+		set_temp_variable = { seatc_POU = 0 }
+		set_temp_variable = { seatc_CGT = 7 }
+		set_temp_variable = { seatc_PCOP = 0 }
+		if = {
+			limit = { has_country_flag = UA_is_gov }
+			set_temp_variable = { seatc_UA = -7 }
+		}
+		else = { set_temp_variable = { seatc_UA = 0 } }
+		set_temp_variable = { seatc_URSRS = 0 }
+		if = {
+			limit = { has_country_flag = LJR_is_gov }
+			set_temp_variable = { seatc_LJR = -7 }
+		}
+		else = { set_temp_variable = { seatc_LJR = 0 } }
+		set_temp_variable = { seatc_PAPF = 0 }
+		set_temp_variable = { seatc_ETC = 0 }
+		cgf_seat_change = yes
+	}
 }
 
 country_event = {
-	id = cofeconomy.18
-	title = {
-		text = cofeconomy.18.title.a
-		trigger = { NOT = { has_country_flag = wrong_bills } }
-	}
-	title = {
-		text = cofeconomy.18.title.b
-		trigger = { has_country_flag = wrong_bills }
-	}
-	desc = {
-		text = cofeconomy.18.desc.a
-		trigger = { NOT = { has_country_flag = wrong_bills } }
-	}
-	desc = {
-		text = cofeconomy.18.desc.b
-		trigger = { has_country_flag = wrong_bills }
-	}
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.6
+	title = fcf_economy_event.6.title
+	desc = fcf_economy_event.6.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.18.a
-		trigger = { NOT = { has_country_flag = wrong_bills } }
-		add_political_power = 30
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_society
-		set_temp_variable = { wc = 0 }
-		set_temp_variable = { pc = 0 } 
-		set_temp_variable = { mc = 0 }
-		set_temp_variable = { sc = 0 }
-		set_temp_variable = { bc = 1 }
-		set_temp_variable = { ac = 0 }
-		class_pop_satisfactions_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = {
-			cgt_confidence = 1
-			tooltip = cgt_confidence_add
-		}
-	}	
-	option = {
-		name = cofeconomy.18.b
-		trigger = { has_country_flag = wrong_bills } 
-		clr_country_flag = wrong_bills
-		add_political_power = -15
-		add_stability = -0.025
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_society
-		set_temp_variable = { wc = -0.5 }
-		set_temp_variable = { pc = -0.5 } 
-		set_temp_variable = { mc = -0.5 }
-		set_temp_variable = { sc = -0.5 }
-		set_temp_variable = { bc = -1 }
-		set_temp_variable = { ac = 0 }
-		class_pop_satisfactions_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = {
-			cgt_confidence = -2
-			tooltip = cgt_confidence_reduce
-		}
+		name = fcf_economy_event.6.a
+		ai_chance = { base = 50 }
+		add_political_power = 1
 	}	
 }
 
 country_event = {
-	id = cofeconomy.19
-	title = {
-		text = cofeconomy.19.title.a
-		trigger = { NOT = { has_country_flag = cgt_acceptance_of_settlement } }
-	}
-	title = {
-		text = cofeconomy.19.title.b
-		trigger = { has_country_flag = cgt_acceptance_of_settlement }
-	}
-	desc = {
-		text = cofeconomy.19.desc.a
-		trigger = { NOT = { has_country_flag = cgt_acceptance_of_settlement } }
-	}
-	desc = {
-		text = cofeconomy.19.desc.b
-		trigger = { has_country_flag = cgt_acceptance_of_settlement }
-	}
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.7
+	title = fcf_economy_event.7.title
+	desc = fcf_economy_event.7.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.19.a
-		trigger = { NOT = { has_country_flag = cgt_acceptance_of_settlement } }
-		custom_effect_tooltip = effect_society
-		set_temp_variable = { wc = 3 }
-		set_temp_variable = { pc = 0 } 
-		set_temp_variable = { mc = 0 }
-		set_temp_variable = { sc = 0 }
-		set_temp_variable = { bc = 0 }
-		set_temp_variable = { ac = 0 }
-		class_pop_satisfactions_change = yes
+		name = fcf_economy_event.7.a
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.8 days = 5 random_days = 7 } }
+	}	
+	option = {
+		name = fcf_economy_event.7.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.9 days = 5 random_days = 7 } }
+	}	
+}
 
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { pop_target = 1 }   
-		set_temp_variable = { pop_syndc = 3 }
-		set_temp_variable = { pop_oppoc = -1 }
-		set_temp_variable = { pop_jacoc = -1 }
-		set_temp_variable = { pop_sorec = -1 }
-		class_pop_faction_tendency_change = yes
+country_event = {
+	id = fcf_economy_event.8
+	title = fcf_economy_event.8.title 
+	desc = fcf_economy_event.8.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.8.a
+		ai_chance = { base = 50 }
+		add_to_variable = { CGT_confidence = -1 }
+		set_country_flag = CGT_corruption_evidence 
+	}
+	option = {
+		name = fcf_economy_event.8.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.9 days = 5 random_days = 7 } }
+	}	
+}
 
-		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = {
-			cgt_confidence = 2
-			tooltip = cgt_confidence_add2
+country_event = {
+	id = fcf_economy_event.9
+	title = fcf_economy_event.9.title 
+	desc = fcf_economy_event.9.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.9.a
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.10 days = 5 random_days = 7 } }
+	}	
+	option = {
+		name = fcf_economy_event.9.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.11 days = 5 random_days = 7 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.10
+	title = fcf_economy_event.10.title 
+	desc = fcf_economy_event.10.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.10.a
+		ai_chance = { base = 50 }
+		add_to_variable = { CGT_confidence = -2 }
+	}	
+	option = {
+		name = fcf_economy_event.10.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.11 days = 5 random_days = 7 } }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.11
+	title = fcf_economy_event.11.title 
+	desc = fcf_economy_event.11.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.11.a
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.12 days = 5 random_days = 7 } }
+	}	
+	option = {
+		name = fcf_economy_event.11.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.14 days = 5 random_days = 7 } }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.12
+	title = fcf_economy_event.12.title 
+	desc = fcf_economy_event.12.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.12.a
+		ai_chance = { base = 50 }
+		add_to_variable = { CGT_confidence = -3 }
+	}	
+	option = {
+		name = fcf_economy_event.12.b
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.13 days = 5 random_days = 7 } }
+	}	
+	option = {
+		name = fcf_economy_event.12.c
+		ai_chance = { base = 50 }
+		hidden_effect = { country_event = { id = fcf_economy_event.14 days = 5 random_days = 7 } }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.13
+	title = fcf_economy_event.13.title 
+	desc = fcf_economy_event.13.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.13.a
+		ai_chance = { base = 50 }
+		add_stability = -0.02
+		add_political_power = -30
+		add_to_variable = { CGT_confidence = 2 }
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { change_num = -2 }
+		cgf_seat_change_in_gov = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.14
+	title = fcf_economy_event.14.title 
+	desc = fcf_economy_event.14.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.14.a
+		ai_chance = { base = 50 }
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						add = 30
+						has_country_flag = independent_delegate_in_syndicats
+					}
+					country_event = { id = fcf_economy_event.15 days = 5 random_days = 7 }
+				}
+				50 = {
+					modifier = {
+						add = -30
+						has_country_flag = independent_delegate_in_syndicats
+					}	
+					country_event = { id = fcf_economy_event.16 days = 5 random_days = 7 }
+				}
+			}
 		}
 	}	
 	option = {
-		name = cofeconomy.19.b
-		trigger = { has_country_flag = cgt_acceptance_of_settlement } 
-		clr_country_flag = cgt_acceptance_of_settlement
-		custom_effect_tooltip = effect_society
-		set_temp_variable = { wc = -2 }
-		set_temp_variable = { pc = -0.5 } 
-		set_temp_variable = { mc = -0.5 }
-		set_temp_variable = { sc = -0.5 }
-		set_temp_variable = { bc = -1 }
-		set_temp_variable = { ac = 0 }
-		class_pop_satisfactions_change = yes
+		name = fcf_economy_event.14.b
+		ai_chance = { base = 50 }
+		add_to_variable = { CGT_confidence = -2 }
+	}	
+}
 
-		custom_effect_tooltip = tooltip_white_line
-		set_temp_variable = { pop_target = 1 }   
-		set_temp_variable = { pop_syndc = -3 }
-		set_temp_variable = { pop_oppoc = 1 }
-		set_temp_variable = { pop_jacoc = 1 }
-		set_temp_variable = { pop_sorec = 1 }
-		class_pop_faction_tendency_change = yes
+country_event = {
+	id = fcf_economy_event.15
+	title = fcf_economy_event.15.title 
+	desc = fcf_economy_event.15.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.15.a
+		ai_chance = { base = 50 }
+		add_to_variable = { CGT_confidence = -3 }
+	}	
+}
 
-		custom_effect_tooltip = tooltip_white_line
-		add_to_variable = {
-			cgt_confidence = -2
-			tooltip = cgt_confidence_reduce
+country_event = {
+	id = fcf_economy_event.16
+	title = fcf_economy_event.16.title 
+	desc = fcf_economy_event.16.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.16.a
+		ai_chance = { base = 50 }
+		add_to_variable = { CGT_confidence = -1 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.17
+	title = fcf_economy_event.17.title 
+	desc = fcf_economy_event.17.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.17.a
+		hidden_effect = { country_event = { id = fcf_economy_event.18 days = 5 random_days = 7 } }
+	}	
+	option = {
+		name = fcf_economy_event.17.b
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = independent_delegate_in_syndicats }
+				country_event = { id = fcf_economy_event.19 days = 5 random_days = 7 }
+			}
+			else = { country_event = { id = fcf_economy_event.53 days = 5 random_days = 7 } }
 		}
 	}	
 }
 
 country_event = {
-	id = cofeconomy.20
+	id = fcf_economy_event.18
+	title = fcf_economy_event.18.title 
+	desc = fcf_economy_event.18.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.18.a
+		add_political_power = -20
+		add_to_variable = { CGT_confidence = 1 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.19
+	title = fcf_economy_event.19.title 
+	desc = fcf_economy_event.19.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.19.a
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = CGT_corruption_evidence }
+				country_event = { id = fcf_economy_event.46 days = 5 random_days = 7 }
+			}
+			else = { country_event = { id = fcf_economy_event.49 days = 5 random_days = 7 } }
+		}
+	}	
+	option = {
+		name = fcf_economy_event.19.b
+		hidden_effect = { country_event = { id = fcf_economy_event.53 days = 5 random_days = 7 } }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.20
 	title = {
-		text = cofeconomy.20.title.eng
+		text = fcf_economy_event.20.title.eng
 		trigger = { tag = ENG }
 	}
 	title = {
-		text = cofeconomy.20.title.frat
+		text = fcf_economy_event.20.title.frat
 		trigger = { 
 			tag = FRA
 			has_country_flag = calais_eng_receive
 		}
 	}
 	title = {
-		text = cofeconomy.20.title.fraf
+		text = fcf_economy_event.20.title.fraf
 		trigger = { 
 			tag = FRA
 			NOT = { has_country_flag = calais_eng_receive }
 		}
 	}
 	desc = {
-		text = cofeconomy.20.desc.eng
+		text = fcf_economy_event.20.desc.eng
 		trigger = { tag = ENG }
 	}
 	desc = {
-		text = cofeconomy.20.desc.frat
+		text = fcf_economy_event.20.desc.frat
 		trigger = { 
 			tag = FRA
 			has_country_flag = calais_eng_receive
 		}
 	}
 	desc = {
-		text = cofeconomy.20.desc.fraf
+		text = fcf_economy_event.20.desc.fraf
 		trigger = { 
 			tag = FRA
 			NOT = { has_country_flag = calais_eng_receive }
 		}
 	}
-	picture = GFX_report_event_generic_economic_policy
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.20.engt
+		name = fcf_economy_event.20.engt
 		trigger = { tag = ENG }
 		effect_tooltip = {
-			FRA = { unlock_decision_tooltip = Cof_economy_calais_cross_harbor_tunnel_build }
-			custom_effect_tooltip = calais_cross_harbor_tt
+			FRA = { 
+				unlock_decision_tooltip = FCF_economy_calais_cross_harbor_tunnel_build 
+				custom_effect_tooltip = {
+					localization_key = what_decision_need_tooltip
+					NUM = 10
+					DAYS = 360
+				}
+			}
+			
 			17 = {
 				set_temp_variable = { sesic = 3 }
 				set_temp_variable = { sesac = 0 }
 				set_temp_variable = { sesdc = 2 }
-				Cof_state_economy_situation_change = yes
+				FCF_state_economy_situation_change = yes
 
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
-					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_state_Calais
+					localization_key = state_strategy_take_what
+					ZONE = local_zone
+					STATE_STRATEGY = state_strategy_building_underwater_tunnel
 				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_local_building_slots_factor = 0.15
-					tooltip = local_building_slots_factor_tooltip
-				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_local_supplies = 0.2
-					tooltip = local_supplies_tooltip
-				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_state_production_speed_dockyard_factor = 0.2
-					tooltip = state_production_speed_dockyard_factor_tooltip
-				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_local_resources_factor = 0.2
-					tooltip = local_resources_factor_tooltip
-				}
+				state_strategy_8_get = yes
 			}
 
 			127 = {
@@ -644,56 +544,42 @@ country_event = {
 		hidden_effect = { 
 			FRA = { 
 				set_country_flag = calais_eng_receive
-				country_event = cofeconomy.20 
+				country_event = fcf_economy_event.20 
 			} 
 		}
 	}	
 	option = {
-		name = cofeconomy.20.engf
+		name = fcf_economy_event.20.engf
 		trigger = { tag = ENG }
 
-		hidden_effect = { FRA = { country_event = cofeconomy.20 } }
+		hidden_effect = { FRA = { country_event = fcf_economy_event.20 } }
 	}	
 	option = {
-		name = cofeconomy.20.frat
+		name = fcf_economy_event.20.frat
 		trigger = { 
 			tag = FRA
 			has_country_flag = calais_eng_receive
 		}
-		unlock_decision_tooltip = Cof_economy_calais_cross_harbor_tunnel_build 
-		custom_effect_tooltip = calais_cross_harbor_tt
+		unlock_decision_tooltip = FCF_economy_calais_cross_harbor_tunnel_build 
+		custom_effect_tooltip = {
+			localization_key = what_decision_need_tooltip
+			NUM = 10
+			DAYS = 360
+		}
 		effect_tooltip = {
 			17 = {
 				set_temp_variable = { sesic = 3 }
 				set_temp_variable = { sesac = 0 }
 				set_temp_variable = { sesdc = 2 }
-				Cof_state_economy_situation_change = yes
+				FCF_state_economy_situation_change = yes
 
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
-					localization_key = tooltip_modify_dynmod
-					DYNMOD = Cof_state_Calais
+					localization_key = state_strategy_take_what
+					ZONE = local_zone
+					STATE_STRATEGY = state_strategy_building_underwater_tunnel
 				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_local_building_slots_factor = 0.15
-					tooltip = local_building_slots_factor_tooltip
-				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_local_supplies = 0.2
-					tooltip = local_supplies_tooltip
-				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_state_production_speed_dockyard_factor = 0.2
-					tooltip = state_production_speed_dockyard_factor_tooltip
-				}
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					core_local_resources_factor = 0.2
-					tooltip = local_resources_factor_tooltip
-				}
+				state_strategy_8_get = yes
 			}
 
 			127 = {
@@ -712,7 +598,7 @@ country_event = {
 		}
 	}	
 	option = {
-		name = cofeconomy.20.fraf
+		name = fcf_economy_event.20.fraf
 		trigger = { 
 			tag = FRA
 			NOT = { has_country_flag = calais_eng_receive }
@@ -722,18 +608,18 @@ country_event = {
 }
 
 country_event = {
-	id = cofeconomy.21
-	title = cofeconomy.21.title 
-	desc = cofeconomy.21.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.21
+	title = fcf_economy_event.21.title 
+	desc = fcf_economy_event.21.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.21.a
+		name = fcf_economy_event.21.a
 		20 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -748,24 +634,23 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 2 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.22
-	title = cofeconomy.22.title 
-	desc = cofeconomy.22.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.22
+	title = fcf_economy_event.22.title 
+	desc = fcf_economy_event.22.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.22.a
+		name = fcf_economy_event.22.a
 		21 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 1 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -780,24 +665,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.23
-	title = cofeconomy.23.title 
-	desc = cofeconomy.23.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.23
+	title = fcf_economy_event.23.title 
+	desc = fcf_economy_event.23.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.23.a
+		name = fcf_economy_event.23.a
 		785 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 
 			add_resource = {
 				type = steel
@@ -817,24 +702,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 0 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.24
-	title = cofeconomy.24.title 
-	desc = cofeconomy.24.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.24
+	title = fcf_economy_event.24.title 
+	desc = fcf_economy_event.24.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.24.a
+		name = fcf_economy_event.24.a
 		20 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 1 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -849,24 +734,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 0 }
 		set_temp_variable = { eic = 4 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.25
-	title = cofeconomy.25.title 
-	desc = cofeconomy.25.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.25
+	title = fcf_economy_event.25.title 
+	desc = fcf_economy_event.25.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.25.a
+		name = fcf_economy_event.25.a
 		16 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -881,24 +766,24 @@ country_event = {
 		set_temp_variable = { eqc = 2 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.26
-	title = cofeconomy.26.title 
-	desc = cofeconomy.26.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.26
+	title = fcf_economy_event.26.title 
+	desc = fcf_economy_event.26.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.26.a
+		name = fcf_economy_event.26.a
 		30 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -913,24 +798,24 @@ country_event = {
 		set_temp_variable = { eqc = 2 }
 		set_temp_variable = { elc = 0 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.27
-	title = cofeconomy.27.title 
-	desc = cofeconomy.27.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.27
+	title = fcf_economy_event.27.title 
+	desc = fcf_economy_event.27.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.27.a
+		name = fcf_economy_event.27.a
 		31 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 1 }
 			set_temp_variable = { sesdc = 1 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -945,24 +830,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 4 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.28
-	title = cofeconomy.28.title 
-	desc = cofeconomy.28.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.28
+	title = fcf_economy_event.28.title 
+	desc = fcf_economy_event.28.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.28.a
+		name = fcf_economy_event.28.a
 		983 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 1 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -977,24 +862,24 @@ country_event = {
 		set_temp_variable = { eqc = 2 }
 		set_temp_variable = { elc = 0 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.29
-	title = cofeconomy.29.title 
-	desc = cofeconomy.29.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.29
+	title = fcf_economy_event.29.title 
+	desc = fcf_economy_event.29.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.29.a
+		name = fcf_economy_event.29.a
 		20 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 1 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1009,24 +894,24 @@ country_event = {
 		set_temp_variable = { eqc = 2 }
 		set_temp_variable = { elc = 0 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.30
-	title = cofeconomy.30.title 
-	desc = cofeconomy.30.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.30
+	title = fcf_economy_event.30.title 
+	desc = fcf_economy_event.30.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.30.a
+		name = fcf_economy_event.30.a
 		26 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 
 			add_resource = {
 				type = coal
@@ -1050,24 +935,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.31
-	title = cofeconomy.31.title 
-	desc = cofeconomy.31.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.31
+	title = fcf_economy_event.31.title 
+	desc = fcf_economy_event.31.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.31.a
+		name = fcf_economy_event.31.a
 		19 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 
 			add_resource = {
 				type = rubber
@@ -1087,24 +972,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 4 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.32
-	title = cofeconomy.32.title 
-	desc = cofeconomy.32.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.32
+	title = fcf_economy_event.32.title 
+	desc = fcf_economy_event.32.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.32.a
+		name = fcf_economy_event.32.a
 		16 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1119,24 +1004,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 4 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.33
-	title = cofeconomy.33.title 
-	desc = cofeconomy.33.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.33
+	title = fcf_economy_event.33.title 
+	desc = fcf_economy_event.33.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.33.a
+		name = fcf_economy_event.33.a
 		15 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 
 			add_resource = {
 				type = aluminium
@@ -1156,24 +1041,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 4 }
 		set_temp_variable = { eic = 2 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.34
-	title = cofeconomy.34.title 
-	desc = cofeconomy.34.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.34
+	title = fcf_economy_event.34.title 
+	desc = fcf_economy_event.34.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.34.a
+		name = fcf_economy_event.34.a
 		16 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 
 			add_extra_state_shared_building_slots = 2 
 			add_building_construction = {
@@ -1195,24 +1080,24 @@ country_event = {
 		set_temp_variable = { eqc = 4 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 2 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.35
-	title = cofeconomy.35.title 
-	desc = cofeconomy.35.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.35
+	title = fcf_economy_event.35.title 
+	desc = fcf_economy_event.35.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.35.a
+		name = fcf_economy_event.35.a
 		16 = {
 			set_temp_variable = { sesic = 1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1227,24 +1112,24 @@ country_event = {
 		set_temp_variable = { eqc = 2 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 2 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.36
-	title = cofeconomy.36.title 
-	desc = cofeconomy.36.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.36
+	title = fcf_economy_event.36.title 
+	desc = fcf_economy_event.36.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.36.a
+		name = fcf_economy_event.36.a
 		15 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 1 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1259,24 +1144,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = 2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_positive = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.37
-	title = cofeconomy.37.title 
-	desc = cofeconomy.37.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.37
+	title = fcf_economy_event.37.title 
+	desc = fcf_economy_event.37.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.37.a
+		name = fcf_economy_event.37.a
 		16 = {
 			set_temp_variable = { sesic = -1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1291,24 +1176,24 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = -2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.38
-	title = cofeconomy.38.title 
-	desc = cofeconomy.38.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.38
+	title = fcf_economy_event.38.title 
+	desc = fcf_economy_event.38.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.38.a
+		name = fcf_economy_event.38.a
 		15 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 
 			add_resource = {
 				type = steel
@@ -1328,24 +1213,24 @@ country_event = {
 		set_temp_variable = { eqc = -2 }
 		set_temp_variable = { elc = -4 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.39
-	title = cofeconomy.39.title 
-	desc = cofeconomy.39.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.39
+	title = fcf_economy_event.39.title 
+	desc = fcf_economy_event.39.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.39.a
+		name = fcf_economy_event.39.a
 		21 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = -1 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1360,19 +1245,19 @@ country_event = {
 		set_temp_variable = { eqc = -2 }
 		set_temp_variable = { elc = -2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.40
-	title = cofeconomy.40.title 
-	desc = cofeconomy.40.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.40
+	title = fcf_economy_event.40.title 
+	desc = fcf_economy_event.40.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.40.a
+		name = fcf_economy_event.40.a
 		custom_effect_tooltip = effect_society
 		set_temp_variable = { wc = -3 }
 		set_temp_variable = { pc = -3 }
@@ -1380,7 +1265,7 @@ country_event = {
 		set_temp_variable = { sc = 0 }
 		set_temp_variable = { bc = 0 }
 		set_temp_variable = { ac = 0 }
-		class_pop_satisfactions_change = yes
+		society_pop_satisfactions_change = yes
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_economy
@@ -1395,24 +1280,24 @@ country_event = {
 		set_temp_variable = { eqc = -4 }
 		set_temp_variable = { elc = -2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.41
-	title = cofeconomy.41.title 
-	desc = cofeconomy.41.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.41
+	title = fcf_economy_event.41.title 
+	desc = fcf_economy_event.41.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.41.a
+		name = fcf_economy_event.41.a
 		20 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = -1 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1427,24 +1312,24 @@ country_event = {
 		set_temp_variable = { eqc = -2 }
 		set_temp_variable = { elc = -2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.42
-	title = cofeconomy.42.title 
-	desc = cofeconomy.42.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.42
+	title = fcf_economy_event.42.title 
+	desc = fcf_economy_event.42.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.42.a
+		name = fcf_economy_event.42.a
 		735 = {
 			set_temp_variable = { sesic = 0 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1459,24 +1344,24 @@ country_event = {
 		set_temp_variable = { eqc = -4 }
 		set_temp_variable = { elc = -2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.43
-	title = cofeconomy.43.title 
-	desc = cofeconomy.43.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.43
+	title = fcf_economy_event.43.title 
+	desc = fcf_economy_event.43.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.43.a
+		name = fcf_economy_event.43.a
 		20 = {
 			set_temp_variable = { sesic = -1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1491,24 +1376,24 @@ country_event = {
 		set_temp_variable = { eqc = -4 }
 		set_temp_variable = { elc = -2 }
 		set_temp_variable = { eic = 0 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.44
-	title = cofeconomy.44.title 
-	desc = cofeconomy.44.desc
-	picture = GFX_report_event_generic_economic_policy
+	id = fcf_economy_event.44
+	title = fcf_economy_event.44.title 
+	desc = fcf_economy_event.44.desc
+	
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.44.a
+		name = fcf_economy_event.44.a
 		16 = {
 			set_temp_variable = { sesic = -1 }
 			set_temp_variable = { sesac = 0 }
 			set_temp_variable = { sesdc = 0 }
-			Cof_state_economy_situation_change = yes
+			FCF_state_economy_situation_change = yes
 		}
 
 		custom_effect_tooltip = effect_economy
@@ -1523,24 +1408,5695 @@ country_event = {
 		set_temp_variable = { eqc = 0 }
 		set_temp_variable = { elc = -2 }
 		set_temp_variable = { eic = -2 }
-		economic_event_bouns_judge_negative = yes
-		cof_econ_target_change = yes
+		
+		economy_variable_change = yes
 	}	
 }
 
 country_event = {
-	id = cofeconomy.45
-	title = cofeconomy.45.title 
-	desc = cofeconomy.45.desc
+	id = fcf_economy_event.45
+	title = fcf_economy_event.45.title 
+	desc = fcf_economy_event.45.desc
 	hidden = yes
 	is_triggered_only = yes
 	option = {
-		name = cofeconomy.45.a
+		name = fcf_economy_event.45.a
 		economic_event_judge = yes
-		if = {
-			limit = { has_completed_focus = FRA_step_by_step }
-			country_event = { id = cofeconomy.45 days = 120 random_days = 60 }
+		country_event = { id = fcf_economy_event.45 days = 120 random_days = 60 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.46
+	title = fcf_economy_event.46.title
+	desc = fcf_economy_event.46.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.46.a
+		add_to_variable = { CGT_confidence = -2 }
+	}	
+	option = {
+		name = fcf_economy_event.46.b
+		hidden_effect = { country_event = { id = fcf_economy_event.48 days = 4 } }
+	}
+	option = {
+		name = fcf_economy_event.46.c
+		add_to_variable = { CGT_confidence = -3 }
+		hidden_effect = { country_event = { id = fcf_economy_event.47 days = 4 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.47
+	title = fcf_economy_event.47.title
+	desc = fcf_economy_event.47.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.47.a
+		add_stability = -0.01
+		add_political_power = -10
+		add_to_variable = { CGT_confidence = 4 }
+	}
+	option = {
+		name = fcf_economy_event.47.b
+		add_stability = -0.03
+		add_political_power = -40
+		add_to_variable = { CGT_confidence = 1 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.48
+	title = fcf_economy_event.48.title
+	desc = fcf_economy_event.48.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.48.a
+		add_to_variable = {
+			economy_power = -50
+			tooltip = economy_power_change_tt
 		}
-		else = { country_event = { id = cofeconomy.45 days = 210 random_days = 60 } }
+		add_to_variable = { CGT_confidence = -3 }
+	}
+	option = {
+		name = fcf_economy_event.48.b
+		add_to_variable = { CGT_confidence = -2 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.49
+	title = fcf_economy_event.49.title
+	desc = fcf_economy_event.49.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.49.a
+		add_to_variable = { CGT_confidence = -2 }
+		hidden_effect = { country_event = { id = fcf_economy_event.50 days = 5 } }
+	}
+	option = {
+		name = fcf_economy_event.49.b
+		
+	}
+	option = {
+		name = fcf_economy_event.49.c
+		trigger = { has_country_flag = encourage_workers_reporting_CGT }
+		hidden_effect = { country_event = { id = fcf_economy_event.51 days = 4 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.50 
+	title = fcf_economy_event.50.title
+	desc = fcf_economy_event.50.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.50.a
+		add_to_variable = { CGT_confidence = -1 }
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -2 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}
+	option = {
+		name = fcf_economy_event.50.b
+		add_to_variable = { CGT_confidence = 3 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.51
+	title = fcf_economy_event.51.title
+	desc = fcf_economy_event.51.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.51.a
+		hidden_effect = { country_event = { id = fcf_economy_event.52 days = 5 random_days = 7 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.52
+	title = fcf_economy_event.52.title
+	desc = fcf_economy_event.52.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.52.a
+		add_to_variable = { CGT_confidence = -2 }
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 2 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.53
+	title = fcf_economy_event.53.title
+	desc = fcf_economy_event.53.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.53.a
+		hidden_effect = {
+			random_list = {
+				20 = {
+					modifier = {
+						add = -20
+						has_country_flag = PCOP_in_gov
+					}
+					modifier = {
+						add = 80
+						has_country_flag = CNS_in_gov
+					}
+					country_event = { id = fcf_economy_event.54 days = 2 }
+				}
+				80 = {
+					modifier = {
+						add = 20
+						has_country_flag = PCOP_in_gov
+					}
+					modifier = {
+						add = -80
+						has_country_flag = CNS_in_gov
+					}
+					country_event = { id = fcf_economy_event.55 days = 2 }
+				}
+			}
+		}
+	}
+	option = {
+		name = fcf_economy_event.53.b
+		hidden_effect = {
+			random_list = {
+				40 = {
+					modifier = {
+						add = -20
+						has_country_flag = PCOP_in_gov
+					}
+					modifier = {
+						add = 50
+						has_country_flag = PSF_in_gov
+					}
+					country_event = { id = fcf_economy_event.56 days = 2 }
+				}
+				60 = {
+					modifier = {
+						add = 30
+						has_country_flag = PCOP_in_gov
+					}
+					modifier = {
+						add = -50
+						has_country_flag = PSF_in_gov
+					}
+					country_event = { id = fcf_economy_event.57 days = 2 }
+				}
+			}
+		}
+	}
+	option = {
+		name = fcf_economy_event.53.c
+		trigger = { has_country_flag = PSF_in_gov }
+		hidden_effect = { country_event = { id = fcf_economy_event.58 days = 2 } }
+	}
+	option = {
+		name = fcf_economy_event.53.d
+		hidden_effect = { country_event = { id = fcf_economy_event.59 days = 2 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.54
+	title = fcf_economy_event.54.title
+	desc = fcf_economy_event.54.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.54.a
+		add_to_variable = { CGT_confidence = -2 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -7 }
+		set_temp_variable = { factionc_2 = 7 }
+		set_temp_variable = { factionc_3 = 0 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.55
+	title = fcf_economy_event.55.title
+	desc = fcf_economy_event.55.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.55.a
+		add_stability = -0.01
+		add_political_power = -30
+		add_to_variable = { CGT_confidence = 2 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.56
+	title = fcf_economy_event.56.title
+	desc = fcf_economy_event.56.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.56.a
+		add_to_variable = { CGT_confidence = -1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 6 }
+		set_temp_variable = { factionc_2 = -6 }
+		set_temp_variable = { factionc_3 = 0 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.57
+	title = fcf_economy_event.57.title
+	desc = fcf_economy_event.57.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.57.a
+		add_to_variable = { CGT_confidence = 1 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.58
+	title = fcf_economy_event.58.title
+	desc = fcf_economy_event.58.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.58.a
+		add_political_power = -20
+		add_to_variable = { CGT_confidence = -2 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -6 }
+		set_temp_variable = { factionc_2 = -4 }
+		set_temp_variable = { factionc_3 = 10 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.59
+	title = fcf_economy_event.59.title
+	desc = fcf_economy_event.59.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.59.a
+		add_to_variable = { CGT_confidence = -1 }
+	}
+	option = {
+		name = fcf_economy_event.59.b
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						add = 30
+						has_country_flag = CGT_corruption_evidence
+					}
+					country_event = { id = fcf_economy_event.60 days = 4 random_days = 5 }
+				}
+				50 = {
+					modifier = {
+						add = -30
+						has_country_flag = CGT_corruption_evidence
+					}
+					country_event = { id = fcf_economy_event.61 days = 4 random_days = 5 }
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.60
+	title = fcf_economy_event.60.title
+	desc = fcf_economy_event.60.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.60.a
+		add_political_power = -20
+		add_to_variable = {
+			economy_power = -30
+			tooltip = economy_power_change_tt
+		}
+		add_to_variable = { CGT_confidence = -3 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.61
+	title = fcf_economy_event.61.title
+	desc = fcf_economy_event.61.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.61.a
+		add_to_variable = { CGT_confidence = 2 }
+		add_stability = -0.02
+		add_political_power = -20
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { change_num = -2 }
+		cgf_seat_change_in_gov = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.62
+	title = fcf_economy_event.62.title
+	desc = fcf_economy_event.62.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.62.a
+
+	}
+	option = {
+		name = fcf_economy_event.62.b
+		hidden_effect = { country_event = { id = fcf_economy_event.63 days = 6 } }
+	}
+	option = {
+		name = fcf_economy_event.62.c
+		hidden_effect = { country_event = { id = fcf_economy_event.64 days = 6 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.63
+	title = fcf_economy_event.63.title
+	desc = fcf_economy_event.63.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.63.a
+		add_to_variable = { CGT_confidence = 2 }
+		add_stability = -0.02
+		add_political_power = -20
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { change_num = -2 }
+		cgf_seat_change_in_gov = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.64
+	title = fcf_economy_event.64.title
+	desc = fcf_economy_event.64.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.64.a
+
+	}
+	option = {
+		name = fcf_economy_event.64.b
+		hidden_effect = { country_event = { id = fcf_economy_event.65 days = 6 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.65
+	title = fcf_economy_event.65.title
+	desc = fcf_economy_event.65.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.65.a
+		add_to_variable = {
+			economy_power = -40
+			tooltip = economy_power_change_tt
+		}
+		hidden_effect = {
+			country_event = { id = fcf_economy_event.68 days = 2 } 
+			random = {
+				chance = 30
+				country_event = { id = fcf_economy_event.66 days = 5 }
+			}
+		}
+	}
+	option = {
+		name = fcf_economy_event.65.b
+		add_political_power = -40
+		hidden_effect = {
+			country_event = { id = fcf_economy_event.68 days = 2 } 
+			random = {
+				chance = 50
+				country_event = { id = fcf_economy_event.67 days = 5 }
+			}
+		}
+	}
+	option = {
+		name = fcf_economy_event.65.c
+		trigger = { has_country_flag = Martin_reversal_of_verdict }
+		hidden_effect = { country_event = { id = fcf_economy_event.69 days = 2 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.66
+	title = fcf_economy_event.66.title
+	desc = fcf_economy_event.66.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.66.a
+		add_to_variable = { CGT_confidence = 2 }
+		add_stability = -0.02
+		add_political_power = -20
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { change_num = -2 }
+		cgf_seat_change_in_gov = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.67
+	title = fcf_economy_event.67.title
+	desc = fcf_economy_event.67.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.67.a
+		add_to_variable = { CGT_confidence = 3 }
+		add_stability = -0.03
+		add_political_power = -40
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { change_num = -3 }
+		cgf_seat_change_in_gov = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.68
+	title = fcf_economy_event.68.title
+	desc = fcf_economy_event.68.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.68.a
+		add_to_variable = { CGT_confidence = -2 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.69
+	title = fcf_economy_event.69.title
+	desc = fcf_economy_event.69.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.69.a
+		add_to_variable = { CGT_confidence = -3 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.70
+	title = fcf_economy_event.70.title
+	desc = fcf_economy_event.70.desc
+	
+	is_triggered_only = yes
+	immediate = { hidden_effect = { set_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.70.a
+		add_political_power = -70
+
+		swap_ideas = {
+            remove_idea = bill_federal_syndicats
+            add_idea = FCF_CGT_special_statues
+        }
+		remove_from_array = { array = FRA.FCF_social_bills value = 24 }
+
+		add_timed_idea = { idea = FCF_syndicats_protest_worst days = 200 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.71
+	title = fcf_economy_event.71.title
+	desc = fcf_economy_event.71.desc
+	
+	is_triggered_only = yes
+	immediate = { hidden_effect = { set_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.71.a
+		add_political_power = -50
+		add_timed_idea = { idea = FCF_syndicats_protest_worst days = 200 }
+	}
+	option = {
+		name = fcf_economy_event.71.b
+		add_stability = -0.05
+		add_political_power = -100
+
+		if = {
+			limit = { has_idea = bill_federal_syndicats }
+			swap_ideas = {
+				remove_idea = bill_federal_syndicats
+				add_idea = FCF_CGT_special_statues
+			}
+			remove_from_array = { array = FRA.FCF_social_bills value = 24 }
+		}
+		else_if = {
+			limit = { has_idea = bill_competitive_syndicats }
+			swap_ideas = {
+				remove_idea = bill_competitive_syndicats
+				add_idea = FCF_CGT_special_statues
+			}
+			remove_from_array = { array = FRA.FCF_social_bills value = 25 }
+		}
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.72
+	title = fcf_economy_event.72.title
+	desc = fcf_economy_event.72.desc
+	
+	is_triggered_only = yes
+	immediate = { hidden_effect = { set_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.72.a
+		add_political_power = -50
+		add_timed_idea = { idea = FCF_syndicats_protest_worse days = 100 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.73
+	title = fcf_economy_event.73.title
+	desc = fcf_economy_event.73.desc
+	
+	is_triggered_only = yes
+	immediate = { hidden_effect = { set_country_flag = CGT_already_responded_to_bill } }
+	option = {
+		name = fcf_economy_event.73.a
+		add_timed_idea = { idea = FCF_syndicats_protest days = 60 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.74
+	title = fcf_economy_event.74.title
+	desc = fcf_economy_event.74.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.74.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 3 }
+		set_temp_variable = { factionc_2 = -4 }
+		set_temp_variable = { factionc_3 = 1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = stop_simpifed_magement
+		clr_country_flag = CGT_simplifed_mangement
+		add_to_variable = { CGT_radicalness_level = -1 }
+	}
+	option = {
+		name = fcf_economy_event.74.b
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -2 }
+		set_temp_variable = { factionc_2 = 3 }
+		set_temp_variable = { factionc_3 = -1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		add_to_variable = { CGT_radicalness_level = 1 }
+		hidden_effect = { country_event = { id = fcf_economy_event.75 days = 14 random_days = 14 } }
+	}
+	option = {
+		name = fcf_economy_event.74.c
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 1 }
+		set_temp_variable = { factionc_2 = -4 }
+		set_temp_variable = { factionc_3 = 3 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+		hidden_effect = { country_event = { id = fcf_economy_event.76 days = 14 random_days = 14 } }
+	
+		set_country_flag = CGT_technical_management
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.75
+	title = fcf_economy_event.75.title
+	desc = fcf_economy_event.75.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.75.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 2 }
+		set_temp_variable = { factionc_2 = -2 }
+		set_temp_variable = { factionc_3 = 0 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+	}
+	option = {
+		name = fcf_economy_event.75.b
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -1 }
+		set_temp_variable = { factionc_2 = 2 }
+		set_temp_variable = { factionc_3 = -1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		add_to_variable = { CGT_radicalness_level = 1 }
+	}
+	option = {
+		name = fcf_economy_event.75.c
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -2 }
+		set_temp_variable = { factionc_2 = 1 }
+		set_temp_variable = { factionc_3 = 1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		add_to_variable = { CGT_radicalness_level = 1 }
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+ 
+		set_country_flag = CGT_popularize_management_knowledge
+	}
+} 
+
+country_event = {
+	id = fcf_economy_event.76
+	title = fcf_economy_event.76.title
+	desc = fcf_economy_event.76.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.76.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 0 }
+		set_temp_variable = { factionc_2 = -3 }
+		set_temp_variable = { factionc_3 = 3 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+	}
+	option = {
+		name = fcf_economy_event.76.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 1 }
+		set_temp_variable = { factionc_2 = 3 }
+		set_temp_variable = { factionc_3 = -4 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		add_to_variable = { CGT_bureaucracy_level = -1 }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.77
+	title = fcf_economy_event.77.title
+	desc = fcf_economy_event.77.desc
+	
+	is_triggered_only = yes
+	trigger = { NOT = { has_country_flag = CGT_unified_standards } }
+	option = {
+		name = fcf_economy_event.77.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 2 }
+		set_temp_variable = { factionc_2 = -4 }
+		set_temp_variable = { factionc_3 = 2 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { ertc_dom = 0 }
+		set_temp_variable = { ertc_str = 1 }
+		set_temp_variable = { ertc_man = 0 }
+		set_temp_variable = { ertc_pro = 0 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+	}
+	option = {
+		name = fcf_economy_event.77.b
+		add_to_variable = {
+			economy_power = -70
+			tooltip = economy_power_change_tt
+		}
+		
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { ertc_dom = 0 }
+		set_temp_variable = { ertc_str = -1 }
+		set_temp_variable = { ertc_man = 0 }
+		set_temp_variable = { ertc_pro = 0 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+
+		set_country_flag = CGT_branch_funds
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.78
+	title = fcf_economy_event.78.title
+	desc = fcf_economy_event.78.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.78.a
+		hidden_effect = { country_event = { id = fcf_economy_event.79 days = 5 random_days = 9 } }
+		add_to_variable = { CGT_radicalness_level = -1 }
+		add_to_variable = { CGT_bureaucracy_level = 0 }
+	}
+	option = {
+		name = fcf_economy_event.78.b
+		add_to_variable = { 
+			economy_power = -60
+			tooltip = economy_power_change_tt
+		}
+		add_to_variable = { CGT_radicalness_level = 1 }
+		add_to_variable = { CGT_bureaucracy_level = 0 }
+
+		hidden_effect = { country_event = { id = fcf_economy_event.80 days = 5 random_days = 9 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.79
+	title = fcf_economy_event.79.title
+	desc = fcf_economy_event.79.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.79.a
+		add_to_variable = { CGT_radicalness_level = 0 }
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -2 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}
+	option = {
+		name = fcf_economy_event.79.b
+		add_to_variable = { 
+			economy_power = -100
+			tooltip = economy_power_change_tt
+		}
+		add_to_variable = { CGT_radicalness_level = 1 }
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		set_country_flag = CGT_expanded_anti_corruption
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.80
+	title = fcf_economy_event.80.title
+	desc = fcf_economy_event.80.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.80.a
+		add_to_variable = { CGT_radicalness_level = -1 }
+	}
+	option = {
+		name = fcf_economy_event.80.b
+		hidden_effect = { country_event = { id = fcf_economy_event.81 days = 5 random_days = 9 } }
+	}
+	option = {
+		name = fcf_economy_event.80.c
+		hidden_effect = { country_event = { id = fcf_economy_event.85 days = 5 random_days = 9 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.81
+	title = fcf_economy_event.81.title
+	desc = fcf_economy_event.81.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.81.a
+		add_to_variable = { CGT_radicalness_level = 1 }
+		hidden_effect = { country_event = { id = fcf_economy_event.82 days = 5 random_days = 9 } }
+	}
+	option = {
+		name = fcf_economy_event.81.b
+		add_stability = 0.01
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0.5 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}
+	option = {
+		name = fcf_economy_event.81.c
+		hidden_effect = { country_event = { id = fcf_economy_event.83 days = 3 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.82
+	title = fcf_economy_event.82.title
+	desc = fcf_economy_event.82.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.82.a
+		add_stability = -0.02
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -3 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.83
+	title = fcf_economy_event.83.title
+	desc = fcf_economy_event.83.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.83.a
+		add_to_variable = { 
+			economy_power = -50
+			tooltip = economy_power_change_tt
+		}
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 0.5 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}
+	option = {
+		name = fcf_economy_event.83.b
+		hidden_effect = { country_event = { id = fcf_economy_event.84 days = 30 random_days = 14 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.84
+	title = fcf_economy_event.84.title
+	desc = fcf_economy_event.84.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.84.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 5 }
+		set_temp_variable = { factionc_2 = -7 }
+		set_temp_variable = { factionc_3 = 2 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.85
+	title = fcf_economy_event.85.title
+	desc = fcf_economy_event.85.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.85.a
+		add_to_variable = { CGT_radicalness_level = -1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 3 }
+		set_temp_variable = { factionc_2 = -3 }
+		set_temp_variable = { factionc_3 = 0 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+	}
+	option = {
+		name = fcf_economy_event.85.a
+		add_to_variable = { 
+			economy_power = -20
+			tooltip = economy_power_change_tt
+		}
+		add_political_power = -20
+
+		hidden_effect = { country_event = { id = fcf_economy_event.86 days = 14 random_days = 14 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.86
+	title = fcf_economy_event.86.title
+	desc = fcf_economy_event.86.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.86.a
+		add_stability = -0.01
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seatc_CNS = 0 }
+		set_temp_variable = { seatc_PSF = 0 }
+		set_temp_variable = { seatc_POU = -3 }
+		set_temp_variable = { seatc_CGT = -6 }
+		set_temp_variable = { seatc_PCOP = 7 }
+		set_temp_variable = { seatc_UA = 2 }
+		set_temp_variable = { seatc_URSRS = 0 }
+		set_temp_variable = { seatc_LJR = 0 }
+		set_temp_variable = { seatc_PAPF = 0 }
+		set_temp_variable = { seatc_ETC = 0 }
+		cgf_seat_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.87
+	title = fcf_economy_event.87.title
+	desc = fcf_economy_event.87.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.87.a	
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 2 }
+		set_temp_variable = { factionc_2 = -4 }
+		set_temp_variable = { factionc_3 = 2 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -2 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = -3 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 1 }
+		set_temp_variable = { elc = -3 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+
+		set_country_flag = CGT_technical_management
+	}	
+	option = {
+		name = fcf_economy_event.87.b
+
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -2 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = -3 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 1 }
+		set_temp_variable = { elc = -3 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+
+		hidden_effect = { country_event = { id = fcf_economy_event.88 days = 40 random_days = 30 } }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.88
+	title = fcf_economy_event.88.title
+	desc = fcf_economy_event.88.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.88.a	
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -3 }
+		set_temp_variable = { factionc_2 = 3 }
+		set_temp_variable = { factionc_3 = 0 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 3 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 2 }
+		set_temp_variable = { elc = 3 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.89
+	title = fcf_economy_event.89.title
+	desc = fcf_economy_event.89.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.89.a	
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 2 }
+		set_temp_variable = { factionc_2 = -3 }
+		set_temp_variable = { factionc_3 = 1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.89.b
+		add_to_variable = { 
+			economy_power = -30
+			tooltip = economy_power_change_tt
+		}
+
+		hidden_effect = { country_event = { id = fcf_economy_event.90 days = 10 random_days = 15 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.90
+	title = fcf_economy_event.90.title
+	desc = fcf_economy_event.90.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.90.a	
+		add_to_variable = { 
+			economy_power = -15
+			tooltip = economy_power_change_tt
+		}
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -2 }
+		set_temp_variable = { factionc_2 = 1 }
+		set_temp_variable = { factionc_3 = 1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 0 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 1 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.90.b
+		add_political_power = -50
+
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -4 }
+		set_temp_variable = { factionc_2 = 2 }
+		set_temp_variable = { factionc_3 = 2 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 0 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 1 }
+		set_temp_variable = { elc = 1 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.90.c	
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 4 }
+		set_temp_variable = { factionc_2 = -3 }
+		set_temp_variable = { factionc_3 = -1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 0 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -1 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.91
+	title = fcf_economy_event.91.title
+	desc = fcf_economy_event.91.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.91.a
+		add_to_variable = { 
+			economy_power = 30
+			tooltip = economy_power_change_tt
+		}
+		add_to_variable = { CGT_radicalness_level = 1 }
+		add_to_variable = { CGT_bureaucracy_level = -1 }
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -2 }
+		set_temp_variable = { factionc_2 = 4 }
+		set_temp_variable = { factionc_3 = -2 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 2 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 1 }
+		economy_variable_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.92
+	title = fcf_economy_event.92.title
+	desc = fcf_economy_event.92.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.92.a	
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { CGT_radicalness_level > 4 } }
+				country_event = fcf_economy_event.93
+			}
+			else = { country_event = fcf_economy_event.94 }
+		}
+	}	
+	option = {
+		name = fcf_economy_event.92.b
+		add_to_variable = { 
+			economy_power = -60
+			tooltip = economy_power_change_tt
+		}
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { CGT_radicalness_level > 3 } }
+				country_event = fcf_economy_event.93
+			}
+			else = { country_event = fcf_economy_event.94 }
+		}
+	}	
+	option = {
+		name = fcf_economy_event.92.c	
+		add_political_power = -30
+		add_to_variable = { CGT_radicalness_level = -1 }
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { CGT_radicalness_level > 2 } }
+				country_event = fcf_economy_event.93
+			}
+			else = { country_event = fcf_economy_event.94 }
+		}
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.93
+	title = fcf_economy_event.93.title
+	desc = fcf_economy_event.93.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.93.a	
+		set_country_flag = CGT_radicals_cooperate_with_CNS
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { CNS_attitude_change = 5 }
+		set_temp_variable = { PSF_attitude_change = 0 }
+		set_temp_variable = { POU_attitude_change = 0 }
+		set_temp_variable = { CGT_attitude_change = 0 }
+		set_temp_variable = { PCOP_attitude_change = 0 }
+		set_temp_variable = { UA_attitude_change = 0 }
+		set_temp_variable = { URSRS_attitude_change = 0 }
+		set_temp_variable = { LJR_attitude_change = 0 }
+		set_temp_variable = { PAPF_attitude_change = 0 }
+		party_attitude_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.94
+	title = fcf_economy_event.94.title
+	desc = fcf_economy_event.94.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.94.a	
+		add_political_power = -1
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.95
+	title = fcf_economy_event.95.title
+	desc = fcf_economy_event.95.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.95.a	
+		add_to_variable = { CGT_radicalness_level = -1 }
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -4 }
+		set_temp_variable = { factionc_2 = -2 }
+		set_temp_variable = { factionc_3 = 6 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_wc = -1 }
+		set_temp_variable = { pop_pc = 0 }
+		set_temp_variable = { pop_mc = 0 }
+		set_temp_variable = { pop_sc = 0 }
+		set_temp_variable = { pop_bc = 1 }
+		set_temp_variable = { pop_ac = 0 }
+		class_pop_change = yes
+		
+		set_country_flag = CGT_social_recruitment
+	}	
+	option = {
+		name = fcf_economy_event.95.b
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 5 }
+		set_temp_variable = { factionc_2 = -3 }
+		set_temp_variable = { factionc_3 = -2 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { ertc_dom = 0 }
+		set_temp_variable = { ertc_str = 1 }
+		set_temp_variable = { ertc_man = 0 }
+		set_temp_variable = { ertc_pro = 0 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+
+		hidden_effect = { country_event = { id = fcf_economy_event.96 days = 15 random_days = 15 } }
+	}
+	option = {
+		name = fcf_economy_event.95.c
+		add_political_power = -50	
+		
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -1 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = -2 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+
+		hidden_effect = { country_event = { id = fcf_economy_event.97 days = 15 random_days = 15 } }
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.96
+	title = fcf_economy_event.96.title
+	desc = fcf_economy_event.96.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.96.a	
+		add_political_power = -20
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -2 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.96.b
+		add_to_variable = { 
+			economy_power = -60
+			tooltip = economy_power_change_tt
+		}
+
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -2 }
+		set_temp_variable = { factionc_2 = 0 }
+		set_temp_variable = { factionc_3 = 2 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_wc = -0.5 }
+		set_temp_variable = { pop_pc = 0 }
+		set_temp_variable = { pop_mc = 0 }
+		set_temp_variable = { pop_sc = 0 }
+		set_temp_variable = { pop_bc = 0.5 }
+		set_temp_variable = { pop_ac = 0 }
+		class_pop_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.96.c	
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 3 }
+		set_temp_variable = { factionc_2 = -1.5 }
+		set_temp_variable = { factionc_3 = -1.5 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -3 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.97
+	title = fcf_economy_event.97.title
+	desc = fcf_economy_event.97.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.97.a	
+		add_to_variable = { 
+			economy_power = -150
+			tooltip = economy_power_change_tt
+		}
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_wc = -0.5 }
+		set_temp_variable = { pop_pc = -0.5 }
+		set_temp_variable = { pop_mc = -0.5 }
+		set_temp_variable = { pop_sc = -0.5 }
+		set_temp_variable = { pop_bc = 2 }
+		set_temp_variable = { pop_ac = 0 }
+		class_pop_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { wc = 0 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 2 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+
+		set_country_flag = CGT_huge_bureaucracy
+	}	
+	option = {
+		name = fcf_economy_event.97.b
+		add_political_power = -20
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_wc = 0 }
+		set_temp_variable = { pop_pc = 0 }
+		set_temp_variable = { pop_mc = 0 }
+		set_temp_variable = { pop_sc = -0.5 }
+		set_temp_variable = { pop_bc = 0.5 }
+		set_temp_variable = { pop_ac = 0 }
+		class_pop_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.97.c	
+		
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 0 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 4 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 0 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = -2 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = -2 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.98
+	title = fcf_economy_event.98.title
+	desc = fcf_economy_event.98.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.98.a	
+		add_stability = 0.01
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 2 }
+		set_temp_variable = { pc = 0.5 }
+		set_temp_variable = { mc = 1 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 2 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 3 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 2 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.99
+	title = fcf_economy_event.99.title
+	desc = fcf_economy_event.99.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.99.a	
+		add_political_power = -50
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+		
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 4 }
+		set_temp_variable = { factionc_2 = -3 }
+		set_temp_variable = { factionc_3 = -1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 0 }
+		set_temp_variable = { eibc = 0 }
+		set_temp_variable = { eipc = 0 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = 1 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { ertc_dom = 0 }
+		set_temp_variable = { ertc_str = 1 }
+		set_temp_variable = { ertc_man = 0 }
+		set_temp_variable = { ertc_pro = 0 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+
+		hidden_effect = { country_event = { id = fcf_economy_event.100 days = 15 random_days = 15 } }
+	}	
+	option = {
+		name = fcf_economy_event.99.b
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 1 }
+		set_temp_variable = { factionc_2 = -1 }
+		set_temp_variable = { factionc_3 = 0 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+	}
+	option = {
+		name = fcf_economy_event.99.c
+		add_to_variable = { CGT_radicalness_level = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = -2 }
+		set_temp_variable = { factionc_2 = 3 }
+		set_temp_variable = { factionc_3 = -1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { ertc_dom = 0 }
+		set_temp_variable = { ertc_str = 1 }
+		set_temp_variable = { ertc_man = 0 }
+		set_temp_variable = { ertc_pro = 0 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.100
+	title = fcf_economy_event.100.title
+	desc = fcf_economy_event.100.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.100.a
+		add_to_variable = { 
+			economy_power = -100
+			tooltip = economy_power_change_tt
+		}
+	}	
+	option = {
+		name = fcf_economy_event.100.b
+		add_political_power = -50
+
+	}	
+	option = {
+		name = fcf_economy_event.100.c
+		add_stability = -0.01
+		
+		hidden_effect = { country_event = { id = fcf_economy_event.101 days = 10 random_days = 15 } }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.101
+	title = fcf_economy_event.101.title
+	desc = fcf_economy_event.101.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.101.a
+		
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -3 }
+		set_temp_variable = { eibc = -1 }
+		set_temp_variable = { eipc = -3 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 0 }
+		set_temp_variable = { elc = -4 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.102
+	title = fcf_economy_event.102.title
+	desc = fcf_economy_event.102.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.102.a
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 1 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+		
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 1 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 1 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+
+		hidden_effect = {
+			random_list = {
+				30 = {
+					modifier = { 
+						set_temp_variable = { t = { value = CGT_bureaucracy_level multiply = 10 }  }
+						add = t
+					}
+					country_event = { id = fcf_economy_event.103 days = 40 random_days = 30 }
+				}
+				70 = {
+					modifier = { 
+						set_temp_variable = { t = { value = CGT_bureaucracy_level multiply = -10 }  }
+						add = t
+					}
+					country_event = { id = fcf_economy_event.104 days = 40 random_days = 30 }
+				}
+			}
+		}
+	}	
+	option = {
+		name = fcf_economy_event.102.b
+		add_to_variable = { 
+			economy_power = -100
+			tooltip = economy_power_change_tt
+		}
+		set_country_flag = CGT_material_stimulation
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = 3 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+		
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = 2 }
+		set_temp_variable = { eibc = 2 }
+		set_temp_variable = { eipc = 1 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = 1 }
+		set_temp_variable = { elc = 0 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = { 
+						set_temp_variable = { t = { value = CGT_bureaucracy_level multiply = 10 }  }
+						add = t
+					}
+					country_event = { id = fcf_economy_event.103 days = 40 random_days = 30 }
+				}
+				50 = {
+					modifier = { 
+						set_temp_variable = { t = { value = CGT_bureaucracy_level multiply = -10 }  }
+						add = t
+					}
+					country_event = { id = fcf_economy_event.104 days = 40 random_days = 30 }
+				}
+			}
+		}
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.103
+	title = fcf_economy_event.103.title
+	desc = fcf_economy_event.103.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.103.a
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -2 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 0 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+		
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -2 }
+		set_temp_variable = { eibc = -1 }
+		set_temp_variable = { eipc = -1 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -1 }
+		set_temp_variable = { elc = -1 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.103.b
+		add_political_power = -30
+		
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { wc = -1 }
+		set_temp_variable = { pc = 0 }
+		set_temp_variable = { mc = 0 }
+		set_temp_variable = { sc = 0 }
+		set_temp_variable = { bc = 1 }
+		set_temp_variable = { ac = 0 }
+		society_pop_satisfactions_change = yes
+		
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -2 }
+		set_temp_variable = { eibc = -1 }
+		set_temp_variable = { eipc = -1 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -1 }
+		set_temp_variable = { elc = -1 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+	option = {
+		name = fcf_economy_event.103.c
+		add_political_power = -50
+		add_to_variable = { 
+			economy_power = -50
+			tooltip = economy_power_change_tt
+		}
+		set_country_flag = CGT_anti_corruption_department
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { party_var = 4 }
+		set_temp_variable = { factionc_1 = 3 }
+		set_temp_variable = { factionc_2 = -2 }
+		set_temp_variable = { factionc_3 = -1 }
+		set_temp_variable = { factionc_4 = 0 }
+		set_temp_variable = { factionc_5 = 0 }
+		party_faction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { evc = -2 }
+		set_temp_variable = { eibc = -1 }
+		set_temp_variable = { eipc = -1 }
+		set_temp_variable = { eiac = 0 }
+		set_temp_variable = { eamc = 0 }
+		set_temp_variable = { eaec = 0 }
+		set_temp_variable = { eaac = 0 }
+		set_temp_variable = { eqc = -1 }
+		set_temp_variable = { elc = -1 }
+		set_temp_variable = { eic = 0 }
+		economy_variable_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.104
+	title = fcf_economy_event.104.title
+	desc = fcf_economy_event.104.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.104.a
+		if = {
+			limit = { has_country_flag = CGT_material_stimulation }
+			add_political_power = 40
+			add_to_variable = { 
+				economy_power = 40
+				tooltip = economy_power_change_tt
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 5 }
+			set_temp_variable = { factionc_2 = -4 }
+			set_temp_variable = { factionc_3 = -1 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 2 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 1 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			society_pop_satisfactions_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 3 }
+			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eipc = 2 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 2 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			economy_variable_change = yes
+		}
+		else = {
+			add_political_power = 20
+			add_to_variable = { 
+				economy_power = 20
+				tooltip = economy_power_change_tt
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 3 }
+			set_temp_variable = { factionc_2 = -2.5 }
+			set_temp_variable = { factionc_3 = -0.5 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { wc = 1 }
+			set_temp_variable = { pc = 0 }
+			set_temp_variable = { mc = 0.5 }
+			set_temp_variable = { sc = 0 }
+			set_temp_variable = { bc = 0 }
+			set_temp_variable = { ac = 0 }
+			society_pop_satisfactions_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 2 }
+			set_temp_variable = { eibc = 1 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 1 }
+			set_temp_variable = { elc = 0.5 }
+			set_temp_variable = { eic = 0 }
+			economy_variable_change = yes
+		}
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.105
+	title = fcf_economy_event.105.title
+	desc = fcf_economy_event.105.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.105.a
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { CGT_bureaucracy_level > 5 } }
+				country_event = fcf_economy_event.106
+			}
+			else = { country_event = fcf_economy_event.107 }
+		}
+	}	
+	option = {
+		name = fcf_economy_event.105.b
+		add_political_power = -50
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { CvCc = 20 }
+	    CGF_vs_CSP_value_change = yes
+
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { CGT_bureaucracy_level > 3 } }
+				country_event = fcf_economy_event.106
+			}
+			else = { country_event = fcf_economy_event.107 }
+		}
+	}	
+	option = {
+		name = fcf_economy_event.105.c
+		add_to_variable = { 
+			economy_power = -60
+			tooltip = economy_power_change_tt
+		}
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { ertc_dom = 1 }
+		set_temp_variable = { ertc_str = 0 }
+		set_temp_variable = { ertc_man = 1 }
+		set_temp_variable = { ertc_pro = 0 }
+		set_temp_variable = { ertc_exc = 0 }
+		set_temp_variable = { ertc_con = 0 }
+		set_temp_variable = { ertc_dev = 0 }
+		economy_reform_tendency_change = yes
+
+		add_to_variable = { CGT_bureaucracy_level = 1 }
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { CGT_bureaucracy_level > 4 } }
+				country_event = fcf_economy_event.106
+			}
+			else = { country_event = fcf_economy_event.107 }
+		}
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.106
+	title = fcf_economy_event.106.title
+	desc = fcf_economy_event.106.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.106.a
+		set_country_flag = CGT_centralists_cooperate_with_PSF
+
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { CNS_attitude_change = 0 }
+		set_temp_variable = { PSF_attitude_change = 5 }
+		set_temp_variable = { POU_attitude_change = 0 }
+		set_temp_variable = { CGT_attitude_change = 0 }
+		set_temp_variable = { PCOP_attitude_change = 0 }
+		set_temp_variable = { UA_attitude_change = 0 }
+		set_temp_variable = { URSRS_attitude_change = 0 }
+		set_temp_variable = { LJR_attitude_change = 0 }
+		set_temp_variable = { PAPF_attitude_change = 0 }
+		party_attitude_change = yes
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.107
+	title = fcf_economy_event.107.title
+	desc = fcf_economy_event.107.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.107.a
+		add_political_power = -1
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.108
+	title = fcf_economy_event.108.title
+	desc = fcf_economy_event.108.desc
+	
+	fire_only_once = yes
+	trigger = {
+		tag = FRA
+		check_expr = { value = CGT_bureaucracy_level add = CGT_radicalness_level greater_than_or_equals = 8 }
+	}
+	option = {
+		name = fcf_economy_event.108.a
+		add_political_power = 10
+		set_country_flag = CGT_stage_reform_results
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.109
+	title = fcf_economy_event.109.title
+	desc = fcf_economy_event.109.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.109.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.110
+	title = fcf_economy_event.110.title
+	desc = fcf_economy_event.110.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.110.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.111
+	title = fcf_economy_event.111.title
+	desc = fcf_economy_event.111.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.111.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.112
+	title = fcf_economy_event.112.title
+	desc = fcf_economy_event.112.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.112.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.113
+	title = fcf_economy_event.113.title
+	desc = fcf_economy_event.113.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.113.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.114
+	title = fcf_economy_event.114.title
+	desc = fcf_economy_event.114.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.114.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.115
+	title = fcf_economy_event.115.title
+	desc = fcf_economy_event.115.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.115.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.116
+	title = fcf_economy_event.116.title
+	desc = fcf_economy_event.116.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.116.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.117
+	title = fcf_economy_event.117.title
+	desc = fcf_economy_event.117.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.117.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.118
+	title = fcf_economy_event.118.title
+	desc = fcf_economy_event.118.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.118.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.119
+	title = fcf_economy_event.119.title
+	desc = fcf_economy_event.119.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.119.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.120
+	title = fcf_economy_event.120.title
+	desc = fcf_economy_event.120.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.120.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.121
+	title = fcf_economy_event.121.title
+	desc = fcf_economy_event.121.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.121.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.122
+	title = fcf_economy_event.122.title
+	desc = fcf_economy_event.122.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.122.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.123
+	title = fcf_economy_event.123.title
+	desc = fcf_economy_event.123.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.123.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.124
+	title = fcf_economy_event.124.title
+	desc = fcf_economy_event.124.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.124.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.125
+	title = fcf_economy_event.125.title
+	desc = fcf_economy_event.125.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.125.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.126
+	title = fcf_economy_event.126.title
+	desc = fcf_economy_event.126.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.126.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.127
+	title = fcf_economy_event.127.title
+	desc = fcf_economy_event.127.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.127.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.128
+	title = fcf_economy_event.128.title
+	desc = fcf_economy_event.128.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.128.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.129
+	title = fcf_economy_event.129.title
+	desc = fcf_economy_event.129.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.129.a
+		
+	}	
+	option = {
+		name = fcf_economy_event.129.b
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.130
+	title = fcf_economy_event.130.title
+	desc = fcf_economy_event.130.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.130.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.131
+	title = fcf_economy_event.131.title
+	desc = fcf_economy_event.131.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.131.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.132
+	title = fcf_economy_event.132.title
+	desc = fcf_economy_event.132.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.132.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.133
+	title = fcf_economy_event.133.title
+	desc = fcf_economy_event.133.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.133.a
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.134
+	title = fcf_economy_event.134.title
+	desc = fcf_economy_event.134.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.134.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.135
+	title = fcf_economy_event.135.title
+	desc = fcf_economy_event.135.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.135.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.136
+	title = fcf_economy_event.136.title
+	desc = fcf_economy_event.136.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.136.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.137
+	title = fcf_economy_event.137.title
+	desc = fcf_economy_event.137.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.137.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.138
+	title = fcf_economy_event.138.title
+	desc = fcf_economy_event.138.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.138.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.139
+	title = fcf_economy_event.139.title
+	desc = fcf_economy_event.139.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.139.a
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.140
+	title = fcf_economy_event.140.title
+	desc = fcf_economy_event.140.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.140.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.141
+	title = fcf_economy_event.141.title
+	desc = fcf_economy_event.141.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.141.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.142
+	title = fcf_economy_event.142.title
+	desc = fcf_economy_event.142.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.142.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.143
+	title = fcf_economy_event.143.title
+	desc = fcf_economy_event.143.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.143.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.144
+	title = fcf_economy_event.144.title
+	desc = fcf_economy_event.144.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.144.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.145
+	title = fcf_economy_event.145.title
+	desc = fcf_economy_event.145.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.145.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.146
+	title = fcf_economy_event.146.title
+	desc = fcf_economy_event.146.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.146.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.147
+	title = fcf_economy_event.147.title
+	desc = fcf_economy_event.147.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.147.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.148
+	title = fcf_economy_event.148.title
+	desc = fcf_economy_event.148.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.148.a
+	
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.149
+	title = fcf_economy_event.149.title
+	desc =  fcf_economy_event.149.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.149.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.150
+	title = fcf_economy_event.150.title
+	desc = fcf_economy_event.150.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.150.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.151
+	title = fcf_economy_event.151.title
+	desc = fcf_economy_event.151.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.151.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.152
+	title = fcf_economy_event.152.title
+	desc = fcf_economy_event.152.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.152.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.153
+	title = fcf_economy_event.153.title
+	desc = fcf_economy_event.153.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.153.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.154
+	title = fcf_economy_event.154.title
+	desc = fcf_economy_event.154.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.154.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.155
+	title = fcf_economy_event.155.title
+	desc = fcf_economy_event.155.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.155.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.156
+	title = fcf_economy_event.156.title
+	desc = fcf_economy_event.156.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.156.a
+	
+	}
+}
+
+
+country_event = {
+	id = fcf_economy_event.157
+	title = fcf_economy_event.157.title
+	desc = fcf_economy_event.157.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.157.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.158
+	title = fcf_economy_event.158.title
+	desc = fcf_economy_event.158.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.158.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.159
+	title = fcf_economy_event.159.title
+	desc = fcf_economy_event.159.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.159.a
+		
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.160
+	title = fcf_economy_event.160.title
+	desc = fcf_economy_event.160.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.160.a
+
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.161
+	title = fcf_economy_event.161.title
+	desc = fcf_economy_event.161.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.161.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.162
+	title = fcf_economy_event.162.title
+	desc = fcf_economy_event.162.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.162.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.163
+	title = fcf_economy_event.163.title
+	desc = fcf_economy_event.163.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.163.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.164
+	title = fcf_economy_event.164.title
+	desc = fcf_economy_event.164.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.164.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.165
+	title = fcf_economy_event.165.title
+	desc = fcf_economy_event.165.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.165.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.166
+	title = fcf_economy_event.166.title
+	desc = fcf_economy_event.166.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.166.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.167
+	title = fcf_economy_event.167.title
+	desc = fcf_economy_event.167.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.167.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.168
+	title = fcf_economy_event.168.title
+	desc = fcf_economy_event.168.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.168.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.169
+	title = fcf_economy_event.169.title
+	desc = fcf_economy_event.169.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.169.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.170
+	title = fcf_economy_event.170.title
+	desc = fcf_economy_event.170.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.170.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.171
+	title = fcf_economy_event.171.title
+	desc = fcf_economy_event.171.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.171.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.172
+	title = fcf_economy_event.172.title
+	desc = fcf_economy_event.172.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.172.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.173
+	title = fcf_economy_event.173.title
+	desc = fcf_economy_event.173.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.173.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.174
+	title = fcf_economy_event.174.title
+	desc = fcf_economy_event.174.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.174.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.175
+	title = fcf_economy_event.175.title
+	desc = fcf_economy_event.175.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.175.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.176
+	title = fcf_economy_event.176.title
+	desc = fcf_economy_event.176.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.176.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.177
+	title = fcf_economy_event.177.title
+	desc = fcf_economy_event.177.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.177.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.178
+	title = fcf_economy_event.178.title
+	desc = fcf_economy_event.178.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.178.a
+		
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.179
+	title = fcf_economy_event.179.title
+	desc = fcf_economy_event.179.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.179.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.180
+	title = fcf_economy_event.180.title
+	desc = fcf_economy_event.180.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.180.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.181
+	title = fcf_economy_event.181.title
+	desc = fcf_economy_event.181.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.181.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.182
+	title = fcf_economy_event.182.title
+	desc = fcf_economy_event.182.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.182.a
+	}
+}
+
+country_event = {
+	id = fcf_economy_event.183
+	title = fcf_economy_event.183.title
+	desc = fcf_economy_event.183.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.183.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.184
+	title = fcf_economy_event.184.title
+	desc = fcf_economy_event.184.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.184.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.185
+	title = fcf_economy_event.185.title
+	desc = fcf_economy_event.185.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.185.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.186
+	title = fcf_economy_event.186.title
+	desc = fcf_economy_event.186.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.186.a
+	
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.187
+	title = fcf_economy_event.187.title
+	desc = fcf_economy_event.187.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.187.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.188
+	title = fcf_economy_event.188.title
+	desc = fcf_economy_event.188.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.188.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.189
+	title = fcf_economy_event.189.title
+	desc = fcf_economy_event.189.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.189.a
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.190
+	title = fcf_economy_event.190.title
+	desc = fcf_economy_event.190.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.190.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.191
+	title = fcf_economy_event.191.title
+	desc = fcf_economy_event.191.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.191.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.192
+	title = fcf_economy_event.192.title
+	desc = fcf_economy_event.192.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.192.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.193
+	title = fcf_economy_event.193.title
+	desc = fcf_economy_event.193.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.193.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.194
+	title = fcf_economy_event.194.title
+	desc = fcf_economy_event.194.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.194.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.195
+	title = fcf_economy_event.195.title
+	desc = fcf_economy_event.195.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.195.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.196
+	title = fcf_economy_event.196.title
+	desc = fcf_economy_event.196.desc.a
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.196.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.197
+	title = fcf_economy_event.197.title
+	desc = fcf_economy_event.197.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.197.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.198
+	title = fcf_economy_event.198.title
+	desc = fcf_economy_event.198.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.198.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.199
+	title = fcf_economy_event.199.title
+	desc = fcf_economy_event.199.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.199.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.200
+	title = fcf_economy_event.200.title
+	desc = fcf_economy_event.200.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.200.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.201
+	title = fcf_economy_event.201.title
+	desc = fcf_economy_event.201.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.201.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.202
+	title = fcf_economy_event.202.title
+	desc = fcf_economy_event.202.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.202.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.203
+	title = fcf_economy_event.203.title
+	desc = fcf_economy_event.203.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.203.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.204
+	title = fcf_economy_event.204.title
+	desc = fcf_economy_event.204.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.204.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.205
+	title = fcf_economy_event.205.title
+	desc = fcf_economy_event.205.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.205.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.206
+	title = fcf_economy_event.206.title
+	desc = fcf_economy_event.206.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.206.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.207
+	title = fcf_economy_event.207.title
+	desc = fcf_economy_event.207.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.207.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.208
+	title = fcf_economy_event.208.title
+	desc = fcf_economy_event.208.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.208.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.209
+	title = fcf_economy_event.209.title
+	desc = fcf_economy_event.209.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.209.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.210
+	title = fcf_economy_event.210.title
+	desc = fcf_economy_event.210.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.210.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.211
+	title = fcf_economy_event.211.title
+	desc = fcf_economy_event.211.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.211.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.212
+	title = fcf_economy_event.212.title
+	desc = fcf_economy_event.212.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.212.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.213
+	title = fcf_economy_event.213.title
+	desc = fcf_economy_event.213.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.213.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.214
+	title = fcf_economy_event.214.title
+	desc = fcf_economy_event.214.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.214.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.215
+	title = fcf_economy_event.215.title
+	desc = fcf_economy_event.215.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.215.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.216
+	title = fcf_economy_event.216.title
+	desc = fcf_economy_event.216.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.216.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.217
+	title = fcf_economy_event.217.title
+	desc = fcf_economy_event.217.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.217.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.218
+	title = fcf_economy_event.218.title
+	desc = fcf_economy_event.218.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.218.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.219
+	title = fcf_economy_event.219.title
+	desc = fcf_economy_event.219.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.219.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.220
+	title = fcf_economy_event.220.title
+	desc = fcf_economy_event.220.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.220.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.221
+	title = fcf_economy_event.221.title
+	desc = fcf_economy_event.221.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.221.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.222
+	title = fcf_economy_event.222.title
+	desc = fcf_economy_event.222.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.222.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.223
+	title = fcf_economy_event.223.title
+	desc = fcf_economy_event.223.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.223.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.224
+	title = fcf_economy_event.224.title
+	desc = fcf_economy_event.224.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.224.a
+		ai_chance = { base = 50 }
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.225
+	title = fcf_economy_event.225.title
+	desc = fcf_economy_event.225.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.225.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.226
+	title = fcf_economy_event.226.title
+	desc = fcf_economy_event.226.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.226.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.227
+	title = fcf_economy_event.227.title
+	desc = fcf_economy_event.227.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.227.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.228
+	title = fcf_economy_event.228.title
+	desc = fcf_economy_event.228.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.228.a
+		ai_chance = { base = 50 }
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.229
+	title = fcf_economy_event.229.title
+	desc = fcf_economy_event.229.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.229.a
+		
+	}	
+	option = {
+		name = fcf_economy_event.229.b
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.230
+	title = fcf_economy_event.230.title
+	desc = fcf_economy_event.230.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.230.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.231
+	title = fcf_economy_event.231.title
+	desc = fcf_economy_event.231.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.231.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.232
+	title = fcf_economy_event.232.title
+	desc = fcf_economy_event.232.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.232.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.233
+	title = fcf_economy_event.233.title
+	desc = fcf_economy_event.233.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.233.a
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.234
+	title = fcf_economy_event.234.title
+	desc = fcf_economy_event.234.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.234.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.235
+	title = fcf_economy_event.235.title
+	desc = fcf_economy_event.235.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.235.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.236
+	title = fcf_economy_event.236.title
+	desc = fcf_economy_event.236.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.236.a
+
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.237
+	title = fcf_economy_event.237.title
+	desc = fcf_economy_event.237.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.237.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.238
+	title = fcf_economy_event.238.title
+	desc = fcf_economy_event.238.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.238.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.239
+	title = fcf_economy_event.239.title
+	desc = fcf_economy_event.239.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.239.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.240
+	title = fcf_economy_event.240.title
+	desc = fcf_economy_event.240.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.240.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.241
+	title = fcf_economy_event.241.title
+	desc = fcf_economy_event.241.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.241.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.242
+	title = fcf_economy_event.242.title
+	desc = fcf_economy_event.242.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.242.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.243
+	title = fcf_economy_event.243.title
+	desc = fcf_economy_event.243.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.243.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.244
+	title = fcf_economy_event.244.title
+	desc = fcf_economy_event.244.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.244.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.245
+	title = fcf_economy_event.245.title
+	desc = fcf_economy_event.245.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.245.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.246
+	title = fcf_economy_event.246.title
+	desc = fcf_economy_event.246.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.246.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.247
+	title = fcf_economy_event.247.title
+	desc = fcf_economy_event.247.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.247.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.248
+	title = fcf_economy_event.248.title
+	desc = fcf_economy_event.248.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.248.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.249
+	title = fcf_economy_event.249.title
+	desc = fcf_economy_event.249.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.249.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.250
+	title = fcf_economy_event.250.title
+	desc = fcf_economy_event.250.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.250.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.251
+	title = fcf_economy_event.251.title
+	desc = fcf_economy_event.251.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.251.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.252
+	title = fcf_economy_event.252.title
+	desc = fcf_economy_event.252.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.252.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.253
+	title = fcf_economy_event.253.title
+	desc = fcf_economy_event.253.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.253.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.254
+	title = fcf_economy_event.254.title
+	desc = fcf_economy_event.254.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.254.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.255
+	title = fcf_economy_event.255.title
+	desc = fcf_economy_event.255.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.255.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.256
+	title = fcf_economy_event.256.title
+	desc = fcf_economy_event.256.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.256.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.257
+	title = fcf_economy_event.257.title
+	desc = fcf_economy_event.257.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.257.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.258
+	title = fcf_economy_event.258.title
+	desc = fcf_economy_event.258.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.258.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.259
+	title = fcf_economy_event.259.title
+	desc = fcf_economy_event.259.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.259.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.260
+	title = fcf_economy_event.260.title
+	desc = fcf_economy_event.260.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.260.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.261
+	title = fcf_economy_event.261.title
+	desc = fcf_economy_event.261.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.261.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.262
+	title = fcf_economy_event.262.title
+	desc = fcf_economy_event.262.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.262.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.263
+	title = fcf_economy_event.263.title
+	desc = fcf_economy_event.263.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.263.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.264
+	title = fcf_economy_event.264.title
+	desc = fcf_economy_event.264.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.264.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.265
+	title = fcf_economy_event.265.title
+	desc = fcf_economy_event.265.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.265.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.266
+	title = fcf_economy_event.266.title
+	desc = fcf_economy_event.266.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.266.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.267
+	title = fcf_economy_event.267.title
+	desc = fcf_economy_event.267.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.267.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.268
+	title = fcf_economy_event.268.title
+	desc = fcf_economy_event.268.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.268.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.269
+	title = fcf_economy_event.269.title
+	desc = fcf_economy_event.269.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.269.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.270
+	title = fcf_economy_event.270.title
+	desc = fcf_economy_event.270.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.270.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.271
+	title = fcf_economy_event.271.title
+	desc = fcf_economy_event.271.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.271.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.272
+	title = fcf_economy_event.272.title
+	desc = fcf_economy_event.272.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.272.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.273
+	title = fcf_economy_event.273.title
+	desc = fcf_economy_event.273.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.273.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.274
+	title = fcf_economy_event.274.title
+	desc = fcf_economy_event.274.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.274.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.275
+	title = fcf_economy_event.275.title
+	desc = fcf_economy_event.275.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.275.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.276
+	title = fcf_economy_event.276.title
+	desc = fcf_economy_event.276.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.276.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.277
+	title = fcf_economy_event.277.title
+	desc = fcf_economy_event.277.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.277.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.278
+	title = fcf_economy_event.278.title
+	desc = fcf_economy_event.278.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.278.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.279
+	title = fcf_economy_event.279.title
+	desc = fcf_economy_event.279.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.279.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.280
+	title = fcf_economy_event.280.title
+	desc = fcf_economy_event.280.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.280.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.281
+	title = fcf_economy_event.281.title
+	desc = fcf_economy_event.281.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.281.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.282
+	title = fcf_economy_event.282.title
+	desc = fcf_economy_event.282.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.282.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.283
+	title = fcf_economy_event.283.title
+	desc = fcf_economy_event.283.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.283.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.284
+	title = fcf_economy_event.284.title
+	desc = fcf_economy_event.284.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.284.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.285
+	title = fcf_economy_event.285.title
+	desc = fcf_economy_event.285.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.285.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.286
+	title = fcf_economy_event.286.title
+	desc = fcf_economy_event.286.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.286.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.287
+	title = fcf_economy_event.287.title
+	desc = fcf_economy_event.287.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.287.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.288
+	title = fcf_economy_event.288.title
+	desc = fcf_economy_event.288.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.288.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.289
+	title = fcf_economy_event.289.title
+	desc = fcf_economy_event.289.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.289.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.290
+	title = fcf_economy_event.290.title
+	desc = fcf_economy_event.290.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.290.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.291
+	title = fcf_economy_event.291.title
+	desc = fcf_economy_event.291.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.291.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.292
+	title = fcf_economy_event.292.title
+	desc = fcf_economy_event.292.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.292.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.293
+	title = fcf_economy_event.293.title
+	desc = fcf_economy_event.293.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.293.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.294
+	title = fcf_economy_event.294.title
+	desc = fcf_economy_event.294.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.294.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.295
+	title = fcf_economy_event.295.title
+	desc = fcf_economy_event.295.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.295.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.296
+	title = fcf_economy_event.296.title
+	desc = fcf_economy_event.296.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.296.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.297
+	title = fcf_economy_event.297.title
+	desc = fcf_economy_event.297.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.297.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.298
+	title = fcf_economy_event.298.title
+	desc = fcf_economy_event.298.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.298.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.299
+	title = fcf_economy_event.299.title
+	desc = fcf_economy_event.299.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.299.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.300
+	title = fcf_economy_event.300.title
+	desc = fcf_economy_event.300.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.300.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.301
+	title = fcf_economy_event.301.title
+	desc = fcf_economy_event.301.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.301.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.302
+	title = fcf_economy_event.302.title
+	desc = fcf_economy_event.302.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.302.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.303
+	title = fcf_economy_event.303.title
+	desc = fcf_economy_event.303.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.303.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.304
+	title = fcf_economy_event.304.title
+	desc = fcf_economy_event.304.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.304.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.305
+	title = fcf_economy_event.305.title
+	desc = fcf_economy_event.305.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.305.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.306
+	title = fcf_economy_event.306.title
+	desc = fcf_economy_event.306.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.306.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.307
+	title = fcf_economy_event.307.title
+	desc = fcf_economy_event.307.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.307.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.308
+	title = fcf_economy_event.308.title
+	desc = fcf_economy_event.308.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.308.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.309
+	title = fcf_economy_event.309.title
+	desc = fcf_economy_event.309.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.309.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.310
+	title = fcf_economy_event.310.title
+	desc = fcf_economy_event.310.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.310.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.311
+	title = fcf_economy_event.311.title
+	desc = fcf_economy_event.311.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.311.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.312
+	title = fcf_economy_event.312.title
+	desc = fcf_economy_event.312.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.312.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.313
+	title = fcf_economy_event.313.title
+	desc = fcf_economy_event.313.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.313.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.314
+	title = fcf_economy_event.314.title
+	desc = fcf_economy_event.314.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.314.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.315
+	title = fcf_economy_event.315.title
+	desc = fcf_economy_event.315.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.315.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.316
+	title = fcf_economy_event.316.title
+	desc = fcf_economy_event.316.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.316.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.317
+	title = fcf_economy_event.317.title
+	desc = fcf_economy_event.317.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.317.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.318
+	title = fcf_economy_event.318.title
+	desc = fcf_economy_event.318.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.318.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.319
+	title = fcf_economy_event.319.title
+	desc = fcf_economy_event.319.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.319.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.320
+	title = fcf_economy_event.320.title
+	desc = fcf_economy_event.320.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.320.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.321
+	title = fcf_economy_event.321.title
+	desc = fcf_economy_event.321.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.321.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.322
+	title = fcf_economy_event.322.title
+	desc = fcf_economy_event.322.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.322.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.323
+	title = fcf_economy_event.323.title
+	desc = fcf_economy_event.323.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.323.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.324
+	title = fcf_economy_event.324.title
+	desc = fcf_economy_event.324.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.324.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.325
+	title = fcf_economy_event.325.title
+	desc = fcf_economy_event.325.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.325.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.326
+	title = fcf_economy_event.326.title
+	desc = fcf_economy_event.326.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.326.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.327
+	title = fcf_economy_event.327.title
+	desc = fcf_economy_event.327.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.327.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.328
+	title = fcf_economy_event.328.title
+	desc = fcf_economy_event.328.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.328.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.329
+	title = fcf_economy_event.329.title
+	desc = fcf_economy_event.329.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.329.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.330
+	title = fcf_economy_event.330.title
+	desc = fcf_economy_event.330.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.330.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.331
+	title = fcf_economy_event.331.title
+	desc = fcf_economy_event.331.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.331.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.332
+	title = fcf_economy_event.332.title
+	desc = fcf_economy_event.332.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.332.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.333
+	title = fcf_economy_event.333.title
+	desc = fcf_economy_event.333.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.333.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.334
+	title = fcf_economy_event.334.title
+	desc = fcf_economy_event.334.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.334.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.335
+	title = fcf_economy_event.335.title
+	desc = fcf_economy_event.335.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.335.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.336
+	title = fcf_economy_event.336.title
+	desc = fcf_economy_event.336.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.336.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.337
+	title = fcf_economy_event.337.title
+	desc = fcf_economy_event.337.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.337.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.338
+	title = fcf_economy_event.338.title
+	desc = fcf_economy_event.338.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.338.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.339
+	title = fcf_economy_event.339.title
+	desc = fcf_economy_event.339.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.339.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.340
+	title = fcf_economy_event.340.title
+	desc = fcf_economy_event.340.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.340.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.341
+	title = fcf_economy_event.341.title
+	desc = fcf_economy_event.341.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.341.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.342
+	title = fcf_economy_event.342.title
+	desc = fcf_economy_event.342.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.342.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.343
+	title = fcf_economy_event.343.title
+	desc = fcf_economy_event.343.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.343.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.344
+	title = fcf_economy_event.344.title
+	desc = fcf_economy_event.344.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.344.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.345
+	title = fcf_economy_event.345.title
+	desc = fcf_economy_event.345.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.345.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.346
+	title = fcf_economy_event.346.title
+	desc = fcf_economy_event.346.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.346.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.347
+	title = fcf_economy_event.347.title
+	desc = fcf_economy_event.347.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.347.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.348
+	title = fcf_economy_event.348.title
+	desc = fcf_economy_event.348.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.348.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.349
+	title = fcf_economy_event.349.title
+	desc = fcf_economy_event.349.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.349.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.350
+	title = fcf_economy_event.350.title
+	desc = fcf_economy_event.350.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.350.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.351
+	title = fcf_economy_event.351.title
+	desc = fcf_economy_event.351.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.351.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.352
+	title = fcf_economy_event.352.title
+	desc = fcf_economy_event.352.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.352.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.353
+	title = fcf_economy_event.353.title
+	desc = fcf_economy_event.353.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.353.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.354
+	title = fcf_economy_event.354.title
+	desc = fcf_economy_event.354.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.354.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.355
+	title = fcf_economy_event.355.title
+	desc = fcf_economy_event.355.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.355.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.356
+	title = fcf_economy_event.356.title
+	desc = fcf_economy_event.356.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.356.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.357
+	title = fcf_economy_event.357.title
+	desc = fcf_economy_event.357.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.357.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.358
+	title = fcf_economy_event.358.title
+	desc = fcf_economy_event.358.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.358.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.359
+	title = fcf_economy_event.359.title
+	desc = fcf_economy_event.359.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.359.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.360
+	title = fcf_economy_event.360.title
+	desc = fcf_economy_event.360.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.360.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.361
+	title = fcf_economy_event.361.title
+	desc = fcf_economy_event.361.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.361.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.362
+	title = fcf_economy_event.362.title
+	desc = fcf_economy_event.362.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.362.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.363
+	title = fcf_economy_event.363.title
+	desc = fcf_economy_event.363.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.363.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.364
+	title = fcf_economy_event.364.title
+	desc = fcf_economy_event.364.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.364.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.365
+	title = fcf_economy_event.365.title
+	desc = fcf_economy_event.365.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.365.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.366
+	title = fcf_economy_event.366.title
+	desc = fcf_economy_event.366.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.366.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.367
+	title = fcf_economy_event.367.title
+	desc = fcf_economy_event.367.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.367.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.368
+	title = fcf_economy_event.368.title
+	desc = fcf_economy_event.368.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.368.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.369
+	title = fcf_economy_event.369.title
+	desc = fcf_economy_event.369.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.369.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.370
+	title = fcf_economy_event.370.title
+	desc = fcf_economy_event.370.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.370.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.371
+	title = fcf_economy_event.371.title
+	desc = fcf_economy_event.371.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.371.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.372
+	title = fcf_economy_event.372.title
+	desc = fcf_economy_event.372.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.372.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.373
+	title = fcf_economy_event.373.title
+	desc = fcf_economy_event.373.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.373.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.374
+	title = fcf_economy_event.374.title
+	desc = fcf_economy_event.374.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.374.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.375
+	title = fcf_economy_event.375.title
+	desc = fcf_economy_event.375.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.375.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.376
+	title = fcf_economy_event.376.title
+	desc = fcf_economy_event.376.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.376.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.377
+	title = fcf_economy_event.377.title
+	desc = fcf_economy_event.377.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.377.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.378
+	title = fcf_economy_event.378.title
+	desc = fcf_economy_event.378.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.378.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.379
+	title = fcf_economy_event.379.title
+	desc = fcf_economy_event.379.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.379.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.380
+	title = fcf_economy_event.380.title
+	desc = fcf_economy_event.380.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.380.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.381
+	title = fcf_economy_event.381.title
+	desc = fcf_economy_event.381.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.381.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.382
+	title = fcf_economy_event.382.title
+	desc = fcf_economy_event.382.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.382.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.383
+	title = fcf_economy_event.383.title
+	desc = fcf_economy_event.383.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.383.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.384
+	title = fcf_economy_event.384.title
+	desc = fcf_economy_event.384.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.384.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.385
+	title = fcf_economy_event.385.title
+	desc = fcf_economy_event.385.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.385.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.386
+	title = fcf_economy_event.386.title
+	desc = fcf_economy_event.386.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.386.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.387
+	title = fcf_economy_event.387.title
+	desc = fcf_economy_event.387.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.387.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.388
+	title = fcf_economy_event.388.title
+	desc = fcf_economy_event.388.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.388.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.389
+	title = fcf_economy_event.389.title
+	desc = fcf_economy_event.389.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.389.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.390
+	title = fcf_economy_event.390.title
+	desc = fcf_economy_event.390.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.390.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.391
+	title = fcf_economy_event.391.title
+	desc = fcf_economy_event.391.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.391.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.392
+	title = fcf_economy_event.392.title
+	desc = fcf_economy_event.392.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.392.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.393
+	title = fcf_economy_event.393.title
+	desc = fcf_economy_event.393.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.393.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.394
+	title = fcf_economy_event.394.title
+	desc = fcf_economy_event.394.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.394.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.395
+	title = fcf_economy_event.395.title
+	desc = fcf_economy_event.395.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.395.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.396
+	title = fcf_economy_event.396.title
+	desc = fcf_economy_event.396.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.396.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.397
+	title = fcf_economy_event.397.title
+	desc = fcf_economy_event.397.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.397.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.398
+	title = fcf_economy_event.398.title
+	desc = fcf_economy_event.398.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.398.a
+		
+	}	
+}
+
+country_event = {
+	id = fcf_economy_event.399
+	title = fcf_economy_event.399.title
+	desc = fcf_economy_event.399.desc
+	
+	is_triggered_only = yes
+	option = {
+		name = fcf_economy_event.399.a
+		
 	}	
 }

@@ -1,0 +1,3785 @@
+#############
+###CGF CSP###
+#############
+	defined_text = {
+		name = FCF_CGF_vs_CSP_detail
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value > 90 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = 90 } 
+				}
+			}
+			localization_key = CGF_vs_CSP_towards_CSP5
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value > 70 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = 70 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value < 90 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CSP4
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value > 50 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = 50 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value < 70 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CSP3
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value > 30 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = 30 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value < 50 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CSP2
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value > 10 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = 10 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value < 30 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CSP1
+		}
+		text = {
+			trigger = { 
+				check_variable = { FRA.FCF_CGF_vs_CSP_value > -10 } 
+				check_variable = { FRA.FCF_CGF_vs_CSP_value < 10 } 
+			}
+			localization_key = CGF_vs_CSP_balance
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value < -10 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = -10 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value > -30 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CGF1
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value < -30 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = -30 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value > -50 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CGF2
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value < -50 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = -50 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value > -70 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CGF3
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value < -70 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = -70 } 
+				}
+				check_variable = { FRA.FCF_CGF_vs_CSP_value > -90 } 
+			}
+			localization_key = CGF_vs_CSP_towards_CGF4
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { FRA.FCF_CGF_vs_CSP_value < -90 } 
+					check_variable = { FRA.FCF_CGF_vs_CSP_value = -90 } 
+				}
+			}
+			localization_key = CGF_vs_CSP_towards_CGF5
+		}
+	}
+	defined_text = {
+		name = FCF_cgf_vs_csp_judge_position
+		text = {
+			trigger = { check_variable = { target_t = 5 } }
+			localization_key = CGF_vs_CSP_towards_CSP5
+		}
+		text = {
+			trigger = { check_variable = { target_t = 4 } }
+			localization_key = CGF_vs_CSP_towards_CSP4
+		}
+		text = {
+			trigger = { check_variable = { target_t = 3 } }
+			localization_key = CGF_vs_CSP_towards_CSP3
+		}
+		text = {
+			trigger = { check_variable = { target_t = 2 } }
+			localization_key = CGF_vs_CSP_towards_CSP2
+		}
+		text = {
+			trigger = { check_variable = { target_t = 1 } }
+			localization_key = CGF_vs_CSP_towards_CSP1
+		}
+
+		text = {
+			trigger = { check_variable = { target_t = -1 } }
+			localization_key = CGF_vs_CSP_towards_CGF1
+		}
+		text = {
+			trigger = { check_variable = { target_t = -2 } }
+			localization_key = CGF_vs_CSP_towards_CGF2
+		}
+		text = {
+			trigger = { check_variable = { target_t = -3 } }
+			localization_key = CGF_vs_CSP_towards_CGF3
+		}
+		text = {
+			trigger = { check_variable = { target_t = -4 } }
+			localization_key = CGF_vs_CSP_towards_CGF4
+		}
+		text = {
+			trigger = { check_variable = { target_t = -5 } }
+			localization_key = CGF_vs_CSP_towards_CGF5
+		}
+	}
+	defined_text = {
+		name = FCF_CvC_value_change
+		text = {
+			trigger = { check_variable = { CvCc > 0 } }
+			localization_key = to_CSP
+		}
+		text = {
+			trigger = { check_variable = { CvCc < 0 } }
+			localization_key = to_CGF
+		}
+	}
+	defined_text = {
+		name = FCF_cgf_vs_csp_judge_which
+		text = {
+			trigger = { check_variable = { target_t > 0 } }
+			localization_key = CSP_name
+		}
+		text = {
+			trigger = { check_variable = { target_t < 0 } }
+			localization_key = CGF_name
+		}
+	}
+
+	defined_text = {
+		name = bop_ui_loc
+		text = { localization_key = bop_ui_loc_tt }
+	}
+	defined_text = {
+		name = bop_ui_csp_idea_loc
+		text = { localization_key = idea_desc|CSP_full_buff }
+	}
+	defined_text = {
+		name = bop_ui_cgf_idea_loc
+		text = { localization_key = idea_desc|CGF_full_buff }
+	}
+#############
+###  CGF  ###
+#############
+###CGF 决议
+	defined_text = {
+		name = cgf_funding_city_idea_desc
+		text = { localization_key = idea_desc|FCF_funding_city_commune }
+	}
+	defined_text = {
+		name = cgf_funding_rural_idea_desc
+		text = { localization_key = idea_desc|FCF_funding_rural_commune }
+	}
+###党派
+	defined_text = {
+		name = party_name
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_CNS_show 
+					check_variable = { party_var = 1 }
+				}
+			}
+			localization_key = party_CNS_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_PSF_show 
+					check_variable = { party_var = 2 }
+				}
+			}
+			localization_key = party_PSF_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_POU_show 
+					check_variable = { party_var = 3 }
+				}
+			}
+			localization_key = party_POU_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_CGT_show 
+					check_variable = { party_var = 4 }
+				}
+			}
+			localization_key = party_CGT_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_PCOP_show 
+					check_variable = { party_var = 5 }
+				}
+			}
+			localization_key = party_PCOP_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_UA_show 
+					check_variable = { party_var = 6 }
+				}
+			}
+			localization_key = party_UA_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_URSRS_show 
+					check_variable = { party_var = 7 }
+				}
+			}
+			localization_key = party_URSRS_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_LJR_show 
+					check_variable = { party_var = 8 }
+				}
+			}
+			localization_key = party_LJR_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_PAPF_show 
+					check_variable = { party_var = 9 }
+				}
+			}
+			localization_key = party_PAPF_short
+		}
+		text = {
+			trigger = { 
+				OR = {
+					has_country_flag = party_ETC_show 
+					check_variable = { party_var = 10 }
+				}
+			}
+			localization_key = party_ETC
+		}
+		text = { localization_key = party_detai_no }
+	}
+	defined_text = {
+		name = party_intro_long
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 1 } }
+			localization_key = seat_CNS_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 2 } }
+			localization_key = seat_PSF_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 3 } }
+			localization_key = seat_POU_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 4 } }
+			localization_key = seat_CGT_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 5 } }
+			localization_key = seat_PCOP_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 6 } }
+			localization_key = seat_UA_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 8 } }
+			localization_key = seat_URSRS_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 7 } }
+			localization_key = seat_LJR_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 11 } }
+			localization_key = seat_PAPF_long
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 12 } }
+			localization_key = seat_ETC_long
+		}
+	}
+	defined_text = {
+		name = party_intro
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 1 } }
+			localization_key = seat_CNS
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 2 } }
+			localization_key = seat_PSF
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 3 } }
+			localization_key = seat_POU
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 4 } }
+			localization_key = seat_CGT
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 5 } }
+			localization_key = seat_PCOP
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 6 } }
+			localization_key = seat_UA
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 8 } }
+			localization_key = seat_URSRS
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 7 } }
+			localization_key = seat_LJR
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 11 } }
+			localization_key = seat_PAPF
+		}
+		text = {
+			trigger = { check_variable = { array_f_array^seat_idx = 12 } }
+			localization_key = seat_ETC
+		}
+		text = {
+			trigger = { 
+				has_country_flag = voting_for_bill
+				check_variable = { array_f_array^seat_idx = 13 } 
+			}
+			localization_key = bill_agree_vote_count
+		}
+		text = {
+			trigger = { 
+				has_country_flag = voting_for_bill
+				check_variable = { array_f_array^seat_idx = 14 } 
+			}
+			localization_key = bill_agree_vote_count
+		}
+		text = {
+			trigger = { 
+				NOT = { has_country_flag = voting_for_bill }
+				check_variable = { array_f_array^seat_idx = 13 } 
+			}
+			localization_key = not_voting_yet
+		}
+		text = {
+			trigger = { 
+				NOT = { has_country_flag = voting_for_bill }
+				check_variable = { array_f_array^seat_idx = 14 } 
+			}
+			localization_key = not_voting_yet
+		}
+	}
+	defined_text = {
+		name = cgf_party_attitude_text_loc
+		text = {
+			trigger = { has_country_flag = party_CNS_show }
+			localization_key = CNS_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_PSF_show }
+			localization_key = PSF_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_POU_show }
+			localization_key = POU_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_CGT_show }
+			localization_key = CGT_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_PCOP_show }
+			localization_key = PCOP_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_UA_show }
+			localization_key = UA_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_URSRS_show }
+			localization_key = URSRS_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_LJR_show }
+			localization_key = LJR_attitude_tt
+		}
+		text = {
+			trigger = { has_country_flag = party_PAPF_show }
+			localization_key = PAPF_attitude_tt
+		}
+		text = {
+			trigger = {
+				has_country_flag = show_cgf_voting
+				has_country_flag = voting_for_bill
+			}
+			localization_key = bill_agree_vote_count
+		}
+	}
+###态度
+	defined_text = {
+		name = party_attitude_judge_target
+		text = {
+			trigger = { check_variable = { target_attitude = 5 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { target_attitude = 4 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { target_attitude = 3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { target_attitude = 2 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			trigger = { check_variable = { target_attitude = 1 } }
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = CNS_attitude_loc
+		text = {
+			trigger = { check_variable = { CNS_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { CNS_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { CNS_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { CNS_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = PSF_attitude_loc
+		text = {
+			trigger = { check_variable = { PSF_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { PSF_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { PSF_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { PSF_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = POU_attitude_loc
+		text = {
+			trigger = { check_variable = { POU_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { POU_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { POU_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { POU_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = CGT_attitude_loc
+		text = {
+			trigger = { check_variable = { CGT_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { CGT_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { CGT_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { CGT_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = PCOP_attitude_loc
+		text = {
+			trigger = { check_variable = { PCOP_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { PCOP_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { PCOP_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { PCOP_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = UA_attitude_loc
+		text = {
+			trigger = { check_variable = { UA_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { UA_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { UA_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { UA_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = URSRS_attitude_loc
+		text = {
+			trigger = { check_variable = { URSRS_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { URSRS_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { URSRS_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { URSRS_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = LJR_attitude_loc
+		text = {
+			trigger = { check_variable = { LJR_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { LJR_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { LJR_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { LJR_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+	defined_text = {
+		name = PAPF_attitude_loc
+		text = {
+			trigger = { check_variable = { PAPF_attitude > 6 } }
+			localization_key = party_attitude_5
+		}
+		text = {
+			trigger = { check_variable = { PAPF_attitude > 2 } }
+			localization_key = party_attitude_4
+		}
+		text = {
+			trigger = { check_variable = { PAPF_attitude > -3 } }
+			localization_key = party_attitude_3
+		}
+		text = {
+			trigger = { check_variable = { PAPF_attitude > -7 } }
+			localization_key = party_attitude_2
+		}
+		text = {
+			localization_key = party_attitude_1
+		}
+	}
+###执政
+	defined_text = {
+		name = is_CNS_in_gov
+		text = {
+			trigger = { has_country_flag = CNS_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_PSF_in_gov
+		text = {
+			trigger = { has_country_flag = PSF_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_POU_in_gov
+		text = {
+			trigger = { has_country_flag = POU_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_CGT_in_gov
+		text = {
+			trigger = { has_country_flag = CGT_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_PCOP_in_gov
+		text = {
+			trigger = { has_country_flag = PCOP_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_UA_in_gov
+		text = {
+			trigger = { has_country_flag = UA_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_URSRS_in_gov
+		text = {
+			trigger = { has_country_flag = URSRS_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_LJR_in_gov
+		text = {
+			trigger = { has_country_flag = LJR_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+	defined_text = {
+		name = is_PAPF_in_gov
+		text = {
+			trigger = { has_country_flag = PAPF_in_gov }
+			localization_key = party_in_gov
+		}
+	}
+###赞同票
+	defined_text = {
+		name = show_agree
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = bill_agree_vote_count
+		}
+		text = {
+			trigger = { NOT = { has_country_flag = voting_for_bill } }
+			localization_key = not_voting_yet
+		}
+	}
+	defined_text = {
+		name = party_attitude_to_bill_loc
+		text = {
+			trigger = { check_variable = { party_attitude_to_bill > 9 } }
+			localization_key = party_attitude_to_bill_approve
+		}
+		text = {
+			trigger = { check_variable = { party_attitude_to_bill > 6 } }
+			localization_key = party_attitude_to_bill_agree
+		}
+		text = {
+			trigger = { 
+				check_variable = { party_is_party = 1 }
+				check_variable = { party_attitude_to_bill > 3 } 
+			}
+			localization_key = party_attitude_to_bill_abstain
+		}
+		text = {
+			trigger = { 
+				check_variable = { party_is_party = 0 }
+				check_variable = { party_attitude_to_bill > 3 } 
+			}
+			localization_key = party_attitude_to_bill_neutral
+		}
+		text = {
+			trigger = { check_variable = { party_attitude_to_bill > 0 } }
+			localization_key = party_attitude_to_bill_disagree
+		}
+		text = {
+			localization_key = party_attitude_to_bill_reject
+		}
+	}
+	defined_text = {
+		name = show_agree_CNS
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_CNS_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_PSF
+		text = {
+			trigger = { 
+				has_country_flag = PSF_abstain_vote
+				has_country_flag = voting_for_bill 
+			}
+			localization_key = show_agree_party_abstain
+		}
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_PSF_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_POU
+		text = {
+			trigger = { 
+				has_country_flag = POU_abstain_vote
+				has_country_flag = voting_for_bill 
+			}
+			localization_key = show_agree_party_abstain
+		}
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_POU_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_CGT
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_CGT_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_PCOP
+		text = {
+			trigger = { 
+				has_country_flag = PCOP_abstain_vote
+				has_country_flag = voting_for_bill 
+			}
+			localization_key = show_agree_party_abstain
+		}
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_PCOP_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_UA
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_UA_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_URSRS
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_URSRS_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_LJR
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_LJR_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_PAPF
+		text = {
+			trigger = { 
+				has_country_flag = PAPF_abstain_vote
+				has_country_flag = voting_for_bill 
+			}
+			localization_key = show_agree_party_abstain
+		}
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_PAPF_loc
+		}
+	}
+	defined_text = {
+		name = show_agree_ETC
+		text = {
+			trigger = { has_country_flag = voting_for_bill }
+			localization_key = show_agree_ETC_loc
+		}
+	}
+###党内派系
+	defined_text = {
+		name = party_var_name
+		text = {
+			trigger = { check_variable = { party_var = 1 } }
+			localization_key = CNS
+		}
+		text = {
+			trigger = { check_variable = { party_var = 2 } }
+			localization_key = PSF
+		}
+		text = {
+			trigger = { check_variable = { party_var = 3 } }
+			localization_key = POU
+		}
+		text = {
+			trigger = { check_variable = { party_var = 4 } }
+			localization_key = CGT
+		}
+		text = {
+			trigger = { check_variable = { party_var = 5 } }
+			localization_key = PCOP
+		}
+		text = {
+			trigger = { check_variable = { party_var = 6 } }
+			localization_key = UA
+		}
+		text = {
+			trigger = { check_variable = { party_var = 7 } }
+			localization_key = URSRS
+		}
+		text = {
+			trigger = { check_variable = { party_var = 8 } }
+			localization_key = LJR
+		}
+		text = {
+			trigger = { check_variable = { party_var = 9 } }
+			localization_key = PAPF
+		}
+		text = {
+			trigger = { check_variable = { party_var = 10 } }
+			localization_key = ETC
+		}
+	}
+	defined_text = {
+		name = party_faction_detail
+		text = {
+			trigger = { has_country_flag = party_CNS_show }
+			localization_key = CNS_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_PSF_show }
+			localization_key = PSF_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_POU_show }
+			localization_key = POU_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_CGT_show }
+			localization_key = CGT_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_PCOP_show }
+			localization_key = PCOP_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_UA_show }
+			localization_key = UA_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_URSRS_show }
+			localization_key = URSRS_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_LJR_show }
+			localization_key = LJR_faction_detail
+		}
+		text = {
+			trigger = { has_country_flag = party_PAPF_show }
+			localization_key = PAPF_faction_detail
+		}
+	}
+	defined_text = {
+		name = CNS_faction_dominant
+		text = {
+			trigger = { check_variable = { CNS_faction^0 = 1 } }
+			localization_key = CNS_faction_1
+		}
+		text = {
+			trigger = { check_variable = { CNS_faction^0 = 2 } }
+			localization_key = CNS_faction_2
+		}
+		text = {
+			trigger = { check_variable = { CNS_faction^0 = 3 } }
+			localization_key = CNS_faction_3
+		}
+		text = {
+			trigger = { check_variable = { CNS_faction^0 = 4 } }
+			localization_key = CNS_faction_4
+		}
+	}
+	defined_text = {
+		name = PSF_faction_dominant
+		text = {
+			trigger = { check_variable = { PSF_faction^0 = 1 } }
+			localization_key = PSF_faction_1
+		}
+		text = {
+			trigger = { check_variable = { PSF_faction^0 = 2 } }
+			localization_key = PSF_faction_2
+		}
+		text = {
+			trigger = { check_variable = { PSF_faction^0 = 3 } }
+			localization_key = PSF_faction_3
+		}
+		text = {
+			trigger = { check_variable = { PSF_faction^0 = 4 } }
+			localization_key = PSF_faction_4
+		}
+	}
+	defined_text = {
+		name = POU_faction_dominant
+		text = {
+			trigger = { check_variable = { POU_faction^0 = 1 } }
+			localization_key = POU_faction_1
+		}
+		text = {
+			trigger = { check_variable = { POU_faction^0 = 2 } }
+			localization_key = POU_faction_2
+		}
+		text = {
+			trigger = { check_variable = { POU_faction^0 = 3 } }
+			localization_key = POU_faction_3
+		}
+	}
+	defined_text = {
+		name = CGT_faction_dominant
+		text = {
+			trigger = { check_variable = { CGT_faction^0 = 1 } }
+			localization_key = CGT_faction_1
+		}
+		text = {
+			trigger = { check_variable = { CGT_faction^0 = 2 } }
+			localization_key = CGT_faction_2
+		}
+		text = {
+			trigger = { check_variable = { CGT_faction^0 = 3 } }
+			localization_key = CGT_faction_3
+		}
+	}
+	defined_text = {
+		name = PCOP_faction_dominant
+		text = {
+			trigger = { check_variable = { PCOP_faction^0 = 1 } }
+			localization_key = PCOP_faction_1
+		}
+		text = {
+			trigger = { check_variable = { PCOP_faction^0 = 2 } }
+			localization_key = PCOP_faction_2
+		}
+		text = {
+			trigger = { check_variable = { PCOP_faction^0 = 3 } }
+			localization_key = PCOP_faction_3
+		}
+	}
+	defined_text = {
+		name = UA_faction_dominant
+		text = {
+			trigger = { check_variable = { UA_faction^0 = 1 } }
+			localization_key = UA_faction_1
+		}
+		text = {
+			trigger = { check_variable = { UA_faction^0 = 2 } }
+			localization_key = UA_faction_2
+		}
+		text = {
+			trigger = { check_variable = { UA_faction^0 = 3 } }
+			localization_key = UA_faction_3
+		}
+		text = {
+			trigger = { check_variable = { UA_faction^0 = 4 } }
+			localization_key = UA_faction_4
+		}
+	}
+	defined_text = {
+		name = URSRS_faction_dominant
+		text = {
+			trigger = { check_variable = { URSRS_faction^0 = 1 } }
+			localization_key = URSRS_faction_1
+		}
+		text = {
+			trigger = { check_variable = { URSRS_faction^0 = 2 } }
+			localization_key = URSRS_faction_2
+		}
+	}
+	defined_text = {
+		name = LJR_faction_dominant
+		text = {
+			trigger = { check_variable = { LJR_faction^0 = 1 } }
+			localization_key = LJR_faction_1
+		}
+		text = {
+			trigger = { check_variable = { LJR_faction^0 = 2 } }
+			localization_key = LJR_faction_2
+		}
+	}
+	defined_text = {
+		name = PAPF_faction_dominant
+		text = {
+			trigger = { check_variable = { PAPF_faction^0 = 1 } }
+			localization_key = PAPF_faction_1
+		}
+		text = {
+			trigger = { check_variable = { PAPF_faction^0 = 2 } }
+			localization_key = PAPF_faction_2
+		}
+	}
+###########
+### CSP ###
+###########
+###CSP 列表id
+	defined_text = {
+		name = CSP_change_member_name_text_short_loc
+	#PCSP
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 0 } }  
+			localization_key = FRA_georges_du_maurier
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 1 } }  
+			localization_key = FRA_maurice_thorez
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 2 } }  
+			localization_key = FRA_pierre_semard
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 3 } }  
+			localization_key = FRA_jean_longuet
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 4 } }  
+			localization_key = FRA_adrien_marquet
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 5 } }  
+			localization_key = FRA_jacques_doriot
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 6 } }  
+			localization_key = FRA_edouard_berth
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 7 } }  
+			localization_key = FRA_robert_bothereau
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 8 } }  
+			localization_key = FRA_paul_faure
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 9 } }  
+			localization_key = FRA_barthelemy_montagnon
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 10 } }  
+			localization_key = FRA_jean_zyromski
+		}
+	#CAE
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 100 } }  
+			localization_key = FRA_pierre_laval
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 101 } }  
+			localization_key = FRA_joseph_paul_boncour
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 102 } }  
+			localization_key = FRA_alfred_rosmer
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 103 } }  
+			localization_key = FRA_jean_baptiste_severac
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 104 } }  
+			localization_key = FRA_gaston_leval
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 105 } }  
+			localization_key = FRA_louis_deschizeaux
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 106 } }  
+			localization_key = FRA_alfred_fabre_luce
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 107 } }  
+			localization_key = FRA_drieu_la_rochelle
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 108 } }  
+			localization_key = FRA_jacques_duclos
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 109 } }  
+			localization_key = FRA_jean_longuet
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 110 } }  
+			localization_key = FRA_marc_sangnier
+		}
+	#CE
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 200 } }  
+			localization_key = FRA_rene_belin
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 201 } }  
+			localization_key = FRA_robert_bothereau
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 202 } }  
+			localization_key = FRA_gaston_monmousseau
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 203 } }  
+			localization_key = FRA_jean_baptiste_lebas
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 204 } }  
+			localization_key = FRA_pierre_besnard
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 205 } }  
+			localization_key = FRA_barthelemy_montagnon
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 206 } }  
+			localization_key = FRA_alexandre_abremski
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 207 } }  
+			localization_key = FRA_hubert_lagardelle
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 208 } }  
+			localization_key = FRA_philippe_lamour
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 209 } }  
+			localization_key = FRA_marcel_paul
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 210 } }  
+			localization_key = FRA_vincent_auriol
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 211 } }  
+			localization_key = FRA_louis_vallon
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 212 } }  
+			localization_key = FRA_marcel_poimboeuf
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 213 } }  
+			localization_key = FRA_henri_dorgeres
+		}
+	#CSI
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 300 } }  
+			localization_key = FRA_charles_pomaret
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 301 } }  
+			localization_key = FRA_eugene_frot
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 302 } }  
+			localization_key = FRA_charles_tillon
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 303 } }  
+			localization_key = FRA_roger_salengro
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 304 } }  
+			localization_key = FRA_adrien_marquet
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 305 } }  
+			localization_key = FRA_henri_barbe
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 306 } }  
+			localization_key = FRA_simon_sabiani
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 307 } }  
+			localization_key = FRA_maurice_treand
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 308 } }  
+			localization_key = FRA_marx_dormoy
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 309 } }  
+			localization_key = FRA_may_picqueray
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 310 } }  
+			localization_key = FRA_jacques_doriot
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 311 } }  
+			localization_key = FRA_paul_ramadier
+		}
+	#CC
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 400 } }  
+			localization_key = FRA_anatole_de_monzie
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 401 } }  
+			localization_key = FRA_jean_zay
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 402 } }  
+			localization_key = FRA_marceau_pivert
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 403 } }  
+			localization_key = FRA_georges_bataille
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 404 } }  
+			localization_key = FRA_andre_colomer
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 405 } }  
+			localization_key = FRA_jean_perrin
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 406 } }  
+			localization_key = FRA_paul_marion
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 407 } }  
+			localization_key = FRA_marcel_bucard
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 408 } }  
+			localization_key = FRA_rene_crevel
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 409 } }  
+			localization_key = FRA_leo_lagrange
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 410 } }  
+			localization_key = FRA_andre_prudhommeaux
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 411 } }  
+			localization_key = FRA_ludovic_zoretti
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 412 } }  
+			localization_key = FRA_georges_bertier
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 413 } }  
+			localization_key = FRA_paul_vaillant_couturier
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 414 } }  
+			localization_key = FRA_andre_breton
+		}
+	#CGFF
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 501 } }  
+			localization_key = FRA_maurice_gamelin
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 502 } }  
+			localization_key = FRA_ernest_petit
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 503 } }  
+			localization_key = FRA_henri_gerard
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 504 } }  
+			localization_key = FRA_nestor_makhno
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 505 } }  
+			localization_key = FRA_charles_delestraint
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 506 } }  
+			localization_key = FRA_antoine_bethouart
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 507 } }  
+			localization_key = FRA_gabriel_bougrain
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 508 } }  
+			localization_key = FRA_aime_doumenc
+		}
+	}
+###CSP 列表肖像
+	defined_text = {
+		name = CSP_change_member_portrait_loc
+	#PCSP
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 0 } }  
+			localization_key = "GFX_portrait_FRA_georges_du_maurier_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 1 } }  
+			localization_key = "GFX_portrait_FRA_maurice_thorez_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 2 } }  
+			localization_key = "GFX_portrait_FRA_pierre_semard_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 3 } }  
+			localization_key = "GFX_portrait_FRA_jean_longuet_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 4 } }  
+			localization_key = "GFX_portrait_FRA_adrien_marquet_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 5 } }  
+			localization_key = "GFX_portrait_FRA_jacques_doriot_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 6 } }  
+			localization_key = "GFX_portrait_FRA_edouard_berth_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 7 } }  
+			localization_key = "GFX_portrait_FRA_robert_bothereau_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 8 } }  
+			localization_key = "GFX_portrait_FRA_paul_faure_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 9 } }  
+			localization_key = "GFX_portrait_FRA_barthelemy_montagnon_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 10 } }  
+			localization_key = "GFX_portrait_FRA_jean_zyromski_civilian_large"
+		}
+	#CAE
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 100 } }  
+			localization_key = "GFX_portrait_FRA_pierre_laval_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 101 } }  
+			localization_key = "GFX_portrait_FRA_joseph_paul_boncour_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 102 } }  
+			localization_key = "GFX_portrait_FRA_alfred_rosmer_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 103 } }  
+			localization_key = "GFX_portrait_FRA_jean_baptiste_severac_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 104 } }  
+			localization_key = "GFX_portrait_FRA_gaston_leval_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 105 } }  
+			localization_key = "GFX_portrait_FRA_louis_deschizeaux_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 106 } }  
+			localization_key = "GFX_portrait_FRA_alfred_fabre_luce_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 107 } }  
+			localization_key = "GFX_portrait_FRA_drieu_la_rochelle_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 108 } }  
+			localization_key = "GFX_portrait_FRA_jacques_duclos_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 109 } }  
+			localization_key = "GFX_portrait_FRA_jean_longuet_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 110 } }  
+			localization_key = "GFX_portrait_FRA_marc_sangnier_civilian_large"
+		}
+	#CE
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 200 } }  
+			localization_key = "GFX_portrait_FRA_rene_belin_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 201 } }  
+			localization_key = "GFX_portrait_FRA_robert_bothereau_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 202 } }  
+			localization_key = "GFX_portrait_FRA_gaston_monmousseau_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 203 } }  
+			localization_key = "GFX_portrait_FRA_jean_baptiste_lebas_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 204 } }  
+			localization_key = "GFX_portrait_FRA_pierre_besnard_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 205 } }  
+			localization_key = "GFX_portrait_FRA_barthelemy_montagnon_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 206 } }  
+			localization_key = "GFX_portrait_FRA_alexandre_abremski_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 207 } }  
+			localization_key = "GFX_portrait_FRA_hubert_lagardelle_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 208 } }  
+			localization_key = "GFX_portrait_FRA_philippe_lamour_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 209 } }  
+			localization_key = "GFX_portrait_FRA_marcel_paul_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 210 } }  
+			localization_key = "GFX_portrait_FRA_vincent_auriol_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 211 } }  
+			localization_key = "GFX_portrait_FRA_louis_vallon_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 212 } }  
+			localization_key = "GFX_portrait_FRA_marcel_poimboeuf_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 213 } }  
+			localization_key = "GFX_portrait_FRA_henri_dorgeres_civilian_large"
+		}
+	#CSI
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 300 } }  
+			localization_key = "GFX_portrait_FRA_charles_pomaret_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 301 } }  
+			localization_key = "GFX_portrait_FRA_eugene_frot_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 302 } }  
+			localization_key = "GFX_portrait_FRA_charles_tillon_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 303 } }  
+			localization_key = "GFX_portrait_FRA_roger_salengro_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 304 } }  
+			localization_key = "GFX_portrait_FRA_adrien_marquet_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 305 } }  
+			localization_key = "GFX_portrait_FRA_henri_barbe_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 306 } }  
+			localization_key = "GFX_portrait_FRA_simon_sabiani_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 307 } }  
+			localization_key = "GFX_portrait_FRA_maurice_treand_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 308 } }  
+			localization_key = "GFX_portrait_FRA_marx_dormoy_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 309 } }  
+			localization_key = "GFX_portrait_FRA_may_picqueray_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 310 } }  
+			localization_key = "GFX_portrait_FRA_jacques_doriot_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 311 } }  
+			localization_key = "GFX_portrait_FRA_paul_ramadier_civilian_large"
+		}
+	#CC
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 400 } }  
+			localization_key = "GFX_portrait_FRA_anatole_de_monzie_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 401 } }  
+			localization_key = "GFX_portrait_FRA_jean_zay_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 402 } }  
+			localization_key = "GFX_portrait_FRA_marceau_pivert_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 403 } }  
+			localization_key = "GFX_portrait_FRA_georges_bataille_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 404 } }  
+			localization_key = "GFX_portrait_FRA_andre_colomer_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 405 } }  
+			localization_key = "GFX_portrait_FRA_jean_perrin_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 406 } }  
+			localization_key = "GFX_portrait_FRA_paul_marion_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 407 } }  
+			localization_key = "GFX_portrait_FRA_marcel_bucard_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 408 } }  
+			localization_key = "GFX_portrait_FRA_rene_crevel_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 409 } }  
+			localization_key = "GFX_portrait_FRA_leo_lagrange_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 410 } }  
+			localization_key = "GFX_portrait_FRA_andre_prudhommeaux_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 411 } }  
+			localization_key = "GFX_portrait_FRA_ludovic_zoretti_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 412 } }  
+			localization_key = "GFX_portrait_FRA_georges_bertier_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 413 } }  
+			localization_key = "GFX_portrait_FRA_paul_vaillant_couturier_civilian_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 414 } }  
+			localization_key = "GFX_portrait_FRA_andre_breton_civilian_large"
+		}
+	#CGFF
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 501 } }  
+			localization_key = "GFX_portrait_FRA_maurice_gamelin_army_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 502 } }  
+			localization_key = "GFX_portrait_FRA_ernest_petit_army_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 503 } }  
+			localization_key = "GFX_portrait_FRA_henri_gerard_army_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 504 } }  
+			localization_key = "GFX_portrait_FRA_nestor_makhno_army_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 505 } }  
+			localization_key = "GFX_portrait_FRA_charles_delestraint_army_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 506 } }  
+			localization_key = "GFX_portrait_FRA_antoine_bethouart_army_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 507 } }  
+			localization_key = "GFX_portrait_FRA_gabriel_bougrain_army_large"
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 508 } }  
+			localization_key = "GFX_portrait_FRA_aime_doumenc_army_large"
+		}
+	}
+###CSP 列表详情
+	defined_text = {
+		name = csp_change_member_detail
+	#PCSP
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 0 } }  
+			localization_key = CSP_appoint_0
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 1 } }  
+			localization_key = CSP_appoint_1
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 2 } }  
+			localization_key = CSP_appoint_2
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 3 } }  
+			localization_key = CSP_appoint_3
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 4 } }  
+			localization_key = CSP_appoint_4
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 5 } }  
+			localization_key = CSP_appoint_5
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 6 } }  
+			localization_key = CSP_appoint_6
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 7 } }  
+			localization_key = CSP_appoint_7
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 8 } }  
+			localization_key = CSP_appoint_8
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 9 } }  
+			localization_key = CSP_appoint_9
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 10 } }  
+			localization_key = CSP_appoint_10
+		}
+	#CAE
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 100 } }  
+			localization_key = CSP_appoint_100
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 101 } }  
+			localization_key = CSP_appoint_101
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 102 } }
+            localization_key = CSP_appoint_102
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 103 } }
+            localization_key = CSP_appoint_103
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 104 } }
+            localization_key = CSP_appoint_104
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 105 } }
+            localization_key = CSP_appoint_105
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 106 } }
+            localization_key = CSP_appoint_106
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 107 } }
+            localization_key = CSP_appoint_107
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 108 } }
+            localization_key = CSP_appoint_108
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 109 } }
+            localization_key = CSP_appoint_109
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 110 } }
+            localization_key = CSP_appoint_110
+		}
+	#CE
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 200 } }
+            localization_key = CSP_appoint_200
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 201 } }
+            localization_key = CSP_appoint_201
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 202 } }
+            localization_key = CSP_appoint_202
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 203 } }
+            localization_key = CSP_appoint_203
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 204 } }
+            localization_key = CSP_appoint_204
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 205 } }
+            localization_key = CSP_appoint_205
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 206 } }
+            localization_key = CSP_appoint_206
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 207 } }
+            localization_key = CSP_appoint_207
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 208 } }
+            localization_key = CSP_appoint_208
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 209 } }
+            localization_key = CSP_appoint_209
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 210 } }
+            localization_key = CSP_appoint_210
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 211 } }
+            localization_key = CSP_appoint_211
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 212 } }
+            localization_key = CSP_appoint_212
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 213 } }
+            localization_key = CSP_appoint_213
+		}
+	#CSI
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 300 } }
+            localization_key = CSP_appoint_300
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 301 } }
+            localization_key = CSP_appoint_301
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 302 } }
+            localization_key = CSP_appoint_302
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 303 } }
+            localization_key = CSP_appoint_303
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 304 } }
+            localization_key = CSP_appoint_304
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 305 } }
+            localization_key = CSP_appoint_305
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 306 } }
+            localization_key = CSP_appoint_306
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 307 } }
+            localization_key = CSP_appoint_307
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 308 } }
+            localization_key = CSP_appoint_308
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 309 } }
+            localization_key = CSP_appoint_309
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 310 } }
+            localization_key = CSP_appoint_310
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 311 } }
+            localization_key = CSP_appoint_311
+		}
+	#CC
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 400 } }
+            localization_key = CSP_appoint_400
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 401 } }
+            localization_key = CSP_appoint_401
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 402 } }
+            localization_key = CSP_appoint_402
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 403 } }
+            localization_key = CSP_appoint_403
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 404 } }
+            localization_key = CSP_appoint_404
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 405 } }
+            localization_key = CSP_appoint_405
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 406 } }
+            localization_key = CSP_appoint_406
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 407 } }
+            localization_key = CSP_appoint_407
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 408 } }
+            localization_key = CSP_appoint_408
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 409 } }
+            localization_key = CSP_appoint_409
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 410 } }
+            localization_key = CSP_appoint_410
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 411 } }
+            localization_key = CSP_appoint_411
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 412 } }
+            localization_key = CSP_appoint_412
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 413 } }
+            localization_key = CSP_appoint_413
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 414 } }
+            localization_key = CSP_appoint_414
+		}
+	#CGFF
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 501 } }
+            localization_key = CSP_appoint_501
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 502 } }
+            localization_key = CSP_appoint_502
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 503 } }
+            localization_key = CSP_appoint_503
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 504 } }
+            localization_key = CSP_appoint_504
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 505 } }
+            localization_key = CSP_appoint_505
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 506 } }
+            localization_key = CSP_appoint_506
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 507 } }
+            localization_key = CSP_appoint_507
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_list^idx = 508 } }
+            localization_key = CSP_appoint_508
+		}
+	}
+###CSP 更换标题
+	defined_text = {
+		name = csp_change_member_title
+	#PCSP
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 0 } }
+            localization_key = CSP_appoint_0
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 1 } }
+            localization_key = CSP_appoint_1
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 2 } }
+            localization_key = CSP_appoint_2
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 3 } }
+            localization_key = CSP_appoint_3
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 4 } }
+            localization_key = CSP_appoint_4
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 5 } }
+            localization_key = CSP_appoint_5
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 6 } }
+            localization_key = CSP_appoint_6
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 7 } }
+            localization_key = CSP_appoint_7
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 8 } }
+            localization_key = CSP_appoint_8
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 9 } }
+            localization_key = CSP_appoint_9
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 10 } }
+            localization_key = CSP_appoint_10
+		}
+	#CAE
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 100 } }
+            localization_key = CSP_appoint_100
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 101 } }
+            localization_key = CSP_appoint_101
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 102 } }
+            localization_key = CSP_appoint_102
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 103 } }
+            localization_key = CSP_appoint_103
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 104 } }
+            localization_key = CSP_appoint_104
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 105 } }
+            localization_key = CSP_appoint_105
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 106 } }
+            localization_key = CSP_appoint_106
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 107 } }
+            localization_key = CSP_appoint_107
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 108 } }
+            localization_key = CSP_appoint_108
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 109 } }
+            localization_key = CSP_appoint_109
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 110 } }
+            localization_key = CSP_appoint_110
+		}
+	#CE
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 200 } }
+            localization_key = CSP_appoint_200
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 201 } }
+            localization_key = CSP_appoint_201
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 202 } }
+            localization_key = CSP_appoint_202
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 203 } }
+            localization_key = CSP_appoint_203
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 204 } }
+            localization_key = CSP_appoint_204
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 205 } }
+            localization_key = CSP_appoint_205
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 206 } }
+            localization_key = CSP_appoint_206
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 207 } }
+            localization_key = CSP_appoint_207
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 208 } }
+            localization_key = CSP_appoint_208
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 209 } }
+            localization_key = CSP_appoint_209
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 210 } }
+            localization_key = CSP_appoint_210
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 211 } }
+            localization_key = CSP_appoint_211
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 212 } }
+            localization_key = CSP_appoint_212
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 213 } }
+            localization_key = CSP_appoint_213
+		}
+	#CSI
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 300 } }
+            localization_key = CSP_appoint_300
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 301 } }
+            localization_key = CSP_appoint_301
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 302 } }
+            localization_key = CSP_appoint_302
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 303 } }
+            localization_key = CSP_appoint_303
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 304 } }
+            localization_key = CSP_appoint_304
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 305 } }
+            localization_key = CSP_appoint_305
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 306 } }
+            localization_key = CSP_appoint_306
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 307 } }
+            localization_key = CSP_appoint_307
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 308 } }
+            localization_key = CSP_appoint_308
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 309 } }
+            localization_key = CSP_appoint_309
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 310 } }
+            localization_key = CSP_appoint_310
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 311 } }
+            localization_key = CSP_appoint_311
+		}
+	#CC
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 400 } }
+            localization_key = CSP_appoint_400
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 401 } }
+            localization_key = CSP_appoint_401
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 402 } }
+            localization_key = CSP_appoint_402
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 403 } }
+            localization_key = CSP_appoint_403
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 404 } }
+            localization_key = CSP_appoint_404
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 405 } }
+            localization_key = CSP_appoint_405
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 406 } }
+            localization_key = CSP_appoint_406
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 407 } }
+            localization_key = CSP_appoint_407
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 408 } }
+            localization_key = CSP_appoint_408
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 409 } }
+            localization_key = CSP_appoint_409
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 410 } }
+            localization_key = CSP_appoint_410
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 411 } }
+            localization_key = CSP_appoint_411
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 412 } }
+            localization_key = CSP_appoint_412
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 413 } }
+            localization_key = CSP_appoint_413
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 414 } }
+            localization_key = CSP_appoint_414
+		}
+	#CGFF
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 501 } }
+            localization_key = CSP_appoint_501
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 502 } }
+            localization_key = CSP_appoint_502
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 503 } }
+            localization_key = CSP_appoint_503
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 504 } }
+            localization_key = CSP_appoint_504
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 505 } }
+            localization_key = CSP_appoint_505
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 506 } }
+            localization_key = CSP_appoint_506
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 507 } }
+            localization_key = CSP_appoint_507
+		}
+		text = {
+			trigger = { check_variable = { csp_change_member_variable = 508 } }
+            localization_key = CSP_appoint_508
+		}
+	}
+###PCSP
+	defined_text = {
+		name = PCSP_leader_loc
+		text = {
+			trigger = { check_variable = { current_PCSP = 0 } }
+			localization_key = FRA_georges_du_maurier
+		}                                                                                
+		text = {
+			trigger = { check_variable = { current_PCSP = 1 } }
+			localization_key = FRA_maurice_thorez
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 2 } }
+			localization_key = FRA_pierre_semard
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 3 } }
+			localization_key = FRA_jean_longuet
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 4 } }
+			localization_key = FRA_adrien_marquet
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 5 } }
+			localization_key = FRA_jacques_doriot
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 6 } }
+			localization_key = FRA_edouard_berth
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 7 } }
+			localization_key = FRA_robert_bothereau
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 8 } }
+			localization_key = FRA_paul_faure
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 9 } }
+			localization_key = FRA_barthelemy_montagnon
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 10 } }
+			localization_key = FRA_jean_zyromski
+		}
+	}
+	defined_text = {
+		name = PCSP_leader_trait
+		text = {
+			trigger = { check_variable = { current_PCSP = 0 } }
+			localization_key = idea_desc|PCSP_georges_du_maurier
+		}                                                                                
+		text = {
+			trigger = { check_variable = { current_PCSP = 1 } }
+			localization_key = idea_desc|PCSP_maurice_thorez
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 2 } }
+			localization_key = idea_desc|PCSP_pierre_semard
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 3 } }
+			localization_key = idea_desc|PCSP_jean_longuet
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 4 } }
+			localization_key = idea_desc|PCSP_adrien_marquet
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 5 } }
+			localization_key = idea_desc|PCSP_jacques_doriot
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 6 } }
+			localization_key = idea_desc|PCSP_edouard_berth
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 7 } }
+			localization_key = idea_decs|PCSP_robert_bothereau
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 8 } }
+			localization_key = idea_decs|PCSP_paul_faure
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 9 } }
+			localization_key = idea_decs|PCSP_barthelemy_montagnon
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 10 } }
+			localization_key = idea_decs|PCSP_jean_zyromski
+		}
+	}
+	defined_text = {
+		name = PCSP_leader_desc_loc
+		text = {
+			trigger = { check_variable = { current_PCSP = 0 } }
+			localization_key = FRA_georges_du_maurier_character_desc
+		}                                                                                
+		text = {
+			trigger = { check_variable = { current_PCSP = 1 } }
+			localization_key = FRA_maurice_thorez_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 2 } }
+			localization_key = FRA_pierre_semard_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 3 } }
+			localization_key = FRA_jean_longuet_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 4 } }
+			localization_key = FRA_adrien_marquet_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 5 } }
+			localization_key = FRA_jacques_doriot_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 6 } }
+			localization_key = FRA_edouard_berth_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 7 } }
+			localization_key = FRA_robert_bothereau_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 8 } }
+			localization_key = FRA_paul_faure_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 9 } }
+			localization_key = FRA_barthelemy_montagnon_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_PCSP = 10 } }
+			localization_key = FRA_jean_zyromski_character_desc
+		}
+	}
+	defined_text = {
+		name = gui_CSP_PCSP_loc
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 0 } } }
+			localization_key = "GFX_portrait_FRA_georges_du_maurier_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 1 } } }
+			localization_key = "GFX_portrait_FRA_maurice_thorez_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 2 } } }
+			localization_key = "GFX_portrait_FRA_pierre_semard_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 3 } } }
+			localization_key = "GFX_portrait_FRA_jean_longuet_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 4 } } }
+			localization_key = "GFX_portrait_FRA_adrien_marquet_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 5 } } }
+			localization_key = "GFX_portrait_FRA_jacques_doriot_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 6 } } }
+			localization_key = "GFX_portrait_FRA_edouard_berth_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 7 } } }
+			localization_key = "GFX_portrait_FRA_robert_bothereau_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 8 } } }
+			localization_key = "GFX_portrait_FRA_paul_faure_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 9 } } }
+			localization_key = "GFX_portrait_FRA_barthelemy_montagnon_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_PCSP = 10 } } }
+			localization_key = "GFX_portrait_FRA_jean_zyromski_civilian_large"
+		}
+	}
+#CAE
+	defined_text = {
+		name = CAE_leader_loc
+		text = {
+			trigger = { check_variable = { current_CAE = 100 } }
+			localization_key = FRA_pierre_laval
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 101 } }
+			localization_key = FRA_joseph_paul_boncour
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 102 } }
+			localization_key = FRA_alfred_rosmer
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 103 } }
+			localization_key = FRA_jean_baptiste_severac
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 104 } }
+			localization_key = FRA_gaston_leval
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 105 } }
+			localization_key = FRA_louis_deschizeaux
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 106 } }
+			localization_key = FRA_alfred_fabre_luce
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 107 } }
+			localization_key = FRA_drieu_la_rochelle
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 108 } }
+			localization_key = FRA_jacques_duclos
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 109 } }
+			localization_key = FRA_jean_longuet
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 110 } }
+			localization_key = FRA_marc_sangnier
+		}
+	}
+	defined_text = {
+		name = CAE_leader_desc_loc
+		text = {
+			trigger = { check_variable = { current_CAE = 100 } }
+			localization_key = FRA_pierre_laval_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 101 } }
+			localization_key = FRA_joseph_paul_boncour_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 102 } }
+			localization_key = FRA_alfred_rosmer_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 103 } }
+			localization_key = FRA_jean_baptiste_severac_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 104 } }
+			localization_key = FRA_gaston_leval_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 105 } }
+			localization_key = FRA_louis_deschizeaux_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 106 } }
+			localization_key = FRA_alfred_fabre_luce_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 107 } }
+			localization_key = FRA_drieu_la_rochelle_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 108 } }
+			localization_key = FRA_jacques_duclos_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 109 } }
+			localization_key = FRA_jean_longuet_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CAE = 110 } }
+			localization_key = FRA_marc_sangnier_character_desc
+		}
+	}
+	defined_text = {
+		name = gui_CSP_CAE_loc
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 100 } } }
+			localization_key = "GFX_portrait_FRA_pierre_laval_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 101 } } }
+			localization_key = "GFX_portrait_FRA_joseph_paul_boncour_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 102 } } }
+			localization_key = "GFX_portrait_FRA_alfred_rosmer_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 103 } } }
+			localization_key = "GFX_portrait_FRA_jean_baptiste_severac_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 104 } } }
+			localization_key = "GFX_portrait_FRA_gaston_leval_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 105 } } }
+			localization_key = "GFX_portrait_FRA_louis_deschizeaux_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 106 } } }
+			localization_key = "GFX_portrait_FRA_alfred_fabre_luce_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 107 } } }
+			localization_key = "GFX_portrait_FRA_drieu_la_rochelle_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 108 } } }
+			localization_key = "GFX_portrait_FRA_jacques_duclos_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 109 } } }
+			localization_key = "GFX_portrait_FRA_jean_longuet_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CAE = 110 } } }
+			localization_key = "GFX_portrait_FRA_marc_sangnier_civilian_large"
+		}
+	}
+	defined_text = {
+		name = CAE_attitude
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = 5 } 
+					check_variable = { CAE_attitude = 4 } 
+				}
+			}
+			localization_key = CSP_attitude_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = 3 } 
+					check_variable = { CAE_attitude = 2 } 
+				}
+			}
+			localization_key = CSP_attitude_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = 1 } 
+					check_variable = { CAE_attitude = 0 } 
+					check_variable = { CAE_attitude = -1 } 
+				}
+			}
+			localization_key = CSP_attitude_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = -3 } 
+					check_variable = { CAE_attitude = -2 } 
+				}
+			}
+			localization_key = CSP_attitude_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = -5 } 
+					check_variable = { CAE_attitude = -4 } 
+				}
+			}
+			localization_key = CSP_attitude_oppose
+		} 
+	}
+	defined_text = {
+		name = CAE_idea
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = 5 } 
+					check_variable = { CAE_attitude = 4 } 
+				}
+			}
+			localization_key = idea_desc|CAE_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = 3 } 
+					check_variable = { CAE_attitude = 2 } 
+				}
+			}
+			localization_key = idea_desc|CAE_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = 1 } 
+					check_variable = { CAE_attitude = 0 } 
+					check_variable = { CAE_attitude = -1 } 
+				}
+			}
+			localization_key = idea_desc|CAE_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = -3 } 
+					check_variable = { CAE_attitude = -2 } 
+				}
+			}
+			localization_key = idea_desc|CAE_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CAE_attitude = -5 } 
+					check_variable = { CAE_attitude = -4 } 
+				}
+			}
+			localization_key = idea_desc|CAE_oppose
+		} 
+	}
+#CE
+	defined_text = {
+		name = CE_leader_loc
+		text = {
+			trigger = { check_variable = { current_CE = 200 } }
+			localization_key = FRA_rene_belin
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 201 } }
+			localization_key = FRA_robert_bothereau
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 202 } }
+			localization_key = FRA_gaston_monmousseau
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 203 } }
+			localization_key = FRA_jean_baptiste_lebas
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 204 } }
+			localization_key = FRA_pierre_besnard
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 205 } }
+			localization_key = FRA_barthelemy_montagnon
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 206 } }
+			localization_key = FRA_alexandre_abremski
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 207 } }
+			localization_key = FRA_hubert_lagardelle
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 208 } }
+			localization_key = FRA_philippe_lamour
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 209 } }
+			localization_key = FRA_marcel_paul
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 210 } }
+			localization_key = FRA_vincent_auriol
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 211 } }
+			localization_key = FRA_louis_vallon
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 212 } }
+			localization_key = FRA_marcel_poimboeuf
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 213 } }
+			localization_key = FRA_henri_dorgeres
+		}
+	}
+	defined_text = {
+		name = CE_leader_desc_loc
+		text = {
+			trigger = { check_variable = { current_CE = 200 } }
+			localization_key = FRA_rene_belin_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 201 } }
+			localization_key = FRA_robert_bothereau_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 202 } }
+			localization_key = FRA_gaston_monmousseau_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 203 } }
+			localization_key = FRA_jean_baptiste_lebas_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 204 } }
+			localization_key = FRA_pierre_besnard_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 205 } }
+			localization_key = FRA_barthelemy_montagnon_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 206 } }
+			localization_key = FRA_alexandre_abremski_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 207 } }
+			localization_key = FRA_hubert_lagardelle_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 208 } }
+			localization_key = FRA_philippe_lamour_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 209 } }
+			localization_key = FRA_marcel_paul_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 210 } }
+			localization_key = FRA_vincent_auriol_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 211 } }
+			localization_key = FRA_louis_vallon_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 212 } }
+			localization_key = FRA_marcel_poimboeuf_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CE = 213 } }
+			localization_key = FRA_henri_dorgeres_character_desc
+		}
+	}
+	defined_text = {
+		name = gui_CSP_CE_loc
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 200 } } }
+			localization_key = "GFX_portrait_FRA_rene_belin_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 201 } } }
+			localization_key = "GFX_portrait_FRA_robert_bothereau_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 202 } } }
+			localization_key = "GFX_portrait_FRA_gaston_monmousseau_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 203 } } }
+			localization_key = "GFX_portrait_FRA_jean_baptiste_lebas_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 204 } } }
+			localization_key = "GFX_portrait_FRA_pierre_besnard_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 205 } } }
+			localization_key = "GFX_portrait_FRA_barthelemy_montagnon_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 206 } } }
+			localization_key = "GFX_portrait_FRA_alexandre_abremski_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 207 } } }
+			localization_key = "GFX_portrait_FRA_hubert_lagardelle_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 208 } } }
+			localization_key = "GFX_portrait_FRA_philippe_lamour_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 209 } } }
+			localization_key = "GFX_portrait_FRA_marcel_paul_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 210 } } }
+			localization_key = "GFX_portrait_FRA_vincent_auriol_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 211 } } }
+			localization_key = "GFX_portrait_FRA_louis_vallon_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 212 } } }
+			localization_key = "GFX_portrait_FRA_marcel_poimboeuf_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CE = 213 } } }
+			localization_key = "GFX_portrait_FRA_henri_dorgeres_civilian_large"
+		}
+	}
+	defined_text = {
+		name = CE_attitude
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = 5 } 
+					check_variable = { CE_attitude = 4 } 
+				}
+			}
+			localization_key = CSP_attitude_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = 3 } 
+					check_variable = { CE_attitude = 2 } 
+				}
+			}
+			localization_key = CSP_attitude_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = 1 } 
+					check_variable = { CE_attitude = 0 } 
+					check_variable = { CE_attitude = -1 } 
+				}
+			}
+			localization_key = CSP_attitude_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = -3 } 
+					check_variable = { CE_attitude = -2 } 
+				}
+			}
+			localization_key = CSP_attitude_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = -5 } 
+					check_variable = { CE_attitude = -4 } 
+				}
+			}
+			localization_key = CSP_attitude_oppose
+		} 
+	}
+	defined_text = {
+		name = CE_idea
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = 5 } 
+					check_variable = { CE_attitude = 4 } 
+				}
+			}
+			localization_key = idea_desc|CE_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = 3 } 
+					check_variable = { CE_attitude = 2 } 
+				}
+			}
+			localization_key = idea_desc|CE_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = 1 } 
+					check_variable = { CE_attitude = 0 } 
+					check_variable = { CE_attitude = -1 } 
+				}
+			}
+			localization_key = idea_desc|CE_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = -3 } 
+					check_variable = { CE_attitude = -2 } 
+				}
+			}
+			localization_key = idea_desc|CE_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CE_attitude = -5 } 
+					check_variable = { CE_attitude = -4 } 
+				}
+			}
+			localization_key = idea_desc|CE_oppose
+		} 
+	}
+#CSI
+	defined_text = {
+		name = CSI_leader_loc
+		text = {
+			trigger = { check_variable = { current_CSI = 300 } }
+			localization_key = FRA_charles_pomaret
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 301 } }
+			localization_key = FRA_eugene_frot
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 302 } }
+			localization_key = FRA_charles_tillon
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 303 } }
+			localization_key = FRA_roger_salengro
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 304 } }
+			localization_key = FRA_adrien_marquet
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 305 } }
+			localization_key = FRA_henri_barbe
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 306 } }
+			localization_key = FRA_simon_sabiani
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 307 } }
+			localization_key = FRA_maurice_treand
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 308 } }
+			localization_key = FRA_marx_dormoy
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 309 } }
+			localization_key = FRA_may_picqueray
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 310 } }
+			localization_key = FRA_jacques_doriot
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 311 } }
+			localization_key = FRA_paul_ramadier
+		}
+	}
+	defined_text = {
+		name = CSI_leader_desc_loc
+		text = {
+			trigger = { check_variable = { current_CSI = 300 } }
+			localization_key = FRA_charles_pomaret_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 301 } }
+			localization_key = FRA_eugene_frot_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 302 } }
+			localization_key = FRA_charles_tillon_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 303 } }
+			localization_key = FRA_roger_salengro_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 304 } }
+			localization_key = FRA_adrien_marquet_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 305 } }
+			localization_key = FRA_henri_barbe_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 306 } }
+			localization_key = FRA_simon_sabiani_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 307 } }
+			localization_key = FRA_maurice_treand_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 308 } }
+			localization_key = FRA_marx_dormoy_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 309 } }
+			localization_key = FRA_may_picqueray_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 310 } }
+			localization_key = FRA_jacques_doriot_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CSI = 311 } }
+			localization_key = FRA_paul_ramadier_character_desc
+		}
+	}
+	defined_text = {
+		name = gui_CSP_CSI_loc
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 300 } } }
+			localization_key = "GFX_portrait_FRA_charles_pomaret_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 301 } } }
+			localization_key = "GFX_portrait_FRA_eugene_frot_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 302 } } }
+			localization_key = "GFX_portrait_FRA_charles_tillon_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 303 } } }
+			localization_key = "GFX_portrait_FRA_roger_salengro_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 304 } } }
+			localization_key = "GFX_portrait_FRA_adrien_marquet_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 305 } } }
+			localization_key = "GFX_portrait_FRA_henri_barbe_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 306 } } }
+			localization_key = "GFX_portrait_FRA_simon_sabiani_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 307 } } }
+			localization_key = "GFX_portrait_FRA_maurice_treand_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 308 } } }
+			localization_key = "GFX_portrait_FRA_marx_dormoy_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 309 } } }
+			localization_key = "GFX_portrait_FRA_may_picqueray_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 310 } } }
+			localization_key = "GFX_portrait_FRA_jacques_doriot_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CSI = 311 } } }
+			localization_key = "GFX_portrait_FRA_paul_ramadier_civilian_large"
+		}
+	}
+	defined_text = {
+		name = CSI_attitude
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = 5 } 
+					check_variable = { CSI_attitude = 4 } 
+				}
+			}
+			localization_key = CSP_attitude_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = 3 } 
+					check_variable = { CSI_attitude = 2 } 
+				}
+			}
+			localization_key = CSP_attitude_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = 1 } 
+					check_variable = { CSI_attitude = 0 } 
+					check_variable = { CSI_attitude = -1 } 
+				}
+			}
+			localization_key = CSP_attitude_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = -3 } 
+					check_variable = { CSI_attitude = -2 } 
+				}
+			}
+			localization_key = CSP_attitude_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = -5 } 
+					check_variable = { CSI_attitude = -4 } 
+				}
+			}
+			localization_key = CSP_attitude_oppose
+		} 
+	}
+	defined_text = {
+		name = CSI_idea
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = 5 } 
+					check_variable = { CSI_attitude = 4 } 
+				}
+			}
+			localization_key = idea_desc|CSI_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = 3 } 
+					check_variable = { CSI_attitude = 2 } 
+				}
+			}
+			localization_key = idea_desc|CSI_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = 1 } 
+					check_variable = { CSI_attitude = 0 } 
+					check_variable = { CSI_attitude = -1 } 
+				}
+			}
+			localization_key = idea_desc|CSI_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = -3 } 
+					check_variable = { CSI_attitude = -2 } 
+				}
+			}
+			localization_key = idea_desc|CSI_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CSI_attitude = -5 } 
+					check_variable = { CSI_attitude = -4 } 
+				}
+			}
+			localization_key = idea_desc|CSI_oppose
+		} 
+	}
+#CC
+	defined_text = {
+		name = CC_leader_loc
+		text = {
+			trigger = { check_variable = { current_CC = 400 } }
+			localization_key = FRA_anatole_de_monzie
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 401 } }
+			localization_key = FRA_jean_zay
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 402 } }
+			localization_key = FRA_marceau_pivert
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 403 } }
+			localization_key = FRA_georges_bataille
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 404 } }
+			localization_key = FRA_andre_colomer
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 405 } }
+			localization_key = FRA_jean_perrin
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 406 } }
+			localization_key = FRA_paul_marion
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 407 } }
+			localization_key = FRA_marcel_bucard
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 408 } }
+			localization_key = FRA_rene_crevel
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 409 } }
+			localization_key = FRA_leo_lagrange
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 410 } }
+			localization_key = FRA_andre_prudhommeaux
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 411 } }
+			localization_key = FRA_ludovic_zoretti
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 412 } }
+			localization_key = FRA_georges_bertier
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 413 } }
+			localization_key = FRA_paul_vaillant_couturier
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 414 } }
+			localization_key = FRA_andre_breton
+		}
+	}
+	defined_text = {
+		name = CC_leader_desc_loc
+		text = {
+			trigger = { check_variable = { current_CC = 400 } }
+			localization_key = FRA_anatole_de_monzie_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 401 } }
+			localization_key = FRA_jean_zay_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 402 } }
+			localization_key = FRA_marceau_pivert_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 403 } }
+			localization_key = FRA_georges_bataille_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 404 } }
+			localization_key = FRA_andre_colomer_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 405 } }
+			localization_key = FRA_jean_perrin_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 406 } }
+			localization_key = FRA_paul_marion_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 407 } }
+			localization_key = FRA_marcel_bucard_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 408 } }
+			localization_key = FRA_rene_crevel_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 409 } }
+			localization_key = FRA_leo_lagrange_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 410 } }
+			localization_key = FRA_andre_prudhommeaux_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 411 } }
+			localization_key = FRA_ludovic_zoretti_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 412 } }
+			localization_key = FRA_georges_bertier_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 413 } }
+			localization_key = FRA_paul_vaillant_couturier_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CC = 414 } }
+			localization_key = FRA_andre_breton_character_desc
+		}
+	}
+	defined_text = {
+		name = gui_CSP_CC_loc
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 400 } } }
+			localization_key = "GFX_portrait_FRA_anatole_de_monzie_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 401 } } }
+			localization_key = "GFX_portrait_FRA_jean_zay_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 402 } } }
+			localization_key = "GFX_portrait_FRA_marceau_pivert_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 403 } } }
+			localization_key = "GFX_portrait_FRA_georges_bataille_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 404 } } }
+			localization_key = "GFX_portrait_FRA_andre_colomer_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 405 } } }
+			localization_key = "GFX_portrait_FRA_jean_perrin_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 406 } } }
+			localization_key = "GFX_portrait_FRA_paul_marion_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 407 } } }
+			localization_key = "GFX_portrait_FRA_marcel_bucard_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 408 } } }
+			localization_key = "GFX_portrait_FRA_rene_crevel_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 409 } } }
+			localization_key = "GFX_portrait_FRA_leo_lagrange_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 410 } } }
+			localization_key = "GFX_portrait_FRA_andre_prudhommeaux_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 411 } } }
+			localization_key = "GFX_portrait_FRA_ludovic_zoretti_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 412 } } }
+			localization_key = "GFX_portrait_FRA_georges_bertier_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 413 } } }
+			localization_key = "GFX_portrait_FRA_paul_vaillant_couturier_civilian_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CC = 414 } } }
+			localization_key = "GFX_portrait_FRA_andre_breton_couturier_civilian_large"
+		}
+	}
+	defined_text = {
+		name = CC_attitude
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = 5 } 
+					check_variable = { CC_attitude = 4 } 
+				}
+			}
+			localization_key = CSP_attitude_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = 3 } 
+					check_variable = { CC_attitude = 2 } 
+				}
+			}
+			localization_key = CSP_attitude_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = 1 } 
+					check_variable = { CC_attitude = 0 } 
+					check_variable = { CC_attitude = -1 } 
+				}
+			}
+			localization_key = CSP_attitude_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = -3 } 
+					check_variable = { CC_attitude = -2 } 
+				}
+			}
+			localization_key = CSP_attitude_CCsatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = -5 } 
+					check_variable = { CC_attitude = -4 } 
+				}
+			}
+			localization_key = CSP_attitude_oppose
+		} 
+	}
+	defined_text = {
+		name = CC_idea
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = 5 } 
+					check_variable = { CC_attitude = 4 } 
+				}
+			}
+			localization_key = idea_desc|CC_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = 3 } 
+					check_variable = { CC_attitude = 2 } 
+				}
+			}
+			localization_key = idea_desc|CC_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = 1 } 
+					check_variable = { CC_attitude = 0 } 
+					check_variable = { CC_attitude = -1 } 
+				}
+			}
+			localization_key = idea_desc|CC_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = -3 } 
+					check_variable = { CC_attitude = -2 } 
+				}
+			}
+			localization_key = idea_desc|CC_CCsatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CC_attitude = -5 } 
+					check_variable = { CC_attitude = -4 } 
+				}
+			}
+			localization_key = idea_desc|CC_oppose
+		} 
+	}
+#CGFF
+	defined_text = {
+		name = CGFF_leader_loc
+		text = {
+			trigger = { check_variable = { current_CGFF = 501 } }
+			localization_key = FRA_maurice_gamelin
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 502 } }
+			localization_key = FRA_ernest_petit
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 503 } }
+			localization_key = FRA_henri_gerard
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 504 } }
+			localization_key = FRA_nestor_makhno
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 505 } }
+			localization_key = FRA_charles_delestraint
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 506 } }
+			localization_key = FRA_antoine_bethouart
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 507 } }
+			localization_key = FRA_gabriel_bougrain
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 508 } }
+			localization_key = FRA_aime_doumenc
+		}
+	}
+	defined_text = {
+		name = CGFF_leader_desc_loc
+		text = {
+			trigger = { check_variable = { current_CGFF = 501 } }
+			localization_key = FRA_maurice_gamelin_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 502 } }
+			localization_key = FRA_ernest_petit_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 503 } }
+			localization_key = FRA_henri_gerard_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 504 } }
+			localization_key = FRA_nestor_makhno_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 505 } }
+			localization_key = FRA_charles_delestraint_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 506 } }
+			localization_key = FRA_antoine_bethouart_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 507 } }
+			localization_key = FRA_gabriel_bougrain_character_desc
+		}
+		text = {
+			trigger = { check_variable = { current_CGFF = 508 } }
+			localization_key = FRA_aime_doumenc_character_desc
+		}
+	}
+	defined_text = {
+		name = gui_CSP_CGFF_loc
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 501 } } }
+			localization_key = "GFX_portrait_FRA_maurice_gamelin_army_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 502 } } }
+			localization_key = "GFX_portrait_FRA_ernest_petit_army_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 503 } } }
+			localization_key = "GFX_portrait_FRA_henri_gerard_army_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 504 } } }
+			localization_key = "GFX_portrait_FRA_nestor_makhno_army_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 505 } } }
+			localization_key = "GFX_portrait_FRA_charles_delestraint_army_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 506 } } }
+			localization_key = "GFX_portrait_FRA_antoine_bethouart_army_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 507 } } }
+			localization_key = "GFX_portrait_FRA_gabriel_bougrain_army_large"
+		}
+		text = {
+			trigger = { FRA = { check_variable = { current_CGFF = 508 } } }
+			localization_key = "GFX_portrait_FRA_aime_doumenc_army_large"
+		}
+	}
+	defined_text = {
+		name = CGFF_attitude
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = 5 } 
+					check_variable = { CGFF_attitude = 4 } 
+				}
+			}
+			localization_key = CSP_attitude_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = 3 } 
+					check_variable = { CGFF_attitude = 2 } 
+				}
+			}
+			localization_key = CSP_attitude_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = 1 } 
+					check_variable = { CGFF_attitude = 0 } 
+					check_variable = { CGFF_attitude = -1 } 
+				}
+			}
+			localization_key = CSP_attitude_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = -3 } 
+					check_variable = { CGFF_attitude = -2 } 
+				}
+			}
+			localization_key = CSP_attitude_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = -5 } 
+					check_variable = { CGFF_attitude = -4 } 
+				}
+			}
+			localization_key = CSP_attitude_oppose
+		} 
+	}
+	defined_text = {
+		name = CGFF_idea
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = 5 } 
+					check_variable = { CGFF_attitude = 4 } 
+				}
+			}
+			localization_key = idea_desc|CGFF_support
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = 3 } 
+					check_variable = { CGFF_attitude = 2 } 
+				}
+			}
+			localization_key = idea_desc|CGFF_cooperate
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = 1 } 
+					check_variable = { CGFF_attitude = 0 } 
+					check_variable = { CGFF_attitude = -1 } 
+				}
+			}
+			localization_key = idea_desc|CGFF_neutrality
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = -3 } 
+					check_variable = { CGFF_attitude = -2 } 
+				}
+			}
+			localization_key = idea_desc|CGFF_dissatisfaction
+		}
+		text = {
+			trigger = { 
+				OR = {
+					check_variable = { CGFF_attitude = -5 } 
+					check_variable = { CGFF_attitude = -4 } 
+				}
+			}
+			localization_key = idea_desc|CGFF_oppose
+		} 
+	}
+###CSP代表态度
+	defined_text = {
+		name = target_CSP_attitude
+		text = {
+			trigger = { check_variable = { target_csp = 1 } }
+			localization_key = CAE
+		}
+		text = {
+			trigger = { check_variable = { target_csp = 2 } }
+			localization_key = CE
+		}
+		text = {
+			trigger = { check_variable = { target_csp = 3 } }
+			localization_key = CSI
+		}
+		text = {
+			trigger = { check_variable = { target_csp = 4 } }
+			localization_key = CC
+		}
+		text = {
+			trigger = { check_variable = { target_csp = 5 } }
+			localization_key = CGFF
+		}
+	}
+###gui CSP指示
+	defined_text = {
+		name = gui_csp_choose_loc
+		text = {
+			trigger = { has_country_flag = gui_csp_choose_PCSP }
+			localization_key = PCSP
+		}
+		text = {
+			trigger = { has_country_flag = gui_csp_choose_CAE }
+			localization_key = CAE
+		}
+		text = {
+			trigger = { has_country_flag = gui_csp_choose_CE }
+			localization_key = CE
+		}
+		text = {
+			trigger = { has_country_flag = gui_csp_choose_CSI }
+			localization_key = CSI
+		}
+		text = {
+			trigger = { has_country_flag = gui_csp_choose_CC }
+			localization_key = CC
+		}
+		text = {
+			trigger = { has_country_flag = gui_csp_choose_CGFF }
+			localization_key = CGFF
+		}
+		text = { localization_key = CSP_name }
+	}
+###CSP 更换审议

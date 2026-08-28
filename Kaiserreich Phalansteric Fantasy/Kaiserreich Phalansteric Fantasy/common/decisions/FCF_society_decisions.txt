@@ -1,1012 +1,821 @@
 #### 社会阶层 ####
-Cof_social_class = {
-	#极端派系
+FCF_society_categories = {
+#极端派系                                                                                 
 	#绿衫军
-	Cof_extremists_vertes_friendly = {
+	FCF_extremists_vertes_friendly = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = vertes_detail_show }
 		days_remove = 60
+		days_re_enable = 0
 		modifier = { 
-			
+			economy_power_factor = -0.1
 		}
-		complete_effect = {
-
-		}
+		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
 		remove_effect = {
-		
+			set_temp_variable = { t = 1 }
+			extremists_attitude_up = yes
 		}
 	}
-	Cof_extremists_vertes_against = {
+	FCF_extremists_vertes_against = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = vertes_detail_show }
 		days_remove = 60
+		days_re_enable = 0
 		modifier = { 
-			
+			political_power_factor = -0.1
 		}
-		complete_effect = {
-
-		}
+		cost = 30
 		remove_effect = {
-		
+			set_temp_variable = { t = 1 }
+			extremists_status_down = yes
 		}
 	}
 	#突击队
-	Cof_extremists_commando_friendly = {
+	FCF_extremists_commando_friendly = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = commando_detail_show }
 		days_remove = 60
+		days_re_enable = 0
 		modifier = { 
-			
+			economy_power_factor = -0.1
 		}
-		complete_effect = {
-
-		}
+		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
 		remove_effect = {
-		
+			set_temp_variable = { t = 2 }
+			extremists_attitude_up = yes
 		}
 	}
-	Cof_extremists_commando_against = {
+	FCF_extremists_commando_against = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
 		visible = { has_country_flag = commando_detail_show }
 		days_remove = 60
+		days_re_enable = 0
 		modifier = { 
-
+			political_power_factor = -0.1
 		}
-		complete_effect = {
-
-		}
+		cost = 30
 		remove_effect = {
-		
+			set_temp_variable = { t = 2 }
+			extremists_status_down = yes
 		}
 	}
-
-	Cof_jaconeos_commando_cooperation1 = {
+	
+	#黑手党
+	FCF_extremists_mafia_friendly = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
+		visible = { has_country_flag = mafia_detail_show }
+		days_remove = 60
+		days_re_enable = 0
+		modifier = { 
+			economy_power_factor = -0.1
+		}
+		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		remove_effect = {
+			set_temp_variable = { t = 3 }
+			extremists_attitude_up = yes
+		}
+	}
+	FCF_extremists_mafia_against = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = mafia_detail_show }
+		days_remove = 60
+		days_re_enable = 0
+		modifier = { 
+			political_power_factor = -0.1
+		}
+		cost = 30
+		remove_effect = {
+			set_temp_variable = { t = 3 }
+			extremists_status_down = yes
+		}
+	}
+	#赤卫队
+	FCF_extremists_red_guard_friendly = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = red_guard_detail_show }
+		days_remove = 60
+		days_re_enable = 0
+		modifier = { 
+			economy_power_factor = -0.1
+		}
+		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		remove_effect = {
+			set_temp_variable = { t = 4 }
+			extremists_attitude_up = yes
+		}
+	}
+	FCF_extremists_red_guard_against = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = { has_country_flag = red_guard_detail_show }
+		days_remove = 60
+		days_re_enable = 0
+		modifier = { 
+			political_power_factor = -0.1
+		}
+		cost = 30
+		remove_effect = {
+			set_temp_variable = { t = 4 }
+			extremists_status_down = yes
+		}
+	}
+#总工会
+	#改革
+	FCF_reform_cgt_simplify_management = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
 		visible = { 
-			has_country_flag = commando_detail_show 
-			has_country_flag = belua_multorum_capitum_game
+			NOT = { has_country_flag = CGT_strengthen_mangement }
+			has_completed_focus = FCF_reform_cgt 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
 		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = {
-					localization_key = var_judge_num
-					TAGVAR = doriot_attitude
-					JUDGE = more_than
-					TAGNUM = 60
-				}
-				check_variable = { doriot_attitude > 60 }
-			}
-		}
+		ai_will_do = { base = 10 }
+		cost = 20
 		days_remove = 60
-		modifier = { 
-			political_power_factor = 0.05
+		cancel_trigger = { NOT = { has_country_flag = CGT_simplifed_mangement } }
+		modifier = {
+			stability_weekly = -0.001
+			monthly_change_eip = -0.2
 		}
 		complete_effect = {
-			set_temp_variable = { t = -5 }
-			doriot_attitude_change = yes
-			add_popularity = { ideology = totalist popularity = 0.01 }
-		}
-		remove_effect = {
+			custom_effect_tooltip = FCF_reform_cgt_simplify_management_tt
+			set_country_flag = CGT_simplifed_mangement
+			add_to_variable = { CGT_radicalness_level = 1 }
+
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { smc = -1 }
-			set_temp_variable = { src = -1 }
-			set_temp_variable = { occ = -1 }
-			set_temp_variable = { oac = -1 }
-			set_temp_variable = { jnc = 2 }
-			set_temp_variable = { jrc = 4 }
-			set_temp_variable = { soc = -1 }
-			set_temp_variable = { syc = -1 }
-			bgt_seat_change = yes
-		}
-	}
-	Cof_jaconeos_commando_cooperation2 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = commando_detail_show 
-			has_country_flag = belua_multorum_capitum_game
-		}
-		available = {
-			custom_trigger_tooltip = {
-				tooltip = {
-					localization_key = var_judge_num
-					TAGVAR = doriot_attitude
-					JUDGE = more_than
-					TAGNUM = 60
-				}
-				check_variable = { doriot_attitude > 60 }
-			}
-		}
-		days_remove = 60
-		modifier = { 
-			monthly_change_popsw = -0.4
-			monthly_change_eip = 0.2
-			monthly_change_eib = 0.2
-			production_factory_efficiency_gain_factor = 0.05
-		}
-		complete_effect = {
-			set_temp_variable = { t = -5 }
-			doriot_attitude_change = yes
-			add_popularity = { ideology = totalist popularity = 0.01 }
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = -3 }
+			set_temp_variable = { factionc_2 = 3 }
+			set_temp_variable = { factionc_3 = 0 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			hidden_effect = { country_event = { id = fcf_economy_event.74 days = 14 random_days = 7 } }
 		}
 		remove_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = 1 }
+			set_temp_variable = { pop_pc = 0 }
+			set_temp_variable = { pop_mc = 0 }
+			set_temp_variable = { pop_sc = 0 }
+			set_temp_variable = { pop_bc = -1 }
+			set_temp_variable = { pop_ac = 0 }
+			class_pop_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
 			set_temp_variable = { evc = 0 }
-			set_temp_variable = { eibc = 2 }
+			set_temp_variable = { eibc = 0 }
+			set_temp_variable = { eipc = 1 }
+			set_temp_variable = { eiac = 0 }
+			set_temp_variable = { eamc = 0 }
+			set_temp_variable = { eaec = 0 }
+			set_temp_variable = { eaac = 0 }
+			set_temp_variable = { eqc = 3 }
+			set_temp_variable = { elc = 0 }
+			set_temp_variable = { eic = 0 }
+			economy_variable_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ertc_dom = 0 }
+			set_temp_variable = { ertc_str = 0 }
+			set_temp_variable = { ertc_man = -1 }
+			set_temp_variable = { ertc_pro = 0 }
+			set_temp_variable = { ertc_exc = 0 }
+			set_temp_variable = { ertc_con = 0 }
+			set_temp_variable = { ertc_dev = 0 }
+			economy_reform_tendency_change = yes
+		}
+	}
+	FCF_reform_cgt_strengthen_management = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			NOT = { has_country_flag = CGT_simplifed_mangement }
+			has_completed_focus = FCF_reform_cgt 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		cost = 20
+		days_remove = 60
+		cancel_trigger = { NOT = { has_country_flag = CGT_strengthen_mangement } }
+		modifier = {
+			economy_power_factor = -0.05
+			political_power_factor = -0.05
+			monthly_change_eip = 0.2
+		}
+		complete_effect = {
+			custom_effect_tooltip = FCF_reform_cgt_strengthen_management_tt
+			set_country_flag = CGT_strengthen_mangement
+			add_to_variable = { CGT_bureaucracy_level = 1 }
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 2 }
+			set_temp_variable = { factionc_2 = -3 }
+			set_temp_variable = { factionc_3 = 1 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			hidden_effect = { country_event = { id = fcf_economy_event.77 days = 14 random_days = 7 } }
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_wc = -1 }
+			set_temp_variable = { pop_pc = 0 }
+			set_temp_variable = { pop_mc = 0 }
+			set_temp_variable = { pop_sc = 0 }
+			set_temp_variable = { pop_bc = 1 }
+			set_temp_variable = { pop_ac = 0 }
+			class_pop_change = yes
+			
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { evc = 0 }
+			set_temp_variable = { eibc = 0 }
 			set_temp_variable = { eipc = 2 }
 			set_temp_variable = { eiac = 0 }
 			set_temp_variable = { eamc = 0 }
 			set_temp_variable = { eaec = 0 }
 			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = -4 }
-			set_temp_variable = { elc = 0 }
-			set_temp_variable = { eic = -2 }
-			cof_econ_target_change = yes
+			set_temp_variable = { eqc = -1 }
+			set_temp_variable = { elc = 1 }
+			set_temp_variable = { eic = 0 }
+			economy_variable_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { ertc_dom = 0 }
+			set_temp_variable = { ertc_str = 0 }
+			set_temp_variable = { ertc_man = 1 }
+			set_temp_variable = { ertc_pro = 0 }
+			set_temp_variable = { ertc_exc = 0 }
+			set_temp_variable = { ertc_con = 0 }
+			set_temp_variable = { ertc_dev = 0 }
+			economy_reform_tendency_change = yes
 		}
 	}
-	Cof_jaconeos_commando_cooperation3 = {
+	FCF_reform_cgt_criticize_decentralization = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
+		fire_only_once = yes
 		visible = { 
-			has_country_flag = commando_detail_show 
-			has_country_flag = belua_multorum_capitum_game
+			has_completed_focus = FCF_reform_cgt 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
 		}
+		ai_will_do = { base = 10 }
 		available = {
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { target_faction = 2 }
+			party_dominated_faction_judge = no 
+		}
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 10 }
+			set_temp_variable = { factionc_2 = -15 }
+			set_temp_variable = { factionc_3 = 5 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { ertc_dom = 0 }
+			set_temp_variable = { ertc_str = 1 }
+			set_temp_variable = { ertc_man = 0 }
+			set_temp_variable = { ertc_pro = 0 }
+			set_temp_variable = { ertc_exc = 0 }
+			set_temp_variable = { ertc_con = 0 }
+			set_temp_variable = { ertc_dev = 0 }
+			economy_reform_tendency_change = yes
+		}
+	}
+	FCF_reform_cgt_criticize_centralization = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_reform_cgt 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		available = {
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { target_faction = 1 }
+			party_dominated_faction_judge = no 
+
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { target_faction = 3 }
+			party_dominated_faction_judge = no 
+		}
+		cost = 20
+		complete_effect = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = -10 }
+			set_temp_variable = { factionc_2 = 15 }
+			set_temp_variable = { factionc_3 = -5 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { ertc_dom = 0 }
+			set_temp_variable = { ertc_str = -1 }
+			set_temp_variable = { ertc_man = 0 }
+			set_temp_variable = { ertc_pro = 0 }
+			set_temp_variable = { ertc_exc = 0 }
+			set_temp_variable = { ertc_con = 0 }
+			set_temp_variable = { ertc_dev = 0 }
+			economy_reform_tendency_change = yes
+		}
+	}
+	#分权
+	FCF_reform_cgt_encourage_workers_reporting = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_self_supervised_syndicats 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		complete_effect = {
+			add_to_variable = { economy_power = -30 }
+			custom_effect_tooltip = FCF_reform_cgt_encourage_workers_reporting_tt
+			add_to_variable = { CGT_radicalness_level = 1 }
+			add_to_variable = { CGT_bureaucracy_level = 0 }
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = -3 }
+			set_temp_variable = { factionc_2 = 5 }
+			set_temp_variable = { factionc_3 = -2 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			hidden_effect = { country_event = { id = fcf_economy_event.78 days = 5 random_days = 9 } }
+		}
+	}
+	FCF_reform_cgt_democratize_management = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_self_supervised_syndicats 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		available = { 
+			has_country_flag = CGT_simplifed_mangement 
+			ert_man_right_trigger = yes
+		}
+		cost = 40
+		complete_effect = {
+			custom_effect_tooltip = FCF_reform_cgt_democratize_management_tt
+			add_to_variable = { CGT_radicalness_level = 1 }
+			add_to_variable = { CGT_bureaucracy_level = -1 }
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = -4 }
+			set_temp_variable = { factionc_2 = 7 }
+			set_temp_variable = { factionc_3 = -3 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { ertc_dom = 0 }
+			set_temp_variable = { ertc_str = 0 }
+			set_temp_variable = { ertc_man = -1 }
+			set_temp_variable = { ertc_pro = 0 }
+			set_temp_variable = { ertc_exc = 0 }
+			set_temp_variable = { ertc_con = 0 }
+			set_temp_variable = { ertc_dev = 0 }
+			economy_reform_tendency_change = yes
+
+			hidden_effect = { 
+				if = {
+					limit = { has_country_flag = CGT_popularize_management_knowledge }
+					country_event = { id = fcf_economy_event.91 days = 10 random_days = 20 }
+				}
+				else_if = {
+					limit = { has_country_flag = CGT_technical_management }
+					country_event = { id = fcf_economy_event.89 days = 10 random_days = 20 }
+				}
+				else = { country_event = { id = fcf_economy_event.87 days = 10 random_days = 20 }  }
+			}
+		}
+	}
+	FCF_reform_cgt_coordination_mechanism = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_self_supervised_syndicats 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		available = { 
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
-					TAGVAR = doriot_attitude
-					JUDGE = more_than
-					TAGNUM = 60
+					TAGVAR = CGT_faction_2
+					JUDGE = less_than
+					TAGNUM = "60.0%"
 				}
-				check_variable = { doriot_attitude > 60 }
+				check_variable = { CGT_faction^2 < 60 }
 			}
 		}
-		days_remove = 60
-		modifier = { 
-			stability_factor = -0.05
-			monthly_change_popsb = -0.4
-		}
+		cost = 50
 		complete_effect = {
-			set_temp_variable = { t = -5 }
-			doriot_attitude_change = yes
-			add_popularity = { ideology = totalist popularity = 0.01 }
-		}
-		remove_effect = {
-			add_political_power = 150
+			custom_effect_tooltip = FCF_reform_cgt_coordination_mechanism_tt
+			add_to_variable = { CGT_radicalness_level = -2 }
 
-			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { ppvc = 5 }
-	        cof_politics_BGT_vs_CSP_values_change = yes
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 3 }
+			set_temp_variable = { factionc_2 = -6 }
+			set_temp_variable = { factionc_3 = 3 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
 
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { iosc = 5 }
- 	        intensity_of_struggle_change = yes
+			set_country_flag = CGT_coordination_mechanism
 		}
 	}
-	
-	#黑手党
-	Cof_extremists_mafia_friendly = {
+	FCF_reform_cgt_connect_with_CNS = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = mafia_detail_show }
-		days_remove = 60
-		modifier = { 
-			
-		}
-		complete_effect = {
-
-		}
-		remove_effect = {
-		
-		}
-	}
-	Cof_extremists_mafia_against = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = mafia_detail_show }
-		days_remove = 60
-		modifier = { 
-			
-		}
-		complete_effect = {
-
-		}
-		remove_effect = {
-		
-		}
-	}
-	#追偿派
-	Cof_extremists_bonnot_friendly = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = bonnot_detail_show }
-		days_remove = 60
-		modifier = { 
-			
-		}
-		complete_effect = {
-
-		}
-		remove_effect = {
-		
-		}
-	}
-	Cof_extremists_bonnot_against = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = bonnot_detail_show }
-		days_remove = 60
-		modifier = { 
-			
-		}
-		complete_effect = {
-
-		}
-		remove_effect = {
-		
-		}
-	}
-	#cgt改革                    
-	Cof_economy_re_co_ordination = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_completed_focus = FRA_re_co_ordination }
-		days_remove = 180
 		fire_only_once = yes
-		modifier = { 
-			political_power_factor = -0.8
-			stability_factor = -0.1
-		}
-		remove_effect = {
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { evc = 0 }
-			set_temp_variable = { eibc = 0 }
-			set_temp_variable = { eipc = 0 }
-			set_temp_variable = { eiac = 0 }
-			set_temp_variable = { eamc = 0 }
-			set_temp_variable = { eaec = 0 }
-			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = 0 }
-			set_temp_variable = { elc = 10 }
-			set_temp_variable = { eic = 0 }
-			cof_econ_target_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_confidence = 1
-				tooltip = cgt_confidence_add
-			}
-		}      
-	}
-
-	#新劳动革命
-	Cof_cgt_reform_decision_show = {
-		icon = eng_trade_unions_support
-		allowed = { tag = FRA }
-		visible = { has_completed_focus = FRA_new_labor_revolution }
-		ai_will_do = { factor = 0 }
-		complete_effect = {
-			if = {
-				limit = { NOT = { has_country_flag = FRA_cgt_reform_show } }
-				set_country_flag = FRA_cgt_reform_show
-			}
-			else = { clr_country_flag = FRA_cgt_reform_show }
-		}
-	}
-	#增强
-	Cof_expand_cgt_decision1 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
 		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_expand_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
+			has_completed_focus = FCF_self_supervised_syndicats 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
 		}
-		days_remove = 30
-		fixed_random_seed = no
 		ai_will_do = { base = 10 }
-		cost = 30
-		modifier = {
-			syndicalist_drift = 0.01
-		}
-		remove_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = 2 }
-       		set_temp_variable = { pc = 0 } 
-	        set_temp_variable = { mc = 0 }
-    		set_temp_variable = { sc = 0 }
-        	set_temp_variable = { bc = 0 }
-        	set_temp_variable = { ac = 0 }
-	        class_pop_satisfactions_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { pop_target = 1 }   
-			set_temp_variable = { pop_syndc = 0.6 }
-			set_temp_variable = { pop_oppoc = -0.2 }
-			set_temp_variable = { pop_jacoc = -0.2 }
-			set_temp_variable = { pop_sorec = -0.2 }
-			class_pop_faction_tendency_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_confidence = 1
-				tooltip = cgt_confidence_add
+		available = { 
+			OR = {
+				set_temp_variable = { party_var = 1 }
+				set_temp_variable = { target_attitude = 5 }
+				party_attitude_judge = yes
+				set_temp_variable = { party_var = 1 }
+				set_temp_variable = { target_attitude = 4 }
+				party_attitude_judge = yes
+				set_temp_variable = { party_var = 1 }
+				set_temp_variable = { target_attitude = 3 }
+				party_attitude_judge = yes
 			}
-			random = {
-				chance = 20
-				add_to_variable = {
-					cgt_confidence = 1
-					tooltip = cgt_confidence_add
+		}
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = FCF_reform_cgt_connect_with_CNS_tt
+
+			country_event = fcf_economy_event.92
+		}
+	}
+	#集权
+	FCF_reform_cgt_professional_bureaucrats = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_professional_governance 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 40 } } }
+		custom_cost_text = cost_ep_40
+		complete_effect = {
+			add_to_variable = { economy_power = -40 }
+			custom_effect_tooltip = FCF_reform_cgt_professional_bureaucrats_tt
+		
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 3 }
+			set_temp_variable = { factionc_2 = -5 }
+			set_temp_variable = { factionc_3 = 2 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			hidden_effect = { 
+				if = {
+					limit = { has_country_flag = CGT_branch_funds }
+					hidden_effect = { country_event = { id = fcf_economy_event.98 days = 5 random_days = 9 } }
 				}
+				else = { country_event = { id = fcf_economy_event.95 days = 5 random_days = 9 } }
 			}
 		}
 	}
-
-	Cof_expand_cgt_decision2 = {
+	FCF_reform_cgt_unified_branch_standards = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
+		fire_only_once = yes
 		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_expand_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
+			has_completed_focus = FCF_professional_governance 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		cost = 70
+		complete_effect = {
+			custom_effect_tooltip = FCF_reform_cgt_unified_branch_standards_tt
+			set_country_flag = CGT_unified_branch_standards
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 3 }
+			set_temp_variable = { factionc_2 = -5 }
+			set_temp_variable = { factionc_3 = 2 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { ertc_dom = 0 }
+			set_temp_variable = { ertc_str = 0 }
+			set_temp_variable = { ertc_man = 1 }
+			set_temp_variable = { ertc_pro = 0 }
+			set_temp_variable = { ertc_exc = 0 }
+			set_temp_variable = { ertc_con = 0 }
+			set_temp_variable = { ertc_dev = 0 }
+			economy_reform_tendency_change = yes
+
+			hidden_effect = { country_event = { id = fcf_economy_event.99 days = 5 random_days = 9 } }
+		}
+	}
+	FCF_reform_cgt_strengthen_internal_incentive = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_professional_governance 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 50 } } }
+		custom_cost_text = cost_ep_50
+		complete_effect = {
+			add_to_variable = { economy_power = -50 }
+			custom_effect_tooltip = FCF_reform_cgt_strengthen_internal_incentive_tt
+		
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { party_var = 4 }
+			set_temp_variable = { factionc_1 = 10 }
+			set_temp_variable = { factionc_2 = -8 }
+			set_temp_variable = { factionc_3 = -2 }
+			set_temp_variable = { factionc_4 = 0 }
+			set_temp_variable = { factionc_5 = 0 }
+			party_faction_change = yes
+
+			hidden_effect = { country_event = { id = fcf_economy_event.102 days = 5 random_days = 9 } }
+		}
+	}
+	FCF_reform_cgt_connect_with_PSF = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_professional_governance 
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_cgt }
+		}
+		ai_will_do = { base = 10 }
+		available = { 
+			OR = {
+				set_temp_variable = { party_var = 2 }
+				set_temp_variable = { target_attitude = 5 }
+				party_attitude_judge = yes
+				set_temp_variable = { party_var = 2 }
+				set_temp_variable = { target_attitude = 4 }
+				party_attitude_judge = yes
+				set_temp_variable = { party_var = 2 }
+				set_temp_variable = { target_attitude = 3 }
+				party_attitude_judge = yes
 			}
 		}
-		days_remove = 90
-		fixed_random_seed = no
+		cost = 30
+		complete_effect = {
+			custom_effect_tooltip = FCF_reform_cgt_connect_with_PSF_tt
+
+			country_event = fcf_economy_event.105
+		}
+	}
+
+	#反对
+	FCF_against_cgt_investigation_committee = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_against_cgt 
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		}
 		ai_will_do = { base = 10 }
 		cost = 50
-		modifier = {
-			production_factory_efficiency_gain_factor = 0.05
-			research_speed_factor = 0.025
+		complete_effect = {
+			custom_effect_tooltip = FCF_against_cgt_investigation_committee_tt
+			hidden_effect = { country_event = { id = fcf_economy_event.7 days = 5 random_days = 7 } }
 		}
-		remove_effect = {
+	}
+	FCF_against_cgt_independent_unions = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_against_cgt 
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		}
+		ai_will_do = { base = 10 }
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 50 } } }
+		custom_cost_text = cost_ep_50
+		complete_effect = {
+			custom_effect_tooltip = FCF_against_cgt_independent_unions_tt
+			country_event = fcf_economy_event.4
+		}
+	}
+	FCF_against_cgt_independent_delegate = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_against_cgt 
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		}
+		ai_will_do = { base = 10 }
+		cost = 40
+		complete_effect = {
+			set_country_flag = independent_delegate_in_syndicats
+			add_to_variable = { CGT_confidence = -1 }
+
+			custom_effect_tooltip = FCF_against_cgt_independent_delegate_tt
 			custom_effect_tooltip = effect_economy
 			set_temp_variable = { evc = 0 }
 			set_temp_variable = { eibc = 0 }
-			set_temp_variable = { eipc = 1.5 }
+			set_temp_variable = { eipc = 1 }
 			set_temp_variable = { eiac = 0 }
 			set_temp_variable = { eamc = 0 }
 			set_temp_variable = { eaec = 0 }
 			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = 0 }
+			set_temp_variable = { eqc = 1 }
 			set_temp_variable = { elc = 1 }
 			set_temp_variable = { eic = 0 }
-			cof_econ_target_change = yes
+			economy_variable_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_confidence = 1
-				tooltip = cgt_confidence_add
-			}
-			random = {
-				chance = 20
-				add_to_variable = {
-					cgt_confidence = 1
-					tooltip = cgt_confidence_add
-				}	
-			}
+			set_temp_variable = { ertc_dom = 2 }
+			set_temp_variable = { ertc_str = 0 }
+			set_temp_variable = { ertc_man = 0 }
+			set_temp_variable = { ertc_pro = 0 }
+			set_temp_variable = { ertc_exc = 0 }
+			set_temp_variable = { ertc_con = 0 }
+			set_temp_variable = { ertc_dev = 0 }
+			economy_reform_tendency_change = yes
 		}
 	}
-
-	Cof_expand_cgt_decision3 = {
+	FCF_against_cgt_reversal_of_verdict = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_expand_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
-		days_remove = 14
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 10
-		complete_effect = {
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { evc = -1 }
-			set_temp_variable = { eibc = 0 }
-			set_temp_variable = { eipc = 0 }
-			set_temp_variable = { eiac = 0 }
-			set_temp_variable = { eamc = 0 }
-			set_temp_variable = { eaec = 0 }
-			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = 0 }
-			set_temp_variable = { elc = 0 }
-			set_temp_variable = { eic = 0 }
-			cof_econ_target_change = yes
-		}
-		remove_effect = {
-			custom_effect_tooltip = Cof_expand_cgt_decision3_tt1
-			effect_tooltip = {
-				add_political_power = 30
-
-				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = effect_society
-				set_temp_variable = { wc = 0 }
-				set_temp_variable = { pc = 0 } 
-				set_temp_variable = { mc = 0 }
-				set_temp_variable = { sc = 0 }
-				set_temp_variable = { bc = 1 }
-				set_temp_variable = { ac = 0 }
-				class_pop_satisfactions_change = yes
-
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					cgt_confidence = 2
-					tooltip = cgt_confidence_add2
-				}
-			}
-
-			custom_effect_tooltip = tooltip_dividing_line
-			custom_effect_tooltip = Cof_expand_cgt_decision3_tt2
-			effect_tooltip = {
-				add_political_power = -15
-				add_stability = -0.025
-
-				custom_effect_tooltip = tooltip_white_line
-				custom_effect_tooltip = effect_society
-				set_temp_variable = { wc = -0.5 }
-				set_temp_variable = { pc = -0.5 } 
-				set_temp_variable = { mc = -0.5 }
-				set_temp_variable = { sc = -0.5 }
-				set_temp_variable = { bc = -1 }
-				set_temp_variable = { ac = 0 }
-				class_pop_satisfactions_change = yes
-
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					cgt_confidence = -2
-					tooltip = cgt_confidence_reduce
-				}
-			}
-			
-			hidden_effect = {
-				random = {
-					chance = 30
-					set_country_flag = wrong_bills
-				}
-				country_event = cofeconomy.18
-			}
-		}
-	}
-
-	Cof_expand_cgt_decision4 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_expand_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
 		fire_only_once = yes
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 50
-		complete_effect = {
-			custom_effect_tooltip = Cof_expand_cgt_decision4_tt1
-			effect_tooltip = {
-				custom_effect_tooltip = effect_society
-				set_temp_variable = { wc = 3 }
-				set_temp_variable = { pc = 0 } 
-				set_temp_variable = { mc = 0 }
-				set_temp_variable = { sc = 0 }
-				set_temp_variable = { bc = 0 }
-				set_temp_variable = { ac = 0 }
-				class_pop_satisfactions_change = yes
-
-				custom_effect_tooltip = tooltip_white_line
-				set_temp_variable = { pop_target = 1 }   
-				set_temp_variable = { pop_syndc = 3 }
-				set_temp_variable = { pop_oppoc = -1 }
-				set_temp_variable = { pop_jacoc = -1 }
-				set_temp_variable = { pop_sorec = -1 }
-				class_pop_faction_tendency_change = yes
-
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					cgt_confidence = 2
-					tooltip = cgt_confidence_add2
-				}
-			}
-
-			custom_effect_tooltip = tooltip_dividing_line
-			custom_effect_tooltip = Cof_expand_cgt_decision4_tt2
-			effect_tooltip = {
-				custom_effect_tooltip = effect_society
-				set_temp_variable = { wc = -2 }
-				set_temp_variable = { pc = -0.5 } 
-				set_temp_variable = { mc = -0.5 }
-				set_temp_variable = { sc = -0.5 }
-				set_temp_variable = { bc = -1 }
-				set_temp_variable = { ac = 0 }
-				class_pop_satisfactions_change = yes
-
-				custom_effect_tooltip = tooltip_white_line
-				set_temp_variable = { pop_target = 1 }   
-				set_temp_variable = { pop_syndc = -3 }
-				set_temp_variable = { pop_oppoc = 1 }
-				set_temp_variable = { pop_jacoc = 1 }
-				set_temp_variable = { pop_sorec = 1 }
-				class_pop_faction_tendency_change = yes
-
-				custom_effect_tooltip = tooltip_white_line
-				add_to_variable = {
-					cgt_confidence = -2
-					tooltip = cgt_confidence_reduce
-				}
-			}
-			
-			hidden_effect = {
-				random = {
-					chance = 30
-					set_country_flag = cgt_acceptance_of_settlement
-				}
-				country_event = cofeconomy.19
-			}
-		}
-	}
-
-	Cof_expand_cgt_decision5 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
 		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_expand_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
+			has_completed_focus = FCF_against_cgt 
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
 		}
-		days_remove = 30
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 30
-		modifier = {
-			political_power_factor = -0.1
-			stability_factor = 0.05
-		}
-		complete_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = -0.5 }
-			set_temp_variable = { pc = 0 } 
-			set_temp_variable = { mc = 0 }
-			set_temp_variable = { sc = 0 }
-			set_temp_variable = { bc = -0.5 }
-			set_temp_variable = { ac = 0 }
-			class_pop_satisfactions_change = yes
-		}
-		remove_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = 0 }
-			set_temp_variable = { pc = 1 } 
-			set_temp_variable = { mc = 1 }
-			set_temp_variable = { sc = 0 }
-			set_temp_variable = { bc = 0 }
-			set_temp_variable = { ac = 0 }
-			class_pop_satisfactions_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_confidence = 1
-				tooltip = cgt_confidence_add
-			}
-		}
-	}
-
-	Cof_expand_cgt_decision6 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_expand_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = { has_idea = Cof_CGT_expand3 }
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
-		days_re_enable = 90
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 75
-		complete_effect = {
-			Cof_CGT_expand_update = yes
-
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_wc = 1 }
-       		set_temp_variable = { pop_pc = -0.5 }
-	        set_temp_variable = { pop_mc = -0.5 }
-    		set_temp_variable = { pop_sc = 0 }
-        	set_temp_variable = { pop_bc = 0 }
-        	set_temp_variable = { pop_ac = 0 }
-	        class_pop_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_confidence = -2
-				tooltip = cgt_confidence_reduce
-			}
-		}
-	}
-
-	#削弱
-	Cof_weaken_cgt_decision1 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_weaken_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
-		available = { num_of_civilian_factories_available_for_projects > 1 }
-		days_remove = 60
-		fixed_random_seed = no
 		ai_will_do = { base = 10 }
 		cost = 25
-		modifier = {
-			civilian_factory_use = 1
-			political_power_factor = -0.1
-			production_speed_industrial_complex_factor = 0.15
-		}
-		remove_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_target = 1 }   
-			set_temp_variable = { pop_syndc = -3 }
-			set_temp_variable = { pop_oppoc = 1 }
-			set_temp_variable = { pop_jacoc = 1 }
-			set_temp_variable = { pop_sorec = 1 }
-			class_pop_faction_tendency_change = yes
+		complete_effect = {
+			add_stability = 0.02
+			add_to_variable = { CGT_confidence = -1 }
+			set_country_flag = Martin_reversal_of_verdict
 
-			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_monopolization = -10
-				tooltip = cgt_monopolization_change_tt
-			}
-			Cof_CGT_weaken_update = yes
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { change_num = 2 }
+			cgf_seat_change_in_gov = yes
+
+			country_event = fcf_economy_event.6
 		}
 	}
 
-	Cof_weaken_cgt_decision2 = {
+	FCF_against_cgt_antitrust_law = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_weaken_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
-		days_remove = 90
 		fire_only_once = yes
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 60
-		modifier = {
-			political_power_factor = 0.15
-		}
-		remove_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_wc = -4 }
-       		set_temp_variable = { pop_pc = 1.5 }
-	        set_temp_variable = { pop_mc = 2.5 }
-    		set_temp_variable = { pop_sc = 0 }
-        	set_temp_variable = { pop_bc = 0 }
-        	set_temp_variable = { pop_ac = 0 }
-	        class_pop_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { pop_target = 1 }   
-			set_temp_variable = { pop_syndc = -3 }
-			set_temp_variable = { pop_oppoc = 1 }
-			set_temp_variable = { pop_jacoc = 1 }
-			set_temp_variable = { pop_sorec = 1 }
-			class_pop_faction_tendency_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { ecc = 0 }
-			set_temp_variable = { emc = 1 }
-			set_temp_variable = { epc = 0 }
-			set_temp_variable = { eoc = 0 }
-			Cof_economy_model_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { evc = 3 }
-			set_temp_variable = { eibc = -2 }
-			set_temp_variable = { eipc = -1 }
-			set_temp_variable = { eiac = 0 }
-			set_temp_variable = { eamc = 0 }
-			set_temp_variable = { eaec = 0 }
-			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = 0 }
-			set_temp_variable = { elc = -2 }
-			set_temp_variable = { eic = 0 }
-			cof_econ_target_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_monopolization = -20
-				tooltip = cgt_monopolization_change_tt
-			}
-			Cof_CGT_weaken_update = yes
-		}
-	}
-
-	Cof_weaken_cgt_decision3 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
 		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_weaken_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
+			has_completed_focus = FCF_antitrust_investigation 
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
 		}
-		days_remove = 90
-		fixed_random_seed = no
 		ai_will_do = { base = 10 }
-		cost = 50
-		modifier = {
-			consumer_goods_factor = -0.2
-		}
-		complete_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = -2 }
-			set_temp_variable = { pc = 0 } 
-			set_temp_variable = { mc = 0 }
-			set_temp_variable = { sc = 0 }
-			set_temp_variable = { bc = 1.5 }
-			set_temp_variable = { ac = 0 }
-			class_pop_satisfactions_change = yes
-		}
-		remove_effect = {
-			add_to_variable = {
-				cgt_monopolization = -20
-				tooltip = cgt_monopolization_change_tt
-			}
-			Cof_CGT_weaken_update = yes
-		}
-	}
-
-	Cof_weaken_cgt_decision4 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_weaken_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
-		fire_only_once = yes
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 100
-		complete_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_target = 1 }   
-			set_temp_variable = { pop_syndc = -6 }
-			set_temp_variable = { pop_oppoc = 2 }
-			set_temp_variable = { pop_jacoc = 2 }
-			set_temp_variable = { pop_sorec = 2 }
-			class_pop_faction_tendency_change = yes
-
-			add_to_variable = {
-				cgt_monopolization = -10
-				tooltip = cgt_monopolization_change_tt
-			}
-			Cof_CGT_weaken_update = yes
-		}
-	}
-
-	Cof_weaken_cgt_decision5 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_weaken_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
-		days_remove = 60
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 50
-		modifier = {
-			political_power_factor = -0.1
-			stability_factor = -0.05
-		}
-		complete_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = -3 }
-			set_temp_variable = { pc = 0 } 
-			set_temp_variable = { mc = 0 }
-			set_temp_variable = { sc = 0 }
-			set_temp_variable = { bc = 0 }
-			set_temp_variable = { ac = 0 }
-			class_pop_satisfactions_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { esyndc = -3 }
-			set_temp_variable = { eoppoc = 1 }
-			set_temp_variable = { ejacoc = 1 }
-			set_temp_variable = { esorec = 1 }
-			econ_faction_influence_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			add_to_variable = {
-				cgt_monopolization = -15
-				tooltip = cgt_monopolization_change_tt
-			}
-			Cof_CGT_weaken_update = yes
-		}
-	}
-
-	Cof_weaken_cgt_decision6 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { 
-			has_country_flag = FRA_cgt_reform_show
-			has_completed_focus = FRA_weaken_CGT
-			has_completed_focus = FRA_new_labor_revolution 
-			NOT = {
-				has_completed_focus = FRA_everything_goes_to_CGT
-				has_completed_focus = FRA_unions_are_not_just_for_labor
-				has_completed_focus = FRA_occams_razor_reform
-			}
-		}
-		days_remove = 14
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 20
-		remove_effect = {
-			custom_effect_tooltip = Cof_weaken_cgt_decision6_tt1
-			effect_tooltip = {
-				add_to_variable = {
-					cgt_monopolization = -5
-					tooltip = cgt_monopolization_change_tt
-				}
-				Cof_CGT_weaken_update = yes
-			}
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = Cof_weaken_cgt_decision6_tt2
-			effect_tooltip = {
-				add_to_variable = {
-					cgt_monopolization = 10
-					tooltip = cgt_monopolization_change_tt
-				}
-			}
-		}
-	}
-
-	#女权
-	Cof_women_rights_reform1 = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_completed_focus = FRA_removal_of_labor_restrictions_for_women }
 		available = {
-			set_temp_variable = { target_t = 20 }
-			set_temp_variable = { target_num = 50 }
-			cof_politics_more_than_x = yes
+			NOT = { has_country_flag = voting_for_bill }
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = economy_power
+					JUDGE = more_than
+					TAGNUM = "40"
+				}
+				check_variable = { economy_power > 40 }
+			}
 		}
-		days_remove = 90
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
 		cost = 30
-		modifier = {
-			production_speed_buildings_factor = 0.5
-			industrial_capacity_factory = 0.025
-			industrial_capacity_dockyard = 0.03
-		}
 		complete_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = -2 }
-			set_temp_variable = { pc = -1 } 
-			set_temp_variable = { mc = 0 }
-			set_temp_variable = { sc = 2 }
-			set_temp_variable = { bc = 0 }
-			set_temp_variable = { ac = 0 }
-			class_pop_satisfactions_change = yes
+			add_to_variable = {
+				economy_power = -40
+				tooltip = economy_power_change_tt
+			}
+			custom_effect_tooltip = {
+				localization_key = bill_vote_tips
+				BILL = bill_antitrust
+			}
+			set_country_flag = voting_for_bill
+			set_variable = { bill_var = 23 }
+
+			set_temp_variable = { CNS_atb = 4 }
+			set_temp_variable = { PSF_atb = 1 }
+			set_temp_variable = { POU_atb = 2 }
+			set_temp_variable = { CGT_atb = 0 }
+			set_temp_variable = { PCOP_atb = 7 }
+			set_temp_variable = { UA_atb = 10 }
+			set_temp_variable = { URSRS_atb = 3 }
+			set_temp_variable = { LJR_atb = 3 }
+			set_temp_variable = { PAPF_atb = 1 }
+			set_temp_variable = { ETC_atb = 2 }
+			cgf_voting_set = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = if_bill_pass
+			effect_tooltip = {
+				bill_23_pass_effect = yes
+			}
 		}
 	}
-
-	Cof_women_rights_reform2 = {
+	FCF_against_cgt_investigate_leaders = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_completed_focus = FRA_removal_of_labor_restrictions_for_women }
-		days_remove = 90
-		fixed_random_seed = no
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_antitrust_investigation 
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		}
 		ai_will_do = { base = 10 }
 		cost = 30
-		modifier = {
-			political_power_factor = -0.1
-			monthly_population = 0.4
-			stability_factor = 0.05
-			consumer_goods_factor = -0.1
-		}
 		complete_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = -2 }
-			set_temp_variable = { pc = -1 } 
-			set_temp_variable = { mc = 0 }
-			set_temp_variable = { sc = 2 }
-			set_temp_variable = { bc = 0 }
-			set_temp_variable = { ac = 0 }
-			class_pop_satisfactions_change = yes
+			custom_effect_tooltip = FCF_against_cgt_investigate_leaders_tt
+			hidden_effect = { country_event = { id = fcf_economy_event.17 days = 5 random_days = 7 } }
 		}
 	}
-
-	Cof_society_promote_revolutionary_films = {
+	FCF_against_cgt_encourage_grassroots_reporting = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = cannes_art_basis }
-		days_remove = 90
-		fixed_random_seed = no
-		ai_will_do = { base = 10 }
-		cost = 30
-		modifier = {
-			political_power_factor = 0.1
-			war_support_factor = 0.05
-			monthly_change_apassion = 0.6
+		fire_only_once = yes
+		visible = { 
+			has_completed_focus = FCF_antitrust_investigation 
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
 		}
+		ai_will_do = { base = 10 }
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 40 } } }
+		custom_cost_text = cost_ep_40
 		complete_effect = {
-			custom_effect_tooltip = effect_society
-			set_temp_variable = { wc = 1  }
-			set_temp_variable = { pc = 1 } 
-			set_temp_variable = { mc = 0 }
-			set_temp_variable = { sc = 2 }
-			set_temp_variable = { bc = 0 }
-			set_temp_variable = { ac = 2 }
-			class_pop_satisfactions_change = yes
-		} 
+			add_to_variable = { economy_power = -40 }
+			custom_effect_tooltip = FCF_against_cgt_encourage_grassroots_reporting_tt
+			set_country_flag = encourage_workers_reporting_CGT
+			add_to_variable = { CGT_confidence = -2 }
+
+			hidden_effect = { country_event = { id = fcf_economy_event.62 days = 14 random_days = 14 } }
+		}
 	}
+#
 }   

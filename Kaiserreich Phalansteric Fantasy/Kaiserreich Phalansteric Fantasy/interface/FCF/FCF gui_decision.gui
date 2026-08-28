@@ -1,0 +1,1464 @@
+guiTypes = {
+#政治决议
+	containerWindowType = {
+		name = "politics_decision_window"
+		size = { width = 100% height = 550 }
+		position = { x = 0 y = 300 }
+	
+		containerWindowType = {
+			name = "politics_bop_window"
+			position = { x = 0 y = 20 }
+			iconType = {
+				name = "politics_ui_cgf_vs_csp_csp"
+				quadTextureSprite = "GFX_variable_cgf_vs_csp_csp"
+				frame = 0
+				position = { x = 10 y = 40 }
+				pdx_tooltip = bop_change_text
+				pdx_tooltip_delayed = bop_delay_text
+			}
+
+			iconType = {
+				name = "politics_ui_cgf_vs_csp_cgf"
+				quadTextureSprite = "GFX_variable_cgf_vs_csp_cgf"
+				frame = 0
+				position = { x = 10 y = 40 }
+				pdx_tooltip = bop_change_text
+				pdx_tooltip_delayed = bop_delay_text
+			}
+
+			instantTextboxType = {
+				name = "bop_text"
+				position = { x = 100 y = -25 }
+				font = "hoi_24header"
+				text = bop_text
+				maxWidth = 300
+				maxHeight = 200
+				format = centre
+				pdx_tooltip = bop_change_text
+				pdx_tooltip_delayed = bop_delay_text
+			}
+
+		}
+
+		instantTextboxType = {
+			name = "cgf_ui_box"
+			position = { x = 15 y = 300 }
+			font = "hoi_16mbs"
+			text = cgf_ui_text
+			maxWidth = 200
+			maxHeight = 400
+			format = left
+			pdx_tooltip = cgf_ui_pdx_text
+			pdx_tooltip_delayed = cgf_ui_delay_text 
+		}
+
+		instantTextboxType = {
+			name = "csp_ui_box"
+			position = { x = 290 y = 300 }
+			font = "hoi_16mbs"
+			text = csp_ui_text
+			maxWidth = 200
+			maxHeight = 400
+			format = right
+			pdx_tooltip = csp_ui_pdx_text
+			pdx_tooltip_delayed = csp_ui_delay_text
+		}
+
+		buttonType = {
+			name = "open_cgf_and_csp_button"
+			position = { x = 215 y = 220 }
+			scale = 1.2
+			spriteType = "GFX_idea_government"
+			clicksound = click_default
+			pdx_tooltip = open_cgf_and_csp_window_tt
+		}
+
+		buttonType = {
+			name = "open_politics_landscape"
+			position = { x = 220 y = 470 }
+			scale = 1
+			quadTextureSprite ="GFX_idea_generic_constitutional_guarantees"
+			clicksound = click_default
+			pdx_tooltip = open_politics_landscape_tt
+		}
+
+		instantTextboxType = {
+			name = "politics_landscape"
+			position = { x = 15 y = 5 }
+			font = "hoi_18mbs"
+			text = politics_landscape_text
+			maxWidth = 470
+			maxHeight = 460
+			format = centre
+			scrollbarType = "standardtext_slider"
+		}
+	}
+#社会决议
+	containerWindowType = {
+		name = "society_decision_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 460 }
+		scale = 0.98
+###超现实主义运动
+		containerWindowType = {
+			name = "surrealism_window"
+			position = { x = 90 y = 10 } 
+			gridboxtype = {
+				name = surrealism_character_list_crevel
+				position = { x = 0 y = 0 }
+				size = { width = 150 height = 100% } 
+				slotsize = { width = 150 height = 1 }
+				add_horizontal = no
+			}
+			gridboxtype = {
+				name = surrealism_character_list_breton
+				position = { x = 140 y = 0 }
+				size = { width = 150 height = 100% }
+				slotsize = { width = 150 height = 1 }
+				add_horizontal = no
+			}
+			gridboxtype = {
+				name = surrealism_character_list_bataille
+				position = { x = 280 y = 0 }
+				size = { width = 150 height = 100% }
+				slotsize = { width = 150 height = 1 }
+				add_horizontal = no
+			}
+		} 
+		instantTextboxType = {
+			name = "surrealism_movement_monthly_effect"
+			position = { x = 120 y = 250 }
+			font = "hoi_24header"
+			text = surrealism_movement_monthly_effect
+			pdx_tooltip = surrealism_movement_monthly_effect_tt
+			maxWidth = 320
+			maxHeight = 150
+			format = centre 
+		}
+		iconType = {
+			name = "surrealism_window_hidden"
+			quadTextureSprite = "GFX_decision_bg"
+			position = { x = 20 y = 0 }
+			scale = 1.2
+		}
+		buttonType = {
+			name = "surrealism_window_open"
+			spriteType = "GFX_idea_protesters_shot_icon"
+			position = { x = 10 y = 180 }
+			scale = 1.2
+ 			pdx_tooltip = surrealism_window_open_tt
+		}
+#主界面
+		containerWindowType = {
+			name = "pop_worker_ui"
+			position = { x = 75 y = 0 }
+			
+			iconType = {
+				name = "pop_worker_ui_s"
+				quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = pop_worker_ui_text_tt
+				pdx_tooltip_delayed = popw_text 
+			}
+
+			iconType = {
+				name = "pop_worker_ui"
+				quadTextureSprite = "GFX_pop_worker_texticon"
+				frame = 0
+				position = { x = 37 y = 41 }
+				pdx_tooltip = pop_worker_ui_text_tt
+				pdx_tooltip_delayed = popw_text 
+			}
+		}
+
+		containerWindowType = {
+			name = "pop_peasant_ui"
+			position = { x = 335 y = 0 }
+			
+			iconType = {
+				name = "pop_peasant_ui_s"
+				quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = pop_peasant_ui_text_tt
+				pdx_tooltip_delayed = popp_text
+			}
+
+			iconType = {
+				name = "pop_peasant_ui"
+				quadTextureSprite = "GFX_pop_peasant_texticon"
+				frame = 0
+				position = { x = 36 y = 41 }
+				pdx_tooltip = pop_peasant_ui_text_tt
+				pdx_tooltip_delayed = popp_text
+			}
+		}
+
+		containerWindowType = {
+			name = "pop_merchant_ui"
+			position = { x = 87 y = 90 }
+			
+			iconType = {
+				name = "pop_merchant_ui_s"
+				quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = pop_merchant_ui_text_tt
+				pdx_tooltip_delayed = popm_text
+			}
+
+			iconType = {
+				name = "pop_merchant_ui"
+				quadTextureSprite = "GFX_pop_merchant_texticon"
+				frame = 0
+				position = { x = 36.5 y = 40 }
+				pdx_tooltip = pop_merchant_ui_text_tt
+				pdx_tooltip_delayed = pop_text
+				pdx_tooltip_delayed = popm_text
+			}
+		}
+
+		containerWindowType = {
+			name = "pop_scholar_ui"
+			position = { x = 325 y = 90 }
+			
+			iconType = {
+				name = "pop_scholar_ui_s"
+				quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = pop_scholar_ui_text_tt
+				pdx_tooltip_delayed = pops_text
+			}
+
+			iconType = {
+				name = "pop_scholar_ui"
+				quadTextureSprite = "GFX_pop_scholar_texticon"
+				frame = 0
+				position = { x = 36 y = 42 }
+				pdx_tooltip = pop_scholar_ui_text_tt
+				pdx_tooltip_delayed = pops_text
+			}
+		}
+
+		containerWindowType = {
+			name = "pop_bureaucrat_ui"
+			position = { x = 5 y = 60 }
+		
+			
+			iconType = {
+				name = "pop_bureaucrat_ui_s"
+				quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = pop_bureaucrat_ui_text_tt
+				pdx_tooltip_delayed = popb_text
+			}
+
+			iconType = {
+				name = "pop_bureaucrat_ui"
+				quadTextureSprite = "GFX_pop_bureaucrat_texticon"
+				frame = 0
+				position = { x = 37 y = 41 }
+				pdx_tooltip = pop_bureaucrat_ui_text_tt
+				pdx_tooltip_delayed = popb_text
+			}
+		}
+
+		containerWindowType = {
+			name = "pop_army_ui"
+			position = { x = 410 y = 60 }
+			
+			iconType = {
+				name = "pop_army_ui_s"
+				quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = pop_army_ui_text_tt
+				pdx_tooltip_delayed = popa_text
+			}
+
+			iconType = {
+				name = "pop_army_ui"
+				quadTextureSprite = "GFX_pop_army_texticon"
+				frame = 0
+				position = { x = 37 y = 42 }
+				pdx_tooltip = pop_army_ui_text_tt
+				pdx_tooltip_delayed = popa_text
+			}
+		}
+
+		containerWindowType = {
+			name = "pop_total_ui"
+			position = { x = 176 y = 10 }
+			scale = 1.3
+			iconType = {
+				name = "pop_total_ui_army"
+				quadTextureSprite = "GFX_variable_circle_pop_army"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_bureaucrat"
+				quadTextureSprite = "GFX_variable_circle_pop_bureaucrat"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_scholar"
+				quadTextureSprite = "GFX_variable_circle_pop_scholar"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_merchant"
+				quadTextureSprite = "GFX_variable_circle_pop_merchant"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_peasant"
+				quadTextureSprite = "GFX_variable_circle_pop_peasant"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+			iconType = {
+				name = "pop_total_ui_worker"
+				quadTextureSprite = "GFX_variable_circle_pop_worker"
+				frame = 0
+				position = { x = 0 y = 0 }
+			}
+
+			iconType = {
+				name = "pop_total_ui_s"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -10 y = -10 }
+				pdx_tooltip = pop_total_text_tt
+				pdx_tooltip_delayed = pop_total_text_delayed
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_society_CSI"
+			position = { x = 420 y = 260 }		
+			iconType = {
+				name = "gui_society_CSI_portrait"
+				position = { x = 5 y = 5 }
+				scale = 0.4
+				pdx_tooltip = CSP_CSI_name_text_long
+				pdx_tooltip_delayed = gui_society_CSI_detail
+			}
+			iconType = {
+				name = "CSI_portrait_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.54
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "gui_society_CSI_text"
+				position = { x = -10 y = 90 }
+				font = "hoi_16mbs"
+				text = gui_society_CSI
+				maxWidth = 90
+				maxHeight = 40
+				format = right
+				pdx_tooltip = gui_society_CSI_detail
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_society_CC"
+			position = { x = 10 y = 260 }
+			iconType = {
+				name = "gui_society_CC_portrait"
+				position = { x = 5 y = 5 }
+				scale = 0.4
+				pdx_tooltip = CSP_CC_name_text_long
+				pdx_tooltip_delayed = gui_society_CC_detail
+			}
+			iconType = {
+				name = "CC_portrait_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.54
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "gui_society_CC_text"
+				position = { x = 0 y = 90 }
+				font = "hoi_16mbs"
+				text = gui_society_CC
+				maxWidth = 95
+				maxHeight = 40
+				format = left
+				pdx_tooltip = gui_society_CC_detail
+			}
+		}
+
+		containerWindowType = {
+			name = "society_reform_ui"
+			position = { x = 105 y = 200 }
+			iconType = {
+				name = "reform_tendency_society_education_bg"
+				position = { x = 19 y = 16 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_society_education_tt
+			}
+			iconType = {
+				name = "reform_tendency_society_education"
+				position = { x = -3 y = 0 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_society_education"
+				pdx_tooltip = reform_tendency_society_education_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_society_regulation_bg"
+				position = { x = 19 y = 68 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_society_regulation_tt
+			}
+			iconType = {
+				name = "reform_tendency_society_regulation"
+				position = { x = 0 y = 60 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_society_regulation"
+				pdx_tooltip = reform_tendency_society_regulation_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_society_femright_bg"
+				position = { x = 18 y = 118 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_society_femright_tt
+			}
+			iconType = {
+				name = "reform_tendency_society_femright"
+				position = { x = 0 y = 110 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_society_femright"
+				pdx_tooltip = reform_tendency_society_femright_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_society_immigrant_bg"
+				position = { x = 18.5 y = 168 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_society_immigrant_tt
+			}
+			iconType = {
+				name = "reform_tendency_society_immigrant"
+				position = { x = 0 y = 160 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_society_immigrant"
+				pdx_tooltip = reform_tendency_society_immigrant_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_society_religion_bg"
+				position = { x = 18.5 y = 218 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_society_religion_tt
+			}
+			iconType = {
+				name = "reform_tendency_society_religion"
+				position = { x = 0 y = 210 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_society_religion"
+				pdx_tooltip = reform_tendency_society_religion_tt
+			}
+		}
+
+#激进派系
+		buttonType = {
+			name = "extreme_political_group_window_open"
+			spriteType = "GFX_idea_SPR_political_violence"
+			position = { x = 420 y = 180 }
+			scale = 1.1
+			pdx_tooltip = extreme_political_group_window_open_tt
+		}
+
+		containerWindowType = {
+			name = "extreme_political_group_window"
+			position = { x = 0 y = 0 }
+			
+			buttonType = {
+				name = "vertes_detail_button"
+				spriteType = "GFX_button_vertes"
+				position = { x = 15 y = 50 }
+				scale = 1
+			}
+			instantTextboxType = {
+				name = "gui_vertes_detail_box"
+				position = { x = 20 y = 140 }
+				font = "hoi_18mbs"
+				text = vertes_detail
+				maxWidth = 200
+				maxHeight = 40
+				format = left
+			}
+
+			buttonType = {
+				name = "commando_detail_button"
+				spriteType = "GFX_button_commando"
+				position = { x = 230 y = 50 }
+				scale = 1
+			}
+			instantTextboxType = {
+				name = "gui_commando_detail_box"
+				position = { x = 240 y = 140 }
+				font = "hoi_18mbs"
+				text = commando_detail
+				maxWidth = 200
+				maxHeight = 40
+				format = left
+			}
+
+			buttonType = {
+				name = "mafia_detail_button"
+				spriteType = "GFX_button_mafia"
+				position = { x = 15 y = 250 }
+				scale = 1
+			}
+			instantTextboxType = {
+				name = "gui_mafia_detail_box"
+				position = { x = 20 y = 340 }
+				font = "hoi_18mbs"
+				text = mafia_detail
+				maxWidth = 200
+				maxHeight = 40
+				format = left
+			}
+
+			buttonType = {
+				name = "red_guard_detail_button"
+				spriteType = "GFX_button_red_guard"
+				position = { x = 230 y = 250 }
+				scale = 1
+			}
+			instantTextboxType = {
+				name = "gui_red_guard_detail_box"
+				position = { x = 240 y = 340 }
+				font = "hoi_18mbs"
+				text = red_guard_detail
+				maxWidth = 200
+				maxHeight = 40
+				format = left
+			}
+		}
+	}
+#超现实主义人物栏
+	containerWindowType = {
+		name = "surrealism_character_container"
+		size = { width = 150 height = 30 } 
+		clipping = yes
+		buttonType = {
+			name = "surrealism_character_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_naval_target_btn"
+			font = "hoi_16mbs"
+			text = "[surrealism_character_list]"
+			clicksound = click_default
+			pdx_tooltip = surrealism_character_enabled_effect
+		}
+		buttonType = {
+			name = "surrealism_character_button_enabled"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_naval_target_btn"
+			font = "hoi_16mbs"
+			text = "[surrealism_character_list]"
+			clicksound = click_default
+			pdx_tooltip = surrealism_character_enabled_cancel
+		}
+	}
+#经济决议
+	containerWindowType = {
+		name = "economy_decision_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 720 }
+
+		containerWindowType = {
+			name = "economy_industry_field_window"
+			position = { x = 300 y = 0 }
+
+			instantTextboxType = {
+				name = "economy_industry_field_name"
+				position = { x = 20 y = 35 }
+				font = "hoi_24header"
+				text = economy_industry_field_name
+				maxWidth = 300
+				maxHeight = 100
+				format = left
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eib_ui"
+				position = { x = 110 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eib"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eib_buff
+					pdx_tooltip_delayed = eib_detail
+				}
+				
+				iconType = {
+					name = "econ_eib_ui"
+					quadTextureSprite = "GFX_economy_industry_basic_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = eib_buff
+					pdx_tooltip_delayed = eib_detail
+				}
+			}
+			
+			containerWindowType = {
+				name = "ring_progressbar_eip_ui"
+				position = { x = 55 y = 65 }
+				iconType = {
+					name = "ring_progressbar_eip"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eip_buff
+					pdx_tooltip_delayed = eip_detail
+				}
+
+				iconType = {
+					name = "econ_eip_ui"
+					quadTextureSprite = "GFX_economy_industry_process_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = eip_buff
+					pdx_tooltip_delayed = eip_detail
+				}
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eia_ui"
+				position = { x = 0 y = 130 }
+				iconType = {
+					name = "ring_progressbar_eia"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eia_buff
+					pdx_tooltip_delayed = eia_detail
+				}
+
+				iconType = {
+					name = "econ_eia_ui"
+					quadTextureSprite = "GFX_economy_industry_arms_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = eia_buff
+					pdx_tooltip_delayed = eia_detail
+				}
+			}
+		}
+
+		containerWindowType = {
+			name = "economy_agriculture_field_window"
+			position = { x = 300 y = 200 }
+			
+			instantTextboxType = {
+				name = "economy_agriculture_field_window_name"
+				position = { x = 20 y = 35 }
+				font = "hoi_24header"
+				text = economy_agriculture_field_name
+				maxWidth = 300
+				maxHeight = 100
+				format = left
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eam_ui"
+				position = { x = 110 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eam"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eam_buff
+					pdx_tooltip_delayed = eam_detail
+				}
+
+				iconType = {
+					name = "econ_eam_ui"
+					quadTextureSprite = "GFX_economy_agriculture_mechanized_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = eam_buff
+					pdx_tooltip_delayed = eam_detail
+				}
+			}
+			
+			containerWindowType = {
+				name = "ring_progressbar_eae_ui"
+				position = { x = 55 y = 65 }
+				iconType = {
+					name = "ring_progressbar_eae"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eae_buff
+					pdx_tooltip_delayed = eae_detail
+				}
+
+				iconType = {
+					name = "econ_eae_ui"
+					quadTextureSprite = "GFX_economy_agriculture_chemical_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = eae_buff
+					pdx_tooltip_delayed = eae_detail
+				}
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eaa_ui"
+				position = { x = 0 y = 130 }
+				iconType = {
+					name = "ring_progressbar_eaa"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eaa_buff
+					pdx_tooltip_delayed = eaa_detail
+				}
+
+				iconType = {
+					name = "econ_eaa_ui"
+					quadTextureSprite = "GFX_economy_agriculture_chain_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = eaa_buff
+					pdx_tooltip_delayed = eaa_detail
+				}
+			}
+		}
+
+		containerWindowType = { 
+			name = "economy_society_field_window"
+			position = { x = 300 y = 400 }
+			
+			instantTextboxType = {
+				name = "economy_society_field_name"
+				position = { x = 20 y = 35 }
+				font = "hoi_24header"
+				text = economy_society_field_name
+				maxWidth = 300
+				maxHeight = 100
+				format = left
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_eq_ui"
+				position = { x = 110 y = 0 }
+				iconType = {
+					name = "ring_progressbar_eq"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = eq_buff
+					pdx_tooltip_delayed = eq_detail
+				}
+
+				iconType = {
+					name = "econ_eq_ui"
+					quadTextureSprite = "GFX_economy_equal_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = eq_buff
+					pdx_tooltip_delayed = eq_detail
+				}
+			}
+			
+			containerWindowType = {
+				name = "ring_progressbar_el_ui"
+				position = { x = 55 y = 65 }
+				iconType = {
+					name = "ring_progressbar_el"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = el_buff
+					pdx_tooltip_delayed = el_detail
+				}
+
+				iconType = {
+					name = "econ_el_ui"
+					quadTextureSprite = "GFX_economy_link_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = el_buff
+					pdx_tooltip_delayed = el_detail
+				}
+			}
+
+			containerWindowType = {
+				name = "ring_progressbar_ei_ui"
+				position = { x = 0 y = 130 }
+				iconType = {
+					name = "ring_progressbar_ei"
+					quadTextureSprite = "GFX_variable_pop_satisfaction_circle"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = ei_buff
+					pdx_tooltip_delayed = ei_detail
+				}
+
+				iconType = {
+					name = "econ_ei_ui"
+					quadTextureSprite = "GFX_economy_innovate_texticon"
+					frame = 0
+					position = { x = 37 y = 42 }
+					pdx_tooltip = ei_buff
+					pdx_tooltip_delayed = ei_detail
+				}
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_economy_CE"
+			position = { x = 20 y = 10 }		
+			iconType = {
+				name = "gui_economy_CE_portrait"
+				position = { x = 5 y = 5 }
+				scale = 0.5
+				pdx_tooltip = CSP_CE_name_text_long
+				pdx_tooltip_delayed = gui_economy_CE_detail
+			}
+			iconType = {
+				name = "CE_portrait_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.68
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "gui_economy_CE_text"
+				position = { x = 0 y = 120 }
+				font = "hoi_16mbs"
+				text = gui_economy_CE
+				maxWidth = 140
+				maxHeight = 40
+				format = left
+				pdx_tooltip = gui_economy_CE_detail
+			}
+		}
+
+		instantTextboxType = {
+			name = "economy_focus_show"
+			position = { x = 150 y = 190 }
+			font = "hoi_18mbs"
+			text = economy_focus_show
+			maxWidth = 150
+			maxHeight = 100
+			format = centre
+			pdx_tooltip = economy_focus_detail
+		}
+		buttonType = {
+			name = "more_economy_focus"
+			spriteType = "GFX_zoom_in"
+			position = { x = 110 y = 190 }
+			scale = 1
+			pdx_tooltip = more_economy_focus
+		}
+		buttonType = {
+			name = "less_economy_focus"
+			spriteType = "GFX_zoom_out"
+			position = { x = 140 y = 190 }
+			scale = 1
+			pdx_tooltip = less_economy_focus
+		}	
+
+		containerWindowType = {
+			name = "ring_progressbar_ev_ui"
+			position = { x = 140 y = 10 }
+			iconType = {
+				name = "ring_progressbar_ev_good"
+				quadTextureSprite = "GFX_econ_variable_circle_good"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = evpchange_detail
+				pdx_tooltip_delayed = ev_detail
+			}
+
+			iconType = {
+				name = "ring_progressbar_ev_bad"
+				quadTextureSprite = "GFX_econ_variable_circle_bad"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = evpchange_detail
+				pdx_tooltip_delayed = ev_detail
+			}
+
+			instantTextboxType = {
+				name = "ring_progressbar_num_ev"
+				position = { x = 8 y = 60 }
+				font = "hoi_18mbs"
+				text = gui_ev_circle 
+				maxWidth = 150
+				maxHeight = 100
+				format = centre
+				pdx_tooltip = evpchange_detail
+				pdx_tooltip_delayed = ev_detail
+			}
+		}
+
+		containerWindowType = {
+			name = "economy_reform_ui"
+			position = { x = 20 y = 240 }
+			scale = 0.9
+			iconType = {
+				name = "reform_tendency_economy_dominance_bg"
+				position = { x = 20 y = 10 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_economy_dominance_tt
+			}
+			iconType = {
+				name = "reform_tendency_economy_dominance"
+				position = { x = -6 y = 0 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_economy_dominance"
+				pdx_tooltip = reform_tendency_economy_dominance_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_economy_structure_bg"
+				position = { x = 20 y = 68 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_economy_structure_tt
+			}
+			iconType = {
+				name = "reform_tendency_economy_structure"
+				position = { x = -8 y = 50 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_economy_structure"
+				pdx_tooltip = reform_tendency_economy_structure_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_economy_management_bg"
+				position = { x = 19 y = 126 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_economy_management_tt
+			}
+			iconType = {
+				name = "reform_tendency_economy_management"
+				position = { x = -8 y = 110 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_economy_management"
+				pdx_tooltip = reform_tendency_economy_management_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_economy_production_bg"
+				position = { x = 20 y = 188 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_economy_production_tt
+			}
+			iconType = {
+				name = "reform_tendency_economy_production"
+				position = { x = -7 y = 170 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_economy_production"
+				pdx_tooltip = reform_tendency_economy_production_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_economy_exchange_bg"
+				position = { x = 19 y = 240 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_economy_exchange_tt
+			}
+			iconType = {
+				name = "reform_tendency_economy_exchange"
+				position = { x = -5 y = 230 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_economy_exchange"
+				pdx_tooltip = reform_tendency_economy_exchange_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_economy_consumption_bg"
+				position = { x = 20 y = 294 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_economy_consumption_tt
+			}
+			iconType = {
+				name = "reform_tendency_economy_consumption"
+				position = { x = -5 y = 280 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_economy_consumption"
+				pdx_tooltip = reform_tendency_economy_consumption_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_economy_development_bg"
+				position = { x = 20 y = 354 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_economy_development_tt
+			}
+			iconType = {
+				name = "reform_tendency_economy_development"
+				position = { x = -7 y = 340 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_economy_development"
+				pdx_tooltip = reform_tendency_economy_development_tt
+			}
+		}
+
+		instantTextboxType = {
+			name = "sci_stiuation_show"
+			position = { x = 20 y = 620 }
+			font = "hoi_24header"
+			text = FCF_resources_tooltip
+			maxWidth = 300
+			maxHeight = 100
+			format = left
+			pdx_tooltip = FCF_resources_effect_tooltip
+		}
+		buttonType = {
+			name = "sci_stiuation_show_next"
+			spriteType = "GFX_browser_forward"
+			position = { x = 250 y = 612 }
+			scale = 1
+		}
+
+		containerWindowType = {
+			name = "sci_resources_country_box"
+			position = { x = 2 y = 647 }
+			size = { width = 505 height = 80 }
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_plain_bg"
+			}
+			horizontalScrollbar = "bottom_horizontal_slider"
+			gridboxtype = {
+				name = sci_resources_country
+				position = { x = 10 y = 8 }
+				size = { width = 1 height = 1 }
+				slotsize = { width = 1 height = 1 }
+				add_horizontal = yes
+			}
+		}
+	}
+
+	containerWindowType = {
+		name = "sci_resources_country"
+		size = { width = 70 height = 80 }
+		clipping = yes
+		scale = 0.8
+
+		iconType = {
+			name = "country_flag"
+			quadTextureSprite ="GFX_player_flag"
+			position = { x = 0 y = 0 }
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = sci_resources_country_name
+		}
+	}
+#军事决议
+	containerWindowType = {
+		name = "military_decision_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 550 }
+		
+		containerWindowType = {
+			name = "pop_army_pop_ui"
+			position = { x = 100 y = 105 }
+
+			containerWindowType = {
+				name = "pop_army_pop_detail_ui"
+				position = { x = 234 y = -91 }
+				scale = 2
+			
+				iconType = {
+					name = "pop_soldier_ui"
+					quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_nco_ui"
+					quadTextureSprite = "GFX_variable_circle_pop_army_nco"
+					frame = 0
+					position = { x = 0 y = 0 }
+				}
+				iconType = {
+					name = "pop_officer_ui"
+					quadTextureSprite = "GFX_variable_circle_pop_army_officer"
+					frame = 0
+					position = { x = 0 y = 0 }
+					pdx_tooltip = army_pop_text
+					pdx_tooltip_delayed = army_pop_text_delay
+				}
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_army_autonomy"
+			position = { x = 70 y = 30 }
+			iconType = {
+				name = "army_ui_bg1"
+				quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+				frame = 100
+				position = { x = 17 y = 16 }
+			}
+			iconType = {
+				name = "army_autonomy_ui"
+				quadTextureSprite = "GFX_variable_circle_army"
+				frame = 0 
+				position = { x = 0 y = 0 }
+				pdx_tooltip = army_autonomy_ui_tt
+				pdx_tooltip_delayed = army_autonomy_ui_tt_delay
+			}
+			iconType = {
+				name = "army_autonomy_ui_icon"
+				quadTextureSprite = "GFX_army_autonomy_texticon"
+				alwaystransparent = yes
+				scale = 2
+				position = { x = 27 y = 30 }
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_army_willing"
+			position = { x = 170 y = 30 }
+			iconType = {
+				name = "army_ui_bg2"
+				quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+				frame = 100
+				position = { x = 17 y = 16 }
+			}
+			iconType = {
+				name = "army_willing_ui"
+				quadTextureSprite = "GFX_variable_circle_army"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = army_willing_ui_tt
+				pdx_tooltip_delayed = army_willing_ui_tt_delay
+			}
+			iconType = {
+				name = "army_willing_ui_icon"
+				quadTextureSprite = "GFX_army_willing_texticon"
+				alwaystransparent = yes
+				scale = 2
+				position = { x = 25 y = 30 }
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_army_training"
+			position = { x = 20 y = 120 }
+			iconType = {
+				name = "army_ui_bg3"
+				quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+				frame = 100
+				position = { x = 17 y = 16 }
+			}
+			iconType = {
+				name = "army_training_ui"
+				quadTextureSprite = "GFX_variable_circle_army"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = army_training_ui_tt
+				pdx_tooltip_delayed = army_training_ui_tt_delay
+			}
+			iconType = {
+				name = "army_training_ui_icon"
+				quadTextureSprite = "GFX_army_training_texticon"
+				alwaystransparent = yes
+				scale = 2
+				position = { x = 25 y = 30 }
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_army_equipment"
+			position = { x = 120 y = 120 }
+			iconType = {
+				name = "army_ui_bg4"
+				quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+				frame = 100
+				position = { x = 17 y = 16 }
+			}
+			iconType = {
+				name = "army_equipment_ui"
+				quadTextureSprite = "GFX_variable_circle_army"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = army_equipment_ui_tt
+				pdx_tooltip_delayed = army_equipment_ui_tt_delay
+			}
+			iconType = {
+				name = "army_equipment_ui_icon"
+				quadTextureSprite = "GFX_army_equipment_texticon"
+				alwaystransparent = yes
+				scale = 2
+				position = { x = 25 y = 30 }
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_army_passionate"
+			position = { x = 220 y = 120 }
+			iconType = {
+				name = "army_ui_bg5"
+				quadTextureSprite = "GFX_variable_circle_pop_army_soldier"
+				frame = 100
+				position = { x = 20 y = 18 }
+			}
+			iconType = {
+				name = "army_passionate_ui"
+				quadTextureSprite = "GFX_variable_circle_army"
+				frame = 0
+				position = { x = 0 y = 0 }
+				pdx_tooltip = army_passionate_ui_tt
+				pdx_tooltip_delayed = army_passionate_ui_tt_delay
+			}
+			iconType = {
+				name = "army_passionate_ui_icon"
+				quadTextureSprite = "GFX_army_passionate_texticon"
+				alwaystransparent = yes
+				scale = 2
+				position = { x = 25 y = 30 }
+			}
+		}
+
+		containerWindowType = {
+			name = "gui_military_CGFF"
+			position = { x = 370 y = 250 }
+			iconType = {
+				name = "gui_army_CGFF_portrait"
+				position = { x = 5 y = 5 }
+				scale = 0.5
+				pdx_tooltip = CSP_CGFF_name_text_long
+				pdx_tooltip_delayed = gui_army_CGFF_detail
+			}
+			iconType = {
+				name = "CGFF_portrait_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.675
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "gui_army_CGFF_text"
+				position = { x = -30 y = 120 }
+				font = "hoi_16mbs"
+				text = gui_army_CGFF
+				maxWidth = 160
+				maxHeight = 40
+				format = center
+				pdx_tooltip = gui_army_CGFF_detail
+			}
+		}
+
+		containerWindowType = {
+			name = "military_theory_window"
+			position = { x = 325 y = 0 }
+			scale = 1.1
+			iconType = {
+				name = "military_theory"
+				quadTextureSprite = "GFX_variable_circle"
+				frame = 0
+				position = { x = -5 y = 0 }
+				alwaystransparent = yes
+			}
+
+			instantTextboxType = {
+				name = "military_theory_text"
+				position = { x = -20 y = 147 }
+				font = "hoi_18mbs"
+				text = military_theory_text
+				maxWidth = 180
+				maxHeight = 100
+				format = centre
+				pdx_tooltip = military_theory_text_tt
+				pdx_tooltip_delayed = military_theory_text_detail
+			}
+		}
+
+		buttonType = {
+			name = "military_bill_box_open_button"
+			spriteType = "GFX_decision_ger_mefo_bills"
+			position = { x = 380 y = 430 }
+			scale = 2
+
+			pdx_tooltip = military_bill_tt
+		}
+
+		containerWindowType = {
+			name = "military_reform_ui"
+			position = { x = 20 y = 240 }
+			iconType = {
+				name = "reform_tendency_military_system_bg"
+				position = { x = 19 y = 16 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_military_system_tt
+			}
+			iconType = {
+				name = "reform_tendency_military_system"
+				position = { x = 0 y = 0 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_military_system"
+				pdx_tooltip = reform_tendency_military_system_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_military_command_bg"
+				position = { x = 20 y = 65 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_military_command_tt
+			}
+			iconType = {
+				name = "reform_tendency_military_command"
+				position = { x = 1 y = 57 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_military_command"
+				pdx_tooltip = reform_tendency_military_command_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_military_organization_bg"
+				position = { x = 20 y = 120 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_military_organization_tt
+			}
+			iconType = {
+				name = "reform_tendency_military_organization"
+				position = { x = -10 y = 110 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_military_organization"
+				pdx_tooltip = reform_tendency_military_organization_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_military_equipment_bg"
+				position = { x = 19 y = 172 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_military_equipment_tt
+			}
+			iconType = {
+				name = "reform_tendency_military_equipment"
+				position = { x = 1 y = 165 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_military_equipment"
+				pdx_tooltip = reform_tendency_military_equipment_tt
+			}
+
+			iconType = {
+				name = "reform_tendency_military_tactics_bg"
+				position = { x = 20 y = 230 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_left3"
+				pdx_tooltip = reform_tendency_military_tactics_tt
+			}
+			iconType = {
+				name = "reform_tendency_military_tactics"
+				position = { x = -2 y = 220 }
+				quadTextureSprite = "GFX_indcation_reform_tendency_military_tactics"
+				pdx_tooltip = reform_tendency_military_tactics_tt
+			}
+		}
+	}
+
+	containerWindowType = {
+		name = "military_bill_window"
+		position = { x = 537 y = 87 }
+		size = { width = 380 height = 700 }
+		origo = upper_left
+		moveable = yes
+		clipping = yes
+
+		fade_time = 300
+		fade_type = linear
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_window2_1b_border"
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite ="GFX_tiled_generic_overlay_bg1_small"				
+		}
+
+		containerWindowType = {
+			name = "military_bill_list_window"
+			position = { x = 10 y = 30 }
+			size = { width = 362 height = 662 }
+
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+
+			verticalScrollbar = "right_vertical_slider"
+
+			gridboxtype = {
+				name = military_bill_context
+				position = { x = 10 y = 8 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 1 }
+				add_horizontal = no
+			}
+		}
+
+		iconType = { 
+			name = "header_title"
+			spriteType = "GFX_category_header"
+			position = { x = 5 y = -6 }
+			Orientation = "upper_left"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "header_icon"
+			spriteType = "GFX_decision_category_ger_mefo_bills"
+			scale = 0.9
+			position = { x = 5 y = 0 }
+			Orientation = "upper_left"
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "military_bill_window_esc"
+			position = { x = 345 y = 0 }
+			spriteType = "GFX_closebutton"
+			clicksound = click_default
+			shortcut = "ESCAPE"
+		}
+
+		instantTextboxType = {
+			name = "title"
+			position = { x = 50 y = 3 }
+			font = "hoi_24header"
+			text = military_bill_desc
+			maxWidth = 400
+			maxHeight = 20
+			format = left
+		}
+		
+	}
+
+	containerWindowType = {
+		name = "military_bill_box"
+		size = { width = 328 height = 80 }
+
+		clipping = yes
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_paper_w_frame_bg"
+		}
+
+		instantTextboxType = {
+			name = "military_bill_text"
+			position = { x = 16 y = 28 }
+			font = "hoi_24header"
+			text = military_bill_name
+			maxWidth = 300
+			maxHeight = 40
+			format = center
+			pdx_tooltip = military_bill_buff
+			pdx_tooltip_delayed = military_bill_desc
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_research_bg"
+		}
+	}
+#
+}

@@ -1,6 +1,119 @@
 ideas = {
     country = {
-        Cof_communard_spirit = {
+#CGF
+        FCF_funding_city_commune = {
+            picture = SOV_scientist_defect
+            on_remove = {
+                every_state = {
+                    limit = { is_in_array = { FCF_state_strategy = 4 } }
+                    remove_from_array = { FCF_state_strategy = 4 }
+                }
+                random_core_state = {
+                    limit = { FCF_is_city_zone = yes }
+                    set_temp_variable = { sesic = 1 }
+            		set_temp_variable = { sesac = 0 }
+            		set_temp_variable = { sesdc = 0 }
+            		FCF_state_economy_situation_change = yes
+                }
+            }
+            modifier = {
+                monthly_change_cgf_vs_csp = -0.5
+                economy_power_factor = -0.1
+
+                monthly_change_eib = 0.3
+                monthly_change_eip = 0.3
+                monthly_change_eq = -0.4
+                monthly_change_el = 0.3
+
+                custom_modifier_tooltip = FCF_funding_city_commune_tt
+            }
+        }
+        FCF_funding_rural_commune = {
+            picture = SOV_scientist_defect
+            on_remove = {
+                every_state = {
+                    limit = { is_in_array = { FCF_state_strategy = 5 } }
+                    remove_from_array = { FCF_state_strategy = 5 }
+                }
+                random_core_state = {
+                    limit = { FCF_is_city_zone = yes }
+                    set_temp_variable = { sesic = 1 }
+            		set_temp_variable = { sesac = 0 }
+            		set_temp_variable = { sesdc = 0 }
+            		FCF_state_economy_situation_change = yes
+                }
+            }
+            modifier = {
+                monthly_change_cgf_vs_csp = -0.5
+                economy_power_factor = -0.1
+
+                monthly_change_eam = 0.3
+                monthly_change_eae = 0.2
+                monthly_change_eaa = 0.3
+                monthly_change_eq = 0.4
+
+                custom_modifier_tooltip = FCF_funding_rural_commune_tt
+            }
+        }
+#CSP
+        FCF_more_power_to_PCSP = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_cgf_vs_csp = 1
+                political_power_gain = 1
+                monthly_change_popsb = 0.4
+            }
+        }
+        FCF_more_power_to_CAE = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_cgf_vs_csp = 0.5
+                weekly_change_ieu = 1
+                weekly_change_ias = 1
+                weekly_change_ime = 1
+                weekly_change_iaf = 1
+                weekly_change_iam = 1
+            }
+        }
+        FCF_more_power_to_CE = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_cgf_vs_csp = 0.5
+                monthly_change_ev = 0.3
+                monthly_change_eib = 0.3
+                monthly_change_el = 0.3
+            }
+        }
+        FCF_more_power_to_CSI = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_cgf_vs_csp = 0.5
+                political_power_factor = 0.05
+                monthly_change_popsw = 0.4
+                monthly_change_popsp = 0.4
+            }
+        }
+        FCF_more_power_to_CC = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_cgf_vs_csp = 0.5
+                research_speed_factor = 0.05
+                monthly_change_popsm = 0.4
+                monthly_change_popss = 0.4
+            }
+        }
+        FCF_more_power_to_CGFF = {
+            picture = SOV_scientist_defect
+            modifier = {
+                monthly_change_cgf_vs_csp = 0.5
+                monthly_change_popsa = 0.4
+                monthly_change_awill = 0.3
+                monthly_change_atrain = 0.5
+            }
+        }
+
+#公社精神
+        FCF_communard_spirit = {
             name = FRA_communard_spirit
             picture = FRA_communard_spirit
 			modifier = {
@@ -11,286 +124,10 @@ ideas = {
 			}
 		}
 
-        #间谍
-        FRA_renseignements_generaux_lar_update = {
-			name = FRA_renseignements_generaux_lar
-			picture = generic_spy_intel
-			modifier = {
-				operative_slot = 2
-				intelligence_agency_defense = 1
-				agency_upgrade_time = -0.33
-			}
-		}
-
-        #革命燃油
-        Cof_advanced_resource_approach1 = {
-            name = Cof_advanced_resource_approach
-            picture = Cof_advanced_resource_approach
-            modifier = {
-                production_speed_synthetic_refinery_factor = 0.2
-				fuel_gain_factor_from_states = 0.2
-                fuel_gain_factor = 0.1
-            }
-            research_bonus = {
-				synth_resources = 0.15
-			}
-        }
-
-        Cof_advanced_resource_approach2 = {
-            name = Cof_advanced_resource_approach
-            picture = Cof_advanced_resource_approach
-            modifier = {
-                production_speed_synthetic_refinery_factor = 0.3
-				fuel_gain_factor_from_states = 0.3
-                fuel_gain_factor = 0.2
-            }
-            research_bonus = {
-				synth_resources = 0.2
-			}
-        }
-
-        #国际先锋文化运动
-        Cof_international_avant_garde = {
-            picture = Cof_international_avant_garde
-            modifier = {
-                political_power_factor = 0.03
-                weekly_change_ieu = 1
-                weekly_change_ias = 1
-                weekly_change_ime = 1
-                weekly_change_iaf = 1
-                weekly_change_iam = 1
-            }
-        }
-
-        #第七艺术
-        Cof_the_seventh_art1 = {
-            name = Cof_the_seventh_art
-            picture = Cof_the_seventh_art
-            modifier = {
-                political_power_gain = 0.2
-                stability_factor = 0.02
-                war_support_factor = 0.02
-                mobilization_speed = 0.05
-                drift_defence_factor = 0.1
-                totalist_drift = 0.01
-                syndicalist_drift = 0.01
-                radical_socialist_drift = 0.01
-                weekly_change_ieu = 1
-            }
-        }
-
-        Cof_the_seventh_art2 = {
-            name = Cof_the_seventh_art
-            picture = Cof_the_seventh_art
-            modifier = {
-                political_power_gain = 0.2
-                stability_factor = 0.02
-                war_support_factor = 0.06
-                mobilization_speed = 0.1
-                drift_defence_factor = 0.2
-                totalist_drift = 0.01
-                syndicalist_drift = 0.01
-                radical_socialist_drift = 0.01
-                social_conservative_drift = 0.005
-                authoritarian_democrat_drift = 0.005
-                weekly_change_ieu = 2
-            }
-        }
-
-        #青年文化运动
-        Cof_booming_youth_culture_movement1 = {
-            name = Cof_booming_youth_culture_movement
-            picture = Cof_booming_youth_culture_movement
-            modifier = {
-                stability_factor = -0.04
-                political_power_factor = 0.03
-                research_speed_factor = 0.05
-
-                monthly_change_ei = 0.1
-            }
-        }
-
-        Cof_booming_youth_culture_movement2 = {
-            name = Cof_booming_youth_culture_movement
-            picture = Cof_booming_youth_culture_movement
-            modifier = {
-                stability_factor = -0.06
-                political_power_factor = 0.05
-                research_speed_factor = 0.07
-                totalist_drift = 0.01
-                syndicalist_drift = 0.01
-                radical_socialist_drift = 0.01
-                
-                monthly_change_ei = 0.3
-            }
-        }
-
-        #CGT改革
-        Cof_CGT_contested = {
-            name = Cof_CGT_contested
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = -0.1
-                stability_factor = -0.1
-                consumer_goods_factor = 0.1
-
-                monthly_change_popsw = -0.2
-                monthly_change_popsp = -0.3
-                monthly_change_popsm = -0.3
-                custom_modifier_tooltip = Cof_CGT_contested_tt
-            }
-        }
-
-        Cof_CGT_expand0 = {
-            name = Cof_CGT_expand
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = -0.15
-                stability_factor = -0.1
-                industrial_capacity_factory = 0.02
-                industrial_capacity_dockyard = 0.02
-                consumer_goods_factor = 0.125
-
-                monthly_change_popsw = 0.3
-                monthly_change_popsp = -0.5
-                monthly_change_popsm = -0.5
-                custom_modifier_tooltip = cgt_confidence_tt
-            }
-        }
-
-        Cof_CGT_expand1 = {
-            name = Cof_CGT_expand
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = -0.2
-                stability_factor = -0.1
-                industrial_capacity_factory = 0.04
-                industrial_capacity_dockyard = 0.04
-                consumer_goods_factor = 0.15
-
-                monthly_change_popsw = 0.3
-                monthly_change_popsp = -0.5
-                monthly_change_popsm = -0.5
-                custom_modifier_tooltip = cgt_confidence_tt
-            }
-        }
-
-        Cof_CGT_expand2 = {
-            name = Cof_CGT_expand
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = -0.25
-                stability_factor = -0.1
-                industrial_capacity_factory = 0.07
-                industrial_capacity_dockyard = 0.07
-                production_factory_max_efficiency_factor = 0.03
-                consumer_goods_factor = 0.1
-
-                monthly_change_popsw = 0.3
-                monthly_change_popsp = -0.5
-                monthly_change_popsm = -0.5
-                custom_modifier_tooltip = cgt_confidence_tt
-            }
-        }
-
-        Cof_CGT_expand3 = {
-            name = Cof_CGT_expand
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = -0.3
-                stability_factor = -0.2
-                industrial_capacity_factory = 0.1
-                industrial_capacity_dockyard = 0.1
-                production_speed_buildings_factor = 0.03
-                production_factory_max_efficiency_factor = 0.03
-                consumer_goods_factor = 0.1
-
-                monthly_change_popsw = 0.3
-                monthly_change_popsp = -0.5
-                monthly_change_popsm = -0.5
-                custom_modifier_tooltip = cgt_confidence_tt
-            }
-        }
-
-        Cof_CGT_weaken0 = {
-            name = Cof_CGT_weaken
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = -0.05
-                stability_factor = -0.05
-                consumer_goods_factor = 0.05
-
-                monthly_change_popsw = -0.2
-                monthly_change_popsp = 0.2
-                monthly_change_popsm = 0.2
-                custom_modifier_tooltip = cgt_monopolization_tt
-            }
-        }
-
-        Cof_CGT_weaken1 = {
-            name = Cof_CGT_weaken
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = -0.03
-                stability_factor = -0.025
-                consumer_goods_factor = 0.025
-
-                monthly_change_popsw = -0.4
-                monthly_change_popsp = 0.4
-                monthly_change_popsm = 0.4
-                custom_modifier_tooltip = cgt_monopolization_tt
-            }
-        }
-
-        Cof_CGT_weaken2 = {
-            name = Cof_CGT_weaken
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = 0
-                stability_factor = 0
-                consumer_goods_factor = 0
-
-                monthly_change_popsw = -0.4
-                monthly_change_popsp = 0.4
-                monthly_change_popsm = 0.4
-                custom_modifier_tooltip = cgt_monopolization_tt
-            }
-        }
-
-        Cof_CGT_weaken3 = {
-            name = Cof_CGT_weaken
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = 0.02
-                stability_factor = 0.025
-                consumer_goods_factor = -0.05
-
-                monthly_change_popsw = -0.4
-                monthly_change_popsp = 0.4
-                monthly_change_popsm = 0.4
-                custom_modifier_tooltip = cgt_monopolization_tt
-            }
-        }
-
-        Cof_CGT_weaken4 = {
-            name = Cof_CGT_weaken
-            picture = Cof_CGT
-            modifier = {
-                political_power_factor = 0.04
-                stability_factor = 0.05
-                consumer_goods_factor = -0.1
-
-                monthly_change_popsw = -0.4
-                monthly_change_popsp = 0.4
-                monthly_change_popsm = 0.4
-                custom_modifier_tooltip = cgt_monopolization_tt
-            }
-        }
-
-        #中央政府
-        Cof_weak_central_government = {
-            name = Cof_weak_central_government
-            picture = Cof_weak_central_government
+#孱弱的中央政府
+        FCF_weak_central_government = {
+            name = FCF_weak_central_government
+            picture = generic_suspended_parliament
             modifier = {
                 political_power_factor = -0.15
                 stability_factor = -0.06
@@ -311,9 +148,9 @@ ideas = {
             }
         }
 
-        Cof_weak_central_government2 = {
-            name = Cof_weak_central_government
-            picture = Cof_weak_central_government
+        FCF_weak_central_government2 = {
+            name = FCF_weak_central_government
+            picture = generic_suspended_parliament
             modifier = {
                 political_power_factor = -0.1
                 stability_factor = -0.04
@@ -334,9 +171,9 @@ ideas = {
             }
         }
 
-        Cof_weak_central_government3 = {
-            name = Cof_weak_central_government
-            picture = Cof_weak_central_government
+        FCF_weak_central_government3 = {
+            name = FCF_weak_central_government
+            picture = generic_suspended_parliament
             modifier = {
                 political_power_factor = -0.06
                 stability_factor = -0.02
@@ -350,9 +187,9 @@ ideas = {
             }
         }
 
-        Cof_weak_central_government4 = {
-            name = Cof_weak_central_government
-            picture = Cof_weak_central_government
+        FCF_weak_central_government4 = {
+            name = FCF_weak_central_government
+            picture = generic_suspended_parliament
             modifier = {
                 political_power_factor = -0.04
                 stability_factor = -0.02
@@ -360,116 +197,152 @@ ideas = {
             }
         }
 
-        #BGT
-        Cof_funding_city_commune = {
-            picture = SOV_scientist_defect
-            on_remove = {
-                random_core_state = {
-                    limit = { cof_is_city_zone = yes }
-                    set_temp_variable = { sesic = 1 }
-            		set_temp_variable = { sesac = 0 }
-            		set_temp_variable = { sesdc = 0 }
-            		Cof_state_economy_situation_change = yes
-                }
-            }
+#都会-市镇矛盾
+        FCF_intensified_urban_rural_conflicts1 = { 
+            name = FCF_intensified_urban_rural_conflicts
+            picture = FCF_intensified_urban_rural_conflicts
             modifier = {
-                monthly_change_bgt_vs_csp = -0.5
-                economy_power_factor = -0.1
+                stability_factor = -0.1
+                political_power_cost = 0.5
+                industrial_capacity_factory = -0.025
+                industrial_capacity_dockyard = -0.025
+                consumer_goods_factor = 0.1
+                local_resources_factor = -0.2
+                production_speed_buildings_factor = -0.025
 
-                monthly_change_eib = 0.3
-                monthly_change_eip = 0.3
-                monthly_change_eq = -0.4
-                monthly_change_el = 0.3
-
-                custom_modifier_tooltip = Cof_funding_city_commune_tt
-            }
-        }
-        Cof_funding_rural_commune = {
-            picture = SOV_scientist_defect
-            on_remove = {
-                random_core_state = {
-                    limit = { cof_is_city_zone = yes }
-                    set_temp_variable = { sesic = 1 }
-            		set_temp_variable = { sesac = 0 }
-            		set_temp_variable = { sesdc = 0 }
-            		Cof_state_economy_situation_change = yes
-                }
-            }
-            modifier = {
-                monthly_change_bgt_vs_csp = -0.5
-                economy_power_factor = -0.1
-
-                monthly_change_eam = 0.3
-                monthly_change_eae = 0.2
-                monthly_change_eaa = 0.3
-                monthly_change_eq = 0.4
-
-                custom_modifier_tooltip = Cof_funding_rural_commune_tt
-            }
-        }
-        #CSP
-        Cof_more_power_to_CCSP = {
-            picture = SOV_scientist_defect
-            modifier = {
-                monthly_change_bgt_vs_csp = 1
-                political_power_gain = 1
-                monthly_change_popsb = 0.4
-            }
-        }
-        Cof_more_power_to_DFA = {
-            picture = SOV_scientist_defect
-            modifier = {
-                monthly_change_bgt_vs_csp = 0.5
-                weekly_change_ieu = 1
-                weekly_change_ias = 1
-                weekly_change_ime = 1
-                weekly_change_iaf = 1
-                weekly_change_iam = 1
-            }
-        }
-        Cof_more_power_to_DEA = {
-            picture = SOV_scientist_defect
-            modifier = {
-                monthly_change_bgt_vs_csp = 0.5
-                monthly_change_ev = 0.3
-                monthly_change_eib = 0.3
-                monthly_change_el = 0.3
-            }
-        }
-        Cof_more_power_to_DIS = {
-            picture = SOV_scientist_defect
-            modifier = {
-                monthly_change_bgt_vs_csp = 0.5
-                political_power_factor = 0.05
-                monthly_change_popsw = 0.4
-                monthly_change_popsp = 0.4
-            }
-        }
-        Cof_more_power_to_DCA = {
-            picture = SOV_scientist_defect
-            modifier = {
-                monthly_change_bgt_vs_csp = 0.5
-                research_speed_factor = 0.05
-                monthly_change_popsm = 0.4
-                monthly_change_popss = 0.4
-            }
-        }
-        Cof_more_power_to_CGSC = {
-            picture = SOV_scientist_defect
-            modifier = {
-                monthly_change_bgt_vs_csp = 0.5
-                monthly_change_popsa = 0.4
-                monthly_change_awill = 0.3
-                monthly_change_atrain = 0.5
+                monthly_change_popsw = -0.4
+                monthly_change_popsp = -0.4
             }
         }
 
-        #反CGT游行
-        Cof_anti_cgt_record = {
-            name = Cof_anti_cgt_record
-            picture = Cof_anti_cgt_record
+        FCF_intensified_urban_rural_conflicts2 = {
+            name = FCF_eased_urban_rural_conflicts
+            picture = FCF_intensified_urban_rural_conflicts
             modifier = {
-                custom_modifier_tooltip = Cof_anti_cgt_record_tt
+                stability_factor = -0.075
+                political_power_cost = 0.4
+                industrial_capacity_factory = -0.025
+                industrial_capacity_dockyard = -0.025
+                consumer_goods_factor = 0.1
+                local_resources_factor = -0.15
+
+                monthly_change_popsw = -0.3
+                monthly_change_popsp = -0.3
+            }
+        }
+
+        FCF_intensified_urban_rural_conflicts3 = {
+            name = FCF_eased_urban_rural_conflicts
+            picture = FCF_intensified_urban_rural_conflicts
+            modifier = {
+                stability_factor = -0.05
+                political_power_cost = 0.3
+                industrial_capacity_factory = -0.025
+                industrial_capacity_dockyard = -0.025
+                consumer_goods_factor = 0.05
+                local_resources_factor = -0.1
+
+                monthly_change_popsw = -0.2
+                monthly_change_popsp = -0.2
+            }
+        }
+
+        FCF_intensified_urban_rural_conflicts4 = {
+            name = FCF_eased_urban_rural_conflicts
+            picture = FCF_intensified_urban_rural_conflicts
+            modifier = {
+                stability_factor = -0.025
+                political_power_cost = 0.2
+                consumer_goods_factor = 0.05
+                local_resources_factor = -0.05
+
+                monthly_change_popsw = -0.1
+                monthly_change_popsp = -0.1
+            } 
+        }
+
+        FCF_intensified_urban_rural_conflicts5 = {
+            name = FCF_eased_urban_rural_conflicts
+            picture = FCF_intensified_urban_rural_conflicts
+            modifier = {
+                stability_factor = -0.025
+                political_power_cost = 0.1
+                local_resources_factor = -0.025
+            }
+        }
+
+#总工会的特殊地位
+        FCF_CGT_special_statues = {
+            picture = generic_syndicalism_kr
+            modifier = {
+                political_power_factor = -0.05
+				consumer_goods_factor = 0.1
+				war_support_factor = -0.025
+				production_factory_start_efficiency_factor = 0.025
+				industrial_capacity_factory = 0.02
+				industrial_capacity_dockyard = 0.02
+				stability_factor = 0.025
+
+				monthly_change_popsw = 0.3
+				monthly_change_popsp = -0.1
+				monthly_change_popsm = -0.1
+				monthly_change_popsb = -0.1
+
+				monthly_change_eib = 0.2
+				monthly_change_eip = 0.2
+				monthly_change_eq = -0.5
+            }
+        }
+
+#受争议的总工会
+        FCF_CGT_contested = {
+            picture = FCF_CGT
+            modifier = {
+                political_power_factor = -0.1
+                stability_factor = -0.1
+                consumer_goods_factor = 0.1
+
+                monthly_change_popsw = -0.2
+                monthly_change_popsp = -0.3
+                monthly_change_popsm = -0.3
+                custom_modifier_tooltip = FCF_CGT_contested_tt
+            }
+        }
+        FCF_CGT_contested_weaken = {
+            name = FCF_CGT_contested
+            picture = FCF_CGT
+            modifier = {
+                political_power_factor = -0.07
+                stability_factor = -0.07
+                consumer_goods_factor = 0.1
+
+                monthly_change_popsw = -0.1
+                monthly_change_popsp = -0.2
+                monthly_change_popsm = -0.2
+                custom_modifier_tooltip = FCF_CGT_contested_tt
+            }
+        }
+        FCF_CGT_contested_weaken_more = {
+            name = FCF_CGT_contested
+            picture = FCF_CGT
+            modifier = {
+                political_power_factor = -0.03
+                stability_factor = -0.03
+                consumer_goods_factor = 0.05
+
+                monthly_change_popsw = -0.1
+                monthly_change_popsp = -0.1
+                monthly_change_popsm = -0.1
+                custom_modifier_tooltip = FCF_CGT_contested_tt
+            }
+        }
+
+#反CGT游行
+        FCF_anti_cgt_record = {
+            name = FCF_anti_cgt_record
+            picture = FCF_anti_cgt_record
+            modifier = {
+                custom_modifier_tooltip = FCF_anti_cgt_record_tt
 
                 political_power_factor = -0.1
                 stability_factor = -0.05
@@ -483,77 +356,104 @@ ideas = {
             }
         }
 
-        Cof_anti_cgt_record_waiting = {
-            name = Cof_anti_cgt_record
-            picture = Cof_anti_cgt_record
+        FCF_anti_cgt_record_waiting = {
+            name = FCF_anti_cgt_record
+            picture = FCF_anti_cgt_record
             modifier = {
-                custom_modifier_tooltip = Cof_anti_cgt_record_tt
+                custom_modifier_tooltip = FCF_anti_cgt_record_tt
 
                 political_power_factor = -0.25
                 stability_factor = -0.15
                 production_speed_buildings_factor = -0.1
                 industrial_capacity_factory = -0.05
 
-                monthly_change_popsw = -0.2
-                monthly_change_popsp = -0.2
-                monthly_change_popsm = -0.2
-                monthly_change_popss = -0.2
+                monthly_change_popsw = -0.3
+                monthly_change_popsp = -0.3
+                monthly_change_popsm = -0.3
+                monthly_change_popss = -0.3
             }
         }
 
-        Cof_anti_cgt_record_expand = {
-            name = Cof_anti_cgt_record
-            picture = Cof_anti_cgt_record
+        FCF_anti_cgt_record_calm = {
+            name = FCF_anti_cgt_record
+            picture = FCF_anti_cgt_record
             modifier = {
-                custom_modifier_tooltip = Cof_anti_cgt_record_tt
+                custom_modifier_tooltip = FCF_anti_cgt_record_tt
 
-                political_power_factor = -0.2
-                stability_factor = -0.1
-                production_speed_buildings_factor = -0.05
-                industrial_capacity_factory = -0.05
+                political_power_factor = -0.05
+                stability_factor = -0.025
+                production_speed_buildings_factor = -0.01
+                industrial_capacity_factory = -0.01
 
-                monthly_change_popsw = 0.2
+                monthly_change_popsw = -0.1
                 monthly_change_popsp = -0.1
                 monthly_change_popsm = -0.1
                 monthly_change_popss = -0.1
             }
         }
-
-        Cof_anti_cgt_record_weaken = {
-            name = Cof_anti_cgt_record
-            picture = Cof_anti_cgt_record
-            modifier = {
-                custom_modifier_tooltip = Cof_anti_cgt_record_tt
-
-                political_power_factor = -0.05
-                stability_factor = -0.025
-                production_speed_buildings_factor = -0.025
-
-                monthly_change_popsw = -0.2
-                monthly_change_popsp = 0.1
-                monthly_change_popsm = 0.1
-                monthly_change_popss = 0.1
-            }
-        }
-
-        #失业恐慌
-        Cof_losing_job_panic = {
-            picture = Cof_losing_job_panic
+#工会反击
+        FCF_syndicats_protest_worst = {
+            name = FCF_syndicats_protest
+            picture = FCF_anti_cgt_record
             modifier = {
                 stability_factor = -0.1
-                war_support_factor = -0.05
-                consumer_goods_factor = 0.1
-                industrial_capacity_factory = -0.05
-                production_speed_buildings_factor = -0.025
+                war_support_factor = -0.1
+                political_power_factor = -0.15
+                economy_power_factor = -0.2
 
-                monthly_change_popsw = -0.5
-                monthly_change_eq = -0.5
+                monthly_change_popsw = -0.2
+                monthly_change_popsp = -0.2
+                monthly_change_popsm = -0.2
+                monthly_change_popss = -0.2
+                monthly_change_popsb = -0.2
+
+                monthly_change_ev = -0.3
+                monthly_change_eib = -0.2
+				monthly_change_eip = -0.2
+				monthly_change_eia = -0.2
+                monthly_change_el = -0.2
             }
         }
+        FCF_syndicats_protest_worse = {
+            name = FCF_syndicats_protest
+            picture = FCF_anti_cgt_record
+            modifier = {
+                stability_factor = -0.05
+                war_support_factor = -0.05
+                political_power_factor = -0.1
+                economy_power_factor = -0.1
 
-        #妇女节游行
-        Cof_womens_day_parade = {
-            picture = Cof_anti_cgt_record
+                monthly_change_popsw = -0.1
+                monthly_change_popsp = -0.1
+                monthly_change_popsm = -0.1
+                monthly_change_popss = -0.1
+                monthly_change_popsb = -0.1
+
+                monthly_change_ev = -0.2
+                monthly_change_eib = -0.1
+				monthly_change_eip = -0.1
+				monthly_change_eia = -0.1
+                monthly_change_el = -0.1
+            }
+        }
+        FCF_syndicats_protest = {
+            picture = FCF_anti_cgt_record
+            modifier = {
+                stability_factor = -0.02
+                war_support_factor = -0.01
+                political_power_factor = -0.03
+                economy_power_factor = -0.05
+
+                monthly_change_popsw = -0.1
+                monthly_change_popsm = -0.1
+
+                monthly_change_ev = -0.1
+                monthly_change_eib = -0.1
+            }
+        }
+#妇女节游行
+        FCF_womens_day_parade = {
+            picture = FCF_anti_cgt_record
             modifier = {
                 political_power_factor = -0.1
                 stability_factor = -0.1
@@ -573,9 +473,9 @@ ideas = {
             }
         }
 
-        Cof_womens_day_parade_weaken = {
-            name = Cof_womens_day_parade
-            picture = Cof_anti_cgt_record
+        FCF_womens_day_parade_weaken = {
+            name = FCF_womens_day_parade
+            picture = FCF_anti_cgt_record
             modifier = {
                 political_power_factor = -0.05
                 stability_factor = -0.05
@@ -594,65 +494,46 @@ ideas = {
                 monthly_change_popsa = -0.1
             }
         }
-
-        #民主的阴云
-        Cof_doubt_of_democrazy = {
-            picture = SPR_political_violence
+#移民执法案游行
+        FCF_police_enforcement_parade = {
+            picture = FCF_anti_cgt_record
             modifier = {
                 stability_factor = -0.1
                 political_power_factor = -0.15
-                economy_power_factor = -0.15
+                economy_power_factor = -0.1
 
-                monthly_change_popsw = -0.3
-                monthly_change_popsp = -0.3
-                monthly_change_popsm = -0.3
-                monthly_change_popss = -0.3
-                monthly_change_popsb = -0.3
-                monthly_change_popsa = -0.3
+                monthly_change_ev = -0.3
+                monthly_change_eq = -0.5
+
+                monthly_change_popsw = -0.1
+                monthly_change_popsm = -0.1
+                monthly_change_popss = -0.2
+                monthly_change_popsa = 0.3
             }
         }
 
-        #论大战性质
-        Cof_main_contradiction_is_what = {
-            picture = RAJ_kingmaker
-            cancel = { has_war = no }
+        FCF_police_enforcement_parade_weaken = {
+            name = FCF_police_enforcement_parade
+            picture = FCF_anti_cgt_record
             modifier = {
-                war_support_factor = -0.1
                 stability_factor = -0.05
-                army_core_attack_factor = -0.05
-                army_core_defence_factor = -0.05
-            }
-        }
-        Cof_main_contradiction_is_revenge = {
-            picture = GER_wage_war_on_capitalism
-            cancel = { has_war = no }
-            targeted_modifier = {
-                tag = GER
-                attack_bonus_against = 0.05
-                defence_bonus_against = 0.1
-            }
-        }
-        Cof_main_contradiction_is_emancipation = {
-            picture = GER_wage_war_on_capitalism
-            cancel = { has_war = no }
-            modifier = {
-                production_factory_max_efficiency_factor = 0.05
-                industrial_capacity_factory = 0.1
-            }
-        }
-        Cof_main_contradiction_is_honor = {
-            picture = GER_wage_war_on_capitalism
-            cancel = { has_war = no }
-            modifier = {
-                army_speed_factor = 0.05
-                army_org_factor = 0.1
+                political_power_factor = -0.07
+                economy_power_factor = -0.05
+
+                monthly_change_ev = -0.1
+                monthly_change_eq = -0.2
+
+                monthly_change_popsw = -0.1
+                monthly_change_popsm = -0.1
+                monthly_change_popss = -0.1
+                monthly_change_popsa = 0.1
             }
         }
 
-        #呼吁经济改革
-        Cof_call_for_economic_reform0 = {
-            name = Cof_call_for_economic_reform
-            picture = Cof_call_for_economic_reform
+#呼吁经济改革
+        FCF_call_for_economic_reform0 = {
+            name = FCF_call_for_economic_reform
+            picture = FCF_call_for_economic_reform
             modifier = {
                 political_power_factor = -0.1
                 stability_factor = -0.1
@@ -668,9 +549,9 @@ ideas = {
             }
         }
 
-        Cof_call_for_economic_reform1 = {
-            name = Cof_call_for_economic_reform
-            picture = Cof_call_for_economic_reform
+        FCF_call_for_economic_reform1 = {
+            name = FCF_call_for_economic_reform
+            picture = FCF_call_for_economic_reform
             modifier = {
                 political_power_factor = -0.05
                 stability_factor = -0.05
@@ -680,9 +561,9 @@ ideas = {
             }
         }
 
-        Cof_call_for_economic_reform2 = {
-            name = Cof_call_for_economic_reform
-            picture = Cof_call_for_economic_reform
+        FCF_call_for_economic_reform2 = {
+            name = FCF_call_for_economic_reform
+            picture = FCF_call_for_economic_reform
             modifier = {
                 political_power_factor = -0.05
                 stability_factor = -0.05
@@ -692,9 +573,9 @@ ideas = {
             }
         }
 
-        Cof_call_for_economic_reform3 = {
-            name = Cof_call_for_economic_reform
-            picture = Cof_call_for_economic_reform
+        FCF_call_for_economic_reform3 = {
+            name = FCF_call_for_economic_reform
+            picture = FCF_call_for_economic_reform
             modifier = {
                 stability_factor = -0.025
                 consumer_goods_factor = 0.05
@@ -702,879 +583,27 @@ ideas = {
             }
         }
 
-        Cof_call_for_economic_reform4 = {
-            name = Cof_call_for_economic_reform
-            picture = Cof_call_for_economic_reform
+        FCF_call_for_economic_reform4 = {
+            name = FCF_call_for_economic_reform
+            picture = FCF_call_for_economic_reform
             modifier = {
                 stability_factor = -0.025
-            }
-        }
-
-        #城乡矛盾
-        Cof_intensified_urban_rural_conflicts1 = { 
-            name = Cof_intensified_urban_rural_conflicts
-            picture = Cof_intensified_urban_rural_conflicts
-            modifier = {
-                stability_factor = -0.1
-                political_power_cost = 0.5
-                industrial_capacity_factory = -0.025
-                industrial_capacity_dockyard = -0.025
-                consumer_goods_factor = 0.1
-                local_resources_factor = -0.2
-                production_speed_buildings_factor = -0.025
-
-                monthly_change_popsw = -0.3
-                monthly_change_popsp = -0.3
-            }
-        }
-
-        Cof_intensified_urban_rural_conflicts2 = {
-            name = Cof_eased_urban_rural_conflicts
-            picture = Cof_intensified_urban_rural_conflicts
-            modifier = {
-                stability_factor = -0.075
-                political_power_cost = 0.4
-                industrial_capacity_factory = -0.025
-                industrial_capacity_dockyard = -0.025
-                consumer_goods_factor = 0.1
-                local_resources_factor = -0.15
-
-                monthly_change_popsw = -0.2
-                monthly_change_popsp = -0.2
-            }
-        }
-
-        Cof_intensified_urban_rural_conflicts3 = {
-            name = Cof_eased_urban_rural_conflicts
-            picture = Cof_intensified_urban_rural_conflicts
-            modifier = {
-                stability_factor = -0.05
-                political_power_cost = 0.3
-                industrial_capacity_factory = -0.025
-                industrial_capacity_dockyard = -0.025
-                consumer_goods_factor = 0.05
-                local_resources_factor = -0.1
-
-                monthly_change_popsw = -0.1
-                monthly_change_popsp = -0.1
-            }
-        }
-
-        Cof_intensified_urban_rural_conflicts4 = {
-            name = Cof_eased_urban_rural_conflicts
-            picture = Cof_intensified_urban_rural_conflicts
-            modifier = {
-                stability_factor = -0.025
-                political_power_cost = 0.2
-                consumer_goods_factor = 0.05
-                local_resources_factor = -0.05
-            } 
-        }
-
-        Cof_intensified_urban_rural_conflicts5 = {
-            name = Cof_eased_urban_rural_conflicts
-            picture = Cof_intensified_urban_rural_conflicts
-            modifier = {
-                stability_factor = -0.025
-                political_power_cost = 0.1
-                local_resources_factor = -0.025
-            }
-        }
-
-        #黑色星期一导致的供应链危机
-        Cof_supply_chain_crisis1 = {
-            name = Cof_supply_chain_crisis
-            picture = Cof_supply_chain_crisis
-            modifier = {
-                industrial_capacity_factory = -0.05
-                industrial_capacity_dockyard = -0.05
-                consumer_goods_factor = 0.1
-                production_speed_buildings_factor = -0.05
-                production_factory_efficiency_gain_factor = -0.2
-                production_lack_of_resource_penalty_factor = 0.2
-
-                monthly_change_ev = -1
-                monthly_change_eib = -0.5
-                monthly_change_eae = -0.5
-                monthly_change_el = -0.5
-            }
-        }
-
-        Cof_supply_chain_crisis2 = {
-            name = Cof_supply_chain_crisis
-            picture = Cof_supply_chain_crisis
-            modifier = {
-                industrial_capacity_factory = -0.025
-                industrial_capacity_dockyard = -0.025
-                consumer_goods_factor = 0.05
-                production_speed_buildings_factor = -0.025
-                production_factory_efficiency_gain_factor = -0.1
-
-                monthly_change_ev = -0.5
-                monthly_change_eib = -0.3
-                monthly_change_eae = -0.3
-                monthly_change_el = -0.3
-            }
-        }
-
-        Cof_supply_chain_crisis3 = {
-            name = Cof_supply_chain_crisis
-            picture = Cof_supply_chain_crisis
-            modifier = {
-                industrial_capacity_factory = -0.01
-                industrial_capacity_dockyard = -0.01
-                consumer_goods_factor = 0.05
-                production_speed_buildings_factor = -0.01
-
-                monthly_change_ev = -0.3
-                monthly_change_eib = -0.1
-                monthly_change_eae = -0.1
-                monthly_change_el = -0.1
-            }
-        }
-
-         #供应链
-        Cof_deal_with_devil = {
-            picture = UK_economy_syn_idea
-            targeted_modifier = {
-				tag = FRA
-				trade_cost_for_target_factor = -0.3
-			}
-            modifier = {
-                stability_factor = 0.05
-                industrial_capacity_factory = 0.025
-                consumer_goods_factor = -0.05
-                syndicalist_drift = 0.03
-                radical_socialist_drift = 0.03
-            }
-        }
-
-        Cof_red_economic_circle = {
-            picture = UK_economy_syn_idea
-            targeted_modifier = {
-				tag = FRA
-				trade_cost_for_target_factor = -0.5
-			}
-            modifier = {
-                industrial_capacity_factory = 0.05
-                research_speed_factor = 0.05
-                consumer_goods_factor = -0.05
-                production_speed_buildings_factor = 0.025
-                local_resources_factor = 0.15
-            }
-        }
-
-        #激进建设
-        Cof_radicial_construct = {
-            picture = economic_control_icon
-            modifier = {
-                civilian_factory_use = 10
-                production_speed_buildings_factor = 0.25
-            }
-        }
-
-        #战争配给制
-        Cof_abundance_rationing = {
-            picture = Cof_abundance_rationing
-            do_effect = {
-                has_war = yes
-                check_variable = { econ_industry_basic > 60 }
-                check_variable = { econ_agriculture_chain > 60 }
-            }
-            modifier = {
-                consumer_goods_factor = -0.2
-                stability_factor = 0.07
-                war_support_factor = 0.07
-                mobilization_speed = 0.25
-                industry_free_repair_factor = 0.25
-
-                monthly_change_popsa = 0.5
-
-                monthly_change_eib = -0.4
-                monthly_change_eaa = -0.4
-
-                custom_modifier_tooltip = Cof_abundance_rationing_tt
-            }
-        }
-
-        #战争经济学
-        Cof_economics_of_war = {
-            picture = Cof_economics_of_war
-            do_effect = {
-                has_war = yes
-                check_variable = { cof_econ_values > 0 }
-                check_variable = { econ_industry_arms > 70 }
-            }
-            modifier = {
-                industrial_capacity_factory = 0.07
-                industrial_capacity_dockyard = 0.08
-                production_factory_start_efficiency_factor = 0.04
-                production_factory_efficiency_gain_factor = 0.07
-
-                monthly_change_popsa = 0.5
-
-                monthly_change_ev = -0.5
-                monthly_change_eia = -0.5
-
-                custom_modifier_tooltip = Cof_economics_of_war_tt
-            }
-        }
-
-        #一个国家的成功
-        Cof_a_countrys_success = {
-            picture = Cof_a_countrys_success
-            modifier = {
-                army_core_attack_factor = 0.2
-                army_core_defence_factor = 0.2
-                monthly_population = 0.6
-                surrender_limit = 2
-                resistance_growth_on_our_occupied_states = 0.5
-                resistance_decay_on_our_occupied_states = -0.5
-                compliance_growth_on_our_occupied_states = -0.8
-
-                monthly_change_popsw = 0.3
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-                monthly_change_popss = 0.3
-                monthly_change_popsb = 0.3
-                monthly_change_popsa = 0.3
-            }
-        }
-
-        Cof_scalar_economy = {
-            picture = NOR_syndicalist_industry_idea
-            modifier = {
-                consumer_goods_factor = -0.1
-                industrial_capacity_factory = 0.06
-                economy_power_factor = 0.1
-
-                monthly_change_popsw = -0.1
-                monthly_change_popsp = -0.1
-                monthly_change_popsm = -0.1
-                monthly_change_popss = -0.1
-                monthly_change_popsb = -0.1
-                monthly_change_popsa = 0.5
-
-                monthly_change_ev = -0.3
-                monthly_change_eib = 0.3
-                monthly_change_eia = 0.3
-                monthly_change_eq = -0.3
-            }
-        }
-
-        # 温和派议程
-        Cof_under_the_tent_0000 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.2
-                stability_factor = 0.025
-                monthly_change_popsw = 0.3
-
-                monthly_change_ios = -0.1
-            }
-        }
-
-        Cof_under_the_tent_1000 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.4
-                stability_factor = 0.05
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                monthly_change_ios = -0.2
-            }
-        }
-
-        Cof_under_the_tent_0100 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.4
-                stability_factor = 0.05
-                monthly_change_popsw = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                monthly_change_ios = -0.2
-            }
-        }
-
-        Cof_under_the_tent_0010 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.4
-                stability_factor = 0.05
-                monthly_change_popsw = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                monthly_change_ios = -0.2
-            }
-        }
-
-        Cof_under_the_tent_0001 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.4
-                stability_factor = 0.05
-                monthly_change_popsw = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.2
-            }
-        }
-
-        Cof_under_the_tent_1100 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.6
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                monthly_change_ios = -0.3
-            }
-        }
-
-        Cof_under_the_tent_1010 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.6
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                monthly_change_ios = -0.3
-            }
-        }
-
-        Cof_under_the_tent_1001 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.6
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.3
-            }
-        }
-
-        Cof_under_the_tent_0110 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.6
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                monthly_change_ios = -0.3
-            }
-        }
-
-        Cof_under_the_tent_0101 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.6
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.3
-            }
-        }
-
-        Cof_under_the_tent_0011 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.6
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.3
-            }
-        }
-
-        Cof_under_the_tent_1110 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.8
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                monthly_change_ios = -0.4
-            }
-        }
-
-        Cof_under_the_tent_1101 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.8
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.4
-            }
-        }
-
-        Cof_under_the_tent_1011 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.8
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.4
-            }
-        }
-
-        Cof_under_the_tent_0111 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 0.8
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.4
-            }
-        }
-
-        Cof_under_the_tent_1111 = {
-            name = Cof_under_the_tent
-            picture = generic_conference
-            modifier = {
-                political_power_gain = 1
-                stability_factor = 0.075
-                monthly_change_popsw = 0.3
-
-                war_support_factor = 0.025
-                army_org_factor = 0.025
-                monthly_change_popsa = 0.3
-                monthly_change_atrain = 0.3
-
-                research_speed_factor = 0.05
-                monthly_change_popss = 0.3
-                monthly_change_ev = 0.3
-
-                economy_power_factor = 0.05
-                monthly_change_popsb = 0.3
-                monthly_change_el = 0.3
-
-                political_power_factor = 0.05
-                monthly_change_popsp = 0.3
-                monthly_change_popsm = 0.3
-
-                monthly_change_ios = -0.5
-            }
-        }
-
-        #反官僚主义游行
-        Cof_anti_bureaucracy_march = {
-            name = Cof_anti_bureaucracy_march
-            picture = Cof_anti_cgt_record
-            modifier = {
-                stability_factor = -0.05
-                political_power_factor = -0.15
-                economy_power_factor = -0.1
-                monthly_change_popsw = -0.3
-                monthly_change_popsp = -0.3
-                monthly_change_popsm = -0.3
-                monthly_change_popss = -0.3
-            }
-        }
-
-        Cof_anti_bureaucracy_march_2 = {
-            name = Cof_anti_bureaucracy_march
-            picture = Cof_anti_cgt_record
-            modifier = {
-                stability_factor = -0.1
-                political_power_factor = -0.25
-                economy_power_factor = -0.15
-                monthly_change_popsw = -0.6
-                monthly_change_popsp = -0.6
-                monthly_change_popsm = -0.6
-                monthly_change_popss = -0.6
-            }
-        }
-
-        #中道社会
-        Cof_building_midway_society1 = {
-            picture = generic_syndicalist_fort
-            modifier = {
-                political_power_cost = 1
-                civilian_factory_use = 2
-                research_speed_factor = -0.06
-                monthly_change_ios = -0.5
-            }
-        }
-
-        Cof_building_midway_society2 = {
-            picture = generic_syndicalist_fort
-            modifier = {
-                political_power_cost = 1
-                civilian_factory_use = 5
-                stability_factor = -0.04
-                monthly_change_ios = -1
-            }
-        }
-
-        Cof_building_midway_society3 = {
-            picture = generic_syndicalist_fort
-            modifier = {
-                political_power_cost = 1.5
-                civilian_factory_use = 10
-                stability_factor = -0.08
-                monthly_change_ios = -1.5
-            }
-        }
-
-        Cof_building_midway_society4 = {
-            picture = generic_syndicalist_fort
-            modifier = {
-                political_power_cost = 1.5
-                civilian_factory_use = 8
-                stability_factor = -0.06
-                monthly_change_ios = -1.5
-            }
-        }
-
-        Cof_building_midway_society5 = {
-            picture = generic_syndicalist_fort
-            modifier = {
-                political_power_gain = 0.25
-                stability_factor = 0.05
-                monthly_change_ios = -2
-            }
-        }
-
-        ###军事相关
-        #军事科技窃取
-        Cof_theft_tech_from_germany = {
-            picture = generic_research_bonus
-            cancel = { num_researched_technologies > GER.num_researched_technologies }
-            on_remove = { add_research_slot = -1 }
-            modifier = {
-                custom_modifier_tooltip = Cof_theft_tech_from_germany_remove
-            }
-            research_bonus = {
-				infantry_weapons = 0.33
-                motorized_equipment = 0.33
-                naval_equipment = 0.33
-                armor = 0.33
-                artillery = 0.33
-                light_air = 0.33
-                medium_air = 0.33
-                heavy_air = 0.33
-			}
-        }
-
-        #速胜论
-        Cof_instant_victory_theory = {
-            picture = generic_phoenix
-            cancel = { has_war = no }
-            on_remove = {
-                if =  {
-                    limit = { has_war = yes }
-                    add_timed_idea = { idea = Cof_instant_victory_theory_failed days = 240 } 
-                }
-                else = { add_ideas = Cof_instant_victory_theory_success }
-            }
-            modifier = {
-                army_speed_factor = 0.2
-                army_attack_speed_factor = 0.2
-                army_attack_factor = 0.1
-                army_defence_factor = 0.05
-                org_loss_when_moving = -0.1
-                max_planning = -0.1
-                max_dig_in_factor = -0.2
-                custom_modifier_tooltip = Cof_instant_victory_theory_tt
-            }
-        }
-
-        Cof_instant_victory_theory_failed = {
-            picture = generic_desertion
-            modifier = {
-                army_speed_factor = -0.15
-                army_attack_speed_factor = -0.2
-                army_attack_factor = -0.1
-                army_defence_factor = -0.15
-                org_loss_when_moving = 0.05
-                max_planning = -0.1
-                max_dig_in_factor = -0.15
-            }
-        }
-
-        Cof_instant_victory_theory_success = {
-            picture = generic_phoenix
-            modifier = {
-                army_speed_factor = 0.05
-                army_attack_speed_factor = 0.1
-                army_attack_factor = 0.05
-                org_loss_when_moving = -0.1
-            }
-        }
-
-        #意志的胜利
-        Cof_triumph_of_will = {
-            picture = army_cooperation
-            modifier = {
-                army_speed_factor = -0.2
-                breakthrough_factor = -0.2
-                army_org_factor = 0.05
-                max_dig_in = 10
-                max_dig_in_factor = 0.1
-                dig_in_speed_factor = 0.2
-                army_attack_factor = -0.15
-                army_defence_factor = 0.05
-            }
-        }
-
-        #海军建设
-        Cof_naval_construction = {
-            picture = liberty_ships_focus
-            modifier = {
-                civilian_factory_use = 6
-                industrial_capacity_dockyard = 0.1
-                economy_power_factor = -0.1
-            }
-            equipment_bonus = {
-                battleship = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-                destroyer = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-                ship_hull_light = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-                submarine = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-            }
-        }
-
-        Cof_naval_construction2 = {
-            picture = liberty_ships_focus
-            modifier = {
-                industrial_capacity_dockyard = 0.15
-                economy_power_factor = -0.1
-
-                monthly_change_eib = -0.2
-                monthly_change_eia = -0.2
-            }
-            equipment_bonus = {
-                battleship = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-                destroyer = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-                ship_hull_light = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-                submarine = {
-					build_cost_ic = -0.15
-					instant = yes
-				}
-            }
-        }
-
-        Cof_central_fluid_power_research_institute = {
-            picture = generic_air_research
-            modifier = {
-                economy_power_factor = -0.1
-            }
-            research_bonus = {
-                air_equipment = 0.2
-                radar_tech = 0.15
-            }
-        }
-
-        Cof_central_fluid_power_research_institute2 = {
-            name = Cof_central_fluid_power_research_institute
-            picture = generic_air_research
-            modifier = {
-                economy_power_factor = -0.1
-            }
-            research_bonus = {
-                air_equipment = 0.25
-                radar_tech = 0.15
-            }
-            equipment_bonus = {
-                mio_cat_eq_all_aircraft = {
-					build_cost_ic = -0.1
-					instant = yes
-				}
-            }
-        }
-
-        #未来主义狂热
-        Cof_futurism_air_fanaticism = {
-            picture = air_support_focus
-            modifier = {
-                political_power_factor = -0.25
-            }
-            research_bonus = {
-                air_equipment = 0.33
             }
         }
     }
-
+####
     hidden_ideas = {
-        arms_research_institute ={
-            name = Cof_state_lyon
-            modifier = { 
-                specialization_land_speed_factor = 0.15
-            }
-            research_bonus = {
-				infantry_weapons = 0.05
-                artillery = 0.05
-				armor = 0.05
-				motorized_equipment = 0.05
-			}
-        }
+    #CSP less power count
+        FCF_less_power_to_PCSP = { modifier = {  } }
+        FCF_less_power_to_CAE = { modifier = {  } }
+        FCF_less_power_to_CE = { modifier = {  } }
+        FCF_less_power_to_CSI = { modifier = {  } }
+        FCF_less_power_to_CC = { modifier = {  } }
+        FCF_less_power_to_CGFF = { modifier = {  } }
 
-        #CSP less power count
-        Cof_less_power_to_CCSP = { modifier = {  } }
-        Cof_less_power_to_DFA = { modifier = {  } }
-        Cof_less_power_to_DEA = { modifier = {  } }
-        Cof_less_power_to_DIS = { modifier = {  } }
-        Cof_less_power_to_DCA = { modifier = {  } }
-        Cof_less_power_to_CGSC = { modifier = {  } }
-
-        #装备质量
-        Cof_army_equipment_buff1 = { #0-10
-            name = Cof_military_reform_impact
+    #装备质量
+        FCF_army_equipment_buff1 = { #0-10
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = 0.15
@@ -1584,9 +613,8 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff2 = { #10-20
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff2 = { #10-20
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = 0.1
@@ -1595,9 +623,8 @@ ideas = {
                 }
             }
         }
-        
-        Cof_army_equipment_buff3 = { #20-30
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff3 = { #20-30
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = 0.05
@@ -1606,9 +633,8 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff4 = { #30-40
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff4 = { #30-40
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = 0.05
@@ -1616,9 +642,8 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff5 = { #40-50
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff5 = { #40-50
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = -0.05
@@ -1626,9 +651,8 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff6 = { #50-60
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff6 = { #50-60
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = -0.05
@@ -1637,9 +661,8 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff7 = { #60-70
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff7 = { #60-70
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = -0.1
@@ -1648,9 +671,8 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff8 = { #70-80
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff8 = { #70-80
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = -0.15
@@ -1660,9 +682,8 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff9 = { #80-90
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff9 = { #80-90
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = -0.2
@@ -1672,14 +693,191 @@ ideas = {
                 }
             }
         }
-
-        Cof_army_equipment_buff10 = { #90-100
-            name = Cof_military_reform_impact
+        FCF_army_equipment_buff10 = { #90-100
+            name = FCF_military_modifier
             equipment_bonus = {
                 infantry_equipment = {
                     build_cost_ic = -0.25
                     soft_attack = 0.15
                     hard_attack = 0.15
+                    instant = yes
+                }
+            }
+        }
+
+        FCF_army_equipment_air_buff1 = { #0-10
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = 0.15
+                    air_agility = -0.1
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff2 = { #10-20
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = 0.1
+                    air_agility = -0.1
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff3 = { #20-30
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = 0.05
+                    air_agility = -0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff4 = { #30-40
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = 0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff5 = { #40-50
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff6 = { #50-60
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.05
+                    air_agility = 0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff7 = { #60-70
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.1
+                    air_agility = 0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff8 = { #70-80
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.15
+                    air_agility = 0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff9 = { #80-90
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.2
+                    air_agility = 0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_army_equipment_air_buff10 = { #90-100
+            name = FCF_military_modifier
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.2
+                    air_agility = 0.1
+                    instant = yes
+                }
+            }
+        }
+    #空军通用设计
+        FCF_pragmatic_design_of_air = {
+            name = FCF_pragmatic_design_of_air
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.05
+                    instant = yes
+                }
+                small_plane_airframe = {
+                    air_agility = 0.1
+                    instant = yes
+                }
+                medium_plane_airframe = {
+                    air_agility = 0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_pragmatic_design_of_air_up = {
+            name = FCF_pragmatic_design_of_air
+            equipment_bonus = {
+                mio_cat_eq_all_aircraft = {
+                    build_cost_ic = -0.05
+                    air_attack = 0.07
+					air_defence = 0.04
+                    instant = yes
+                }
+                small_plane_airframe = {
+                    air_agility = 0.1
+                    instant = yes
+                }
+                medium_plane_airframe = {
+                    air_agility = 0.05
+                    instant = yes
+                }
+                anti_air_equipment = {
+                    air_attack = 0.1
+                    instant = yes
+                }
+            }
+        }
+
+    #海军通用设计
+        FCF_shipbuilding_plan = {
+            equipment_bonus = {
+                ship_hull_submarine = {
+                    build_cost_ic = -0.1
+                    instant = yes
+                }
+                ship_hull_light = {
+                    build_cost_ic = -0.1
+                    instant = yes
+                }
+            }
+        }
+        FCF_shipbuilding_plan_up = {
+            name = FCF_shipbuilding_plan
+            equipment_bonus = {
+                ship_hull_submarine = {
+                    build_cost_ic = -0.2
+                    reliability = -0.05
+                    instant = yes
+                }
+                ship_hull_light = {
+                    build_cost_ic = -0.2
+                    reliability = -0.05
+                    instant = yes
+                }
+            }
+        }
+        FCF_secure_naval_supply = {
+            equipment_bonus = {
+                convoy = {
+                    build_cost_ic = -0.2
+                    reliability = -0.05
                     instant = yes
                 }
             }

@@ -1,109 +1,102 @@
-Cof_economy_model_co_ops_advantage = {
+FCF_is_french_state = {
+	OR = {
+		state = 1
+		state = 8
+		state = 14
+		state = 15
+		state = 16
+		state = 17
+		state = 18
+		state = 19
+		state = 20
+		state = 21
+		state = 22
+		state = 23
+		state = 24
+		state = 25
+		state = 26
+		state = 27
+		state = 28
+		state = 29
+		state = 30
+		state = 31
+		state = 32
+		state = 33
+		state = 34
+		state = 735
+		state = 760
+		state = 762
+		state = 763
+		state = 779
+		state = 785
+		state = 817
+		state = 943
+		state = 948
+		state = 980
+		state = 983
+		state = 984
+	}
+}
+
+FCF_is_city_zone = {
     custom_trigger_tooltip = {
-        tooltip = Cof_economy_model_co_ops_advantage
-        check_variable = { Cof_economy_model_co_ops > Cof_economy_model_market } 
-        check_variable = { Cof_economy_model_co_ops > Cof_economy_model_plan } 
-        check_variable = { Cof_economy_model_co_ops > Cof_economy_model_order } 
+        tooltip = FCF_is_city_zone
+        OR = {
+            has_state_category = six
+            has_state_category = seven
+            has_state_category = eight
+            has_state_category = nine
+            has_state_category = ten
+            has_state_category = eleven
+            has_state_category = twelve
+        }
     }
 }
 
-Cof_economy_model_market_advantage = {
+FCF_is_rural_zone = {
     custom_trigger_tooltip = {
-        tooltip = Cof_economy_model_market_advantage
-        check_variable = { Cof_economy_model_market > Cof_economy_model_co_ops } 
-        check_variable = { Cof_economy_model_market > Cof_economy_model_plan } 
-        check_variable = { Cof_economy_model_market > Cof_economy_model_order } 
+        tooltip = FCF_is_rural_zone
+        OR = {
+            has_state_category = one
+            has_state_category = two
+            has_state_category = three
+            has_state_category = four
+            has_state_category = five
+        }
     }
 }
 
-Cof_economy_model_plan_advantage = {
-    custom_trigger_tooltip = {
-        tooltip = Cof_economy_model_plan_advantage
-        check_variable = { Cof_economy_model_plan > Cof_economy_model_market } 
-        check_variable = { Cof_economy_model_plan > Cof_economy_model_co_ops } 
-        check_variable = { Cof_economy_model_plan > Cof_economy_model_order } 
-    }
+FCF_is_brittany_zone = {
+	OR = {
+		state = 14
+		state = 983
+	}
 }
 
-Cof_economy_model_order_advantage = {
-    custom_trigger_tooltip = {
-        tooltip = Cof_economy_model_order_advantage
-        check_variable = { Cof_economy_model_order > Cof_economy_model_market } 
-        check_variable = { Cof_economy_model_order > Cof_economy_model_plan } 
-        check_variable = { Cof_economy_model_order > Cof_economy_model_co_ops } 
-    }
-}
-
-cof_econ_target_more_than_x = {
-    custom_trigger_tooltip = {
+state_local_factories_than_x = {
+	custom_trigger_tooltip = {
 		if = {
 			limit = { check_variable = { target_t = 0 } }
-			set_temp_variable = { target_v = cof_econ_values }
+			set_temp_variable = { target_v = state_factory }
 		}
 		else_if = {
 			limit = { check_variable = { target_t = 1 } }
-			set_temp_variable = { target_v = econ_industry_basic }
+			set_temp_variable = { target_v = state_economy_industry }
 		}
 		else_if = {
 			limit = { check_variable = { target_t = 2 } }
-			set_temp_variable = { target_v = econ_industry_process }
+			set_temp_variable = { target_v = state_economy_arms }
 		}
 		else_if = {
 			limit = { check_variable = { target_t = 3 } }
-			set_temp_variable = { target_v = econ_industry_arms }
+			set_temp_variable = { target_v = state_economy_dockyard }
 		}
-		else_if = {
-			limit = { check_variable = { target_t = 4 } }
-			set_temp_variable = { target_v = econ_agriculture_mechanized }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 5 } }
-			set_temp_variable = { target_v = econ_agriculture_chemical }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 6 } }
-			set_temp_variable = { target_v = econ_agriculture_chain }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 7 } }
-			set_temp_variable = { target_v = econ_equal }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 8 } }
-			set_temp_variable = { target_v = econ_link }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 9 } }
-			set_temp_variable = { target_v = econ_innovate }
-		}
-	
-		else_if = { 
-			limit = { check_variable = { target_t = 11 } }
-			set_temp_variable = { target_v = economy_synd }
-		}
-		else_if = { 
-			limit = { check_variable = { target_t = 12 } }
-			set_temp_variable = { target_v = economy_oppo }
-		}
-		else_if = { 
-			limit = { check_variable = { target_t = 13 } }
-			set_temp_variable = { target_v = economy_jaco }
-		}
-		else_if = { 
-			limit = { check_variable = { target_t = 14 } }
-			set_temp_variable = { target_v = economy_sore }
-		}
-
-		else_if = {
-			limit = { check_variable = { target_t = 15 } }
-			set_temp_variable = { target_v = economy_power }
-		}
-		tooltip = econ_target_more_than_x  
+        tooltip = local_factories_more_than_x  
         check_variable = { target_v > target_num }
     }
 }
 
-cof_econ_values_location_less = {
+economy_values_location_less = {
     custom_trigger_tooltip = {
 		if = {
 			limit = { check_variable = { target_t = 5 } }
@@ -149,15 +142,14 @@ cof_econ_values_location_less = {
 			limit = { check_variable = { target_t = -5 } }
 			set_temp_variable = { tmax = -90 }
 		}
-		tooltip = cof_econ_values_location_less
+		tooltip = economy_values_location_less
 		OR = {
-			check_variable = { cof_econ_values < tmax }
-			check_variable = { cof_econ_values = tmax }
+			check_variable = { economy_values < tmax }
+			check_variable = { economy_values = tmax }
 		}
     }
 }
-
-cof_econ_values_location_more = {
+economy_values_location_more = {
     custom_trigger_tooltip = {
 		if = {
 			limit = { check_variable = { target_t = 5 } }
@@ -203,65 +195,170 @@ cof_econ_values_location_more = {
 			limit = { check_variable = { target_t = -5 } }
 			set_temp_variable = { tmin = -100 }
 		}
-		tooltip = cof_econ_values_location_more
+		tooltip = economy_values_location_more
 		OR = {
-			check_variable = { cof_econ_values > tmin }
-			check_variable = { cof_econ_values = tmin }
+			check_variable = { economy_values > tmin }
+			check_variable = { economy_values = tmin }
 		}
     }
 }
 
-cof_is_city_zone = {
-    custom_trigger_tooltip = {
-        tooltip = cof_is_city_zone
-        OR = {
-            has_state_category = six
-            has_state_category = seven
-            has_state_category = eight
-            has_state_category = nine
-            has_state_category = ten
-            has_state_category = eleven
-            has_state_category = twelve
-        }
-    }
-}
+###经济改革偏向
+	ert_dom_left_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_dom
+				TENDENCY = ert_dom_left
+			}
+			check_variable = { ert_dom > 0 }
+		}
+	}
 
-cof_is_rural_zone = {
-    custom_trigger_tooltip = {
-        tooltip = cof_is_rural_zone
-        OR = {
-            has_state_category = one
-            has_state_category = two
-            has_state_category = three
-            has_state_category = four
-            has_state_category = five
-        }
-    }
-}
+	ert_dom_right_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_dom
+				TENDENCY = ert_dom_right
+			}
+			check_variable = { ert_dom < 0 }
+		}
+	}
 
-state_local_factories_than_x = {
-	custom_trigger_tooltip = {
-		if = {
-			limit = { check_variable = { target_t = 0 } }
-			set_temp_variable = { target_v = state_factory }
+	ert_str_left_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_str
+				TENDENCY = ert_str_left
+			}
+			check_variable = { ert_str > 0 }
 		}
-		else_if = {
-			limit = { check_variable = { target_t = 1 } }
-			set_temp_variable = { target_v = state_economy_industry }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 2 } }
-			set_temp_variable = { target_v = state_economy_arms }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 3 } }
-			set_temp_variable = { target_v = state_economy_dockyard }
-		}
-        tooltip = local_factories_more_than_x  
-        check_variable = { target_v > target_num }
-    }
-}
+	}
 
+	ert_str_right_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_str
+				TENDENCY = ert_str_right
+			}
+			check_variable = { ert_str < 0 }
+		}
+	}
+
+	ert_man_left_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_man
+				TENDENCY = ert_man_left
+			}
+			check_variable = { ert_man > 0 }
+		}
+	}
+
+	ert_man_right_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_man
+				TENDENCY = ert_man_right
+			}
+			check_variable = { ert_man < 0 }
+		}
+	}
+
+	ert_pro_left_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_pro
+				TENDENCY = ert_pro_left
+			}
+			check_variable = { ert_pro > 0 }
+		}
+	}
+
+	ert_pro_right_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_pro
+				TENDENCY = ert_pro_right
+			}
+			check_variable = { ert_pro < 0 }
+		}
+	}
+
+	ert_exc_left_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_exc
+				TENDENCY = ert_exc_left
+			}
+			check_variable = { ert_exc > 0 }
+		}
+	}
+
+	ert_exc_right_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_exc
+				TENDENCY = ert_exc_right
+			}
+			check_variable = { ert_exc < 0 }
+		}
+	}
+
+	ert_con_left_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_con
+				TENDENCY = ert_con_left
+			}
+			check_variable = { ert_con > 0 }
+		}
+	}
+
+	ert_con_right_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_con
+				TENDENCY = ert_con_right
+			}
+			check_variable = { ert_con < 0 }
+		}
+	}
+
+	ert_dev_left_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_dev
+				TENDENCY = ert_dev_left
+			}
+			check_variable = { ert_dev > 0 }
+		}
+	}
+
+	ert_dev_right_trigger = {
+		custom_trigger_tooltip =  {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = ert_dev
+				TENDENCY = ert_dev_right
+			}
+			check_variable = { ert_dev < 0 }
+		}
+	}
+
+############################################
 is_paris_calais_model_zone = {
 	OR = {
 		state = 16
@@ -307,25 +404,3 @@ is_marse_lyon_model_zone = {
 	}
 }
 
-cof_brittcul_more_than_x = {
-    custom_trigger_tooltip = {
-		if = { 
-			limit = { check_variable = { target_t = 1 } }
-			set_temp_variable = { target_num = 20 }
-		}
-		else_if = { 
-			limit = { check_variable = { target_t = 2 } }
-			set_temp_variable = { target_num = 40 }
-		}
-		else_if = { 
-			limit = { check_variable = { target_t = 3 } }
-			set_temp_variable = { target_num = 60 }
-		}
-		else_if = { 	
-			limit = { check_variable = { target_t = 4 } }
-			set_temp_variable = { target_num = 80 }
-		} 
-        tooltip = cof_brittcul_more_than_x
-        check_variable = { brittcul > target_num }
-    }
-} 

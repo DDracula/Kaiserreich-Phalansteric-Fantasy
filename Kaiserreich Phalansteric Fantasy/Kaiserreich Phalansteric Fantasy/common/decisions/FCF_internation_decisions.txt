@@ -1,87 +1,5 @@
 ###国际干涉
-FRA_BoP_category = {
-#全局
-	#武器出口
-	FRA_global_weapons_trade_show = {
-		allowed = { tag = FRA }
-		visible = { 
-			has_completed_focus = FRA_excess_arms_trade
-		}
-		icon = generic_operation
-		days_re_enable = 0
-		complete_effect = {  
-			clr_all_flag = yes
-			if = {
-				limit = { has_country_flag = show_weapons_trade }
-				clr_country_flag = show_weapons_trade
-			}
-			else = { set_country_flag = show_weapons_trade }
-		}
-	}
-	FRA_global_weapons_trade = {
-		allowed = { tag = FRA }
-		visible = { has_country_flag = show_weapons_trade }
-		available = {
-		 	OR = {
-				has_equipment = { infantry_equipment > 10000 }
-				has_equipment = { artillery_equipment > 5000 }
-				has_equipment = { medium_tank_chassis > 2500 }
-			}
-		}
-		target_trigger = {
-			FROM = {
-				NOT = { has_country_flag = weapons_trade_receive }
-				NOT = { is_embargoing = FRA }
-				has_war = yes
-			}
-		}
-		complete_effect = {
-			effect_tooltip = { country_event = cofintern.2 }
-			hidden_effect = { FROM = { FRA = { country_event = cofintern.2 } } }
-		}
-	}
-	#建立黑市
-	FRA_set_red_black_market_show = {
-		allowed = { tag = FRA }
-		visible = { 
-			has_completed_focus = FRA_government_is_not_people
-		}
-		icon = generic_operation
-		days_re_enable = 0
-		complete_effect = { 
-			clr_all_flag = yes
-			if = {
-				limit = { has_country_flag = show_set_red_black_market }
-				clr_country_flag = show_set_red_black_market
-			}
-			else = { set_country_flag = show_set_red_black_market }
-		}
-	}
-	FRA_set_red_black_market = {
-		allowed = { tag = FRA }
-		visible = { has_country_flag = show_set_red_black_market }
-		target_trigger = {
-			FROM = {
-				has_stability < 0.25
-				has_socialist_government = no
-				set_temp_variable = { ck = var:THIS.party_popularity@totalist }
-				add_to_temp_variable = { ck = var:THIS.party_popularity@syndicalist }
-				add_to_temp_variable = { ck = var:THIS.party_popularity@radical_socialist }
-				check_variable = { ck > 0.1 }   
-				capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id } } }
-			}
-		}
-		cost = 50
-		complete_effect = {
-			FROM = {
-				country_event = cofintern.11
-				capital_scope = {
-					add_dynamic_modifier = { modifier = Cof_state_red_black_market scope = THIS.id }
-				}
-			}
-		}
-	}
-
+FCF_BoP_category = {
 #欧洲
 	iri_eu_expand = {
 		allowed = { tag = FRA }
@@ -122,7 +40,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -135,7 +53,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -152,7 +70,7 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.161
+				country_event = fcf_internation_event.161
 				effect_tooltip = {
 					add_stability = -0.05
 
@@ -180,7 +98,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -203,7 +121,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -220,12 +138,12 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.162
+				country_event = fcf_internation_event.162
 				effect_tooltip = {
 					add_stability = -0.05
 					add_political_power = -50
 					
-					add_timed_idea = { idea = Cof_iri_organized_strike days = 30 }
+					add_timed_idea = { idea = FCF_iri_organized_strike days = 30 }
 				}
 			}
 		}
@@ -240,7 +158,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -254,7 +172,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -271,8 +189,8 @@ FRA_BoP_category = {
 			custom_effect_tooltip = iri_cooperate_with_republic
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.158
-				custom_effect_tooltip = if_they_accept_effect
+				country_event = fcf_internation_event.158
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					add_stability = -0.05
 
@@ -283,7 +201,7 @@ FRA_BoP_category = {
 					add_popularity = { ideology = social_democrat popularity = 0.025 }
 					add_popularity = { ideology = social_liberal popularity = 0.025 }
 				}
-				custom_effect_tooltip = if_they_not_accept_effect
+				custom_effect_tooltip = if_they_reject
 				effect_tooltip = {
 					add_stability = 0.025
 
@@ -304,7 +222,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -326,7 +244,7 @@ FRA_BoP_category = {
 				has_stability < 0.2
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 29 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 30 } } }
 		custom_cost_text = cost_iri_eui_30
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -359,13 +277,12 @@ FRA_BoP_category = {
 					}
 				}
 
-				country_event = cofintern.160
+				country_event = fcf_internation_event.160
 				custom_effect_tooltip = if_assassinate_success
 				effect_tooltip = {
 					custom_effect_tooltip = tooltip_white_line
 					add_trait = {
 						character = THIS.country_leader
-						ideology = THIS.current_party_ideology_group
 						trait = FRA_assassinated_leader_dead
 					}
 				}
@@ -376,7 +293,6 @@ FRA_BoP_category = {
 					custom_effect_tooltip = tooltip_white_line
 					add_trait = {
 						character = THIS.country_leader
-						ideology = THIS.current_party_ideology_group
 						trait = FRA_assassinated_leader_injured
 					}
 				}
@@ -393,7 +309,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -417,7 +333,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 49 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 50 } } }
 		custom_cost_text = cost_iri_eui_50
 		ai_will_do = { base = 0	} 
 		fire_only_once = yes
@@ -432,7 +348,7 @@ FRA_BoP_category = {
 
 			custom_effect_tooltip = tooltip_white_line
 			FROM = {
-				country_event = cofintern.163
+				country_event = fcf_internation_event.163
 				custom_effect_tooltip = iri_revolution_tt
 			}
 		}
@@ -449,7 +365,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -462,7 +378,7 @@ FRA_BoP_category = {
 			}
 		}
 		available = { num_of_civilian_factories_available_for_projects > 4 }
-		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 20 } } }
 		custom_cost_text = cost_iri_eui_20
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -479,7 +395,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.173
+				country_event = fcf_internation_event.173
 				effect_tooltip = {
 					add_stability = -0.1
 					add_equipment_to_stockpile = {
@@ -499,7 +415,7 @@ FRA_BoP_category = {
 							level = 1
 							instant_build = yes
 						}
-						add_dynamic_modifier = { modifier = Cof_iri_state_catalonia } 
+						add_dynamic_modifier = { modifier = FCF_iri_state_catalonia } 
 					}
 					167 = { 
 						add_building_construction = {
@@ -507,7 +423,7 @@ FRA_BoP_category = {
 							level = 1
 							instant_build = yes
 						}
-						add_dynamic_modifier = { modifier = Cof_iri_state_catalonia } 
+						add_dynamic_modifier = { modifier = FCF_iri_state_catalonia } 
 					}
 				}
 			}
@@ -524,7 +440,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -539,7 +455,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -555,7 +471,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.174
+				country_event = fcf_internation_event.174
 				effect_tooltip = {
 					add_stability = -0.025
 					add_equipment_to_stockpile = {
@@ -587,7 +503,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -596,14 +512,14 @@ FRA_BoP_category = {
 			FROM = {
 				exists = yes
 				has_war_with = SWF
-				NOT = { has_idea = Cof_spanish_infiltrated_command_chain }
+				NOT = { has_idea = FCF_spanish_infiltrated_command_chain }
 				OR = {
 					tag = SPA
 					tag = SPR
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 50
@@ -619,10 +535,10 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.175
+				country_event = fcf_internation_event.175
 				effect_tooltip = {
 					add_stability = -0.025
-					add_timed_idea = { idea = Cof_spanish_infiltrated_command_chain days = 30 }
+					add_timed_idea = { idea = FCF_spanish_infiltrated_command_chain days = 30 }
 				}
 			}
 		}
@@ -661,7 +577,7 @@ FRA_BoP_category = {
 				set_temp_variable = { sc = 2 }
 				set_temp_variable = { bc = 2 }
 				set_temp_variable = { ac = 2 }
-				class_pop_satisfactions_change = yes
+				society_pop_satisfactions_change = yes
 			}
 
 			custom_effect_tooltip = tooltip_white_line
@@ -692,7 +608,7 @@ FRA_BoP_category = {
 					set_temp_variable = { sc = 2 }
 					set_temp_variable = { bc = 2 }
 					set_temp_variable = { ac = 2 }
-					class_pop_satisfactions_change = yes
+					society_pop_satisfactions_change = yes
 				}
 				else = {
 					set_temp_variable = { iri_euic = -30 }
@@ -726,7 +642,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -737,7 +653,7 @@ FRA_BoP_category = {
 				has_socialist_government = no
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -753,7 +669,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.176
+				country_event = fcf_internation_event.176
 				effect_tooltip = {
 					random_list = {
 						1 = { add_popularity = { ideology = totalist popularity = 0.025 } }
@@ -784,7 +700,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -796,11 +712,17 @@ FRA_BoP_category = {
 			}
 		}
 		available = {
-			set_temp_variable = { target_t = 15 }
-			set_temp_variable = { target_num = 20 } 
-			cof_econ_target_more_than_x = yes
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = economy_power
+					JUDGE = more_than
+					TAGNUM = "20"
+				}
+				check_variable = { economy_power > 20 }
+			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 40
@@ -818,13 +740,13 @@ FRA_BoP_category = {
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
 			set_temp_variable = { epc = -20 }
-			cof_econ_target_change = yes
+			economy_variable_change = yes
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.177
+				country_event = fcf_internation_event.177
 				effect_tooltip = {
-					add_timed_idea = { idea = Cof_ireland_active_leftwing_activities days = 30 }
+					add_timed_idea = { idea = FCF_ireland_active_leftwing_activities days = 30 }
 						
 					custom_effect_tooltip = if_ire_gateway_start
 					set_temp_variable = { IRE_ENG_delta = 5 }
@@ -844,7 +766,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -855,7 +777,7 @@ FRA_BoP_category = {
 				has_socialist_government = no
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 20 } } }
 		custom_cost_text = cost_iri_eui_20
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -872,7 +794,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.178
+				country_event = fcf_internation_event.178
 				effect_tooltip = {
 					add_popularity = { ideology = totalist popularity = 0.03 }
 
@@ -898,7 +820,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -909,7 +831,7 @@ FRA_BoP_category = {
 				has_socialist_government = no
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 39 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 40 } } }
 		custom_cost_text = cost_iri_eui_40
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -926,11 +848,11 @@ FRA_BoP_category = {
 			custom_effect_tooltip = ireland_violend_revolution_tt
 			ENG = { 
 				activate_countermeasures_decision = yes
-				country_event = cofintern.179 
+				country_event = fcf_internation_event.179 
 			}
 			IRE = { 
 				activate_countermeasures_decision = yes
-				country_event = cofintern.179
+				country_event = fcf_internation_event.179
 				set_country_flag = cof_iri_ireland_revolution 
 			}
 		}
@@ -946,7 +868,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -955,14 +877,14 @@ FRA_BoP_category = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
 		available = {
 			has_equipment = { infantry_equipment > 499 }
 			has_equipment = { support_equipment > 24 }
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_re_enable = 60
@@ -984,7 +906,7 @@ FRA_BoP_category = {
 				amount = -25
 			}
 			IRE = {
-				country_event = cofintern.181
+				country_event = fcf_internation_event.181
 				effect_tooltip = {
 					add_popularity = { ideology = totalist popularity = 0.03 }
 					set_temp_variable = { t = 1 }
@@ -1004,7 +926,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1013,10 +935,10 @@ FRA_BoP_category = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 20 } } }
 		custom_cost_text = cost_iri_eui_20
 		ai_will_do = { base = 0	}
 		modifier = { political_power_factor = -0.05 }
@@ -1033,7 +955,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			IRE = {
-				country_event = cofintern.182
+				country_event = fcf_internation_event.182
 				effect_tooltip = {
 					add_popularity = { ideology = totalist popularity = 0.02 }
 					add_popularity = { ideology = syndicalist popularity = 0.02 }
@@ -1053,7 +975,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1062,10 +984,10 @@ FRA_BoP_category = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 20 } } }
 		custom_cost_text = cost_iri_eui_20
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -1081,13 +1003,13 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			IRE = {
-				country_event = cofintern.183
+				country_event = fcf_internation_event.183
 				effect_tooltip = {
 					if = {
-						limit = { has_idea = Cof_ireland_revolution_strike }
-						modify_timed_idea = { idea = Cof_ireland_revolution_strike days = 40 }
+						limit = { has_idea = FCF_ireland_revolution_strike }
+						modify_timed_idea = { idea = FCF_ireland_revolution_strike days = 40 }
 					}
-					else = { add_timed_idea = { idea = Cof_ireland_revolution_strike days = 30 } }
+					else = { add_timed_idea = { idea = FCF_ireland_revolution_strike days = 30 } }
 				}
 			}
 		}
@@ -1103,7 +1025,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1112,7 +1034,7 @@ FRA_BoP_category = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
 		available = {
@@ -1130,7 +1052,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 49 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 50 } } }
 		custom_cost_text = cost_iri_eui_50
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1144,7 +1066,7 @@ FRA_BoP_category = {
 			iri_influence_change = yes
 
 			IRE = {
-				country_event = cofintern.184
+				country_event = fcf_internation_event.184
 				custom_effect_tooltip = iri_revolution_tt
 			}
 		}
@@ -1161,7 +1083,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1174,7 +1096,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -1191,7 +1113,7 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.161
+				country_event = fcf_internation_event.161
 				effect_tooltip = {
 					add_stability = -0.05
 
@@ -1219,7 +1141,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1242,7 +1164,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -1259,12 +1181,12 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.162
+				country_event = fcf_internation_event.162
 				effect_tooltip = {
 					add_stability = -0.05
 					add_political_power = -50
 					
-					add_timed_idea = { idea = Cof_iri_organized_strike days = 30 }
+					add_timed_idea = { idea = FCF_iri_organized_strike days = 30 }
 				}
 			}
 		}
@@ -1280,7 +1202,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1303,7 +1225,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1320,8 +1242,8 @@ FRA_BoP_category = {
 			custom_effect_tooltip = iri_cooperate_with_republic
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.158
-				custom_effect_tooltip = if_they_accept_effect
+				country_event = fcf_internation_event.158
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					add_stability = -0.05
 
@@ -1332,7 +1254,7 @@ FRA_BoP_category = {
 					add_popularity = { ideology = social_democrat popularity = 0.025 }
 					add_popularity = { ideology = social_liberal popularity = 0.025 }
 				}
-				custom_effect_tooltip = if_they_not_accept_effect
+				custom_effect_tooltip = if_they_reject
 				effect_tooltip = {
 					add_stability = 0.025
 
@@ -1354,7 +1276,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1377,7 +1299,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1394,9 +1316,9 @@ FRA_BoP_category = {
 			custom_effect_tooltip = iri_euw_hol_influence_socdem_tt
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.194
+				country_event = fcf_internation_event.194
 
-				custom_effect_tooltip = if_they_accept_effect
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					add_stability = -0.05
 					add_popularity = { ideology = totalist popularity = 0.01 }
@@ -1404,7 +1326,7 @@ FRA_BoP_category = {
 					add_popularity = { ideology = radical_socialist popularity = 0.04 }
 					add_popularity = { ideology = social_democrat popularity = 0.05 }
 				}
-				custom_effect_tooltip = if_they_not_accept_effect
+				custom_effect_tooltip = if_they_reject
 				effect_tooltip = {
 					add_stability = 0.025
 					add_popularity = { ideology = social_democrat popularity = 0.02 }
@@ -1423,7 +1345,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1445,7 +1367,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 49 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 50 } } }
 		custom_cost_text = cost_iri_eui_50
 		ai_will_do = { base = 0	} 
 		fire_only_once = yes
@@ -1460,7 +1382,7 @@ FRA_BoP_category = {
 
 			custom_effect_tooltip = tooltip_white_line
 			FROM = {
-				country_event = cofintern.200
+				country_event = fcf_internation_event.200
 				custom_effect_tooltip = iri_revolution_tt
 			}
 		}
@@ -1479,7 +1401,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1492,7 +1414,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 60
@@ -1508,7 +1430,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.262
+				country_event = fcf_internation_event.262
 				effect_tooltip = {
 					add_stability = -0.01
 					add_popularity = { ideology = syndicalist popularity = 0.01 }
@@ -1530,7 +1452,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1547,7 +1469,7 @@ FRA_BoP_category = {
 			date > 1936.9.31 
 			NOT = { has_country_flag = iri_bel_cooperate_with_socialist }
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1563,14 +1485,14 @@ FRA_BoP_category = {
 			custom_effect_tooltip = iri_euw_bel_cooperate_with_wallonia_tt
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.202
-				custom_effect_tooltip = if_they_accept_effect
+				country_event = fcf_internation_event.202
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					custom_effect_tooltip = wal_revo_soon_months
 					add_stability = -0.05
 					add_popularity = { ideology = totalist popularity = 0.05 }
 				}
-				custom_effect_tooltip = if_they_not_accept_effect
+				custom_effect_tooltip = if_they_reject
 				effect_tooltip = {
 					add_stability = 0.025
 					add_popularity = { ideology = totalist popularity = -0.05 }
@@ -1588,7 +1510,7 @@ FRA_BoP_category = {
 		timeout_effect = {
 			set_country_flag = iri_bel_wal_revolution
 			custom_effect_tooltip = wallionia_revolution_start
-			hidden_effect = { BEL = { country_event = cofintern.203 } }
+			hidden_effect = { BEL = { country_event = fcf_internation_event.203 } }
 		}
 	}
 	iri_bel_wal_transport_weapons = {
@@ -1603,7 +1525,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1620,7 +1542,7 @@ FRA_BoP_category = {
 			NOT = { has_country_flag = iri_bel_wal_revolution }
 			has_equipment = { infantry_equipment > 499 }
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_re_enable = 30
@@ -1639,7 +1561,7 @@ FRA_BoP_category = {
 			}
 
 			FROM = {
-				country_event = cofintern.211
+				country_event = fcf_internation_event.211
 				effect_tooltip = {
 					add_stability = -0.025
 					add_popularity = { ideology = totalist popularity = 0.025 }
@@ -1659,7 +1581,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1676,7 +1598,7 @@ FRA_BoP_category = {
 			NOT = { has_country_flag = iri_bel_wal_revolution }
 			has_equipment = { infantry_equipment > 499 }
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 40
@@ -1697,7 +1619,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.212
+				country_event = fcf_internation_event.212
 				effect_tooltip = {
 					add_stability = -0.05
 					add_popularity = { ideology = totalist popularity = 0.03 }
@@ -1717,7 +1639,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1736,7 +1658,7 @@ FRA_BoP_category = {
 			date > 1936.9.31 
 			NOT = { has_country_flag = iri_bel_cooperate_with_wallonia }
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1752,8 +1674,8 @@ FRA_BoP_category = {
 			custom_effect_tooltip = iri_bel_cooperate_with_socialist_tt
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.209 
-				custom_effect_tooltip = if_they_accept_effect
+				country_event = fcf_internation_event.209 
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					custom_effect_tooltip = independence_plan_soon_months
 					add_popularity = { ideology = totalist popularity = 0.01 }
@@ -1762,7 +1684,7 @@ FRA_BoP_category = {
 					add_popularity = { ideology = social_democrat popularity = 0.02 }
 					add_popularity = { ideology = social_liberal popularity = 0.01 }
 				}
-				custom_effect_tooltip = if_they_not_accept_effect
+				custom_effect_tooltip = if_they_reject
 				effect_tooltip = {
 					add_stability = 0.025
 				}
@@ -1779,7 +1701,7 @@ FRA_BoP_category = {
 		timeout_effect = {
 			set_country_flag = iri_bel_ind_start
 			custom_effect_tooltip = belgium_independence_plan_start
-			hidden_effect = { BEL = { country_event = cofintern.218 } }
+			hidden_effect = { BEL = { country_event = fcf_internation_event.218 } }
 		}
 	}
 	iri_euw_bel_cooperate_with_republic = {
@@ -1795,7 +1717,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1810,7 +1732,7 @@ FRA_BoP_category = {
 			}
 		}
 		available = { NOT = { has_country_flag = iri_bel_ind_start } }
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1827,8 +1749,8 @@ FRA_BoP_category = {
 			custom_effect_tooltip = iri_cooperate_with_republic_bel
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.158
-				custom_effect_tooltip = if_they_accept_effect
+				country_event = fcf_internation_event.158
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					custom_effect_tooltip = bel_ind_republic_accept_union_tt
 					add_stability = -0.05
@@ -1840,7 +1762,7 @@ FRA_BoP_category = {
 					add_popularity = { ideology = social_democrat popularity = 0.025 }
 					add_popularity = { ideology = social_liberal popularity = 0.025 }
 				}
-				custom_effect_tooltip = if_they_not_accept_effect
+				custom_effect_tooltip = if_they_reject
 				effect_tooltip = {
 					add_stability = 0.025
 
@@ -1864,7 +1786,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1879,7 +1801,7 @@ FRA_BoP_category = {
 			}
 		}
 		available = { NOT = { has_country_flag = iri_bel_ind_start } }
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1896,8 +1818,8 @@ FRA_BoP_category = {
 			custom_effect_tooltip = iri_euw_bel_persuade_wallonia_tt
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.213
-				custom_effect_tooltip = if_they_accept_effect
+				country_event = fcf_internation_event.213
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					custom_effect_tooltip = bel_ind_wallonia_accept_union_tt
 					add_stability = -0.025
@@ -1919,7 +1841,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1935,11 +1857,17 @@ FRA_BoP_category = {
 		}
 		available = {
 			NOT = { has_country_flag = iri_bel_ind_start } 
-			set_temp_variable = { target_t = 15 }
-			set_temp_variable = { target_num = 30 }
-			cof_econ_target_more_than_x = yes
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = economy_power
+					JUDGE = more_than
+					TAGNUM = "30"
+				}
+				check_variable = { economy_power > 30 }
+			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -1955,14 +1883,14 @@ FRA_BoP_category = {
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
 			set_temp_variable = { epc = -30 }
-			cof_econ_target_change = yes
+			economy_variable_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = iri_euw_bel_bribe_the_police_tt
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.215
-				custom_effect_tooltip = if_they_accept_effect
+				country_event = fcf_internation_event.215
+				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
 					custom_effect_tooltip = bel_ind_police_accept_union_tt
 					add_stability = -0.05
@@ -1984,7 +1912,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -1999,7 +1927,7 @@ FRA_BoP_category = {
 			}
 		}
 		available = { NOT = { has_country_flag = iri_bel_ind_start } }
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		modifier = { political_power_factor = -0.05 }
@@ -2016,7 +1944,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.217
+				country_event = fcf_internation_event.217
 				effect_tooltip = {
 					random_list = {
 						1 = {
@@ -2064,7 +1992,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2083,7 +2011,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -2099,7 +2027,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.174
+				country_event = fcf_internation_event.174
 				effect_tooltip = {
 					add_stability = -0.025
 					add_equipment_to_stockpile = {
@@ -2140,7 +2068,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2148,7 +2076,7 @@ FRA_BoP_category = {
 		target_trigger = {
 			FROM = {
 				exists = yes
-				NOT = { has_idea = Cof_spanish_infiltrated_command_chain }
+				NOT = { has_idea = FCF_spanish_infiltrated_command_chain }
 				has_war_with = SRI
 				OR = {
 					tag = ITA
@@ -2160,7 +2088,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 50
@@ -2176,10 +2104,10 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.175
+				country_event = fcf_internation_event.175
 				effect_tooltip = {
 					add_stability = -0.025
-					add_timed_idea = { idea = Cof_spanish_infiltrated_command_chain days = 30 }
+					add_timed_idea = { idea = FCF_spanish_infiltrated_command_chain days = 30 }
 				}
 			}
 		}
@@ -2200,7 +2128,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2215,7 +2143,7 @@ FRA_BoP_category = {
 		available = {
 			SRI = { NOT = { has_war_with = PAP } }
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		fire_only_once = yes
@@ -2228,7 +2156,7 @@ FRA_BoP_category = {
 			set_temp_variable = { iri_amic = 0 }
 			iri_influence_change = yes
 
-			country_event = cofintern.236
+			country_event = fcf_internation_event.236
 		}
 	}
 	iri_euw_pap_mission_march_into_rome = {
@@ -2241,7 +2169,7 @@ FRA_BoP_category = {
 		days_mission_timeout = 90
 		timeout_effect = {
 			custom_effect_tooltip = march_into_rome_start
-			hidden_effect = { PAP = { country_event = cofintern.241 } }
+			hidden_effect = { PAP = { country_event = fcf_internation_event.241 } }
 		}
 	}
 	iri_euw_pap_organize_spy = {
@@ -2261,7 +2189,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2273,7 +2201,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -2293,7 +2221,7 @@ FRA_BoP_category = {
 				tooltip = pap_rome_intelligence_strengthen_SRI
 			}
 			FROM = {
-				country_event = cofintern.239
+				country_event = fcf_internation_event.239
 				effect_tooltip = {
 					add_stability = -0.025
 					add_popularity = { ideology = totalist popularity = 0.02 }
@@ -2320,7 +2248,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2332,7 +2260,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 15
@@ -2370,7 +2298,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2382,7 +2310,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		available = { has_equipment = { infantry_equipment > 499 } }
@@ -2404,7 +2332,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.240
+				country_event = fcf_internation_event.240
 				effect_tooltip = {
 					add_stability = -0.05
 					add_popularity = { ideology = totalist popularity = 0.01 }
@@ -2418,146 +2346,6 @@ FRA_BoP_category = {
 
 ###中欧
 #德国
-	iri_eum_ger_organize_smugglers = {
-		allowed = { tag = FRA }
-		visible = { 
-			has_completed_focus = FRA_acquiescence_to_german_smugglers
-			OR = {
-				AND = {
-					NOT = { has_country_flag = iri_targeted_chosen }
-					has_country_flag = iri_eum_show 
-				}
-				AND = {
-					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
-				}
-			}
-		}
-		icon = generic_civil_support
-		target_trigger = {
-			FROM = {
-				tag = GER
-				exists = yes
-				has_socialist_government = no
-			}
-		}
-		available = {
-			GER = { 
-				has_stability < 0.6
-				set_temp_variable = { target_num = 0.05 }
-				custom_trigger_tooltip = {
-					tooltip = socialist_like_ideology_more_than_x
-					set_temp_variable = { t = var:THIS.party_popularity@totalist }
-					add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
-					add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
-					check_variable = { t > target_num }
-				}
-				NOT = { has_dynamic_modifier = { modifier = Cof_border_smuggling_ger } } 
-			}
-		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
-		custom_cost_text = cost_iri_eui_15
-		ai_will_do = { base = 0	}
-		complete_effect = {
-			add_political_power = -50
-
-			custom_effect_tooltip = effect_internation
-			set_temp_variable = { iri_euic = -15 }
-			set_temp_variable = { iri_asic = 0 }
-			set_temp_variable = { iri_meic = 0 }
-			set_temp_variable = { iri_afic = 0 }
-			set_temp_variable = { iri_amic = 0 }
-			iri_influence_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			GER = { country_event = cofintern.13 }
-			custom_effect_tooltip = event_effect_tooltip
-			effect_tooltip = {
-				GER = {
-					add_stability = -0.025
-					add_popularity = { ideology = syndicalist popularity = 0.01 }
-					add_popularity = { ideology = radical_socialist popularity = 0.025 }
-				
-					set_temp_variable = { t = var:THIS.party_popularity@totalist }
-					add_to_temp_variable = { t = var:THIS.party_popularity@syndicalist }
-					add_to_temp_variable = { t = var:THIS.party_popularity@radical_socialist }
-					multiply_temp_variable = { t = 20 }
-					round_temp_variable = t
-
-					set_temp_variable = { tt = 0.6 }
-					subtract_from_temp_variable = { tt = THIS.stability }
-					multiply_temp_variable = { tt = 10 }
-					round_temp_variable = tt
-
-					add_to_temp_variable = { t = tt }
-
-					set_temp_variable = { bsg_civilian_factory_use = t }
-					
-					set_temp_variable = { rt = t }
-					multiply_temp_variable = { rt = 3 }
-					
-					if = {
-						limit = { aluminium > rt }
-						set_temp_variable = { bsg_aluminium = rt }
-					}
-					else = { set_temp_variable = { bsg_aluminium = THIS.resource_produced@aluminium } }
-					if = {
-						limit = { chromium > rt }
-						set_temp_variable = { bsg_chromium = rt }
-					}
-					else = { set_temp_variable = { bsg_chromium = THIS.resource_produced@chromium } }
-					if = {
-						limit = { oil > rt }
-						set_temp_variable = { bsg_oil = rt }
-					}
-					else = { set_temp_variable = { bsg_oil = THIS.resource_produced@oil } }
-					if = {
-						limit = { rubber > rt }
-						set_temp_variable = { bsg_rubber = rt }
-					}
-					else = { set_temp_variable = { bsg_rubber = THIS.resource_produced@rubber } }
-					if = {
-						limit = { steel > rt }
-						set_temp_variable = { bsg_steel = rt }
-					}
-					else = { set_temp_variable = { bsg_steel = THIS.resource_produced@steel } }
-					if = {
-						limit = { tungsten > rt }
-						set_temp_variable = { bsg_tungsten = rt }
-					}
-					else = { set_temp_variable = { bsg_tungsten = THIS.resource_produced@tungsten } }
-					multiply_temp_variable = { bsg_aluminium = -1 }
-					multiply_temp_variable = { bsg_chromium = -1 }
-					multiply_temp_variable = { bsg_oil = -1 }
-					multiply_temp_variable = { bsg_rubber = -1 }
-					multiply_temp_variable = { bsg_steel = -1 }
-					multiply_temp_variable = { bsg_tungsten = -1 }
-					multiply_temp_variable = { bsg_coal = -1 }
-
-					add_dynamic_modifier = { modifier = Cof_border_smuggling_ger days = 90 }
-				}
-				custom_effect_tooltip = tooltip_white_line
-				FRA = {
-					set_temp_variable = { bsf_industrial_factory_donations = GER.bsg_civilian_factory_use }
-					set_temp_variable = { bsf_aluminium = GER.bsg_aluminium }
-					set_temp_variable = { bsf_chromium = GER.bsg_chromium }
-					set_temp_variable = { bsf_oil = GER.bsg_oil }
-					set_temp_variable = { bsf_rubber = GER.bsg_rubber }
-					set_temp_variable = { bsf_steel = GER.bsg_steel }
-					set_temp_variable = { bsf_tungsten = GER.bsg_tungsten }
-					multiply_temp_variable = { bsf_aluminium = -1 }
-					multiply_temp_variable = { bsf_chromium = -1 }
-					multiply_temp_variable = { bsf_oil = -1 }
-					multiply_temp_variable = { bsf_rubber = -1 }
-					multiply_temp_variable = { bsf_steel = -1 }
-					multiply_temp_variable = { bsf_tungsten = -1 }
-					multiply_temp_variable = { bsf_coal = -1 }
-
-					add_dynamic_modifier = { modifier = Cof_border_smuggling_fra days = 90 }	
-				}
-			}
-		}
-	}
 	iri_eum_ger_propaganda = {
 		allowed = { tag = FRA }
 		visible = { 
@@ -2568,7 +2356,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2581,7 +2369,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 90
@@ -2598,7 +2386,7 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.260
+				country_event = fcf_internation_event.260
 				effect_tooltip = {
 					if = {
 						limit = { has_government = social_democrat }
@@ -2647,7 +2435,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2660,7 +2448,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 60
@@ -2676,7 +2464,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.262
+				country_event = fcf_internation_event.262
 				effect_tooltip = {
 					add_stability = -0.01
 					add_popularity = { ideology = syndicalist popularity = 0.01 }
@@ -2698,7 +2486,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2711,11 +2499,17 @@ FRA_BoP_category = {
 		}
 		available = {
 			SWI = { owns_state = 943 }
-			set_temp_variable = { target_t = 15 }
-			set_temp_variable = { target_num = 15 }
-			cof_econ_target_more_than_x = yes
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = economy_power
+					JUDGE = more_than
+					TAGNUM = "15"
+				}
+				check_variable = { economy_power > 15 }
+			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_re_enable = 90
@@ -2731,11 +2525,11 @@ FRA_BoP_category = {
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
 			set_temp_variable = { epc = -15 }
-			cof_econ_target_change = yes
+			economy_variable_change = yes
 
 			SWI = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.248
+				country_event = fcf_internation_event.248
 				effect_tooltip = {
 					add_popularity = { ideology = totalist popularity = 0.01 }
 					add_popularity = { ideology = syndicalist popularity = 0.02 }
@@ -2748,53 +2542,6 @@ FRA_BoP_category = {
 					}
 				}
 			}
-		}
-	}
-	iri_eum_swi_demand_haute_savoie = {
-		allowed = { tag = FRA }
-		visible = { 
-			has_global_flag = can_demand_romandy
-			OR = {
-				AND = {
-					NOT = { has_country_flag = iri_targeted_chosen }
-					has_country_flag = iri_eum_show 
-				}
-				AND = {
-					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
-				}
-			}
-		}
-		icon = generic_civil_support
-		target_trigger = {
-			FROM = {
-				tag = SWI
-				has_socialist_government = no
-			}
-		}
-		available = {
-			has_political_power > 50
-			has_war = no
-			has_global_flag = can_demand_romandy
-			can_declare_war_on = SWI
-			SWI = { owns_state = 760 }
-			has_completed_focus = FRA_national_land_recovery_authority
-		}
-		custom_cost_trigger = { check_variable = { iri_eui > 19 } }
-		custom_cost_text = cost_iri_eui_20
-		ai_will_do = { base = 0	}
-		fire_only_once = yes
-		complete_effect = {
-			add_political_power = -50
-			custom_effect_tooltip = effect_internation
-			set_temp_variable = { iri_euic = -20 }
-			set_temp_variable = { iri_asic = 0 }
-			set_temp_variable = { iri_meic = 0 }
-			set_temp_variable = { iri_afic = 0 }
-			set_temp_variable = { iri_amic = 0 }
-			iri_influence_change = yes
-
-			complete_national_focus = FRA_demand_haute_savoie
 		}
 	}
 	iri_eum_swi_organize_worker = {
@@ -2814,7 +2561,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2827,7 +2574,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -2844,7 +2591,7 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.161
+				country_event = fcf_internation_event.161
 				effect_tooltip = {
 					add_stability = -0.05
 
@@ -2879,7 +2626,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2903,7 +2650,7 @@ FRA_BoP_category = {
 				}
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 49 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 50 } } }
 		custom_cost_text = cost_iri_eui_50
 		ai_will_do = { base = 0	} 
 		fire_only_once = yes
@@ -2918,7 +2665,7 @@ FRA_BoP_category = {
 
 			custom_effect_tooltip = tooltip_white_line
 			FROM = {
-				country_event = cofintern.250
+				country_event = fcf_internation_event.250
 				custom_effect_tooltip = iri_revolution_tt
 				custom_effect_tooltip = swi_revo_tt
 			}
@@ -2935,7 +2682,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -2948,7 +2695,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 90
@@ -2965,7 +2712,7 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.260
+				country_event = fcf_internation_event.260
 				effect_tooltip = {
 					if = {
 						limit = { has_government = social_democrat }
@@ -3014,7 +2761,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -3027,7 +2774,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 60
@@ -3043,7 +2790,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.262
+				country_event = fcf_internation_event.262
 				effect_tooltip = {
 					add_stability = -0.01
 					add_popularity = { ideology = syndicalist popularity = 0.01 }
@@ -3064,7 +2811,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -3082,7 +2829,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 9 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 10 } } }
 		custom_cost_text = cost_iri_eui_10
 		ai_will_do = { base = 0	}
 		days_remove = 30
@@ -3099,7 +2846,7 @@ FRA_BoP_category = {
 		remove_effect = {
 			FROM = {
 				activate_countermeasures_decision = yes
-				country_event = cofintern.265
+				country_event = fcf_internation_event.265
 				effect_tooltip = {
 					
 
@@ -3120,7 +2867,7 @@ FRA_BoP_category = {
 				}
 				AND = {
 					has_country_flag = iri_targeted_chosen
-					check_variable = { var:FRA.iri_targeted^0 = FROM }
+					check_variable = { var:ROOT.iri_targeted^0 = FROM }
 				}
 			}
 		}
@@ -3133,7 +2880,7 @@ FRA_BoP_category = {
 				NOT = { has_country_flag = cof_iri_has_finished }
 			}
 		}
-		custom_cost_trigger = { check_variable = { iri_eui > 14 } }
+		custom_cost_trigger = { NOT = { check_variable = { global.iri_eui < 15 } } }
 		custom_cost_text = cost_iri_eui_15
 		ai_will_do = { base = 0	}
 		days_remove = 60
@@ -3149,7 +2896,7 @@ FRA_BoP_category = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.262
+				country_event = fcf_internation_event.262
 				effect_tooltip = {
 					add_stability = -0.01
 					add_popularity = { ideology = syndicalist popularity = 0.01 }
@@ -3277,313 +3024,24 @@ FRA_BoP_category = {
 		}
 	}
 
-#法伦施泰尔       
-	phalanstere_congress_enable = {
-		allowed = { tag = FRA }
-		visible = {
-			has_completed_focus = FRA_found_the_phalanstere_international
-			has_country_flag = phalanstere_show
-			NOT = { has_global_flag = phalanstere_congress_adjournment }
-			NOT = { has_global_flag = phalanstere_congress_in_progress }
-		}
-		ai_will_do = { base = 50 }
-		icon = generic_operation
-		cost = 10
-		complete_effect = { 
-			set_global_flag = phalanstere_congress_in_progress
-			country_event = int.2
-		}
-	}
-	phalanstere_congress_in_progress = {
-		icon = aluminium
-		activation = { has_global_flag = phalanstere_congress_in_progress }
-		available = { has_global_flag = phalanstere_congress_end_ahead }
-		is_good = no
-		fixed_random_seed = no
-		days_mission_timeout = 30
-		complete_effect = {
-			clr_global_flag = phalanstere_congress_end_ahead
-			clr_global_flag = phalanstere_congress_in_progress
-			set_global_flag = phalanstere_congress_adjournment
-			country_event = int.3
-			hidden_effect = {
-				every_other_country = {
-					limit = { FRA_is_phalanstere_member = yes }
-					country_event = int.3
-				}
-			}
-		}
-		timeout_effect = {
-			clr_global_flag = phalanstere_congress_in_progress
-			set_global_flag = phalanstere_congress_adjournment
-			country_event = int.3
-			hidden_effect = {
-				every_other_country = {
-					limit = { FRA_is_phalanstere_member = yes }
-					country_event = int.3
-				}
-			}
-		}
-	}
-	phalanstere_congress_end_ahead = {
-		allowed = { tag = FRA }
-		visible = {
-			has_country_flag = phalanstere_show
-			NOT = { has_global_flag = phalanstere_congress_adjournment }
-			has_global_flag = phalanstere_congress_in_progress
-		}
-		icon = generic_operation
-		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 9.9 } }
-		custom_cost_text = cost_phalanstere_unity_10
-		complete_effect = { 
-			set_temp_variable = { phauc = -10 }
-			phalanstere_unity_change = yes
-			set_global_flag = phalanstere_congress_end_ahead
-		}
-	}
-	phalanstere_congress_adjournment = {
-		icon = aluminium
-		activation = { has_global_flag = phalanstere_congress_adjournment }
-		available = { has_global_flag = phalanstere_congress_start_ahead }
-		is_good = no
-		fixed_random_seed = no
-		days_mission_timeout = 60
-		complete_effect = {
-			clr_global_flag = phalanstere_congress_start_ahead
-			clr_global_flag = phalanstere_congress_adjournment
-		}
-		timeout_effect = {
-			clr_global_flag = phalanstere_congress_adjournment
-			set_temp_variable = { phauc = 1 }
-			phalanstere_unity_change = yes
-		}
-	}
-	phalanstere_congress_start_ahead = {
-		allowed = { tag = FRA }
-		visible = {
-			has_country_flag = phalanstere_show
-			has_global_flag = phalanstere_congress_adjournment 
-			NOT = { has_global_flag = phalanstere_congress_in_progress }
-		}
-		icon = generic_operation
-		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 4.9 } }
-		custom_cost_text = cost_phalanstere_unity_5
-		complete_effect = { 
-			set_temp_variable = { phauc = -5 }
-			phalanstere_unity_change = yes
-			set_global_flag = phalanstere_congress_start_ahead
-		}
-	}
-
-	#辩论
-	phalanstere_congress_provide_benefits_waiver = {
-		allowed = { tag = FRA }
-		visible = {
-			has_country_flag = phalanstere_show
-			NOT = { has_global_flag = phalanstere_congress_adjournment }
-			has_global_flag = phalanstere_congress_in_progress
-
-			has_country_flag = phalanstere_member_list_waiver
-		}
-		icon = generic_operation
-		target_trigger = {
-			FROM = {
-				FRA_is_phalanstere_member = yes
-				has_country_flag = phalanstere_attitude_waiver
-			}
-		}
-		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 2.4 } }
-		custom_cost_text = cost_phalanstere_unity_2.5
-		complete_effect = { 
-			set_temp_variable = { phauc = -2.5 }
-			phalanstere_unity_change = yes
-			FROM = {
-				effect_tooltip = { add_political_power = 100 }
-				phacongress_change_agree_from_waiver = yes
-				hidden_effect = { country_event = int.4 }
-			}
-		}
-	}
-
-	phalanstere_congress_provide_benefits_oppose = {
-		allowed = { tag = FRA }
-		visible = {
-			has_country_flag = phalanstere_show
-			NOT = { has_global_flag = phalanstere_congress_adjournment }
-			has_global_flag = phalanstere_congress_in_progress
-
-			has_country_flag = phalanstere_member_list_oppose
-		}
-		icon = generic_operation
-		target_trigger = {
-			FROM = {
-				FRA_is_phalanstere_member = yes
-				has_country_flag = phalanstere_attitude_oppose
-			}
-		}
-		custom_cost_trigger = { check_variable = { global.phalanstere_unity > 4.9 } }
-		custom_cost_text = cost_phalanstere_unity_5
-		complete_effect = { 
-			set_temp_variable = { phauc = -5 }
-			phalanstere_unity_change = yes
-			FROM = {
-				effect_tooltip = { add_political_power = 100 }
-				phacongress_change_agree_from_oppose = yes
-				hidden_effect = { country_event = int.4 }
-			}
-		}
-	}
-
-	#国际援助
-	phalanstere_aid_construction_show = {
-		allowed = { tag = FRA }
-		visible = {
-			has_completed_focus = FRA_revolutionary_aid_construction
-			has_country_flag = phalanstere_show
-		}
-		icon = generic_operation
-		days_re_enable = 0
-		complete_effect = { 
-			if = {
-				limit = { has_country_flag = phalanstere_aid_construction_show }
-				clr_country_flag = phalanstere_aid_construction_show
-			}
-			else = { set_country_flag = phalanstere_aid_construction_show }
-		}
-	}
-	phalanstere_aid_construction = {
-		allowed = { tag = FRA }
-		visible = {
-			has_completed_focus = FRA_revolutionary_aid_construction
-			has_country_flag = phalanstere_show
-			has_country_flag = phalanstere_aid_construction_show
-		}
-		icon = generic_operation
-		target_trigger = {
-			FROM = {
-				FRA_is_phalanstere_member = yes
-				NOT = { tag = ENG }
-			}
-		}
-		fire_only_once = yes
-		days_remove = 90
-		custom_cost_trigger = { check_variable = { economy_power > 24.9 } }
-		custom_cost_text = cost_ep_25
-		complete_effect = {
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { epc = -25 } 
-			cof_econ_target_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_internation
-			set_temp_variable = { phauc = 5 }
-   		    phalanstere_unity_change = yes
-		}
-		remove_effect = {
-			FROM = {
-				capital_scope = {
-					if = {
-						limit = { infrastructure < 4 }
-						add_building_construction = {
-							type = infrastructure
-							level = 1
-							instant_build = yes
-						}
-					}
-					add_building_construction = {
-						type = industrial_complex
-						level = 2
-						instant_build = yes
-					}
-				}
-				add_tech_bonus = {
-					name = phalanstere_aid_construction
-					bonus = 0.75
-					uses = 1
-					category = industry
-				}
-			}
-		}
-	}
-
-	#扫盲远征队
-	phalanstere_literacy_expeditionary_force_show = {
-		allowed = { tag = FRA }
-		visible = {
-			has_completed_focus = FRA_literacy_expeditionary_force
-			has_country_flag = phalanstere_show
-		}
-		icon = generic_operation
-		days_re_enable = 0
-		complete_effect = { 
-			if = {
-				limit = { has_country_flag = phalanstere_literacy_expeditionary_force_show }
-				clr_country_flag = phalanstere_literacy_expeditionary_force_show
-			}
-			else = { set_country_flag = phalanstere_literacy_expeditionary_force_show }
-		}
-	}
-	phalanstere_literacy_expeditionary_force = {
-		allowed = { tag = FRA }
-		visible = {
-			has_completed_focus = FRA_literacy_expeditionary_force
-			has_country_flag = phalanstere_show
-			has_country_flag = phalanstere_literacy_expeditionary_force_show
-		}
-		icon = generic_operation
-		target_trigger = {
-			FROM = {
-				FRA_is_phalanstere_member = yes
-				capital_scope = {
-					INT_is_in_europe = no
-					INT_is_in_america_north = no
-				}
-				NOT = { has_idea = Cof_literacy_expeditionary_force }
-			}
-		}
-		fire_only_once = yes
-		cost = 30
-		complete_effect = {
-			FROM = {
-				add_political_power = 50
-				add_timed_idea = { idea = Cof_literacy_expeditionary_force days = 365 }
-			}
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_internation
-			set_temp_variable = { phauc = 2.5 }
-   		    phalanstere_unity_change = yes
-		}
-	}
-
+#法伦施泰尔      
 	#国际革命根据地
-	Cof_set_revolutionary_bases_show = {
+	FCF_set_revolutionary_bases = {
 		allowed = { tag = FRA }
-		visible = {
-			has_completed_focus = FRA_revolutionary_bases_abroad
-			has_country_flag = phalanstere_show
-		}
-		icon = generic_operation
-		days_re_enable = 0
-		complete_effect = { 
-			if = {
-				limit = { has_country_flag = set_revolutionary_bases_show }
-				clr_country_flag = set_revolutionary_bases_show
+		visible = { 
+			NOT = {
+				has_country_flag = iri_eu_show
+				has_country_flag = iri_as_show
+				has_country_flag = iri_me_show
+				has_country_flag = iri_af_show
+				has_country_flag = iri_am_show
 			}
-			else = { set_country_flag = set_revolutionary_bases_show }
-		}
-	}
-	Cof_set_revolutionary_bases = {
-		allowed = { tag = FRA }
-		visible = {
-			has_country_flag = phalanstere_show
-			has_country_flag = set_revolutionary_bases_show
 		}
 		target_trigger = {
 			FROM = {
 				has_socialist_government = yes
 				has_war = no
-				capital_scope = { NOT = { has_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } } }
+				capital_scope = { NOT = { has_dynamic_modifier = { modifier = FCF_revolutionary_bases scope = THIS.id } } }
 			}
 		}
 		icon = generic_operation
@@ -3605,9 +3063,9 @@ FRA_BoP_category = {
 						level = 1
 						instant_build = yes
 					}
-					add_dynamic_modifier = { modifier = Cof_revolutionary_bases scope = THIS.id } 
+					add_dynamic_modifier = { modifier = FCF_revolutionary_bases scope = THIS.id } 
 				} 
-				hidden_effect = { add_ideas = Cof_revolutionary_bases_buff }
+				hidden_effect = { add_ideas = FCF_revolutionary_bases_buff }
 			}
 
 			custom_effect_tooltip = effect_internation
@@ -3642,16 +3100,13 @@ FRA_BoP_category = {
 			else = { set_temp_variable = { iri_amic = 0 } }
 			iri_influence_change = yes
 
-			if = {
-				limit = { has_completed_focus = FRA_found_the_phalanstere_international }
-				set_temp_variable = { phauc = 2.5 }
-				phalanstere_unity_change = yes
-			}
+			set_temp_variable = { phauc = 2.5 }
+			phalanstere_unity_change = yes
 		}
 	}
 }
 
-Cof_iri_countermeasures = {
+FCF_iri_countermeasures = {
 #通用
 	GENERAL_countermeasures_propaganda = {
 		allowed = { always = yes }
@@ -3706,7 +3161,7 @@ Cof_iri_countermeasures = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
 		available = {
@@ -3727,7 +3182,7 @@ Cof_iri_countermeasures = {
 				amount = -25
 			}
 			IRE = {
-				country_event = cofintern.181
+				country_event = fcf_internation_event.181
 				effect_tooltip = {
 					add_popularity = { ideology = totalist popularity = 0.03 }
 					set_temp_variable = { t = 1 }
@@ -3743,7 +3198,7 @@ Cof_iri_countermeasures = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
 		cost = 25
@@ -3753,7 +3208,7 @@ Cof_iri_countermeasures = {
 		days_re_enable = 100
 		remove_effect = {
 			IRE = {
-				country_event = cofintern.182
+				country_event = fcf_internation_event.182
 				effect_tooltip = {
 					add_popularity = { ideology = totalist popularity = 0.02 }
 					add_popularity = { ideology = syndicalist popularity = 0.02 }
@@ -3769,7 +3224,7 @@ Cof_iri_countermeasures = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
 		cost = 25
@@ -3778,13 +3233,13 @@ Cof_iri_countermeasures = {
 		days_re_enable = 80
 		remove_effect = {
 			IRE = {
-				country_event = cofintern.183
+				country_event = fcf_internation_event.183
 				effect_tooltip = {
 					if = {
-						limit = { has_idea = Cof_ireland_revolution_strike }
-						modify_timed_idea = { idea = Cof_ireland_revolution_strike days = 40 }
+						limit = { has_idea = FCF_ireland_revolution_strike }
+						modify_timed_idea = { idea = FCF_ireland_revolution_strike days = 40 }
 					}
-					else = { add_timed_idea = { idea = Cof_ireland_revolution_strike days = 30 } }
+					else = { add_timed_idea = { idea = FCF_ireland_revolution_strike days = 30 } }
 				}
 			}
 		}
@@ -3796,7 +3251,7 @@ Cof_iri_countermeasures = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 			}
 		}
 		available = {
@@ -3819,7 +3274,7 @@ Cof_iri_countermeasures = {
 		fire_only_once = yes
 		complete_effect = {
 			IRE = {
-				country_event = cofintern.184
+				country_event = fcf_internation_event.184
 				custom_effect_tooltip = iri_revolution_tt
 			}
 		}
@@ -3856,11 +3311,11 @@ Cof_iri_countermeasures = {
 		icon = generic_civil_support
 		visible = {
 			IRE = { has_country_flag = cof_iri_ireland_revolution }
-			any_owned_state = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } 
+			any_owned_state = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } 
 		}
 		available = { has_equipment = { infantry_equipment > 499 } }
 		state_target = yes
-		target_trigger = { FROM = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } }
+		target_trigger = { FROM = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } }
 		cost = 20
 		ai_will_do = { base = 0	}
 		days_re_enable = 40
@@ -3882,8 +3337,8 @@ Cof_iri_countermeasures = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { all_owned_state = { NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } } }
-					country_event = { id = cofintern.180 days = 6 }
+					limit = { all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } } }
+					country_event = { id = fcf_internation_event.180 days = 6 }
 				}
 			}
 		}
@@ -3892,7 +3347,7 @@ Cof_iri_countermeasures = {
 		allowed = { tag = IRE }
 		icon = generic_civil_support
 		visible = { always = no }
-		available = { any_owned_state = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } } 
+		available = { any_owned_state = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } } 
 		ai_will_do = { base = 0	}
 		days_remove = 40
 		fixed_random_seed = no
@@ -3912,9 +3367,9 @@ Cof_iri_countermeasures = {
 					if = {
 						limit = { 
 							check_variable = { revolution_control >  0 } 
-							NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } 
+							NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } 
 						}
-						add_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id }
+						add_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id }
 					}
 				}
 			}
@@ -3938,9 +3393,9 @@ Cof_iri_countermeasures = {
 						if = {
 							limit = { 
 								check_variable = { revolution_control >  0 } 
-								NOT = { has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } } 
+								NOT = { has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } } 
 							}
-							add_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id }
+							add_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id }
 						}
 					}
 				}
@@ -3950,13 +3405,13 @@ Cof_iri_countermeasures = {
 				every_owned_state = {
 					limit = { 
 						check_variable = { revolution_control > 1 } 
-						has_dynamic_modifier = { modifier = Cof_iri_state_ireland_revolution scope = THIS.id } 
+						has_dynamic_modifier = { modifier = FCF_iri_state_ireland_revolution scope = THIS.id } 
 					}
 					add_to_temp_variable = { IRE.t = 1 }
 				}
 				if = {
 					limit = { check_variable = { t > 2 } }
-					country_event = { id = cofintern.193 days = 3 }
+					country_event = { id = fcf_internation_event.193 days = 3 }
 				}
 				else = { activate_decision = IRE_revolution_take_over_state }
 			}
@@ -4123,7 +3578,7 @@ Cof_iri_countermeasures = {
 				tooltip = pap_rome_intelligence_strengthen_SRI
 			}
 			FROM = {
-				country_event = cofintern.239
+				country_event = fcf_internation_event.239
 				effect_tooltip = {
 					add_stability = -0.025
 					add_popularity = { ideology = totalist popularity = 0.02 }
@@ -4177,7 +3632,7 @@ Cof_iri_countermeasures = {
 		}
 		remove_effect = {
 			FROM = {
-				country_event = cofintern.240
+				country_event = fcf_internation_event.240
 				effect_tooltip = {
 					add_stability = -0.05
 					add_popularity = { ideology = totalist popularity = 0.01 }
