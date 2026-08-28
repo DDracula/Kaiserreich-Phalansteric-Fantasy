@@ -562,7 +562,6 @@ guiTypes = {
 			font = "hoi_18mbs"
 			text = csp_give_more_power
 			pdx_tooltip = csp_give_more_power_effect
-			pdx_tooltip_delayed = csp_give_more_power_trigger
 			clicksound = click_default
 		}
 		buttonType = {
@@ -572,7 +571,6 @@ guiTypes = {
 			font = "hoi_18mbs"
 			text = csp_give_less_power
 			pdx_tooltip = csp_give_less_power_effect
-			pdx_tooltip_delayed = csp_give_less_power_trigger
 			clicksound = click_default
 		}
 
@@ -2683,9 +2681,24 @@ guiTypes = {
 			maxHeight = 24
 			fixedsize = yes
 		}
+
+		#隐藏显示 
+		buttonType ={
+			name = "hidden_top_bar_button"
+			spriteType = "button_left"
+			position = { x = 470 y = -2 }
+			scale = 1.3
+			Orientation = "UPPER_LEFT" 
+		}
+		buttonType ={
+			name = "show_top_bar_button"
+			spriteType = "button_right"
+			position = { x = 95 y = -2 }
+			scale = 1.3
+			Orientation = "UPPER_LEFT" 
+		}
 	}
 
-		
 	###数值显示
 	#政治
 	containerWindowType = {
@@ -4013,16 +4026,53 @@ guiTypes = {
 			fixedsize = no 
 		}    
 		instantTextboxType = { 
-			name = "local_information"
+			name = "local_information" 
 			position = { x = 245 y = 55 } 
 			font = "hoi_18mbs"
 			text = local_information 
 			maxWidth = 90
 			maxHeight = 150
-			format = left       
+			format = left        
 			fixedsize = no
-		}   
-	} 
+		}       
+  
+		containerWindowType = {
+			name = "invest_state_button_list"
+			position = { x = 251 y = 266 }
+
+			buttonType = {
+				name = "invest_state_civilian_button"
+				position = { x = 0 y = 0 }
+				spriteType ="GFX_buildings_strip"
+				clicksound = click_default
+				frame = 1
+				pdx_tooltip = invest_state_civilian_button
+			} 
+			buttonType = {
+				name = "invest_state_arms_button"
+				position = { x = 0 y = 45 }
+				spriteType ="GFX_buildings_strip"
+				clicksound = click_default
+				frame = 2
+				pdx_tooltip = invest_state_arms_button 
+			} 
+			buttonType = {
+				name = "invest_state_dockyard_button"
+				position = { x = 0 y = 90 }
+				spriteType ="GFX_buildings_strip"
+				clicksound = click_default
+				frame = 4
+				pdx_tooltip = invest_state_dockyard_button
+			} 
+			buttonType = {
+				name = "invest_more_button"
+				position = { x = 0 y = 135 }
+				spriteType ="GFX_no_building"
+				clicksound = click_default
+				pdx_tooltip = invest_more_button
+			} 
+		}
+	}  
 	containerWindowType = {
 		name = "state_strategy_container"
 		size = { width = 200 height = 85 }
@@ -4040,60 +4090,6 @@ guiTypes = {
 			maxHeight = 100
 			format = centre
 			pdx_tooltip = state_strategy_modifier
-		}
-	}
-
-	containerWindowType = {
-		name = "economy_factory_switch_button_window"
-		position = { x = 23 y = -290 }
-		orientation = lower_left
-		moveable = no
-
-		buttonType = {
-			name = "economy_factory_switch_button"
-			position = { x = 0 y = 0 }
-			quadTextureSprite ="GFX_strategic_air_sort"
-			font = "hoi_18mbs"
-			text = monopolization 
-			clicksound = click_default
-			pdx_tooltip = monopolization_tt
-		}
-	} 
-
-	containerWindowType = {
-		name = "red_black_market_window"
-		position = { x = 23 y = -290 }
-		orientation = lower_left
-		moveable = no
-
-		buttonType = { 
-			name = "propoganda_button"
-			position = { x = 0 y = -10 }
-			quadTextureSprite ="GFX_strategic_air_sort"
-			font = "hoi_18mbs"
-			text = rbm_propoganda 
-			clicksound = click_default
-			pdx_tooltip = rbm_propoganda_tt
-		}
-
-		buttonType = {
-			name = "strike_button" 
-			position = { x = 0 y = 25 }
-			quadTextureSprite ="GFX_strategic_air_sort"
-			font = "hoi_18mbs"
-			text = rbm_strike 
-			clicksound = click_default
-			pdx_tooltip = rbm_strike_tt 
-		}
-   
-		buttonType = {
-			name = "expansions_button"
-			position = { x = 0 y = 60 }
-			quadTextureSprite ="GFX_strategic_air_sort"
-			font = "hoi_18mbs"
-			text = rbm_expansions
-			clicksound = click_default
-			pdx_tooltip = rbm_expansions_tt
 		}
 	}
 }

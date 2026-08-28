@@ -307,8 +307,7 @@
   CSP_attitude_trigger_support_tt:0 "§Y[target_CSP_attitude]§!支持我们"
 
   csp_give_more_power:0 "扩大职权"
-  csp_give_more_power_effect:0 "扩大职权\n§Y效果：§!\n[!csp_give_more_power_click]"
-  csp_give_more_power_trigger:0 "[!csp_give_more_power_click_enabled]"
+  csp_give_more_power_effect:0 "扩大职权\n§Y效果：§!\n[!csp_give_more_power_click]\n----------\n[!csp_give_more_power_click_enabled]"
   FCF_more_power_to_PCSP:0 "扩大公安委职权"
   FCF_more_power_to_CAE:0 "扩大$CAE$职权"
   FCF_more_power_to_CE:0 "扩大$CE$职权"
@@ -317,8 +316,7 @@
   FCF_more_power_to_CGFF:0 "扩大$CGFF$职权"
 
   csp_give_less_power:0 "削弱职权"
-  csp_give_less_power_effect:0 "削弱职权\n§Y效果：§!\n[!csp_give_less_power_click]"
-  csp_give_less_power_trigger:0 "[!csp_give_less_power_click_enabled]"
+  csp_give_less_power_effect:0 "削弱职权\n§Y效果：§!\n[!csp_give_less_power_click]\n----------\n[!csp_give_less_power_click_enabled]"
   FCF_less_power_to_PCSP:0 "削弱公安委职权"
   FCF_less_power_to_CAE:0 "削弱$CAE$职权"
   FCF_less_power_to_CE:0 "削弱$CE$职权"
@@ -1141,7 +1139,7 @@
   state_strategy_name:0 "§Y[scripted_state_strategy_name]§!"
   state_strategy_modifier:0 "[!state_strategy_modifier_click]"
   state_information:0 "只要我们完全占据这片地区，这片地区就可以在建筑位满的时候自动将该地区已存在的$industrial_complex$、$arms_factory$或$dockyard$转换为“联邦工厂”。但当我们失去这片地区后，我们必须彻底收复该地区的每一片领土后，才能重新获得这些联邦工厂。\n\n§C与此同时，每当我们获得[?1|.0Y]座作为§Y$industrial_complex$§!的$state_factory$，我们的$economy_industry_basic$就会[?0.5|+=.0.1][state_factory_mixed_agriculture]；每当我们获得[?1|.0Y]座作为§Y$arms_factory$§!的$state_factory$，我们的$economy_industry_arms$就会[?1|+=.1]；每当我们获得[?1|.0Y]座作为§Y$dockyard$§!的$state_factory$，我们的$economy_industry_basic$就会[?0.5|+=.0.1]§!"
-  local_information:0 "[local_state_zone_type]\n§Y经济状况：§!\n£civ_factory [?state_industrial_factory_donations]\n\n£mil_factory [?state_military_factory_donations]\n\n£dockyard_texticon [?state_dockyard_donations]"
+  local_information:0 "[local_state_zone_type]\n§Y经济状况：§!\n£civ_factory [?state_industrial_factory_donations]\n£mil_factory [?state_military_factory_donations]\n£dockyard_texticon [?state_dockyard_donations]\n[state_investment_situation]"
 
   FCF_city_zone:0 "都会地区"
   FCF_rural_zone:0 "市镇地区"
@@ -1168,6 +1166,18 @@
   local_factories_more_than_x:0 "当地的§Y[state_target]§!的§Y$state_factory$§!大于[?target_num|Y.0]座"
   local_factories_more_than_x_NOT:0 "当地的§Y[state_target]§!的§Y$state_factory$§!小于[?target_num|Y.0]座"  
   state_factory_total:0 "总和"
+
+  state_investment_situation_civilian:0 "§G£civ_factory 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.1%%]"
+  state_investment_situation_arms:0 "§G£mil_factory 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.1%%]"
+  state_investment_situation_dockyard:0 "§G£dockyard_texticon 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.1%%]"
+  state_investment_situation_no:0 "\n§Y暂无投资§!"
+
+  state_has_no_invest_building:0 "当地没有投资"
+  state_has_invest_building:0 "当地正在投资建设中"
+  invest_state_civilian_button:0 "§Y投资当地工业§!\n[!invest_state_civilian_button_click]\n----------\n[!invest_state_civilian_button_click_enabled]"
+  invest_state_arms_button:0 "§Y投资当地军事工业§!\n[!invest_state_arms_button_click]\n----------\n[!invest_state_arms_button_click_enabled]"
+  invest_state_dockyard_button:0 "§Y投资当地造船业§!\n[!invest_state_dockyard_button_click]\n----------\n[!invest_state_dockyard_button_click_enabled]"
+  invest_more_button:0 "§Y扩大建设队伍§!\n[!invest_more_button_click]\n----------\n[!invest_more_button_click_enabled]"
 ##############
 ###军事相关###
 ##############
