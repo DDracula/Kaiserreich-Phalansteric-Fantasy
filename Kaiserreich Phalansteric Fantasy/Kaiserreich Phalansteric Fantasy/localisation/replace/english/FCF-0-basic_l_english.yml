@@ -146,9 +146,9 @@
   FCF_funding_city_commune_tt:0 "Additional effects in every §YMetropolitan Region§!:\n   $MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR$: [?0.1|+=0%]\n   $MODIFIER_GLOBAL_MONTHLY_POPULATION$: [?0.005|+=1%]"
 
   cgf_funding_rural:0 "Fund Communes"
-  cgf_funding_rural_desc:0 "The Balance of Power shifts §Y10§! towards the §YCGF§!\nGain [cgf_funding_rural_idea_desc] for §Y180§! days\nWhen it expires, the number of §YCivilian Factories§! provided by one random §YRural Region§! changes by [?1|+=.0]\n\nTaking this action will cost £economy_power_texticon §Y50§!"
-  FCF_funding_rural_commune:0 "Well-Funded Rural Communes"
-  FCF_funding_rural_commune_tt:0 "Additional effects in every §YRural Region§!:\n   $MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR$: [?0.05|+=0%]\n   $MODIFIER_STATE_RESOURCES_FACTOR$: [?0.1|+=0%]\n   $MODIFIER_GLOBAL_MONTHLY_POPULATION$: [?0.01|+=1%]"
+  cgf_funding_rural_desc:0 "The Balance of Power shifts §Y10§! towards the §YCGF§!\nGain [cgf_funding_rural_idea_desc] for §Y180§! days\nWhen it expires, the number of §YCivilian Factories§! provided by one random §YCommune Region§! changes by [?1|+=.0]\n\nTaking this action will cost £economy_power_texticon §Y50§!"
+  FCF_funding_rural_commune:0 "Well-Funded Communes"
+  FCF_funding_rural_commune_tt:0 "Additional effects in every §YCommune Region§!:\n   $MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR$: [?0.05|+=0%]\n   $MODIFIER_STATE_RESOURCES_FACTOR$: [?0.1|+=0%]\n   $MODIFIER_GLOBAL_MONTHLY_POPULATION$: [?0.01|+=1%]"
 
   cgf_transfer_management:0 "Devolution"
   cgf_transfer_management_desc:0 "The Balance of Power shifts §Y10§! towards the §YCGF§!\nA §YFactory§! in one random region will be converted into a §YFederal Factory§!\n[!cgf_transfer_management_click]\n\nTaking this action will cost £pol_power §Y20§!"
@@ -922,8 +922,8 @@
   reform_tendency_economy_development_tt:0 "[reform_tendency_economy_development_idea]"
   ert_dev:0 "Development Priorities"
   ert_dev_tt:0 "$ert_dev$: [reform_tendency_economy_development_loc]"
-  ert_dev_left:0 "Metropolitan Communes"
-  ert_dev_right:0 "Rural Communes"
+  ert_dev_left:0 "Metropolitan"
+  ert_dev_right:0 "Communes"
 # Economic Indicators
   gui_econv:0 "[?economy_values|+=.1]"
   gui_econib:0 "[?economy_industry_basic|Y.1]"
@@ -1139,9 +1139,9 @@
   FCF_resources_platinum_effect_tooltip:0 "The supply of $platinum$ will affect:§Y\n - $economy_industry_basic$\n - $economy_agriculture_mechanized$\n - $economy_agriculture_chain$§!"
   FCF_resources_potassium_salt_effect_tooltip:0 "The supply of $potassium_salt$ will affect:§Y\n - $economy_agriculture_chemical$\n - $MODIFIER_CONSUMER_GOODS_FACTOR$§!"
 
-  FCF_intensified_urban_rural_conflicts:0 "Intensifying Metropolitan-Rural Conflict"
+  FCF_intensified_urban_rural_conflicts:0 "Intensifying Metropolitan-Commune Conflict"
   FCF_intensified_urban_rural_conflicts_desc:0 ""
-  FCF_eased_urban_rural_conflicts:0 "Easing Metropolitan-Rural Conflict"
+  FCF_eased_urban_rural_conflicts:0 "Easing Metropolitan-Commune Conflict"
   FCF_eased_urban_rural_conflicts_desc:0 ""
 
 # Regional Effects
@@ -1151,14 +1151,14 @@
   state_strategy_name:0 "§Y[scripted_state_strategy_name]§!"
   state_strategy_modifier:0 "[!state_strategy_modifier_click]"
   state_information:0 "While we fully control this region, it can automatically convert existing $industrial_complex$, $arms_factory$ or $dockyard$ buildings into §YFederal Factories§! whenever all building slots are occupied. If the region is lost, every part of it must be fully recaptured before these Federal Factories can be recovered.\n\n§CEach §Y$state_factory$§! obtained as an §Y$industrial_complex$§! changes our $economy_industry_basic$ by [?0.5|+=.0.1][state_factory_mixed_agriculture]; each §Y$state_factory$§! obtained as an §Y$arms_factory$§! changes our $economy_industry_arms$ by [?1|+=.1]; and each §Y$state_factory$§! obtained as a §Y$dockyard$§! changes our $economy_industry_basic$ by [?0.5|+=.0.1]§!"
-  local_information:0 "[local_state_zone_type]\n§YEconomic Conditions:§!\n£civ_factory [?state_industrial_factory_donations]\n\n£mil_factory [?state_military_factory_donations]\n\n£dockyard_texticon [?state_dockyard_donations]"
+  local_information:0 "[local_state_zone_type]\n§YSituation:§!\n£civ_factory [?state_industrial_factory_donations]\n£mil_factory [?state_military_factory_donations]\n£dockyard_texticon [?state_dockyard_donations]\n[state_investment_situation]"
 
-  FCF_city_zone:0 "Metropolitan Region"
-  FCF_rural_zone:0 "Rural Region"
-  FCF_is_city_zone:0 "Is a Metropolitan Region"
-  FCF_is_city_zone_NOT:0 "Is not a Metropolitan Region"
-  FCF_is_rural_zone:0 "Is a Rural Region"
-  FCF_is_rural_zone_NOT:0 "Is not a Rural Region"
+  FCF_city_zone:0 "Metropolitan"
+  FCF_rural_zone:0 "Commune"
+  FCF_is_city_zone:0 "Is a Metropolitan"
+  FCF_is_city_zone_NOT:0 "Is not a Metropolitan"
+  FCF_is_rural_zone:0 "Is a Commune"
+  FCF_is_rural_zone_NOT:0 "Is not a Commune"
 
   state_strategy_take_what:0 "$ZONE|Y$ gains $STATE_STRATEGY|Y$:"
   state_strategy_remove_what:0 "$ZONE|Y$ loses $STATE_STRATEGY|Y$:"
@@ -1190,9 +1190,9 @@
   state_invest_dockyard_for_free_once:0 "Make one §YLocal Dockyard Investment§! for §Gfree§!"
 
   state_invest_cost_trigger_tooltip:0 "$economy_power$$more_than$[?target_num|.0Y]"
-  state_investment_situation_civilian:0 "§G£civ_factory Under Construction§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
-  state_investment_situation_arms:0 "§G£mil_factory Under Construction§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
-  state_investment_situation_dockyard:0 "§G£dockyard_texticon Under Construction§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_civilian:0 "£civ_factory\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_arms:0 "£mil_factory\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_dockyard:0 "£dockyard_texticon\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
   state_investment_situation_no:0 "\n§YNo Ongoing Investment§!"
   state_investment_cost_tooltip:0 "This will occupy [?state_invest_factory_need|Y.0] §Y$industrial_complex$§! buildings and proceed at a daily construction speed of [?state_factory_building_speed_t|.2%%+=], with an estimated completion time of [?needed_days|.0Y] days\nOnce completed, we will receive:"
   state_investment_whan_expand_cost_tooltip:0 "Owing to our §Y$cgf_expand_investment$§!, this investment is §Gfree§!\nIt will proceed with the equivalent of [?4|.0Y] §Y$industrial_complex$§! buildings at a daily construction speed of [?state_factory_building_speed_t|.2%%+=], with an estimated completion time of [?needed_days|.0Y] days\nOnce completed, we will receive:"
