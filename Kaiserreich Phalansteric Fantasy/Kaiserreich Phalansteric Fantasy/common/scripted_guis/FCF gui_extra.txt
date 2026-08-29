@@ -116,7 +116,7 @@ scripted_gui = {
             }
             cgf_expand_investment_click_enabled = {  
                 has_political_power > 30
-                NOT = { has_country_flag = cgf_state_expand_investment }
+                check_variable = { cgf_expand_investment_cd = 0 }
             }
 
             cgf_model_switch_visible = { has_country_flag = cgf_show }
@@ -447,15 +447,8 @@ scripted_gui = {
             }
             cgf_expand_investment_click = {  
                 add_political_power = -30
-                set_country_flag = cgf_state_expand_investment
-                random_list = {
-                    1 = { activate_decision = FCF_cgf_expand_investment1 }
-                    1 = { activate_decision = FCF_cgf_expand_investment2 }
-                    1 = { activate_decision = FCF_cgf_expand_investment3 }
-                    1 = { activate_decision = FCF_cgf_expand_investment4 }
-                    1 = { activate_decision = FCF_cgf_expand_investment5 }
-                    1 = { activate_decision = FCF_cgf_expand_investment6 }
-                }
+                set_country_flag = cgf_expand_investment
+                set_variable = { cgf_expand_investment_cd = 1 }
             }
 
             CSP_PCSP_portrait_click = { 
@@ -4807,88 +4800,74 @@ scripted_gui = {
         } 
         triggers = {
             invest_state_civilian_button_click_enabled = {
-                custom_trigger_tooltip = {
-                    tooltip = state_has_no_invest_building
-                    NOT = {
-                        has_state_flag = state_invest_civilian
-                        has_state_flag = state_invest_arms
-                        has_state_flag = state_invest_dockyard
-                    }
-                }
-                custom_trigger_tooltip = {
-                    tooltip = {
-                        localization_key = var_judge_num
-                        TAGVAR = economy_power
-                        JUDGE = more_than
-                        TAGNUM = "50"
-                    }
-                    check_variable = { economy_power > 50 }
-                }
+                FCF_state_is_invested = no
 
-                set_temp_variable = { state_invest_factory_need = 4 }
-                num_of_civilian_factories_available_for_projects > state_invest_factory_need
+                OR = {
+                    FRA = { has_country_flag = cgf_expand_investment }
+                    AND = {
+                        set_temp_variable = { target_num = state_invest_civilian_cost }
+                        custom_trigger_tooltip = {
+                            tooltip = state_invest_cost_trigger_tooltip
+                            check_variable = { FRA.economy_power > state_invest_civilian_cost }
+                        }
+
+                        FRA = { num_of_civilian_factories_available_for_projects > PREV.state_invest_factory_need }
+                    }
+                }
             }
 
             invest_state_arms_button_click_enabled = {
-                custom_trigger_tooltip = {
-                    tooltip = state_has_no_invest_building
-                    NOT = {
-                        has_state_flag = state_invest_civilian
-                        has_state_flag = state_invest_arms
-                        has_state_flag = state_invest_dockyard
-                    }
-                }
-                custom_trigger_tooltip = {
-                    tooltip = {
-                        localization_key = var_judge_num
-                        TAGVAR = economy_power
-                        JUDGE = more_than
-                        TAGNUM = "50"
-                    }
-                    check_variable = { economy_power > 50 }
-                }
+                FCF_state_is_invested = no
 
-                set_temp_variable = { state_invest_factory_need = 4 }
-                num_of_civilian_factories_available_for_projects > state_invest_factory_need
+                OR = {
+                    FRA = { has_country_flag = cgf_expand_investment }
+                    AND = {
+                        set_temp_variable = { target_num = state_invest_arms_cost }
+                        custom_trigger_tooltip = {
+                            tooltip = state_invest_cost_trigger_tooltip
+                            check_variable = { FRA.economy_power > state_invest_arms_cost }
+                        }
+
+                        FRA = { num_of_civilian_factories_available_for_projects > PREV.state_invest_factory_need }
+                    }
+                }
             }
 
             invest_state_dockyard_button_click_enabled = {
-                custom_trigger_tooltip = {
-                    tooltip = state_has_no_invest_building
-                    NOT = {
-                        has_state_flag = state_invest_civilian
-                        has_state_flag = state_invest_arms
-                        has_state_flag = state_invest_dockyard
-                    }
-                }
-                custom_trigger_tooltip = {
-                    tooltip = {
-                        localization_key = var_judge_num
-                        TAGVAR = economy_power
-                        JUDGE = more_than
-                        TAGNUM = "50"
-                    }
-                    check_variable = { economy_power > 50 }
-                }
+                FCF_state_is_invested = no
 
-                set_temp_variable = { state_invest_factory_need = 4 }
-                num_of_civilian_factories_available_for_projects > state_invest_factory_need
+                OR = {
+                    FRA = { has_country_flag = cgf_expand_investment }
+                    AND = {
+                        set_temp_variable = { target_num = state_invest_dockyard_cost }
+                        custom_trigger_tooltip = {
+                            tooltip = state_invest_cost_trigger_tooltip
+                            check_variable = { FRA.economy_power > state_invest_dockyard_cost }
+                        }
+
+                        FRA = { num_of_civilian_factories_available_for_projects > PREV.state_invest_factory_need }
+                    }
+                }
                 
                 is_coastal = yes
             }
 
             invest_more_button_click_enabled = {
+                FCF_state_is_invested = yes
+
                 custom_trigger_tooltip = {
-                    tooltip = state_has_invest_building
-                    OR = {
-                        has_state_flag = state_invest_civilian
-                        has_state_flag = state_invest_arms
-                        has_state_flag = state_invest_dockyard
+                    tooltip = {
+                        localization_key = var_judge_num
+                        TAGVAR = economy_power
+                        JUDGE = more_than
+                        TAGNUM = "5"
                     }
+                    check_variable = { FRA.economy_power > 5 }
                 }
 
-                set_temp_variable = { state_invest_factory_need = 2 }
-                num_of_civilian_factories_available_for_projects > state_invest_factory_need
+                FRA = { num_of_civilian_factories_available_for_projects > 1 }
+
+                NOT = { has_state_flag = cgf_expand_investment }
             }
         }
         effects = {
@@ -4901,75 +4880,132 @@ scripted_gui = {
 
             invest_state_civilian_button_click = {
                 set_state_flag = state_invest_civilian
-                add_to_variable = {
-                    economy_power = -50
-                    tooltip = economy_power_change_tt
+
+                if = {
+                    limit = { FRA = { has_country_flag = cgf_expand_investment } }
+                    FRA = { clr_country_flag = cgf_expand_investment }
+                    set_state_flag = cgf_expand_investment
+                    set_temp_variable = { state_invest_civilian_factory_use = 4 }
+                }
+                else = {
+                    set_temp_variable = { costt = state_invest_civilian_cost }
+                    multiply_temp_variable = { costt = -1 }
+                    add_to_variable = {
+                        FRA.economy_power = costt
+                        tooltip = economy_power_change_tt
+                    }
+                    set_temp_variable = { state_invest_civilian_factory_use = state_invest_factory_need }
                 }
 
-                custom_effect_tooltip = {
-                    localization_key = what_decision_need_tooltip
-                    NUM = 4
-                    DAYS = 180
+                set_temp_variable = { target_invest = 1 }
+                state_invest_factory_speed_judge = yes
+
+                set_temp_variable = { needed_days = 100 }
+                divide_temp_variable = { needed_days = state_factory_building_speed_t }
+                add_to_temp_variable = { needed_days = 0.4999 }
+                round_variable = needed_days
+
+                if = {
+                    limit = { FRA = { has_country_flag = cgf_expand_investment } }
+                    custom_effect_tooltip = state_investment_whan_expand_cost_tooltip
                 }
+                else = { custom_effect_tooltip = state_investment_cost_tooltip  }
                 effect_tooltip = {
-                    THIS = {
-                        set_temp_variable = { sesic = 1 }
-                        set_temp_variable = { sesac = 0 }
-                        set_temp_variable = { sesdc = 0 }
-                        FCF_state_economy_situation_change = yes
-                    }
+                    set_temp_variable = { sesic = 1 }
+                    set_temp_variable = { sesac = 0 }
+                    set_temp_variable = { sesdc = 0 }
+                    FCF_state_economy_situation_change = yes
                 }
             }
 
             invest_state_arms_button_click = {
                 set_state_flag = state_invest_arms
-                add_to_variable = {
-                    economy_power = -50
-                    tooltip = economy_power_change_tt
+
+                if = {
+                    limit = { FRA = { has_country_flag = cgf_expand_investment } }
+                    FRA = { clr_country_flag = cgf_expand_investment }
+                    set_state_flag = cgf_expand_investment
+                    set_temp_variable = { state_invest_civilian_factory_use = 4 }
+                }
+                else = {
+                    set_temp_variable = { costt = state_invest_arms_cost }
+                    multiply_temp_variable = { costt = -1 }
+                    add_to_variable = {
+                        FRA.economy_power = costt
+                        tooltip = economy_power_change_tt
+                    }
+                    set_temp_variable = { state_invest_civilian_factory_use = state_invest_factory_need }
                 }
 
-                custom_effect_tooltip = {
-                    localization_key = what_decision_need_tooltip
-                    NUM = 4
-                    DAYS = 180
+                set_temp_variable = { target_invest = 2 }
+                state_invest_factory_speed_judge = yes
+
+                set_temp_variable = { needed_days = 100 }
+                divide_temp_variable = { needed_days = state_factory_building_speed_t }
+                add_to_temp_variable = { needed_days = 0.4999 }
+                round_variable = needed_days
+
+                if = {
+                    limit = { FRA = { has_country_flag = cgf_expand_investment } }
+                    custom_effect_tooltip = state_investment_whan_expand_cost_tooltip
                 }
+                else = { custom_effect_tooltip = state_investment_cost_tooltip  }
                 effect_tooltip = {
-                    THIS = {
-                        set_temp_variable = { sesic = 0 }
-                        set_temp_variable = { sesac = 1 }
-                        set_temp_variable = { sesdc = 0 }
-                        FCF_state_economy_situation_change = yes
-                    }
+                    set_temp_variable = { sesic = 0 }
+                    set_temp_variable = { sesac = 1 }
+                    set_temp_variable = { sesdc = 0 }
+                    FCF_state_economy_situation_change = yes
                 }
             }
 
             invest_state_dockyard_button_click = {
                 set_state_flag = state_invest_dockyard
-                add_to_variable = {
-                    economy_power = -50
-                    tooltip = economy_power_change_tt
+
+                if = {
+                    limit = { FRA = { has_country_flag = cgf_expand_investment } }
+                    FRA = { clr_country_flag = cgf_expand_investment }
+                    set_state_flag = cgf_expand_investment
+                    set_temp_variable = { state_invest_civilian_factory_use = 4 }
+                }
+                else = {
+                    set_temp_variable = { costt = state_invest_dockyard_cost }
+                    multiply_temp_variable = { costt = -1 }
+                    add_to_variable = {
+                        FRA.economy_power = costt
+                        tooltip = economy_power_change_tt
+                    }
+                    set_temp_variable = { state_invest_civilian_factory_use = state_invest_factory_need }
                 }
 
-                custom_effect_tooltip = {
-                    localization_key = what_decision_need_tooltip
-                    NUM = 4
-                    DAYS = 180
-                } 
+                set_temp_variable = { target_invest = 3 }
+                state_invest_factory_speed_judge = yes
+
+                set_temp_variable = { needed_days = 100 }
+                divide_temp_variable = { needed_days = state_factory_building_speed_t }
+                add_to_temp_variable = { needed_days = 0.4999 }
+                round_variable = needed_days
+
+                if = {
+                    limit = { FRA = { has_country_flag = cgf_expand_investment } }
+                    custom_effect_tooltip = state_investment_whan_expand_cost_tooltip
+                }
+                else = { custom_effect_tooltip = state_investment_cost_tooltip  }
                 effect_tooltip = {
-                    THIS = {
-                        set_temp_variable = { sesic = 0 }
-                        set_temp_variable = { sesac = 0 }
-                        set_temp_variable = { sesdc = 1 }
-                        FCF_state_economy_situation_change = yes
-                    }
+                    set_temp_variable = { sesic = 0 }
+                    set_temp_variable = { sesac = 0 }
+                    set_temp_variable = { sesdc = 1 }
+                    FCF_state_economy_situation_change = yes
                 }
             }
 
             invest_more_button_click = {
                 add_to_variable = {
-                    economy_power = -50
+                    FRA.economy_power = -5
                     tooltip = economy_power_change_tt
                 }
+
+                custom_effect_tooltip = state_investment_speed_up_tooltip
+                add_to_variable = { num_of_added_factory_in_investment = 1 }
             }
         }
         properties = { selected_state_flag = { image = "GFX_state_[?THIS.GetID]_flag" } }

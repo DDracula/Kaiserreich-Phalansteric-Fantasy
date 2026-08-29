@@ -24,7 +24,10 @@ focus_tree = {
 		cost = 2
 		ai_will_do = { factor = 1 }
 		available = { 
-			17 = { is_owned_and_controlled_by = FRA }
+			17 = { 
+				is_owned_and_controlled_by = FRA 
+				FCF_state_is_invested = no
+			}
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
@@ -51,10 +54,7 @@ focus_tree = {
 					province = 11548
 				}
 
-				set_temp_variable = { sesic = 0 } 
-				set_temp_variable = { sesac = 0 }
-				set_temp_variable = { sesdc = 1 }
-				FCF_state_economy_situation_change = yes
+				state_invest_dockyard_for_free_once = yes
 
 				custom_effect_tooltip = {
 					localization_key = state_strategy_take_what
@@ -68,7 +68,6 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			unlock_decision_tooltip = FCF_economy_calais_cross_harbor_tunnel
 			unlock_decision_tooltip = FCF_economy_calais_expansion_of_lille
-			unlock_decision_tooltip = FCF_economy_calais_normandy_textile_base
 			unlock_decision_tooltip = FCF_economy_focus_on_north
 			custom_effect_tooltip = unlock_in_economy
 		} 
@@ -83,7 +82,10 @@ focus_tree = {
 		cost = 2 
 		ai_will_do = { factor = 1 }
 		available = { 
-			16 = { is_owned_and_controlled_by = FRA }
+			16 = { 
+				is_owned_and_controlled_by = FRA 
+				FCF_state_is_invested = no
+			}
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
@@ -103,10 +105,7 @@ focus_tree = {
 			16 = {
 				add_victory_points = { province = 11506 value = 5 }
 
-				set_temp_variable = { sesic = 1 }
-				set_temp_variable = { sesac = 0 }
-				set_temp_variable = { sesdc = 0 }
-				FCF_state_economy_situation_change = yes
+				state_invest_civilian_for_free_once = yes
 
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
@@ -128,6 +127,16 @@ focus_tree = {
 					state_local_factory_energy_consumption = -0.05
 					tooltip = local_factory_energy_consumption_tt
 				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = { 
+					state_invest_civilian_cost_change = -5
+					tooltip = state_invest_civilian_cost_modifier_tt
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = { 
+					state_invest_arms_cost_change = -5
+					tooltip = state_invest_arms_cost_modifier_tt
+				}
 			}
 
 			custom_effect_tooltip = tooltip_white_line
@@ -148,7 +157,10 @@ focus_tree = {
 		cost = 2
 		ai_will_do = { factor = 1 }
 		available = { 
-			20 = { is_owned_and_controlled_by = FRA }
+			20 = { 
+				is_owned_and_controlled_by = FRA 
+				FCF_state_is_invested = no
+			}
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
@@ -180,10 +192,7 @@ focus_tree = {
 
 			custom_effect_tooltip = tooltip_white_line
 			20 = {
-				set_temp_variable = { sesic = 0 } 
-				set_temp_variable = { sesac = 1 }
-				set_temp_variable = { sesdc = 0 }
-				FCF_state_economy_situation_change = yes
+				state_invest_arms_for_free_once = yes
 
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
@@ -210,7 +219,10 @@ focus_tree = {
 		cost = 2
 		ai_will_do = { factor = 1 }
 		available = { 
-			19 = { is_owned_and_controlled_by = FRA }
+			19 = { 
+				is_owned_and_controlled_by = FRA 
+				FCF_state_is_invested = no
+			}
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
@@ -236,10 +248,7 @@ focus_tree = {
 					province = 9737
 				}
 
-				set_temp_variable = { sesic = 0 }
-				set_temp_variable = { sesac = 0 }
-				set_temp_variable = { sesdc = 1 }
-				FCF_state_economy_situation_change = yes
+				state_invest_dockyard_for_free_once = yes
 
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
@@ -256,6 +265,16 @@ focus_tree = {
 					core_state_production_speed_buildings_factor = 0.04
 					tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
 				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = { 
+					state_invest_civilian_cost_change = -10
+					tooltip = state_invest_civilian_cost_modifier_tt
+				}
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = { 
+					state_invest_dockyard_cost_change = -10
+					tooltip = state_invest_dockyard_cost_modifier_tt
+				}
 				custom_effect_tooltip = {
 					localization_key = state_strategy_monthly_develop
 					NUM = "0.1"
@@ -267,7 +286,6 @@ focus_tree = {
 			unlock_decision_tooltip = FCF_economy_bordeaux_deepwater_port
 			unlock_decision_tooltip = FCF_economy_bordeaux_modernize_garonne_canal
 			unlock_decision_tooltip = FCF_economy_bordeaux_new_world_representative_office
-			unlock_decision_tooltip = FCF_economy_bordeaux_revitalize_occitanie_agri_coops
 			unlock_decision_tooltip = FCF_economy_focus_on_trade
 			custom_effect_tooltip = unlock_in_economy
 		} 
@@ -282,7 +300,10 @@ focus_tree = {
 		cost = 2
 		ai_will_do = { factor = 1 }
 		available = { 
-			21 = { is_owned_and_controlled_by = FRA }
+			21 = { 
+				is_owned_and_controlled_by = FRA 
+				FCF_state_is_invested = no
+			}
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
@@ -308,10 +329,7 @@ focus_tree = {
 					province = 11834
 				}
 
-				set_temp_variable = { sesic = 1 }
-				set_temp_variable = { sesac = 0 }
-				set_temp_variable = { sesdc = 0 }
-				FCF_state_economy_situation_change = yes
+				state_invest_civilian_for_free_once = yes
 
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
@@ -326,8 +344,6 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 			unlock_decision_tooltip = FCF_economy_massay_ciudad_libre_de_nice
 			unlock_decision_tooltip = FCF_economy_massay_cannes_art_basis
-			unlock_decision_tooltip = FCF_economy_massay_develop_languedoc
-			unlock_decision_tooltip = FCF_economy_massay_expand_toulon_shipyard
 			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INDUSTRY } 
@@ -341,8 +357,14 @@ focus_tree = {
 		cost = 2
 		ai_will_do = { factor = 1 }
 		available = { 
-			14 = { is_owned_and_controlled_by = FRA }
-			983 = { is_owned_and_controlled_by = FRA }
+			14 = { 
+				is_owned_and_controlled_by = FRA 
+				FCF_state_is_invested = no
+			}
+			983 = { 
+				is_owned_and_controlled_by = FRA 
+				FCF_state_is_invested = no
+			}
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
@@ -373,10 +395,7 @@ focus_tree = {
 				}
 
 				custom_effect_tooltip = tooltip_white_line
-				set_temp_variable = { sesic = 0 }
-				set_temp_variable = { sesac = 0 }
-				set_temp_variable = { sesdc = 1 }
-				FCF_state_economy_situation_change = yes
+				state_invest_civilian_for_free_once = yes
 
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = {
@@ -1056,13 +1075,6 @@ focus_tree = {
 			set_temp_variable = { ertc_con = 2 }
 			set_temp_variable = { ertc_dev = 0 }
 			economy_reform_tendency_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_charles_jourdan_shoes
-			unlock_decision_tooltip = FCF_economy_robert_fuhr_workshop
-			unlock_decision_tooltip = FCF_economy_mullca_furniture_youth_coops
-			unlock_decision_tooltip = FCF_economy_savonnerie_marius_fabre
-			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -1105,12 +1117,6 @@ focus_tree = {
 		} 
 		completion_reward = {
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_verne_caron_shotgun_coops
-			unlock_decision_tooltip = FCF_economy_cartoucherie_de_alence
-			unlock_decision_tooltip = FCF_economy_ateliers_de_construction_de_tarbes
-			unlock_decision_tooltip = FCF_economy_manufacture_darmes_de_chatellerault
-			unlock_decision_tooltip = FCF_economy_groupe_boussac
-			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -1228,8 +1234,6 @@ focus_tree = {
 		} 
 		completion_reward = {
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_michelin_peoples_enterprise
-			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -1462,7 +1466,6 @@ focus_tree = {
 			custom_effect_tooltip = tooltip_white_line
 
 			activate_decision = FCF_economy_rural_new_frontier1
-			custom_effect_tooltip = FRA_new_frontier_program_cost
 			custom_effect_tooltip = {
 				localization_key = what_decision_need_tooltip
 				NUM = 10
@@ -1524,13 +1527,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_gien_porcelain_commune
-			unlock_decision_tooltip = FCF_economy_dozom_knives_factory
-			unlock_decision_tooltip = FCF_economy_degos_slipper_workshop
-			unlock_decision_tooltip = FCF_economy_le_guerandais
-			unlock_decision_tooltip = FCF_economy_les_ardoisieres_dangers
-			unlock_decision_tooltip = FCF_economy_la_rochere
-			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -1589,9 +1585,6 @@ focus_tree = {
 		completion_reward = {
 			custom_effect_tooltip = tooltip_white_line
 			unlock_decision_tooltip = FCF_economy_national_cereal_industry_office
-			unlock_decision_tooltip = FCF_economy_vilmorin_seed_coops
-			unlock_decision_tooltip = FCF_economy_champignons_de_paris_saumur
-			unlock_decision_tooltip = FCF_economy_pruneau_dagen
 			unlock_decision_tooltip = FCF_economy_promote_forestry_coops
 			custom_effect_tooltip = unlock_in_economy
 		} 
@@ -1618,13 +1611,6 @@ focus_tree = {
 				state_strategy_34_get = yes
 				add_to_array = { array = FCF_state_strategy value = 34 }
 			}
-
-			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_vierzon_french_enterprises
-			unlock_decision_tooltip = FCF_economy_wool_removal_in_mazamay
-			unlock_decision_tooltip = FCF_economy_miyos_glove_manufacturing
-			unlock_decision_tooltip = FCF_economy_laulhere_beret_basque
-			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -1649,13 +1635,6 @@ focus_tree = {
 				state_strategy_33_get = yes
 				add_to_array = { array = FCF_state_strategy value = 33 }
 			}
-
-			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_roquefort_cheese
-			unlock_decision_tooltip = FCF_economy_apotex_canned_candied_fruits
-			unlock_decision_tooltip = FCF_economy_cooperative_isigny_sainte_mere
-			unlock_decision_tooltip = FCF_economy_maison_troubat
-			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
@@ -3849,8 +3828,6 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_obut_petanque_coops
-			custom_effect_tooltip = unlock_in_economy
 		} 
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
 	}
@@ -3919,8 +3896,7 @@ focus_tree = {
 		}
 		completion_reward = {
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_economy_commune_of_mogadishu_brothers
-			custom_effect_tooltip = unlock_in_economy
+			
 		} 
 		search_filters = { FOCUS_FILTER_INTERNAL_AFFAIRS }
 	}

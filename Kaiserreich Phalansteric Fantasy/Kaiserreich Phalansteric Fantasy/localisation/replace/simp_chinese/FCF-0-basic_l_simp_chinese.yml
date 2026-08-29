@@ -151,13 +151,7 @@
   cgf_transfer_management_tt:0 "§C若当地已$state_strategy_transfer_management$：§!"
 
   cgf_expand_investment:0 "扩大投资权"
-  cgf_expand_investment_desc:0 "权力倾向向§Y总联委§!移动§Y10§!\n我们将随机激活一项持续§Y180§!日的§G投资活动§!\n\n执行该行动将花费£pol_power §Y30§!\n该行动冷却§Y180§!日"
-  FCF_cgf_expand_investment1:0 "投资机械工厂"
-  FCF_cgf_expand_investment2:0 "投资消费品工厂"
-  FCF_cgf_expand_investment3:0 "投资化工厂"
-  FCF_cgf_expand_investment4:0 "投资军工厂"
-  FCF_cgf_expand_investment5:0 "投资船坞"  
-  FCF_cgf_expand_investment6:0 "投资港口"    
+  cgf_expand_investment_desc:0 "权力倾向向§Y总联委§!移动§Y10§!\n我们§Y下一次§!对地方的投资活动§G免费§!，不消耗£economy_power_texticon 经济点数且不占用工厂\n\n执行该行动将花费£pol_power §Y30§!\n该行动冷却§Y180§!日"
 #CSP
   effect_if_delegue_is:0 "§C如果我们的$AFFAIRS|Y$是$WHO$§!"
   PCSP:0 "公共安全委员会主席"
@@ -1028,7 +1022,7 @@
   monthly_change_eq:0 "$economy_equal$每月变化"
   monthly_change_eq_tooltip:0 "$monthly_change_eq$：$RIGHT|+=1$"
   eq_buff:0 "[eq_buff_loc]"
-  eq_buff_tt:0 "由于[?economy_equal|Y.1]的$economy_equal$\n- $MODIFIER_STABILITY_FACTOR$：[?eq1_show|.2%+=]\n- $MODIFIER_CONSUMER_GOODS_FACTOR$：[?eq2_show|Y.1%]\n- $MODIFIER_PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR$：[?eq3_show|.2%+=]$tooltip_dividing_line$\n周期变化：[?modifier@monthly_change_eq|+=.1]\n\n[?eqcfade|.1+=] 源于自然衰退\n[?eqcfev|.1+=] 源于$economy_values$：[cof_economy_situation]§g（[?economy_values|+=.1]）§!\n[?eqcfeaa|.1+=] 源于$economy_agriculture_chain$：[?economy_agriculture_chain|Y.1]\n[?eqcfei|.1+=] 源于$economy_innovate$：[?economy_innovate|Y.1]\n[?eqcfpopb|+=.1] 源于[?pop_bureaucrats|Y.1%%]影响力的$class_pop_bureaucrats$的[?pop_satisfaction_bureaucrats|Y.1%%]满意度\n[?billeqc|.1+=] 源于顾问、社会法案或民族精神\n[?state_strategy_monthly_change_eq|+=.1] 源于地方政策"
+  eq_buff_tt:0 "由于[?economy_equal|Y.1]的$economy_equal$\n- $MODIFIER_STABILITY_FACTOR$：[?eq1_show|.2%+=]\n- $MODIFIER_CONSUMER_GOODS_FACTOR$：[?eq2_show|Y.1%]\n- $MODIFIER_PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR$：[?eq3_show|.2%+=]$tooltip_dividing_line$\n周期变化：[?modifier@monthly_change_eq|+=.1]\n\n[?eqcfade|.1+=] 源于自然衰退\n[?eqcfimbalance|.1+=] 源于[?balance_value|Y.1%%]的地区工业均衡度\n[?eqcfev|.1+=] 源于$economy_values$：[cof_economy_situation]§g（[?economy_values|+=.1]）§!\n[?eqcfeaa|.1+=] 源于$economy_agriculture_chain$：[?economy_agriculture_chain|Y.1]\n[?eqcfei|.1+=] 源于$economy_innovate$：[?economy_innovate|Y.1]\n[?eqcfpopb|+=.1] 源于[?pop_bureaucrats|Y.1%%]影响力的$class_pop_bureaucrats$的[?pop_satisfaction_bureaucrats|Y.1%%]满意度\n[?billeqc|.1+=] 源于顾问、社会法案或民族精神\n[?state_strategy_monthly_change_eq|+=.1] 源于地方政策"
 
   monthly_change_el:0 "$economy_link$每月变化"
   monthly_change_el_tooltip:0 "$monthly_change_el$：$RIGHT|+=1$"
@@ -1167,17 +1161,40 @@
   local_factories_more_than_x_NOT:0 "当地的§Y[state_target]§!的§Y$state_factory$§!小于[?target_num|Y.0]座"  
   state_factory_total:0 "总和"
 
-  state_investment_situation_civilian:0 "§G£civ_factory 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.1%%]"
-  state_investment_situation_arms:0 "§G£mil_factory 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.1%%]"
-  state_investment_situation_dockyard:0 "§G£dockyard_texticon 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.1%%]"
-  state_investment_situation_no:0 "\n§Y暂无投资§!"
+  FCF_state_investment_situation:0 "联邦投资状况"
+  FCF_state_investment_situation_tt:0 "我们可以在§Y地区界面§!选择对当地进行投资建设，§Y投资建设速度§!取决于：\n-$economy_industry_basic$\n-$economy_industry_process$\n-$economy_link$\n-$MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$\n-$MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR$\n-当地§Y$industrial_complex$§!数量\n-投入投资建设的§Y$industrial_complex$§!数量\n以及根据我们投资的§Y建筑类型§!，与之对应的加成$tooltip_dividing_line$\n§C目前投资建设状况：§!"
+  state_investment_situation_civ_tt:0 "£civ_factory 投资建设§Y$industrial_complex$§!"
+  state_investment_situation_mil_tt:0 "£mil_factory 投资建设§Y$arms_factory$§!"
+  state_investment_situation_dock_tt:0 "£dockyard_texticon 投资建设§Y$dockyard$§!"
 
-  state_has_no_invest_building:0 "当地没有投资"
-  state_has_invest_building:0 "当地正在投资建设中"
+  state_invest_civilian_for_free_once:0 "§G免费§!进行一次§Y投资当地工业§!"
+  state_invest_arms_for_free_once:0 "§G免费§!进行一次§Y投资当地军工§!"
+  state_invest_dockyard_for_free_once:0 "§G免费§!进行一次§Y投资当地船坞§!"
+
+  state_invest_cost_trigger_tooltip:0 "$economy_power$$more_than$[?target_num|.0Y]"
+  state_investment_situation_civilian:0 "§G£civ_factory 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_arms:0 "§G£mil_factory 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_dockyard:0 "§G£dockyard_texticon 建设§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_no:0 "\n§Y暂无投资§!"
+  state_investment_cost_tooltip:0 "这将占用我们[?state_invest_factory_need|Y.0]个§Y$industrial_complex$§!并以每日[?state_factory_building_speed_t|.2%%+=]的速度进行建设，预估花费[?needed_days|.0Y]天\n当我们完成后，我们将得到："
+  state_investment_whan_expand_cost_tooltip:0 "由于我们§Y$cgf_expand_investment$§!，这一次投资将§G免费§!\n等效于[?4|.0Y]个§Y$industrial_complex$§!并以每日[?state_factory_building_speed_t|.2%%+=]的速度进行建设，预估花费[?needed_days|.0Y]天\n当我们完成后，我们将得到："
+
+  FCF_state_is_invested:0 "当地正在投资建设中"
+  FCF_state_is_invested_NOT:0 "当地没有投资"
   invest_state_civilian_button:0 "§Y投资当地工业§!\n[!invest_state_civilian_button_click]\n----------\n[!invest_state_civilian_button_click_enabled]"
-  invest_state_arms_button:0 "§Y投资当地军事工业§!\n[!invest_state_arms_button_click]\n----------\n[!invest_state_arms_button_click_enabled]"
-  invest_state_dockyard_button:0 "§Y投资当地造船业§!\n[!invest_state_dockyard_button_click]\n----------\n[!invest_state_dockyard_button_click_enabled]"
+  invest_state_arms_button:0 "§Y投资当地军工§!\n[!invest_state_arms_button_click]\n----------\n[!invest_state_arms_button_click_enabled]"
+  invest_state_dockyard_button:0 "§Y投资当地船坞§!\n[!invest_state_dockyard_button_click]\n----------\n[!invest_state_dockyard_button_click_enabled]"
   invest_more_button:0 "§Y扩大建设队伍§!\n[!invest_more_button_click]\n----------\n[!invest_more_button_click_enabled]"
+  state_investment_speed_up_tooltip:0 "我们将增加投入[?1|.0Y]个§Y$industrial_complex$§!以§G加速建设§!"
+
+  state_invest_civilian_cost_modifier:0 "当地£civ_factory §Y工业投资花费§!"
+  state_invest_civilian_cost_modifier_tt:0 "$state_invest_civilian_cost_modifier$：$RIGHT|-=.0$"
+  state_invest_arms_cost_modifier:0 "当地£mil_factory §Y军工投资花费§!"
+  state_invest_arms_cost_modifier_tt:0 "$state_invest_arms_cost_modifier$：$RIGHT|-=.0$"
+  state_invest_dockyard_cost_modifier:0 "当地£dockyard_texticon §Y船坞投资花费§!"
+  state_invest_dockyard_cost_modifier_tt:0 "$state_invest_dockyard_cost_modifier$：$RIGHT|-=.0$"
+  state_invest_factory_need_modifier:0 "当地£civ_factory_output §Y启动投资所需工厂数量§!"
+  state_invest_factory_need_modifier_tt:0 "$state_invest_factory_need_modifier$：$RIGHT|-=.0$"
 ##############
 ###军事相关###
 ##############

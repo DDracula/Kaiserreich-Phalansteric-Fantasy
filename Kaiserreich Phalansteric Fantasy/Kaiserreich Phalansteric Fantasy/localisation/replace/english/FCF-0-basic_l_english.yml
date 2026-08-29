@@ -155,13 +155,7 @@
   cgf_transfer_management_tt:0 "§CIf the local authorities have already enacted $state_strategy_transfer_management$:§!"
 
   cgf_expand_investment:0 "Investment"
-  cgf_expand_investment_desc:0 "The Balance of Power shifts §Y10§! towards the §YCGF§!\nOne random §GInvestment Programme§! will be activated for §Y180§! days\n\nTaking this action will cost £pol_power §Y30§!\nThis action has a cooldown of §Y180§! days"
-  FCF_cgf_expand_investment1:0 "Invest in Machinery Plants"
-  FCF_cgf_expand_investment2:0 "Invest in Consumer-Goods Factories"
-  FCF_cgf_expand_investment3:0 "Invest in Chemical Plants"
-  FCF_cgf_expand_investment4:0 "Invest in Arms Factories"
-  FCF_cgf_expand_investment5:0 "Invest in Dockyards"
-  FCF_cgf_expand_investment6:0 "Invest in Ports"
+  cgf_expand_investment_desc:0 "The Balance of Power shifts §Y10§! towards the §YCGF§!\n\nOur §Ynext§! local investment action is §Gfree§!, costing no £economy_power_texticon Economic Power and requiring no factories\n\nTaking this action will cost £pol_power §Y30§!\nThis action has a cooldown of §Y180§! days"
 
 # CSP
   effect_if_delegue_is:0 "§CIf our $AFFAIRS|Y$ is $WHO$:§!"
@@ -1042,7 +1036,7 @@
   monthly_change_eq:0 "Monthly $economy_equal$ Change"
   monthly_change_eq_tooltip:0 "$monthly_change_eq$: $RIGHT|+=1$"
   eq_buff:0 "[eq_buff_loc]"
-  eq_buff_tt:0 "Effects of [?economy_equal|Y.1] $economy_equal$:\n- $MODIFIER_STABILITY_FACTOR$: [?eq1_show|.2%+=]\n- $MODIFIER_CONSUMER_GOODS_FACTOR$: [?eq2_show|Y.1%]\n- $MODIFIER_PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR$: [?eq3_show|.2%+=]$tooltip_dividing_line$\nCyclical Change: [?modifier@monthly_change_eq|+=.1]\n\n[?eqcfade|.1+=] from natural decay\n[?eqcfev|.1+=] from $economy_values$: [cof_economy_situation]§g ([?economy_values|+=.1])§!\n[?eqcfeaa|.1+=] from $economy_agriculture_chain$: [?economy_agriculture_chain|Y.1]\n[?eqcfei|.1+=] from $economy_innovate$: [?economy_innovate|Y.1]\n[?eqcfpopb|+=.1] from [?pop_satisfaction_bureaucrats|Y.1%%] satisfaction among the $class_pop_bureaucrats$, who possess [?pop_bureaucrats|Y.1%%] influence\n[?billeqc|.1+=] from advisers, Social Legislation or National Spirits\n[?state_strategy_monthly_change_eq|+=.1] from local policies"
+  eq_buff_tt:0 "Effects of [?economy_equal|Y.1] $economy_equal$:\n- $MODIFIER_STABILITY_FACTOR$: [?eq1_show|.2%+=]\n- $MODIFIER_CONSUMER_GOODS_FACTOR$: [?eq2_show|Y.1%]\n- $MODIFIER_PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR$: [?eq3_show|.2%+=]$tooltip_dividing_line$\nCyclical Change: [?modifier@monthly_change_eq|+=.1]\n\n[?eqcfade|.1+=] from natural decay\n\n[?eqcfimbalance|.1+=] from [?balance_value|Y.1%%] Regional industrial balance\n[?eqcfev|.1+=] from $economy_values$: [cof_economy_situation]§g ([?economy_values|+=.1])§!\n[?eqcfeaa|.1+=] from $economy_agriculture_chain$: [?economy_agriculture_chain|Y.1]\n[?eqcfei|.1+=] from $economy_innovate$: [?economy_innovate|Y.1]\n[?eqcfpopb|+=.1] from [?pop_satisfaction_bureaucrats|Y.1%%] satisfaction among the $class_pop_bureaucrats$, who possess [?pop_bureaucrats|Y.1%%] influence\n[?billeqc|.1+=] from advisers, Social Legislation or National Spirits\n[?state_strategy_monthly_change_eq|+=.1] from local policies"
 
   monthly_change_el:0 "Monthly $economy_link$ Change"
   monthly_change_el_tooltip:0 "$monthly_change_el$: $RIGHT|+=1$"
@@ -1184,6 +1178,41 @@
   local_factories_more_than_x:0 "The number of local §Y$state_factory$§! assigned to §Y[state_target]§! is greater than [?target_num|Y.0]"
   local_factories_more_than_x_NOT:0 "The number of local §Y$state_factory$§! assigned to §Y[state_target]§! is less than [?target_num|Y.0]"
   state_factory_total:0 "Total"
+
+  FCF_state_investment_situation:0 "Federal Investment Status"
+  FCF_state_investment_situation_tt:0 "We can invest in local construction through the §YState Interface§!. The §Yinvestment speed§! depends upon:\n-$economy_industry_basic$\n-$economy_industry_process$\n-$economy_link$\n-$MODIFIER_PRODUCTION_SPEED_BUILDINGS_FACTOR$\n-$MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR$\n-The number of local §Y$industrial_complex$§! buildings\n-The number of §Y$industrial_complex$§! buildings committed to the project\n-As well as the modifiers corresponding to the §Ytype of building§! being constructed$tooltip_dividing_line$\n§CCurrent Investment Status:§!"
+  state_investment_situation_civ_tt:0 "£civ_factory Investing in §Y$industrial_complex$§!"
+  state_investment_situation_mil_tt:0 "£mil_factory Investing in §Y$arms_factory$§!"
+  state_investment_situation_dock_tt:0 "£dockyard_texticon Investing in §Y$dockyard$§!"
+
+  state_invest_civilian_for_free_once:0 "Make one §YLocal Industrial Investment§! for §Gfree§!"
+  state_invest_arms_for_free_once:0 "Make one §YLocal Military-Industrial Investment§! for §Gfree§!"
+  state_invest_dockyard_for_free_once:0 "Make one §YLocal Dockyard Investment§! for §Gfree§!"
+
+  state_invest_cost_trigger_tooltip:0 "$economy_power$$more_than$[?target_num|.0Y]"
+  state_investment_situation_civilian:0 "§G£civ_factory Under Construction§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_arms:0 "§G£mil_factory Under Construction§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_dockyard:0 "§G£dockyard_texticon Under Construction§!\n[?state_invest_building_progress|Y.1%%]\n[?state_factory_building_speed|+=.2%%]"
+  state_investment_situation_no:0 "\n§YNo Ongoing Investment§!"
+  state_investment_cost_tooltip:0 "This will occupy [?state_invest_factory_need|Y.0] §Y$industrial_complex$§! buildings and proceed at a daily construction speed of [?state_factory_building_speed_t|.2%%+=], with an estimated completion time of [?needed_days|.0Y] days\nOnce completed, we will receive:"
+  state_investment_whan_expand_cost_tooltip:0 "Owing to our §Y$cgf_expand_investment$§!, this investment is §Gfree§!\nIt will proceed with the equivalent of [?4|.0Y] §Y$industrial_complex$§! buildings at a daily construction speed of [?state_factory_building_speed_t|.2%%+=], with an estimated completion time of [?needed_days|.0Y] days\nOnce completed, we will receive:"
+
+  FCF_state_is_invested:0 "A local investment project is underway"
+  FCF_state_is_invested_NOT:0 "No local investment project is underway"
+  invest_state_civilian_button:0 "§YInvest in Local Industry§!\n[!invest_state_civilian_button_click]\n----------\n[!invest_state_civilian_button_click_enabled]"
+  invest_state_arms_button:0 "§YInvest in Local Military Industry§!\n[!invest_state_arms_button_click]\n----------\n[!invest_state_arms_button_click_enabled]"
+  invest_state_dockyard_button:0 "§YInvest in Local Dockyards§!\n[!invest_state_dockyard_button_click]\n----------\n[!invest_state_dockyard_button_click_enabled]"
+  invest_more_button:0 "§YExpand the Construction Workforce§!\n[!invest_more_button_click]\n----------\n[!invest_more_button_click_enabled]"
+  state_investment_speed_up_tooltip:0 "We will commit [?1|.0Y] additional §Y$industrial_complex$§! to §Gaccelerate construction§!"
+
+  state_invest_civilian_cost_modifier:0 "Local £civ_factory §YIndustrial Investment Cost§!"
+  state_invest_civilian_cost_modifier_tt:0 "$state_invest_civilian_cost_modifier$: $RIGHT|-=.0$"
+  state_invest_arms_cost_modifier:0 "Local £mil_factory §YMilitary-Industrial Investment Cost§!"
+  state_invest_arms_cost_modifier_tt:0 "$state_invest_arms_cost_modifier$: $RIGHT|-=.0$"
+  state_invest_dockyard_cost_modifier:0 "Local £dockyard_texticon §YDockyard Investment Cost§!"
+  state_invest_dockyard_cost_modifier_tt:0 "$state_invest_dockyard_cost_modifier$: $RIGHT|-=.0$"
+  state_invest_factory_need_modifier:0 "Local £civ_factory_output §YFactories Required to Begin Investment§!"
+  state_invest_factory_need_modifier_tt:0 "$state_invest_factory_need_modifier$: $RIGHT|-=.0$"
 ##############
 ### MILITARY AFFAIRS ###
 ##############

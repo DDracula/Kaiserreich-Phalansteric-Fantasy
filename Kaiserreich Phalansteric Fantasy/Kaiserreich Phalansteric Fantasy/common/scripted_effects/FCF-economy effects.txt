@@ -1522,8 +1522,41 @@ clr_gui_economy_flag = {
 		multiply_variable = { eqcfpopb = 0.1 }
 		add_to_variable = { monthly_change_eqc = eqcfpopb }
 
-		
-
+		#
+		set_temp_variable = { states_num = 0 }
+		set_temp_variable = { dividend_num = 0 }
+		set_temp_variable = { divisor_num = 0 }
+		hidden_effect = {
+			every_owned_state = {
+				limit = { FCF_is_french_state = yes }
+				add_to_temp_variable = { FRA.states_num = 1 }
+				set_temp_variable = { local_factory = industrial_complex_level }
+				add_to_temp_variable = { local_factory = arms_factory_level }
+				add_to_temp_variable = { local_factory = state_economy_industry } 
+				add_to_temp_variable = { local_factory = state_economy_arms }
+				if = {
+					limit = { FCF_is_city_zone = yes }
+					divide_temp_variable = { local_factory = 1.5 }
+				}
+				add_to_temp_variable = { FRA.divisor_num = local_factory }
+				multiply_temp_variable = { local_factory = local_factory }
+				add_to_temp_variable = { FRA.dividend_num = local_factory } 
+			}
+		}
+		multiply_temp_variable = { divisor_num = divisor_num }
+		set_variable = { balance_value = states_num }
+		multiply_variable = { balance_value = dividend_num }
+		divide_variable = { balance_value = divisor_num }
+		add_to_variable = { balance_value = -1 }
+		multiply_variable = { balance_value = -74.07 }
+		add_to_variable = { balance_value = 106.67 }
+		clamp_variable = { var = balance_value max = 100 min = 0 } 
+		set_variable = { eqcfimbalance = balance_value } 
+		add_to_variable = { eqcfimbalance = -50 }
+		divide_variable = { eqcfimbalance = 5 }
+		round_variable = eqcfimbalance 
+		divide_variable = { eqcfimbalance = 10 }
+		add_to_variable = { monthly_change_eqc = eqcfimbalance }
 
 		##el
 		set_variable = { elcfev = economy_values }
@@ -2835,6 +2868,8 @@ clr_gui_economy_flag = {
 		set_variable = { state_strategy_monthly_change_popsa = 0 } 
 
 		set_variable = { all_state_strategy_economy_power_gain = 0 }
+
+		set_variable = { all_state_invest_civilian_factory_use = 0 }
 		every_state = {
 			limit = { has_dynamic_modifier = { modifier = FCF_state_situation_modifier scope = THIS.id } }
 			FCF_state_modifier_judge = yes
@@ -2863,7 +2898,7 @@ clr_gui_economy_flag = {
 			add_to_variable = { FRA.all_state_monthly_population = state_monthly_population }
 			add_to_variable = { FRA.all_state_weekly_manpower = state_weekly_manpower }
 
-
+			add_to_variable = { FRA.all_state_invest_civilian_factory_use = state_invest_civilian_factory_use }
 		}
 		force_update_dynamic_modifier = yes
 	}
@@ -2938,6 +2973,12 @@ clr_gui_economy_flag = {
 		set_variable = { state_state_resource_rubber = 0 }
 		set_variable = { state_state_resource_steel = 0 }
 		set_variable = { state_state_resource_tungsten = 0 }
+
+		set_variable = { state_invest_civilian_cost_change = 0 }
+		set_variable = { state_invest_arms_cost_change = 0 }
+		set_variable = { state_invest_dockyard_cost_change = 0 }
+		
+		set_variable = { state_invest_factory_need_change = 0 }
 	#计算
 		add_to_variable = { state_industrial_factory_donations = state_economy_industry }
 		add_to_variable = { state_military_factory_donations = state_economy_arms }
@@ -2950,6 +2991,36 @@ clr_gui_economy_flag = {
 				STATESTRVAR = "[?v]"
 			}
 		}
+	#地方投资
+		set_variable = { state_invest_civilian_cost = 45 }  
+		add_to_variable = { state_invest_civilian_cost = modifier@state_invest_civilian_cost_modifier }
+		clamp_variable = { var = state_invest_civilian_cost min = 10 }
+		set_variable = { state_invest_arms_cost = 60 }
+		add_to_variable = { state_invest_arms_cost = modifier@state_invest_arms_cost_modifier }
+		clamp_variable = { var = state_invest_arms_cost min = 10 }
+		set_variable = { state_invest_dockyard_cost = 50 }
+		add_to_variable = { state_invest_dockyard_cost = modifier@state_invest_dockyard_cost_modifier }
+		clamp_variable = { var = state_invest_dockyard_cost min = 10 }
+
+		set_variable = { state_invest_factory_need = 4 }
+		add_to_variable = { state_invest_factory_need = modifier@state_invest_factory_need_modifier }
+		clamp_variable = { var = state_invest_factory_need min = 1 }
+		
+		if = {
+			limit = { has_state_flag = state_invest_civilian }
+			set_variable = { state_invest_civilian_factory_use = state_invest_factory_need }
+		}
+		else_if = {
+			limit = { has_state_flag = state_invest_arms }
+			set_variable = { state_invest_civilian_factory_use = state_invest_factory_need }
+		}
+		else_if = {
+			limit = { has_state_flag = state_invest_dockyard }
+			set_variable = { state_invest_civilian_factory_use = state_invest_factory_need }
+		}
+		else = { set_variable = { state_invest_civilian_factory_use = 0 } }
+
+		add_to_variable = { state_invest_civilian_factory_use = num_of_added_factory_in_investment }
 	}
 ###地区政策效果
 	state_strategy_1_get = {
@@ -2965,6 +3036,18 @@ clr_gui_economy_flag = {
 		add_to_variable = { 
 			state_recruitable_population_factor = { value = FRA.ignored_country_value multiply = -0.06 }
 			tooltip = recruitable_population_factor_tt
+		}
+		add_to_variable = { 
+			state_invest_civilian_cost_change = { value = FRA.ignored_country_value multiply = 2 }
+			tooltip = state_invest_civilian_cost_modifier_tt
+		}
+		add_to_variable = { 
+			state_invest_arms_cost_change = { value = FRA.ignored_country_value multiply = 3 }
+			tooltip = state_invest_arms_cost_modifier_tt
+		}
+		add_to_variable = { 
+			state_invest_dockyard_cost_change = { value = FRA.ignored_country_value multiply = 2 }
+			tooltip = state_invest_dockyard_cost_modifier_tt
 		}
 	}
 	state_strategy_2_get = {
@@ -3018,6 +3101,31 @@ clr_gui_economy_flag = {
 				state_local_factory_energy_consumption = -0.15
 				tooltip = local_factory_energy_consumption_tt
 			}
+			if = {
+				limit = { has_state_flag = big_paris }
+				add_to_variable = {
+					state_local_building_slots_factor = 0.3
+					tooltip = local_building_slots_factor_tooltip
+				}
+				add_to_variable = { 
+					state_invest_civilian_cost_change = -15
+					tooltip = state_invest_civilian_cost_modifier_tt
+				}
+				add_to_variable = { 
+					state_invest_arms_cost_change = -15
+					tooltip = state_invest_arms_cost_modifier_tt
+				}
+			}
+			else = {
+				add_to_variable = { 
+					state_invest_civilian_cost_change = -10
+					tooltip = state_invest_civilian_cost_modifier_tt
+				}
+				add_to_variable = { 
+					state_invest_arms_cost_change = -10
+					tooltip = state_invest_arms_cost_modifier_tt
+				}
+			}
 		}
 		else = {
 			add_to_variable = {
@@ -3031,6 +3139,14 @@ clr_gui_economy_flag = {
 			add_to_variable = {
 				state_local_factory_energy_consumption = -0.1
 				tooltip = local_factory_energy_consumption_tt
+			}
+			add_to_variable = { 
+				state_invest_civilian_cost_change = -5
+				tooltip = state_invest_civilian_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_arms_cost_change = -5
+				tooltip = state_invest_arms_cost_modifier_tt
 			}
 		}
 	}
@@ -3072,6 +3188,14 @@ clr_gui_economy_flag = {
 				state_state_production_speed_buildings_factor = 0.09
 				tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
 			}
+			add_to_variable = { 
+				state_invest_civilian_cost_change = -10
+				tooltip = state_invest_civilian_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_dockyard_cost_change = -10
+				tooltip = state_invest_dockyard_cost_modifier_tt
+			}
 			custom_effect_tooltip = {
 				localization_key = state_strategy_monthly_develop
 				NUM = "0.2"
@@ -3105,6 +3229,18 @@ clr_gui_economy_flag = {
 		add_to_variable = {
 			state_state_production_speed_buildings_factor = 0.05
 			tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+		}
+		add_to_variable = { 
+			state_invest_civilian_cost_change = -10
+			tooltip = state_invest_civilian_cost_modifier_tt
+		}
+		add_to_variable = { 
+			state_invest_arms_cost_change = -10
+			tooltip = state_invest_arms_cost_modifier_tt
+		}
+		add_to_variable = { 
+			state_invest_dockyard_cost_change = -10
+			tooltip = state_invest_dockyard_cost_modifier_tt
 		}
 	}
 	state_strategy_8_get = {
@@ -3204,6 +3340,10 @@ clr_gui_economy_flag = {
 			state_state_production_speed_buildings_factor = 0.05
 			tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
 		}
+		add_to_variable = { 
+			state_invest_dockyard_cost_change = -10
+			tooltip = state_invest_dockyard_cost_modifier_tt
+		}
 	}
 	state_strategy_15_get = {
 		custom_effect_tooltip = state_strategy_name
@@ -3251,6 +3391,10 @@ clr_gui_economy_flag = {
 			state_state_production_speed_arms_factory_factor = 0.15
 			tooltip = state_production_speed_arms_factory_factor_tooltip
 		}
+		add_to_variable = { 
+			state_invest_arms_cost_change = -15
+			tooltip = state_invest_arms_cost_modifier_tt
+		}
 		custom_effect_tooltip = state_strategy_armed_core_tt
 	}
 	state_strategy_18_get = {
@@ -3262,6 +3406,18 @@ clr_gui_economy_flag = {
 		add_to_variable = {
 			state_state_production_speed_buildings_factor = 0.1
 			tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+		}
+		add_to_variable = { 
+			state_invest_civilian_cost_change = -10
+			tooltip = state_invest_civilian_cost_modifier_tt
+		}
+		add_to_variable = { 
+			state_invest_arms_cost_change = -15
+			tooltip = state_invest_arms_cost_modifier_tt
+		}
+		add_to_variable = { 
+			state_invest_factory_need_change = -1
+			tooltip = state_invest_factory_need_modifier_tt
 		}
 	}
 	state_strategy_19_get = {
@@ -3387,6 +3543,41 @@ clr_gui_economy_flag = {
 			add_to_variable = {
 				state_local_supplies = 0.1
 				tooltip = local_supplies_tooltip
+			}
+		}
+
+		if = {
+			limit = { FRA = { has_country_flag = rural_new_frontier_rank_three } }
+			add_to_variable = { 
+				state_invest_civilian_cost_change = -10
+				tooltip = state_invest_civilian_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_arms_cost_change = -10
+				tooltip = state_invest_arms_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_dockyard_cost_change = -10
+				tooltip = state_invest_dockyard_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_factory_need = -1
+				tooltip = state_invest_factory_need_modifier_tt
+			}
+		}
+		else_if = {
+			limit = { FRA = { has_country_flag = rural_new_frontier_rank_one } }
+			add_to_variable = { 
+				state_invest_civilian_cost_change = -5
+				tooltip = state_invest_civilian_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_arms_cost_change = -5
+				tooltip = state_invest_arms_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_dockyard_cost_change = -5
+				tooltip = state_invest_dockyard_cost_modifier_tt
 			}
 		}
 	}
@@ -3639,9 +3830,148 @@ clr_gui_economy_flag = {
 	}
 ###地方投资建厂
 	state_invest_factory_speed_judge = {
-		set_temp_variable = { state_factory_building_speed = modifier@state_production_speed_buildings_factor }
-	}
+		set_temp_variable = { state_factory_building_speed_t = modifier@FRA.production_speed_buildings_factor }
+		add_to_temp_variable = { state_factory_building_speed_t = modifier@state_production_speed_buildings_factor }
 
+		if = {
+			limit = { 
+				OR = {
+					check_variable = { target_invest = 1 }
+					has_state_flag = state_invest_civilian 
+				}
+			}
+			add_to_temp_variable = { state_factory_building_speed_t = modifier@FRA.production_speed_industrial_complex_factor }
+			add_to_temp_variable = { state_factory_building_speed_t = modifier@state_production_speed_industrial_complex_factor }
+				set_temp_variable = { t = state_factory_building_speed_t }
+				if = { limit = { check_temp_variable = { t < 0 } } multiply_temp_variable = { t = -1 } }
+				multiply_temp_variable = { t = 0.5 }
+				add_to_temp_variable = { t = 1 }
+			divide_temp_variable = { state_factory_building_speed_t = t }
+			add_to_temp_variable = { state_factory_building_speed_t = 1 }
+			clamp_temp_variable = { var = state_factory_building_speed_t min = 0.1 }
+
+			multiply_temp_variable = { state_factory_building_speed_t = 100 }
+			divide_temp_variable = { state_factory_building_speed_t = 180 }
+		}
+		else_if = {
+			limit = { 
+				OR = {
+					check_variable = { target_invest = 2 }
+					has_state_flag = state_invest_arms
+				}
+			}
+			add_to_temp_variable = { state_factory_building_speed_t = modifier@FRA.production_speed_arms_factory_factor }
+			add_to_temp_variable = { state_factory_building_speed_t = modifier@state_production_speed_arms_factory_factor }
+				set_temp_variable = { t = state_factory_building_speed_t }
+				if = { limit = { check_temp_variable = { t < 0 } } multiply_temp_variable = { t = -1 } }
+				multiply_temp_variable = { t = 0.5 }
+				add_to_temp_variable = { t = 1 }
+			divide_temp_variable = { state_factory_building_speed_t = t }
+			add_to_temp_variable = { state_factory_building_speed_t = 1 }
+			clamp_temp_variable = { var = state_factory_building_speed_t min = 0.1 }
+
+			multiply_temp_variable = { state_factory_building_speed_t = 100 }
+			divide_temp_variable = { state_factory_building_speed_t = 220 }
+		}
+		else_if = {
+			limit = { 
+				OR = {
+					check_variable = { target_invest = 3 }
+					has_state_flag = state_invest_dockyard
+				}
+			}
+			add_to_temp_variable = { state_factory_building_speed_t = modifier@FRA.production_speed_dockyard_factor }
+			add_to_temp_variable = { state_factory_building_speed_t = modifier@state_production_speed_dockyard_factor }
+				set_temp_variable = { t = state_factory_building_speed_t }
+				if = { limit = { check_temp_variable = { t < 0 } } multiply_temp_variable = { t = -1 } }
+				multiply_temp_variable = { t = 0.5 }
+				add_to_temp_variable = { t = 1 }
+			divide_temp_variable = { state_factory_building_speed_t = t }
+			add_to_temp_variable = { state_factory_building_speed_t = 1 }
+			clamp_temp_variable = { var = state_factory_building_speed_t min = 0.1 }
+
+			multiply_temp_variable = { state_factory_building_speed_t = 100 }
+			divide_temp_variable = { state_factory_building_speed_t = 200 }
+		}
+
+		set_temp_variable = { state_factory_building_speed_t_base = FRA.economy_industry_basic }
+		add_to_temp_variable = { state_factory_building_speed_t_base = FRA.economy_industry_process }
+		add_to_temp_variable = { state_factory_building_speed_t_base = -100 }
+		multiply_temp_variable = { state_factory_building_speed_t_base = 0.005 }
+		add_to_temp_variable = { state_factory_building_speed_t_base = 1 }
+		if = {
+			limit = { has_state_flag = cgf_expand_investment }
+			multiply_temp_variable = { state_factory_building_speed_t_base = 4 }
+		}
+		else = { multiply_temp_variable = { state_factory_building_speed_t_base = state_invest_civilian_factory_use } }
+		divide_temp_variable = { state_factory_building_speed_t_base = 4 }
+		multiply_temp_variable = { state_factory_building_speed_t = state_factory_building_speed_t_base }
+
+		set_temp_variable = { state_factory_building_speed_t_link = industrial_complex_level }
+		add_to_temp_variable = { state_factory_building_speed_t_link = state_economy_industry }
+			set_temp_variable = { t = state_factory_building_speed_t_link }
+			add_to_temp_variable = { t = 10 }
+			multiply_temp_variable = { t = 200 }
+		multiply_temp_variable = { state_factory_building_speed_t_link = FRA.economy_link }
+		divide_temp_variable = { state_factory_building_speed_t_link = t }
+		add_to_temp_variable = { state_factory_building_speed_t_link = 1 }
+		multiply_temp_variable = { state_factory_building_speed_t = state_factory_building_speed_t_link }
+
+		set_variable = { state_factory_building_speed = state_factory_building_speed_t }
+	}
+	state_invest_progress_judge = {
+		add_to_variable = { state_invest_building_progress = state_factory_building_speed }
+		if = {
+			limit = { NOT = { check_variable = { state_invest_building_progress < 100 } } }
+			set_variable = { num_of_added_factory_in_investment = 0 }
+			if = {
+				limit = { has_state_flag = cgf_expand_investment } 
+				clr_state_flag = cgf_expand_investment 
+			}
+			if = {
+				limit = { has_state_flag = state_invest_civilian }
+				clr_state_flag = state_invest_civilian
+		
+				set_temp_variable = { sesic = 1 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 0 }
+				FCF_state_economy_situation_change = yes
+			}
+			else_if = {
+				limit = { has_state_flag = state_invest_arms }
+				clr_state_flag = state_invest_arms
+		
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 1 }
+				set_temp_variable = { sesdc = 0 }
+				FCF_state_economy_situation_change = yes
+			}
+			else_if = {
+				limit = { has_state_flag = state_invest_dockyard }
+				clr_state_flag = state_invest_dockyard
+		
+				set_temp_variable = { sesic = 0 }
+				set_temp_variable = { sesac = 0 }
+				set_temp_variable = { sesdc = 1 }
+				FCF_state_economy_situation_change = yes
+			}
+		}
+	}
+	state_invest_civilian_for_free_once = {
+		set_state_flag = state_invest_civilian
+		set_state_flag = cgf_expand_investment
+		custom_effect_tooltip = state_invest_civilian_for_free_once
+	}
+	state_invest_arms_for_free_once = {
+		set_state_flag = state_invest_arms
+		set_state_flag = cgf_expand_investment
+		custom_effect_tooltip = state_invest_arms_for_free_once
+	}
+	state_invest_dockyard_for_free_once = {
+		set_state_flag = state_invest_dockyard
+		set_state_flag = cgf_expand_investment
+		custom_effect_tooltip = state_invest_dockyard_for_free_once
+	}
 ###被忽视的乡村修正改动
 	ignored_country_change_down = {
 		if = {
@@ -3662,6 +3992,18 @@ clr_gui_economy_flag = {
 			add_to_variable = { 
 				state_recruitable_population_factor = 0.06 
 				tooltip = recruitable_population_factor_tt
+			}
+			add_to_variable = { 
+				state_invest_civilian_cost_change = -2
+				tooltip = state_invest_civilian_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_arms_cost_change = -3
+				tooltip = state_invest_arms_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_dockyard_cost_change = -2
+				tooltip = state_invest_dockyard_cost_modifier_tt
 			}
 		}
 		else_if = {
@@ -3695,6 +4037,18 @@ clr_gui_economy_flag = {
 			add_to_variable = { 
 				state_recruitable_population_factor = -0.06 
 				tooltip = recruitable_population_factor_tt
+			}
+			add_to_variable = { 
+				state_invest_civilian_cost_change = 2
+				tooltip = state_invest_civilian_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_arms_cost_change = 3
+				tooltip = state_invest_arms_cost_modifier_tt
+			}
+			add_to_variable = { 
+				state_invest_dockyard_cost_change = 2
+				tooltip = state_invest_dockyard_cost_modifier_tt
 			}
 		}
 	}
