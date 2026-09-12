@@ -1,451 +1,1021 @@
 #### 社会阶层 ####
-FCF_society_categories = {
-#极端派系                                                                                 
-	#绿衫军
-	FCF_extremists_vertes_friendly = {
+FCF_society_category = {
+###通用阶层
+	FCF_society_activate_pop_workers_mission = {
 		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		visible = { has_country_flag = vertes_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			economy_power_factor = -0.1
-		}
-		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
-		custom_cost_text = cost_ep_30
-		remove_effect = {
-			set_temp_variable = { t = 1 }
-			extremists_attitude_up = yes
-		}
-	}
-	FCF_extremists_vertes_against = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = vertes_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			political_power_factor = -0.1
-		}
-		cost = 30
-		remove_effect = {
-			set_temp_variable = { t = 1 }
-			extremists_status_down = yes
-		}
-	}
-	#突击队
-	FCF_extremists_commando_friendly = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = commando_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			economy_power_factor = -0.1
-		}
-		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
-		custom_cost_text = cost_ep_30
-		remove_effect = {
-			set_temp_variable = { t = 2 }
-			extremists_attitude_up = yes
-		}
-	}
-	FCF_extremists_commando_against = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = commando_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			political_power_factor = -0.1
-		}
-		cost = 30
-		remove_effect = {
-			set_temp_variable = { t = 2 }
-			extremists_status_down = yes
-		}
-	}
-	
-	#黑手党
-	FCF_extremists_mafia_friendly = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = mafia_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			economy_power_factor = -0.1
-		}
-		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
-		custom_cost_text = cost_ep_30
-		remove_effect = {
-			set_temp_variable = { t = 3 }
-			extremists_attitude_up = yes
-		}
-	}
-	FCF_extremists_mafia_against = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = mafia_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			political_power_factor = -0.1
-		}
-		cost = 30
-		remove_effect = {
-			set_temp_variable = { t = 3 }
-			extremists_status_down = yes
-		}
-	}
-	#赤卫队
-	FCF_extremists_red_guard_friendly = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = red_guard_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			economy_power_factor = -0.1
-		}
-		custom_cost_trigger  = { NOT = { check_variable = { economy_power < 30 } } }
-		custom_cost_text = cost_ep_30
-		remove_effect = {
-			set_temp_variable = { t = 4 }
-			extremists_attitude_up = yes
-		}
-	}
-	FCF_extremists_red_guard_against = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		visible = { has_country_flag = red_guard_detail_show }
-		days_remove = 60
-		days_re_enable = 0
-		modifier = { 
-			political_power_factor = -0.1
-		}
-		cost = 30
-		remove_effect = {
-			set_temp_variable = { t = 4 }
-			extremists_status_down = yes
-		}
-	}
-#总工会
-	#改革
-	FCF_reform_cgt_simplify_management = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			NOT = { has_country_flag = CGT_strengthen_mangement }
-			has_completed_focus = FCF_reform_cgt 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
-		ai_will_do = { base = 10 }
-		cost = 20
-		days_remove = 60
-		cancel_trigger = { NOT = { has_country_flag = CGT_simplifed_mangement } }
-		modifier = {
-			stability_weekly = -0.001
-			monthly_change_eip = -0.2
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			NOT = { has_country_flag = during_pop_workers_mission }
 		}
 		complete_effect = {
-			custom_effect_tooltip = FCF_reform_cgt_simplify_management_tt
-			set_country_flag = CGT_simplifed_mangement
+			custom_effect_tooltip = FCF_society_pop_workers_mission_need
+			custom_effect_tooltip = FCF_pop_mission_general_tt
+
+			set_country_flag = during_pop_workers_mission
+			activate_mission = FCF_society_pop_workers_mission
+			set_variable = { workers_mission_investment_count = 0 }
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_pop_workers_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 180
+		activation = { has_country_flag = during_pop_workers_mission }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FCF_society_pop_workers_mission_available_trigger
+				NOT = { check_variable = { workers_mission_investment_count < workers_mission_target_investment_count } }
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = { value = workers_mission_reward_level multiply = 1 } }
+			set_temp_variable = { pop_peasants_change = { value = workers_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_merchants_change = { value = workers_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_scholars_change = { value = workers_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_bureaucrats_change = { value = workers_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_army_change = { value = workers_mission_reward_level multiply = -0.2 } }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = { value = workers_mission_reward_level multiply = 1.5 } }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			add_to_variable = { workers_mission_reward_level = 1 }
+			add_to_variable = { workers_mission_target_investment_count = 3 }
+
+			clr_country_flag = during_pop_workers_mission
+		}
+		timeout_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = -3 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			set_variable = { workers_mission_reward_level = 1 }
+			set_variable = { workers_mission_target_investment_count = 3 }
+
+			clr_country_flag = during_pop_workers_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	FCF_society_activate_pop_peasants_mission = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			NOT = { has_country_flag = during_pop_peasants_mission }
+		}
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_pop_peasants_mission_need
+			custom_effect_tooltip = FCF_pop_mission_general_tt
+
+			set_country_flag = during_pop_peasants_mission
+			activate_mission = FCF_society_pop_peasants_mission
+			set_variable = { peasants_mission_investment_count = 0 }
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_pop_peasants_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 180
+		activation = { has_country_flag = during_pop_peasants_mission }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FCF_society_pop_peasants_mission_available_trigger
+				NOT = { check_variable = { peasants_mission_investment_count < peasants_mission_target_investment_count } }
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = { value = peasants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_peasants_change = { value = peasants_mission_reward_level multiply = 1 } }
+			set_temp_variable = { pop_merchants_change = { value = peasants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_scholars_change = { value = peasants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_bureaucrats_change = { value = peasants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_army_change = { value = peasants_mission_reward_level multiply = -0.2 } }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = { value = peasants_mission_reward_level multiply = 1.5 } }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			add_to_variable = { peasants_mission_reward_level = 1 }
+			add_to_variable = { peasants_mission_target_investment_count = 2 }
+
+			clr_country_flag = during_pop_peasants_mission
+		}
+		timeout_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = -3 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			set_variable = { peasants_mission_reward_level = 1 }
+			set_variable = { peasants_mission_target_investment_count = 2 }
+
+			clr_country_flag = during_pop_peasants_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	FCF_society_activate_pop_merchants_mission = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			NOT = { has_country_flag = during_pop_merchants_mission }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FCF_society_pop_merchants_mission_activate_trigger
+				NOT = { check_variable = { economy_power < merchants_mission_target_economy_power } }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_pop_merchants_mission_need
+			custom_effect_tooltip = FCF_pop_mission_general_tt
+
+			set_country_flag = during_pop_merchants_mission
+			activate_mission = FCF_society_pop_merchants_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_pop_merchants_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 180
+		activation = { has_country_flag = during_pop_merchants_mission }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FCF_society_pop_merchants_mission_available_trigger
+				check_variable = { economy_power < merchants_mission_target_economy_power }
+			}
+		}
+		is_good = yes
+		fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = -3 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			set_variable = { merchants_mission_reward_level = 1 }
+			set_variable = { merchants_mission_target_economy_power = 50 }
+
+			clr_country_flag = during_pop_merchants_mission
+		}
+		timeout_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = { value = merchants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_peasants_change = { value = merchants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_merchants_change = { value = merchants_mission_reward_level multiply = 1 } }
+			set_temp_variable = { pop_scholars_change = { value = merchants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_bureaucrats_change = { value = merchants_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_army_change = { value = merchants_mission_reward_level multiply = -0.2 } }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = { value = merchants_mission_reward_level multiply = 1.5 } }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			add_to_variable = { merchants_mission_reward_level = 1 }
+			add_to_variable = { merchants_mission_target_economy_power = 25 }
+
+			clr_country_flag = during_pop_merchants_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	FCF_society_activate_pop_scholars_mission = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			NOT = { has_country_flag = during_pop_scholars_mission }
+		}
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_pop_scholars_mission_need
+			custom_effect_tooltip = FCF_pop_mission_general_tt
+
+			set_country_flag = during_pop_scholars_mission
+			activate_mission = FCF_society_pop_scholars_mission
+			set_variable = { scholars_mission_starting_resource_total = { value = economy_power add = political_power } }
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_pop_scholars_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 180
+		activation = { has_country_flag = during_pop_scholars_mission }
+		available = {
+			set_temp_variable = { scholars_mission_spent_resources = scholars_mission_starting_resource_total }
+			subtract_from_temp_variable = { scholars_mission_spent_resources = { value = economy_power add = political_power } }
+			custom_trigger_tooltip = {
+				tooltip = FCF_society_pop_scholars_mission_available_trigger
+				NOT = { check_variable = { scholars_mission_spent_resources < scholars_mission_target_spending } }
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = { value = scholars_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_peasants_change = { value = scholars_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_merchants_change = { value = scholars_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_scholars_change = { value = scholars_mission_reward_level multiply = 1 } }
+			set_temp_variable = { pop_bureaucrats_change = { value = scholars_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_army_change = { value = scholars_mission_reward_level multiply = -0.2 } }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = { value = scholars_mission_reward_level multiply = 1.5 } }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			add_to_variable = { scholars_mission_reward_level = 1 }
+			add_to_variable = { scholars_mission_target_spending = 50 }
+
+			clr_country_flag = during_pop_scholars_mission
+		}
+		timeout_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = -3 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			set_variable = { scholars_mission_reward_level = 1 }
+			set_variable = { scholars_mission_target_spending = 100 }
+
+			clr_country_flag = during_pop_scholars_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	FCF_society_activate_pop_bureaucrats_mission = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			NOT = { has_country_flag = during_pop_bureaucrats_mission }
+		}
+		available = {
+			has_political_power > bureaucrats_mission_target_political_power
+		}
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_pop_bureaucrats_mission_need
+			custom_effect_tooltip = FCF_pop_mission_general_tt
+			set_country_flag = during_pop_bureaucrats_mission
+			activate_mission = FCF_society_pop_bureaucrats_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_pop_bureaucrats_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 180
+		activation = { has_country_flag = during_pop_bureaucrats_mission }
+		available = {
+			has_political_power < bureaucrats_mission_target_political_power
+		}
+		is_good = yes
+		fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = -3 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			set_variable = { bureaucrats_mission_reward_level = 1 }
+			set_variable = { bureaucrats_mission_target_political_power = 50 }
+
+			clr_country_flag = during_pop_bureaucrats_mission
+		}
+		timeout_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = { value = bureaucrats_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_peasants_change = { value = bureaucrats_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_merchants_change = { value = bureaucrats_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_scholars_change = { value = bureaucrats_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_bureaucrats_change = { value = bureaucrats_mission_reward_level multiply = 1 } }
+			set_temp_variable = { pop_army_change = { value = bureaucrats_mission_reward_level multiply = -0.2 } }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = { value = bureaucrats_mission_reward_level multiply = 1.5 } }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			add_to_variable = { bureaucrats_mission_reward_level = 1 }
+			add_to_variable = { bureaucrats_mission_target_political_power = 25 }
+
+			clr_country_flag = during_pop_bureaucrats_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	FCF_society_activate_pop_army_mission = {
+		icon = ger_mefo_bills
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			NOT = { has_country_flag = during_pop_army_mission }
+		}
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_pop_army_mission_need
+			custom_effect_tooltip = FCF_pop_mission_general_tt
+
+			set_country_flag = during_pop_army_mission
+			activate_mission = FCF_society_pop_army_mission
+			set_variable = { army_mission_arms_investment_count = 0 }
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_pop_army_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 180
+		activation = { has_country_flag = during_pop_army_mission }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = FCF_society_pop_army_mission_available_trigger
+				NOT = { check_variable = { army_mission_arms_investment_count < army_mission_target_arms_investment_count } }
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = { value = army_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_peasants_change = { value = army_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_merchants_change = { value = army_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_scholars_change = { value = army_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_bureaucrats_change = { value = army_mission_reward_level multiply = -0.2 } }
+			set_temp_variable = { pop_army_change = { value = army_mission_reward_level multiply = 1 } }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = { value = army_mission_reward_level multiply = 1.5 } }
+			society_pop_satisfaction_change = yes
+
+			add_to_variable = { army_mission_reward_level = 1 }
+			add_to_variable = { army_mission_target_arms_investment_count = 2 }
+
+			clr_country_flag = during_pop_army_mission
+		}
+		timeout_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = 0 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+			set_temp_variable = { pop_satisfaction_army_change = -3 }
+			society_pop_satisfaction_change = yes
+
+			set_variable = { army_mission_reward_level = 1 }
+			set_variable = { army_mission_target_arms_investment_count = 2 }
+
+			clr_country_flag = during_pop_army_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+###激进派系
+#军团
+	FCF_society_extremist_group_legions_friendly = {
+		icon = ger_mefo_bills
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_legions_detail_visible }
+		modifier = {
+			economy_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 1 }
+			set_temp_variable = { extremist_group_status_change = 1 }
+			set_temp_variable = { extremist_group_attitude_change = 1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_extremist_group_legions_against = {
+		icon = ger_mefo_bills
+		cost = 30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_legions_detail_visible }
+		modifier = {
+			political_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 1 }
+			set_temp_variable = { extremist_group_status_change = -1 }
+			set_temp_variable = { extremist_group_attitude_change = -1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+#卫队
+	FCF_society_extremist_group_gardes_friendly = {
+		icon = ger_mefo_bills
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible }
+		modifier = {
+			economy_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 2 }
+			set_temp_variable = { extremist_group_status_change = 1 }
+			set_temp_variable = { extremist_group_attitude_change = 1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_extremist_group_gardes_against = {
+		icon = ger_mefo_bills
+		cost = 30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible }
+		modifier = {
+			political_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 2 }
+			set_temp_variable = { extremist_group_status_change = -1 }
+			set_temp_variable = { extremist_group_attitude_change = -1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+#服务队
+	FCF_society_extremist_group_TPPS_friendly = {
+		icon = ger_mefo_bills
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible }
+		modifier = {
+			economy_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 3 }
+			set_temp_variable = { extremist_group_status_change = 1 }
+			set_temp_variable = { extremist_group_attitude_change = 1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_extremist_group_TPPS_against = {
+		icon = ger_mefo_bills
+		cost = 30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible }
+		modifier = {
+			political_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 3 }
+			set_temp_variable = { extremist_group_status_change = -1 }
+			set_temp_variable = { extremist_group_attitude_change = -1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+#邦诺帮
+	FCF_society_extremist_group_bonnot_friendly = {
+		icon = ger_mefo_bills
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible }
+		modifier = {
+			economy_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 4 }
+			set_temp_variable = { extremist_group_status_change = 1 }
+			set_temp_variable = { extremist_group_attitude_change = 1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_extremist_group_bonnot_against = {
+		icon = ger_mefo_bills
+		cost = 30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible }
+		modifier = {
+			political_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 4 }
+			set_temp_variable = { extremist_group_status_change = -1 }
+			set_temp_variable = { extremist_group_attitude_change = -1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+#方阵
+	FCF_society_extremist_group_phalanges_friendly = {
+		icon = ger_mefo_bills
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible }
+		modifier = {
+			economy_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 5 }
+			set_temp_variable = { extremist_group_status_change = 1 }
+			set_temp_variable = { extremist_group_attitude_change = 1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_extremist_group_phalanges_against = {
+		icon = ger_mefo_bills
+		cost = 30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible }
+		modifier = {
+			political_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 5 }
+			set_temp_variable = { extremist_group_status_change = -1 }
+			set_temp_variable = { extremist_group_attitude_change = -1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+#绿衫军
+	FCF_society_extremist_group_vertes_friendly = {
+		icon = ger_mefo_bills
+		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
+		custom_cost_text = cost_ep_30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible }
+		modifier = {
+			economy_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 6 }
+			set_temp_variable = { extremist_group_status_change = 1 }
+			set_temp_variable = { extremist_group_attitude_change = 1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_society_extremist_group_vertes_against = {
+		icon = ger_mefo_bills
+		cost = 30
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = FRA }
+		visible = { has_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible }
+		modifier = {
+			political_power_factor = -0.1
+		}
+		remove_effect = {
+			set_temp_variable = { target_extremist_group_id = 6 }
+			set_temp_variable = { extremist_group_status_change = -1 }
+			set_temp_variable = { extremist_group_attitude_change = -1 }
+			society_extremist_group_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+###总工会
+#改革
+	FCF_society_CGT_reform_simplify_management = {
+		icon = ger_mefo_bills
+		cost = 20
+		days_remove = 60
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			NOT = { has_country_flag = CGT_strengthened_management }
+			has_completed_focus = FCF_reform_CGT
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		fire_only_once = yes
+		cancel_trigger = { NOT = { has_country_flag = CGT_simplified_management } }
+		modifier = {
+			stability_weekly = -0.001
+			economy_industry_process_monthly_change = -0.2
+		}
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_CGT_reform_simplify_management_tt
+			set_country_flag = CGT_simplified_management
 			add_to_variable = { CGT_radicalness_level = 1 }
 
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = -3 }
-			set_temp_variable = { factionc_2 = 3 }
-			set_temp_variable = { factionc_3 = 0 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = -3 }
+			set_temp_variable = { faction_2_change = 3 }
+			set_temp_variable = { faction_3_change = 0 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
-			hidden_effect = { country_event = { id = fcf_economy_event.74 days = 14 random_days = 7 } }
+			hidden_effect = { country_event = { id = fcf_economy_events.74 days = 14 random_days = 7 } }
 		}
 		remove_effect = {
 			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_wc = 1 }
-			set_temp_variable = { pop_pc = 0 }
-			set_temp_variable = { pop_mc = 0 }
-			set_temp_variable = { pop_sc = 0 }
-			set_temp_variable = { pop_bc = -1 }
-			set_temp_variable = { pop_ac = 0 }
-			class_pop_change = yes
-			
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { evc = 0 }
-			set_temp_variable = { eibc = 0 }
-			set_temp_variable = { eipc = 1 }
-			set_temp_variable = { eiac = 0 }
-			set_temp_variable = { eamc = 0 }
-			set_temp_variable = { eaec = 0 }
-			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = 3 }
-			set_temp_variable = { elc = 0 }
-			set_temp_variable = { eic = 0 }
-			economy_variable_change = yes
+			set_temp_variable = { pop_workers_change = 1 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = 0 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = -1 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { ertc_dom = 0 }
-			set_temp_variable = { ertc_str = 0 }
-			set_temp_variable = { ertc_man = -1 }
-			set_temp_variable = { ertc_pro = 0 }
-			set_temp_variable = { ertc_exc = 0 }
-			set_temp_variable = { ertc_con = 0 }
-			set_temp_variable = { ertc_dev = 0 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 0 }
+			set_temp_variable = { economy_industry_process_change = 1 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 3 }
+			set_temp_variable = { economy_society_integration_change = 0 }
+			set_temp_variable = { economy_society_innovation_change = 0 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = 0 }
+			set_temp_variable = { economy_reform_structure_change = 0 }
+			set_temp_variable = { economy_reform_management_change = -1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
 			economy_reform_tendency_change = yes
 		}
-	}
-	FCF_reform_cgt_strengthen_management = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			NOT = { has_country_flag = CGT_simplifed_mangement }
-			has_completed_focus = FCF_reform_cgt 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
 		ai_will_do = { base = 10 }
+	}
+	FCF_society_CGT_reform_strengthen_management = {
+		icon = ger_mefo_bills
 		cost = 20
 		days_remove = 60
-		cancel_trigger = { NOT = { has_country_flag = CGT_strengthen_mangement } }
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			NOT = { has_country_flag = CGT_simplified_management }
+			has_completed_focus = FCF_reform_CGT
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		fire_only_once = yes
+		cancel_trigger = { NOT = { has_country_flag = CGT_strengthened_management } }
 		modifier = {
 			economy_power_factor = -0.05
 			political_power_factor = -0.05
-			monthly_change_eip = 0.2
+			economy_industry_process_monthly_change = 0.2
 		}
 		complete_effect = {
-			custom_effect_tooltip = FCF_reform_cgt_strengthen_management_tt
-			set_country_flag = CGT_strengthen_mangement
+			custom_effect_tooltip = FCF_society_CGT_reform_strengthen_management_tt
+			set_country_flag = CGT_strengthened_management
 			add_to_variable = { CGT_bureaucracy_level = 1 }
 
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = 2 }
-			set_temp_variable = { factionc_2 = -3 }
-			set_temp_variable = { factionc_3 = 1 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = 2 }
+			set_temp_variable = { faction_2_change = -3 }
+			set_temp_variable = { faction_3_change = 1 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
-			hidden_effect = { country_event = { id = fcf_economy_event.77 days = 14 random_days = 7 } }
+			hidden_effect = { country_event = { id = fcf_economy_events.77 days = 14 random_days = 7 } }
 		}
 		remove_effect = {
 			custom_effect_tooltip = effect_society
-			set_temp_variable = { pop_wc = -1 }
-			set_temp_variable = { pop_pc = 0 }
-			set_temp_variable = { pop_mc = 0 }
-			set_temp_variable = { pop_sc = 0 }
-			set_temp_variable = { pop_bc = 1 }
-			set_temp_variable = { pop_ac = 0 }
-			class_pop_change = yes
-			
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { evc = 0 }
-			set_temp_variable = { eibc = 0 }
-			set_temp_variable = { eipc = 2 }
-			set_temp_variable = { eiac = 0 }
-			set_temp_variable = { eamc = 0 }
-			set_temp_variable = { eaec = 0 }
-			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = -1 }
-			set_temp_variable = { elc = 1 }
-			set_temp_variable = { eic = 0 }
-			economy_variable_change = yes
+			set_temp_variable = { pop_workers_change = -1 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = 0 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = 1 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { ertc_dom = 0 }
-			set_temp_variable = { ertc_str = 0 }
-			set_temp_variable = { ertc_man = 1 }
-			set_temp_variable = { ertc_pro = 0 }
-			set_temp_variable = { ertc_exc = 0 }
-			set_temp_variable = { ertc_con = 0 }
-			set_temp_variable = { ertc_dev = 0 }
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 0 }
+			set_temp_variable = { economy_industry_process_change = 2 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = -1 }
+			set_temp_variable = { economy_society_integration_change = 1 }
+			set_temp_variable = { economy_society_innovation_change = 0 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = 0 }
+			set_temp_variable = { economy_reform_structure_change = 0 }
+			set_temp_variable = { economy_reform_management_change = 1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
 			economy_reform_tendency_change = yes
 		}
-	}
-	FCF_reform_cgt_criticize_decentralization = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_reform_cgt 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
 		ai_will_do = { base = 10 }
-		available = {
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { target_faction = 2 }
-			party_dominated_faction_judge = no 
-		}
+	}
+	FCF_society_CGT_reform_criticize_decentralization = {
+		icon = ger_mefo_bills
 		cost = 20
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_reform_CGT
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		available = {
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { target_faction_id = 2 }
+			politics_party_dominant_faction_evaluate = no
+
+			AND = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = trigger_party_in_gov
+						PARTY = party_POU
+					}
+					has_country_flag = POU_in_gov
+				}
+
+				OR = {
+					set_temp_variable = { target_party_id = 3 }
+					set_temp_variable = { target_faction_id = 2 }
+					politics_party_dominant_faction_evaluate = yes
+
+					set_temp_variable = { target_party_id = 3 }
+					set_temp_variable = { target_faction_id = 3 }
+					politics_party_dominant_faction_evaluate = yes
+				}
+			}
+		}
+		fire_only_once = yes
 		complete_effect = {
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = 10 }
-			set_temp_variable = { factionc_2 = -15 }
-			set_temp_variable = { factionc_3 = 5 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = 10 }
+			set_temp_variable = { faction_2_change = -15 }
+			set_temp_variable = { faction_3_change = 5 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
-			set_temp_variable = { ertc_dom = 0 }
-			set_temp_variable = { ertc_str = 1 }
-			set_temp_variable = { ertc_man = 0 }
-			set_temp_variable = { ertc_pro = 0 }
-			set_temp_variable = { ertc_exc = 0 }
-			set_temp_variable = { ertc_con = 0 }
-			set_temp_variable = { ertc_dev = 0 }
+			set_temp_variable = { economy_reform_dominance_change = 0 }
+			set_temp_variable = { economy_reform_structure_change = 1 }
+			set_temp_variable = { economy_reform_management_change = 0 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
 			economy_reform_tendency_change = yes
 		}
-	}
-	FCF_reform_cgt_criticize_centralization = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_reform_cgt 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
 		ai_will_do = { base = 10 }
-		available = {
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { target_faction = 1 }
-			party_dominated_faction_judge = no 
-
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { target_faction = 3 }
-			party_dominated_faction_judge = no 
-		}
+	}
+	FCF_society_CGT_reform_criticize_centralization = {
+		icon = ger_mefo_bills
 		cost = 20
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_reform_CGT
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		available = {
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { target_faction_id = 1 }
+			politics_party_dominant_faction_evaluate = no
+
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { target_faction_id = 3 }
+			politics_party_dominant_faction_evaluate = no
+		}
+		fire_only_once = yes
 		complete_effect = {
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = -10 }
-			set_temp_variable = { factionc_2 = 15 }
-			set_temp_variable = { factionc_3 = -5 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = -10 }
+			set_temp_variable = { faction_2_change = 15 }
+			set_temp_variable = { faction_3_change = -5 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
-			set_temp_variable = { ertc_dom = 0 }
-			set_temp_variable = { ertc_str = -1 }
-			set_temp_variable = { ertc_man = 0 }
-			set_temp_variable = { ertc_pro = 0 }
-			set_temp_variable = { ertc_exc = 0 }
-			set_temp_variable = { ertc_con = 0 }
-			set_temp_variable = { ertc_dev = 0 }
+			set_temp_variable = { economy_reform_dominance_change = 0 }
+			set_temp_variable = { economy_reform_structure_change = -1 }
+			set_temp_variable = { economy_reform_management_change = 0 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
 			economy_reform_tendency_change = yes
 		}
-	}
-	#分权
-	FCF_reform_cgt_encourage_workers_reporting = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_self_supervised_syndicats 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
 		ai_will_do = { base = 10 }
+	}
+#分权
+	FCF_society_CGT_reform_encourage_workers_reporting = {
+		icon = ger_mefo_bills
 		custom_cost_trigger = { NOT = { check_variable = { economy_power < 30 } } }
 		custom_cost_text = cost_ep_30
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_self_supervised_syndicats
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		fire_only_once = yes
 		complete_effect = {
 			add_to_variable = { economy_power = -30 }
-			custom_effect_tooltip = FCF_reform_cgt_encourage_workers_reporting_tt
+			custom_effect_tooltip = FCF_society_CGT_reform_encourage_workers_reporting_tt
 			add_to_variable = { CGT_radicalness_level = 1 }
 			add_to_variable = { CGT_bureaucracy_level = 0 }
 
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = -3 }
-			set_temp_variable = { factionc_2 = 5 }
-			set_temp_variable = { factionc_3 = -2 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = -3 }
+			set_temp_variable = { faction_2_change = 5 }
+			set_temp_variable = { faction_3_change = -2 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
-			hidden_effect = { country_event = { id = fcf_economy_event.78 days = 5 random_days = 9 } }
-		}
-	}
-	FCF_reform_cgt_democratize_management = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_self_supervised_syndicats 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
+			hidden_effect = { country_event = { id = fcf_economy_events.78 days = 5 random_days = 9 } }
 		}
 		ai_will_do = { base = 10 }
-		available = { 
-			has_country_flag = CGT_simplifed_mangement 
-			ert_man_right_trigger = yes
-		}
+	}
+	FCF_society_CGT_reform_democratize_management = {
+		icon = ger_mefo_bills
 		cost = 40
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_self_supervised_syndicats
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		available = {
+			has_country_flag = CGT_simplified_management
+			economy_reform_management_right_trigger = yes
+		}
+		fire_only_once = yes
 		complete_effect = {
-			custom_effect_tooltip = FCF_reform_cgt_democratize_management_tt
+			custom_effect_tooltip = FCF_society_CGT_reform_democratize_management_tt
 			add_to_variable = { CGT_radicalness_level = 1 }
 			add_to_variable = { CGT_bureaucracy_level = -1 }
 
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = -4 }
-			set_temp_variable = { factionc_2 = 7 }
-			set_temp_variable = { factionc_3 = -3 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = -4 }
+			set_temp_variable = { faction_2_change = 7 }
+			set_temp_variable = { faction_3_change = -3 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
-			set_temp_variable = { ertc_dom = 0 }
-			set_temp_variable = { ertc_str = 0 }
-			set_temp_variable = { ertc_man = -1 }
-			set_temp_variable = { ertc_pro = 0 }
-			set_temp_variable = { ertc_exc = 0 }
-			set_temp_variable = { ertc_con = 0 }
-			set_temp_variable = { ertc_dev = 0 }
+			set_temp_variable = { economy_reform_dominance_change = 0 }
+			set_temp_variable = { economy_reform_structure_change = 0 }
+			set_temp_variable = { economy_reform_management_change = -1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
 			economy_reform_tendency_change = yes
 
-			hidden_effect = { 
+			hidden_effect = {
 				if = {
 					limit = { has_country_flag = CGT_popularize_management_knowledge }
-					country_event = { id = fcf_economy_event.91 days = 10 random_days = 20 }
+					country_event = { id = fcf_economy_events.91 days = 10 random_days = 20 }
 				}
 				else_if = {
 					limit = { has_country_flag = CGT_technical_management }
-					country_event = { id = fcf_economy_event.89 days = 10 random_days = 20 }
+					country_event = { id = fcf_economy_events.89 days = 10 random_days = 20 }
 				}
-				else = { country_event = { id = fcf_economy_event.87 days = 10 random_days = 20 }  }
+				else = { country_event = { id = fcf_economy_events.87 days = 10 random_days = 20 }  }
 			}
 		}
-	}
-	FCF_reform_cgt_coordination_mechanism = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_self_supervised_syndicats 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
 		ai_will_do = { base = 10 }
-		available = { 
+	}
+	FCF_society_CGT_reform_coordination_mechanism = {
+		icon = ger_mefo_bills
+		cost = 50
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_self_supervised_syndicats
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		available = {
 			custom_trigger_tooltip = {
 				tooltip = {
 					localization_key = var_judge_num
@@ -456,288 +1026,314 @@ FCF_society_categories = {
 				check_variable = { CGT_faction^2 < 60 }
 			}
 		}
-		cost = 50
+		fire_only_once = yes
 		complete_effect = {
-			custom_effect_tooltip = FCF_reform_cgt_coordination_mechanism_tt
+			custom_effect_tooltip = FCF_society_CGT_reform_coordination_mechanism_tt
 			add_to_variable = { CGT_radicalness_level = -2 }
 
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = 3 }
-			set_temp_variable = { factionc_2 = -6 }
-			set_temp_variable = { factionc_3 = 3 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = 3 }
+			set_temp_variable = { faction_2_change = -6 }
+			set_temp_variable = { faction_3_change = 3 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
 			set_country_flag = CGT_coordination_mechanism
 		}
-	}
-	FCF_reform_cgt_connect_with_CNS = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_self_supervised_syndicats 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
 		ai_will_do = { base = 10 }
-		available = { 
+	}
+	FCF_society_CGT_reform_connect_with_CNS = {
+		icon = ger_mefo_bills
+		cost = 30
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_self_supervised_syndicats
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		available = {
 			OR = {
-				set_temp_variable = { party_var = 1 }
-				set_temp_variable = { target_attitude = 5 }
-				party_attitude_judge = yes
-				set_temp_variable = { party_var = 1 }
-				set_temp_variable = { target_attitude = 4 }
-				party_attitude_judge = yes
-				set_temp_variable = { party_var = 1 }
-				set_temp_variable = { target_attitude = 3 }
-				party_attitude_judge = yes
+				set_temp_variable = { target_party_id = 1 }
+				set_temp_variable = { target_attitude_level = 5 }
+				politics_party_attitude_evaluate = yes
+				set_temp_variable = { target_party_id = 1 }
+				set_temp_variable = { target_attitude_level = 4 }
+				politics_party_attitude_evaluate = yes
+				set_temp_variable = { target_party_id = 1 }
+				set_temp_variable = { target_attitude_level = 3 }
+				politics_party_attitude_evaluate = yes
 			}
 		}
-		cost = 30
-		complete_effect = {
-			custom_effect_tooltip = FCF_reform_cgt_connect_with_CNS_tt
-
-			country_event = fcf_economy_event.92
-		}
-	}
-	#集权
-	FCF_reform_cgt_professional_bureaucrats = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
 		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_professional_governance 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_CGT_reform_connect_with_CNS_tt
+
+			country_event = fcf_economy_events.92
 		}
 		ai_will_do = { base = 10 }
+	}
+#集权
+	FCF_society_CGT_reform_professional_bureaucrats = {
+		icon = ger_mefo_bills
 		custom_cost_trigger = { NOT = { check_variable = { economy_power < 40 } } }
 		custom_cost_text = cost_ep_40
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_professional_governance
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		fire_only_once = yes
 		complete_effect = {
 			add_to_variable = { economy_power = -40 }
-			custom_effect_tooltip = FCF_reform_cgt_professional_bureaucrats_tt
-		
-			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = 3 }
-			set_temp_variable = { factionc_2 = -5 }
-			set_temp_variable = { factionc_3 = 2 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			custom_effect_tooltip = FCF_society_CGT_reform_professional_bureaucrats_tt
 
-			hidden_effect = { 
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = 3 }
+			set_temp_variable = { faction_2_change = -5 }
+			set_temp_variable = { faction_3_change = 2 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
+
+			hidden_effect = {
 				if = {
 					limit = { has_country_flag = CGT_branch_funds }
-					hidden_effect = { country_event = { id = fcf_economy_event.98 days = 5 random_days = 9 } }
+					hidden_effect = { country_event = { id = fcf_economy_events.98 days = 5 random_days = 9 } }
 				}
-				else = { country_event = { id = fcf_economy_event.95 days = 5 random_days = 9 } }
+				else = { country_event = { id = fcf_economy_events.95 days = 5 random_days = 9 } }
 			}
 		}
-	}
-	FCF_reform_cgt_unified_branch_standards = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_professional_governance 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
-		}
 		ai_will_do = { base = 10 }
+	}
+	FCF_society_CGT_reform_unified_branch_standards = {
+		icon = ger_mefo_bills
 		cost = 70
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_professional_governance
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		fire_only_once = yes
 		complete_effect = {
-			custom_effect_tooltip = FCF_reform_cgt_unified_branch_standards_tt
+			custom_effect_tooltip = FCF_society_CGT_reform_unified_branch_standards_tt
 			set_country_flag = CGT_unified_branch_standards
 
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = 3 }
-			set_temp_variable = { factionc_2 = -5 }
-			set_temp_variable = { factionc_3 = 2 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = 3 }
+			set_temp_variable = { faction_2_change = -5 }
+			set_temp_variable = { faction_3_change = 2 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = effect_economy
-			set_temp_variable = { ertc_dom = 0 }
-			set_temp_variable = { ertc_str = 0 }
-			set_temp_variable = { ertc_man = 1 }
-			set_temp_variable = { ertc_pro = 0 }
-			set_temp_variable = { ertc_exc = 0 }
-			set_temp_variable = { ertc_con = 0 }
-			set_temp_variable = { ertc_dev = 0 }
+			set_temp_variable = { economy_reform_dominance_change = 0 }
+			set_temp_variable = { economy_reform_structure_change = 0 }
+			set_temp_variable = { economy_reform_management_change = 1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
 			economy_reform_tendency_change = yes
 
-			hidden_effect = { country_event = { id = fcf_economy_event.99 days = 5 random_days = 9 } }
-		}
-	}
-	FCF_reform_cgt_strengthen_internal_incentive = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_professional_governance 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
+			hidden_effect = { country_event = { id = fcf_economy_events.99 days = 5 random_days = 9 } }
 		}
 		ai_will_do = { base = 10 }
+	}
+	FCF_society_CGT_reform_strengthen_internal_incentive = {
+		icon = ger_mefo_bills
 		custom_cost_trigger = { NOT = { check_variable = { economy_power < 50 } } }
 		custom_cost_text = cost_ep_50
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_professional_governance
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		fire_only_once = yes
 		complete_effect = {
 			add_to_variable = { economy_power = -50 }
-			custom_effect_tooltip = FCF_reform_cgt_strengthen_internal_incentive_tt
-		
-			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = 10 }
-			set_temp_variable = { factionc_2 = -8 }
-			set_temp_variable = { factionc_3 = -2 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			custom_effect_tooltip = FCF_society_CGT_reform_strengthen_internal_incentive_tt
 
-			hidden_effect = { country_event = { id = fcf_economy_event.102 days = 5 random_days = 9 } }
-		}
-	}
-	FCF_reform_cgt_connect_with_PSF = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_professional_governance 
-			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
-			NOT = { has_completed_focus = FCF_new_cgt }
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = 10 }
+			set_temp_variable = { faction_2_change = -8 }
+			set_temp_variable = { faction_3_change = -2 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
+
+			hidden_effect = { country_event = { id = fcf_economy_events.102 days = 5 random_days = 9 } }
 		}
 		ai_will_do = { base = 10 }
-		available = { 
+	}
+	FCF_society_CGT_reform_connect_with_PSF = {
+		icon = ger_mefo_bills
+		cost = 30
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_professional_governance
+			NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+			NOT = { has_completed_focus = FCF_new_CGT }
+		}
+		available = {
 			OR = {
-				set_temp_variable = { party_var = 2 }
-				set_temp_variable = { target_attitude = 5 }
-				party_attitude_judge = yes
-				set_temp_variable = { party_var = 2 }
-				set_temp_variable = { target_attitude = 4 }
-				party_attitude_judge = yes
-				set_temp_variable = { party_var = 2 }
-				set_temp_variable = { target_attitude = 3 }
-				party_attitude_judge = yes
+				set_temp_variable = { target_party_id = 2 }
+				set_temp_variable = { target_attitude_level = 5 }
+				politics_party_attitude_evaluate = yes
+				set_temp_variable = { target_party_id = 2 }
+				set_temp_variable = { target_attitude_level = 4 }
+				politics_party_attitude_evaluate = yes
+				set_temp_variable = { target_party_id = 2 }
+				set_temp_variable = { target_attitude_level = 3 }
+				politics_party_attitude_evaluate = yes
 			}
 		}
-		cost = 30
-		complete_effect = {
-			custom_effect_tooltip = FCF_reform_cgt_connect_with_PSF_tt
-
-			country_event = fcf_economy_event.105
-		}
-	}
-
-	#反对
-	FCF_against_cgt_investigation_committee = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
 		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_against_cgt 
-			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_CGT_reform_connect_with_PSF_tt
+
+			country_event = fcf_economy_events.105
 		}
 		ai_will_do = { base = 10 }
+	}
+
+#反对
+	FCF_society_CGT_opposition_investigation_committee = {
+		icon = ger_mefo_bills
 		cost = 50
-		complete_effect = {
-			custom_effect_tooltip = FCF_against_cgt_investigation_committee_tt
-			hidden_effect = { country_event = { id = fcf_economy_event.7 days = 5 random_days = 7 } }
-		}
-	}
-	FCF_against_cgt_independent_unions = {
-		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_against_cgt 
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_against_CGT
 			NOT = { has_country_flag = CGT_already_responded_to_bill }
 		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_CGT_opposition_investigation_committee_tt
+			hidden_effect = { country_event = { id = fcf_economy_events.7 days = 5 random_days = 7 } }
+		}
 		ai_will_do = { base = 10 }
+	}
+	FCF_society_CGT_opposition_independent_unions = {
+		icon = ger_mefo_bills
 		custom_cost_trigger = { NOT = { check_variable = { economy_power < 50 } } }
 		custom_cost_text = cost_ep_50
-		complete_effect = {
-			custom_effect_tooltip = FCF_against_cgt_independent_unions_tt
-			country_event = fcf_economy_event.4
-		}
-	}
-	FCF_against_cgt_independent_delegate = {
-		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_against_cgt 
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_against_CGT
 			NOT = { has_country_flag = CGT_already_responded_to_bill }
 		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_CGT_opposition_independent_unions_tt
+			country_event = fcf_economy_events.4
+		}
 		ai_will_do = { base = 10 }
+	}
+	FCF_society_CGT_opposition_independent_delegate = {
+		icon = ger_mefo_bills
 		cost = 40
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_against_CGT
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		}
+		fire_only_once = yes
 		complete_effect = {
 			set_country_flag = independent_delegate_in_syndicats
 			add_to_variable = { CGT_confidence = -1 }
 
-			custom_effect_tooltip = FCF_against_cgt_independent_delegate_tt
+			custom_effect_tooltip = FCF_society_CGT_opposition_independent_delegate_tt
 			custom_effect_tooltip = effect_economy
-			set_temp_variable = { evc = 0 }
-			set_temp_variable = { eibc = 0 }
-			set_temp_variable = { eipc = 1 }
-			set_temp_variable = { eiac = 0 }
-			set_temp_variable = { eamc = 0 }
-			set_temp_variable = { eaec = 0 }
-			set_temp_variable = { eaac = 0 }
-			set_temp_variable = { eqc = 1 }
-			set_temp_variable = { elc = 1 }
-			set_temp_variable = { eic = 0 }
-			economy_variable_change = yes
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 0 }
+			set_temp_variable = { economy_industry_process_change = 1 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 1 }
+			set_temp_variable = { economy_society_integration_change = 1 }
+			set_temp_variable = { economy_society_innovation_change = 0 }
+			economy_indicators_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { ertc_dom = 2 }
-			set_temp_variable = { ertc_str = 0 }
-			set_temp_variable = { ertc_man = 0 }
-			set_temp_variable = { ertc_pro = 0 }
-			set_temp_variable = { ertc_exc = 0 }
-			set_temp_variable = { ertc_con = 0 }
-			set_temp_variable = { ertc_dev = 0 }
+			set_temp_variable = { economy_reform_dominance_change = 2 }
+			set_temp_variable = { economy_reform_structure_change = 0 }
+			set_temp_variable = { economy_reform_management_change = 0 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
 			economy_reform_tendency_change = yes
 		}
+		ai_will_do = { base = 10 }
 	}
-	FCF_against_cgt_reversal_of_verdict = {
+	FCF_society_CGT_opposition_reversal_of_verdict = {
 		icon = ger_mefo_bills
+		cost = 25
 		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_against_cgt 
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_against_CGT
 			NOT = { has_country_flag = CGT_already_responded_to_bill }
 		}
-		ai_will_do = { base = 10 }
-		cost = 25
+		fire_only_once = yes
 		complete_effect = {
 			add_stability = 0.02
 			add_to_variable = { CGT_confidence = -1 }
 			set_country_flag = Martin_reversal_of_verdict
 
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { change_num = 2 }
-			cgf_seat_change_in_gov = yes
+			set_temp_variable = { seat_change = 2 }
+			politics_CGF_coalition_seat_change = yes
 
-			country_event = fcf_economy_event.6
-		}
-	}
-
-	FCF_against_cgt_antitrust_law = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_antitrust_investigation 
-			NOT = { has_country_flag = CGT_already_responded_to_bill }
+			country_event = fcf_economy_events.6
 		}
 		ai_will_do = { base = 10 }
+	}
+
+	FCF_society_CGT_opposition_antitrust_law = {
+		icon = ger_mefo_bills
+		cost = 30
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_antitrust_investigation
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		}
 		available = {
 			NOT = { has_country_flag = voting_for_bill }
 			custom_trigger_tooltip = {
@@ -750,30 +1346,30 @@ FCF_society_categories = {
 				check_variable = { economy_power > 40 }
 			}
 		}
-		cost = 30
+		fire_only_once = yes
 		complete_effect = {
 			add_to_variable = {
 				economy_power = -40
 				tooltip = economy_power_change_tt
 			}
 			custom_effect_tooltip = {
-				localization_key = bill_vote_tips
-				BILL = bill_antitrust
+				localization_key = society_bill_vote_tt
+				BILL = FCF_society_bill_antitrust
 			}
 			set_country_flag = voting_for_bill
 			set_variable = { bill_var = 23 }
 
-			set_temp_variable = { CNS_atb = 4 }
-			set_temp_variable = { PSF_atb = 1 }
-			set_temp_variable = { POU_atb = 2 }
-			set_temp_variable = { CGT_atb = 0 }
-			set_temp_variable = { PCOP_atb = 7 }
-			set_temp_variable = { UA_atb = 10 }
-			set_temp_variable = { URSRS_atb = 3 }
-			set_temp_variable = { LJR_atb = 3 }
-			set_temp_variable = { PAPF_atb = 1 }
-			set_temp_variable = { ETC_atb = 2 }
-			cgf_voting_set = yes
+			set_temp_variable = { CNS_bill_support_score = 4 }
+			set_temp_variable = { PSF_bill_support_score = 1 }
+			set_temp_variable = { POU_bill_support_score = 2 }
+			set_temp_variable = { CGT_bill_support_score = 0 }
+			set_temp_variable = { PCOP_bill_support_score = 7 }
+			set_temp_variable = { UA_bill_support_score = 10 }
+			set_temp_variable = { URSRS_bill_support_score = 3 }
+			set_temp_variable = { LJR_bill_support_score = 3 }
+			set_temp_variable = { PAPF_bill_support_score = 1 }
+			set_temp_variable = { ETC_bill_support_score = 2 }
+			politics_CGF_vote_set = yes
 
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = if_bill_pass
@@ -781,41 +1377,48 @@ FCF_society_categories = {
 				bill_23_pass_effect = yes
 			}
 		}
-	}
-	FCF_against_cgt_investigate_leaders = {
-		icon = ger_mefo_bills
-		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_antitrust_investigation 
-			NOT = { has_country_flag = CGT_already_responded_to_bill }
-		}
 		ai_will_do = { base = 10 }
+	}
+	FCF_society_CGT_opposition_investigate_leaders = {
+		icon = ger_mefo_bills
 		cost = 30
-		complete_effect = {
-			custom_effect_tooltip = FCF_against_cgt_investigate_leaders_tt
-			hidden_effect = { country_event = { id = fcf_economy_event.17 days = 5 random_days = 7 } }
-		}
-	}
-	FCF_against_cgt_encourage_grassroots_reporting = {
-		icon = ger_mefo_bills
 		allowed = { tag = FRA }
-		fire_only_once = yes
-		visible = { 
-			has_completed_focus = FCF_antitrust_investigation 
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_antitrust_investigation
 			NOT = { has_country_flag = CGT_already_responded_to_bill }
 		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = FCF_society_CGT_opposition_investigate_leaders_tt
+			hidden_effect = { country_event = { id = fcf_economy_events.17 days = 5 random_days = 7 } }
+		}
 		ai_will_do = { base = 10 }
+	}
+	FCF_society_CGT_opposition_encourage_grassroots_reporting = {
+		icon = ger_mefo_bills
 		custom_cost_trigger = { NOT = { check_variable = { economy_power < 40 } } }
 		custom_cost_text = cost_ep_40
+		allowed = { tag = FRA }
+		visible = {
+			NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+			NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			has_completed_focus = FCF_antitrust_investigation
+			NOT = { has_country_flag = CGT_already_responded_to_bill }
+		}
+		fire_only_once = yes
 		complete_effect = {
 			add_to_variable = { economy_power = -40 }
-			custom_effect_tooltip = FCF_against_cgt_encourage_grassroots_reporting_tt
+			custom_effect_tooltip = FCF_society_CGT_opposition_encourage_grassroots_reporting_tt
 			set_country_flag = encourage_workers_reporting_CGT
 			add_to_variable = { CGT_confidence = -2 }
 
-			hidden_effect = { country_event = { id = fcf_economy_event.62 days = 14 random_days = 14 } }
+			hidden_effect = { country_event = { id = fcf_economy_events.62 days = 14 random_days = 14 } }
 		}
+		ai_will_do = { base = 10 }
 	}
 #
-}   
+}

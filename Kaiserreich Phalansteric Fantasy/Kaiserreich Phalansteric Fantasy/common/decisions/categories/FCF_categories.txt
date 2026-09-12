@@ -1,69 +1,78 @@
-FCF_politics_categories = {
-    icon = GFX_decision_cat_communard_flag
-	scripted_gui = politics_decision_gui
-	allowed = { original_tag = FRA } 
+############
+### 政治 ###
+############
+# 法国政治系统主决议组；自定义议会内容由对应 scripted GUI 提供。
+FCF_politics_category = {
+	icon = GFX_decision_cat_communard_flag
 	priority = 12
-	visible_when_empty = yes 
-}
- 
-FCF_society_categories = {
-	icon = GFX_decision_cat_communard_flag
-	scripted_gui = society_decision_gui      
+	scripted_gui = FCF_politics_decision_gui
 	allowed = { original_tag = FRA }
-	priority = 11                                                                             
-	visible_when_empty = yes                                                  
-}      
-                  
-FCF_economy_categories = {
-	icon = GFX_decision_cat_communard_flag 
-	scripted_gui = economy_decision_gui    
-	allowed = { original_tag = FRA }                                      
-	priority = 10                                  
-	visible_when_empty = yes                                        
-}                                     
-                                                                                                                                                                                 
-FCF_military_categories = {
-	icon = GFX_decision_cat_communard_flag
-	scripted_gui = military_decision_gui            
-	allowed = { original_tag = FRA }                   
-	priority = 9                                        
-	visible_when_empty = yes 
-}    
+	visible_when_empty = yes
+}
 
-FCF_BoP_category = {                                  
+############
+### 社会 ###
+############
+# 法国社会阶层、法案与社会改革主决议组。
+FCF_society_category = {
+	icon = GFX_decision_cat_communard_flag
+	priority = 11
+	scripted_gui = FCF_society_decision_gui
+	allowed = { original_tag = FRA }
+	visible_when_empty = yes
+}
+
+############
+### 经济 ###
+############
+# 法国经济政策、地区建设与投资主决议组。
+FCF_economy_category = {
+	icon = GFX_decision_cat_communard_flag
+	priority = 10
+	scripted_gui = FCF_economy_decision_gui
+	allowed = { original_tag = FRA }
+	visible_when_empty = yes
+}
+
+############
+### 军事 ###
+############
+# 法国军队改革、训练与装备改进主决议组。
+FCF_military_category = {
+	icon = GFX_decision_cat_communard_flag
+	priority = 9
+	scripted_gui = FCF_military_decision_gui
+	allowed = { original_tag = FRA }
+	visible_when_empty = yes
+}
+
+# 法国政治系统中的权力平衡辅助决议组。
+FCF_international_category = {
 	icon = GFX_decision_category_intervention_overseas
 	allowed = { original_tag = FRA }
 }
 
-FCF_iri_countermeasures = {
-	icon = generic_political_actions    
+################
+### 国际干涉 ###
+################
+# 非法国国家用于回应国际干涉行动的反制决议组。
+FCF_international_intervention_countermeasures_category = {
+	icon = generic_political_actions
+	priority = 9
 	allowed = { NOT = { tag = FRA } }
-	visible = { 
+	visible = {
 		OR = {
 			AND = {
-				has_country_flag = COF_IRI_HAD 
+				has_country_flag = FCF_II_HAD
 				has_socialist_government = no
-				NOT = { has_country_flag = cof_iri_has_finished }
+				NOT = { has_country_flag = ii_has_finished }
 			}
 			AND = {
 				OR = {
 					tag = IRE
 					tag = ENG
 				}
-				IRE = { has_country_flag = cof_iri_ireland_revolution }
-			}
-			AND = {
-				OR = {
-					tag = PAP
-					tag = SRI
-				}
-				PAP = { 
-					OR = {
-						has_country_flag = pap_rome_strategy_radical
-						has_country_flag = pap_rome_strategy_normal
-						has_country_flag = pap_rome_strategy_steady
-					}
-				}
+				IRE = { has_country_flag = ii_ireland_revolution }
 			}
 		}
 	}

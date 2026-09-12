@@ -1,131 +1,203 @@
-add_namespace = fcf_society_event
+add_namespace = fcf_society_events
 
 country_event = {
-	id = fcf_society_event.1
-	title = fcf_society_event.1.title
-	desc = fcf_society_event.1.desc
-	
+	id = fcf_society_events.1
+	title = fcf_society_events.1.title
+	desc = fcf_society_events.1.desc
+
 	is_triggered_only = yes
 	option = {
-		name = fcf_society_event.1.a
-        ai_chance = { base = 50 }
+		name = fcf_society_events.1.a
 		add_political_power = -50
-		add_ideas = FCF_intensified_urban_rural_conflicts1
+		add_ideas = FCF_society_urban_rural_conflict_level_1
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_society
-		set_temp_variable = { wc = -3 }
-		set_temp_variable = { pc = -3 }
-		set_temp_variable = { mc = 0 }
-		set_temp_variable = { sc = 0 }
-		set_temp_variable = { bc = 0 }
-		set_temp_variable = { ac = 0 }
-		society_pop_satisfactions_change = yes
+		set_temp_variable = { pop_satisfaction_workers_change = -3 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -3 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_economy
-		set_temp_variable = { evc = 0 }
-		set_temp_variable = { eibc = -2.5 }
-		set_temp_variable = { eipc = 0 }
-		set_temp_variable = { eiac = 0 }
-		set_temp_variable = { eamc = 0 }
-		set_temp_variable = { eaec = 0 }
-		set_temp_variable = { eaac = -2.5 }
-		set_temp_variable = { eqc = -3 }
-		set_temp_variable = { elc = 0 }
-		set_temp_variable = { eic = 0 }
-		economy_variable_change = yes
+		set_temp_variable = { economy_values_change = 0 }
+		set_temp_variable = { economy_industry_basic_change = -2.5 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = -2.5 }
+		set_temp_variable = { economy_society_equality_change = -3 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+		ai_chance = { base = 50 }
 	}
 	option = {
-		name = fcf_society_event.1.b
-        ai_chance = { base = 50 }
+		name = fcf_society_events.1.b
 		add_political_power = -25
-		add_ideas = FCF_intensified_urban_rural_conflicts1
+		add_ideas = FCF_society_urban_rural_conflict_level_1
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_society
-		set_temp_variable = { wc = -5 }
-		set_temp_variable = { pc = -5 }
-		set_temp_variable = { mc = 0 }
-		set_temp_variable = { sc = 0 }
-		set_temp_variable = { bc = 0 }
-		set_temp_variable = { ac = 0 }
-		society_pop_satisfactions_change = yes
+		set_temp_variable = { pop_satisfaction_workers_change = -5 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -5 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
 		custom_effect_tooltip = tooltip_white_line
 		custom_effect_tooltip = effect_economy
-		set_temp_variable = { evc = 0 }
-		set_temp_variable = { eibc = -2.5 }
-		set_temp_variable = { eipc = 0 }
-		set_temp_variable = { eiac = 0 }
-		set_temp_variable = { eamc = 0 }
-		set_temp_variable = { eaec = 0 }
-		set_temp_variable = { eaac = -2.5 }
-		set_temp_variable = { eqc = -3 }
-		set_temp_variable = { elc = 0 }
-		set_temp_variable = { eic = 0 }
-		economy_variable_change = yes
+		set_temp_variable = { economy_values_change = 0 }
+		set_temp_variable = { economy_industry_basic_change = -2.5 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = -2.5 }
+		set_temp_variable = { economy_society_equality_change = -3 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+		ai_chance = { base = 50 }
 	}
 }
 
 country_event = {
-	id = fcf_society_event.2
-	title = fcf_society_event.2.title
-	desc = fcf_society_event.2.desc
-	
+	id = fcf_society_events.2
+	title = fcf_society_events.2.title
+	desc = fcf_society_events.2.desc
+
 	is_triggered_only = yes
 	option = {
-		name = fcf_society_event.2.a
-        add_stability = -0.1
+		name = fcf_society_events.2.a
+		add_stability = -0.1
 		add_political_power = -50
 		if = {
 			limit = { has_completed_focus = FCF_examine_womens_issues }
-			add_ideas = FCF_womens_day_parade_weaken
+			add_ideas = FCF_society_womens_day_parade_reduced
 		}
-		else = { add_ideas = FCF_womens_day_parade }
+		else = { add_ideas = FCF_society_womens_day_parade }
+		ai_chance = { base = 10 }
 	}
 }
 
 country_event = {
-	id = fcf_society_event.3 
-	title = fcf_society_event.3.title
-	desc = fcf_society_event.3.desc
-	
+	id = fcf_society_events.3
+	title = fcf_society_events.3.title
+	desc = fcf_society_events.3.desc
+
 	is_triggered_only = yes
 	immediate = {
-		hidden_effect = { country_event = { id = fcf_society_event.4 days = 5 } }
+		hidden_effect = { country_event = { id = fcf_society_events.4 days = 5 } }
 	}
 	option = {
-		name = fcf_society_event.3.a
+		name = fcf_society_events.3.a
 		add_stability = 0.01
 
 		custom_effect_tooltip = effect_society
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = -1 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = -1 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
+		ai_chance = { base = 10 }
 	}
 }
 
 country_event = {
-	id = fcf_society_event.4
-	title = fcf_society_event.4.title
-	desc = fcf_society_event.4.desc
-	
+	id = fcf_society_events.4
+	title = fcf_society_events.4.title
+	desc = fcf_society_events.4.desc
+
 	is_triggered_only = yes
 	option = {
-		name = fcf_society_event.4.a
+		name = fcf_society_events.4.a
 		if = {
-			limit = { 
+			limit = {
 				OR = {
-					has_completed_focus = FCF_state_of_all_workers 
-					has_completed_focus = FCF_beware_of_political_infiltration 
+					has_completed_focus = FCF_state_of_all_workers
+					has_completed_focus = FCF_beware_of_political_infiltration
 				}
 			}
-			add_ideas = FCF_police_enforcement_parade_weaken
+			add_ideas = FCF_society_police_enforcement_parade_reduced
 		}
-		else = { add_ideas = FCF_police_enforcement_parade }
+		else = { add_ideas = FCF_society_police_enforcement_parade }
+		ai_chance = { base = 10 }
+	}
+}
+
+country_event = {
+	id = fcf_society_events.5
+	title = fcf_society_events.5.title
+	desc = fcf_society_events.5.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_society_events.5.a
+		add_political_power = 10
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { target_extremist_group_id = 3 }
+		set_temp_variable = { extremist_group_status_change = 3 }
+		set_temp_variable = { extremist_group_attitude_change = 3 }
+		society_extremist_group_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { target_extremist_group_id = 4 }
+		set_temp_variable = { extremist_group_status_change = 3 }
+		set_temp_variable = { extremist_group_attitude_change = 3 }
+		society_extremist_group_change = yes
+		ai_chance = { base = 10 }
+	}
+}
+
+country_event = {
+	id = fcf_society_events.6
+	title = fcf_society_events.6.title
+	desc = fcf_society_events.6.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_society_events.6.a
+		add_political_power = 10
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { target_extremist_group_id = 2 }
+		set_temp_variable = { extremist_group_status_change = 3 }
+		set_temp_variable = { extremist_group_attitude_change = 3 }
+		society_extremist_group_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { target_extremist_group_id = 6 }
+		set_temp_variable = { extremist_group_status_change = 3 }
+		set_temp_variable = { extremist_group_attitude_change = 3 }
+		society_extremist_group_change = yes
+		ai_chance = { base = 10 }
+	}
+}
+
+country_event = {
+	id = fcf_society_events.7
+	title = fcf_society_events.7.title
+	desc = fcf_society_events.7.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_society_events.7.a
+		add_political_power = 10
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { target_extremist_group_id = 1 }
+		set_temp_variable = { extremist_group_status_change = 3 }
+		set_temp_variable = { extremist_group_attitude_change = 3 }
+		society_extremist_group_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { target_extremist_group_id = 5 }
+		set_temp_variable = { extremist_group_status_change = 3 }
+		set_temp_variable = { extremist_group_attitude_change = 3 }
+		society_extremist_group_change = yes
+		ai_chance = { base = 10 }
 	}
 }

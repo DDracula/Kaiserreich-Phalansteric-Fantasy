@@ -1,79 +1,83 @@
 #### 公社政治 ####
-FCF_politics_categories = { 
-	FCF_impeachment = {
+FCF_politics_category = {
+	FCF_politics_impeachment = {
 		icon = ger_mefo_bills
+		days_mission_timeout = 4
 		activation = { always = no }
 		available = { always = no }
 		is_good = yes
-		fixed_random_seed = no   
-		days_mission_timeout = 4                    
+		fixed_random_seed = no
 		timeout_effect = {
 			clr_country_flag = voting_for_bill
 			clr_country_flag = bill_pass_need_434
 			custom_effect_tooltip = bill_agree_vote_count
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = FCF_impeachment_effect
-			hidden_effect = { 
-				country_event = france_events.5 
-				country_event = { id = fcf_politics_event.4 days = 3 }
-				country_event = { id = fcf_politics_event.5 days = 6 }
-				country_event = { id = fcf_politics_event.6 days = 9 }
-				country_event = { id = fcf_politics_event.7 days = 11 }
+			custom_effect_tooltip = FCF_politics_impeachment_effect
+			hidden_effect = {
+				country_event = france_events.5
+				country_event = { id = fcf_politics_events.4 days = 3 }
+				country_event = { id = fcf_politics_events.5 days = 6 }
+				country_event = { id = fcf_politics_events.6 days = 9 }
+				country_event = { id = fcf_politics_events.7 days = 11 }
 			}
 		}
+		ai_will_do = { base = 10 }
 	}
-	FCF_voting_time_for_bill = {
+	FCF_politics_bill_vote = {
 		icon = ger_mefo_bills
+		days_mission_timeout = 14
 		activation = {
 			date > 1936.1.6
 			NOT = { has_country_flag = voting_for_change_csp }
-			has_country_flag = voting_for_bill 
+			has_country_flag = voting_for_bill
 		}
 		available = { always = no }
 		is_good = yes
-		fixed_random_seed = no   
-		days_mission_timeout = 14                   
+		fixed_random_seed = no
 		timeout_effect = {
 			custom_effect_tooltip = bill_agree_vote_count
-			country_event = fcf_politics_event.0
+			country_event = fcf_politics_events.0
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable = { v = bill_var }
+			set_temp_variable = { current_bill_id = bill_var }
 			custom_effect_tooltip = current_bill_content
-			effect_tooltip = { 
+			effect_tooltip = {
 				meta_effect = {
 					text = { bill_[BILLVAR]_pass_effect = yes }
 					BILLVAR = "[?bill_var]"
 				}
 			}
-		} 
-	} 
-	FCF_voting_time_for_change_csp = {
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_politics_CSP_change_vote = {
 		icon = ger_mefo_bills
+		days_mission_timeout = 7
 		activation = {
 			date > 1936.1.6
 			has_country_flag = voting_for_change_csp
-			has_country_flag = voting_for_bill 
+			has_country_flag = voting_for_bill
 		}
 		available = { always = no }
 		is_good = yes
-		fixed_random_seed = no   
-		days_mission_timeout = 7                 
+		fixed_random_seed = no
 		timeout_effect = {
 			custom_effect_tooltip = bill_agree_vote_count
-			country_event = fcf_politics_event.0
+			country_event = fcf_politics_events.0
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = current_change_csp_content
-			effect_tooltip = { 
+			effect_tooltip = {
 				meta_effect = {
 					text = { CSP_appoint_[CSPVAR]_effect = yes }
-					CSPVAR = "[?csp_change_member_variable]"
+					CSPVAR = "[?target_CSP_member_id]"
 				}
 			}
-		} 
-	} 
+		}
+		ai_will_do = { base = 10 }
+	}
 
-	FCF_finish_voting_ahead = {
+	FCF_politics_finish_vote_early = {
 		icon = ger_mefo_bills
+		cost = 20
 		allowed = { tag = FRA }
 		visible = {
 			has_country_flag = voting_can_be_finished_ahead
@@ -83,118 +87,123 @@ FCF_politics_categories = {
 			custom_trigger_tooltip = {
 				tooltip = bill_pass
 				if = {
-       				limit = { has_country_flag = bill_pass_need_434 }
-					check_variable = { agree_vote > 433 }
+					limit = { has_country_flag = bill_pass_need_434 }
+					check_variable = { agreement_vote_count > 433 }
 				}
-				else = { check_expr = { value = 650 subtract = abstain_vote divide = 2 less_than = agree_vote } } 
+				else = { check_expr = { value = 650 subtract = abstention_vote_count divide = 2 less_than = agreement_vote_count } }
 			}
 		}
-		cost = 20
 		complete_effect = {
 			add_days_mission_timeout = {
-				mission = FCF_voting_time_for_bill
+				mission = FCF_politics_bill_vote
 				days = -14
 			}
 		}
+		ai_will_do = { base = 10 }
 	}
-	#大选
-	FCF_election = {
+#大选
+	FCF_politics_election = {
 		icon = ger_mefo_bills
+		days_remove = 30
 		allowed = { tag = FRA }
 		visible = { always = no }
 		modifier = {
 			political_power_factor = 0.1
 			stability_weekly = 0.005
 		}
-		days_remove = 30
 		remove_effect = {
-			custom_effect_tooltip = FCF_election_tt
+			custom_effect_tooltip = FCF_politics_election_tt
 			hidden_effect = {
-				if = { 
+				if = {
 					limit = { has_country_flag = election_time_1936 }
 					clr_country_flag = election_time_1936
 					FCF_1936_election_result_effect = yes
 				}
 			}
 		}
+		ai_will_do = { base = 10 }
 	}
-	election_1936_CNS_cooperate_with_POU = {
+	FCF_politics_election_1936_CNS_cooperate_with_POU = {
 		icon = ger_mefo_bills
+		cost = 20
 		allowed = { tag = FRA }
 		visible = { has_country_flag = election_time_1936 }
 		fire_only_once = yes
-		cost = 20
 		complete_effect = {
 			custom_effect_tooltip = CNS_cooperate_with_POU_tt
 			set_country_flag = CNS_cooperate_with_POU
 		}
+		ai_will_do = { base = 10 }
 	}
-	election_1936_CNS_cooperate_with_LJR = {
+	FCF_politics_election_1936_CNS_cooperate_with_LJR = {
 		icon = ger_mefo_bills
+		cost = 20
 		allowed = { tag = FRA }
 		visible = { has_country_flag = election_time_1936 }
 		fire_only_once = yes
-		cost = 20
 		complete_effect = {
 			custom_effect_tooltip = CNS_cooperate_with_LJR_tt
 			set_country_flag = CNS_cooperate_with_LJR
 		}
+		ai_will_do = { base = 10 }
 	}
-	election_1936_PSF_cooperate_with_CGT = {
+	FCF_politics_election_1936_PSF_cooperate_with_CGT = {
 		icon = ger_mefo_bills
+		cost = 20
 		allowed = { tag = FRA }
 		visible = { has_country_flag = election_time_1936 }
 		fire_only_once = yes
-		cost = 20
 		complete_effect = {
 			custom_effect_tooltip = PSF_cooperate_with_CGT_tt
 			set_country_flag = PSF_cooperate_with_CGT
 		}
+		ai_will_do = { base = 10 }
 	}
-	election_1936_PSF_cooperate_with_URSRS = {
+	FCF_politics_election_1936_PSF_cooperate_with_URSRS = {
 		icon = ger_mefo_bills
+		cost = 20
 		allowed = { tag = FRA }
 		visible = { has_country_flag = election_time_1936 }
 		fire_only_once = yes
-		cost = 20
 		complete_effect = {
 			custom_effect_tooltip = PSF_cooperate_with_URSRS_tt
 			set_country_flag = PSF_cooperate_with_URSRS
 		}
+		ai_will_do = { base = 10 }
 	}
-	election_1936_POU_faction_struggle = {
+	FCF_politics_election_1936_POU_faction_struggle = {
 		icon = ger_mefo_bills
+		cost = 10
 		allowed = { tag = FRA }
 		visible = { has_country_flag = election_time_1936 }
 		fire_only_once = yes
-		cost = 10
 		complete_effect = {
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 3 }
-			set_temp_variable = { factionc_1 = -8 }
-			set_temp_variable = { factionc_2 = 6 }
-			set_temp_variable = { factionc_3 = 2 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 3 }
+			set_temp_variable = { faction_1_change = -8 }
+			set_temp_variable = { faction_2_change = 6 }
+			set_temp_variable = { faction_3_change = 2 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 		}
+		ai_will_do = { base = 10 }
 	}
-	election_1936_CGT_faction_struggle = {
+	FCF_politics_election_1936_CGT_faction_struggle = {
 		icon = ger_mefo_bills
+		cost = 10
 		allowed = { tag = FRA }
 		visible = { has_country_flag = election_time_1936 }
 		fire_only_once = yes
-		cost = 10
 		complete_effect = {
 			custom_effect_tooltip = effect_politics
-			set_temp_variable = { party_var = 4 }
-			set_temp_variable = { factionc_1 = -6 }
-			set_temp_variable = { factionc_2 = 6 }
-			set_temp_variable = { factionc_3 = 0 }
-			set_temp_variable = { factionc_4 = 0 }
-			set_temp_variable = { factionc_5 = 0 }
-			party_faction_change = yes
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { faction_1_change = -6 }
+			set_temp_variable = { faction_2_change = 6 }
+			set_temp_variable = { faction_3_change = 0 }
+			set_temp_variable = { faction_4_change = 0 }
+			politics_party_faction_change = yes
 		}
+		ai_will_do = { base = 10 }
 	}
-	#
+#
 }

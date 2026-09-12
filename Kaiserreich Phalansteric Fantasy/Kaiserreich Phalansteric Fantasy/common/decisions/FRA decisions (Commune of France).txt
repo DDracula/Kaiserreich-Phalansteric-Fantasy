@@ -4,6 +4,16 @@
 FRA_phalanstere_category = {
 	FRA_join_phalanstere = {
 		icon = generic_research
+		cost = 0
+		targets = { INT }
+		target_trigger = {
+			has_socialist_government = yes
+			is_in_economic_sphere = no
+			FROM = {
+				is_economic_sphere_leader = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
 		allowed = {
 			NOT = {
 				tag = FRA #added by event
@@ -34,23 +44,13 @@ FRA_phalanstere_category = {
 				NOT = { has_war_with = ROOT }
 			}
 		}
-		targets = { INT }
-		target_trigger = {
-			has_socialist_government = yes
-			is_in_economic_sphere = no
-			FROM = {
-				is_economic_sphere_leader = yes
-				NOT = { has_war_with = ROOT }
-			}
-		}
-		cost = 0
 		fire_only_once = yes
-		ai_will_do = { factor = 1000 }
+		fixed_random_seed = no
 		complete_effect = {
 			log = "[GetLogRoot][GetLogFrom]: Decision complete FRA_join_phalanstere"
 			FRA_add_to_phalanstere = yes
 		}
-		fixed_random_seed = no
+		ai_will_do = { factor = 1000 }
 	}
 
 ###############################

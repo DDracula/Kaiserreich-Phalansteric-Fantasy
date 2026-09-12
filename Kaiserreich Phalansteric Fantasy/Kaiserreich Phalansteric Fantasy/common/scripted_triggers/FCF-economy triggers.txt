@@ -1,417 +1,453 @@
-FCF_is_french_state = {
-	OR = {
-		state = 1
-		state = 8
-		state = 14
-		state = 15
-		state = 16
-		state = 17
-		state = 18
-		state = 19
-		state = 20
-		state = 21
-		state = 22
-		state = 23
-		state = 24
-		state = 25
-		state = 26
-		state = 27
-		state = 28
-		state = 29
-		state = 30
-		state = 31
-		state = 32
-		state = 33
-		state = 34
-		state = 735
-		state = 760
-		state = 762
-		state = 763
-		state = 779
-		state = 785
-		state = 817
-		state = 943
-		state = 948
-		state = 980
-		state = 983
-		state = 984
-	}
-}
-
-FCF_is_city_zone = {
-    custom_trigger_tooltip = {
-        tooltip = FCF_is_city_zone
-        OR = {
-            has_state_category = six
-            has_state_category = seven
-            has_state_category = eight
-            has_state_category = nine
-            has_state_category = ten
-            has_state_category = eleven
-            has_state_category = twelve
-        }
-    }
-}
-
-FCF_is_rural_zone = {
-    custom_trigger_tooltip = {
-        tooltip = FCF_is_rural_zone
-        OR = {
-            has_state_category = one
-            has_state_category = two
-            has_state_category = three
-            has_state_category = four
-            has_state_category = five
-        }
-    }
-}
-
-FCF_is_brittany_zone = {
-	OR = {
-		state = 14
-		state = 983
-	}
-}
-
-FCF_state_is_invested = {
-	custom_trigger_tooltip = {
-		tooltip = FCF_state_is_invested
+################
+### 地块范围 ###
+################
+	### 作用域：地块；主要作用：判断当前地块是否属于本项目采用的法国地块集合。
+	FCF_is_french_state = {
 		OR = {
-			has_state_flag = state_invest_civilian
-			has_state_flag = state_invest_arms
-			has_state_flag = state_invest_dockyard
+			state = 1
+			state = 8
+			state = 14
+			state = 15
+			state = 16
+			state = 17
+			state = 18
+			state = 19
+			state = 20
+			state = 21
+			state = 22
+			state = 23
+			state = 24
+			state = 25
+			state = 26
+			state = 27
+			state = 28
+			state = 29
+			state = 30
+			state = 31
+			state = 32
+			state = 33
+			state = 34
+			state = 735
+			state = 760
+			state = 762
+			state = 763
+			state = 779
+			state = 785
+			state = 817
+			state = 943
+			state = 948
+			state = 980
+			state = 983
+			state = 984
 		}
 	}
-}
 
-state_local_factories_than_x = {
-	custom_trigger_tooltip = {
-		if = {
-			limit = { check_variable = { target_t = 0 } }
-			set_temp_variable = { target_v = state_factory }
+	### 作用域：地块；主要作用：判断当前地块是否属于城市地区。
+	FCF_is_city_zone = {
+		custom_trigger_tooltip = {
+			tooltip = FCF_is_city_zone
+			OR = {
+				has_state_category = six
+				has_state_category = seven
+				has_state_category = eight
+				has_state_category = nine
+				has_state_category = ten
+				has_state_category = eleven
+				has_state_category = twelve
+			}
 		}
-		else_if = {
-			limit = { check_variable = { target_t = 1 } }
-			set_temp_variable = { target_v = state_economy_industry }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 2 } }
-			set_temp_variable = { target_v = state_economy_arms }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 3 } }
-			set_temp_variable = { target_v = state_economy_dockyard }
-		}
-        tooltip = local_factories_more_than_x  
-        check_variable = { target_v > target_num }
-    }
-}
+	}
 
-economy_values_location_less = {
-    custom_trigger_tooltip = {
-		if = {
-			limit = { check_variable = { target_t = 5 } }
-			set_temp_variable = { tmax = 100 }
+	### 作用域：地块；主要作用：判断当前地块是否属于乡村地区。
+	FCF_is_rural_zone = {
+		custom_trigger_tooltip = {
+			tooltip = FCF_is_rural_zone
+			OR = {
+				has_state_category = one
+				has_state_category = two
+				has_state_category = three
+				has_state_category = four
+				has_state_category = five
+			}
 		}
-		else_if = {
-			limit = { check_variable = { target_t = 4 } }
-			set_temp_variable = { tmax = 90 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 3 } }
-			set_temp_variable = { tmax = 70 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 2 } }
-			set_temp_variable = { tmax = 50 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 1 } }
-			set_temp_variable = { tmax = 30 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 0 } }
-			set_temp_variable = { tmax = 10 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -1 } }
-			set_temp_variable = { tmax = -10 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -2 } }
-			set_temp_variable = { tmax = -30 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -3 } }
-			set_temp_variable = { tmax = -50 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -4 } }
-			set_temp_variable = { tmax = -70 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -5 } }
-			set_temp_variable = { tmax = -90 }
-		}
-		tooltip = economy_values_location_less
+	}
+
+	### 作用域：地块；主要作用：判断当前地块是否属于布列塔尼地区。
+	FCF_is_brittany_zone = {
 		OR = {
-			check_variable = { economy_values < tmax }
-			check_variable = { economy_values = tmax }
-		}
-    }
-}
-economy_values_location_more = {
-    custom_trigger_tooltip = {
-		if = {
-			limit = { check_variable = { target_t = 5 } }
-			set_temp_variable = { tmin = 90 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 4 } }
-			set_temp_variable = { tmin = 70 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 3 } }
-			set_temp_variable = { tmin = 50 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 2 } }
-			set_temp_variable = { tmin = 30 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 1 } }
-			set_temp_variable = { tmin = 10 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = 0 } }
-			set_temp_variable = { tmin = -10 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -1 } }
-			set_temp_variable = { tmin = -30 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -2 } }
-			set_temp_variable = { tmin = -50 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -3 } }
-			set_temp_variable = { tmin = -70 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -4 } }
-			set_temp_variable = { tmin = -90 }
-		}
-		else_if = {
-			limit = { check_variable = { target_t = -5 } }
-			set_temp_variable = { tmin = -100 }
-		}
-		tooltip = economy_values_location_more
-		OR = {
-			check_variable = { economy_values > tmin }
-			check_variable = { economy_values = tmin }
-		}
-    }
-}
-
-###经济改革偏向
-	ert_dom_left_trigger = {
-		custom_trigger_tooltip =  {
-			tooltip = {
-				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_dom
-				TENDENCY = ert_dom_left
-			}
-			check_variable = { ert_dom > 0 }
+			state = 14
+			state = 983
 		}
 	}
 
-	ert_dom_right_trigger = {
-		custom_trigger_tooltip =  {
-			tooltip = {
-				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_dom
-				TENDENCY = ert_dom_right
+	### 作用域：地块；主要作用：判断当前地块是否正在进行任一类型的地方投资。
+	FCF_state_is_invested = {
+		custom_trigger_tooltip = {
+			tooltip = FCF_state_is_invested
+			OR = {
+				has_state_flag = state_invest_civilian
+				has_state_flag = state_invest_arms
+				has_state_flag = state_invest_dockyard
 			}
-			check_variable = { ert_dom < 0 }
 		}
 	}
 
-	ert_str_left_trigger = {
-		custom_trigger_tooltip =  {
-			tooltip = {
-				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_str
-				TENDENCY = ert_str_left
+	#set_temp_variable = { target_building_type = 0 }
+	#set_temp_variable = { target_factory_count = 0 }
+	#state_local_factories_above_target = yes
+	### 作用域：地块；主要作用：判断指定类型的本地工厂数量是否高于目标值。
+	state_local_factories_above_target = {
+		custom_trigger_tooltip = {
+			if = {
+				limit = { check_variable = { target_building_type = 0 } }
+				set_temp_variable = { selected_factory_count = state_factory }
 			}
-			check_variable = { ert_str > 0 }
+			else_if = {
+				limit = { check_variable = { target_building_type = 1 } }
+				set_temp_variable = { selected_factory_count = state_economy_industry }
+			}
+			else_if = {
+				limit = { check_variable = { target_building_type = 2 } }
+				set_temp_variable = { selected_factory_count = state_economy_arms }
+			}
+			else_if = {
+				limit = { check_variable = { target_building_type = 3 } }
+				set_temp_variable = { selected_factory_count = state_economy_dockyard }
+			}
+			tooltip = local_factories_more_than_x
+			check_variable = { selected_factory_count > target_factory_count }
 		}
 	}
 
-	ert_str_right_trigger = {
-		custom_trigger_tooltip =  {
-			tooltip = {
-				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_str
-				TENDENCY = ert_str_right
+	#set_temp_variable = { target_economy_level = 0 }
+	#economy_values_location_less = yes
+	### 作用域：国家；主要作用：判断经济状况是否低于或等于指定档位上界。
+	economy_values_location_less = {
+		custom_trigger_tooltip = {
+			if = {
+				limit = { check_variable = { target_economy_level = 5 } }
+				set_temp_variable = { economy_level_upper_bound = 100 }
 			}
-			check_variable = { ert_str < 0 }
+			else_if = {
+				limit = { check_variable = { target_economy_level = 4 } }
+				set_temp_variable = { economy_level_upper_bound = 90 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 3 } }
+				set_temp_variable = { economy_level_upper_bound = 70 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 2 } }
+				set_temp_variable = { economy_level_upper_bound = 50 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 1 } }
+				set_temp_variable = { economy_level_upper_bound = 30 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 0 } }
+				set_temp_variable = { economy_level_upper_bound = 10 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -1 } }
+				set_temp_variable = { economy_level_upper_bound = -10 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -2 } }
+				set_temp_variable = { economy_level_upper_bound = -30 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -3 } }
+				set_temp_variable = { economy_level_upper_bound = -50 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -4 } }
+				set_temp_variable = { economy_level_upper_bound = -70 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -5 } }
+				set_temp_variable = { economy_level_upper_bound = -90 }
+			}
+			tooltip = economy_values_location_less
+			OR = {
+				check_variable = { economy_values < economy_level_upper_bound }
+				check_variable = { economy_values = economy_level_upper_bound }
+			}
+		}
+	}
+	#set_temp_variable = { target_economy_level = 0 }
+	#economy_values_location_more = yes
+	### 作用域：国家；主要作用：判断经济状况是否高于或等于指定档位下界。
+	economy_values_location_more = {
+		custom_trigger_tooltip = {
+			if = {
+				limit = { check_variable = { target_economy_level = 5 } }
+				set_temp_variable = { economy_level_lower_bound = 90 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 4 } }
+				set_temp_variable = { economy_level_lower_bound = 70 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 3 } }
+				set_temp_variable = { economy_level_lower_bound = 50 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 2 } }
+				set_temp_variable = { economy_level_lower_bound = 30 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 1 } }
+				set_temp_variable = { economy_level_lower_bound = 10 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = 0 } }
+				set_temp_variable = { economy_level_lower_bound = -10 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -1 } }
+				set_temp_variable = { economy_level_lower_bound = -30 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -2 } }
+				set_temp_variable = { economy_level_lower_bound = -50 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -3 } }
+				set_temp_variable = { economy_level_lower_bound = -70 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -4 } }
+				set_temp_variable = { economy_level_lower_bound = -90 }
+			}
+			else_if = {
+				limit = { check_variable = { target_economy_level = -5 } }
+				set_temp_variable = { economy_level_lower_bound = -100 }
+			}
+			tooltip = economy_values_location_more
+			OR = {
+				check_variable = { economy_values > economy_level_lower_bound }
+				check_variable = { economy_values = economy_level_lower_bound }
+			}
 		}
 	}
 
-	ert_man_left_trigger = {
-		custom_trigger_tooltip =  {
+################
+### 经济改革 ###
+################
+	### 作用域：国家；主要作用：判断经济主导权改革倾向是否位于左侧区间。
+	economy_reform_dominance_left_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_man
-				TENDENCY = ert_man_left
+				REFTEND = economy_reform_dominance
+				TENDENCY = economy_reform_dominance_left
 			}
-			check_variable = { ert_man > 0 }
+			check_variable = { economy_reform_dominance > 0 }
 		}
 	}
 
-	ert_man_right_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济主导权改革倾向是否位于右侧区间。
+	economy_reform_dominance_right_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_man
-				TENDENCY = ert_man_right
+				REFTEND = economy_reform_dominance
+				TENDENCY = economy_reform_dominance_right
 			}
-			check_variable = { ert_man < 0 }
+			check_variable = { economy_reform_dominance < 0 }
 		}
 	}
 
-	ert_pro_left_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济结构改革倾向是否位于左侧区间。
+	economy_reform_structure_left_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_pro
-				TENDENCY = ert_pro_left
+				REFTEND = economy_reform_structure
+				TENDENCY = economy_reform_structure_left
 			}
-			check_variable = { ert_pro > 0 }
+			check_variable = { economy_reform_structure > 0 }
 		}
 	}
 
-	ert_pro_right_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济结构改革倾向是否位于右侧区间。
+	economy_reform_structure_right_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_pro
-				TENDENCY = ert_pro_right
+				REFTEND = economy_reform_structure
+				TENDENCY = economy_reform_structure_right
 			}
-			check_variable = { ert_pro < 0 }
+			check_variable = { economy_reform_structure < 0 }
 		}
 	}
 
-	ert_exc_left_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济管理改革倾向是否位于左侧区间。
+	economy_reform_management_left_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_exc
-				TENDENCY = ert_exc_left
+				REFTEND = economy_reform_management
+				TENDENCY = economy_reform_management_left
 			}
-			check_variable = { ert_exc > 0 }
+			check_variable = { economy_reform_management > 0 }
 		}
 	}
 
-	ert_exc_right_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济管理改革倾向是否位于右侧区间。
+	economy_reform_management_right_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_exc
-				TENDENCY = ert_exc_right
+				REFTEND = economy_reform_management
+				TENDENCY = economy_reform_management_right
 			}
-			check_variable = { ert_exc < 0 }
+			check_variable = { economy_reform_management < 0 }
 		}
 	}
 
-	ert_con_left_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济生产改革倾向是否位于左侧区间。
+	economy_reform_production_left_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_con
-				TENDENCY = ert_con_left
+				REFTEND = economy_reform_production
+				TENDENCY = economy_reform_production_left
 			}
-			check_variable = { ert_con > 0 }
+			check_variable = { economy_reform_production > 0 }
 		}
 	}
 
-	ert_con_right_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济生产改革倾向是否位于右侧区间。
+	economy_reform_production_right_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_con
-				TENDENCY = ert_con_right
+				REFTEND = economy_reform_production
+				TENDENCY = economy_reform_production_right
 			}
-			check_variable = { ert_con < 0 }
+			check_variable = { economy_reform_production < 0 }
 		}
 	}
 
-	ert_dev_left_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济交换改革倾向是否位于左侧区间。
+	economy_reform_exchange_left_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_dev
-				TENDENCY = ert_dev_left
+				REFTEND = economy_reform_exchange
+				TENDENCY = economy_reform_exchange_left
 			}
-			check_variable = { ert_dev > 0 }
+			check_variable = { economy_reform_exchange > 0 }
 		}
 	}
 
-	ert_dev_right_trigger = {
-		custom_trigger_tooltip =  {
+	### 作用域：国家；主要作用：判断经济交换改革倾向是否位于右侧区间。
+	economy_reform_exchange_right_trigger = {
+		custom_trigger_tooltip = {
 			tooltip = {
 				localization_key = reform_tendency_trigger_tt
-				REFTEND = ert_dev
-				TENDENCY = ert_dev_right
+				REFTEND = economy_reform_exchange
+				TENDENCY = economy_reform_exchange_right
 			}
-			check_variable = { ert_dev < 0 }
+			check_variable = { economy_reform_exchange < 0 }
+		}
+	}
+
+	### 作用域：国家；主要作用：判断经济消费改革倾向是否位于左侧区间。
+	economy_reform_consumption_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = economy_reform_consumption
+				TENDENCY = economy_reform_consumption_left
+			}
+			check_variable = { economy_reform_consumption > 0 }
+		}
+	}
+
+	### 作用域：国家；主要作用：判断经济消费改革倾向是否位于右侧区间。
+	economy_reform_consumption_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = economy_reform_consumption
+				TENDENCY = economy_reform_consumption_right
+			}
+			check_variable = { economy_reform_consumption < 0 }
+		}
+	}
+
+	### 作用域：国家；主要作用：判断经济发展改革倾向是否位于左侧区间。
+	economy_reform_development_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = economy_reform_development
+				TENDENCY = economy_reform_development_left
+			}
+			check_variable = { economy_reform_development > 0 }
+		}
+	}
+
+	### 作用域：国家；主要作用：判断经济发展改革倾向是否位于右侧区间。
+	economy_reform_development_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = economy_reform_development
+				TENDENCY = economy_reform_development_right
+			}
+			check_variable = { economy_reform_development < 0 }
 		}
 	}
 
 ############################################
-is_paris_calais_model_zone = {
-	OR = {
-		state = 16
-		state = 17
-		state = 29
-		state = 24
-		state = 980
-		state = 785
-		state = 18
-		state = 33
-		state = 15
+	### 作用域：地块；主要作用：判断当前地块是否属于巴黎—加来发展模式区域。
+	is_paris_calais_model_zone = {
+		OR = {
+			state = 16
+			state = 17
+			state = 29
+			state = 24
+			state = 980
+			state = 785
+			state = 18
+			state = 33
+			state = 15
+		}
 	}
-}
 
-is_bordaux_nantes_model_zone = {
-	OR = {
-		state = 19
-		state = 14
-		state = 23
-		state = 25
-		state = 983
-		state = 30
-		state = 779
-		state = 984
-		state = 31
+	### 作用域：地块；主要作用：判断当前地块是否属于波尔多—南特发展模式区域。
+	is_bordeaux_nantes_model_zone = {
+		OR = {
+			state = 19
+			state = 14
+			state = 23
+			state = 25
+			state = 983
+			state = 30
+			state = 779
+			state = 984
+			state = 31
+		}
 	}
-}
 
-is_marse_lyon_model_zone = {
-	OR = {
-		state = 21
-		state = 20
-		state = 762
-		state = 763
-		state = 735
-		state = 943
-		state = 32
-		state = 22
-		state = 817
-		state = 26
-		state = 27
-		state = 760
+	### 作用域：地块；主要作用：判断当前地块是否属于马赛—里昂发展模式区域。
+	is_marseille_lyon_model_zone = {
+		OR = {
+			state = 21
+			state = 20
+			state = 762
+			state = 763
+			state = 735
+			state = 943
+			state = 32
+			state = 22
+			state = 817
+			state = 26
+			state = 27
+			state = 760
+		}
 	}
-}
-

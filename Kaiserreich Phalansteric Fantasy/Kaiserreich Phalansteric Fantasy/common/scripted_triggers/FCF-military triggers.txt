@@ -1,143 +1,159 @@
-###主导群体
-    pop_army_offices_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_army_officers
-            }
-            check_variable = { pop_army_officers > pop_army_ncos }
-            check_variable = { pop_army_officers > pop_army_soldiers }
-        }
-    }
-    pop_army_ncos_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_army_ncos
-            }
-            check_variable = { pop_army_ncos > pop_army_officers }
-            check_variable = { pop_army_ncos > pop_army_soldiers }
-        }
-    }
-    pop_army_soldiers_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_army_soldiers
-            }
-            check_variable = { pop_army_soldiers > pop_army_officers }
-            check_variable = { pop_army_soldiers > pop_army_soldiers }
-        }
-    }
+####################
+### 军队内部构成 ###
+####################
+	### 作用域：国家；主要作用：判断军官影响力是否高于士官与士兵。
+	military_pop_officers_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_army_officers
+			}
+			check_variable = { pop_army_officers > pop_army_ncos }
+			check_variable = { pop_army_officers > pop_army_soldiers }
+		}
+	}
+	### 作用域：国家；主要作用：判断士官影响力是否高于军官与士兵。
+	military_pop_NCOs_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_army_ncos
+			}
+			check_variable = { pop_army_ncos > pop_army_officers }
+			check_variable = { pop_army_ncos > pop_army_soldiers }
+		}
+	}
+	### 作用域：国家；主要作用：按当前比较条件判断士兵是否为军队内部影响力最高阶层。
+	military_pop_soldiers_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_army_soldiers
+			}
+			check_variable = { pop_army_soldiers > pop_army_officers }
+			check_variable = { pop_army_soldiers > pop_army_soldiers }
+		}
+	}
 
-###改革倾向
-    mrt_sys_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_sys
-                TENDENCY = mrt_sys_left
-            }
-            check_variable = { mrt_sys > 0 }
-        }
-    }
+################
+### 军事改革 ###
+################
+	### 作用域：国家；主要作用：判断军事体制改革是否偏向联邦化方向（变量大于零）。
+	military_reform_system_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_system
+				TENDENCY = military_reform_system_left
+			}
+			check_variable = { military_reform_system > 0 }
+		}
+	}
 
-    mrt_sys_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_sys
-                TENDENCY = mrt_sys_right
-            }
-            check_variable = { mrt_sys < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断军事体制改革是否偏向政治化方向（变量小于零）。
+	military_reform_system_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_system
+				TENDENCY = military_reform_system_right
+			}
+			check_variable = { military_reform_system < 0 }
+		}
+	}
 
-    mrt_com_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_com
-                TENDENCY = mrt_com_left
-            }
-            check_variable = { mrt_com > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断指挥改革是否偏向集中指挥方向（变量大于零）。
+	military_reform_command_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_command
+				TENDENCY = military_reform_command_left
+			}
+			check_variable = { military_reform_command > 0 }
+		}
+	}
 
-    mrt_com_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_com
-                TENDENCY = mrt_com_right
-            }
-            check_variable = { mrt_com < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断指挥改革是否偏向任务式指挥方向（变量小于零）。
+	military_reform_command_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_command
+				TENDENCY = military_reform_command_right
+			}
+			check_variable = { military_reform_command < 0 }
+		}
+	}
 
-    mrt_org_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_org
-                TENDENCY = mrt_org_left
-            }
-            check_variable = { mrt_org > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断编制改革是否偏向职业军队方向（变量大于零）。
+	military_reform_organization_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_organization
+				TENDENCY = military_reform_organization_left
+			}
+			check_variable = { military_reform_organization > 0 }
+		}
+	}
 
-    mrt_org_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_org
-                TENDENCY = mrt_org_right
-            }
-            check_variable = { mrt_org < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断编制改革是否偏向民兵体系方向（变量小于零）。
+	military_reform_organization_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_organization
+				TENDENCY = military_reform_organization_right
+			}
+			check_variable = { military_reform_organization < 0 }
+		}
+	}
 
-    mrt_equ_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_equ
-                TENDENCY = mrt_equ_left
-            }
-            check_variable = { mrt_equ > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断装备改革是否偏向装甲方向（变量大于零）。
+	military_reform_equipment_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_equipment
+				TENDENCY = military_reform_equipment_left
+			}
+			check_variable = { military_reform_equipment > 0 }
+		}
+	}
 
-    mrt_equ_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_equ
-                TENDENCY = mrt_equ_right
-            }
-            check_variable = { mrt_equ < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断装备改革是否偏向火力方向（变量小于零）。
+	military_reform_equipment_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_equipment
+				TENDENCY = military_reform_equipment_right
+			}
+			check_variable = { military_reform_equipment < 0 }
+		}
+	}
 
-    mrt_tac_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_tac
-                TENDENCY = mrt_tac_left
-            }
-            check_variable = { mrt_tac > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断战术改革是否偏向机动作战方向（变量大于零）。
+	military_reform_tactics_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_tactics
+				TENDENCY = military_reform_tactics_left
+			}
+			check_variable = { military_reform_tactics > 0 }
+		}
+	}
 
-    mrt_tac_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = mrt_tac
-                TENDENCY = mrt_tac_right
-            }
-            check_variable = { mrt_tac < 0 }
-        }
-    }
-
+	### 作用域：国家；主要作用：判断战术改革是否偏向阵地作战方向（变量小于零）。
+	military_reform_tactics_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = military_reform_tactics
+				TENDENCY = military_reform_tactics_right
+			}
+			check_variable = { military_reform_tactics < 0 }
+		}
+	}

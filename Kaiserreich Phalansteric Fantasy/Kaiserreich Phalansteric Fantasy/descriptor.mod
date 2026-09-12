@@ -1,12 +1,12 @@
-version="2.00"
-tags={
+version = "2.00"
+tags = {
 	"Alternative History"
 	"National Focuses"
 	"Gameplay"
 }
-dependencies={
+dependencies = {
 	"Kaiserreich"
 }
-name="Kaiserreich: Phalansteric Fantasy"
-picture="Thumbnail.png"
-supported_version="1.19.*"
+name = "Kaiserreich: Phalansteric Fantasy"
+picture = "Thumbnail.png"
+supported_version = "1.19.*"

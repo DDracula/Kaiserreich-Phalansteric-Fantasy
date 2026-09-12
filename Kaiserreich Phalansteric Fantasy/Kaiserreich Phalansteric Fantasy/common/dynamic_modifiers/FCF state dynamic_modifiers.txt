@@ -1,129 +1,137 @@
-FCF_state_general_modifier = {
-    industrial_factory_donations = all_state_industrial_factory_donations
-    military_factory_donations = all_state_military_factory_donations
-    dockyard_donations = all_state_dockyard_donations
+########################
+### 国家级地区经济汇总 ###
+########################
+# 作用域：国家。汇总各地区策略对国家层面产生的经济与社会影响。
+FCF_economy_state_general_modifier = {
+	industrial_factory_donations = economy_state_general_modifier_industrial_factory_donations
+	military_factory_donations = economy_state_general_modifier_military_factory_donations
+	dockyard_donations = economy_state_general_modifier_dockyard_donations
 
-    stability_factor = all_state_stability_factor
-    war_support_factor = all_state_war_support_factor
+	stability_factor = economy_state_general_modifier_stability_factor
+	war_support_factor = economy_state_general_modifier_war_support_factor
 
-    political_power_factor = all_state_political_power_factor
-    economy_power_factor = all_state_economy_power_factor
-    research_speed_factor = all_state_research_speed_factor
+	political_power_factor = economy_state_general_modifier_political_power_factor
+	economy_power_factor = economy_state_general_modifier_economy_power_factor
+	research_speed_factor = economy_state_general_modifier_research_speed_factor
 
-    consumer_goods_factor = all_state_consumer_goods_factor  
-    industrial_capacity_factory = all_state_industrial_capacity_factory
-    industrial_capacity_dockyard = all_state_industrial_capacity_dockyard
+	consumer_goods_factor = economy_state_general_modifier_consumer_goods_factor
+	industrial_capacity_factory = economy_state_general_modifier_industrial_capacity_factory
+	industrial_capacity_dockyard = economy_state_general_modifier_industrial_capacity_dockyard
 
-    factory_energy_consumption = all_state_factory_energy_consumption
-    local_resources_factor = all_state_local_resources_factor
-    
-    production_factory_max_efficiency_factor = all_state_production_factory_max_efficiency_factor
-    production_factory_efficiency_gain_factor = all_state_production_factory_efficiency_gain_factor
-    
-    monthly_population = all_state_monthly_population
-    weekly_manpower = all_state_weekly_manpower
+	factory_energy_consumption = economy_state_general_modifier_factory_energy_consumption
+	local_resources_factor = economy_state_general_modifier_local_resources_factor
 
-    monthly_change_ev = state_strategy_monthly_change_ev
-    monthly_change_eib = state_strategy_monthly_change_eib 
-    monthly_change_eip = state_strategy_monthly_change_eip 
-    monthly_change_eia = state_strategy_monthly_change_eia 
-    monthly_change_eam = state_strategy_monthly_change_eam 
-    monthly_change_eae = state_strategy_monthly_change_eae 
-    monthly_change_eaa = state_strategy_monthly_change_eaa 
-    monthly_change_eq = state_strategy_monthly_change_eq 
-    monthly_change_el = state_strategy_monthly_change_el 
-    monthly_change_ei = state_strategy_monthly_change_ei
+	production_factory_max_efficiency_factor = economy_state_general_modifier_production_factory_max_efficiency_factor
+	production_factory_efficiency_gain_factor = economy_state_general_modifier_production_factory_efficiency_gain_factor
 
-    monthly_change_popsw = state_strategy_monthly_change_popsw 
-    monthly_change_popsp = state_strategy_monthly_change_popsp 
-    monthly_change_popsm = state_strategy_monthly_change_popsm 
-    monthly_change_popss = state_strategy_monthly_change_popss 
-    monthly_change_popsb = state_strategy_monthly_change_popsb 
-    monthly_change_popsa = state_strategy_monthly_change_popsa 
+	monthly_population = economy_state_general_modifier_monthly_population
+	weekly_manpower = economy_state_general_modifier_weekly_manpower
 
-    economy_power_gain =  state_strategy_economy_power_gain
+	economy_values_monthly_change = economy_state_general_modifier_values_monthly_change
+	economy_industry_basic_monthly_change = economy_state_general_modifier_industry_basic_monthly_change
+	economy_industry_process_monthly_change = economy_state_general_modifier_industry_process_monthly_change
+	economy_industry_arms_monthly_change = economy_state_general_modifier_industry_arms_monthly_change
+	economy_agriculture_mechanized_monthly_change = economy_state_general_modifier_agriculture_mechanized_monthly_change
+	economy_agriculture_chemical_monthly_change = economy_state_general_modifier_agriculture_chemical_monthly_change
+	economy_agriculture_chain_monthly_change = economy_state_general_modifier_agriculture_chain_monthly_change
+	economy_society_equality_monthly_change = economy_state_general_modifier_society_equality_monthly_change
+	economy_society_integration_monthly_change = economy_state_general_modifier_society_industrial_integration_monthly_change
+	economy_society_innovation_monthly_change = economy_state_general_modifier_society_innovation_monthly_change
 
-    civilian_factory_use = all_state_invest_civilian_factory_use
+	society_pop_workers_satisfaction_monthly_change = economy_state_general_modifier_society_pop_workers_satisfaction_monthly_change
+	society_pop_peasants_satisfaction_monthly_change = economy_state_general_modifier_society_pop_peasants_satisfaction_monthly_change
+	society_pop_merchants_satisfaction_monthly_change = economy_state_general_modifier_society_pop_merchants_satisfaction_monthly_change
+	society_pop_scholars_satisfaction_monthly_change = economy_state_general_modifier_society_pop_scholars_satisfaction_monthly_change
+	society_pop_bureaucrats_satisfaction_monthly_change = economy_state_general_modifier_society_pop_bureaucrats_satisfaction_monthly_change
+	society_pop_army_satisfaction_monthly_change = economy_state_general_modifier_society_pop_army_satisfaction_monthly_change
+
+	economy_power_gain = economy_state_general_modifier_economy_power_gain
+
+	civilian_factory_use = economy_state_general_modifier_civilian_factory_use
 }
 
-FCF_state_situation_modifier = {
+################
+### 单一地块经济 ###
+################
+# 作用域：地块。承载当前地块经济状况、建设速度、资源与投资成本修正。
+FCF_economy_state_situation_modifier = {
 	icon = "GFX_decision_gre_paying_ifc_debt"
 	enable = { is_controlled_by = FRA }
-    #国家
-    industrial_factory_donations = state_industrial_factory_donations
-    military_factory_donations = state_military_factory_donations
-    dockyard_donations = state_dockyard_donations
+#国家
+	industrial_factory_donations = economy_state_situation_modifier_industrial_factory_donations
+	military_factory_donations = economy_state_situation_modifier_military_factory_donations
+	dockyard_donations = economy_state_situation_modifier_dockyard_donations
 
-    stability_factor = state_stability_factor
-    war_support_factor = state_war_support_factor
+	stability_factor = economy_state_situation_modifier_stability_factor
+	war_support_factor = economy_state_situation_modifier_war_support_factor
 
-    political_power_factor = state_political_power_factor
-    economy_power_factor = state_economy_power_factor
-    research_speed_factor = state_research_speed_factor
+	political_power_factor = economy_state_situation_modifier_political_power_factor
+	economy_power_factor = economy_state_situation_modifier_economy_power_factor
+	research_speed_factor = economy_state_situation_modifier_research_speed_factor
 
-    consumer_goods_factor = state_consumer_goods_factor
-    industrial_capacity_factory = state_industrial_capacity_factory
-    industrial_capacity_dockyard = state_industrial_capacity_dockyard
+	consumer_goods_factor = economy_state_situation_modifier_consumer_goods_factor
+	industrial_capacity_factory = economy_state_situation_modifier_industrial_capacity_factory
+	industrial_capacity_dockyard = economy_state_situation_modifier_industrial_capacity_dockyard
 
-    factory_energy_consumption = state_factory_energy_consumption
-    local_resources_factor = state_local_resources_factor
+	factory_energy_consumption = economy_state_situation_modifier_factory_energy_consumption
+	local_resources_factor = economy_state_situation_modifier_local_resources_factor
 
-    production_factory_max_efficiency_factor = state_production_factory_max_efficiency_factor
-    production_factory_efficiency_gain_factor = state_production_factory_efficiency_gain_factor
+	production_factory_max_efficiency_factor = economy_state_situation_modifier_production_factory_max_efficiency_factor
+	production_factory_efficiency_gain_factor = economy_state_situation_modifier_production_factory_efficiency_gain_factor
 
-    monthly_population = state_monthly_population
-    weekly_manpower = state_weekly_manpower
-    #地块
-    local_factory_energy_consumption = state_local_factory_energy_consumption
+	monthly_population = economy_state_situation_modifier_monthly_population
+	weekly_manpower = economy_state_situation_modifier_weekly_manpower
+#地块
+	local_factory_energy_consumption = economy_state_situation_modifier_local_factory_energy_consumption
 
-    army_speed_factor_for_controller = state_army_speed_factor_for_controller
+	army_speed_factor_for_controller = economy_state_situation_modifier_army_speed_factor_for_controller
 
-    state_production_speed_buildings_factor = state_state_production_speed_buildings_factor
+	state_production_speed_buildings_factor = economy_state_situation_modifier_production_speed_buildings_factor
 
-    state_production_speed_infrastructure_factor = state_state_production_speed_infrastructure_factor
-    state_production_speed_rail_way_factor = state_state_production_speed_rail_way_factor
+	state_production_speed_infrastructure_factor = economy_state_situation_modifier_production_speed_infrastructure_factor
+	state_production_speed_rail_way_factor = economy_state_situation_modifier_production_speed_rail_way_factor
 
-    state_production_speed_industrial_complex_factor = state_state_production_speed_industrial_complex_factor
-    state_production_speed_arms_factory_factor = state_state_production_speed_arms_factory_factor
+	state_production_speed_industrial_complex_factor = economy_state_situation_modifier_production_speed_industrial_complex_factor
+	state_production_speed_arms_factory_factor = economy_state_situation_modifier_production_speed_arms_factory_factor
 
-    state_production_speed_dockyard_factor = state_state_production_speed_dockyard_factor
-    state_production_speed_naval_base_factor = state_state_production_speed_naval_base_factor
-    state_production_speed_coastal_bunker_factor = state_state_production_speed_coastal_bunker_factor
+	state_production_speed_dockyard_factor = economy_state_situation_modifier_production_speed_dockyard_factor
+	state_production_speed_naval_base_factor = economy_state_situation_modifier_production_speed_naval_base_factor
+	state_production_speed_coastal_bunker_factor = economy_state_situation_modifier_production_speed_coastal_bunker_factor
 
-    state_production_speed_bunker_factor = state_state_production_speed_bunker_factor
+	state_production_speed_bunker_factor = economy_state_situation_modifier_production_speed_bunker_factor
 
-    state_production_speed_fuel_silo_factor = state_state_production_speed_fuel_silo_factor
-    state_production_speed_synthetic_refinery_factor = state_state_production_speed_synthetic_refinery_factor
-    
-    state_production_speed_air_base_factor = state_state_production_speed_air_base_factor
-    state_production_speed_anti_air_building_factor = state_state_production_speed_anti_air_building_factor
-    
-    state_production_speed_radar_station_factor = state_state_production_speed_radar_station_factor
-    state_production_speed_rocket_site_factor = state_state_production_speed_rocket_site_factor
-    state_production_speed_nuclear_reactor_factor = state_state_production_speed_nuclear_reactor_factor
+	state_production_speed_fuel_silo_factor = economy_state_situation_modifier_production_speed_fuel_silo_factor
+	state_production_speed_synthetic_refinery_factor = economy_state_situation_modifier_production_speed_synthetic_refinery_factor
 
-    local_building_slots = state_local_building_slots
-    local_building_slots_factor = state_local_building_slots_factor
+	state_production_speed_air_base_factor = economy_state_situation_modifier_production_speed_air_base_factor
+	state_production_speed_anti_air_building_factor = economy_state_situation_modifier_production_speed_anti_air_building_factor
 
-    local_factories = state_local_factories
-    local_supplies = state_local_supplies
-    
-    recruitable_population_factor = state_recruitable_population_factor
+	state_production_speed_radar_station_factor = economy_state_situation_modifier_production_speed_radar_station_factor
+	state_production_speed_rocket_site_factor = economy_state_situation_modifier_production_speed_rocket_site_factor
+	state_production_speed_nuclear_reactor_factor = economy_state_situation_modifier_production_speed_nuclear_reactor_factor
 
-    state_resources_factor = state_state_resources_factor
+	local_building_slots = economy_state_situation_modifier_local_building_slots
+	local_building_slots_factor = economy_state_situation_modifier_local_building_slots_factor
 
-    state_resource_aluminium = state_state_resource_aluminium
-    state_resource_chromium = state_state_resource_chromium
-    state_resource_oil = state_state_resource_oil
-    state_resource_rubber = state_state_resource_rubber
-    state_resource_steel = state_state_resource_steel
-    state_resource_tungsten = state_state_resource_tungsten
+	local_factories = economy_state_situation_modifier_local_factories
+	local_supplies = economy_state_situation_modifier_local_supplies
 
-    #投资
-    state_invest_civilian_cost_modifier = state_invest_civilian_cost_change
-    state_invest_arms_cost_modifier = state_invest_arms_cost_change
-    state_invest_dockyard_cost_modifier = state_invest_dockyard_cost_change
-    state_invest_factory_need_modifier = state_invest_factory_need_change
-    
-    civilian_factory_use = state_invest_civilian_factory_use
+	recruitable_population_factor = economy_state_situation_modifier_recruitable_population_factor
+
+	state_resources_factor = economy_state_situation_modifier_resources_factor
+
+	state_resource_aluminium = economy_state_situation_modifier_resource_aluminium
+	state_resource_chromium = economy_state_situation_modifier_resource_chromium
+	state_resource_oil = economy_state_situation_modifier_resource_oil
+	state_resource_rubber = economy_state_situation_modifier_resource_rubber
+	state_resource_steel = economy_state_situation_modifier_resource_steel
+	state_resource_tungsten = economy_state_situation_modifier_resource_tungsten
+
+#投资
+	economy_state_invest_civilian_cost_modifier = economy_state_situation_modifier_economy_state_invest_civilian_cost_modifier
+	economy_state_invest_arms_cost_modifier = economy_state_situation_modifier_economy_state_invest_arms_cost_modifier
+	economy_state_invest_dockyard_cost_modifier = economy_state_situation_modifier_economy_state_invest_dockyard_cost_modifier
+	economy_state_invest_factory_requirement_modifier = economy_state_situation_modifier_economy_state_invest_factory_requirement_modifier
+
+	civilian_factory_use = economy_state_situation_modifier_civilian_factory_use
 }

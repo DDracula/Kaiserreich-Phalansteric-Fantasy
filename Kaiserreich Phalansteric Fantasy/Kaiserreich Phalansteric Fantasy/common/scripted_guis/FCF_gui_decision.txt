@@ -1,0 +1,1151 @@
+scripted_gui = {
+### 政治决议界面：议会权力平衡与政治景观切换
+	FCF_politics_decision_gui = {
+		context_type = decision_category
+		window_name = FCF_politics_decision_window
+
+		triggers = {
+			FCF_politics_CGF_vs_CSP_CSP_icon_visible = {
+				OR = {
+					check_variable = { politics_CGF_CSP_balance > 0 }
+					check_variable = { politics_CGF_CSP_balance = 0 }
+				}
+				NOT = { has_country_flag = FCF_gui_politics_landscape_visible }
+			}
+			FCF_politics_CGF_vs_CSP_CGF_icon_visible = {
+				check_variable = { politics_CGF_CSP_balance < 0 }
+				NOT = { has_country_flag = FCF_gui_politics_landscape_visible }
+			}
+
+			FCF_bop_text_visible = { NOT = { has_country_flag = FCF_gui_politics_landscape_visible } }
+			FCF_politics_CGF_display_box_text_visible = { NOT = { has_country_flag = FCF_gui_politics_landscape_visible } }
+			FCF_politics_CSP_display_box_text_visible = { NOT = { has_country_flag = FCF_gui_politics_landscape_visible } }
+			FCF_open_CGF_and_CSP_button_visible = {  NOT = { has_country_flag = FCF_gui_politics_landscape_visible } }
+			FCF_politics_landscape_text_visible = { has_country_flag = FCF_gui_politics_landscape_visible }
+		}
+		effects = {
+			FCF_open_CGF_and_CSP_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CGF_visible }
+					clr_country_flag = FCF_gui_politics_CGF_visible
+				}
+				else = { set_country_flag = FCF_gui_politics_CGF_visible }
+			}
+
+			FCF_politics_landscape_open_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_landscape_visible }
+					clr_country_flag = FCF_gui_politics_landscape_visible
+				}
+				else = { set_country_flag = FCF_gui_politics_landscape_visible }
+			}
+		}
+		properties = {
+			FCF_politics_CGF_vs_CSP_CSP_icon = { frame = gui_CSP_balance_frame }
+			FCF_politics_CGF_vs_CSP_CGF_icon = { frame = gui_CGF_balance_frame }
+		}
+	}
+### 社会决议界面：阶层影响、改革倾向与特殊派系窗口
+	FCF_society_decision_gui = {
+		context_type = decision_category
+		window_name = FCF_society_decision_window
+
+		triggers = {
+			FCF_society_pop_workers_display_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_workers_display_s_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_pop_peasants_display_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_peasants_display_s_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_pop_merchants_display_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_merchants_display_s_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_pop_scholars_display_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_scholars_display_s_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_pop_bureaucrats_display_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_bureaucrats_display_s_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_pop_army_display_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_army_display_s_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_pop_total_display_worker_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_total_display_peasant_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_total_display_merchant_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_total_display_scholar_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_total_display_bureaucrat_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_total_display_army_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_pop_total_display_s_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_education_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_education_background_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_regulation_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_regulation_background_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_womens_rights_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_womens_rights_background_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_immigrant_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_immigrant_background_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_religion_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+			FCF_society_reform_tendency_religion_background_visible = {
+				NOT = { has_country_flag = FCF_gui_society_surrealism_visible }
+				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_CSI_portrait_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
+			FCF_society_CSI_text_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
+			FCF_politics_CSP_CSI_portrait_frame_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
+
+			FCF_society_CC_portrait_visible = { NOT = { has_country_flag = FCF_gui_society_extremist_group_visible } }
+			FCF_society_CC_text_visible = { NOT = { has_country_flag = FCF_gui_society_extremist_group_visible } }
+			FCF_politics_CSP_CC_portrait_frame_visible = { NOT = { has_country_flag = FCF_gui_society_extremist_group_visible } }
+
+			FCF_society_surrealism_window_open_button_visible = { NOT = { has_country_flag = FCF_gui_society_extremist_group_visible } }
+			FCF_society_surrealism_window_hidden_visible = { NOT = {has_country_flag = FCF_gui_society_surrealism_visible } }
+			FCF_society_surrealism_character_button_enabled_visible = { is_in_array = { FRA.surrealism_character_enabled = surrealism_character_id } }
+			FCF_society_surrealism_character_button_click_enabled = {
+				custom_trigger_tooltip = {
+					tooltip = surrealism_character_can_enabled_more
+					check_variable = { FRA.surrealism_character_enabled^num < FRA.surrealism_character_enabled_max }
+				}
+				meta_trigger = {
+					text = { surrealism_character_[VAR]_enable_trigger = yes }
+					VAR = "[?surrealism_character_id]"
+				}
+			}
+
+			FCF_society_extremist_group_window_open_button_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
+			FCF_society_extremist_group_window_open_button_click_enabled = { has_dynamic_modifier = { modifier = FCF_society_extremist_group_modifier } }
+
+			FCF_society_extremist_group_legions_detail_button_click_enabled = { check_variable = { legions_status > 0 } }
+			FCF_society_extremist_group_legions_detail_button_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			FCF_society_extremist_group_legions_detail_box_text_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			FCF_society_extremist_group_gardes_detail_button_click_enabled = { check_variable = { gardes_status > 0 } }
+			FCF_society_extremist_group_gardes_detail_button_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			FCF_society_extremist_group_gardes_detail_box_text_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			FCF_society_extremist_group_TPPS_detail_button_click_enabled = { check_variable = { TPPS_status > 0 } }
+			FCF_society_extremist_group_TPPS_detail_button_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			FCF_society_extremist_group_TPPS_detail_box_text_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			FCF_society_extremist_group_bonnot_detail_button_click_enabled = { check_variable = { bonnot_status > 0 } }
+			FCF_society_extremist_group_bonnot_detail_button_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			FCF_society_extremist_group_bonnot_detail_box_text_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			FCF_society_extremist_group_phalanges_detail_button_click_enabled = { check_variable = { phalanges_status > 0 } }
+			FCF_society_extremist_group_phalanges_detail_button_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			FCF_society_extremist_group_phalanges_detail_box_text_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+
+			FCF_society_extremist_group_vertes_detail_button_click_enabled = { check_variable = { vertes_status > 0 } }
+			FCF_society_extremist_group_vertes_detail_button_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+			FCF_society_extremist_group_vertes_detail_box_text_visible = { has_country_flag = FCF_gui_society_extremist_group_visible }
+		}
+		effects = {
+			FCF_society_surrealism_window_open_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_surrealism_visible }
+					clr_country_flag = FCF_gui_society_surrealism_visible
+				}
+				else = { set_country_flag = FCF_gui_society_surrealism_visible }
+			}
+			FCF_society_surrealism_character_button_click = {
+				add_to_array = { FRA.surrealism_character_enabled = surrealism_character_id }
+				custom_effect_tooltip = after_enabled_monthly_effect
+				effect_tooltip = {
+					meta_effect = {
+						text = { surrealism_character_[VAR]_effect = yes }
+						VAR = "[?surrealism_character_id]"
+					}
+				}
+			}
+			FCF_society_surrealism_character_button_enabled_click = {
+				remove_from_array = { FRA.surrealism_character_enabled = surrealism_character_id }
+			}
+			FCF_society_surrealism_movement_monthly_effect_text_click = {
+				effect_tooltip = {
+					if = {
+						limit = { check_variable = { surrealism_character_enabled^0 > 0 } }
+						set_temp_variable = { surrealism_character_id = surrealism_character_enabled^0 }
+						custom_effect_tooltip = "[surrealism_character_list]"
+						meta_effect = {
+							text = { surrealism_character_[VAR]_effect = yes }
+							VAR = "[?surrealism_character_enabled^0]"
+						}
+					}
+					if = {
+						limit = { check_variable = { surrealism_character_enabled^1 > 0 } }
+						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { surrealism_character_id = surrealism_character_enabled^1 }
+						custom_effect_tooltip = "[surrealism_character_list]"
+						meta_effect = {
+							text = { surrealism_character_[VAR]_effect = yes }
+							VAR = "[?surrealism_character_enabled^1]"
+						}
+					}
+					if = {
+						limit = { check_variable = { surrealism_character_enabled^2 > 0 } }
+						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { surrealism_character_id = surrealism_character_enabled^2 }
+						custom_effect_tooltip = "[surrealism_character_list]"
+						meta_effect = {
+							text = { surrealism_character_[VAR]_effect = yes }
+							VAR = "[?surrealism_character_enabled^2]"
+						}
+					}
+					if = {
+						limit = { check_variable = { surrealism_character_enabled^3 > 0 } }
+						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { surrealism_character_id = surrealism_character_enabled^3 }
+						custom_effect_tooltip = "[surrealism_character_list]"
+						meta_effect = {
+							text = { surrealism_character_[VAR]_effect = yes }
+							VAR = "[?surrealism_character_enabled^3]"
+						}
+					}
+					if = {
+						limit = { check_variable = { surrealism_character_enabled^4 > 0 } }
+						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { surrealism_character_id = surrealism_character_enabled^4 }
+						custom_effect_tooltip = "[surrealism_character_list]"
+						meta_effect = {
+							text = { surrealism_character_[VAR]_effect = yes }
+							VAR = "[?surrealism_character_enabled^4]"
+						}
+					}
+					if = {
+						limit = { check_variable = { surrealism_character_enabled^5 > 0 } }
+						custom_effect_tooltip = tooltip_white_line
+						set_temp_variable = { surrealism_character_id = surrealism_character_enabled^5 }
+						custom_effect_tooltip = "[surrealism_character_list]"
+						meta_effect = {
+							text = { surrealism_character_[VAR]_effect = yes }
+							VAR = "[?surrealism_character_enabled^5]"
+						}
+					}
+
+					custom_effect_tooltip = tooltip_dividing_line
+					add_to_variable = {
+						surrealism_movement_passion = surrealism_movement_passion_change
+						tooltip = surrealism_movement_passion_change_tt
+					}
+					add_to_variable = {
+						surrealism_movement_acceptance = surrealism_movement_acceptance_change
+						tooltip = surrealism_movement_acceptance_change_tt
+					}
+				}
+			}
+
+			FCF_society_extremist_group_window_open_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_extremist_group_visible }
+					clr_country_flag = FCF_gui_society_extremist_group_visible
+					clr_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+				else = { set_country_flag = FCF_gui_society_extremist_group_visible }
+			}
+
+			FCF_society_extremist_group_legions_detail_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_extremist_group_legions_detail_visible }
+					clr_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+				}
+				else = {
+					set_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+			}
+			FCF_society_extremist_group_gardes_detail_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible }
+					clr_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+				}
+				else = {
+					clr_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+					set_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+			}
+			FCF_society_extremist_group_TPPS_detail_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible }
+					clr_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+				}
+				else = {
+					clr_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+					set_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+			}
+			FCF_society_extremist_group_bonnot_detail_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible }
+					clr_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+				}
+				else = {
+					clr_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+					set_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+			}
+			FCF_society_extremist_group_phalanges_detail_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible }
+					clr_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+				}
+				else = {
+					clr_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+					set_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+			}
+			FCF_society_extremist_group_vertes_detail_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible }
+					clr_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+				else = {
+					clr_country_flag = FCF_gui_society_extremist_group_legions_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_gardes_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_TPPS_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_bonnot_detail_visible
+					clr_country_flag = FCF_gui_society_extremist_group_phalanges_detail_visible
+					set_country_flag = FCF_gui_society_extremist_group_vertes_detail_visible
+				}
+			}
+
+		}
+		properties = {
+			FCF_society_pop_workers_display_s_icon = { frame = pop_satisfaction_workers }
+			FCF_society_pop_peasants_display_s_icon = { frame = pop_satisfaction_peasants }
+			FCF_society_pop_merchants_display_s_icon = { frame = pop_satisfaction_merchants }
+			FCF_society_pop_scholars_display_s_icon = { frame = pop_satisfaction_scholars }
+			FCF_society_pop_bureaucrats_display_s_icon = { frame = pop_satisfaction_bureaucrats }
+			FCF_society_pop_army_display_s_icon = { frame = pop_satisfaction_army }
+
+			FCF_society_pop_total_display_worker_icon = { frame = gui_workers_cumulative }
+			FCF_society_pop_total_display_peasant_icon = { frame = gui_peasants_cumulative }
+			FCF_society_pop_total_display_merchant_icon = { frame = gui_merchants_cumulative }
+			FCF_society_pop_total_display_scholar_icon = { frame = gui_scholars_cumulative }
+			FCF_society_pop_total_display_bureaucrat_icon = { frame = gui_bureaucrats_cumulative }
+			FCF_society_pop_total_display_army_icon = { frame = gui_army_cumulative }
+			FCF_society_pop_total_display_s_icon = { frame = pop_satisfaction }
+
+			FCF_society_CSI_portrait = { image = "[gui_CSP_CSI_loc]" }
+			FCF_society_CC_portrait = { image = "[gui_CSP_CC_loc]" }
+
+			FCF_society_reform_tendency_education_background = { image = "[gui_society_reform_tendency_education]" }
+			FCF_society_reform_tendency_regulation_background = { image = "[gui_society_reform_tendency_regulation]" }
+			FCF_society_reform_tendency_womens_rights_background = { image = "[gui_society_reform_tendency_womens_rights]" }
+			FCF_society_reform_tendency_immigrant_background = { image = "[gui_society_reform_tendency_immigrant]" }
+			FCF_society_reform_tendency_religion_background = { image = "[gui_society_reform_tendency_religion]" }
+
+			FCF_society_surrealism_character_button = { frame = 2 }
+			FCF_society_surrealism_character_button_enabled = { frame = 1 }
+		}
+		dynamic_lists = {
+			FCF_society_surrealism_character_list_crevel_list = {
+				array = FCF_society_surrealism_character_list_crevel_list
+				index = surrealism_character_index
+				value = surrealism_character_id
+				change_scope = yes
+				entry_container = FCF_society_surrealism_character_container
+			}
+			FCF_society_surrealism_character_list_breton_list = {
+				array = FCF_society_surrealism_character_list_breton_list
+				index = surrealism_character_index
+				value = surrealism_character_id
+				change_scope = yes
+				entry_container = FCF_society_surrealism_character_container
+			}
+			FCF_society_surrealism_character_list_bataille_list = {
+				array = FCF_society_surrealism_character_list_bataille_list
+				index = surrealism_character_index
+				value = surrealism_character_id
+				change_scope = yes
+				entry_container = FCF_society_surrealism_character_container
+			}
+		}
+	}
+### 经济决议界面：九项经济指标、供应链与区域经济
+	FCF_economy_decision_gui = {
+		context_type = decision_category
+		window_name = FCF_economy_decision_window
+
+		triggers = {
+			FCF_ring_progressbar_ev_good_icon_visible = {
+				OR = {
+					check_variable = { economy_values > 0 }
+					check_variable = { economy_values = 0 }
+				}
+			}
+			FCF_ring_progressbar_ev_bad_icon_visible = {
+				check_variable = { economy_power > 20 }
+				check_variable = { economy_values < 0 }
+			}
+			FCF_less_economy_focus_button_click_enabled = {
+				has_political_power > 10
+				check_variable = { economy_focus_slots_max > economy_focus_slots_used }
+			}
+		}
+		effects = {
+			FCF_more_economy_focus_button_click = {
+				add_to_variable = { economy_power = -20 }
+				add_to_variable = { economy_focus_slots_max = 1 }
+			}
+			FCF_less_economy_focus_button_click = {
+				add_political_power = -10
+				add_to_variable = { economy_focus_slots_max = -1 }
+			}
+			FCF_economy_supply_chain_situation_show_pre_button_click = {
+				if = {
+					limit = { check_variable = { sci_resources_id = 1 } }
+					set_variable = { sci_resources_id = 19 }
+				}
+				else = { add_to_variable = { sci_resources_id = -1 } }
+
+				clear_array = FCF_economy_supply_chain_resources_country_window
+				if = {
+					limit = { check_variable = { sci_resources_id = 1 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_manganese_important
+									has_state_flag = resources_manganese
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 2 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_lead_important
+									has_state_flag = resources_lead
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 3 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_sulfur_important
+									has_state_flag = resources_sulfur
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 4 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_cotton_important
+									has_state_flag = resources_cotton
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 5 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_niter_important
+									has_state_flag = resources_niter
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 6 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_copper_important
+									has_state_flag = resources_copper
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 7 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_mercury_important
+									has_state_flag = resources_mercury
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 8 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_mica_important
+									has_state_flag = resources_mica
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 9 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_oil_important
+									has_state_flag = resources_oil
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 10 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_bromine_important
+									has_state_flag = resources_bromine
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 11 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_antimony_important
+									has_state_flag = resources_antimony
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 12 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_zinc_important
+									has_state_flag = resources_zinc
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 13 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_phosphate_important
+									has_state_flag = resources_phosphate
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 14 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_diamond_important
+									has_state_flag = resources_diamond
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 15 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_cobalt_important
+									has_state_flag = resources_cobalt
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 16 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_asbestos_important
+									has_state_flag = resources_asbestos
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 17 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_vanadium_important
+									has_state_flag = resources_vanadium
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 18 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_platinum_important
+									has_state_flag = resources_platinum
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 19 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_potassium_salt_important
+									has_state_flag = resources_potassium_salt
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+			}
+			FCF_economy_supply_chain_situation_show_next_button_click = {
+				if = {
+					limit = { check_variable = { sci_resources_id = 19 } }
+					set_variable = { sci_resources_id = 1 }
+				}
+				else = { add_to_variable = { sci_resources_id = 1 } }
+
+				clear_array = FCF_economy_supply_chain_resources_country_window
+				if = {
+					limit = { check_variable = { sci_resources_id = 1 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_manganese_important
+									has_state_flag = resources_manganese
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 2 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_lead_important
+									has_state_flag = resources_lead
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 3 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_sulfur_important
+									has_state_flag = resources_sulfur
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 4 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_cotton_important
+									has_state_flag = resources_cotton
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 5 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_niter_important
+									has_state_flag = resources_niter
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 6 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_copper_important
+									has_state_flag = resources_copper
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 7 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_mercury_important
+									has_state_flag = resources_mercury
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 8 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_mica_important
+									has_state_flag = resources_mica
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 9 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_oil_important
+									has_state_flag = resources_oil
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 10 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_bromine_important
+									has_state_flag = resources_bromine
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 11 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_antimony_important
+									has_state_flag = resources_antimony
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 12 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_zinc_important
+									has_state_flag = resources_zinc
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 13 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_phosphate_important
+									has_state_flag = resources_phosphate
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 14 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_diamond_important
+									has_state_flag = resources_diamond
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 15 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_cobalt_important
+									has_state_flag = resources_cobalt
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 16 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_asbestos_important
+									has_state_flag = resources_asbestos
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 17 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_vanadium_important
+									has_state_flag = resources_vanadium
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 18 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_platinum_important
+									has_state_flag = resources_platinum
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+				else_if = {
+					limit = { check_variable = { sci_resources_id = 19 } }
+					every_country = {
+						limit = {
+							any_controlled_state = {
+								OR = {
+									has_state_flag = resources_potassium_salt_important
+									has_state_flag = resources_potassium_salt
+								}
+							}
+						}
+						add_to_array = { FRA.FCF_economy_supply_chain_resources_country_window = THIS.id }
+					}
+				}
+			}
+		}
+		properties = {
+			FCF_ring_progressbar_eib_icon = { frame = economy_industry_basic }
+			FCF_ring_progressbar_eip_icon = { frame = economy_industry_process }
+			FCF_ring_progressbar_eia_icon = { frame = economy_industry_arms }
+
+			FCF_ring_progressbar_eam_icon = { frame = economy_agriculture_mechanized }
+			FCF_ring_progressbar_eae_icon = { frame = economy_agriculture_chemical }
+			FCF_ring_progressbar_eaa_icon = { frame = economy_agriculture_chain }
+
+			FCF_ring_progressbar_eq_icon = { frame = economy_society_equality }
+			FCF_ring_progressbar_el_icon = { frame = economy_society_integration }
+			FCF_ring_progressbar_ei_icon = { frame = economy_society_innovation }
+
+			FCF_economy_CE_portrait = { image = "[gui_CSP_CE_loc]" }
+			FCF_ring_progressbar_ev_good_icon = { frame = economy_values }
+			FCF_ring_progressbar_ev_bad_icon = { frame = economy_values_bad }
+
+			FCF_economy_reform_tendency_dominance_background = { image = "[gui_economy_reform_tendency_dominance]" }
+			FCF_economy_reform_tendency_structure_background = { image = "[gui_economy_reform_tendency_structure]" }
+			FCF_economy_reform_tendency_management_background = { image = "[gui_economy_reform_tendency_management]" }
+			FCF_economy_reform_tendency_production_background = { image = "[gui_economy_reform_tendency_production]" }
+			FCF_economy_reform_tendency_exchange_background = { image = "[gui_economy_reform_tendency_exchange]" }
+			FCF_economy_reform_tendency_consumption_background = { image = "[gui_economy_reform_tendency_consumption]" }
+			FCF_economy_reform_tendency_development_background = { image = "[gui_economy_reform_tendency_development]" }
+
+			country_flag = { image = "[?supply_chain_country.GetFlag]" }
+		}
+		dynamic_lists = {
+			FCF_economy_supply_chain_resources_country_window = {
+				array = FCF_economy_supply_chain_resources_country_window
+				index = supply_chain_country_index
+				value = supply_chain_country
+				change_scope = yes
+				entry_container = FCF_economy_supply_chain_resources_country_window
+			}
+		}
+	}
+### 军事决议界面：军队构成、改革指标、理论与法案
+	FCF_military_decision_gui = {
+		context_type = decision_category
+		window_name = FCF_military_decision_window
+		effects = {
+			FCF_military_bill_box_open_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_military_bill_window_visible }
+					clr_country_flag = FCF_gui_military_bill_window_visible
+				}
+				else = { set_country_flag = FCF_gui_military_bill_window_visible }
+			}
+
+		}
+
+		properties = {
+			FCF_pop_officer_progress_icon = { frame = society_pop_officers_cumulative }
+			FCF_pop_NCO_progress_icon = { frame = society_pop_NCOs_cumulative }
+			FCF_pop_soldier_progress_icon = { frame = society_pop_soldiers_cumulative }
+
+			FCF_military_autonomy_progress_icon = { frame = army_autonomy }
+			FCF_military_willingness_progress_icon = { frame = army_willingness }
+			FCF_military_training_progress_icon = { frame = army_training }
+			FCF_military_equipment_progress_icon = { frame = army_equipment }
+			FCF_military_enlistment_enthusiasm_progress_icon = { frame = army_enlistment_enthusiasm }
+
+			FCF_military_CGFF_portrait = { image = "[gui_CSP_CGFF_loc]" }
+			FCF_military_theory_icon = { frame = military_army_theory_current_implementation }
+
+			FCF_military_reform_tendency_system_background = { image = "[gui_military_reform_tendency_system]" }
+			FCF_military_reform_tendency_command_background = { image = "[gui_military_reform_tendency_command]" }
+			FCF_military_reform_tendency_organization_background = { image = "[gui_military_reform_tendency_organization]" }
+			FCF_military_reform_tendency_equipment_background = { image = "[gui_military_reform_tendency_equipment]" }
+			FCF_military_reform_tendency_tactics_background = { image = "[gui_military_reform_tendency_tactics]" }
+		}
+	}
+
+	FCF_military_bill_list_button_gui = {
+		context_type = player_context
+		window_name = FCF_military_bill_window
+
+		visible = {
+			tag = FRA
+			has_country_flag = FCF_gui_military_bill_window_visible
+		}
+		effects = {
+			FCF_military_bill_window_esc_button_click = {
+				clr_country_flag = FCF_gui_military_bill_window_visible
+			}
+		}
+		dynamic_lists = {
+			FCF_military_bill_context_list = {
+				array = FCF_military_bills
+				index = military_bill_index
+				value = military_bill_id
+				change_scope = yes
+				entry_container = FCF_military_bill_box_window
+			}
+		}
+	}
+}

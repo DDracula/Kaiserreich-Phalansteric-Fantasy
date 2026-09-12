@@ -1,0 +1,2969 @@
+ideas = {
+	country = {
+	###法伦施泰尔
+		FCF_international_phalanstere_invest_infrastructure = {
+			name = phalanstere_invest
+			picture = ger_mefo_bills_payment
+			modifier = {
+				political_power_factor = -0.05
+				custom_modifier_tooltip = FCF_international_phalanstere_invest_infrastructure_tt
+			}
+			on_remove = {
+				add_one_random_infrastructure = yes
+			}
+		}
+		FCF_international_phalanstere_invest_civilian = {
+			name = phalanstere_invest
+			picture = ger_mefo_bills_payment
+			modifier = {
+				political_power_factor = -0.05
+				custom_modifier_tooltip = FCF_international_phalanstere_invest_civilian_tt
+			}
+			on_remove = {
+				add_one_random_civilian_factory = yes
+			}
+		}
+		FCF_international_phalanstere_invest_military = {
+			name = phalanstere_invest
+			picture = ger_mefo_bills_payment
+			modifier = {
+				political_power_factor = -0.05
+				custom_modifier_tooltip = FCF_international_phalanstere_invest_military_tt
+			}
+			on_remove = {
+				add_one_random_military_factory = yes
+			}
+		}
+		FCF_international_phalanstere_invest_resource = {
+			name = phalanstere_invest
+			picture = ger_mefo_bills_payment
+			modifier = {
+				political_power_factor = -0.05
+				custom_modifier_tooltip = FCF_international_phalanstere_invest_resource_tt
+			}
+			on_remove = {
+				random_owned_controlled_state = {
+					limit = {
+						OR = {
+							aluminium > 0
+							chromium > 0
+							oil > 0
+							rubber > 0
+							steel > 0
+							tungsten > 0
+							coal > 0
+						}
+					}
+
+					if = {
+						limit = { steel > 0 }
+						add_resource = { type = steel amount = 10 }
+					}
+					else_if = {
+						limit = { chromium > 0 }
+						add_resource = { type = chromium amount = 10 }
+					}
+					else_if = {
+						limit = { oil > 0 }
+						add_resource = { type = oil amount = 10 }
+					}
+					else_if = {
+						limit = { rubber > 0 }
+						add_resource = { type = rubber amount = 10 }
+					}
+					else_if = {
+						limit = { aluminium > 0 }
+						add_resource = { type = aluminium amount = 10 }
+					}
+					else_if = {
+						limit = { tungsten > 0 }
+						add_resource = { type = tungsten amount = 10 }
+					}
+					else_if = {
+						limit = { coal > 0 }
+						add_resource = { type = coal amount = 10 }
+					}
+				}
+			}
+		}
+
+		FCF_international_phalanstere_import_technology_construction = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			cancel = {
+				if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction5
+						}
+					}
+					ROOT = { has_tech = construction5 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction4
+						}
+					}
+					ROOT = { has_tech = construction4 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction3
+						}
+					}
+					ROOT = { has_tech = construction3 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction2
+						}
+					}
+					ROOT = { has_tech = construction2 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction1
+						}
+					}
+					ROOT = { has_tech = construction1 }
+				}
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_phalanstere_import_technology_construction_tt
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+			}
+			on_remove = {
+				if = {
+					limit = { has_country_flag = retain_import_technology_construction }
+					if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C1_P0_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C1_P0_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E1
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E2
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E1
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E2
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E2
+						}
+					}
+					else = { add_ideas = FCF_international_phalanstere_technology_C0_P0_E1 }
+				}
+			}
+		}
+		FCF_international_phalanstere_import_technology_construction_strengthened = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			cancel = {
+				if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction5
+						}
+					}
+					ROOT = { has_tech = construction5 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction4
+						}
+					}
+					ROOT = { has_tech = construction4 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction3
+						}
+					}
+					ROOT = { has_tech = construction3 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction2
+						}
+					}
+					ROOT = { has_tech = construction2 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = construction1
+						}
+					}
+					ROOT = { has_tech = construction1 }
+				}
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_phalanstere_import_technology_construction_tt
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+			}
+			on_remove = {
+				if = {
+					limit = { has_country_flag = retain_import_technology_construction }
+					if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C2_P0_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C2_P0_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E1
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E2
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E1
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E2
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E2
+						}
+					}
+					else = { add_ideas = FCF_international_phalanstere_technology_C0_P0_E2 }
+				}
+			}
+		}
+
+		FCF_international_phalanstere_import_technology_production = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			cancel = {
+				if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							OR = {
+								has_tech = flexible_line
+								has_tech = streamlined_line
+							}
+						}
+					}
+					ROOT = {
+						OR = {
+							has_tech = flexible_line
+							has_tech = streamlined_line
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = assembly_line_production
+						}
+					}
+					ROOT = { has_tech = assembly_line_production }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = advanced_machine_tools
+						}
+					}
+					ROOT = { has_tech = advanced_machine_tools }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = improved_machine_tools
+						}
+					}
+					ROOT = { has_tech = improved_machine_tools }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = basic_machine_tools
+						}
+					}
+					ROOT = { has_tech = basic_machine_tools }
+				}
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_phalanstere_import_technology_production_tt
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+			}
+			on_remove = {
+				if = {
+					limit = { has_country_flag = retain_import_technology_production }
+					if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C0_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C0_P1_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E2
+						}
+					}
+					else = { add_ideas = FCF_international_phalanstere_technology_C0_P1_E0 }
+				}
+			}
+		}
+		FCF_international_phalanstere_import_technology_production_strengthened = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			cancel = {
+				if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							OR = {
+								has_tech = flexible_line
+								has_tech = streamlined_line
+							}
+						}
+					}
+					ROOT = {
+						OR = {
+							has_tech = flexible_line
+							has_tech = streamlined_line
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = assembly_line_production
+						}
+					}
+					ROOT = { has_tech = assembly_line_production }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = advanced_machine_tools
+						}
+					}
+					ROOT = { has_tech = advanced_machine_tools }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = improved_machine_tools
+						}
+					}
+					ROOT = { has_tech = improved_machine_tools }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = basic_machine_tools
+						}
+					}
+					ROOT = { has_tech = basic_machine_tools }
+				}
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_phalanstere_import_technology_production_tt
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+			}
+			on_remove = {
+				if = {
+					limit = { has_country_flag = retain_import_technology_production }
+					if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E0
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C0_P2_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C0_P2_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E1 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E1
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E2 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E2
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E2
+						}
+					}
+					else = { add_ideas = FCF_international_phalanstere_technology_C0_P2_E0 }
+				}
+			}
+		}
+
+		FCF_international_phalanstere_import_technology_excavation = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			cancel = {
+				if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation5
+						}
+					}
+					ROOT = { has_tech = excavation5 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation4
+						}
+					}
+					ROOT = { has_tech = excavation4 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation3
+						}
+					}
+					ROOT = { has_tech = excavation3 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation2
+						}
+					}
+					ROOT = { has_tech = excavation2 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation1
+						}
+					}
+					ROOT = { has_tech = excavation1 }
+				}
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_phalanstere_import_technology_excavation_tt
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+			on_remove = {
+				if = {
+					limit = { has_country_flag = retain_import_technology_excavation }
+					if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P0_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P0_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C0_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C0_P2_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E1
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E1
+						}
+					}
+					else = { add_ideas = FCF_international_phalanstere_technology_C0_P0_E1 }
+				}
+			}
+		}
+		FCF_international_phalanstere_import_technology_excavation_strengthened = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			cancel = {
+				if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation5
+						}
+					}
+					ROOT = { has_tech = excavation5 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation4
+						}
+					}
+					ROOT = { has_tech = excavation4 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation3
+						}
+					}
+					ROOT = { has_tech = excavation3 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation2
+						}
+					}
+					ROOT = { has_tech = excavation2 }
+				}
+				else_if = {
+					limit = {
+						any_other_country = {
+							FRA_is_phalanstere_member = yes
+							has_tech = excavation1
+						}
+					}
+					ROOT = { has_tech = excavation1 }
+				}
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_phalanstere_import_technology_excavation_tt
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+			on_remove = {
+				if = {
+					limit = { has_country_flag = retain_import_technology_excavation }
+					if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P0_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P0_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P0_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P0_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C0_P1_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C0_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C0_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C0_P2_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P1_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P1_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P1_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P1_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C1_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C1_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C1_P2_E2
+						}
+					}
+					else_if = {
+						limit = { has_idea = FCF_international_phalanstere_technology_C2_P2_E0 }
+						swap_ideas = {
+							remove_idea = FCF_international_phalanstere_technology_C2_P2_E0
+							add_idea = FCF_international_phalanstere_technology_C2_P2_E2
+						}
+					}
+					else = { add_ideas = FCF_international_phalanstere_technology_C0_P0_E2 }
+				}
+			}
+		}
+
+		FCF_international_phalanstere_technology_C1_P0_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P0_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+			}
+		}
+
+		FCF_international_phalanstere_technology_C0_P1_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C0_P2_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+			}
+		}
+
+	# 法伦施泰尔技术组合：C/P/E 依次表示建设、生产、资源开采等级（0-2）。
+		FCF_international_phalanstere_technology_C0_P0_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C0_P0_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+
+		FCF_international_phalanstere_technology_C1_P1_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P1_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C1_P2_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P2_E0 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+			}
+		}
+
+		FCF_international_phalanstere_technology_C1_P0_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P0_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C1_P0_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P0_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+
+		FCF_international_phalanstere_technology_C0_P1_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C0_P2_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C0_P1_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+		FCF_international_phalanstere_technology_C0_P2_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+
+		FCF_international_phalanstere_technology_C1_P1_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P1_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C1_P2_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C1_P1_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P2_E1 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+
+				local_resources_factor = 0.05
+				local_resources_coal_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P1_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				production_factory_max_efficiency_factor = 0.025
+				equipment_conversion_speed = 0.05
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+		FCF_international_phalanstere_technology_C1_P2_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				repair_speed_factor = 0.05
+
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+		FCF_international_phalanstere_technology_C2_P2_E2 = {
+			name = phalanstere_import_technology
+			picture = generic_research_increase
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				repair_speed_factor = 0.1
+
+				production_factory_max_efficiency_factor = 0.05
+				equipment_conversion_speed = 0.1
+
+				local_resources_factor = 0.1
+				local_resources_coal_factor = 0.1
+			}
+		}
+
+		FCF_international_phalanstere_send_students_theory = {
+			name = phalanstere_send_students
+			picture = generic_lightbulb
+			modifier = {
+				political_power_factor = 0.1
+
+				totalist_drift = 0.03
+				syndicalist_drift = 0.03
+				radical_socialist_drift = 0.03
+			}
+		}
+		FCF_international_phalanstere_send_students_technology = {
+			name = phalanstere_send_students
+			picture = generic_lightbulb
+			modifier = {
+				research_speed_factor = 0.05
+				research_sharing_per_country_bonus_factor = 0.2
+
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_send_students_technology_strengthened = {
+			name = phalanstere_send_students
+			picture = generic_lightbulb
+			modifier = {
+				research_speed_factor = 0.1
+				research_sharing_per_country_bonus_factor = 0.2
+
+				production_factory_max_efficiency_factor = 0.05
+
+				specialization_land_speed_factor = 0.05
+				specialization_air_speed_factor = 0.05
+				specialization_naval_speed_factor = 0.05
+				specialization_nuclear_speed_factor = 0.05
+			}
+		}
+		FCF_international_phalanstere_send_students_art = {
+			name = phalanstere_send_students
+			picture = generic_lightbulb
+			modifier = {
+				stability_weekly = 0.005
+				war_support_weekly = 0.005
+
+				industrial_capacity_factory = 0.05
+			}
+			on_remove = {
+				if = {
+					limit = { has_global_flag = phalanstere_cooperation_liteary_art }
+					random_list = {
+						60 = { add_political_power = 30 }
+						30 = { add_political_power = 50 }
+						10 = { add_political_power = 100 }
+					}
+				}
+			}
+		}
+	###外交部
+		FCF_international_trade_agreement_economy = {
+			name = FCF_trade_agreement
+			picture = generic_trade
+			cancel = {
+				OR = {
+					NOT = { country_exists = FRA }
+					has_war_with = FRA
+					any_controlled_state = {
+						NOT = {
+							has_state_flag = resources_manganese_important
+							has_state_flag = resources_manganese
+
+							has_state_flag = resources_lead_important
+							has_state_flag = resources_lead
+
+							has_state_flag = resources_sulfur_important
+							has_state_flag = resources_sulfur
+
+							has_state_flag = resources_cotton_important
+							has_state_flag = resources_cotton
+
+							has_state_flag = resources_niter_important
+							has_state_flag = resources_niter
+
+							has_state_flag = resources_copper_important
+							has_state_flag = resources_copper
+
+							has_state_flag = resources_mercury_important
+							has_state_flag = resources_mercury
+
+							has_state_flag = resources_mica_important
+							has_state_flag = resources_mica
+
+							has_state_flag = resources_oil_important
+							has_state_flag = resources_oil
+
+							has_state_flag = resources_bromine_important
+							has_state_flag = resources_bromine
+
+							has_state_flag = resources_antimony_important
+							has_state_flag = resources_antimony
+
+							has_state_flag = resources_zinc_important
+							has_state_flag = resources_zinc
+
+							has_state_flag = resources_phosphate_important
+							has_state_flag = resources_phosphate
+
+							has_state_flag = resources_diamond_important
+							has_state_flag = resources_diamond
+
+							has_state_flag = resources_cobalt_important
+							has_state_flag = resources_cobalt
+
+							has_state_flag = resources_asbestos_important
+							has_state_flag = resources_asbestos
+
+							has_state_flag = resources_vanadium_important
+							has_state_flag = resources_vanadium
+
+							has_state_flag = resources_platinum_important
+							has_state_flag = resources_platinum
+
+							has_state_flag = resources_potassium_salt_important
+							has_state_flag = resources_potassium_salt
+						}
+					}
+					has_idea = closed_economy
+					is_embargoing = FRA
+				}
+			}
+			modifier = {
+				political_power_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.25
+			}
+			on_remove = {
+				FRA = { country_event = fcf_diplomacy_events.9 }
+			}
+		}
+		FCF_international_trade_agreement_tariff = {
+			name = FCF_trade_agreement
+			picture = generic_trade
+			cancel = {
+				OR = {
+					NOT = { country_exists = FRA }
+					has_war_with = FRA
+					any_controlled_state = {
+						NOT = {
+							has_state_flag = resources_manganese_important
+							has_state_flag = resources_manganese
+
+							has_state_flag = resources_lead_important
+							has_state_flag = resources_lead
+
+							has_state_flag = resources_sulfur_important
+							has_state_flag = resources_sulfur
+
+							has_state_flag = resources_cotton_important
+							has_state_flag = resources_cotton
+
+							has_state_flag = resources_niter_important
+							has_state_flag = resources_niter
+
+							has_state_flag = resources_copper_important
+							has_state_flag = resources_copper
+
+							has_state_flag = resources_mercury_important
+							has_state_flag = resources_mercury
+
+							has_state_flag = resources_mica_important
+							has_state_flag = resources_mica
+
+							has_state_flag = resources_oil_important
+							has_state_flag = resources_oil
+
+							has_state_flag = resources_bromine_important
+							has_state_flag = resources_bromine
+
+							has_state_flag = resources_antimony_important
+							has_state_flag = resources_antimony
+
+							has_state_flag = resources_zinc_important
+							has_state_flag = resources_zinc
+
+							has_state_flag = resources_phosphate_important
+							has_state_flag = resources_phosphate
+
+							has_state_flag = resources_diamond_important
+							has_state_flag = resources_diamond
+
+							has_state_flag = resources_cobalt_important
+							has_state_flag = resources_cobalt
+
+							has_state_flag = resources_asbestos_important
+							has_state_flag = resources_asbestos
+
+							has_state_flag = resources_vanadium_important
+							has_state_flag = resources_vanadium
+
+							has_state_flag = resources_platinum_important
+							has_state_flag = resources_platinum
+
+							has_state_flag = resources_potassium_salt_important
+							has_state_flag = resources_potassium_salt
+						}
+					}
+					has_idea = closed_economy
+					is_embargoing = FRA
+				}
+			}
+			modifier = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				industrial_factory_donations = 1
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.25
+			}
+			on_remove = {
+				FRA = { country_event = fcf_diplomacy_events.9 }
+			}
+		}
+		FCF_international_trade_agreement_workers = {
+			name = FCF_trade_agreement
+			picture = generic_trade
+			cancel = {
+				OR = {
+					NOT = { country_exists = FRA }
+					has_war_with = FRA
+					any_controlled_state = {
+						NOT = {
+							has_state_flag = resources_manganese_important
+							has_state_flag = resources_manganese
+
+							has_state_flag = resources_lead_important
+							has_state_flag = resources_lead
+
+							has_state_flag = resources_sulfur_important
+							has_state_flag = resources_sulfur
+
+							has_state_flag = resources_cotton_important
+							has_state_flag = resources_cotton
+
+							has_state_flag = resources_niter_important
+							has_state_flag = resources_niter
+
+							has_state_flag = resources_copper_important
+							has_state_flag = resources_copper
+
+							has_state_flag = resources_mercury_important
+							has_state_flag = resources_mercury
+
+							has_state_flag = resources_mica_important
+							has_state_flag = resources_mica
+
+							has_state_flag = resources_oil_important
+							has_state_flag = resources_oil
+
+							has_state_flag = resources_bromine_important
+							has_state_flag = resources_bromine
+
+							has_state_flag = resources_antimony_important
+							has_state_flag = resources_antimony
+
+							has_state_flag = resources_zinc_important
+							has_state_flag = resources_zinc
+
+							has_state_flag = resources_phosphate_important
+							has_state_flag = resources_phosphate
+
+							has_state_flag = resources_diamond_important
+							has_state_flag = resources_diamond
+
+							has_state_flag = resources_cobalt_important
+							has_state_flag = resources_cobalt
+
+							has_state_flag = resources_asbestos_important
+							has_state_flag = resources_asbestos
+
+							has_state_flag = resources_vanadium_important
+							has_state_flag = resources_vanadium
+
+							has_state_flag = resources_platinum_important
+							has_state_flag = resources_platinum
+
+							has_state_flag = resources_potassium_salt_important
+							has_state_flag = resources_potassium_salt
+						}
+					}
+					has_idea = closed_economy
+					is_embargoing = FRA
+				}
+			}
+			modifier = {
+				stability_factor = 0.05
+				production_speed_buildings_factor = 0.025
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.25
+			}
+			on_remove = {
+				FRA = { country_event = fcf_diplomacy_events.9 }
+			}
+		}
+
+	###
+	#
+		FCF_international_GER_between_two_fires = {
+			picture = generic_desertion
+			modifier = {
+				surrender_limit = -0.1
+				war_support_factor = -0.05
+				max_planning = -0.05
+			}
+			targeted_modifier = {
+				tag = FRA
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+			targeted_modifier = {
+				tag = RUS
+				attack_bonus_against = -0.05
+				defense_bonus_against = -0.05
+			}
+		}
+
+		FCF_international_lowland_unexpected_attack = {
+			picture = generic_desertion
+			modifier = {
+				surrender_limit = -0.25
+				army_core_attack_factor = -0.05
+				army_core_defence_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = FRA
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+
+		FCF_international_operation_northrend = {
+			picture = SWE_coastal_support
+			modifier = {
+				naval_invasion_prep_speed = 0.15
+				naval_invasion_capacity = 12
+				invasion_preparation = -0.5
+			}
+		}
+
+	#勿忘阿尔萨斯洛林
+		FCF_international_unity_passion = {
+			picture = generic_phoenix
+			modifier = {
+				army_attack_speed_factor = 0.15
+				totalist_drift = 0.05
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.05
+			}
+		}
+
+	#守株待兔
+		FCF_international_GER_fall_into_trap = {
+			picture = generic_desertion
+			modifier = {
+				army_org_factor = -0.05
+			}
+			targeted_modifier = {
+				tag = FRA
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+
+	#国际纵队
+		FCF_international_volunteer_column = {
+			picture = FCF_international_volunteer_column
+			modifier = {
+				war_support_factor = 0.05
+				send_volunteer_size = 3
+				training_time_army_factor = -0.1
+				army_experience_from_volunteers = 0.05
+			}
+		}
+
+	#通用干涉
+		FCF_international_intervention_organized_strike = {
+			picture = FRA_factory_strikes
+			modifier = {
+				political_power_factor = -0.1
+				stability_factor = -0.05
+				production_speed_buildings_factor = -0.025
+				industrial_capacity_factory = -0.05
+				consumer_goods_factor = 0.1
+
+				totalist_drift = 0.02
+				syndicalist_drift = 0.02
+				radical_socialist_drift = 0.02
+			}
+		}
+		FCF_international_intervention_organized_strike_strengthened = {
+			name = FCF_international_intervention_organized_strike
+			picture = FRA_factory_strikes
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = -0.08
+				stability_weekly = -0.003
+				production_speed_buildings_factor = -0.05
+				industrial_capacity_factory = -0.1
+				consumer_goods_factor = 0.2
+
+				totalist_drift = 0.03
+				syndicalist_drift = 0.03
+				radical_socialist_drift = 0.03
+			}
+		}
+
+		FCF_international_new_republic_country = {
+			picture = generic_phoenix
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+
+				industrial_capacity_factory = 0.05
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.1
+
+				totalist_drift = 0.05
+				syndicalist_drift = 0.05
+				radical_socialist_drift = 0.05
+				social_democrat_drift = 0.1
+				social_liberal_drift = 0.1
+				market_liberal_drift = 0.05
+				social_conservative_drift = 0.05
+				authoritarian_democrat_drift = 0.05
+			}
+		}
+
+		FCF_international_new_democrat_country = {
+			picture = generic_phoenix
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+
+				industrial_capacity_factory = 0.05
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.1
+
+				syndicalist_drift = 0.05
+				radical_socialist_drift = 0.05
+				social_democrat_drift = 0.05
+				social_liberal_drift = 0.05
+				market_liberal_drift = 0.05
+				social_conservative_drift = 0.05
+				authoritarian_democrat_drift = 0.05
+			}
+		}
+
+		FCF_international_new_socialist_country = {
+			picture = generic_phoenix
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+
+				industrial_capacity_factory = 0.05
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.1
+
+				totalist_drift = 0.1
+				syndicalist_drift = 0.1
+				radical_socialist_drift = 0.1
+			}
+		}
+
+	#公社军事援助
+		FCF_international_french_military_support = {
+			picture = advisors_france
+			available = { country_exists = FRA }
+			cancel = { has_socialist_government = no }
+			modifier = {
+				training_time_army_factor = -0.1
+				army_core_defence_factor = 0.025
+				army_org_factor = 0.05
+				army_attack_speed_factor = 0.05
+			}
+		}
+
+	#西班牙内战
+		FCF_international_infiltrated_command_chain = {
+			picture = generic_army_problems
+			modifier = {
+				army_org_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = SWF
+				attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+			}
+		}
+
+	#意大利内战援助
+		FCF_international_italy_french_support = {
+			picture = HOL_totalist_military
+			available = { country_exists = FRA }
+			modifier = {
+				army_speed_factor = 0.05
+			}
+			targeted_modifier = {
+				tag = ITA
+				attack_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = LOM
+				attack_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = VNC
+				attack_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = SRD
+				attack_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = SIC
+				attack_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = PAP
+				attack_bonus_against = 0.1
+			}
+		}
+
+		FCF_international_italy_rebuild_support = {
+			picture = economic_control_icon
+			available = { country_exists = FRA }
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.05
+				production_speed_buildings_factor = 0.1
+			}
+		}
+
+		FCF_international_italy_defeatist_panic = {
+			picture = generic_desertion
+			cancel = { SRI = { exists = no } }
+			modifier = {
+				surrender_limit = -0.33
+			}
+			targeted_modifier = {
+				tag = SRI
+				attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+			}
+		}
+
+	#反奥地利
+		FCF_international_anti_austrian_national_independence = {
+			picture = AUS_political_polarisation_worsened
+			cancel = { NOT = { is_subject_of = AUS } }
+			modifier = {
+				autonomy_manpower_share = -0.33
+				extra_trade_to_overlord_factor = -0.33
+				overlord_trade_cost_factor = 0.25
+				cic_to_overlord_factor = -0.5
+				mic_to_overlord_factor = -0.25
+			}
+		}
+
+	#巴尔干合作
+		FCF_international_balkan_cooperation = {
+			picture = advisors_france
+			available = { country_exists = FRA }
+			modifier = {
+				political_power_factor = -0.05
+				consumer_goods_factor = -0.1
+				army_org_factor = 0.1
+				radical_socialist_drift = 0.05
+				syndicalist_drift = 0.05
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = BUL
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+		}
+
+	#北欧合作
+		FCF_international_northern_europe_cooperation = {
+			picture = generic_syndicalist_worker
+			available = { country_exists = FRA }
+			modifier = {
+				political_power_factor = 0.05
+				consumer_goods_factor = -0.1
+				research_speed_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+
+		FCF_international_red_frontline = {
+			picture = generic_syndicalism_drift_bonus
+			available = { country_exists = FRA }
+			modifier = {
+				totalist_drift = 0.03
+				syndicalist_drift = 0.04
+				radical_socialist_drift = 0.04
+				stability_factor = -0.05
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+				custom_modifier_tooltip = FCF_international_red_frontline_tt
+			}
+		}
+
+	#法俄合作
+		FCF_international_FRA_RUS_cooperation_economic = {
+			name = FCF_rus_cooperation
+			picture = generic_constitutional_guarantees
+			cancel = {
+				OR = {
+					NOT = { is_in_faction_with = FRA }
+					NOT = { is_in_faction_with = RUS }
+				}
+				OR = {
+					has_war_with = FRA
+					has_war_with = RUS
+				}
+			}
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_industrial_complex_factor = 0.1
+			}
+		}
+
+		FCF_international_FRA_RUS_cooperation_military = {
+			name = FCF_rus_cooperation
+			picture = generic_constitutional_guarantees
+			cancel = {
+				OR = {
+					NOT = { is_in_faction_with = FRA }
+					NOT = { is_in_faction_with = RUS }
+				}
+				OR = {
+					has_war_with = FRA
+					has_war_with = RUS
+				}
+			}
+			modifier = {
+				war_support_factor = 0.05
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.15
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+
+		FCF_international_FRA_RUS_cooperation_political = {
+			name = FCF_rus_cooperation
+			picture = generic_constitutional_guarantees
+			cancel = {
+				OR = {
+					NOT = { is_in_faction_with = FRA }
+					NOT = { is_in_faction_with = RUS }
+				}
+				OR = {
+					has_war_with = FRA
+					has_war_with = RUS
+				}
+			}
+			modifier = {
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				research_speed_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		FCF_international_FRA_RUS_cooperation_economic_military = {
+			name = FCF_rus_cooperation
+			picture = generic_constitutional_guarantees
+			cancel = {
+				OR = {
+					NOT = { is_in_faction_with = FRA }
+					NOT = { is_in_faction_with = RUS }
+				}
+				OR = {
+					has_war_with = FRA
+					has_war_with = RUS
+				}
+			}
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_industrial_complex_factor = 0.1
+
+				war_support_factor = 0.05
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.15
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+
+		FCF_international_FRA_RUS_cooperation_economic_political = {
+			name = FCF_rus_cooperation
+			picture = generic_constitutional_guarantees
+			cancel = {
+				OR = {
+					NOT = { is_in_faction_with = FRA }
+					NOT = { is_in_faction_with = RUS }
+				}
+				OR = {
+					has_war_with = FRA
+					has_war_with = RUS
+				}
+			}
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_industrial_complex_factor = 0.1
+
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				research_speed_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		FCF_international_FRA_RUS_cooperation_military_political = {
+			name = FCF_rus_cooperation
+			picture = generic_constitutional_guarantees
+			cancel = {
+				OR = {
+					NOT = { is_in_faction_with = FRA }
+					NOT = { is_in_faction_with = RUS }
+				}
+				OR = {
+					has_war_with = FRA
+					has_war_with = RUS
+				}
+			}
+			modifier = {
+				war_support_factor = 0.05
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.15
+
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				research_speed_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+
+		FCF_international_FRA_RUS_cooperation_comprehensive = {
+			name = FCF_rus_cooperation
+			picture = generic_constitutional_guarantees
+			cancel = {
+				OR = {
+					NOT = { is_in_faction_with = FRA }
+					NOT = { is_in_faction_with = RUS }
+				}
+				OR = {
+					has_war_with = FRA
+					has_war_with = RUS
+				}
+			}
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_factory_max_efficiency_factor = 0.05
+				production_speed_industrial_complex_factor = 0.1
+
+				war_support_factor = 0.05
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.15
+
+				political_power_factor = 0.1
+				stability_factor = 0.05
+				research_speed_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.05
+				defense_bonus_against = 0.05
+			}
+		}
+
+	###亚洲
+	#中国
+		FCF_international_CHI_government_recognition = {
+			picture = CHI_support_kmt
+			available = { country_exists = FRA }
+			cancel = { has_socialist_government = no }
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.05
+				compliance_gain = 0.01
+			}
+		}
+
+		FCF_international_CHI_economic_cooperation = {
+			name = FCF_international_CHI_economic_cooperation
+			picture = CHI_baojia_system
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.15
+
+				industrial_capacity_factory = 0.5
+				production_factory_max_efficiency_factor = 0.025
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.25
+			}
+		}
+
+		FCF_international_CHI_political_cooperation = {
+			name = FCF_international_CHI_economic_cooperation
+			picture = CHI_baojia_system
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.15
+
+				political_power_factor = 0.15
+				radical_socialist_drift = 0.01
+				syndicalist_drift = 0.01
+				totalist_drift = 0.01
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.1
+			}
+		}
+
+		FCF_international_CHI_military_cooperation = {
+			name = FCF_international_CHI_economic_cooperation
+			picture = CHI_baojia_system
+			modifier = {
+				production_speed_buildings_factor = 0.025
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.15
+
+				max_planning = 0.05
+				army_org_factor = 0.05
+				army_attack_factor = 0.025
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.1
+			}
+		}
+
+		FCF_international_CHI_anti_JAP_resistance = {
+			picture = GER_proud_eagle_that_ate_the_sun
+			cancel = { NOT = { has_war_with = JAP } }
+			modifier = {
+				surrender_limit = 0.5
+				industrial_capacity_factory = 0.1
+				production_factory_efficiency_gain_factor = 0.15
+
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.1
+				army_speed_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+		}
+
+	#日本
+
+	#印支革命
+		FCF_international_GEA_indochina_threat_level_1 = {
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = {
+				INC = { exists = yes }
+				NOT = { has_war_with = INC }
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_GEA_indochina_threat_level_1_tt
+				stability_factor = -0.1
+				industrial_capacity_factory = -0.05
+				supply_consumption_factor = 0.05
+				training_time_army_factor = 0.15
+			}
+		}
+
+		FCF_international_GEA_indochina_threat_level_2 = {
+			name = FCF_international_GEA_indochina_threat_level_1
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = {
+				INC = { exists = yes }
+				NOT = { has_war_with = INC }
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_GEA_indochina_threat_level_1_tt
+				stability_factor = -0.05
+				industrial_capacity_factory = -0.1
+				consumer_goods_factor = 0.1
+				supply_consumption_factor = 0.05
+				training_time_army_factor = 0.1
+			}
+		}
+
+		FCF_international_GEA_indochina_threat_level_3 = {
+			name = FCF_international_GEA_indochina_threat_level_1
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = {
+				INC = { exists = yes }
+				NOT = { has_war_with = INC }
+			}
+			modifier = {
+				custom_modifier_tooltip = FCF_international_GEA_indochina_threat_level_1_tt
+				stability_factor = -0.1
+				industrial_capacity_factory = -0.05
+				supply_consumption_factor = 0.05
+				training_time_army_factor = 0.15
+			}
+			targeted_modifier = {
+				tag = INC
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+
+		FCF_international_GEA_indochina_revolution = {
+			picture = Recruitment_Crisis
+			available = { country_exists = INC }
+			modifier = {
+				supply_consumption_factor = 0.05
+				army_speed_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = INC
+				attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+			}
+		}
+
+		FCF_international_relationship_indochina = {
+			picture = generic_syndicalist_worker
+			cancel = {
+				FRA = { exists = no }
+				has_socialist_government = no
+			}
+			modifier = {
+				consumer_goods_factor = -0.2
+				monthly_population = 0.1
+				industrial_capacity_factory = 0.1
+				production_speed_buildings_factor = 0.05
+				production_speed_industrial_complex_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+
+	#印度
+		FCF_international_india_revolution_panic = {
+			picture = Recruitment_Crisis
+			available = { country_exists = HND }
+			modifier = {
+				political_power_factor = -0.05
+				industrial_capacity_factory = -0.025
+				industrial_capacity_dockyard = -0.025
+				consumer_goods_factor = 0.05
+				army_org_factor = -0.05
+				conscription_factor = -0.15
+
+				radical_socialist_drift = 0.02
+			}
+			targeted_modifier = {
+				tag = HND
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_RAJ = {
+			name = FCF_india_revo_attack
+			targeted_modifier = {
+				tag = RAJ
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_PRF = {
+			name = FCF_india_revo_attack
+			targeted_modifier = {
+				tag = PRF
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_india_revolution_attack_maneuver = {
+			name = FCF_india_revo_attack
+			modifier = {
+				army_speed_factor = 0.1
+				army_attack_speed_factor = 0.1
+				org_loss_when_moving = -0.1
+			}
+		}
+
+		FCF_international_india_revolution_attack_organization = {
+			name = FCF_india_revo_attack
+			modifier = {
+				army_org_factor = 0.05
+				supply_consumption_factor = -0.05
+				recon_factor = 0.1
+			}
+		}
+
+		FCF_international_india_revolution_attack_planning = {
+			name = FCF_india_revo_attack
+			modifier = {
+				max_planning = 0.05
+				attrition = -0.05
+				max_dig_in_factor = 0.1
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_RAJ_maneuver = {
+			name = FCF_india_revo_attack
+			picture = generic_syndicalist_manpower
+			modifier = {
+				army_speed_factor = 0.1
+				army_attack_speed_factor = 0.1
+				org_loss_when_moving = -0.1
+			}
+			targeted_modifier = {
+				tag = RAJ
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_RAJ_organization = {
+			name = FCF_india_revo_attack
+			picture = generic_syndicalist_manpower
+			modifier = {
+				army_org_factor = 0.05
+				supply_consumption_factor = -0.05
+				recon_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = RAJ
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_RAJ_planning = {
+			name = FCF_india_revo_attack
+			picture = generic_syndicalist_manpower
+			modifier = {
+				max_planning = 0.05
+				attrition = -0.05
+				max_dig_in_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = RAJ
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_PRF_maneuver = {
+			name = FCF_india_revo_attack
+			picture = generic_syndicalist_manpower
+			modifier = {
+				army_speed_factor = 0.1
+				army_attack_speed_factor = 0.1
+				org_loss_when_moving = -0.1
+			}
+			targeted_modifier = {
+				tag = PRF
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_PRF_organization = {
+			name = FCF_india_revo_attack
+			picture = generic_syndicalist_manpower
+			modifier = {
+				army_org_factor = 0.05
+				supply_consumption_factor = -0.05
+				recon_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = PRF
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_india_revolution_attack_against_PRF_planning = {
+			name = FCF_india_revo_attack
+			picture = generic_syndicalist_manpower
+			modifier = {
+				max_planning = 0.05
+				attrition = -0.05
+				max_dig_in_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = PRF
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_HND_trade_ties = {
+			picture = generic_syndicalist_worker
+			cancel = { FRA = { exists = no } }
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.025
+				production_speed_infrastructure_factor = 0.15
+				production_speed_industrial_complex_factor = 0.1
+				consumer_goods_factor = -0.15
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+
+	#印尼
+		FCF_international_DEI_colonial_disaster = {
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = {
+				INS = { exists = no }
+				NOT = {
+					has_idea = DEI_idea_indonesian_unity_very_low
+					has_idea = DEI_idea_indonesian_unity_low
+					has_idea = DEI_idea_indonesian_unity_medium
+					has_idea = DEI_idea_indonesian_unity_high
+					has_idea = DEI_idea_indonesian_unity_very_high
+					has_idea = DEI_idea_indonesian_strength_very_low
+					has_idea = DEI_idea_indonesian_strength_low
+					has_idea = DEI_idea_indonesian_strength_medium
+					has_idea = DEI_idea_indonesian_strength_high
+					has_idea = DEI_idea_indonesian_strength_very_high
+				}
+			}
+			modifier = {
+				war_support_factor = -0.1
+				stability_factor = -0.1
+				political_power_factor = -0.1
+				local_resources_factor = -0.15
+				army_morale_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = INS
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+
+		FCF_international_INS_independence_aspiration = {
+			picture = generic_phoenix
+			cancel = {
+				has_dictatorship_government = yes
+				has_war = no
+				DEI = { exists = no }
+			}
+			modifier = {
+				stability_factor = 0.05
+				industrial_capacity_factory = 0.05
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.15
+				supply_consumption_factor = -0.05
+			}
+		}
+
+		FCF_international_INS_trade_ties = {
+			picture = generic_syndicalist_worker
+			cancel = {
+				FRA = { exists = no }
+				NOT = { is_in_faction_with = JAP }
+				NOT = { is_in_faction_with = GER }
+				NOT = { is_in_faction_with = ENT }
+				has_dictatorship_government = no
+			}
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.05
+				local_resources_factor = 0.2
+				production_speed_industrial_complex_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+
+	###中东
+	#法埃合作
+		FCF_international_EGY_economic_cooperation = {
+			picture = generic_constitutional_guarantees
+			available = { country_exists = FRA }
+			cancel = { has_war_with = FRA }
+			modifier = {
+				local_resources_factor = 0.05
+				production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.1
+			}
+		}
+
+		FCF_international_EGY_political_cooperation = {
+			name = FCF_international_EGY_economic_cooperation
+			picture = generic_constitutional_guarantees
+			available = { country_exists = FRA }
+			cancel = { has_war_with = FRA }
+			modifier = {
+				political_power_gain = 0.05
+				local_resources_factor = 0.05
+				production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.1
+
+				radical_socialist_drift = 0.01
+				social_democrat_drift = 0.01
+				social_liberal_drift = 0.01
+			}
+		}
+
+		FCF_international_EGY_revolutionary_cooperation = {
+			name = FCF_international_EGY_economic_cooperation
+			picture = generic_constitutional_guarantees
+			available = { country_exists = FRA }
+			cancel = { has_war_with = FRA }
+			modifier = {
+				stability_factor = -0.05
+				political_power_gain = 0.05
+				local_resources_factor = 0.05
+				production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.1
+
+				syndicalist_drift = 0.02
+				radical_socialist_drift = 0.02
+			}
+		}
+
+		FCF_international_EGY_FRA_officer_group = {
+			picture = advisors_france
+			available = { country_exists = FRA }
+			modifier = {
+				experience_gain_army_factor = 0.05
+				training_time_army_factor = -0.1
+				land_reinforce_rate = 0.025
+				experience_loss_factor = -0.1
+				army_attack_speed_factor = 0.1
+
+				totalist_drift = 0.01
+				syndicalist_drift = 0.01
+				radical_socialist_drift = 0.01
+			}
+		}
+
+	#沙漠战争
+		FCF_international_TUR_national_uprising = {
+			picture = generic_desertion
+			modifier = {
+				supply_consumption_factor = 0.05
+				army_speed_factor = -0.05
+				army_org_factor = -0.05
+			}
+			targeted_modifier = {
+				tag = PER
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+			targeted_modifier = {
+				tag = EGY
+				attack_bonus_against = -0.1
+				defense_bonus_against = -0.1
+			}
+		}
+
+	###美洲
+	#墨西哥合作
+		FCF_international_mexico_cooperation = {
+			picture = generic_syndicalist_fort
+			available = { country_exists = FRA }
+			modifier = {
+				political_power_factor = 0.1
+				local_resources_factor = 0.15
+				production_speed_industrial_complex_factor = 0.1
+				production_speed_infrastructure_factor = 0.2
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+
+	#南椎体革命
+		FCF_international_southern_cone_cooperation_stage_1 = {
+			picture = advisors_france
+			available = { country_exists = FRA }
+			modifier = {
+				political_power_factor = 0.05
+				war_support_factor = 0.1
+				army_org_factor = 0.1
+				industrial_capacity_factory = 0.05
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+
+		FCF_international_southern_cone_cooperation_stage_2 = {
+			name = FCF_international_southern_cone_cooperation_stage_1
+			picture = advisors_france
+			available = { country_exists = FRA }
+			modifier = {
+				political_power_factor = 0.05
+				stability_factor = 0.05
+				army_org_factor = 0.05
+				industrial_capacity_factory = 0.05
+				consumer_goods_factor = -0.1
+				production_speed_industrial_complex_factor = 0.1
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+
+		FCF_international_revolutionary_optimism = {
+			picture = generic_syndicalist_manpower
+			cancel = { ARG = { exists = no } }
+			modifier = {
+				political_power_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = ARG
+				attack_bonus_against = 0.15
+				defense_bonus_against = 0.15
+			}
+		}
+
+		FCF_international_panic_stricken = {
+			picture = POL_the_peasants_strike
+			cancel = { FOP = { exists = no } }
+			modifier = {
+				stability_factor = -0.05
+				war_support_factor = -0.1
+				conscription_factor = -0.15
+				industrial_capacity_factory = -0.1
+				army_core_attack_factor = -0.1
+				army_core_defence_factor = -0.1
+			}
+		}
+
+	#中美洲之梦
+		FCF_international_central_america_dream = {
+			picture = generic_phoenix
+			modifier = {
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				monthly_population = 0.15
+				production_speed_industrial_complex_factor = 0.2
+				production_speed_infrastructure_factor = 0.25
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+
+		FCF_international_central_america_enthusiasm = {
+			picture = generic_phoenix
+			cancel = { has_socialist_government = no }
+			modifier = {
+				army_attack_factor = 0.025
+				army_org_factor = 0.1
+				org_loss_when_moving = -0.05
+				industrial_capacity_factory = 0.025
+			}
+		}
+
+	#美利坚合作
+		FCF_international_america_cooperation = {
+			picture = generic_syndicalist_worker
+			available = { country_exists = FRA }
+			modifier = {
+				political_power_factor = 0.05
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.1
+				consumer_goods_factor = -0.1
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+
+		FCF_international_america_french_military_help = {
+			picture = advisors_france
+			available = { country_exists = FRA }
+			cancel = {
+				USA = { exists = yes }
+				NEE = { exists = yes }
+				APG = { exists = yes }
+				ACC = { exists = yes }
+			}
+			modifier = {
+				army_org_factor = 0.1
+				army_speed_factor = 0.05
+				training_time_army_factor = -0.15
+			}
+			targeted_modifier = {
+				tag = USA
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = NEE
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = ACC
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+			targeted_modifier = {
+				tag = APG
+				attack_bonus_against = 0.1
+				defense_bonus_against = 0.1
+			}
+		}
+
+	#加拿大危机
+		FCF_international_CAN_QUE_strike_stage_1 = {
+			picture = generic_crippled_industry
+			modifier = {
+				political_power_cost = 0.5
+				stability_factor = -0.1
+				war_support_factor = -0.25
+				conscription_factor = -0.3
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				consumer_goods_factor = 0.15
+				custom_modifier_tooltip = FCF_international_CAN_QUE_strike_stage_1_tt
+			}
+			targeted_modifier = {
+				tag = WCA
+				attack_bonus_against = -0.15
+				defense_bonus_against = -0.15
+			}
+		}
+
+		FCF_international_CAN_QUE_strike_stage_2 = {
+			name = FCF_international_CAN_QUE_strike_stage_1
+			picture = generic_crippled_industry
+			modifier = {
+				political_power_cost = 0.25
+				stability_factor = -0.05
+				war_support_factor = -0.2
+				conscription_factor = -0.15
+				industrial_capacity_factory = -0.1
+				industrial_capacity_dockyard = -0.1
+				consumer_goods_factor = 0.1
+
+				totalist_drift = 0.02
+				syndicalist_drift = 0.03
+				radical_socialist_drift = 0.03
+				custom_modifier_tooltip = FCF_international_CAN_QUE_strike_stage_1_tt
+			}
+		}
+
+	#委内瑞拉贸易伙伴
+		FCF_international_trade_partnership = {
+			picture = KTG_Gold_Trade
+			available = { country_exists = FRA }
+			cancel = {
+				OR = {
+					any_other_country = {
+						has_war_with = ROOT
+						has_socialist_government = yes
+					}
+					is_embargoing = FRA
+					AND = {
+						tag = VEN
+						has_completed_focus = VEN_preventive_coup
+						has_completed_focus = VEN_eagle_screech
+					}
+				}
+			}
+			modifier = {
+				political_power_factor = 0.05
+				consumer_goods_factor = -0.2
+				production_speed_buildings_factor = 0.1
+				local_resources_factor = 0.15
+				radical_socialist_drift = 0.03
+			}
+			targeted_modifier = {
+				tag = FRA
+				trade_cost_for_target_factor = -0.4
+			}
+		}
+
+	###非洲
+		FCF_international_african_colonial_riot_level_1 = {
+			name = FCF_africa_colonial_riot
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = { has_socialist_government = yes }
+			modifier = {
+				stability_factor = -0.025
+
+				required_garrison_factor = 0.05
+				resistance_activity = 0.05
+				resistance_growth = 0.05
+
+				compliance_gain = -0.01
+				compliance_growth = -0.05
+			}
+		}
+
+		FCF_international_african_colonial_riot_level_2 = {
+			name = FCF_africa_colonial_riot
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = { has_socialist_government = yes }
+			modifier = {
+				stability_factor = -0.05
+
+				required_garrison_factor = 0.1
+				resistance_activity = 0.1
+				resistance_growth = 0.1
+
+				compliance_gain = -0.02
+				compliance_growth = -0.1
+			}
+		}
+
+		FCF_international_african_colonial_riot_level_3 = {
+			name = FCF_africa_colonial_riot
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = { has_socialist_government = yes }
+			modifier = {
+				stability_factor = -0.075
+
+				required_garrison_factor = 0.15
+				resistance_activity = 0.155
+				resistance_growth = 0.15
+
+				compliance_gain = -0.03
+				compliance_growth = -0.15
+			}
+		}
+
+		FCF_international_african_colonial_riot_level_4 = {
+			name = FCF_africa_colonial_riot
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = { has_socialist_government = yes }
+			modifier = {
+				stability_factor = -0.1
+
+				required_garrison_factor = 0.2
+				resistance_activity = 0.2
+				resistance_growth = 0.2
+
+				compliance_gain = -0.04
+				compliance_growth = -0.2
+			}
+		}
+
+		FCF_international_african_colonial_riot_level_5 = {
+			name = FCF_africa_colonial_riot
+			picture = FRA_scw_intervention_republicans_focus
+			cancel = { has_socialist_government = yes }
+			modifier = {
+				stability_factor = -0.15
+
+				required_garrison_factor = 0.25
+				resistance_activity = 0.25
+				resistance_growth = 0.25
+
+				compliance_gain = -0.05
+				compliance_growth = -0.25
+			}
+		}
+
+	#国法
+		FCF_international_NFA_collapse = {
+			picture = generic_desertion
+			cancel = {
+				has_stability > 0
+				has_war = no
+			}
+			modifier = {
+				stability_factor = -0.2
+				war_support_factor = -0.3
+				army_attack_factor = -0.1
+				army_defence_factor = -0.1
+				resistance_growth = 0.25
+				compliance_growth = -0.25
+				custom_modifier_tooltip = FCF_international_NFA_collapse_tt
+			}
+		}
+
+		FCF_international_ALG_north_african_star = {
+			picture = generic_phoenix
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				army_core_attack_factor = 0.1
+				army_core_defence_factor = 0.1
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.025
+			}
+		}
+	}
+
+	hidden_ideas = {
+	#法伦施泰尔贸易
+		FCF_international_trade_cost_33_target = {
+			name = FCF_international_phalanstere_modifier
+			cancel = { has_socialist_government = no }
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^0
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^1
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^2
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^3
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^4
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^5
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^6
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^7
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^8
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^9
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^10
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^11
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^12
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^13
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^14
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^15
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^16
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^17
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^18
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^19
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^20
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^21
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^22
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^23
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^24
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^25
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^26
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^27
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^28
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^29
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^30
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^31
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^32
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^33
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^34
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^35
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^36
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^37
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^38
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^39
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^40
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^41
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^42
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^43
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^44
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^45
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^46
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^47
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^48
+				trade_cost_for_target_factor = -0.33
+			}
+			targeted_modifier = {
+				tag = var:global.phalanstere_member^49
+				trade_cost_for_target_factor = -0.33
+			}
+		}
+	}
+}

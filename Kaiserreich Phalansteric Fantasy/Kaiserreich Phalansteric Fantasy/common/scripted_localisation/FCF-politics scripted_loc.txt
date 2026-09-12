@@ -1,411 +1,411 @@
-    defined_text = {
-        name = gui_politics
-        text = {
-            trigger = { FRA = { has_country_flag = gui_politics_cgfvscsp } }
-            localization_key = gui_polcgfvscsp
-        }
-        text = {
-            trigger = { FRA = { has_country_flag = gui_politics_irieu } }
-            localization_key = gui_polirieu
-        }
-        text = {
-            trigger = { FRA = { has_country_flag = gui_politics_irias } }
-            localization_key = gui_polirias
-        }
-        text = {
-            trigger = { FRA = { has_country_flag = gui_politics_irime } }
-            localization_key = gui_polirime
-        }
-        text = {
-            trigger = { FRA = { has_country_flag = gui_politics_iriaf } }
-            localization_key = gui_poliriaf
-        }
-        text = {
-            trigger = { FRA = { has_country_flag = gui_politics_iriam } }
-            localization_key = gui_poliriam
-        }
-    }
-    defined_text = {
-        name = if_bill_pass
-        text = {
-            trigger = { 
-                if = {
-                    limit = { has_country_flag = bill_pass_need_434 }
-                    check_variable = { agree_vote > 433 } 
-                }
-                else = { check_expr = { value = 650 subtract = abstain_vote divide = 2 less_than = agree_vote } } 
-            }
-            localization_key = bill_pass
-        }
-        text = { localization_key = bill_not_pass }
-    }
+defined_text = {
+	name = gui_politics
+	text = {
+		trigger = { FRA = { has_country_flag = FCF_gui_politics_CGF_vs_CSP_selected } }
+		localization_key = politics_CGF_vs_CSP_value_text
+	}
+	text = {
+		trigger = { FRA = { has_country_flag = FCF_gui_international_intervention_europe_selected } }
+		localization_key = gui_ii_eu_influence
+	}
+	text = {
+		trigger = { FRA = { has_country_flag = FCF_gui_international_intervention_asia_selected } }
+		localization_key = gui_ii_as_influence
+	}
+	text = {
+		trigger = { FRA = { has_country_flag = FCF_gui_international_intervention_middle_east_selected } }
+		localization_key = gui_ii_me_influence
+	}
+	text = {
+		trigger = { FRA = { has_country_flag = FCF_gui_international_intervention_africa_selected } }
+		localization_key = gui_ii_af_influence
+	}
+	text = {
+		trigger = { FRA = { has_country_flag = FCF_gui_international_intervention_america_selected } }
+		localization_key = gui_ii_am_influence
+	}
+}
+defined_text = {
+	name = if_bill_pass
+	text = {
+		trigger = {
+			if = {
+				limit = { has_country_flag = bill_pass_need_434 }
+				check_variable = { agreement_vote_count > 433 }
+			}
+			else = { check_expr = { value = 650 subtract = abstention_vote_count divide = 2 less_than = agreement_vote_count } }
+		}
+		localization_key = bill_pass
+	}
+	text = { localization_key = bill_not_pass }
+}
 ###法案
-    defined_text = {
-        name = scripted_bill_name
-        text = {
-            trigger = { check_variable = { v = 1 } }
-            localization_key = bill_basic_speech_freedom
-        }
-        text = {
-            trigger = { check_variable = { v = 2 } }
-            localization_key = bill_limited_womens_rights
-        }
-        text = {
-            trigger = { check_variable = { v = 3 } }
-            localization_key = bill_freedom_of_religion
-        }
-        text = {
-            trigger = { check_variable = { v = 4 } }
-            localization_key = bill_free_immigration
-        }
-        text = {
-            trigger = { check_variable = { v = 5 } }
-            localization_key = bill_eight_hour_workdays
-        }
-        text = {
-            trigger = { check_variable = { v = 6 } }
-            localization_key = bill_seven_hour_workdays
-        }
-        text = {
-            trigger = { check_variable = { v = 7 } }
-            localization_key = bill_freedom_of_religion_amendment
-        }
-        text = {
-            trigger = { check_variable = { v = 8 } }
-            localization_key = bill_catholicism_first
-        }
-        text = {
-            trigger = { check_variable = { v = 9 } }
-            localization_key = bill_state_atheism
-        }
-        text = {
-            trigger = { check_variable = { v = 10 } }
-            localization_key = bill_rural_education_subsidy
-        }
-        text = {
-            trigger = { check_variable = { v = 11 } }
-            localization_key = bill_comprehensive_education_program
-        }
-        text = {
-            trigger = { check_variable = { v = 12 } }
-            localization_key = bill_freedom_of_assembly
-        }
-        text = {
-            trigger = { check_variable = { v = 13 } }
-            localization_key = bill_assembly_registration
-        }
-        text = {
-            trigger = { check_variable = { v = 14 } }
-            localization_key = bill_gender_equality
-        }
-        text = {
-            trigger = { check_variable = { v = 15 } }
-            localization_key = bill_glorious_mothers
-        }
-        text = {
-            trigger = { check_variable = { v = 16 } }
-            localization_key = bill_complete_speech_freedom
-        }
-        text = {
-            trigger = { check_variable = { v = 17 } }
-            localization_key = bill_speech_freedom_under_scrutiny
-        }
-        text = {
-            trigger = { check_variable = { v = 18 } }
-            localization_key = bill_speech_control
-        }
-        text = {
-            trigger = { check_variable = { v = 19 } }
-            localization_key = bill_workers_immigrantion
-        }
-        text = {
-            trigger = { check_variable = { v = 20 } }
-            localization_key = bill_national_immigration
-        }
-        text = {
-            trigger = { check_variable = { v = 21 } }
-            localization_key = bill_employment_training
-        }
-        text = {
-            trigger = { check_variable = { v = 22 } }
-            localization_key = bill_unemployment_benefits
-        }
-        text = {
-            trigger = { check_variable = { v = 23 } }
-            localization_key = bill_antitrust
-        }
-        text = {
-            trigger = { check_variable = { v = 24 } }
-            localization_key = bill_federal_syndicats
-        }
-        text = {
-            trigger = { check_variable = { v = 25 } }
-            localization_key = bill_competitive_syndicats
-        }
-        text = {
-            trigger = { check_variable = { v = 26 } }
-            localization_key = bill_syndicats_unification
-        }
-        text = {
-            trigger = { check_variable = { v = 27 } }
-            localization_key = bill_soldier_benefits
-        }
-    }
+defined_text = {
+	name = scripted_bill_name
+	text = {
+		trigger = { check_variable = { current_bill_id = 1 } }
+		localization_key = FCF_society_bill_basic_speech_freedom
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 2 } }
+		localization_key = FCF_society_bill_limited_womens_rights_level_1
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 3 } }
+		localization_key = FCF_society_bill_freedom_of_religion
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 4 } }
+		localization_key = FCF_society_bill_free_immigration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 5 } }
+		localization_key = FCF_society_bill_eight_hour_workdays
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 6 } }
+		localization_key = FCF_society_bill_seven_hour_workdays
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 7 } }
+		localization_key = FCF_society_bill_freedom_of_religion_amendment
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 8 } }
+		localization_key = FCF_society_bill_catholicism_first
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 9 } }
+		localization_key = FCF_society_bill_state_atheism
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 10 } }
+		localization_key = FCF_society_bill_rural_education_subsidy
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 11 } }
+		localization_key = FCF_society_bill_comprehensive_education_program
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 12 } }
+		localization_key = FCF_society_bill_freedom_of_assembly
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 13 } }
+		localization_key = FCF_society_bill_assembly_registration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 14 } }
+		localization_key = FCF_society_bill_gender_equality
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 15 } }
+		localization_key = FCF_society_bill_glorious_mothers
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 16 } }
+		localization_key = FCF_society_bill_complete_speech_freedom
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 17 } }
+		localization_key = FCF_society_bill_speech_freedom_under_scrutiny
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 18 } }
+		localization_key = FCF_society_bill_speech_control
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 19 } }
+		localization_key = FCF_society_bill_worker_immigration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 20 } }
+		localization_key = FCF_society_bill_national_immigration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 21 } }
+		localization_key = FCF_society_bill_employment_training
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 22 } }
+		localization_key = FCF_society_bill_unemployment_benefits
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 23 } }
+		localization_key = FCF_society_bill_antitrust
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 24 } }
+		localization_key = FCF_society_bill_federal_syndicats
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 25 } }
+		localization_key = FCF_society_bill_competitive_syndicats
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 26 } }
+		localization_key = FCF_society_bill_syndicats_unification
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 27 } }
+		localization_key = FCF_society_bill_soldier_benefits
+	}
+}
 
-    defined_text = {
-        name = scripted_bill_buff
-        text = {
-            trigger = { check_variable = { v = 1 } }
-            localization_key = idea_desc|bill_basic_speech_freedom
-        }
-        text = {
-            trigger = { 
-                check_variable = { v = 2 } 
-                FRA = { has_idea = bill_limited_womens_rights }
-            }
-            localization_key = idea_desc|bill_limited_womens_rights
-        }
-        text = {
-            trigger = { 
-                check_variable = { v = 2 } 
-                FRA = { has_idea = bill_limited_womens_rights2 }
-            }
-            localization_key = idea_desc|bill_limited_womens_rights2
-        }
-        text = {
-            trigger = { check_variable = { v = 3 } }
-            localization_key = idea_desc|bill_freedom_of_religion
-        }
-        text = {
-            trigger = { check_variable = { v = 4 } }
-            localization_key = idea_desc|bill_free_immigration
-        }
-        text = {
-            trigger = { check_variable = { v = 5 } }
-            localization_key = idea_desc|bill_eight_hour_workdays
-        }
-        text = {
-            trigger = { check_variable = { v = 6 } }
-            localization_key = idea_desc|bill_seven_hour_workdays
-        }
-        text = {
-            trigger = { check_variable = { v = 7 } }
-            localization_key = idea_desc|bill_freedom_of_religion_amendment
-        }
-        text = {
-            trigger = { check_variable = { v = 8 } }
-            localization_key = idea_desc|bill_catholicism_first
-        }
-        text = {
-            trigger = { check_variable = { v = 9 } }
-            localization_key = idea_desc|bill_state_atheism
-        }
-        text = {
-            trigger = { check_variable = { v = 10 } }
-            localization_key = idea_desc|bill_rural_education_subsidy
-        }
-        text = {
-            trigger = { check_variable = { v = 11 } }
-            localization_key = idea_desc|bill_comprehensive_education_program
-        }
-        text = {
-            trigger = { check_variable = { v = 12 } }
-            localization_key = idea_desc|bill_freedom_of_assembly
-        }
-        text = {
-            trigger = { check_variable = { v = 13 } }
-            localization_key = idea_desc|bill_assembly_registration
-        }
-        text = {
-            trigger = { check_variable = { v = 14 } }
-            localization_key = idea_desc|bill_gender_equality
-        }
-        text = {
-            trigger = { check_variable = { v = 15 } }
-            localization_key = idea_desc|bill_glorious_mothers
-        }
-        text = {
-            trigger = { check_variable = { v = 16 } }
-            localization_key = idea_desc|bill_complete_speech_freedom
-        }
-        text = {
-            trigger = { check_variable = { v = 17 } }
-            localization_key = idea_desc|bill_speech_freedom_under_scrutiny
-        }
-        text = {
-            trigger = { check_variable = { v = 18 } }
-            localization_key = idea_desc|bill_speech_control
-        }
-        text = {
-            trigger = { check_variable = { v = 19 } }
-            localization_key = idea_desc|bill_workers_immigrantion
-        }
-        text = {
-            trigger = { check_variable = { v = 20 } }
-            localization_key = idea_desc|bill_national_immigration
-        }
-        text = {
-            trigger = { check_variable = { v = 21 } }
-            localization_key = idea_desc|bill_employment_training
-        }
-        text = {
-            trigger = { check_variable = { v = 22 } }
-            localization_key = idea_desc|bill_unemployment_benefits
-        }
-        text = {
-            trigger = { check_variable = { v = 23 } }
-            localization_key = idea_desc|bill_antitrust
-        }
-        text = {
-            trigger = { check_variable = { v = 24 } }
-            localization_key = idea_desc|bill_federal_syndicats
-        }
-        text = {
-            trigger = { check_variable = { v = 25 } }
-            localization_key = idea_desc|bill_competitive_syndicats
-        }
-        text = {
-            trigger = { check_variable = { v = 26 } }
-            localization_key = idea_desc|bill_syndicats_unification
-        }
-        text = {
-            trigger = { 
-                check_variable = { v = 27 } 
-                FRA = { has_idea = bill_soldier_benefits }
-            }
-            localization_key = idea_desc|bill_soldier_benefits
-        }
-        text = {
-            trigger = { 
-                check_variable = { v = 27 } 
-                FRA = { has_idea = bill_soldier_benefits_strengthen }
-            }
-            localization_key = idea_desc|bill_soldier_benefits_strengthen
-        }
-    }
+defined_text = {
+	name = FCF_society_bill_modifier_loc
+	text = {
+		trigger = { check_variable = { current_bill_id = 1 } }
+		localization_key = idea_desc|FCF_society_bill_basic_speech_freedom
+	}
+	text = {
+		trigger = {
+			check_variable = { current_bill_id = 2 }
+			FRA = { has_idea = FCF_society_bill_limited_womens_rights_level_1 }
+		}
+		localization_key = idea_desc|FCF_society_bill_limited_womens_rights_level_1
+	}
+	text = {
+		trigger = {
+			check_variable = { current_bill_id = 2 }
+			FRA = { has_idea = FCF_society_bill_limited_womens_rights_level_2 }
+		}
+		localization_key = idea_desc|FCF_society_bill_limited_womens_rights_level_2
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 3 } }
+		localization_key = idea_desc|FCF_society_bill_freedom_of_religion
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 4 } }
+		localization_key = idea_desc|FCF_society_bill_free_immigration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 5 } }
+		localization_key = idea_desc|FCF_society_bill_eight_hour_workdays
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 6 } }
+		localization_key = idea_desc|FCF_society_bill_seven_hour_workdays
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 7 } }
+		localization_key = idea_desc|FCF_society_bill_freedom_of_religion_amendment
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 8 } }
+		localization_key = idea_desc|FCF_society_bill_catholicism_first
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 9 } }
+		localization_key = idea_desc|FCF_society_bill_state_atheism
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 10 } }
+		localization_key = idea_desc|FCF_society_bill_rural_education_subsidy
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 11 } }
+		localization_key = idea_desc|FCF_society_bill_comprehensive_education_program
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 12 } }
+		localization_key = idea_desc|FCF_society_bill_freedom_of_assembly
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 13 } }
+		localization_key = idea_desc|FCF_society_bill_assembly_registration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 14 } }
+		localization_key = idea_desc|FCF_society_bill_gender_equality
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 15 } }
+		localization_key = idea_desc|FCF_society_bill_glorious_mothers
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 16 } }
+		localization_key = idea_desc|FCF_society_bill_complete_speech_freedom
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 17 } }
+		localization_key = idea_desc|FCF_society_bill_speech_freedom_under_scrutiny
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 18 } }
+		localization_key = idea_desc|FCF_society_bill_speech_control
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 19 } }
+		localization_key = idea_desc|FCF_society_bill_worker_immigration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 20 } }
+		localization_key = idea_desc|FCF_society_bill_national_immigration
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 21 } }
+		localization_key = idea_desc|FCF_society_bill_employment_training
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 22 } }
+		localization_key = idea_desc|FCF_society_bill_unemployment_benefits
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 23 } }
+		localization_key = idea_desc|FCF_society_bill_antitrust
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 24 } }
+		localization_key = idea_desc|FCF_society_bill_federal_syndicats
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 25 } }
+		localization_key = idea_desc|FCF_society_bill_competitive_syndicats
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 26 } }
+		localization_key = idea_desc|FCF_society_bill_syndicats_unification
+	}
+	text = {
+		trigger = {
+			check_variable = { current_bill_id = 27 }
+			FRA = { has_idea = FCF_society_bill_soldier_benefits }
+		}
+		localization_key = idea_desc|FCF_society_bill_soldier_benefits
+	}
+	text = {
+		trigger = {
+			check_variable = { current_bill_id = 27 }
+			FRA = { has_idea = FCF_society_bill_soldier_benefits_strengthened }
+		}
+		localization_key = idea_desc|FCF_society_bill_soldier_benefits_strengthened
+	}
+}
 
-    defined_text = {
-        name = scripted_bill_desc
-        text = {
-            trigger = { check_variable = { v = 1 } }
-            localization_key = bill_basic_speech_freedom_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 2 } }
-            localization_key = bill_limited_womens_rights_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 3 } }
-            localization_key = bill_freedom_of_religion_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 4 } }
-            localization_key = bill_free_immigration_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 5 } }
-            localization_key = bill_eight_hour_workdays_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 6 } }
-            localization_key = bill_seven_hour_workdays_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 7 } }
-            localization_key = bill_freedom_of_religion_amendment_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 8 } }
-            localization_key = bill_catholicism_first_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 9 } }
-            localization_key = bill_state_atheism_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 10 } }
-            localization_key = bill_rural_education_subsidy_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 11 } }
-            localization_key = bill_comprehensive_education_program_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 12 } }
-            localization_key = bill_freedom_of_assembly_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 13 } }
-            localization_key = bill_assembly_registration_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 14 } }
-            localization_key = bill_gender_equality_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 15 } }
-            localization_key = bill_glorious_mothers_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 16 } }
-            localization_key = bill_complete_speech_freedom_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 17 } }
-            localization_key = bill_speech_freedom_under_scrutiny_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 18 } }
-            localization_key = bill_speech_control_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 19 } }
-            localization_key = bill_workers_immigrantion_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 20 } }
-            localization_key = bill_national_immigration_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 21 } }
-            localization_key = bill_employment_training_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 22 } }
-            localization_key = bill_unemployment_benefits_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 23 } }
-            localization_key = bill_antitrust_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 24 } }
-            localization_key = bill_federal_syndicats_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 25 } }
-            localization_key = bill_competitive_syndicats_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 26 } }
-            localization_key = bill_syndicats_unification_desc
-        }
-        text = {
-            trigger = { check_variable = { v = 27 } }
-            localization_key = bill_soldier_benefits_desc
-        }
-    }
+defined_text = {
+	name = scripted_bill_desc
+	text = {
+		trigger = { check_variable = { current_bill_id = 1 } }
+		localization_key = FCF_society_bill_basic_speech_freedom_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 2 } }
+		localization_key = FCF_society_bill_limited_womens_rights_level_1_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 3 } }
+		localization_key = FCF_society_bill_freedom_of_religion_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 4 } }
+		localization_key = FCF_society_bill_free_immigration_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 5 } }
+		localization_key = FCF_society_bill_eight_hour_workdays_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 6 } }
+		localization_key = FCF_society_bill_seven_hour_workdays_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 7 } }
+		localization_key = FCF_society_bill_freedom_of_religion_amendment_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 8 } }
+		localization_key = FCF_society_bill_catholicism_first_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 9 } }
+		localization_key = FCF_society_bill_state_atheism_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 10 } }
+		localization_key = FCF_society_bill_rural_education_subsidy_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 11 } }
+		localization_key = FCF_society_bill_comprehensive_education_program_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 12 } }
+		localization_key = FCF_society_bill_freedom_of_assembly_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 13 } }
+		localization_key = FCF_society_bill_assembly_registration_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 14 } }
+		localization_key = FCF_society_bill_gender_equality_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 15 } }
+		localization_key = FCF_society_bill_glorious_mothers_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 16 } }
+		localization_key = FCF_society_bill_complete_speech_freedom_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 17 } }
+		localization_key = FCF_society_bill_speech_freedom_under_scrutiny_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 18 } }
+		localization_key = FCF_society_bill_speech_control_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 19 } }
+		localization_key = FCF_society_bill_worker_immigration_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 20 } }
+		localization_key = FCF_society_bill_national_immigration_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 21 } }
+		localization_key = FCF_society_bill_employment_training_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 22 } }
+		localization_key = FCF_society_bill_unemployment_benefits_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 23 } }
+		localization_key = FCF_society_bill_antitrust_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 24 } }
+		localization_key = FCF_society_bill_federal_syndicats_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 25 } }
+		localization_key = FCF_society_bill_competitive_syndicats_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 26 } }
+		localization_key = FCF_society_bill_syndicats_unification_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 27 } }
+		localization_key = FCF_society_bill_soldier_benefits_desc
+	}
+}
 
 ###
 defined_text = {
-    name = scripted_bills_number
-    text = {
-        localization_key = scripted_bills_number_tt
-    }
+	name = scripted_bills_number
+	text = {
+		localization_key = scripted_bills_number_tt
+	}
 }
 
 ###政治图景
-    defined_text = {
-        name = politics_landscape
-        text = { localization_key = no_politics_landscape }
-    }
+defined_text = {
+	name = FCF_politics_landscape_text
+	text = { localization_key = no_politics_landscape }
+}

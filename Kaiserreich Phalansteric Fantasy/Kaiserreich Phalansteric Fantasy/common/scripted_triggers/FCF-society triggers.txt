@@ -1,258 +1,299 @@
-###举足轻重
-    pop_workers_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_workers
-            }
-            check_variable = { pop_workers > pop_peasants }
-            check_variable = { pop_workers > pop_merchants }
-            check_variable = { pop_workers > pop_scholars }
-            check_variable = { pop_workers > pop_bureaucrats }
-            check_variable = { pop_workers > pop_army }
-        }
-    }
-    pop_peasants_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_peasants
-            }
-            check_variable = { pop_peasants > pop_workers }
-            check_variable = { pop_peasants > pop_merchants }
-            check_variable = { pop_peasants > pop_scholars }
-            check_variable = { pop_peasants > pop_bureaucrats }
-            check_variable = { pop_peasants > pop_army }
-        }
-    }
-    pop_merchants_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_merchants
-            }
-            check_variable = { pop_merchants > pop_peasants }
-            check_variable = { pop_merchants > pop_workers }
-            check_variable = { pop_merchants > pop_scholars }
-            check_variable = { pop_merchants > pop_bureaucrats }
-            check_variable = { pop_merchants > pop_army }
-        }
-    }
-    pop_schoalrs_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_scholars
-            }
-            check_variable = { pop_schoalrs > pop_peasants }
-            check_variable = { pop_schoalrs > pop_merchants }
-            check_variable = { pop_schoalrs > pop_workers }
-            check_variable = { pop_schoalrs > pop_bureaucrats }
-            check_variable = { pop_schoalrs > pop_army }
-        }
-    }
-    pop_bureaucrats_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_bureaucrats
-            }
-            check_variable = { pop_bureaucrats > pop_peasants }
-            check_variable = { pop_bureaucrats > pop_merchants }
-            check_variable = { pop_bureaucrats > pop_scholars }
-            check_variable = { pop_bureaucrats > pop_workers }
-            check_variable = { pop_bureaucrats > pop_army }
-        }
-    }
-    pop_army_the_most = {
-        custom_trigger_tooltip = {
-            tooltip = {
-                localization_key = class_pop_the_most_tt
-                POP = pop_army
-            }
-            check_variable = { pop_army > pop_peasants }
-            check_variable = { pop_army > pop_merchants }
-            check_variable = { pop_army > pop_scholars }
-            check_variable = { pop_army > pop_bureaucrats }
-            check_variable = { pop_army > pop_workers }
-        }
-    }
-###改革倾向
-    srt_edu_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_edu
-                TENDENCY = srt_edu_left
-            }
-            check_variable = { srt_edu > 0 }
-        }
-    }
+####################
+### 社会阶层影响力 ###
+####################
+	### 作用域：国家；主要作用：判断工人是否为影响力最高的社会阶层。
+	society_pop_workers_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_workers
+			}
+			check_variable = { pop_workers > pop_peasants }
+			check_variable = { pop_workers > pop_merchants }
+			check_variable = { pop_workers > pop_scholars }
+			check_variable = { pop_workers > pop_bureaucrats }
+			check_variable = { pop_workers > pop_army }
+		}
+	}
+	### 作用域：国家；主要作用：判断农民是否为影响力最高的社会阶层。
+	society_pop_peasants_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_peasants
+			}
+			check_variable = { pop_peasants > pop_workers }
+			check_variable = { pop_peasants > pop_merchants }
+			check_variable = { pop_peasants > pop_scholars }
+			check_variable = { pop_peasants > pop_bureaucrats }
+			check_variable = { pop_peasants > pop_army }
+		}
+	}
+	### 作用域：国家；主要作用：判断小资产阶级是否为影响力最高的社会阶层。
+	society_pop_merchants_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_merchants
+			}
+			check_variable = { pop_merchants > pop_peasants }
+			check_variable = { pop_merchants > pop_workers }
+			check_variable = { pop_merchants > pop_scholars }
+			check_variable = { pop_merchants > pop_bureaucrats }
+			check_variable = { pop_merchants > pop_army }
+		}
+	}
+	### 作用域：国家；主要作用：判断知识分子是否为影响力最高的社会阶层。
+	society_pop_scholars_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_scholars
+			}
+			check_variable = { pop_scholars > pop_peasants }
+			check_variable = { pop_scholars > pop_merchants }
+			check_variable = { pop_scholars > pop_workers }
+			check_variable = { pop_scholars > pop_bureaucrats }
+			check_variable = { pop_scholars > pop_army }
+		}
+	}
+	### 作用域：国家；主要作用：判断官僚是否为影响力最高的社会阶层。
+	society_pop_bureaucrats_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_bureaucrats
+			}
+			check_variable = { pop_bureaucrats > pop_peasants }
+			check_variable = { pop_bureaucrats > pop_merchants }
+			check_variable = { pop_bureaucrats > pop_scholars }
+			check_variable = { pop_bureaucrats > pop_workers }
+			check_variable = { pop_bureaucrats > pop_army }
+		}
+	}
+	### 作用域：国家；主要作用：判断军队是否为影响力最高的社会阶层。
+	society_pop_army_is_largest = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = FCF_society_pop_most_influential_tt
+				POP = pop_army
+			}
+			check_variable = { pop_army > pop_peasants }
+			check_variable = { pop_army > pop_merchants }
+			check_variable = { pop_army > pop_scholars }
+			check_variable = { pop_army > pop_bureaucrats }
+			check_variable = { pop_army > pop_workers }
+		}
+	}
+################
+### 社会改革 ###
+################
+	### 作用域：国家；主要作用：判断教育改革倾向是否位于左侧区间。
+	society_reform_education_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_education
+				TENDENCY = society_reform_education_left
+			}
+			check_variable = { society_reform_education > 0 }
+		}
+	}
 
-    srt_edu_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_edu
-                TENDENCY = srt_edu_right
-            }
-            check_variable = { srt_edu < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断教育改革倾向是否位于右侧区间。
+	society_reform_education_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_education
+				TENDENCY = society_reform_education_right
+			}
+			check_variable = { society_reform_education < 0 }
+		}
+	}
 
-    srt_reg_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_reg
-                TENDENCY = srt_reg_left
-            }
-            check_variable = { srt_reg > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断社会管制改革倾向是否位于左侧区间。
+	society_reform_regulation_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_regulation
+				TENDENCY = society_reform_regulation_left
+			}
+			check_variable = { society_reform_regulation > 0 }
+		}
+	}
 
-    srt_reg_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_reg
-                TENDENCY = srt_reg_right
-            }
-            check_variable = { srt_reg < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断社会管制改革倾向是否位于右侧区间。
+	society_reform_regulation_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_regulation
+				TENDENCY = society_reform_regulation_right
+			}
+			check_variable = { society_reform_regulation < 0 }
+		}
+	}
 
-    srt_fem_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_fem
-                TENDENCY = srt_fem_left
-            }
-            check_variable = { srt_fem > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断妇女权利改革倾向是否位于左侧区间。
+	society_reform_womens_rights_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_womens_rights
+				TENDENCY = society_reform_womens_rights_left
+			}
+			check_variable = { society_reform_womens_rights > 0 }
+		}
+	}
 
-    srt_fem_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_fem
-                TENDENCY = srt_fem_right
-            }
-            check_variable = { srt_fem < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断妇女权利改革倾向是否位于右侧区间。
+	society_reform_womens_rights_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_womens_rights
+				TENDENCY = society_reform_womens_rights_right
+			}
+			check_variable = { society_reform_womens_rights < 0 }
+		}
+	}
 
-    srt_imm_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_imm
-                TENDENCY = srt_imm_left
-            }
-            check_variable = { srt_imm > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断移民改革倾向是否位于左侧区间。
+	society_reform_immigration_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_immigration
+				TENDENCY = society_reform_immigration_left
+			}
+			check_variable = { society_reform_immigration > 0 }
+		}
+	}
 
-    srt_imm_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_imm
-                TENDENCY = srt_imm_right
-            }
-            check_variable = { srt_imm < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断移民改革倾向是否位于右侧区间。
+	society_reform_immigration_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_immigration
+				TENDENCY = society_reform_immigration_right
+			}
+			check_variable = { society_reform_immigration < 0 }
+		}
+	}
 
-    srt_rel_left_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_rel
-                TENDENCY = srt_rel_left
-            }
-            check_variable = { srt_rel > 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断宗教改革倾向是否位于左侧区间。
+	society_reform_religion_left_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_religion
+				TENDENCY = society_reform_religion_left
+			}
+			check_variable = { society_reform_religion > 0 }
+		}
+	}
 
-    srt_rel_right_trigger = {
-        custom_trigger_tooltip =  {
-            tooltip = {
-                localization_key = reform_tendency_trigger_tt
-                REFTEND = srt_rel
-                TENDENCY = srt_rel_right
-            }
-            check_variable = { srt_rel < 0 }
-        }
-    }
+	### 作用域：国家；主要作用：判断宗教改革倾向是否位于右侧区间。
+	society_reform_religion_right_trigger = {
+		custom_trigger_tooltip = {
+			tooltip = {
+				localization_key = reform_tendency_trigger_tt
+				REFTEND = society_reform_religion
+				TENDENCY = society_reform_religion_right
+			}
+			check_variable = { society_reform_religion < 0 }
+		}
+	}
 
+######################
+### 超现实主义运动 ###
+######################
+	### 作用域：国家；主要作用：预留超现实主义人物 1 的启用条件。
+	surrealism_character_1_enable_trigger = {
 
-###超现实主义运动
-    surrealism_character_1_enable_trigger = {
-        
-    }
-    surrealism_character_2_enable_trigger = {
-        
-    }
-    surrealism_character_3_enable_trigger = {
-        
-    }
-    surrealism_character_4_enable_trigger = {
-        
-    }
-    surrealism_character_5_enable_trigger = {
-        
-    }
-    surrealism_character_6_enable_trigger = {
-        
-    }
-    surrealism_character_7_enable_trigger = {
-        
-    }
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 2 的启用条件。
+	surrealism_character_2_enable_trigger = {
 
-    surrealism_character_11_enable_trigger = {
-        
-    }
-    surrealism_character_12_enable_trigger = {
-        
-    }
-    surrealism_character_13_enable_trigger = {
-        
-    }
-    surrealism_character_14_enable_trigger = {
-        
-    }
-    surrealism_character_15_enable_trigger = {
-        
-    }
-    surrealism_character_16_enable_trigger = {
-        
-    }
-    surrealism_character_17_enable_trigger = {
-        
-    }
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 3 的启用条件。
+	surrealism_character_3_enable_trigger = {
 
-    surrealism_character_21_enable_trigger = {
-        
-    }
-    surrealism_character_22_enable_trigger = {
-        
-    }
-    surrealism_character_23_enable_trigger = {
-        
-    }
-    surrealism_character_24_enable_trigger = {
-        
-    }
-    surrealism_character_25_enable_trigger = {
-        
-    }
-    surrealism_character_26_enable_trigger = {
-        
-    }
-    surrealism_character_27_enable_trigger = {
-        
-    }
-#######
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 4 的启用条件。
+	surrealism_character_4_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 5 的启用条件。
+	surrealism_character_5_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 6 的启用条件。
+	surrealism_character_6_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 7 的启用条件。
+	surrealism_character_7_enable_trigger = {
+
+	}
+
+	### 作用域：国家；主要作用：预留超现实主义人物 11 的启用条件。
+	surrealism_character_11_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 12 的启用条件。
+	surrealism_character_12_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 13 的启用条件。
+	surrealism_character_13_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 14 的启用条件。
+	surrealism_character_14_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 15 的启用条件。
+	surrealism_character_15_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 16 的启用条件。
+	surrealism_character_16_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 17 的启用条件。
+	surrealism_character_17_enable_trigger = {
+
+	}
+
+	### 作用域：国家；主要作用：预留超现实主义人物 21 的启用条件。
+	surrealism_character_21_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 22 的启用条件。
+	surrealism_character_22_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 23 的启用条件。
+	surrealism_character_23_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 24 的启用条件。
+	surrealism_character_24_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 25 的启用条件。
+	surrealism_character_25_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 26 的启用条件。
+	surrealism_character_26_enable_trigger = {
+
+	}
+	### 作用域：国家；主要作用：预留超现实主义人物 27 的启用条件。
+	surrealism_character_27_enable_trigger = {
+
+	}

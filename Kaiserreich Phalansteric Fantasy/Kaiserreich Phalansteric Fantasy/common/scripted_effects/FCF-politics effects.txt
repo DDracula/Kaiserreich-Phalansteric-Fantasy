@@ -1,905 +1,946 @@
-clr_gui_politics_flag = {
-    clr_country_flag = gui_politics_cgfvscsp
+################
+### 政治界面 ###
+################
+	### 作用域：国家；主要作用：清除议会、投票与国际影响力页签的 GUI 状态旗标。
+	politics_gui_flags_clear = {
+		clr_country_flag = FCF_gui_politics_CGF_vs_CSP_selected
 
-    clr_country_flag = gui_politics_vote
+		clr_country_flag = FCF_gui_politics_vote_selected
 
-    clr_country_flag = gui_politics_irieu
-    clr_country_flag = gui_politics_irias
-    clr_country_flag = gui_politics_irime
-    clr_country_flag = gui_politics_iriaf
-    clr_country_flag = gui_politics_iriam
-}
+		clr_country_flag = FCF_gui_international_intervention_europe_selected
+		clr_country_flag = FCF_gui_international_intervention_asia_selected
+		clr_country_flag = FCF_gui_international_intervention_middle_east_selected
+		clr_country_flag = FCF_gui_international_intervention_africa_selected
+		clr_country_flag = FCF_gui_international_intervention_america_selected
+	}
 ################
 ### 社会法案 ###
 ################
-    bill_6_pass_effect = { #七小时工作制
-        swap_ideas = {
-            remove_idea = bill_eight_hour_workdays
-            add_idea = bill_seven_hour_workdays
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 5 }
-        add_to_array = { array = FRA.FCF_social_bills value = 6 }
-        
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = 2 }
-        set_temp_variable = { pc = 2 }
-        set_temp_variable = { mc = 2 }
-        set_temp_variable = { sc = 0 }
-        set_temp_variable = { bc = 1 }
-        set_temp_variable = { ac = 0 }
-        society_pop_satisfactions_change = yes
+	### 作用域：国家；主要作用：执行七小时工作制法案并调整各阶层满意度与经济指标。
+	bill_6_pass_effect = { #七小时工作制
+		swap_ideas = {
+			remove_idea = FCF_society_bill_eight_hour_workdays
+			add_idea = FCF_society_bill_seven_hour_workdays
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 5 }
+		add_to_array = { array = FRA.FCF_social_bills value = 6 }
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = -2.5 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 0 }
-        economy_variable_change = yes
-    }
-    bill_8_pass_effect = {
-        swap_ideas = {
-            remove_idea = bill_freedom_of_religion
-            add_idea = bill_catholicism_first
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 3 }
-        add_to_array = { array = FRA.FCF_social_bills value = 8 }
-        
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = 1 }
-        set_temp_variable = { pc = 4 }
-        set_temp_variable = { mc = 2 }
-        set_temp_variable = { sc = -4 }
-        set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = 2 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = 2 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 2 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 1 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = -6 }
-        society_reform_tendency_change = yes
-    }
-    bill_9_pass_effect = {
-        swap_ideas = {
-            remove_idea = bill_freedom_of_religion
-            add_idea = bill_state_atheism
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 3 }
-        add_to_array = { array = FRA.FCF_social_bills value = 9 }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = -2.5 }
+		set_temp_variable = { economy_industry_basic_change = 0 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 0 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行天主教特殊地位法案并调整阶层满意度与社会改革倾向。
+	bill_8_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_society_bill_freedom_of_religion
+			add_idea = FCF_society_bill_catholicism_first
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 3 }
+		add_to_array = { array = FRA.FCF_social_bills value = 8 }
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = -1 }
-        set_temp_variable = { pc = -4 }
-        set_temp_variable = { mc = -2 }
-        set_temp_variable = { sc = 6 }
-        set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = -3 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = 1 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 4 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = -4 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 2 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 6 }
-        society_reform_tendency_change = yes
-    }
-    bill_10_pass_effect = {
-        add_ideas = bill_rural_education_subsidy
-        add_to_array = { array = FRA.FCF_social_bills value = 10 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = -6 }
+		society_reform_tendency_change = yes
+	}
+	### 作用域：国家；主要作用：执行国家无神论法案并调整阶层满意度与社会改革倾向。
+	bill_9_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_society_bill_freedom_of_religion
+			add_idea = FCF_society_bill_state_atheism
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 3 }
+		add_to_array = { array = FRA.FCF_social_bills value = 9 }
 
-        custom_effect_tooltip = tooltip_white_line
-        FCF_intensified_urban_rural_conflicts_update = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = -1 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -4 }
+		set_temp_variable = { pop_satisfaction_merchants_change = -2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 6 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = -3 }
+		society_pop_satisfaction_change = yes
 
-        add_research_slot_until_five = yes
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = -3 }
-        set_temp_variable = { pop_pc = 1 }
-        set_temp_variable = { pop_mc = 0 }
-        set_temp_variable = { pop_sc = 2 }
-        set_temp_variable = { pop_bc = 0 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 6 }
+		society_reform_tendency_change = yes
+	}
+	### 作用域：国家；主要作用：执行基础教育保障法案并调整阶层影响力、满意度与经济指标。
+	bill_10_pass_effect = {
+		add_ideas = FCF_society_bill_rural_education_subsidy
+		add_to_array = { array = FRA.FCF_social_bills value = 10 }
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 0 }
-        set_temp_variable = { pc = 2.5 }
-        set_temp_variable = { mc = 0 }
-        set_temp_variable = { sc = 1 }
-        set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = 0 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		FCF_intensified_urban_rural_conflicts_update = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = -2 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		add_research_slot_until_five = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_workers_change = -3 }
+		set_temp_variable = { pop_peasants_change = 1 }
+		set_temp_variable = { pop_merchants_change = 0 }
+		set_temp_variable = { pop_scholars_change = 2 }
+		set_temp_variable = { pop_bureaucrats_change = 0 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 2.5 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 1 }
-        economy_variable_change = yes
-    }
-    bill_11_pass_effect = {
-        add_ideas = bill_comprehensive_education_program
-        add_to_array = { array = FRA.FCF_social_bills value = 11 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_satisfaction_workers_change = 0 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 2.5 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 1 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        add_research_slot_until_five = yes
-        
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = -1 }
-        set_temp_variable = { pop_pc = -1 }
-        set_temp_variable = { pop_mc = 0 }
-        set_temp_variable = { pop_sc = 2 }
-        set_temp_variable = { pop_bc = 0 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
-        
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = -0.5 }
-        set_temp_variable = { pc = -1.5 }
-        set_temp_variable = { mc = 0.5 }
-        set_temp_variable = { sc = 2 }
-        set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = 0 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = -2 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 2 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 0 }
+		set_temp_variable = { economy_industry_basic_change = 0 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 2.5 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 1 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行人才教育基金法案并调整阶层影响力、满意度与经济指标。
+	bill_11_pass_effect = {
+		add_ideas = FCF_society_bill_comprehensive_education_program
+		add_to_array = { array = FRA.FCF_social_bills value = 11 }
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 2 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 3 }
-        economy_variable_change = yes
-    }
-    bill_12_pass_effect = {
-        add_ideas = bill_freedom_of_assembly
-        add_to_array = { array = FRA.FCF_social_bills value = 12 }
+		custom_effect_tooltip = tooltip_white_line
+		add_research_slot_until_five = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = 0 }
-        set_temp_variable = { pop_pc = 0 }
-        set_temp_variable = { pop_mc = 0 }
-        set_temp_variable = { pop_sc = 2 }
-        set_temp_variable = { pop_bc = -2 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_workers_change = -1 }
+		set_temp_variable = { pop_peasants_change = -1 }
+		set_temp_variable = { pop_merchants_change = 0 }
+		set_temp_variable = { pop_scholars_change = 2 }
+		set_temp_variable = { pop_bureaucrats_change = 0 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 2 }
-        set_temp_variable = { pc = 2 }
-        set_temp_variable = { mc = 2 }
-        set_temp_variable = { sc = 2 }
-        set_temp_variable = { bc = -4 }
-        set_temp_variable = { ac = 0 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_satisfaction_workers_change = -0.5 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -1.5 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 0.5 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 2 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 2 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
-    }
-    bill_13_pass_effect = {
-        add_ideas = bill_assembly_registration
-        add_to_array = { array = FRA.FCF_social_bills value = 13 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 2 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = 0 }
-        set_temp_variable = { pop_pc = 0 }
-        set_temp_variable = { pop_mc = 0 }
-        set_temp_variable = { pop_sc = -2 }
-        set_temp_variable = { pop_bc = 2 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 2 }
+		set_temp_variable = { economy_industry_basic_change = 0 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 0 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 3 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行自由集会法案并调整阶层影响力与满意度。
+	bill_12_pass_effect = {
+		add_ideas = FCF_society_bill_freedom_of_assembly
+		add_to_array = { array = FRA.FCF_social_bills value = 12 }
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = -1 }
-        set_temp_variable = { pc = -1 }
-        set_temp_variable = { mc = -1 }
-        set_temp_variable = { sc = -2 }
-        set_temp_variable = { bc = 4 }
-        set_temp_variable = { ac = 0 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_workers_change = 0 }
+		set_temp_variable = { pop_peasants_change = 0 }
+		set_temp_variable = { pop_merchants_change = 0 }
+		set_temp_variable = { pop_scholars_change = 2 }
+		set_temp_variable = { pop_bureaucrats_change = -2 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = -2 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
-    }
-    bill_14_pass_effect = {
-        if = {
-            limit = { has_idea = bill_limited_womens_rights2 }
-            swap_ideas = {
-                remove_idea = bill_limited_womens_rights2
-                add_idea = bill_gender_equality
-            }
-            remove_from_array = { array = FRA.FCF_social_bills value = 2 }
-        }
-        else = { 
-            add_ideas = bill_gender_equality 
-            custom_effect_tooltip = tooltip_white_line
-        }
-        add_to_array = { array = FRA.FCF_social_bills value = 14 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_satisfaction_workers_change = 2 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 2 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 2 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = -4 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
-        if = {
-            limit = { has_idea = FCF_womens_day_parade }
-            swap_ideas = {
-                remove_idea = FCF_womens_day_parade
-                add_idea = FCF_womens_day_parade_weaken
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_womens_day_parade_weaken }
-            remove_ideas = FCF_womens_day_parade_weaken
-            custom_effect_tooltip = tooltip_white_line
-        }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 2 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
+	}
+	### 作用域：国家；主要作用：执行集会登记法案并调整阶层影响力与满意度。
+	bill_13_pass_effect = {
+		add_ideas = FCF_society_bill_assembly_registration
+		add_to_array = { array = FRA.FCF_social_bills value = 13 }
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = -1 }
-        set_temp_variable = { pc = -1 }
-        set_temp_variable = { mc = -1 }
-        set_temp_variable = { sc = 4 }
-        set_temp_variable = { bc = -2 }
-        set_temp_variable = { ac = -3 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_workers_change = 0 }
+		set_temp_variable = { pop_peasants_change = 0 }
+		set_temp_variable = { pop_merchants_change = 0 }
+		set_temp_variable = { pop_scholars_change = -2 }
+		set_temp_variable = { pop_bureaucrats_change = 2 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 2 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_satisfaction_workers_change = -1 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -1 }
+		set_temp_variable = { pop_satisfaction_merchants_change = -1 }
+		set_temp_variable = { pop_satisfaction_scholars_change = -2 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 4 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 5 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 2.5 }
-        economy_variable_change = yes
-    }
-    bill_15_pass_effect = {
-        if = {
-            limit = { has_idea = bill_limited_womens_rights2 }
-            swap_ideas = {
-                remove_idea = bill_limited_womens_rights2
-                add_idea = bill_glorious_mothers
-            }
-            remove_from_array = { array = FRA.FCF_social_bills value = 2 }
-        }
-        else = { 
-            add_ideas = bill_glorious_mothers 
-            custom_effect_tooltip = tooltip_white_line
-        }
-        add_to_array = { array = FRA.FCF_social_bills value = 15 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = -2 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
+	}
+	### 作用域：国家；主要作用：执行女性工人支持法案并调整阶层满意度与妇女权利倾向。
+	bill_14_pass_effect = {
+		if = {
+			limit = { has_idea = FCF_society_bill_limited_womens_rights_level_2 }
+			swap_ideas = {
+				remove_idea = FCF_society_bill_limited_womens_rights_level_2
+				add_idea = FCF_society_bill_gender_equality
+			}
+			remove_from_array = { array = FRA.FCF_social_bills value = 2 }
+		}
+		else = {
+			add_ideas = FCF_society_bill_gender_equality
+			custom_effect_tooltip = tooltip_white_line
+		}
+		add_to_array = { array = FRA.FCF_social_bills value = 14 }
 
-        if = {
-            limit = { has_idea = FCF_womens_day_parade }
-            swap_ideas = {
-                remove_idea = FCF_womens_day_parade
-                add_idea = FCF_womens_day_parade_weaken
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_womens_day_parade_weaken }
-            remove_ideas = FCF_womens_day_parade_weaken
-            custom_effect_tooltip = tooltip_white_line
-        }
+		if = {
+			limit = { has_idea = FCF_society_womens_day_parade }
+			swap_ideas = {
+				remove_idea = FCF_society_womens_day_parade
+				add_idea = FCF_society_womens_day_parade_reduced
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_society_womens_day_parade_reduced }
+			remove_ideas = FCF_society_womens_day_parade_reduced
+			custom_effect_tooltip = tooltip_white_line
+		}
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = 1 }
-        set_temp_variable = { pc = 1 }
-        set_temp_variable = { mc = 1 }
-        set_temp_variable = { sc = -4 }
-        set_temp_variable = { bc = 1 }
-        set_temp_variable = { ac = 2 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = -1 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -1 }
+		set_temp_variable = { pop_satisfaction_merchants_change = -1 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 4 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = -2 }
+		set_temp_variable = { pop_satisfaction_army_change = -3 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = -2 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 2 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 2 }
-        set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 2 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 0 }
-        economy_variable_change = yes
-    }
-    bill_16_pass_effect = { 
-        swap_ideas = {
-            remove_idea = bill_basic_speech_freedom
-            add_idea = bill_complete_speech_freedom
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 1 }
-        add_to_array = { array = FRA.FCF_social_bills value = 16 }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 0 }
+		set_temp_variable = { economy_industry_basic_change = 0 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 5 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 2.5 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行家庭妇女支持法案并调整阶层满意度与妇女权利倾向。
+	bill_15_pass_effect = {
+		if = {
+			limit = { has_idea = FCF_society_bill_limited_womens_rights_level_2 }
+			swap_ideas = {
+				remove_idea = FCF_society_bill_limited_womens_rights_level_2
+				add_idea = FCF_society_bill_glorious_mothers
+			}
+			remove_from_array = { array = FRA.FCF_social_bills value = 2 }
+		}
+		else = {
+			add_ideas = FCF_society_bill_glorious_mothers
+			custom_effect_tooltip = tooltip_white_line
+		}
+		add_to_array = { array = FRA.FCF_social_bills value = 15 }
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = 2 }
-        set_temp_variable = { pc = 2 }
-        set_temp_variable = { mc = 2 }
-        set_temp_variable = { sc = 4 }
-        set_temp_variable = { bc = -4 }
-        set_temp_variable = { ac = -2 }
-        society_pop_satisfactions_change = yes
+		if = {
+			limit = { has_idea = FCF_society_womens_day_parade }
+			swap_ideas = {
+				remove_idea = FCF_society_womens_day_parade
+				add_idea = FCF_society_womens_day_parade_reduced
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_society_womens_day_parade_reduced }
+			remove_ideas = FCF_society_womens_day_parade_reduced
+			custom_effect_tooltip = tooltip_white_line
+		}
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 2 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = 1 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 1 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 1 }
+		set_temp_variable = { pop_satisfaction_scholars_change = -4 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 1 }
+		set_temp_variable = { pop_satisfaction_army_change = 2 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 4 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 2 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 2 }
-        set_temp_variable = { eic = 4 }
-        economy_variable_change = yes
-    }
-    bill_17_pass_effect = { 
-        swap_ideas = {
-            remove_idea = bill_basic_speech_freedom
-            add_idea = bill_speech_freedom_under_scrutiny
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 1 }
-        add_to_array = { array = FRA.FCF_social_bills value = 17 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = -2 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = -1 }
-        set_temp_variable = { pc = -1 }
-        set_temp_variable = { mc = -1 }
-        set_temp_variable = { sc = -1 }
-        set_temp_variable = { bc = 2 }
-        set_temp_variable = { ac = 1 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 0 }
+		set_temp_variable = { economy_industry_basic_change = 2 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 2 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 0 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行完全言论自由法案并调整阶层满意度与社会管制倾向。
+	bill_16_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_society_bill_basic_speech_freedom
+			add_idea = FCF_society_bill_complete_speech_freedom
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 1 }
+		add_to_array = { array = FRA.FCF_social_bills value = 16 }
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = -1 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = 2 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 2 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 4 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = -4 }
+		set_temp_variable = { pop_satisfaction_army_change = -2 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 2 }
-        set_temp_variable = { eibc = 1 }
-        set_temp_variable = { eipc = 1 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 1 }
-        set_temp_variable = { eic = 0 }
-        economy_variable_change = yes
-    }
-    bill_18_pass_effect = { 
-        swap_ideas = {
-            remove_idea = bill_basic_speech_freedom
-            add_idea = bill_speech_control
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 1 }
-        add_to_array = { array = FRA.FCF_social_bills value = 18 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 2 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = -2 }
-        set_temp_variable = { pc = -2 }
-        set_temp_variable = { mc = -2 }
-        set_temp_variable = { sc = -4 }
-        set_temp_variable = { bc = 4 }
-        set_temp_variable = { ac = 3 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 4 }
+		set_temp_variable = { economy_industry_basic_change = 0 }
+		set_temp_variable = { economy_industry_process_change = 2 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 0 }
+		set_temp_variable = { economy_society_integration_change = 2 }
+		set_temp_variable = { economy_society_innovation_change = 4 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行异端言论压制法案并调整阶层满意度与社会管制倾向。
+	bill_17_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_society_bill_basic_speech_freedom
+			add_idea = FCF_society_bill_speech_freedom_under_scrutiny
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 1 }
+		add_to_array = { array = FRA.FCF_social_bills value = 17 }
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = -2 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 0 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = -1 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -1 }
+		set_temp_variable = { pop_satisfaction_merchants_change = -1 }
+		set_temp_variable = { pop_satisfaction_scholars_change = -1 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 2 }
+		set_temp_variable = { pop_satisfaction_army_change = 1 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 0 }
-        set_temp_variable = { eibc = 2 }
-        set_temp_variable = { eipc = 2 }
-        set_temp_variable = { eiac = 2 }
-        set_temp_variable = { eamc = 2 }
-        set_temp_variable = { eaec = 2 }
-        set_temp_variable = { eaac = 2 }
-        set_temp_variable = { eqc = 0 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = -6 }
-        economy_variable_change = yes
-    }
-    bill_19_pass_effect = { 
-        swap_ideas = {
-            remove_idea = bill_free_immigration
-            add_idea = bill_workers_immigrantion
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 4 }
-        add_to_array = { array = FRA.FCF_social_bills value = 19 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = -1 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = -1 }
-        set_temp_variable = { pc = -2 }
-        set_temp_variable = { mc = -2 }
-        set_temp_variable = { sc = 4 }
-        set_temp_variable = { bc = -2 }
-        set_temp_variable = { ac = -2 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 2 }
+		set_temp_variable = { economy_industry_basic_change = 1 }
+		set_temp_variable = { economy_industry_process_change = 1 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 0 }
+		set_temp_variable = { economy_society_integration_change = 1 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行反革命言论管制法案并调整阶层满意度与社会管制倾向。
+	bill_18_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_society_bill_basic_speech_freedom
+			add_idea = FCF_society_bill_speech_control
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 1 }
+		add_to_array = { array = FRA.FCF_social_bills value = 18 }
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = 6 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = -2 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -2 }
+		set_temp_variable = { pop_satisfaction_merchants_change = -2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = -4 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 4 }
+		set_temp_variable = { pop_satisfaction_army_change = 3 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 4 }
-        set_temp_variable = { eibc = 2 }
-        set_temp_variable = { eipc = 2 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 4 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 2 }
-        economy_variable_change = yes
-    }
-    bill_20_pass_effect = { 
-        add_political_power = 200
-        swap_ideas = {
-            remove_idea = bill_free_immigration
-            add_idea = bill_national_immigration
-        }
-        remove_from_array = { array = FRA.FCF_social_bills value = 4 }
-        add_to_array = { array = FRA.FCF_social_bills value = 20 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = -2 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 0 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = 2 }
-        set_temp_variable = { pc = 2 }
-        set_temp_variable = { mc = 2 }
-        set_temp_variable = { sc = -4 }
-        set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = 2 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 0 }
+		set_temp_variable = { economy_industry_basic_change = 2 }
+		set_temp_variable = { economy_industry_process_change = 2 }
+		set_temp_variable = { economy_industry_arms_change = 2 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 2 }
+		set_temp_variable = { economy_agriculture_chemical_change = 2 }
+		set_temp_variable = { economy_agriculture_chain_change = 2 }
+		set_temp_variable = { economy_society_equality_change = 0 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = -6 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行全体工人之国法案并调整阶层满意度与移民倾向。
+	bill_19_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_society_bill_free_immigration
+			add_idea = FCF_society_bill_worker_immigration
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 4 }
+		add_to_array = { array = FRA.FCF_social_bills value = 19 }
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { srtc_edu = 0 }
-        set_temp_variable = { srtc_reg = 0 }
-        set_temp_variable = { srtc_fem = 0 }
-        set_temp_variable = { srtc_imm = -6 }
-        set_temp_variable = { srtc_rel = 0 }
-        society_reform_tendency_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = -1 }
+		set_temp_variable = { pop_satisfaction_peasants_change = -2 }
+		set_temp_variable = { pop_satisfaction_merchants_change = -2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 4 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = -2 }
+		set_temp_variable = { pop_satisfaction_army_change = -2 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = -4 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 2 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = -2 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 0 }
-        economy_variable_change = yes
-    }
-    bill_21_pass_effect = {
-        add_ideas = bill_employment_training
-        add_to_array = { array = FRA.FCF_social_bills value = 21 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = 6 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { wc = 1.5 }
-        set_temp_variable = { pc = 0 }
-        set_temp_variable = { mc = 0.5 }
-        set_temp_variable = { sc = 0 }
-        set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = 0 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 4 }
+		set_temp_variable = { economy_industry_basic_change = 2 }
+		set_temp_variable = { economy_industry_process_change = 2 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 4 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 2 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行防范政治渗透法案并调整阶层满意度与移民倾向。
+	bill_20_pass_effect = {
+		add_political_power = 200
+		swap_ideas = {
+			remove_idea = FCF_society_bill_free_immigration
+			add_idea = FCF_society_bill_national_immigration
+		}
+		remove_from_array = { array = FRA.FCF_social_bills value = 4 }
+		add_to_array = { array = FRA.FCF_social_bills value = 20 }
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = -1 }
-        set_temp_variable = { eibc = 0 }
-        set_temp_variable = { eipc = 0 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 2.5 }
-        set_temp_variable = { elc = 0 }
-        set_temp_variable = { eic = 0 }
-        economy_variable_change = yes
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = 2 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 2 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = -4 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 2 }
+		society_pop_satisfaction_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { ertc_dom = 2 }
-        set_temp_variable = { ertc_str = 0 }
-        set_temp_variable = { ertc_man = 0 }
-        set_temp_variable = { ertc_pro = 0 }
-        set_temp_variable = { ertc_exc = 0 }
-        set_temp_variable = { ertc_con = 0 }
-        set_temp_variable = { ertc_dev = 0 }
-        economy_reform_tendency_change = yes
-    }
-    bill_22_pass_effect = {
-        add_ideas = bill_unemployment_benefits
-        add_to_array = { array = FRA.FCF_social_bills value = 22 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { society_reform_education_change = 0 }
+		set_temp_variable = { society_reform_regulation_change = 0 }
+		set_temp_variable = { society_reform_womens_rights_change = 0 }
+		set_temp_variable = { society_reform_immigration_change = -6 }
+		set_temp_variable = { society_reform_religion_change = 0 }
+		society_reform_tendency_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = 1 }
-        set_temp_variable = { pop_pc = 1 }
-        set_temp_variable = { pop_mc = 1 }
-        set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = -3 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
-        
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 2 }
-        set_temp_variable = { pc = 2 }
-        set_temp_variable = { mc = 2 }
-        set_temp_variable = { sc = 2 }
-        set_temp_variable = { bc = -6 }
-        set_temp_variable = { ac = 0 }
-        society_pop_satisfactions_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = -4 }
+		set_temp_variable = { economy_industry_basic_change = 0 }
+		set_temp_variable = { economy_industry_process_change = 2 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = -2 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行就业培训法案并调整阶层满意度与经济指标。
+	bill_21_pass_effect = {
+		add_ideas = FCF_society_bill_employment_training
+		add_to_array = { array = FRA.FCF_social_bills value = 21 }
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = 2.5 }
-        set_temp_variable = { eibc = 1 }
-        set_temp_variable = { eipc = 1 }
-        set_temp_variable = { eiac = 1 }
-        set_temp_variable = { eamc = 1 }
-        set_temp_variable = { eaec = 1 }
-        set_temp_variable = { eaac = 1 }
-        set_temp_variable = { eqc = 3 }
-        set_temp_variable = { elc = 1 }
-        set_temp_variable = { eic = 0 }
-        economy_variable_change = yes  
-    }
-    bill_23_pass_effect = {
-        add_ideas = bill_antitrust
-        add_to_array = { array = FRA.FCF_social_bills value = 23 }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = 1.5 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 0.5 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
-        add_to_variable = { CGT_confidence = -4 }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = -1 }
+		set_temp_variable = { economy_industry_basic_change = 0 }
+		set_temp_variable = { economy_industry_process_change = 0 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 2.5 }
+		set_temp_variable = { economy_society_integration_change = 0 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
 
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { evc = -3 }
-        set_temp_variable = { eibc = -1 }
-        set_temp_variable = { eipc = -0.5 }
-        set_temp_variable = { eiac = 0 }
-        set_temp_variable = { eamc = 0 }
-        set_temp_variable = { eaec = 0 }
-        set_temp_variable = { eaac = 0 }
-        set_temp_variable = { eqc = 2 }
-        set_temp_variable = { elc = -0.5 }
-        set_temp_variable = { eic = 0 }
-        economy_variable_change = yes  
-    }
-    bill_24_pass_effect = {
-        swap_ideas = {
-            remove_idea = FCF_CGT_special_statues
-            add_idea = bill_federal_syndicats
-        }
-        add_to_array = { array = FRA.FCF_social_bills value = 24 }
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { economy_reform_dominance_change = 2 }
+		set_temp_variable = { economy_reform_structure_change = 0 }
+		set_temp_variable = { economy_reform_management_change = 0 }
+		set_temp_variable = { economy_reform_production_change = 0 }
+		set_temp_variable = { economy_reform_exchange_change = 0 }
+		set_temp_variable = { economy_reform_consumption_change = 0 }
+		set_temp_variable = { economy_reform_development_change = 0 }
+		economy_reform_tendency_change = yes
+	}
+	### 作用域：国家；主要作用：执行失业救济法案并调整阶层影响力与满意度。
+	bill_22_pass_effect = {
+		add_ideas = FCF_society_bill_unemployment_benefits
+		add_to_array = { array = FRA.FCF_social_bills value = 22 }
 
-        if = {
-            limit = { has_idea = FCF_CGT_contested_weaken_more }
-            remove_ideas = FCF_CGT_contested_weaken_more
-        }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_workers_change = 1 }
+		set_temp_variable = { pop_peasants_change = 1 }
+		set_temp_variable = { pop_merchants_change = 1 }
+		set_temp_variable = { pop_scholars_change = 0 }
+		set_temp_variable = { pop_bureaucrats_change = -3 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
 
-        custom_effect_tooltip = effect_politics
-        set_temp_variable = { pop_wc = -2 }
-        set_temp_variable = { pop_pc = 0 }
-        set_temp_variable = { pop_mc = -1 }
-        set_temp_variable = { pop_sc = 0 }
-        set_temp_variable = { pop_bc = 3 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
-        
-        custom_effect_tooltip = tooltip_white_line
-        custom_effect_tooltip = effect_economy
-        set_temp_variable = { ertc_dom = 1 }
-        set_temp_variable = { ertc_str = 1 }
-        set_temp_variable = { ertc_man = 1 }
-        set_temp_variable = { ertc_pro = 0 }
-        set_temp_variable = { ertc_exc = 0 }
-        set_temp_variable = { ertc_con = 0 }
-        set_temp_variable = { ertc_dev = 0 }
-        economy_reform_tendency_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_satisfaction_workers_change = 2 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 2 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 2 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = -6 }
+		set_temp_variable = { pop_satisfaction_army_change = 0 }
+		society_pop_satisfaction_change = yes
 
-        hidden_effect = {
-            if = {
-                limit = { has_completed_focus = FCF_against_cgt }
-                if = {
-                    limit = { check_variable = { CGT_confidence > 7 } }
-                    if = {
-                        limit = { has_country_flag = independent_delegate_in_syndicats }
-                        country_event = { id = fcf_economy_event.70 days = 10 random_days = 7 }
-                    }
-                    else = { country_event = { id = fcf_economy_event.71 days = 10 random_days = 7 } }
-                }
-                else_if = {
-                    limit = { check_variable = { CGT_confidence > 3 } }
-                    country_event = { id = fcf_economy_event.72 days = 10 random_days = 7 }
-                }
-                else_if = {
-                    limit = { check_variable = { CGT_confidence > 0 } }
-                    country_event = { id = fcf_economy_event.73 days = 10 random_days = 7 }
-                }     
-            }  
-        }
-    }
-    bill_25_pass_effect = {
-        swap_ideas = {
-            remove_idea = FCF_CGT_special_statues
-            add_idea = bill_competitive_syndicats
-        }
-        add_to_array = { array = FRA.FCF_social_bills value = 25 }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = 2.5 }
+		set_temp_variable = { economy_industry_basic_change = 1 }
+		set_temp_variable = { economy_industry_process_change = 1 }
+		set_temp_variable = { economy_industry_arms_change = 1 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 1 }
+		set_temp_variable = { economy_agriculture_chemical_change = 1 }
+		set_temp_variable = { economy_agriculture_chain_change = 1 }
+		set_temp_variable = { economy_society_equality_change = 3 }
+		set_temp_variable = { economy_society_integration_change = 1 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行反垄断法案并调整总体经济与九项经济指标。
+	bill_23_pass_effect = {
+		add_ideas = FCF_society_bill_antitrust
+		add_to_array = { array = FRA.FCF_social_bills value = 23 }
 
-        custom_effect_tooltip = effect_politics
-        set_temp_variable = { pop_wc = -3 }
-        set_temp_variable = { pop_pc = 1 }
-        set_temp_variable = { pop_mc = 1 }
-        set_temp_variable = { pop_sc = 0.5 }
-        set_temp_variable = { pop_bc = 0.5 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
+		add_to_variable = { CGT_confidence = -4 }
 
-        hidden_effect = {
-            if = {
-                limit = { check_variable = { CGT_confidence > 7 } }
-                country_event = { id = fcf_economy_event.71 days = 10 random_days = 7 } 
-            }
-            else_if = {
-                limit = { check_variable = { CGT_confidence > 3 } }
-                country_event = { id = fcf_economy_event.72 days = 10 random_days = 7 }
-            }
-            else_if = {
-                limit = { check_variable = { CGT_confidence > 0 } }
-                country_event = { id = fcf_economy_event.73 days = 10 random_days = 7 }
-            }
-        }
-    }
-    bill_26_pass_effect = {
-        swap_ideas = {
-            remove_idea = FCF_CGT_special_statues
-            add_idea = bill_syndicats_unification
-        }
-        add_to_array = { array = FRA.FCF_social_bills value = 26 }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_values_change = -3 }
+		set_temp_variable = { economy_industry_basic_change = -1 }
+		set_temp_variable = { economy_industry_process_change = -0.5 }
+		set_temp_variable = { economy_industry_arms_change = 0 }
+		set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+		set_temp_variable = { economy_agriculture_chemical_change = 0 }
+		set_temp_variable = { economy_agriculture_chain_change = 0 }
+		set_temp_variable = { economy_society_equality_change = 2 }
+		set_temp_variable = { economy_society_integration_change = -0.5 }
+		set_temp_variable = { economy_society_innovation_change = 0 }
+		economy_indicators_change = yes
+	}
+	### 作用域：国家；主要作用：执行工会工作重心法案并调整阶层影响力与经济改革倾向。
+	bill_24_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_economy_CGT_special_status
+			add_idea = FCF_society_bill_federal_syndicats
+		}
+		add_to_array = { array = FRA.FCF_social_bills value = 24 }
 
-        remove_ideas = FCF_CGT_contested_weaken_more
+		if = {
+			limit = { has_idea = FCF_economy_CGT_authority_contested_severely_reduced }
+			remove_ideas = FCF_economy_CGT_authority_contested_severely_reduced
+		}
 
-        custom_effect_tooltip = tooltip_white_line
-        if = {
-            limit = {
-                set_temp_variable = { party_var = 4 }
-                set_temp_variable = { target_faction = 2 }
-                party_dominated_faction_judge = yes 
-            }
-            custom_effect_tooltip = effect_politics
-            set_temp_variable = { pop_wc = 3 }
-            set_temp_variable = { pop_pc = -0.5 }
-            set_temp_variable = { pop_mc = -0.5 }
-            set_temp_variable = { pop_sc = -1 }
-            set_temp_variable = { pop_bc = -1 }
-            set_temp_variable = { pop_ac = 0 }
-            class_pop_change = yes
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { pop_workers_change = -2 }
+		set_temp_variable = { pop_peasants_change = 0 }
+		set_temp_variable = { pop_merchants_change = -1 }
+		set_temp_variable = { pop_scholars_change = 0 }
+		set_temp_variable = { pop_bureaucrats_change = 3 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
 
-            custom_effect_tooltip = tooltip_white_line
-            custom_effect_tooltip = effect_economy
-            set_temp_variable = { ertc_dom = -1 }
-            set_temp_variable = { ertc_str = -1 }
-            set_temp_variable = { ertc_man = -1 }
-            set_temp_variable = { ertc_pro = 0 }
-            set_temp_variable = { ertc_exc = 0 }
-            set_temp_variable = { ertc_con = 0 }
-            set_temp_variable = { ertc_dev = 0 }
-            economy_reform_tendency_change = yes
-        }
-        else = {
-            custom_effect_tooltip = effect_politics
-            set_temp_variable = { pop_wc = -2 }
-            set_temp_variable = { pop_pc = -0.5 }
-            set_temp_variable = { pop_mc = -0.5 }
-            set_temp_variable = { pop_sc = 0 }
-            set_temp_variable = { pop_bc = 3 }
-            set_temp_variable = { pop_ac = 0 }
-            class_pop_change = yes
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = effect_economy
+		set_temp_variable = { economy_reform_dominance_change = 1 }
+		set_temp_variable = { economy_reform_structure_change = 1 }
+		set_temp_variable = { economy_reform_management_change = 1 }
+		set_temp_variable = { economy_reform_production_change = 0 }
+		set_temp_variable = { economy_reform_exchange_change = 0 }
+		set_temp_variable = { economy_reform_consumption_change = 0 }
+		set_temp_variable = { economy_reform_development_change = 0 }
+		economy_reform_tendency_change = yes
 
-            custom_effect_tooltip = tooltip_white_line
-            custom_effect_tooltip = effect_economy
-            set_temp_variable = { ertc_dom = -1 }
-            set_temp_variable = { ertc_str = 1 }
-            set_temp_variable = { ertc_man = 1 }
-            set_temp_variable = { ertc_pro = 0 }
-            set_temp_variable = { ertc_exc = 0 }
-            set_temp_variable = { ertc_con = 0 }
-            set_temp_variable = { ertc_dev = 0 }
-            economy_reform_tendency_change = yes
-        }
-    }
-    bill_27_pass_effect = {
-        if = { 
-            limit = { has_completed_focus = FCF_improve_soldier_treatment }
-            swap_ideas = {
-                remove_idea = FCF_protect_soldier_benefits
-                add_idea = bill_soldier_benefits_strengthen
-            }
-            remove_from_array = { array = FRA.FCF_military_bills value = 12 }
-        }
-        else = { 
-            add_ideas = bill_soldier_benefits 
-            custom_effect_tooltip = tooltip_white_line
-        }
-        add_to_array = { array = FRA.FCF_social_bills value = 27 }
-    
-        custom_effect_tooltip = effect_society
-        set_temp_variable = { pop_wc = -0.5 }
-        set_temp_variable = { pop_pc = -0.5 }
-        set_temp_variable = { pop_mc = -0.5 }
-        set_temp_variable = { pop_sc = -0.5 }
-        set_temp_variable = { pop_bc = 2 }
-        set_temp_variable = { pop_ac = 0 }
-        class_pop_change = yes
+		hidden_effect = {
+			if = {
+				limit = { has_completed_focus = FCF_against_CGT }
+				if = {
+					limit = { check_variable = { CGT_confidence > 7 } }
+					if = {
+						limit = { has_country_flag = independent_delegate_in_syndicats }
+						country_event = { id = fcf_economy_events.70 days = 10 random_days = 7 }
+					}
+					else = { country_event = { id = fcf_economy_events.71 days = 10 random_days = 7 } }
+				}
+				else_if = {
+					limit = { check_variable = { CGT_confidence > 3 } }
+					country_event = { id = fcf_economy_events.72 days = 10 random_days = 7 }
+				}
+				else_if = {
+					limit = { check_variable = { CGT_confidence > 0 } }
+					country_event = { id = fcf_economy_events.73 days = 10 random_days = 7 }
+				}
+			}
+		}
+	}
+	### 作用域：国家；主要作用：执行工会多元战略法案并调整阶层影响力。
+	bill_25_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_economy_CGT_special_status
+			add_idea = FCF_society_bill_competitive_syndicats
+		}
+		add_to_array = { array = FRA.FCF_social_bills value = 25 }
 
-        custom_effect_tooltip = tooltip_white_line
-        set_temp_variable = { wc = 0 }
-        set_temp_variable = { pc = 0 }
-        set_temp_variable = { mc = 0 }
-        set_temp_variable = { sc = 0 }
-        set_temp_variable = { bc = 0 }
-        set_temp_variable = { ac = 4 }
-        society_pop_satisfactions_change = yes
-    }
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { pop_workers_change = -3 }
+		set_temp_variable = { pop_peasants_change = 1 }
+		set_temp_variable = { pop_merchants_change = 1 }
+		set_temp_variable = { pop_scholars_change = 0.5 }
+		set_temp_variable = { pop_bureaucrats_change = 0.5 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
+
+		hidden_effect = {
+			if = {
+				limit = { check_variable = { CGT_confidence > 7 } }
+				country_event = { id = fcf_economy_events.71 days = 10 random_days = 7 }
+			}
+			else_if = {
+				limit = { check_variable = { CGT_confidence > 3 } }
+				country_event = { id = fcf_economy_events.72 days = 10 random_days = 7 }
+			}
+			else_if = {
+				limit = { check_variable = { CGT_confidence > 0 } }
+				country_event = { id = fcf_economy_events.73 days = 10 random_days = 7 }
+			}
+		}
+	}
+	### 作用域：国家；主要作用：执行新 CGT 法案并调整党派派系、阶层影响力与经济改革倾向。
+	bill_26_pass_effect = {
+		swap_ideas = {
+			remove_idea = FCF_economy_CGT_special_status
+			add_idea = FCF_society_bill_syndicats_unification
+		}
+		add_to_array = { array = FRA.FCF_social_bills value = 26 }
+
+		remove_ideas = FCF_economy_CGT_authority_contested_severely_reduced
+
+		custom_effect_tooltip = tooltip_white_line
+		if = {
+			limit = {
+				set_temp_variable = { target_party_id = 4 }
+				set_temp_variable = { target_faction_id = 2 }
+				politics_party_dominant_faction_evaluate = yes
+
+				AND = {
+					has_country_flag = POU_in_gov
+
+					OR = {
+						set_temp_variable = { target_party_id = 3 }
+						set_temp_variable = { target_faction_id = 2 }
+						politics_party_dominant_faction_evaluate = yes
+
+						set_temp_variable = { target_party_id = 3 }
+						set_temp_variable = { target_faction_id = 3 }
+						politics_party_dominant_faction_evaluate = yes
+					}
+				}
+			}
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { pop_workers_change = 3 }
+			set_temp_variable = { pop_peasants_change = -0.5 }
+			set_temp_variable = { pop_merchants_change = -0.5 }
+			set_temp_variable = { pop_scholars_change = -1 }
+			set_temp_variable = { pop_bureaucrats_change = -1 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_reform_dominance_change = -1 }
+			set_temp_variable = { economy_reform_structure_change = -1 }
+			set_temp_variable = { economy_reform_management_change = -1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+		else = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { pop_workers_change = -2 }
+			set_temp_variable = { pop_peasants_change = -0.5 }
+			set_temp_variable = { pop_merchants_change = -0.5 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = 3 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_reform_dominance_change = -1 }
+			set_temp_variable = { economy_reform_structure_change = 1 }
+			set_temp_variable = { economy_reform_management_change = 1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+	}
+	### 作用域：国家；主要作用：执行强化士兵福利法案并调整阶层影响力、满意度与军事改革倾向。
+	bill_27_pass_effect = {
+		if = {
+			limit = { has_completed_focus = FCF_improve_soldier_treatment }
+			swap_ideas = {
+				remove_idea = FCF_military_army_protect_soldier_benefits
+				add_idea = FCF_society_bill_soldier_benefits_strengthened
+			}
+			remove_from_array = { array = FRA.FCF_military_bills value = 12 }
+		}
+		else = {
+			add_ideas = FCF_society_bill_soldier_benefits
+			custom_effect_tooltip = tooltip_white_line
+		}
+		add_to_array = { array = FRA.FCF_social_bills value = 27 }
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_workers_change = -0.5 }
+		set_temp_variable = { pop_peasants_change = -0.5 }
+		set_temp_variable = { pop_merchants_change = -0.5 }
+		set_temp_variable = { pop_scholars_change = -0.5 }
+		set_temp_variable = { pop_bureaucrats_change = 2 }
+		set_temp_variable = { pop_army_change = 0 }
+		society_pop_influence_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { pop_satisfaction_workers_change = 0 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 0 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 0 }
+		set_temp_variable = { pop_satisfaction_army_change = 4 }
+		society_pop_satisfaction_change = yes
+	}
 ####################
 ### 民族精神更新 ###
 ####################
-    FCF_intensified_urban_rural_conflicts_update = {
-        if = {
-            limit = { has_idea = FCF_intensified_urban_rural_conflicts1 }
-            swap_ideas = {
-                remove_idea = FCF_intensified_urban_rural_conflicts1
-                add_idea = FCF_intensified_urban_rural_conflicts2
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_intensified_urban_rural_conflicts2 }
-            swap_ideas = {
-                remove_idea = FCF_intensified_urban_rural_conflicts2
-                add_idea = FCF_intensified_urban_rural_conflicts3
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_intensified_urban_rural_conflicts3 }
-            swap_ideas = {
-                remove_idea = FCF_intensified_urban_rural_conflicts3
-                add_idea = FCF_intensified_urban_rural_conflicts4
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_intensified_urban_rural_conflicts4 }
-            swap_ideas = {
-                remove_idea = FCF_intensified_urban_rural_conflicts4
-                add_idea = FCF_intensified_urban_rural_conflicts5
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_intensified_urban_rural_conflicts5 }
-            remove_ideas = FCF_intensified_urban_rural_conflicts5
-        }
-    }
+	### 作用域：国家；主要作用：依据城乡冲突值切换对应等级的城乡冲突民族精神。
+	FCF_intensified_urban_rural_conflicts_update = {
+		if = {
+			limit = { has_idea = FCF_society_urban_rural_conflict_level_1 }
+			swap_ideas = {
+				remove_idea = FCF_society_urban_rural_conflict_level_1
+				add_idea = FCF_society_urban_rural_conflict_level_2
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_society_urban_rural_conflict_level_2 }
+			swap_ideas = {
+				remove_idea = FCF_society_urban_rural_conflict_level_2
+				add_idea = FCF_society_urban_rural_conflict_level_3
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_society_urban_rural_conflict_level_3 }
+			swap_ideas = {
+				remove_idea = FCF_society_urban_rural_conflict_level_3
+				add_idea = FCF_society_urban_rural_conflict_level_4
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_society_urban_rural_conflict_level_4 }
+			swap_ideas = {
+				remove_idea = FCF_society_urban_rural_conflict_level_4
+				add_idea = FCF_society_urban_rural_conflict_level_5
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_society_urban_rural_conflict_level_5 }
+			remove_ideas = FCF_society_urban_rural_conflict_level_5
+		}
+	}
 
-    weak_central_government_improve = {
-        if = {
-            limit = { has_idea = FCF_weak_central_government }
-            swap_ideas = {
-                remove_idea = FCF_weak_central_government
-                add_idea = FCF_weak_central_government2
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_weak_central_government2 }
-            swap_ideas = {
-                remove_idea = FCF_weak_central_government2
-                add_idea = FCF_weak_central_government3
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_weak_central_government3 }
-            swap_ideas = {
-                remove_idea = FCF_weak_central_government3
-                add_idea = FCF_weak_central_government4
-            }
-        }
-        else_if = {
-            limit = { has_idea = FCF_weak_central_government4 }
-            remove_ideas = FCF_weak_central_government4
-        }
-    }
+	### 作用域：国家；主要作用：将中央政府虚弱民族精神改善一级，并保持阶段连续。
+	weak_central_government_improve = {
+		if = {
+			limit = { has_idea = FCF_politics_weak_central_government_level_1 }
+			swap_ideas = {
+				remove_idea = FCF_politics_weak_central_government_level_1
+				add_idea = FCF_politics_weak_central_government_level_2
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_politics_weak_central_government_level_2 }
+			swap_ideas = {
+				remove_idea = FCF_politics_weak_central_government_level_2
+				add_idea = FCF_politics_weak_central_government_level_3
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_politics_weak_central_government_level_3 }
+			swap_ideas = {
+				remove_idea = FCF_politics_weak_central_government_level_3
+				add_idea = FCF_politics_weak_central_government_level_4
+			}
+		}
+		else_if = {
+			limit = { has_idea = FCF_politics_weak_central_government_level_4 }
+			remove_ideas = FCF_politics_weak_central_government_level_4
+		}
+	}
 ######

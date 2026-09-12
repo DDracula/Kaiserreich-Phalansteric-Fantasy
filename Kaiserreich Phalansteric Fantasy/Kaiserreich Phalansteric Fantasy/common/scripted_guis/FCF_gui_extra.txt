@@ -1,0 +1,2788 @@
+scripted_gui = {
+### 政治界面：CGF 议会与 CSP 公共安全委员会
+	FCF_politics_CGF_CSP_open_button_gui = {
+		context_type = player_context
+		parent_window_name = raid_filter
+		window_name = FCF_open_CGF_and_CSP_button_window
+
+		visible = {
+			tag = FRA
+		}
+		effects = {
+			FCF_open_CGF_and_CSP_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CGF_visible }
+					clr_country_flag = FCF_gui_politics_CGF_visible
+				}
+				else = { set_country_flag = FCF_gui_politics_CGF_visible }
+			}
+		}
+	}
+
+	FCF_politics_CGF_CSP_window_gui = {
+		context_type = player_context
+		window_name = FCF_politics_CGF_and_CSP_window
+
+		visible = {
+			tag = FRA
+			OR = {
+				has_country_flag = FCF_gui_politics_CGF_visible
+				has_country_flag = FCF_gui_politics_CSP_visible
+			}
+		}
+		triggers = {
+			FCF_politics_CGF_funding_city_button_visible = {
+				has_country_flag = FCF_gui_politics_CGF_visible
+				NOT = { has_country_flag = FCF_gui_politics_CGF_voting_visible }
+				NOT = {
+					has_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					has_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					has_country_flag = FCF_gui_politics_party_POU_detail_visible
+					has_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					has_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					has_country_flag = FCF_gui_politics_party_UA_detail_visible
+					has_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					has_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					has_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+					has_country_flag = FCF_gui_politics_party_ETC_detail_visible
+				}
+			}
+			FCF_politics_CGF_funding_rural_button_visible = {
+				has_country_flag = FCF_gui_politics_CGF_visible
+				NOT = { has_country_flag = FCF_gui_politics_CGF_voting_visible }
+				NOT = {
+					has_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					has_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					has_country_flag = FCF_gui_politics_party_POU_detail_visible
+					has_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					has_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					has_country_flag = FCF_gui_politics_party_UA_detail_visible
+					has_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					has_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					has_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+					has_country_flag = FCF_gui_politics_party_ETC_detail_visible
+				}
+			}
+			FCF_politics_CGF_funding_city_button_click_enabled = {
+				NOT = { has_idea = FCF_economy_funding_urban_communes }
+				check_variable = { economy_power > 49.9 }
+			}
+			FCF_politics_CGF_funding_rural_button_click_enabled = {
+				NOT = { has_idea = FCF_economy_funding_rural_communes }
+				check_variable = { economy_power > 49.9 }
+			}
+
+			FCF_politics_CGF_transfer_management_button_visible = {
+				has_country_flag = FCF_gui_politics_CGF_visible
+				NOT = { has_country_flag = FCF_gui_politics_CGF_voting_visible }
+				NOT = {
+					has_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					has_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					has_country_flag = FCF_gui_politics_party_POU_detail_visible
+					has_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					has_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					has_country_flag = FCF_gui_politics_party_UA_detail_visible
+					has_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					has_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					has_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+					has_country_flag = FCF_gui_politics_party_ETC_detail_visible
+				}
+			}
+			FCF_politics_CGF_expand_investment_button_visible = {
+				has_country_flag = FCF_gui_politics_CGF_visible
+				NOT = { has_country_flag = FCF_gui_politics_CGF_voting_visible }
+				NOT = {
+					has_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					has_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					has_country_flag = FCF_gui_politics_party_POU_detail_visible
+					has_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					has_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					has_country_flag = FCF_gui_politics_party_UA_detail_visible
+					has_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					has_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					has_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+					has_country_flag = FCF_gui_politics_party_ETC_detail_visible
+				}
+			}
+			FCF_politics_CGF_transfer_management_button_click_enabled = {
+				has_political_power > 20
+				any_core_state = {
+					OR = {
+						industrial_complex > 0
+						arms_factory > 0
+						dockyard > 0
+					}
+				}
+			}
+			FCF_politics_CGF_expand_investment_button_click_enabled = {
+				has_political_power > 30
+				check_variable = { cgf_expand_investment_cd = 0 }
+			}
+
+			FCF_politics_CGF_model_switch_button_visible = { has_country_flag = FCF_gui_politics_CGF_visible }
+			FCF_politics_CGF_party_detail_text_box_visible = { has_country_flag = FCF_gui_politics_CGF_visible }
+			FCF_politics_CGF_party_detail_text_visible = { has_country_flag = FCF_gui_politics_CGF_visible }
+			FCF_politics_CGF_party_attitude_text_visible = {
+				has_country_flag = FCF_gui_politics_CGF_visible
+				OR = {
+					has_country_flag = FCF_gui_politics_CGF_voting_visible
+
+					has_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					has_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					has_country_flag = FCF_gui_politics_party_POU_detail_visible
+					has_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					has_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					has_country_flag = FCF_gui_politics_party_UA_detail_visible
+					has_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					has_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					has_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+				}
+			}
+			FCF_politics_CGF_seat_icon_button_visible = { has_country_flag = FCF_gui_politics_CGF_visible }
+			FCF_party_faction_information_visible = {
+				has_country_flag = FCF_gui_politics_CGF_visible
+				OR = {
+					has_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					has_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					has_country_flag = FCF_gui_politics_party_POU_detail_visible
+					has_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					has_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					has_country_flag = FCF_gui_politics_party_UA_detail_visible
+					has_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					has_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					has_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+				}
+			}
+
+			FCF_politics_CSP_title_text_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+
+			FCF_politics_CSP_PCSP_portrait_button_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_PCSP_frame_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_PCSP_name_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_PCSP_name_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_PCSP_title_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_PCSP_title_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+
+			FCF_politics_CSP_CAE_portrait_button_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CAE_frame_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CAE_name_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CAE_name_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CAE_trait_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CAE_trait_text_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+
+			FCF_politics_CSP_CE_portrait_button_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CE_frame_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CE_name_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CE_name_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CE_trait_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CE_trait_text_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+
+			FCF_politics_CSP_CSI_portrait_button_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CSI_frame_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CSI_name_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CSI_name_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CSI_trait_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CSI_trait_text_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+
+			FCF_politics_CSP_CC_portrait_button_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CC_frame_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CC_name_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CC_name_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CC_trait_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CC_trait_text_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+
+			FCF_politics_CSP_CGFF_portrait_button_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CGFF_frame_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CGFF_name_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CGFF_name_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CGFF_trait_box_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+			FCF_politics_CSP_CGFF_trait_text_visible = { has_country_flag = FCF_gui_politics_CSP_visible }
+
+			FCF_bop_text_visible = {
+				NOT = {
+					has_country_flag = FCF_gui_politics_CGF_voting_visible
+
+					has_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					has_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					has_country_flag = FCF_gui_politics_party_POU_detail_visible
+					has_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					has_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					has_country_flag = FCF_gui_politics_party_UA_detail_visible
+					has_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					has_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					has_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+					has_country_flag = FCF_gui_politics_party_ETC_detail_visible
+				}
+			}
+
+			FCF_politics_CSP_member_change_text_visible = {
+				has_country_flag = FCF_gui_politics_CSP_visible
+				OR = {
+					has_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					has_country_flag = FCF_gui_politics_CSP_CAE_selected
+					has_country_flag = FCF_gui_politics_CSP_CE_selected
+					has_country_flag = FCF_gui_politics_CSP_CSI_selected
+					has_country_flag = FCF_gui_politics_CSP_CC_selected
+					has_country_flag = FCF_gui_politics_CSP_CGFF_selected
+				}
+			}
+
+			FCF_politics_CSP_give_more_power_button_visible = {
+				has_country_flag = FCF_gui_politics_CSP_visible
+				OR = {
+					has_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					has_country_flag = FCF_gui_politics_CSP_CAE_selected
+					has_country_flag = FCF_gui_politics_CSP_CE_selected
+					has_country_flag = FCF_gui_politics_CSP_CSI_selected
+					has_country_flag = FCF_gui_politics_CSP_CC_selected
+					has_country_flag = FCF_gui_politics_CSP_CGFF_selected
+				}
+			}
+			FCF_politics_CSP_give_less_power_button_visible = {
+				has_country_flag = FCF_gui_politics_CSP_visible
+				OR = {
+					has_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					has_country_flag = FCF_gui_politics_CSP_CAE_selected
+					has_country_flag = FCF_gui_politics_CSP_CE_selected
+					has_country_flag = FCF_gui_politics_CSP_CSI_selected
+					has_country_flag = FCF_gui_politics_CSP_CC_selected
+					has_country_flag = FCF_gui_politics_CSP_CGFF_selected
+				}
+			}
+
+			FCF_politics_CSP_give_more_power_button_click_enabled = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_PCSP_selected }
+					NOT = { has_idea = FCF_politics_PCSP_power_increased }
+					NOT = { has_idea = FCF_politics_PCSP_power_reduced }
+					has_political_power > 100
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CAE_selected }
+					NOT = { has_idea = FCF_politics_CAE_power_increased }
+					NOT = { has_idea = FCF_politics_CAE_power_reduced }
+					has_political_power > 50
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CE_selected }
+					NOT = { has_idea = FCF_politics_CE_power_increased }
+					NOT = { has_idea = FCF_politics_CE_power_reduced }
+					has_political_power > 50
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CSI_selected }
+					NOT = { has_idea = FCF_politics_CSI_power_increased }
+					NOT = { has_idea = FCF_politics_CSI_power_reduced }
+					has_political_power > 50
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CC_selected }
+					NOT = { has_idea = FCF_politics_CC_power_increased }
+					NOT = { has_idea = FCF_politics_CC_power_reduced }
+					has_political_power > 50
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CGFF_selected }
+					NOT = { has_idea = FCF_politics_CGFF_power_increased }
+					NOT = { has_idea = FCF_politics_CGFF_power_reduced }
+					has_political_power > 50
+				}
+			}
+			FCF_politics_CSP_give_less_power_button_click_enabled = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_PCSP_selected }
+					NOT = { has_idea = FCF_politics_PCSP_power_increased }
+					NOT = { has_idea = FCF_politics_PCSP_power_reduced }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CAE_selected }
+					NOT = { has_idea = FCF_politics_CAE_power_increased }
+					NOT = { has_idea = FCF_politics_CAE_power_reduced }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CE_selected }
+					NOT = { has_idea = FCF_politics_CE_power_increased }
+					NOT = { has_idea = FCF_politics_CE_power_reduced }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CSI_selected }
+					NOT = { has_idea = FCF_politics_CSI_power_increased }
+					NOT = { has_idea = FCF_politics_CSI_power_reduced }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CC_selected }
+					NOT = { has_idea = FCF_politics_CC_power_increased }
+					NOT = { has_idea = FCF_politics_CC_power_reduced }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CGFF_selected }
+					NOT = { has_idea = FCF_politics_CGFF_power_increased }
+					NOT = { has_idea = FCF_politics_CGFF_power_reduced }
+				}
+			}
+
+			FCF_politics_CSP_PCSP_portrait_button_click_enabled = { NOT = { has_country_flag = has_chosen_change_csp_member } }
+			FCF_politics_CSP_CAE_portrait_button_click_enabled = { NOT = { has_country_flag = has_chosen_change_csp_member } }
+			FCF_politics_CSP_CE_portrait_button_click_enabled = { NOT = { has_country_flag = has_chosen_change_csp_member } }
+			FCF_politics_CSP_CSI_portrait_button_click_enabled = { NOT = { has_country_flag = has_chosen_change_csp_member } }
+			FCF_politics_CSP_CC_portrait_button_click_enabled = { NOT = { has_country_flag = has_chosen_change_csp_member } }
+			FCF_politics_CSP_CGFF_portrait_button_click_enabled = { NOT = { has_country_flag = has_chosen_change_csp_member } }
+		}
+		effects = {
+			FCF_politics_CGF_funding_city_button_click = {
+				add_to_variable = { politics_CGF_CSP_balance = 10 }
+				add_to_variable = { economy_power = -50 }
+				add_timed_idea = { idea = FCF_economy_funding_urban_communes days = 180 }
+				every_state = {
+					limit = {
+						has_dynamic_modifier = { modifier = FCF_economy_state_situation_modifier scope = THIS.id }
+						FCF_is_city_zone = yes
+					}
+					add_to_array = { array = FCF_state_strategy value = 4 }
+				}
+			}
+			FCF_politics_CGF_funding_rural_button_click = {
+				add_to_variable = { politics_CGF_CSP_balance = 10 }
+				add_to_variable = { economy_power = -50 }
+				add_timed_idea = { idea = FCF_economy_funding_rural_communes days = 180 }
+				every_state = {
+					limit = {
+						has_dynamic_modifier = { modifier = FCF_economy_state_situation_modifier scope = THIS.id }
+						FCF_is_rural_zone = yes
+					}
+					add_to_array = { array = FCF_state_strategy value = 5 }
+				}
+			}
+
+			FCF_politics_CGF_transfer_management_button_click = {
+				effect_tooltip = {
+					custom_effect_tooltip = {
+						localization_key = state_strategy_take_what
+						ZONE = local_zone
+						STATE_STRATEGY = state_strategy_transfer_management
+					}
+					add_to_variable = {
+						economy_state_situation_modifier_economy_power_factor = -0.001
+						tooltip = economy_power_factor_tt
+					}
+					add_to_variable = {
+						economy_state_situation_modifier_industrial_capacity_factory = 0.001
+						tooltip = industrial_capacity_factory_tooltip
+					}
+				}
+				custom_effect_tooltip = cgf_transfer_management_tt
+				effect_tooltip = {
+					custom_effect_tooltip = {
+						localization_key = tooltip_modify_dynmod
+						DYNMOD = state_strategy_transfer_management
+					}
+					add_to_variable = {
+						economy_state_situation_modifier_economy_power_factor = -0.001
+						tooltip = economy_power_factor_tt
+					}
+					add_to_variable = {
+						economy_state_situation_modifier_industrial_capacity_factory = 0.001
+						tooltip = industrial_capacity_factory_tooltip
+					}
+				}
+				hidden_effect = {
+					add_political_power = -20
+					random_core_state = {
+						limit = {
+							OR = {
+								industrial_complex > 0
+								arms_factory > 0
+								dockyard > 0
+							}
+						}
+						if = {
+							limit = { is_in_array = { array = FCF_state_strategy value = 23 } }
+							add_to_variable = { transfer_management_times = 1 }
+						}
+						else = {
+							set_variable = { transfer_management_times = 1 }
+							state_strategy_23_get = yes
+							add_to_array = { array = FCF_state_strategy value = 23 }
+						}
+
+						if = {
+							limit = { industrial_complex > 0 }
+							remove_building = { type = industrial_complex level = 1 }
+							set_temp_variable = { state_industrial_complex_change = 1 }
+							set_temp_variable = { state_arms_factory_change = 0 }
+							set_temp_variable = { state_dockyard_change = 0 }
+							FCF_economy_state_situation_change = yes
+						}
+						else_if = {
+							limit = { arms_factory > 0 }
+							remove_building = { type = arms_factory level = 1 }
+							set_temp_variable = { state_industrial_complex_change = 0 }
+							set_temp_variable = { state_arms_factory_change = 1 }
+							set_temp_variable = { state_dockyard_change = 0 }
+							FCF_economy_state_situation_change = yes
+						}
+						else_if = {
+							limit = { dockyard > 0 }
+							remove_building = { type = dockyard level = 1 }
+							set_temp_variable = { state_industrial_complex_change = 0 }
+							set_temp_variable = { state_arms_factory_change = 0 }
+							set_temp_variable = { state_dockyard_change = 1 }
+							FCF_economy_state_situation_change = yes
+						}
+					}
+				}
+			}
+			FCF_politics_CGF_expand_investment_button_click = {
+				add_political_power = -30
+				set_country_flag = FCF_politics_CGF_expand_investment_button
+				set_variable = { cgf_expand_investment_cd = 1 }
+			}
+
+			FCF_politics_CSP_PCSP_portrait_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_PCSP_selected }
+					clr_country_flag = FCF_gui_politics_CSP_PCSP_selected
+				}
+				else = {
+					set_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					clr_country_flag = FCF_gui_politics_CSP_CAE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CSI_selected
+					clr_country_flag = FCF_gui_politics_CSP_CC_selected
+					clr_country_flag = FCF_gui_politics_CSP_CGFF_selected
+
+					clear_array = FRA.FCF_politics_CSP_change_member_list
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 0 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 1 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 2 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 3 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 4 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 5 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 6 }
+				}
+			}
+			FCF_politics_CSP_CAE_portrait_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CAE_selected }
+					clr_country_flag = FCF_gui_politics_CSP_CAE_selected
+				}
+				else = {
+					clr_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					set_country_flag = FCF_gui_politics_CSP_CAE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CSI_selected
+					clr_country_flag = FCF_gui_politics_CSP_CC_selected
+					clr_country_flag = FCF_gui_politics_CSP_CGFF_selected
+
+					clear_array = FRA.FCF_politics_CSP_change_member_list
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 100 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 101 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 102 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 103 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 104 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 105 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 106 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 107 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 108 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 109 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 110 }
+				}
+			}
+			FCF_politics_CSP_CE_portrait_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CE_selected }
+					clr_country_flag = FCF_gui_politics_CSP_CE_selected
+				}
+				else = {
+					clr_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					clr_country_flag = FCF_gui_politics_CSP_CAE_selected
+					set_country_flag = FCF_gui_politics_CSP_CE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CSI_selected
+					clr_country_flag = FCF_gui_politics_CSP_CC_selected
+					clr_country_flag = FCF_gui_politics_CSP_CGFF_selected
+
+					clear_array = FRA.FCF_politics_CSP_change_member_list
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 200 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 201 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 202 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 203 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 204 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 205 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 206 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 207 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 208 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 209 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 210 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 211 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 212 }
+				}
+			}
+			FCF_politics_CSP_CSI_portrait_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CSI_selected }
+					clr_country_flag = FCF_gui_politics_CSP_CSI_selected
+				}
+				else = {
+					clr_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					clr_country_flag = FCF_gui_politics_CSP_CAE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CE_selected
+					set_country_flag = FCF_gui_politics_CSP_CSI_selected
+					clr_country_flag = FCF_gui_politics_CSP_CC_selected
+					clr_country_flag = FCF_gui_politics_CSP_CGFF_selected
+
+					clear_array = FRA.FCF_politics_CSP_change_member_list
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 300 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 301 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 302 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 303 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 304 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 305 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 306 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 307 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 308 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 309 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 310 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 311 }
+				}
+			}
+			FCF_politics_CSP_CC_portrait_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CC_selected }
+					clr_country_flag = FCF_gui_politics_CSP_CC_selected
+				}
+				else = {
+					clr_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					clr_country_flag = FCF_gui_politics_CSP_CAE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CSI_selected
+					set_country_flag = FCF_gui_politics_CSP_CC_selected
+					clr_country_flag = FCF_gui_politics_CSP_CGFF_selected
+
+					clear_array = FRA.FCF_politics_CSP_change_member_list
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 400 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 401 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 402 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 403 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 404 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 405 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 406 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 407 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 408 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 409 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 410 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 411 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 412 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 413 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 414 }
+				}
+			}
+			FCF_politics_CSP_CGFF_portrait_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CGFF_selected }
+					clr_country_flag = FCF_gui_politics_CSP_CGFF_selected
+				}
+				else = {
+					clr_country_flag = FCF_gui_politics_CSP_PCSP_selected
+					clr_country_flag = FCF_gui_politics_CSP_CAE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CE_selected
+					clr_country_flag = FCF_gui_politics_CSP_CSI_selected
+					clr_country_flag = FCF_gui_politics_CSP_CC_selected
+					set_country_flag = FCF_gui_politics_CSP_CGFF_selected
+
+					clear_array = FRA.FCF_politics_CSP_change_member_list
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 501 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 502 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 503 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 504 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 505 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 506 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 507 }
+					add_to_array = { array = FRA.FCF_politics_CSP_change_member_list value = 508 }
+				}
+			}
+
+			FCF_politics_CSP_give_more_power_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_PCSP_selected }
+					add_political_power = -100
+					add_to_variable = { politics_CGF_CSP_balance = 10 }
+					add_timed_idea = { idea = FCF_politics_PCSP_power_increased days = 180 }
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CAE_selected }
+					add_political_power = -50
+					set_temp_variable = { target_CSP_group = 1 }
+					set_temp_variable = { politics_CSP_attitude_change = 1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = 5 }
+					add_timed_idea = { idea = FCF_politics_CAE_power_increased days = 180 }
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CE_selected }
+					add_political_power = -50
+					set_temp_variable = { target_CSP_group = 2 }
+					set_temp_variable = { politics_CSP_attitude_change = 1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = 5 }
+					add_timed_idea = { idea = FCF_politics_CE_power_increased days = 180 }
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CSI_selected }
+					add_political_power = -50
+					set_temp_variable = { target_CSP_group = 3 }
+					set_temp_variable = { politics_CSP_attitude_change = 1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = 5 }
+					add_timed_idea = { idea = FCF_politics_CSI_power_increased days = 180 }
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CC_selected }
+					add_political_power = -50
+					set_temp_variable = { target_CSP_group = 4 }
+					set_temp_variable = { politics_CSP_attitude_change = 1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = 5 }
+					add_timed_idea = { idea = FCF_politics_CC_power_increased days = 180 }
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CGFF_selected }
+					add_political_power = -50
+					set_temp_variable = { target_CSP_group = 5 }
+					set_temp_variable = { politics_CSP_attitude_change = 1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = 5 }
+					add_timed_idea = { idea = FCF_politics_CGFF_power_increased days = 180 }
+				}
+			}
+
+			FCF_politics_CSP_give_less_power_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_PCSP_selected }
+					add_to_variable = { politics_CGF_CSP_balance = -20 }
+					add_timed_idea = { idea = FCF_politics_PCSP_power_reduced days = 180 }
+
+					add_political_power = 100
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CAE_selected }
+					set_temp_variable = { target_CSP_group = 1 }
+					set_temp_variable = { politics_CSP_attitude_change = -1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = -10 }
+					add_timed_idea = { idea = FCF_politics_CAE_power_reduced days = 180 }
+
+					add_political_power = 50
+					set_temp_variable = { ii_europe_influence_change = 20 }
+					set_temp_variable = { ii_asia_influence_change = 20 }
+					set_temp_variable = { ii_middle_east_influence_change = 20 }
+					set_temp_variable = { ii_africa_influence_change = 20 }
+					set_temp_variable = { ii_america_influence_change = 20 }
+					ii_influence_change = yes
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CE_selected }
+					set_temp_variable = { target_CSP_group = 2 }
+					set_temp_variable = { politics_CSP_attitude_change = -1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = -10 }
+					add_timed_idea = { idea = FCF_politics_CE_power_reduced days = 180 }
+
+					add_political_power = 50
+					set_temp_variable = { economy_power_change_input = 100 }
+					set_temp_variable = { economy_values_change = 0 }
+					set_temp_variable = { economy_industry_basic_change = 2 }
+					set_temp_variable = { economy_industry_process_change = 0 }
+					set_temp_variable = { economy_industry_arms_change = 0 }
+					set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+					set_temp_variable = { economy_agriculture_chemical_change = 0 }
+					set_temp_variable = { economy_agriculture_chain_change = 2 }
+					set_temp_variable = { economy_society_equality_change = 0 }
+					set_temp_variable = { economy_society_integration_change = 0 }
+					set_temp_variable = { economy_society_innovation_change = 2 }
+					economy_indicators_change = yes
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CSI_selected }
+					set_temp_variable = { target_CSP_group = 3 }
+					set_temp_variable = { politics_CSP_attitude_change = -1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = -10 }
+					add_timed_idea = { idea = FCF_politics_CSI_power_reduced days = 180 }
+
+					add_political_power = 50
+					set_temp_variable = { pop_satisfaction_workers_change = 1 }
+					set_temp_variable = { pop_satisfaction_peasants_change = 1 }
+					set_temp_variable = { pop_satisfaction_merchants_change = 1 }
+					set_temp_variable = { pop_satisfaction_scholars_change = 1 }
+					set_temp_variable = { pop_satisfaction_bureaucrats_change = 1 }
+					set_temp_variable = { pop_satisfaction_army_change = 1 }
+					society_pop_satisfaction_change = yes
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CC_selected }
+					set_temp_variable = { target_CSP_group = 4 }
+					set_temp_variable = { politics_CSP_attitude_change = -1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = -10 }
+					add_timed_idea = { idea = FCF_politics_CC_power_reduced days = 180 }
+
+					add_political_power = 50
+					add_tech_bonus = {
+						name = FCF_politics_CC_power_reduced
+						uses = 1
+						ahead_reduction = 0.5
+						category = infantry_weapons
+						category = artillery
+						category = motorized_equipment
+						category = cat_mechanized_equipment
+						category = train_tech
+						category = armor
+						category = air_equipment
+						category = naval_equipment
+
+						category = electronics
+
+						category = cat_production
+						category = industry
+						category = construction_tech
+						category = excavation_tech
+
+						category = nuclear
+						category = rocketry
+					}
+				}
+
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CGFF_selected }
+					set_temp_variable = { target_CSP_group = 5 }
+					set_temp_variable = { politics_CSP_attitude_change = -1 }
+					politics_CSP_attitude_change = yes
+					add_to_variable = { politics_CGF_CSP_balance = -10 }
+					add_timed_idea = { idea = FCF_politics_CGFF_power_reduced days = 180 }
+
+					add_political_power = 50
+					army_experience = 20
+					set_temp_variable = { army_autonomy_change = 5 }
+					set_temp_variable = { army_willingness_change = 0 }
+					set_temp_variable = { army_training_change = 0 }
+					set_temp_variable = { army_equipment_change = 0 }
+					set_temp_variable = { army_enlistment_enthusiasm_change = 0 }
+					military_army_reform_value_change = yes
+				}
+			}
+
+			FCF_politics_CGF_model_switch_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CGF_voting_visible }
+					clr_country_flag = FCF_gui_politics_CGF_voting_visible
+					politics_CGF_seats_refresh = yes
+				}
+				else = {
+					set_country_flag = FCF_gui_politics_CGF_voting_visible
+					clr_country_flag = FCF_gui_politics_party_CNS_detail_visible
+					clr_country_flag = FCF_gui_politics_party_PSF_detail_visible
+					clr_country_flag = FCF_gui_politics_party_POU_detail_visible
+					clr_country_flag = FCF_gui_politics_party_CGT_detail_visible
+					clr_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+					clr_country_flag = FCF_gui_politics_party_UA_detail_visible
+					clr_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+					clr_country_flag = FCF_gui_politics_party_LJR_detail_visible
+					clr_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+					clr_country_flag = FCF_gui_politics_party_ETC_detail_visible
+					politics_CGF_seats_refresh = yes
+				}
+			}
+			FCF_politics_CGF_and_CSP_window_esc_button_click = {
+				clr_country_flag = FCF_gui_politics_CGF_visible
+				clr_country_flag = FCF_gui_politics_CSP_visible
+			}
+			FCF_politics_CGF_and_CSP_window_switch_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CGF_visible }
+					clr_country_flag = FCF_gui_politics_CGF_visible
+					set_country_flag = FCF_gui_politics_CSP_visible
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_visible }
+					clr_country_flag = FCF_gui_politics_CSP_visible
+					set_country_flag = FCF_gui_politics_CGF_visible
+				}
+			}
+			FCF_politics_CGF_seat_icon_button_click = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_CNS_detail_visible }
+						check_variable = { array_f_array^seat_idx = 1 }
+					}
+					set_country_flag = FCF_gui_politics_party_CNS_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_CNS_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_PSF_detail_visible }
+						check_variable = { array_f_array^seat_idx = 2 }
+					}
+					set_country_flag = FCF_gui_politics_party_PSF_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_PSF_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_POU_detail_visible }
+						check_variable = { array_f_array^seat_idx = 3 }
+					}
+					set_country_flag = FCF_gui_politics_party_POU_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_POU_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_CGT_detail_visible }
+						check_variable = { array_f_array^seat_idx = 4 }
+					}
+					set_country_flag = FCF_gui_politics_party_CGT_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_CGT_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_PCOP_detail_visible }
+						check_variable = { array_f_array^seat_idx = 5 }
+					}
+					set_country_flag = FCF_gui_politics_party_PCOP_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_PCOP_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_UA_detail_visible }
+						check_variable = { array_f_array^seat_idx = 6 }
+					}
+					set_country_flag = FCF_gui_politics_party_UA_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_UA_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_URSRS_detail_visible }
+						check_variable = { array_f_array^seat_idx = 8 }
+					}
+					set_country_flag = FCF_gui_politics_party_URSRS_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_URSRS_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_LJR_detail_visible }
+						check_variable = { array_f_array^seat_idx = 7 }
+					}
+					set_country_flag = FCF_gui_politics_party_LJR_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_LJR_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_PAPF_detail_visible }
+						check_variable = { array_f_array^seat_idx = 11 }
+					}
+					set_country_flag = FCF_gui_politics_party_PAPF_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_PAPF_detail_visible }
+
+				if = {
+					limit = {
+						NOT = { has_country_flag = FCF_gui_politics_party_ETC_detail_visible }
+						check_variable = { array_f_array^seat_idx = 12 }
+					}
+					set_country_flag = FCF_gui_politics_party_ETC_detail_visible
+				}
+				else = { clr_country_flag = FCF_gui_politics_party_ETC_detail_visible }
+			}
+		}
+		properties = {
+			FCF_politics_CGF_seat_icon_button = {
+				x = seat_x_array^seat_idx
+				y = seat_y_array^seat_idx
+				frame = array_f_array^seat_idx
+			}
+
+			FCF_politics_CSP_PCSP_portrait_button = { image = "[gui_CSP_PCSP_loc]" }
+			FCF_politics_CSP_CAE_portrait_button = { image = "[gui_CSP_CAE_loc]" }
+			FCF_politics_CSP_CE_portrait_button = { image = "[gui_CSP_CE_loc]" }
+			FCF_politics_CSP_CSI_portrait_button = { image = "[gui_CSP_CSI_loc]" }
+			FCF_politics_CSP_CC_portrait_button = { image = "[gui_CSP_CC_loc]" }
+			FCF_politics_CSP_CGFF_portrait_button = { image = "[gui_CSP_CGFF_loc]" }
+		}
+		dynamic_lists = {
+			FCF_parliament_diagram_list = {
+				array = array_f_array
+				change_scope = no
+				entry_container = FCF_politics_CGF_seat_container
+				index = seat_idx
+			}
+		}
+	}
+
+	FCF_politics_CSP_change_member_container = {
+		context_type = player_context
+		parent_window_name = FCF_politics_CGF_and_CSP_window
+		window_name = FCF_politics_CSP_member_change_container
+
+		visible = {
+			tag = FRA
+			has_country_flag = FCF_gui_politics_CSP_visible
+			OR = {
+				has_country_flag = FCF_gui_politics_CSP_PCSP_selected
+				has_country_flag = FCF_gui_politics_CSP_CAE_selected
+				has_country_flag = FCF_gui_politics_CSP_CE_selected
+				has_country_flag = FCF_gui_politics_CSP_CSI_selected
+				has_country_flag = FCF_gui_politics_CSP_CC_selected
+				has_country_flag = FCF_gui_politics_CSP_CGFF_selected
+			}
+		}
+		triggers = {
+			FCF_politics_CSP_change_member_portrait_button_click_enabled = {
+			#if = {
+			#    limit = { NOT = { 扩张PCSP职权 } }
+				NOT = { has_country_flag = voting_for_bill }
+			#}
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_PCSP_selected }
+					NOT = { has_idea = FCF_politics_PCSP_power_increased }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CAE_selected }
+					NOT = { has_idea = FCF_politics_CAE_power_increased }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CE_selected }
+					NOT = { has_idea = FCF_politics_CE_power_increased }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CSI_selected }
+					NOT = { has_idea = FCF_politics_CSI_power_increased }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CC_selected }
+					NOT = { has_idea = FCF_politics_CC_power_increased }
+				}
+				else_if = {
+					limit = { has_country_flag = FCF_gui_politics_CSP_CGFF_selected }
+					NOT = { has_idea = FCF_politics_CGFF_power_increased }
+				}
+
+				custom_trigger_tooltip = {
+					tooltip = not_already_in_csp
+				#PCSP
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 0 } }
+						NOT = { check_variable = { current_PCSP = 0 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 1 } }
+						NOT = { check_variable = { current_PCSP = 1 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 2 } }
+						NOT = { check_variable = { current_PCSP = 2 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 3 } }
+						NOT = { check_variable = { current_PCSP = 3 } }
+						NOT = { check_variable = { current_CAE = 109 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 4 } }
+						NOT = { check_variable = { current_PCSP = 4 } }
+						NOT = { check_variable = { current_CSI = 304 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 5 } }
+						NOT = { check_variable = { current_PCSP = 5 } }
+						NOT = { check_variable = { current_CSI = 310 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 6 } }
+						NOT = { check_variable = { current_PCSP = 6 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 7 } }
+						NOT = { check_variable = { current_PCSP = 7 } }
+						NOT = { check_variable = { current_CE = 201 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 8 } }
+						NOT = { check_variable = { current_PCSP = 8 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 9 } }
+						NOT = { check_variable = { current_PCSP = 9 } }
+						NOT = { check_variable = { current_CE = 205 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 10 } }
+						NOT = { check_variable = { current_PCSP = 10 } }
+					}
+
+				#CAE
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 100 } }
+						NOT = { check_variable = { current_CAE = 100 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 101 } }
+						NOT = { check_variable = { current_CAE = 101 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 102 } }
+						NOT = { check_variable = { current_CAE = 102 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 103 } }
+						NOT = { check_variable = { current_CAE = 103 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 104 } }
+						NOT = { check_variable = { current_CAE = 104 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 105 } }
+						NOT = { check_variable = { current_CAE = 105 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 106 } }
+						NOT = { check_variable = { current_CAE = 106 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 107 } }
+						NOT = { check_variable = { current_CAE = 107 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 108 } }
+						NOT = { check_variable = { current_CAE = 108 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 109 } }
+						NOT = { check_variable = { current_CAE = 109 } }
+						NOT = { check_variable = { current_PCSP = 3 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 110 } }
+						NOT = { check_variable = { current_CAE = 110 } }
+					}
+
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 200 } }
+						NOT = { check_variable = { current_CE = 200 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 201 } }
+						NOT = { check_variable = { current_CE = 201 } }
+						NOT = { check_variable = { current_PCSP = 7 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 202 } }
+						NOT = { check_variable = { current_CE = 202 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 203 } }
+						NOT = { check_variable = { current_CE = 203 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 204 } }
+						NOT = { check_variable = { current_CE = 204 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 205 } }
+						NOT = { check_variable = { current_CE = 205 } }
+						NOT = { check_variable = { current_PCSP = 9 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 206 } }
+						NOT = { check_variable = { current_CE = 206 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 207 } }
+						NOT = { check_variable = { current_CE = 207 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 208 } }
+						NOT = { check_variable = { current_CE = 208 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 209 } }
+						NOT = { check_variable = { current_CE = 209 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 210 } }
+						NOT = { check_variable = { current_CE = 210 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 211 } }
+						NOT = { check_variable = { current_CE = 211 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 212 } }
+						NOT = { check_variable = { current_CE = 212 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 213 } }
+						NOT = { check_variable = { current_CE = 213 } }
+					}
+
+				#CSI
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 300 } }
+						NOT = { check_variable = { current_CSI = 300 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 301 } }
+						NOT = { check_variable = { current_CSI = 301 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 302 } }
+						NOT = { check_variable = { current_CSI = 302 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 303 } }
+						NOT = { check_variable = { current_CSI = 303 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 304 } }
+						NOT = { check_variable = { current_CSI = 304 } }
+						NOT = { check_variable = { current_PCSP = 4 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 305 } }
+						NOT = { check_variable = { current_CSI = 305 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 306 } }
+						NOT = { check_variable = { current_CSI = 306 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 307 } }
+						NOT = { check_variable = { current_CSI = 307 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 308 } }
+						NOT = { check_variable = { current_CSI = 308 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 309 } }
+						NOT = { check_variable = { current_CSI = 309 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 310 } }
+						NOT = { check_variable = { current_CSI = 310 } }
+						NOT = { check_variable = { current_PCSP = 5 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 311 } }
+						NOT = { check_variable = { current_CSI = 311 } }
+					}
+
+				#CC
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 400 } }
+						NOT = { check_variable = { current_CC = 400 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 401 } }
+						NOT = { check_variable = { current_CC = 401 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 402 } }
+						NOT = { check_variable = { current_CC = 402 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 403 } }
+						NOT = { check_variable = { current_CC = 403 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 404 } }
+						NOT = { check_variable = { current_CC = 404 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 405 } }
+						NOT = { check_variable = { current_CC = 405 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 406 } }
+						NOT = { check_variable = { current_CC = 406 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 407 } }
+						NOT = { check_variable = { current_CC = 407 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 408 } }
+						NOT = { check_variable = { current_CC = 408 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 409 } }
+						NOT = { check_variable = { current_CC = 409 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 410 } }
+						NOT = { check_variable = { current_CC = 410 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 411 } }
+						NOT = { check_variable = { current_CC = 411 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 412 } }
+						NOT = { check_variable = { current_CC = 412 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 413 } }
+						NOT = { check_variable = { current_CC = 413 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 414 } }
+						NOT = { check_variable = { current_CC = 414 } }
+					}
+
+				#CGFF
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 501 } }
+						NOT = { check_variable = { current_CGFF = 501 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 502 } }
+						NOT = { check_variable = { current_CGFF = 502 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 503 } }
+						NOT = { check_variable = { current_CGFF = 503 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 504 } }
+						NOT = { check_variable = { current_CGFF = 504 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 505 } }
+						NOT = { check_variable = { current_CGFF = 505 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 506 } }
+						NOT = { check_variable = { current_CGFF = 506 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 507 } }
+						NOT = { check_variable = { current_CGFF = 507 } }
+					}
+					if = {
+						limit = { check_variable = { FCF_politics_CSP_change_member_list^CSP_member_index = 508 } }
+						NOT = { check_variable = { current_CGFF = 508 } }
+					}
+				}
+			####
+				hidden_trigger = {
+					NOT = { has_country_flag = has_chosen_change_csp_member }
+					date > 1936.2.15
+				}
+			}
+		}
+		effects = {
+			FCF_politics_CSP_change_member_portrait_button_click = {
+				set_country_flag = has_chosen_change_csp_member
+				set_variable = { target_CSP_member_id = FCF_politics_CSP_change_member_list^CSP_member_index }
+				country_event = fcf_politics_events.3
+			}
+		}
+		properties = {
+			FCF_politics_CSP_change_member_portrait_button = {
+				image = "[CSP_change_member_portrait_loc]"
+			}
+		}
+		dynamic_lists = {
+			FCF_politics_CSP_change_member_list = {
+				array = FRA.FCF_politics_CSP_change_member_list
+				index = CSP_member_index
+				value = CSP_member_id
+				change_scope = no
+				entry_container = FCF_politics_CSP_change_member_container
+			}
+		}
+	}
+### 国际界面：第三国际、国际干涉与法伦施泰尔合作
+	FCF_internationale_open_button_gui = {
+		context_type = player_context
+		parent_window_name = power_balance_button
+		window_name = FCF_internationale_icon
+
+		visible = { tag = FRA }
+	}
+
+	FCF_internationale_window_gui = {
+		context_type = player_context
+		parent_window_name = powerbalanceview
+		window_name = FCF_internationale_window
+
+		visible = {
+			tag = FRA
+		}
+		triggers = {
+		# 外交改革指标：仅在第三国际外交模式下显示
+			FCF_diplomacy_reform_tendency_posture_icon_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_diplomacy_reform_tendency_strategy_icon_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_diplomacy_reform_tendency_enemy_icon_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_diplomacy_reform_tendency_posture_background_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_diplomacy_reform_tendency_strategy_background_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_diplomacy_reform_tendency_enemy_background_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_diplomacy_CAE_portrait_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_politics_CSP_CAE_portrait_frame_visible = { check_variable = { dip_third_internationale = 1 } }
+			FCF_diplomacy_CAE_text_visible = { check_variable = { dip_third_internationale = 1 } }
+
+			the_third_internatioale_information_visible = { check_variable = { dip_third_internationale = 2 } }
+			FCF_internationale_chairman_portrait_visible = { check_variable = { dip_third_internationale = 2 } }
+			FCF_internationale_chairman_frame_visible = { check_variable = { dip_third_internationale = 2 } }
+			FCF_internationale_chairman_text_visible = { check_variable = { dip_third_internationale = 2 } }
+
+			FCF_international_europe_western_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_europe_western_visible } }
+			FCF_international_europe_middle_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_europe_middle_visible } }
+			FCF_international_europe_northern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_europe_northern_visible } }
+			FCF_international_europe_eastern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_europe_eastern_visible } }
+
+			FCF_international_asia_eastern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_asia_eastern_visible } }
+			FCF_international_asia_southern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_asia_southern_visible } }
+			FCF_international_asia_india_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_asia_india_visible } }
+
+			FCF_international_me_iran_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_middle_east_iran_visible } }
+			FCF_international_me_arab_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_middle_east_arab_visible } }
+			FCF_international_me_ottoman_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_middle_east_ottoman_visible } }
+			FCF_international_me_egypt_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_middle_east_egypt_visible } }
+
+			FCF_international_africa_western_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_africa_western_visible } }
+			FCF_international_africa_eastern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_africa_eastern_visible } }
+			FCF_international_africa_middle_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_africa_middle_visible } }
+			FCF_international_africa_southern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_africa_southern_visible } }
+
+			FCF_international_america_northern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_america_northern_visible } }
+			FCF_international_america_middle_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_america_middle_visible } }
+			FCF_international_america_southern_show_button_click_enabled = { NOT = { has_country_flag = FCF_gui_international_intervention_america_southern_visible } }
+
+			base_information_visible = { has_country_flag = FCF_gui_international_intervention_target_selected }
+			country_flag_visible = { has_country_flag = FCF_gui_international_intervention_target_selected }
+			FCF_diplo_countrylist_flag_frame_visible = { has_country_flag = FCF_gui_international_intervention_target_selected }
+			name_visible = { has_country_flag = FCF_gui_international_intervention_target_selected }
+			information_visible = {  has_country_flag = FCF_gui_international_intervention_target_selected }
+
+			FCF_international_phalanstere_effect_button_click_enabled = {
+				meta_trigger = {
+					text = { phalanstere_effect_[VAR]_trigger = yes }
+					VAR = "[?global.phalanstere_effect_id]"
+				}
+			}
+		}
+		effects = {
+			FCF_internationale_switch_button_click = {
+				if = {
+					limit = { check_variable = { dip_third_internationale = 1 } }
+					set_variable = { dip_third_internationale = 2 }
+				}
+				else = { set_variable = { dip_third_internationale = 1 } }
+			}
+		#
+			FCF_international_europe_western_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_europe_western_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_europe_west = yes }
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_europe_middle_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_europe_middle_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_europe_middle = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_europe_eastern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_europe_eastern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_europe_east = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_europe_northern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_europe_northern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_europe_north = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+
+			FCF_international_asia_eastern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_asia_eastern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_asia_east = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_asia_southern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_asia_southern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_asia_south = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_asia_india_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_asia_india_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_asia_india = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+
+			FCF_international_me_iran_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_middle_east_iran_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_middle_east_iran = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_me_arab_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_middle_east_arab_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_middle_east_arab = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_me_ottoman_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_middle_east_ottoman_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_middle_east_ottoman = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_me_egypt_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_middle_east_egypt_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_middle_east_egypt = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+
+			FCF_international_africa_western_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_africa_western_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_africa_west = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_africa_eastern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_africa_eastern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_africa_east = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_africa_middle_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_africa_middle_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_africa_middle = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_africa_southern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_africa_southern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_africa_south = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+
+			FCF_international_america_northern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_america_northern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_america_north = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_america_middle_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_america_middle_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_america_middle = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+			FCF_international_america_southern_show_button_click = {
+				international_flags_clear_tag = yes
+				set_country_flag = FCF_gui_international_intervention_america_southern_visible
+
+				clear_array = ROOT.FCF_international_intervention_target_list_gui
+				every_other_country = {
+					limit = {
+						capital_scope = { INT_is_in_america_south = yes }
+
+						NOT = { has_country_flag = ii_has_finished }
+					}
+					add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+				}
+			}
+		#
+			FCF_international_phalanstere_effect_button_click = {
+				ROOT = {
+					meta_effect = {
+						text = { phalanstere_effect_[VAR]_effect = yes }
+						VAR = "[?global.phalanstere_effect_id]"
+					}
+				}
+			}
+		}
+		properties = {
+			FCF_internationale_switch_button = { frame = dip_third_internationale }
+
+			country_flag = { image = "[?ROOT.ii_targeted^0.GetFlag]" }
+
+			FCF_diplomacy_CAE_portrait = { image = "[gui_CSP_CAE_loc]" }
+
+			FCF_diplomacy_reform_tendency_posture_background = { image = "[gui_diplomacy_reform_tendency_posture]" }
+			FCF_diplomacy_reform_tendency_strategy_background = { image = "[gui_diplomacy_reform_tendency_strategy]" }
+			FCF_diplomacy_reform_tendency_enemy_background = { image = "[gui_diplomacy_reform_tendency_enemy]" }
+		}
+		dynamic_lists = {
+			FCF_international_phalanstere_effect_list = {
+				array = global.FCF_international_phalanstere_effect_list
+				index = phalanstere_effect_index
+				value = phalanstere_effect_id
+				change_scope = yes
+				entry_container = FCF_international_phalanstere_effect_entry
+			}
+		}
+	}
+
+	FCF_international_intervention_target_list_gui = {
+		context_type = player_context
+		parent_window_name = powerbalanceview
+		window_name = FCF_international_intervention_target_list_window
+
+		visible = {
+			OR = {
+				has_country_flag = FCF_gui_international_intervention_europe_western_visible
+				has_country_flag = FCF_gui_international_intervention_asia_eastern_visible
+				has_country_flag = FCF_gui_international_intervention_middle_east_iran_visible
+				has_country_flag = FCF_gui_international_intervention_america_northern_visible
+				has_country_flag = FCF_gui_international_intervention_africa_western_visible
+
+				has_country_flag = FCF_gui_international_intervention_europe_middle_visible
+				has_country_flag = FCF_gui_international_intervention_asia_southern_visible
+				has_country_flag = FCF_gui_international_intervention_middle_east_arab_visible
+				has_country_flag = FCF_gui_international_intervention_america_middle_visible
+				has_country_flag = FCF_gui_international_intervention_africa_eastern_visible
+
+				has_country_flag = FCF_gui_international_intervention_europe_eastern_visible
+				has_country_flag = FCF_gui_international_intervention_asia_india_visible
+				has_country_flag = FCF_gui_international_intervention_middle_east_ottoman_visible
+				has_country_flag = FCF_gui_international_intervention_america_southern_visible
+				has_country_flag = FCF_gui_international_intervention_africa_middle_visible
+
+				has_country_flag = FCF_gui_international_intervention_europe_northern_visible
+				has_country_flag = FCF_gui_international_intervention_middle_east_egypt_visible
+				has_country_flag = FCF_gui_international_intervention_africa_southern_visible
+			}
+		}
+		triggers = {
+			FCF_diplo_countrylist_flag_frame_not_choose_button_visible = {
+				OR = {
+					ROOT = { NOT = { has_country_flag = FCF_gui_international_intervention_target_selected } }
+					NOT = { tag = var:ROOT.ii_targeted^0 }
+				}
+			}
+			FCF_diplo_countrylist_flag_frame_choose_button_visible = {
+				tag = var:ROOT.ii_targeted^0
+				ROOT = { has_country_flag = FCF_gui_international_intervention_target_selected }
+			}
+		}
+		effects = {
+			FCF_country_choose_button_icon_click = {
+				clear_array = ROOT.ii_targeted
+				add_to_array = { array = ROOT.ii_targeted value = intervention_target_country }
+				ROOT = {
+					set_country_flag = FCF_gui_international_intervention_target_selected
+				}
+				var:ROOT.ii_targeted^0 = { international_intervention_target_gui_update = yes }
+			}
+			FCF_diplo_countrylist_flag_frame_not_choose_button_click = {
+				clear_array = ROOT.ii_targeted
+				add_to_array = { array = ROOT.ii_targeted value = intervention_target_country }
+				ROOT = { set_country_flag = FCF_gui_international_intervention_target_selected }
+				var:ROOT.ii_targeted^0 = { international_intervention_target_gui_update = yes }
+			}
+		}
+		properties = {
+			FCF_country_choose_button_icon = { image = "[?intervention_target_country.GetFlag]" }
+		}
+		dynamic_lists = {
+			FCF_international_intervention_target_list_gui = {
+				array = ROOT.FCF_international_intervention_target_list_gui
+				index = intervention_target_index
+				value = intervention_target_country
+				change_scope = yes
+				entry_container = FCF_international_intervention_target_position
+			}
+		}
+	}
+
+	FCF_international_phalanstere_cooperation_list_window_gui = {
+		context_type = player_context
+		parent_window_name = powerbalanceview
+		window_name = FCF_international_phalanstere_cooperation_list_container
+		triggers = {
+			FCF_international_phalanstere_cooperation_button_click_enabled = {
+				meta_trigger = {
+					text = { phalanstere_cooperation_[COOPVAR]_trigger = yes }
+					COOPVAR = "[?global.phalanstere_cooperation_id]"
+				}
+			}
+		}
+		effects = {
+			FCF_international_phalanstere_cooperation_button_click = {
+				meta_effect = {
+					text = {
+						ROOT = { phalanstere_cooperation_[COOPVAR]_effect = yes }
+						hidden_effect = {
+							every_other_country = {
+								limit = { FRA_is_phalanstere_member = yes }
+								country_event = int_phalanstere_events.[COOPVAR]
+							}
+						}
+					}
+					COOPVAR = "[?global.phalanstere_cooperation_id]"
+				}
+			}
+		}
+		properties = {
+			FCF_international_phalanstere_cooperation_checkbox_icon = {
+				frame = global.phalanstere_cooperation_flag^phalanstere_cooperation_id
+			}
+		}
+		dynamic_lists = {
+			FCF_international_phalanstere_cooperation_list = {
+				array = global.FCF_international_phalanstere_cooperation_list
+				index = phalanstere_cooperation_index
+				value = phalanstere_cooperation_id
+				change_scope = yes
+				entry_container = FCF_international_phalanstere_cooperation_entry
+			}
+		}
+	}
+
+	FCF_internationale_other_button_gui = {
+		context_type = player_context
+		parent_window_name = raid_filter
+		window_name = FCF_internationale_other_button_window
+
+		visible = {
+			NOT = { tag = FRA }
+			FRA_is_phalanstere_member = yes
+		}
+		effects = {
+			FCF_open_internation_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_international_phalanstere_visible }
+					clr_country_flag = FCF_gui_international_phalanstere_visible
+				}
+				else = {
+					set_country_flag = FCF_gui_international_phalanstere_visible
+					clear_array = ROOT.FCF_international_intervention_target_list_gui
+					every_country = {
+						limit = { FRA_is_phalanstere_member = yes }
+						add_to_array = { array = ROOT.FCF_international_intervention_target_list_gui value = THIS.id }
+					}
+				}
+			}
+		}
+	}
+	FCF_internationale_other_window = {
+		context_type = player_context
+		window_name = FCF_internationale_other_window
+
+		visible = {
+			NOT = { tag = FRA }
+			has_country_flag = FCF_gui_international_phalanstere_visible
+		}
+		triggers = {
+		#
+			FCF_international_phalanstere_cooperation_button_click_enabled = {
+				meta_trigger = {
+					text = { phalanstere_cooperation_[COOPVAR]_trigger = yes }
+					COOPVAR = "[?global.phalanstere_cooperation_id]"
+				}
+			}
+			FCF_international_phalanstere_effect_button_click_enabled = {
+				meta_trigger = {
+					text = { phalanstere_effect_[VAR]_trigger = yes }
+					VAR = "[?global.phalanstere_effect_id]"
+				}
+			}
+		}
+		effects = {
+			FCF_international_phalanstere_cooperation_button_click = {
+				meta_effect = {
+					text = {
+						ROOT = { phalanstere_cooperation_[COOPVAR]_effect = yes }
+						hidden_effect = {
+							every_other_country = {
+								limit = { FRA_is_phalanstere_member = yes }
+								country_event = int_phalanstere_events.[COOPVAR]
+							}
+						}
+					}
+					COOPVAR = "[?global.phalanstere_cooperation_id]"
+				}
+			}
+			FCF_international_phalanstere_effect_button_click = {
+				meta_effect = {
+					text = { ROOT = { phalanstere_effect_[VAR]_effect = yes } }
+					VAR = "[?global.phalanstere_effect_id]"
+				}
+			}
+		}
+		properties = {
+			FCF_international_phalanstere_cooperation_checkbox_icon = {
+				frame = global.phalanstere_cooperation_flag^phalanstere_cooperation_id
+			}
+		}
+		dynamic_lists = {
+			FCF_international_phalanstere_cooperation_list = {
+				array = global.FCF_international_phalanstere_cooperation_list
+				index = phalanstere_cooperation_index
+				value = phalanstere_cooperation_id
+				change_scope = yes
+				entry_container = FCF_international_phalanstere_cooperation_entry
+			}
+			FCF_international_phalanstere_effect_list = {
+				array = global.FCF_international_phalanstere_effect_list
+				index = phalanstere_effect_index
+				value = phalanstere_effect_id
+				change_scope = yes
+				entry_container = FCF_international_phalanstere_effect_entry
+			}
+		}
+	}
+### 社会界面：社会法案列表与表决详情
+	FCF_society_bills_button_gui = {
+		context_type = player_context
+		parent_window_name = countrypoliticsview
+		window_name = FCF_society_bills_button_window
+
+		visible = {
+			tag = FRA
+		}
+		triggers = {
+			FCF_society_bills_show_button_visible = {
+				NOT = { has_country_flag = FCF_gui_society_bills_visible }
+			}
+			FCF_society_bills_hidden_button_visible = {
+				has_country_flag = FCF_gui_society_bills_visible
+			}
+		}
+		effects = {
+			FCF_society_bills_show_button_click = {
+				set_country_flag = FCF_gui_society_bills_visible
+			}
+			FCF_society_bills_hidden_button_click = {
+				clr_country_flag = FCF_gui_society_bills_visible
+			}
+		}
+	}
+
+	FCF_society_bills_list_gui = {
+		context_type = player_context
+		window_name = FCF_society_bills_list_window
+
+		visible = {
+			tag = FRA
+			has_country_flag = FCF_gui_society_bills_visible
+		}
+		effects = {
+			FCF_society_bills_list_window_esc_button_click = {
+				clr_country_flag = FCF_gui_society_bills_visible
+			}
+		}
+		dynamic_lists = {
+			FCF_society_bills_context_list = {
+				array = FCF_social_bills
+				index = society_bill_index
+				value = current_bill_id
+				change_scope = yes
+				entry_container = FCF_society_bill_window
+			}
+		}
+	}
+### 政治界面：PCSP 与 PCGF 领袖肖像切换
+	FCF_country_leader_switch_window_gui = {
+		context_type = player_context
+		parent_window_name = countrypoliticsview
+		window_name = FCF_country_leader_portrait_switch_window
+
+		visible = {
+			tag = FRA
+		}
+		triggers = {
+			leader_portrait_visible = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+			FCF_leader_name_background_visible = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+			FCF_politics_leader_PCSP_name_visible = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+		}
+		effects = {
+			FCF_leader_portrait_switch_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+					clr_country_flag = FCF_gui_politics_leader_PCSP_visible
+				}
+				else = { set_country_flag = FCF_gui_politics_leader_PCSP_visible }
+			}
+		}
+		properties = {
+			leader_portrait = { image = "[gui_CSP_PCSP_loc]" }
+		}
+	}
+
+	FCF_country_leader_switch_diplomacy_window_gui = {
+		context_type = selected_country_context
+		window_name = FCF_country_leader_portrait_switch_diplomacy_window
+
+		visible = {
+			THIS = { tag = FRA }
+		}
+		triggers = {
+
+			leader_portrait_visible = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+			FCF_diplo_leader_frame_visible = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+			FCF_politics_leader_PCSP_name_visible = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+		}
+		effects = {
+			FCF_leader_portrait_switch_button_click = {
+				if = {
+					limit = { has_country_flag = FCF_gui_politics_leader_PCSP_visible }
+					clr_country_flag = FCF_gui_politics_leader_PCSP_visible
+				}
+				else = { set_country_flag = FCF_gui_politics_leader_PCSP_visible }
+			}
+		}
+		properties = {
+			leader_portrait = { image = "[gui_CSP_PCSP_loc]" }
+		}
+		parent_window_token = selected_country_view_diplomacy
+	}
+
+### 顶部栏：政治、社会、经济与军事数值入口
+	FCF_economy_power_window = {
+		context_type = player_context
+		window_name = FCF_economy_power_window
+		visible = { tag = FRA }
+		triggers = {
+			FCF_add_ep_with_pp_button_click_enabled = {
+				has_political_power > 9.9
+			}
+			FCF_add_pp_with_ep_button_click_enabled = {
+				check_variable = { economy_power > 19.9 }
+			}
+
+			FCF_politics_variable_list_show_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				NOT = { has_country_flag = FCF_gui_politics_variable_list_visible }
+			}
+			FCF_politics_variable_list_hide_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_politics_variable_list_visible
+			}
+			FCF_topbar_politics_CGF_vs_CSP_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_politics_CGF_vs_CSP_selected
+			}
+
+			FCF_topbar_politics_vote_text_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_politics_vote_selected
+			}
+
+			FCF_topbar_politics_ii_europe_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_international_intervention_europe_selected
+			}
+			FCF_topbar_politics_ii_asia_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_international_intervention_asia_selected
+			}
+			FCF_topbar_politics_ii_middle_east_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_international_intervention_middle_east_selected
+			}
+			FCF_topbar_politics_ii_africa_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_international_intervention_africa_selected
+			}
+			FCF_topbar_politics_ii_america_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_international_intervention_america_selected
+			}
+
+			FCF_society_influence_list_show_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				NOT = { has_country_flag = FCF_gui_society_influence_list_visible }
+			}
+			FCF_society_influence_list_hide_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_society_influence_list_visible
+			}
+			FCF_topbar_society_pop_workers_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				OR = {
+					has_country_flag = FCF_gui_society_pop_workers_selected
+					has_country_flag = FCF_gui_society_pop_satisfaction_workers_selected
+				}
+			}
+			FCF_topbar_society_pop_peasants_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				OR = {
+					has_country_flag = FCF_gui_society_pop_peasants_selected
+					has_country_flag = FCF_gui_society_pop_satisfaction_peasants_selected
+				}
+			}
+			FCF_topbar_society_pop_merchants_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				OR = {
+					has_country_flag = FCF_gui_society_pop_merchants_selected
+					has_country_flag = FCF_gui_society_pop_satisfaction_merchants_selected
+				}
+			}
+			FCF_topbar_society_pop_scholars_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				OR = {
+					has_country_flag = FCF_gui_society_pop_scholars_selected
+					has_country_flag = FCF_gui_society_pop_satisfaction_scholars_selected
+				}
+			}
+			FCF_topbar_society_pop_bureaucrats_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				OR = {
+					has_country_flag = FCF_gui_society_pop_bureaucrats_selected
+					has_country_flag = FCF_gui_society_pop_satisfaction_bureaucrats_selected
+				}
+			}
+			FCF_topbar_society_pop_army_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				OR = {
+					has_country_flag = FCF_gui_society_pop_army_selected
+					has_country_flag = FCF_gui_society_pop_satisfaction_army_selected
+				}
+			}
+			FCF_topbar_society_pop_satisfaction_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_society_pop_satisfaction_total_selected
+			}
+
+			FCF_economy_variable_list_show_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				NOT = { has_country_flag = FCF_gui_economy_variable_list_visible }
+			}
+			FCF_economy_variable_list_hide_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_variable_list_visible
+			}
+			FCF_topbar_economy_values_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_values_selected
+			}
+			FCF_topbar_economy_industry_basic_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_industry_basic_selected
+			}
+			FCF_topbar_economy_industry_process_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_industry_process_selected
+			}
+			FCF_topbar_economy_industry_arms_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_industry_arms_selected
+			}
+			FCF_topbar_economy_agriculture_mechanized_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_agriculture_mechanized_selected
+			}
+			FCF_topbar_economy_agriculture_chemical_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_agriculture_chemical_selected
+			}
+			FCF_topbar_economy_agriculture_chain_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_agriculture_chain_selected
+			}
+			FCF_topbar_economy_society_equality_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_society_equality_selected
+			}
+			FCF_topbar_economy_society_integration_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_society_integration_selected
+			}
+			FCF_topbar_economy_society_innovation_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_society_innovation_selected
+			}
+
+			FCF_topbar_economy_focus_text_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_economy_focus_selected
+			}
+
+			FCF_military_reform_variable_list_show_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				NOT = { has_country_flag = FCF_gui_military_reform_variable_list_visible }
+			}
+			FCF_military_reform_variable_list_hide_button_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_reform_variable_list_visible
+			}
+			FCF_topbar_military_pop_officers_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_pop_officers_selected
+			}
+			FCF_topbar_military_pop_NCOs_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_pop_NCOs_selected
+			}
+			FCF_topbar_military_pop_soldiers_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_pop_soldiers_selected
+			}
+
+			FCF_topbar_military_army_autonomy_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_army_autonomy_selected
+			}
+			FCF_topbar_military_army_willingness_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_army_willingness_selected
+			}
+			FCF_topbar_military_army_training_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_army_training_selected
+			}
+			FCF_topbar_military_army_equipment_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_army_equipment_selected
+			}
+			FCF_topbar_military_army_enlistment_enthusiasm_icon_visible = {
+				NOT = { has_country_flag = FCF_gui_topbar_hidden }
+				has_country_flag = FCF_gui_military_army_enlistment_enthusiasm_selected
+			}
+
+			FCF_politics_variable_background_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+			FCF_topbar_politics_text_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+
+			FCF_society_influence_background_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+			FCF_topbar_society_text_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+
+			FCF_economy_variable_background_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+			FCF_topbar_economy_text_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+
+			FCF_military_reform_variable_background_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+			FCF_topbar_military_text_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+
+			FCF_hidden_top_bar_button_visible = { NOT = { has_country_flag = FCF_gui_topbar_hidden } }
+			FCF_show_top_bar_button_visible = { has_country_flag = FCF_gui_topbar_hidden }
+		}
+		effects = {
+			FCF_add_ep_with_pp_button_click = {
+				add_political_power = -10
+				add_to_variable = { economy_power = 10 }
+			}
+			FCF_add_pp_with_ep_button_click = {
+				add_to_variable = { economy_power = -20 }
+				add_political_power = 10
+			}
+
+			FCF_politics_variable_list_show_button_click = {
+				set_country_flag = FCF_gui_politics_variable_list_visible
+			}
+			FCF_politics_variable_list_hide_button_click = {
+				clr_country_flag = FCF_gui_politics_variable_list_visible
+			}
+
+			FCF_society_influence_list_show_button_click = {
+				set_country_flag = FCF_gui_society_influence_list_visible
+			}
+			FCF_society_influence_list_hide_button_click = {
+				clr_country_flag = FCF_gui_society_influence_list_visible
+			}
+
+			FCF_economy_variable_list_show_button_click = {
+				set_country_flag = FCF_gui_economy_variable_list_visible
+			}
+			FCF_economy_variable_list_hide_button_click = {
+				clr_country_flag = FCF_gui_economy_variable_list_visible
+			}
+
+			FCF_military_reform_variable_list_show_button_click = {
+				set_country_flag = FCF_gui_military_reform_variable_list_visible
+			}
+			FCF_military_reform_variable_list_hide_button_click = {
+				clr_country_flag = FCF_gui_military_reform_variable_list_visible
+			}
+
+			FCF_hidden_top_bar_button_click = { set_country_flag = FCF_gui_topbar_hidden }
+			FCF_show_top_bar_button_click = { clr_country_flag = FCF_gui_topbar_hidden }
+		}
+		ai_weights = {
+			FCF_add_pp_with_ep_button_click = {
+				ai_will_do = {
+					base = 0
+					modifier = {
+						add = 100
+						check_variable = { economy_power > 200 }
+					}
+				}
+			}
+		}
+	}
+
+	FCF_politics_variable_list = {
+		context_type = player_context
+		window_name = FCF_politics_variable_list
+		visible = {
+			tag = FRA
+			has_country_flag = FCF_gui_politics_variable_list_visible
+		}
+		triggers = {
+			FCF_politics_CGF_vs_CSP_icon_selected_visible = { has_country_flag = FCF_gui_politics_CGF_vs_CSP_selected }
+
+			FCF_vote_icon_selected_visible = { has_country_flag = FCF_gui_politics_vote_selected }
+
+			FCF_international_intervention_eu_icon_selected_visible = { has_country_flag = FCF_gui_international_intervention_europe_selected }
+			FCF_international_intervention_as_icon_selected_visible = { has_country_flag = FCF_gui_international_intervention_asia_selected }
+			FCF_international_intervention_me_icon_selected_visible = { has_country_flag = FCF_gui_international_intervention_middle_east_selected }
+			FCF_international_intervention_af_icon_selected_visible = { has_country_flag = FCF_gui_international_intervention_africa_selected }
+			FCF_international_intervention_am_icon_selected_visible = { has_country_flag = FCF_gui_international_intervention_america_selected }
+		}
+		effects = {
+			FCF_politics_CGF_vs_CSP_button_click = {
+				politics_gui_flags_clear = yes
+				set_country_flag = FCF_gui_politics_CGF_vs_CSP_selected
+			}
+
+			FCF_vote_button_click = {
+				politics_gui_flags_clear = yes
+				set_country_flag = FCF_gui_politics_vote_selected
+			}
+
+			FCF_international_intervention_europe_button_click = {
+				politics_gui_flags_clear = yes
+				set_country_flag = FCF_gui_international_intervention_europe_selected
+			}
+			FCF_international_intervention_asia_button_click = {
+				politics_gui_flags_clear = yes
+				set_country_flag = FCF_gui_international_intervention_asia_selected
+			}
+			FCF_international_intervention_middle_east_button_click = {
+				politics_gui_flags_clear = yes
+				set_country_flag = FCF_gui_international_intervention_middle_east_selected
+			}
+			FCF_international_intervention_africa_button_click = {
+				politics_gui_flags_clear = yes
+				set_country_flag = FCF_gui_international_intervention_africa_selected
+			}
+			FCF_international_intervention_america_button_click = {
+				politics_gui_flags_clear = yes
+				set_country_flag = FCF_gui_international_intervention_america_selected
+			}
+		}
+	}
+
+	FCF_society_influence_list = {
+		context_type = player_context
+		window_name = FCF_society_influence_list
+		visible = {
+			tag = FRA
+			has_country_flag = FCF_gui_society_influence_list_visible
+		}
+		triggers = {
+			FCF_society_pop_workers_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_workers_selected }
+			FCF_society_pop_peasants_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_peasants_selected }
+			FCF_society_pop_merchants_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_merchants_selected }
+			FCF_society_pop_scholars_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_scholars_selected }
+			FCF_society_pop_bureaucrats_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_bureaucrats_selected }
+			FCF_society_pop_army_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_army_selected }
+
+			FCF_society_pop_satisfaction_total_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_satisfaction_total_selected }
+
+			FCF_society_pop_satisfaction_workers_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_satisfaction_workers_selected }
+			FCF_society_pop_satisfaction_peasants_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_satisfaction_peasants_selected }
+			FCF_society_pop_satisfaction_merchants_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_satisfaction_merchants_selected }
+			FCF_society_pop_satisfaction_scholars_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_satisfaction_scholars_selected }
+			FCF_society_pop_satisfaction_bureaucrats_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_satisfaction_bureaucrats_selected }
+			FCF_society_pop_satisfaction_army_icon_selected_visible = { has_country_flag = FCF_gui_society_pop_satisfaction_army_selected }
+		}
+		effects = {
+			FCF_society_pop_workers_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_workers_selected
+			}
+			FCF_society_pop_peasants_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_peasants_selected
+			}
+			FCF_society_pop_merchants_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_merchants_selected
+			}
+			FCF_society_pop_scholars_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_scholars_selected
+			}
+			FCF_society_pop_bureaucrats_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_bureaucrats_selected
+			}
+			FCF_society_pop_army_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_army_selected
+			}
+
+			FCF_society_pop_satisfaction_total_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_satisfaction_total_selected
+			}
+			FCF_society_pop_satisfaction_workers_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_satisfaction_workers_selected
+			}
+			FCF_society_pop_satisfaction_peasants_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_satisfaction_peasants_selected
+			}
+			FCF_society_pop_satisfaction_merchants_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_satisfaction_merchants_selected
+			}
+			FCF_society_pop_satisfaction_scholars_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_satisfaction_scholars_selected
+			}
+			FCF_society_pop_satisfaction_bureaucrats_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_satisfaction_bureaucrats_selected
+			}
+			FCF_society_pop_satisfaction_army_button_click = {
+				society_gui_flags_clear = yes
+				set_country_flag = FCF_gui_society_pop_satisfaction_army_selected
+			}
+		}
+	}
+
+	FCF_economy_variable_list = {
+		context_type = player_context
+		window_name = FCF_economy_variable_list
+		visible = {
+			tag = FRA
+			has_country_flag = FCF_gui_economy_variable_list_visible
+		}
+		triggers = {
+			FCF_economy_values_icon_selected_visible = { has_country_flag = FCF_gui_economy_values_selected }
+			FCF_economy_industry_basic_icon_selected_visible = { has_country_flag = FCF_gui_economy_industry_basic_selected }
+			FCF_economy_industry_process_icon_selected_visible = { has_country_flag = FCF_gui_economy_industry_process_selected }
+			FCF_economy_industry_arms_icon_selected_visible = { has_country_flag = FCF_gui_economy_industry_arms_selected }
+			FCF_economy_agriculture_mechanized_icon_selected_visible = { has_country_flag = FCF_gui_economy_agriculture_mechanized_selected }
+			FCF_economy_agriculture_chemical_icon_selected_visible = { has_country_flag = FCF_gui_economy_agriculture_chemical_selected }
+			FCF_economy_agriculture_chain_icon_selected_visible = { has_country_flag = FCF_gui_economy_agriculture_chain_selected }
+			FCF_economy_society_equality_icon_selected_visible = { has_country_flag = FCF_gui_economy_society_equality_selected }
+			FCF_economy_society_integration_icon_selected_visible = { has_country_flag = FCF_gui_economy_society_integration_selected }
+			FCF_economy_society_innovation_icon_selected_visible = { has_country_flag = FCF_gui_economy_society_innovation_selected }
+
+			FCF_economy_focus_icon_selected_visible = { has_country_flag = FCF_gui_economy_focus_selected }
+		}
+		effects = {
+			FCF_economy_values_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_values_selected
+			}
+			FCF_economy_industry_basic_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_industry_basic_selected
+			}
+			FCF_economy_industry_process_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_industry_process_selected
+			}
+			FCF_economy_industry_arms_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_industry_arms_selected
+			}
+			FCF_economy_agriculture_mechanized_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_agriculture_mechanized_selected
+			}
+			FCF_economy_agriculture_chemical_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_agriculture_chemical_selected
+			}
+			FCF_economy_agriculture_chain_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_agriculture_chain_selected
+			}
+			FCF_economy_society_equality_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_society_equality_selected
+			}
+			FCF_economy_society_integration_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_society_integration_selected
+			}
+			FCF_economy_society_innovation_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_society_innovation_selected
+			}
+
+			FCF_economy_focus_button_click = {
+				economy_gui_flags_clear = yes
+				set_country_flag = FCF_gui_economy_focus_selected
+			}
+		}
+	}
+
+	FCF_military_reform_variable_list = {
+		context_type = player_context
+		window_name = FCF_military_reform_variable_list
+		visible = {
+			tag = FRA
+			has_country_flag = FCF_gui_military_reform_variable_list_visible
+		}
+		triggers = {
+			FCF_military_pop_officers_icon_selected_visible = { has_country_flag = FCF_gui_military_pop_officers_selected }
+			FCF_military_pop_NCOs_icon_selected_visible = { has_country_flag = FCF_gui_military_pop_NCOs_selected }
+			FCF_military_pop_soldiers_icon_selected_visible = { has_country_flag = FCF_gui_military_pop_soldiers_selected }
+
+			FCF_military_army_autonomy_icon_selected_visible = { has_country_flag = FCF_gui_military_army_autonomy_selected }
+			FCF_military_army_willingness_icon_selected_visible = { has_country_flag = FCF_gui_military_army_willingness_selected }
+			FCF_military_army_training_icon_selected_visible = { has_country_flag = FCF_gui_military_army_training_selected }
+			FCF_military_army_equipment_icon_selected_visible = { has_country_flag = FCF_gui_military_army_equipment_selected }
+			FCF_military_army_enlistment_enthusiasm_icon_selected_visible = { has_country_flag = FCF_gui_military_army_enlistment_enthusiasm_selected }
+		}
+		effects = {
+			FCF_military_pop_officers_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_pop_officers_selected
+			}
+			FCF_military_pop_NCOs_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_pop_NCOs_selected
+			}
+			FCF_military_pop_soldiers_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_pop_soldiers_selected
+			}
+
+			FCF_military_army_autonomy_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_army_autonomy_selected
+			}
+			FCF_military_army_willingness_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_army_willingness_selected
+			}
+			FCF_military_army_training_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_army_training_selected
+			}
+			FCF_military_army_equipment_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_army_equipment_selected
+			}
+			FCF_military_army_enlistment_enthusiasm_button_click = {
+				military_gui_flags_clear = yes
+				set_country_flag = FCF_gui_military_army_enlistment_enthusiasm_selected
+			}
+		}
+	}
+### 地块界面：地区经济态势与投资策略
+	FCF_economy_state_situation_window = {
+		context_type = selected_state_context
+		window_name = FCF_economy_state_situation_window
+		visible = {
+			FCF_is_french_state = yes
+			is_owned_by = FRA
+		}
+		triggers = {
+			FCF_invest_state_civilian_button_click_enabled = {
+				FCF_state_is_invested = no
+
+				OR = {
+					FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button }
+					AND = {
+						set_temp_variable = { investment_cost_required = state_invest_civilian_cost }
+						custom_trigger_tooltip = {
+							tooltip = state_invest_cost_trigger_tooltip
+							check_variable = { FRA.economy_power > state_invest_civilian_cost }
+						}
+
+						FRA = { num_of_civilian_factories_available_for_projects > PREV.state_invest_factory_need }
+					}
+				}
+			}
+
+			FCF_invest_state_arms_button_click_enabled = {
+				FCF_state_is_invested = no
+
+				OR = {
+					FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button }
+					AND = {
+						set_temp_variable = { investment_cost_required = state_invest_arms_cost }
+						custom_trigger_tooltip = {
+							tooltip = state_invest_cost_trigger_tooltip
+							check_variable = { FRA.economy_power > state_invest_arms_cost }
+						}
+
+						FRA = { num_of_civilian_factories_available_for_projects > PREV.state_invest_factory_need }
+					}
+				}
+			}
+
+			FCF_invest_state_dockyard_button_click_enabled = {
+				FCF_state_is_invested = no
+
+				OR = {
+					FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button }
+					AND = {
+						set_temp_variable = { investment_cost_required = state_invest_dockyard_cost }
+						custom_trigger_tooltip = {
+							tooltip = state_invest_cost_trigger_tooltip
+							check_variable = { FRA.economy_power > state_invest_dockyard_cost }
+						}
+
+						FRA = { num_of_civilian_factories_available_for_projects > PREV.state_invest_factory_need }
+					}
+				}
+
+				is_coastal = yes
+			}
+
+			FCF_invest_more_button_click_enabled = {
+				FCF_state_is_invested = yes
+
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = economy_power
+						JUDGE = more_than
+						TAGNUM = "5"
+					}
+					check_variable = { FRA.economy_power > 5 }
+				}
+
+				FRA = { num_of_civilian_factories_available_for_projects > 1 }
+
+				NOT = { has_state_flag = FCF_politics_CGF_expand_investment_button }
+			}
+		}
+		effects = {
+			state_strategy_modifier_click = {
+				meta_effect = {
+					text = { state_strategy_[STATESTRVAR]_get = yes }
+					STATESTRVAR = "[?state_strategy_id]"
+				}
+			}
+
+			FCF_invest_state_civilian_button_click = {
+				set_state_flag = state_invest_civilian
+
+				if = {
+					limit = { FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button } }
+					FRA = { clr_country_flag = FCF_politics_CGF_expand_investment_button }
+					set_state_flag = FCF_politics_CGF_expand_investment_button
+					set_temp_variable = { economy_state_situation_modifier_civilian_factory_use = 4 }
+				}
+				else = {
+					set_temp_variable = { economy_power_cost_change = state_invest_civilian_cost }
+					multiply_temp_variable = { economy_power_cost_change = -1 }
+					add_to_variable = {
+						FRA.economy_power = economy_power_cost_change
+						tooltip = economy_power_change_tt
+					}
+					set_temp_variable = { economy_state_situation_modifier_civilian_factory_use = state_invest_factory_need }
+				}
+
+				set_temp_variable = { target_investment_type = 1 }
+				economy_state_investment_speed_update = yes
+
+				set_temp_variable = { needed_days = 100 }
+				divide_temp_variable = { needed_days = calculated_investment_speed }
+				add_to_temp_variable = { needed_days = 0.4999 }
+				round_variable = needed_days
+
+				if = {
+					limit = { FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button } }
+					custom_effect_tooltip = state_investment_when_expanded_cost_tooltip
+				}
+				else = { custom_effect_tooltip = state_investment_cost_tooltip  }
+				effect_tooltip = {
+					set_temp_variable = { state_industrial_complex_change = 1 }
+					set_temp_variable = { state_arms_factory_change = 0 }
+					set_temp_variable = { state_dockyard_change = 0 }
+					FCF_economy_state_situation_change = yes
+				}
+
+				if = {
+					limit = { FCF_is_city_zone = yes }
+					add_to_variable = { FRA.workers_mission_investment_count = 1 }
+				}
+				else_if = {
+					limit = { FCF_is_rural_zone = yes }
+					add_to_variable = { FRA.peasants_mission_investment_count = 1 }
+				}
+			}
+
+			FCF_invest_state_arms_button_click = {
+				set_state_flag = state_invest_arms
+
+				if = {
+					limit = { FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button } }
+					FRA = { clr_country_flag = FCF_politics_CGF_expand_investment_button }
+					set_state_flag = FCF_politics_CGF_expand_investment_button
+					set_temp_variable = { economy_state_situation_modifier_civilian_factory_use = 4 }
+				}
+				else = {
+					set_temp_variable = { economy_power_cost_change = state_invest_arms_cost }
+					multiply_temp_variable = { economy_power_cost_change = -1 }
+					add_to_variable = {
+						FRA.economy_power = economy_power_cost_change
+						tooltip = economy_power_change_tt
+					}
+					set_temp_variable = { economy_state_situation_modifier_civilian_factory_use = state_invest_factory_need }
+				}
+
+				set_temp_variable = { target_investment_type = 2 }
+				economy_state_investment_speed_update = yes
+
+				set_temp_variable = { needed_days = 100 }
+				divide_temp_variable = { needed_days = calculated_investment_speed }
+				add_to_temp_variable = { needed_days = 0.4999 }
+				round_variable = needed_days
+
+				if = {
+					limit = { FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button } }
+					custom_effect_tooltip = state_investment_when_expanded_cost_tooltip
+				}
+				else = { custom_effect_tooltip = state_investment_cost_tooltip  }
+				effect_tooltip = {
+					set_temp_variable = { state_industrial_complex_change = 0 }
+					set_temp_variable = { state_arms_factory_change = 1 }
+					set_temp_variable = { state_dockyard_change = 0 }
+					FCF_economy_state_situation_change = yes
+				}
+
+				if = {
+					limit = { FCF_is_city_zone = yes }
+					add_to_variable = { FRA.workers_mission_investment_count = 1 }
+				}
+				else_if = {
+					limit = { FCF_is_rural_zone = yes }
+					add_to_variable = { FRA.peasants_mission_investment_count = 1 }
+				}
+				add_to_variable = { FRA.army_mission_arms_investment_count = 1 }
+			}
+
+			FCF_invest_state_dockyard_button_click = {
+				set_state_flag = state_invest_dockyard
+
+				if = {
+					limit = { FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button } }
+					FRA = { clr_country_flag = FCF_politics_CGF_expand_investment_button }
+					set_state_flag = FCF_politics_CGF_expand_investment_button
+					set_temp_variable = { economy_state_situation_modifier_civilian_factory_use = 4 }
+				}
+				else = {
+					set_temp_variable = { economy_power_cost_change = state_invest_dockyard_cost }
+					multiply_temp_variable = { economy_power_cost_change = -1 }
+					add_to_variable = {
+						FRA.economy_power = economy_power_cost_change
+						tooltip = economy_power_change_tt
+					}
+					set_temp_variable = { economy_state_situation_modifier_civilian_factory_use = state_invest_factory_need }
+				}
+
+				set_temp_variable = { target_investment_type = 3 }
+				economy_state_investment_speed_update = yes
+
+				set_temp_variable = { needed_days = 100 }
+				divide_temp_variable = { needed_days = calculated_investment_speed }
+				add_to_temp_variable = { needed_days = 0.4999 }
+				round_variable = needed_days
+
+				if = {
+					limit = { FRA = { has_country_flag = FCF_politics_CGF_expand_investment_button } }
+					custom_effect_tooltip = state_investment_when_expanded_cost_tooltip
+				}
+				else = { custom_effect_tooltip = state_investment_cost_tooltip  }
+				effect_tooltip = {
+					set_temp_variable = { state_industrial_complex_change = 0 }
+					set_temp_variable = { state_arms_factory_change = 0 }
+					set_temp_variable = { state_dockyard_change = 1 }
+					FCF_economy_state_situation_change = yes
+				}
+
+				if = {
+					limit = { FCF_is_city_zone = yes }
+					add_to_variable = { FRA.workers_mission_investment_count = 1 }
+				}
+				else_if = {
+					limit = { FCF_is_rural_zone = yes }
+					add_to_variable = { FRA.peasants_mission_investment_count = 1 }
+				}
+			}
+
+			FCF_invest_more_button_click = {
+				add_to_variable = {
+					FRA.economy_power = -5
+					tooltip = economy_power_change_tt
+				}
+
+				custom_effect_tooltip = state_investment_speed_up_tooltip
+				add_to_variable = { additional_civilian_factories_for_investment = 1 }
+			}
+		}
+		properties = { FCF_selected_state_flag = { image = "GFX_FCF_economy_state_[?THIS.GetID]_flag" } }
+		parent_window_token = selected_state_view
+		dynamic_lists = {
+			FCF_economy_state_strategy_context_list = {
+				array = FCF_state_strategy
+				index = state_strategy_index
+				value = state_strategy_id
+				change_scope = yes
+				entry_container = FCF_economy_state_strategy_container
+			}
+		}
+	}
+}

@@ -1,0 +1,3481 @@
+guiTypes = {
+### 政治窗口：CGF 议会与 CSP 公共安全委员会
+	containerWindowType = {
+		name = "FCF_open_CGF_and_CSP_button_window"
+		position = { x = -2 y = -120 }
+		size = { width = 80 height = 80 }
+		moveable = no
+		clipping = yes
+		background = {
+			name = "background1"
+			quadTextureSprite = "GFX_tiled_paper_bg2"
+		}
+		background = {
+			name = "background2"
+			quadTextureSprite = "GFX_tiled_research_bg"
+		}
+		buttonType = {
+			name = "FCF_open_CGF_and_CSP_button"
+			position = { x = 6 y = 3 }
+			spriteType = "GFX_idea_government"
+			scale = 1.1
+			clicksound = click_default
+			pdx_tooltip = open_cgf_and_csp_window_tt
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_politics_CGF_and_CSP_window"
+		position = { x = 537 y = 120 }
+		size = { width = 750 height = 550 }
+		orientation = upper_left
+		moveable = yes
+		clipping = no
+
+		background = {
+			name = "background1"
+			quadTextureSprite = "GFX_tiled_bg"
+		}
+
+		background = {
+			name = "background2"
+			quadTextureSprite = "GFX_tiled_generic_overlay_bg1"
+			alwaystransparent = yes
+		}
+
+		containerWindowType = {
+			name = "FCF_politics_CGF_container_window"
+			position = { x = 25 y = 30 }
+			size = { width = 600 height = 700 }
+
+			gridboxtype = {
+				name = "FCF_parliament_diagram_list"
+				position = { x = 0 y = 0 }
+				size = { width = 100%% height = 100%% }
+				slotsize = { width = 100%% height = 0 }
+				max_slots_horizontal = 1
+				add_horizontal = no
+			}
+		}
+
+		buttonType = {
+			name = "FCF_politics_CGF_and_CSP_window_esc_button"
+			position = { x = 705 y = 15 }
+			spriteType = "GFX_closebutton"
+			clicksound = click_default
+			shortcut = "ESCAPE"
+		}
+
+		buttonType = {
+			name = "FCF_politics_CGF_and_CSP_window_switch_button"
+			position = { x = 13 y = 15 }
+			spriteType = "GFX_change_template_button"
+			scale = 2
+			clicksound = click_default
+		}
+
+		buttonType = {
+			name = "FCF_politics_CGF_model_switch_button"
+			position = { x = 339 y = 313 }
+			spriteType = "GFX_idea_government"
+			scale = 1.2
+			clicksound = click_default
+			pdx_tooltip = cgf_change_model_tt
+		}
+
+		iconType = {
+			name = "FCF_politics_CGF_party_detail_text_box"
+			position = { x = 0 y = 142 }
+			spriteType = "GFX_fuhrer_name_ribbon"
+			orientation = center
+			scale = 1.7
+			centerposition = yes
+		}
+
+		instantTextboxType = {
+			name = "FCF_politics_CGF_party_detail_text"
+			position = { x = 175 y = 400 }
+			font = "hoi_24header"
+			text = FCF_politics_CGF_party_detail_text
+			format = center
+			maxWidth = 400
+			maxHeight = 20
+		}
+
+		instantTextboxType = {
+			name = "FCF_politics_CGF_party_attitude_text"
+			position = { x = 175 y = 430 }
+			font = "hoi_18mbs"
+			text = FCF_politics_CGF_party_attitude_text
+			format = center
+			maxWidth = 400
+			maxHeight = 20
+		}
+
+		buttonType = {
+			name = "FCF_politics_CGF_funding_city_button"
+			position = { x = 80 y = 410 }
+			quadTextureSprite = "GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = FCF_politics_CGF_funding_city_button
+			clicksound = click_default
+			pdx_tooltip = cgf_funding_city_desc
+		}
+		buttonType = {
+			name = "FCF_politics_CGF_funding_rural_button"
+			position = { x = 80 y = 470 }
+			quadTextureSprite = "GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = FCF_politics_CGF_funding_rural_button
+			clicksound = click_default
+			pdx_tooltip = cgf_funding_rural_desc
+		}
+
+		buttonType = {
+			name = "FCF_politics_CGF_transfer_management_button"
+			position = { x = 560 y = 410 }
+			quadTextureSprite = "GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = FCF_politics_CGF_transfer_management_button
+			clicksound = click_default
+			pdx_tooltip = cgf_transfer_management_desc
+		}
+		buttonType = {
+			name = "FCF_politics_CGF_expand_investment_button"
+			position = { x = 560 y = 470 }
+			quadTextureSprite = "GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = FCF_politics_CGF_expand_investment_button
+			clicksound = click_default
+			pdx_tooltip = cgf_expand_investment_desc
+		}
+
+		instantTextBoxType = {
+			name = "FCF_politics_CSP_title_text"
+			position = { x = -105 y = -65 }
+			orientation = center
+			font = "hoi_24header"
+			text = "[gui_csp_choose_loc]"
+			format = center
+			maxWidth = 200
+		}
+
+		containerWindowType = {
+			name = "FCF_politics_CSP_PCSP_portrait_container"
+			position = { x = -60 y = 30 }
+			size = { width = 123 height = 161 }
+			orientation = center_up
+			scale = 0.9
+			clipping = no
+
+			buttonType = {
+				name = "FCF_politics_CSP_PCSP_portrait_button"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large" #Temp
+				orientation = upper_left
+				scale = 0.75
+				pdx_tooltip = CSP_PCSP_name_text_long
+				pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+			}
+			iconType = {
+				name = "FCF_politics_CSP_PCSP_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				centerposition = yes
+				alwaystransparent = yes
+			}
+			iconType = {
+				name = "FCF_politics_CSP_PCSP_name_box"
+				position = { x = 0 y = 95 }
+				spriteType = "GFX_fuhrer_name_ribbon"
+				orientation = center
+				scale = 1.2
+				centerposition = yes
+				pdx_tooltip = CSP_PCSP_name_text_long
+				pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_PCSP_name"
+				position = { x = -100 y = 0 }
+				orientation = center_down
+				font = "hoi_20b" #"hoi_18mbs"
+				text = CSP_PCSP_name_text
+				format = center
+				maxWidth = 200
+			}
+			iconType = {
+				name = "FCF_politics_CSP_PCSP_title_box"
+				position = { x = 0 y = 111 }
+				spriteType = "GFX_trait_box_fuhrer"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_PCSP_title_text
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_PCSP_title"
+				position = { x = -100 y = 20 }
+				orientation = center_down
+				font = "hoi_16mbs"
+				text = CSP_PCSP_title_text
+				format = center
+				maxWidth = 200
+			}
+		}
+		containerWindowType = {
+			name = "FCF_politics_CSP_CAE_container"
+			position = { x = -230 y = 80 }
+			size = { width = 150 height = 120 }
+			orientation = center_up
+			scale = 0.9
+			clipping = no
+
+			buttonType = {
+				name = "FCF_politics_CSP_CAE_portrait_button"
+				position = { x = 30 y = -10 }
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				scale = 0.6
+				pdx_tooltip = CSP_CAE_name_text_long
+				pdx_tooltip_delayed = CSP_CAE_name_delay_text
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CAE_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				scale = 0.85
+				alwaystransparent = yes
+				centerPosition = yes
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CAE_name_box"
+				position = { x = 0	 y = 71 }
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CAE_name_text_long
+				pdx_tooltip_delayed = CSP_CAE_name_delay_text
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CAE_name"
+				position = { x = -75 y = 0 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_20b"
+				text = CSP_CAE_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CAE_trait_box"
+				position = { x = 0	 y = 102 }
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CAE_trait_text_detail
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CAE_trait_text"
+				position = { x = -75 y = 23 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_18mbs"
+				text = CSP_CAE_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "FCF_politics_CSP_CE_container"
+			position = { x = 85 y = 80 }
+			size = { width = 150 height = 120 }
+			orientation = center_up
+			scale = 0.9
+			clipping = no
+
+			buttonType = {
+				name = "FCF_politics_CSP_CE_portrait_button"
+				position = { x = 30 y = -10 }
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				scale = 0.6
+				pdx_tooltip = CSP_CE_name_text_long
+				pdx_tooltip_delayed = CSP_CE_name_delay_text
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CE_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				scale = 0.85
+				alwaystransparent = yes
+				centerPosition = yes
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CE_name_box"
+				position = { x = 0	 y = 71 }
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CE_name_text_long
+				pdx_tooltip_delayed = CSP_CE_name_delay_text
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CE_name"
+				position = { x = -75 y = 0 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_20b"
+				text = CSP_CE_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CE_trait_box"
+				position = { x = 0	 y = 102 }
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CE_trait_text_detail
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CE_trait_text"
+				position = { x = -75 y = 23 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_18mbs"
+				text = CSP_CE_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "FCF_politics_CSP_CSI_container"
+			position = { x = -210 y = 270 }
+			size = { width = 150 height = 120 }
+			orientation = center_up
+			scale = 0.9
+			clipping = no
+
+			buttonType = {
+				name = "FCF_politics_CSP_CSI_portrait_button"
+				position = { x = 30 y = -10 }
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				scale = 0.6
+				pdx_tooltip = CSP_CSI_name_text_long
+				pdx_tooltip_delayed = CSP_CSI_name_delay_text
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CSI_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				scale = 0.85
+				alwaystransparent = yes
+				centerPosition = yes
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CSI_name_box"
+				position = { x = 0	 y = 71 }
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CSI_name_text_long
+				pdx_tooltip_delayed = CSP_CSI_name_delay_text
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CSI_name"
+				position = { x = -75 y = 0 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_20b"
+				text = CSP_CSI_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CSI_trait_box"
+				position = { x = 0	 y = 102 }
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CSI_trait_text_detail
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CSI_trait_text"
+				position = { x = -75 y = 23 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_18mbs"
+				text = CSP_CSI_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "FCF_politics_CSP_CC_container"
+			position = { x = -75 y = 270 }
+			size = { width = 150 height = 120 }
+			orientation = center_up
+			scale = 0.9
+			clipping = no
+
+			buttonType = {
+				name = "FCF_politics_CSP_CC_portrait_button"
+				position = { x = 30 y = -10 }
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				scale = 0.6
+				pdx_tooltip = CSP_CC_name_text_long
+				pdx_tooltip_delayed = CSP_CC_name_delay_text
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CC_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				scale = 0.85
+				alwaystransparent = yes
+				centerPosition = yes
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CC_name_box"
+				position = { x = 0	 y = 71 }
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CC_name_text_long
+				pdx_tooltip_delayed = CSP_CC_name_delay_text
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CC_name"
+				position = { x = -75 y = 0 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_20b"
+				text = CSP_CC_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CC_trait_box"
+				position = { x = 0	 y = 102 }
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CC_trait_text_detail
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CC_trait_text"
+				position = { x = -75 y = 23 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_18mbs"
+				text = CSP_CC_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+		containerWindowType = {
+			name = "FCF_politics_CSP_CGFF_container"
+			position = { x = 60 y = 270 }
+			size = { width = 150 height = 120 }
+			orientation = center_up
+			scale = 0.9
+			clipping = no
+
+			buttonType = {
+				name = "FCF_politics_CSP_CGFF_portrait_button"
+				position = { x = 30 y = -10 }
+				spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+				orientation = upper_left
+				scale = 0.6
+				pdx_tooltip = CSP_CGFF_name_text_long
+				pdx_tooltip_delayed = CSP_CGFF_name_delay_text
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CGFF_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_rectangular_frame_councillor_prf"
+				orientation = center
+				scale = 0.85
+				alwaystransparent = yes
+				centerPosition = yes
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CGFF_name_box"
+				position = { x = 0	 y = 71 }
+				spriteType = "GFX_ascended_advisor_name_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CGFF_name_text_long
+				pdx_tooltip_delayed = CSP_CGFF_name_delay_text
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CGFF_name"
+				position = { x = -75 y = 0 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_20b"
+				text = CSP_CGFF_name_text_short
+				format = center
+				maxWidth = 150
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CGFF_trait_box"
+				position = { x = 0	 y = 102 }
+				spriteType = "GFX_ascended_advisor_trait_box"
+				orientation = center
+				centerposition = yes
+				pdx_tooltip = CSP_CGFF_trait_text_detail
+			}
+			instantTextBoxType = {
+				name = "FCF_politics_CSP_CGFF_trait_text"
+				position = { x = -75 y = 23 }
+				orientation = center_down
+				alwaystransparent = yes
+				font = "hoi_18mbs"
+				text = CSP_CGFF_trait_text
+				format = center
+				maxWidth = 150
+			}
+		}
+
+		instantTextboxType = {
+			name = "FCF_bop_text"
+			position = { x = 220 y = 450 }
+			font = "hoi_24header"
+			text = FCF_bop_text
+			format = centre
+			maxWidth = 300
+			maxHeight = 100
+			pdx_tooltip = bop_change_text
+			pdx_tooltip_delayed = bop_delay_text
+		}
+
+		buttonType = {
+			name = "FCF_politics_CSP_give_more_power_button"
+			position = { x = 30 y = 90 }
+			quadTextureSprite = "GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = FCF_politics_CSP_give_more_power_button
+			clicksound = click_default
+			pdx_tooltip = csp_give_more_power_effect
+		}
+		buttonType = {
+			name = "FCF_politics_CSP_give_less_power_button"
+			position = { x = 30 y = 140 }
+			quadTextureSprite = "GFX_strategic_air_sort"
+			font = "hoi_18mbs"
+			text = FCF_politics_CSP_give_less_power_button
+			clicksound = click_default
+			pdx_tooltip = csp_give_less_power_effect
+		}
+
+		instantTextboxType = {
+			name = "FCF_politics_CSP_member_change_text"
+			position = { x = 600 y = 60 }
+			font = "hoi_24header"
+			text = FCF_politics_CSP_member_change_text
+			format = left
+			maxWidth = 300
+			maxHeight = 200
+		}
+
+		instantTextboxType = {
+			name = "FCF_party_faction_information"
+			position = { x = 30 y = 450 }
+			font = "hoi_18mbs"
+			text = FCF_party_faction_information
+			format = left
+			maxWidth = 1000
+			maxHeight = 200
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_politics_CGF_seat_container"
+		position = { x = 0 y = 0 }
+
+		buttonType = {
+			name = "FCF_politics_CGF_seat_icon_button"
+			quadTextureSprite = "GFX_FCF_politics_CGF_seat"
+			pdx_tooltip = CGF_seat_intro
+			pdx_tooltip_delayed = CGF_seat_intro_long
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_politics_CSP_member_change_container"
+		position = { x = 215 y = -190 }
+		size = { width = 140 height = 350 }
+		orientation = center
+		clipping = yes
+		background = {
+			name = "CSP_member_change_container_bg"
+			quadTextureSprite = "GFX_tiled_bg"
+		}
+
+		containerWindowType = {
+			name = "FCF_politics_CSP_member_change_container_list"
+			position = { x = 0 y = 15 }
+			size = { width = 140 height = 320 }
+			clipping = yes
+			verticalScrollbar = "right_vertical_slider"
+			background = {
+				name = "background1"
+				quadTextureSprite = "GFX_tiled_window_transparent"
+			}
+			gridboxtype = {
+				name = FCF_politics_CSP_change_member_list
+				position = { x = 0 y = 0 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 140 }
+				add_horizontal = no
+			}
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_politics_CSP_change_member_container"
+		size = { width = 150 height = 140 }
+
+		scale = 0.9
+		clipping = no
+
+		buttonType = {
+			name = "FCF_politics_CSP_change_member_portrait_button"
+			position = { x = 30 y = 10 }
+			spriteType = "GFX_portrait_FRA_conseil_de_defense_federal_civilian_large"
+			orientation = upper_left
+			scale = 0.6
+			pdx_tooltip = csp_change_member_tt
+		}
+		iconType = {
+			name = "FCF_politics_CSP_change_member_frame"
+			position = { x = 0 y = 10 }
+			spriteType = "GFX_rectangular_frame_councillor_prf"
+			orientation = center
+			scale = 0.85
+			alwaystransparent = yes
+			centerPosition = yes
+		}
+		iconType = {
+			name = "FCF_politics_CSP_change_member_name_box"
+			position = { x = 0 y = 71 }
+			spriteType = "GFX_ascended_advisor_name_box"
+			orientation = center
+			centerposition = yes
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_politics_CSP_change_member_name"
+			position = { x = -75 y = -10 }
+			orientation = center_down
+			alwaystransparent = yes
+			font = "hoi_20b"
+			text = CSP_change_member_name_text_short
+			format = center
+			maxWidth = 150
+		}
+	}
+
+### 国际窗口：第三国际、国际干涉与法伦施泰尔合作
+	containerWindowType = {
+		name = "FCF_internationale_icon"
+		position = { x = 70 y = -5 }
+		size = { width = 70 height = 65 }
+		moveable = no
+		clipping = no
+
+		origo = upper_left
+
+		iconType = {
+			name = "FCF_internationale_icon"
+			position = { x = -75 y = 5 }
+			spriteType = "GFX_FCF_internationale_icon"
+			scale = 0.26
+			alwaystransparent = yes
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_internationale_window"
+		position = { x = 0 y = -5 }
+		size = { width = 510 height = 150 }
+		moveable = no
+		clipping = no
+
+		origo = upper_left
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_FCF_internationale_background"
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_internationale_switch_button"
+			position = { x = 503 y = 48 }
+			quadTextureSprite = "GFX_FCF_internationale_button"
+			scale = 0.98
+		}
+
+		containerWindowType = {
+			name = "FCF_internationale_intervention_detail_button_window"
+			position = { x = 15 y = 22 }
+			scale = 0.8
+		##
+			buttonType = {
+				name = "FCF_international_europe_western_show_button"
+				position = { x = 0 y = 0 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_western
+				clicksound = click_default
+				pdx_tooltip = international_europe_western_tt
+			}
+			buttonType = {
+				name = "FCF_international_europe_middle_show_button"
+				position = { x = 0 y = 35 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_middle
+				clicksound = click_default
+				pdx_tooltip = international_europe_middle_tt
+			}
+			buttonType = {
+				name = "FCF_international_europe_eastern_show_button"
+				position = { x = 0 y = 70 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_eastern
+				clicksound = click_default
+				pdx_tooltip = international_europe_eastern_tt
+			}
+			buttonType = {
+				name = "FCF_international_europe_northern_show_button"
+				position = { x = 0 y = 105 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_europe_northern
+				clicksound = click_default
+				pdx_tooltip = international_europe_northern_tt
+			}
+
+			buttonType = {
+				name = "FCF_international_asia_eastern_show_button"
+				position = { x = 120 y = 0 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia_eastern
+
+				clicksound = click_default
+				pdx_tooltip = international_asia_eastern_tt
+			}
+			buttonType = {
+				name = "FCF_international_asia_southern_show_button"
+				position = { x = 120 y = 35 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia_southern
+
+				clicksound = click_default
+				pdx_tooltip = international_asia_southern_tt
+			}
+			buttonType = {
+				name = "FCF_international_asia_india_show_button"
+				position = { x = 120 y = 70 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_asia_india
+
+				clicksound = click_default
+				pdx_tooltip = international_asia_india_tt
+			}
+
+			buttonType = {
+				name = "FCF_international_me_iran_show_button"
+				position = { x = 240 y = 0 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_iran
+
+				clicksound = click_default
+				pdx_tooltip = international_me_iran_tt
+			}
+			buttonType = {
+				name = "FCF_international_me_arab_show_button"
+				position = { x = 240 y = 35 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_arab
+
+				clicksound = click_default
+				pdx_tooltip = international_me_arab_tt
+			}
+			buttonType = {
+				name = "FCF_international_me_ottoman_show_button"
+				position = { x = 240 y = 70 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_ottoman
+
+				clicksound = click_default
+				pdx_tooltip = international_me_ottoman_tt
+			}
+			buttonType = {
+				name = "FCF_international_me_egypt_show_button"
+				position = { x = 240 y = 105 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_me_egypt
+
+				clicksound = click_default
+				pdx_tooltip = international_me_egypt_tt
+			}
+
+			buttonType = {
+				name = "FCF_international_africa_western_show_button"
+				position = { x = 360 y = 0 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_western
+
+				clicksound = click_default
+				pdx_tooltip = international_africa_western_tt
+			}
+			buttonType = {
+				name = "FCF_international_africa_eastern_show_button"
+				position = { x = 360 y = 35 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_eastern
+
+				clicksound = click_default
+				pdx_tooltip = international_africa_eastern_tt
+			}
+			buttonType = {
+				name = "FCF_international_africa_middle_show_button"
+				position = { x = 360 y = 70 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_middle
+
+				clicksound = click_default
+				pdx_tooltip = international_africa_middle_tt
+			}
+			buttonType = {
+				name = "FCF_international_africa_southern_show_button"
+				position = { x = 360 y = 105 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_africa_southern
+
+				clicksound = click_default
+				pdx_tooltip = international_africa_southern_tt
+			}
+
+			buttonType = {
+				name = "FCF_international_america_northern_show_button"
+				position = { x = 480 y = 0 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america_northern
+
+				clicksound = click_default
+				pdx_tooltip = international_america_northern_tt
+			}
+			buttonType = {
+				name = "FCF_international_america_middle_show_button"
+				position = { x = 480 y = 35 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america_middle
+
+				clicksound = click_default
+				pdx_tooltip = international_america_middle_tt
+			}
+			buttonType = {
+				name = "FCF_international_america_southern_show_button"
+				position = { x = 480 y = 70 }
+				quadTextureSprite = "GFX_strategic_air_sort"
+				font = "hoi_18mbs"
+				text = international_america_southern
+
+				clicksound = click_default
+				pdx_tooltip = international_america_southern_tt
+			}
+		}
+
+		containerWindowType = {
+			name = "FCF_international_intervention_target_detail_window"
+			position = { x = 6 y = 595 }
+
+			containerWindowType = {
+				name = "FCF_international_intervention_target_detail_window_flag_window"
+				position = { x = 5 y = 15 }
+				scale = 1.4
+
+				iconType = {
+					name = "country_flag"
+					position = { x = 5 y = 5 }
+					quadTextureSprite = "GFX_flag_small2"
+					Orientation = "UPPER_LEFT"
+					alwaystransparent = yes
+				}
+				iconType = {
+					name = "FCF_diplo_countrylist_flag_frame"
+					position = { x = 0 y = 0 }
+					spriteType = "GFX_diplo_countrylist_flag_frame"
+					alwaystransparent = yes
+				}
+			}
+			instantTextboxType = {
+				name = "name"
+				position = { x = 76 y = 18 }
+				font = "hoi_18mbs"
+				text = international_intervention_target_name
+				format = left
+				maxWidth = 200
+				maxHeight = 40
+				fixedsize = yes
+			}
+
+			instantTextboxType = {
+				name = "base_information"
+				position = { x = 10 y = 65 }
+				font = "hoi_16mbs"
+				text = international_intervention_base_information
+				format = left
+				maxWidth = 160
+				maxHeight = 200
+				fixedsize = yes
+			}
+
+			instantTextboxType = {
+				name = "information"
+				position = { x = 180 y = 60 }
+				font = "hoi_16mbs"
+				text = international_intervention_information
+				format = left
+				maxWidth = 360
+				maxHeight = 167
+				fixedsize = no
+				scrollbarType = "standardtext_slider"
+			}
+		}
+
+		containerWindowType = {
+			name = "FCF_diplomacy_CAE_window"
+			position = { x = 590 y = 630 }
+			iconType = {
+				name = "FCF_diplomacy_CAE_portrait"
+				position = { x = 5 y = 5 }
+				scale = 0.5
+				pdx_tooltip = CSP_CAE_name_text_long
+				pdx_tooltip_delayed = gui_diplomacy_CAE_detail
+			}
+			iconType = {
+				name = "FCF_politics_CSP_CAE_portrait_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.67
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "FCF_diplomacy_CAE_text"
+				position = { x = -30 y = 130 }
+				font = "hoi_16mbs"
+				text = FCF_diplomacy_CAE_window
+				format = centre
+				maxWidth = 150
+				maxHeight = 40
+				pdx_tooltip = gui_diplomacy_CAE_detail
+			}
+		}
+		containerWindowType = {
+			name = "FCF_diplomacy_reform_display"
+			position = { x = 730 y = 626 }
+			scale = 0.97
+			iconType = {
+				name = "FCF_diplomacy_reform_tendency_posture_background"
+				position = { x = 24 y = 16 }
+				quadTextureSprite = "GFX_FCF_reform_tendency_left3_indicator"
+				pdx_tooltip = reform_tendency_diplomacy_posture_tt
+			}
+			iconType = {
+				name = "FCF_diplomacy_reform_tendency_posture_icon"
+				position = { x = 0 y = 0 }
+				quadTextureSprite = "GFX_FCF_diplomacy_reform_tendency_posture_indicator"
+				pdx_tooltip = reform_tendency_diplomacy_posture_tt
+			}
+
+			iconType = {
+				name = "FCF_diplomacy_reform_tendency_strategy_background"
+				position = { x = 24 y = 68 }
+				quadTextureSprite = "GFX_FCF_reform_tendency_left3_indicator"
+				pdx_tooltip = reform_tendency_diplomacy_strategy_tt
+			}
+			iconType = {
+				name = "FCF_diplomacy_reform_tendency_strategy_icon"
+				position = { x = 1 y = 57 }
+				quadTextureSprite = "GFX_FCF_diplomacy_reform_tendency_strategy_indicator"
+				pdx_tooltip = reform_tendency_diplomacy_strategy_tt
+			}
+
+			iconType = {
+				name = "FCF_diplomacy_reform_tendency_enemy_background"
+				position = { x = 23 y = 125 }
+				quadTextureSprite = "GFX_FCF_reform_tendency_left3_indicator"
+				pdx_tooltip = reform_tendency_diplomacy_enemy_tt
+			}
+			iconType = {
+				name = "FCF_diplomacy_reform_tendency_enemy_icon"
+				position = { x = -1 y = 110 }
+				quadTextureSprite = "GFX_FCF_diplomacy_reform_tendency_enemy_indicator"
+				pdx_tooltip = reform_tendency_diplomacy_enemy_tt
+			}
+		}
+
+		instantTextboxType = {
+			name = "FCF_internationale_header_text"
+			position = { x = 450 y = 20 }
+			font = "hoi_36header"
+			text = FCF_internationale_header_text
+			format = centre
+			maxWidth = 700
+			maxHeight = 40
+		}
+		containerWindowType = {
+			name = "FCF_international_phalanstere_ideology_window"
+			position = { x = 565 y = 55 }
+
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_1_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_1"
+				pdx_tooltip = phalanstere_ideology_1_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_2_icon"
+				position = { x = 60 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_2"
+				pdx_tooltip = phalanstere_ideology_2_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_3_icon"
+				position = { x = 120 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_3"
+				pdx_tooltip = phalanstere_ideology_3_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_4_icon"
+				position = { x = 180 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_4"
+				pdx_tooltip = phalanstere_ideology_4_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_5_icon"
+				position = { x = 240 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_5"
+				pdx_tooltip = phalanstere_ideology_5_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_6_icon"
+				position = { x = 300 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_6"
+				pdx_tooltip = phalanstere_ideology_6_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_7_icon"
+				position = { x = 360 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_7"
+				pdx_tooltip = phalanstere_ideology_7_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_8_icon"
+				position = { x = 420 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_8"
+				pdx_tooltip = phalanstere_ideology_8_tt
+			}
+		}
+
+		containerWindowType = {
+			name = "FCF_international_phalanstere_effect_button"
+			position = { x = 560 y = 126 }
+			size = { width = 130 height = 450 }
+			scale = 0.9
+
+			verticalScrollbar = "right_vertical_slider"
+			background = {
+				name = "background"
+				quadTextureSprite = "GFX_no_frame_bg"
+			}
+			gridboxtype = {
+				name = FCF_international_phalanstere_effect_list
+				position = { x = 10 y = 0 }
+				size = { width = 50 height = 100% }
+				slotsize = { width = 50 height = 45 }
+				add_horizontal = no
+			}
+		}
+
+		containerWindowType = {
+			name = "FCF_internationale_chairman_window"
+			position = { x = 590 y = 630 }
+			iconType = {
+				name = "FCF_internationale_chairman_portrait"
+				position = { x = 5 y = 5 }
+				spriteType = "GFX_portrait_FRA_charles_rappoport_civilian_large"
+				scale = 0.5
+			}
+			iconType = {
+				name = "FCF_internationale_chairman_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.67
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "FCF_internationale_chairman_text"
+				position = { x = -30 y = 130 }
+				font = "hoi_16mbs"
+				text = FCF_internationale_chairman_text
+				format = centre
+				maxWidth = 150
+				maxHeight = 40
+			}
+		}
+		instantTextboxType = {
+			name = "the_third_internatioale_information"
+			position = { x = 710 y = 635 }
+			font = "hoi_16mbs"
+			text = the_third_internatioale_information
+			format = left
+			maxWidth = 320
+			maxHeight = 160
+			scrollbarType = "standardtext_slider"
+		}
+	}
+	containerWindowType = {
+		name = "FCF_international_intervention_target_list_window"
+		position = { x = 15 y = 136 }
+		size = { width = 483 height = 60 }
+		clipping = yes
+
+		horizontalScrollbar = "bottom_horizontal_slider"
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_no_frame_bg"
+		}
+		gridboxtype = {
+			name = FCF_international_intervention_target_list_gui
+			position = { x = 5 y = 0 }
+			size = { width = 10 height = 100% }
+			slotsize = { width = 50 height = 35 }
+			add_horizontal = yes
+		}
+	}
+	containerWindowType = {
+		name = "FCF_international_intervention_target_position"
+		size = { width = 50 height = 35 }
+		clipping = yes
+
+		iconType = {
+			name = "FCF_country_choose_button_icon"
+			position = { x = 5 y = 5 }
+			quadTextureSprite = "GFX_flag_small2"
+			Orientation = "UPPER_LEFT"
+		}
+		buttonType = {
+			name = "FCF_diplo_countrylist_flag_frame_not_choose_button"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_diplo_countrylist_flag_frame"
+		}
+		buttonType = {
+			name = "FCF_diplo_countrylist_flag_frame_choose_button"
+			position = { x = 5 y = 5 }
+			spriteType = "GFX_major_country_flag_overlay"
+		}
+	}
+	containerWindowType = {
+		name = "FCF_international_phalanstere_cooperation_list_container"
+		position = { x = 680 y = 120 }
+		size = { width = 370 height = 485 }
+		clipping = yes
+
+		verticalScrollbar = "right_vertical_slider"
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_no_frame_bg"
+		}
+		gridboxtype = {
+			name = FCF_international_phalanstere_cooperation_list
+			position = { x = 25 y = 0 }
+			size = { width = 10 height = 100% }
+			slotsize = { width = 50 height = 35 }
+			add_horizontal = no
+		}
+	}
+	containerWindowType = {
+		name = "FCF_international_phalanstere_cooperation_entry"
+		size = { width = 336 height = 35 }
+		clipping = yes
+
+		buttonType = {
+			name = "FCF_international_phalanstere_cooperation_button"
+			spriteType = "GFX_name_list_item_bg"
+			clicksound = click_action
+			pdx_tooltip = phalanstere_cooperation_click_tooltip
+		}
+
+		iconType = {
+			name = "FCF_international_phalanstere_cooperation_checkbox_icon"
+			position = { x = 303 y = 4 }
+			quadTextureSprite = "GFX_generic_checkbox3"
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "name"
+			position = { x = 12 y = 7 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = phalanstere_cooperation_title
+			format = left
+			maxWidth = 245
+			maxHeight = 20
+			fixedsize = yes
+			textureFile = ""
+			borderSize = { x = 0 y = 0 }
+		}
+	}
+	containerWindowType = {
+		name = "FCF_international_phalanstere_effect_entry"
+		size = { width = 50 height = 35 }
+		clipping = no
+
+		buttonType = {
+			name = "FCF_international_phalanstere_effect_button"
+			position = { x = 0 y = 0 }
+			quadTextureSprite = "GFX_strategic_air_sort"
+			font = "hoi_16mbs"
+			text = phalanstere_effect_title
+			clicksound = click_default
+			pdx_tooltip = phalanstere_effect_tooltip
+		}
+	}
+### 国际窗口：其他国家的法伦施泰尔详情
+	containerWindowType = {
+		name = "FCF_internationale_other_button_window"
+		position = { x = -2 y = -120 }
+		size = { width = 80 height = 80 }
+		moveable = no
+		clipping = yes
+		background = {
+			name = "background1"
+			quadTextureSprite = "GFX_tiled_paper_bg2"
+		}
+		background = {
+			name = "background2"
+			quadTextureSprite = "GFX_tiled_research_bg"
+		}
+		buttonType = {
+			name = "FCF_open_internation_button"
+			position = { x = 10 y = 7 }
+			spriteType = "GFX_idea_FRA_phalanstere"
+			scale = 1
+			clicksound = click_default
+			pdx_tooltip = open_cgf_and_csp_window_tt
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_internationale_other_window"
+		position = { x = 1000 y = 120 }
+		size = { width = 510 height = 150 }
+
+		moveable = yes
+		clipping = no
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_FCF_internationale_other_background"
+		}
+
+		instantTextboxType = {
+			name = "FCF_internationale_header_text"
+			position = { x = -85 y = 20 }
+			font = "hoi_36header"
+			text = FCF_internationale_header_text
+			format = centre
+			maxWidth = 700
+			maxHeight = 40
+		}
+		containerWindowType = {
+			name = "FCF_international_phalanstere_ideology_window"
+			position = { x = 22 y = 55 }
+
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_1_icon"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_1"
+				pdx_tooltip = phalanstere_ideology_1_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_2_icon"
+				position = { x = 60 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_2"
+				pdx_tooltip = phalanstere_ideology_2_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_3_icon"
+				position = { x = 120 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_3"
+				pdx_tooltip = phalanstere_ideology_3_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_4_icon"
+				position = { x = 180 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_4"
+				pdx_tooltip = phalanstere_ideology_4_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_5_icon"
+				position = { x = 240 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_5"
+				pdx_tooltip = phalanstere_ideology_5_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_6_icon"
+				position = { x = 300 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_6"
+				pdx_tooltip = phalanstere_ideology_6_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_7_icon"
+				position = { x = 360 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_7"
+				pdx_tooltip = phalanstere_ideology_7_tt
+			}
+			iconType = {
+				name = "FCF_international_phalanstere_ideology_8_icon"
+				position = { x = 420 y = 0 }
+				spriteType = "GFX_FCF_international_phalanstere_ideology_8"
+				pdx_tooltip = phalanstere_ideology_8_tt
+			}
+		}
+
+		containerWindowType = {
+			name = "FCF_international_phalanstere_effect_button"
+			position = { x = 20 y = 126 }
+			size = { width = 130 height = 450 }
+			scale = 0.9
+
+			verticalScrollbar = "right_vertical_slider"
+			background = {
+				name = "background"
+				quadTextureSprite = "GFX_no_frame_bg"
+			}
+			gridboxtype = {
+				name = FCF_international_phalanstere_effect_list
+				position = { x = 10 y = 0 }
+				size = { width = 50 height = 100% }
+				slotsize = { width = 50 height = 45 }
+				add_horizontal = no
+			}
+		}
+
+		containerWindowType = {
+			name = "FCF_internationale_chairman_window"
+			position = { x = 50 y = 630 }
+			iconType = {
+				name = "FCF_internationale_chairman_portrait"
+				position = { x = 5 y = 5 }
+				spriteType = "GFX_portrait_FRA_charles_rappoport_civilian_large"
+				scale = 0.5
+			}
+			iconType = {
+				name = "FCF_internationale_chairman_frame"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_diplo_leader_frame"
+				scale = 0.67
+				alwaystransparent = yes
+			}
+			instantTextboxType = {
+				name = "FCF_internationale_chairman_text"
+				position = { x = -30 y = 130 }
+				font = "hoi_16mbs"
+				text = FCF_internationale_chairman_text
+				format = centre
+				maxWidth = 150
+				maxHeight = 40
+			}
+		}
+		instantTextboxType = {
+			name = "the_third_internatioale_information"
+			position = { x = 170 y = 635 }
+			font = "hoi_16mbs"
+			text = the_third_internatioale_information
+			format = left
+			maxWidth = 320
+			maxHeight = 160
+			scrollbarType = "standardtext_slider"
+		}
+
+		containerWindowType = {
+			name = "FCF_international_phalanstere_cooperation_list_container"
+			position = { x = 135 y = 120 }
+			size = { width = 370 height = 485 }
+			clipping = yes
+
+			verticalScrollbar = "right_vertical_slider"
+
+			background = {
+				name = "background"
+				quadTextureSprite = "GFX_no_frame_bg"
+			}
+			gridboxtype = {
+				name = FCF_international_phalanstere_cooperation_list
+				position = { x = 25 y = 0 }
+				size = { width = 10 height = 100% }
+				slotsize = { width = 50 height = 35 }
+				add_horizontal = no
+			}
+		}
+	}
+### 社会窗口：社会法案列表与表决详情
+	containerWindowType = {
+		name = "FCF_society_bills_button_window"
+		position = { x = 400 y = 408 }
+		size = { width = 10 height = 55 }
+		moveable = no
+		clipping = no
+		origo = upper_left
+
+		background = {
+			name = "background"
+			spriteType = "GFX_show_power_balance_button"
+		}
+
+		iconType = {
+			name = "FCF_bills_icon"
+			position = { x = 10 y = 5 }
+			spriteType = "GFX_decision_ger_mefo_bills"
+			scale = 1.5
+			pdx_tooltip = social_bills_number
+		}
+
+		buttonType = {
+			name = "FCF_society_bills_hidden_button"
+			position = { x = 75 y = 10 }
+			spriteType = "GFX_production_line_arrow_left"
+			scale = 1.2
+			clicksound = click_default
+			pdx_tooltip = hidden_social_bills
+		}
+
+		buttonType = {
+			name = "FCF_society_bills_show_button"
+			position = { x = 75 y = 10 }
+			spriteType = "GFX_production_line_arrow_right"
+			scale = 1.2
+			clicksound = click_default
+			pdx_tooltip = show_social_bills
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_society_bills_list_window"
+		position = { x = 538 y = 85 }
+		size = { width = 380 height = 700 }
+		moveable = yes
+		clipping = yes
+		origo = upper_left
+
+		fade_time = 300
+		fade_type = linear
+
+		background = {
+			name = "background"
+			spriteType = "GFX_tiled_window2_1b_border"
+		}
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_tiled_generic_overlay_bg1_small"
+		}
+
+		containerWindowType = {
+			name = "FCF_society_bills_detail_window"
+			position = { x = 10 y = 30 }
+			size = { width = 370 height = 662 }
+			verticalScrollbar = "right_vertical_slider"
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+			gridboxtype = {
+				name = FCF_society_bills_context_list
+				position = { x = 10 y = 8 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 1 }
+				add_horizontal = no
+			}
+		}
+
+		iconType = {
+			name = "header_title"
+			position = { x = 5 y = -6 }
+			spriteType = "GFX_category_header"
+			Orientation = "upper_left"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "header_icon"
+			position = { x = 5 y = 0 }
+			spriteType = "GFX_decision_category_ger_mefo_bills"
+			Orientation = "upper_left"
+			scale = 0.9
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_society_bills_list_window_esc_button"
+			position = { x = 345 y = 0 }
+			spriteType = "GFX_closebutton"
+			clicksound = click_default
+			shortcut = "ESCAPE"
+		}
+
+		instantTextboxType = {
+			name = "title"
+			position = { x = 50 y = 3 }
+			font = "hoi_24header"
+			text = society_bills_title
+			format = left
+			maxWidth = 300
+			maxHeight = 20
+		}
+
+	}
+
+	containerWindowType = {
+		name = "FCF_society_bill_window"
+		size = { width = 328 height = 75 }
+
+		clipping = yes
+
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_FCF_society_bills_background"
+		}
+
+		instantTextboxType = {
+			name = "FCF_bill_title"
+			position = { x = 16 y = 25 }
+			font = "hoi_24header"
+			text = society_bill_name
+			format = center
+			maxWidth = 300
+			maxHeight = 40
+			pdx_tooltip = FCF_society_bill_modifier_tt
+			pdx_tooltip_delayed = bill_delayed
+		}
+	}
+
+### 政治窗口：PCSP 与 PCGF 领袖肖像切换
+	containerWindowType = {
+		name = "FCF_country_leader_portrait_switch_window"
+		position = { x = 0 y = 0 }
+		size = { width = 10 height = 55 }
+		moveable = no
+		clipping = no
+		origo = upper_left
+
+		iconType = {
+			name = "leader_portrait"
+			position = { x = 18 y = 58 }
+			spriteType = "GFX_leader_unknown"
+			pdx_tooltip = CSP_PCSP_name_text_long
+			pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+		}
+
+		iconType = {
+			name = "FCF_leader_name_background"
+			position = { x = 10 y = 44 }
+			spriteType = "GFX_pol_leader_frame"
+			alwaystransparent = yes
+		}
+
+		instantTextboxType = {
+			name = "FCF_politics_leader_PCSP_name"
+			position = { x = 18 y = 262 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[PCSP_leader_loc]"
+			format = center
+			maxWidth = 155
+			maxHeight = 36
+			vertical_alignment = center
+		}
+
+		buttonType = {
+			name = "FCF_leader_portrait_switch_button"
+			position = { x = 143 y = 233 }
+			spriteType = "GFX_change_template_button"
+			clicksound = click_default
+		}
+	}
+
+	containerWindowType = {
+		name = "FCF_country_leader_portrait_switch_diplomacy_window"
+		position = { x = 0 y = 110 }
+		size = { width = 10 height = 55 }
+		moveable = no
+		clipping = no
+		origo = upper_left
+
+		iconType = {
+			name = "leader_portrait"
+			position = { x = 20 y = 10 }
+			spriteType = "GFX_leader_unknown"
+			scale = 0.74
+			pdx_tooltip = CSP_PCSP_name_text_long
+			pdx_tooltip_delayed = CSP_PCSP_name_delay_text
+		}
+
+		iconType = {
+			name = "FCF_diplo_leader_frame"
+			position = { x = 13 y = 0 }
+			spriteType = "GFX_diplo_leader_frame"
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_leader_portrait_switch_button"
+			position = { x = 105 y = 130 }
+			spriteType = "GFX_change_template_button"
+			clicksound = click_default
+		}
+	}
+### 顶部栏：政治、社会、经济与军事数值入口
+	containerWindowType = {
+		name = "FCF_economy_power_window"
+		position = { x = 1065 y = 5 }
+		size = { width = 70 height = 65 }
+		moveable = no
+		clipping = no
+		origo = upper_left
+
+		iconType = {
+			name = "FCF_economy_power_window_background"
+			position = { x = 0 y = 0 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+			pdx_tooltip = economy_power_gain_daily_tt
+		}
+		iconType = {
+			name = "FCF_ep_icon"
+			position = { x = 2 y = 2 }
+			spriteType = "GFX_economy_power_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_power_text"
+			position = { x = 18 y = 2 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_power|.0]"
+			format = center
+			maxWidth = 50
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		buttonType = {
+			name = "FCF_add_ep_with_pp_button"
+			position = { x = 71 y = 2 }
+			quadTextureSprite = "GFX_boost_building_button"
+			clicksound = click_default
+			pdx_tooltip = add_ep_with_pp_tt
+		}
+
+		iconType = {
+			name = "FCF_polp_icon"
+			position = { x = -45 y = -3 }
+			spriteType = "GFX_pol_power_icon"
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_add_pp_with_ep_button"
+			position = { x = -23 y = 2 }
+			quadTextureSprite = "GFX_boost_building_button"
+			clicksound = click_default
+			pdx_tooltip = add_pp_with_ep_tt
+		}
+
+	#政治
+		iconType = {
+			name = "FCF_politics_variable_background"
+			position = { x = 95 y = 0 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		buttonType = {
+			name = "FCF_politics_variable_list_show_button"
+			position = { x = 165 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "FCF_politics_variable_list_hide_button"
+			position = { x = 165 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+	#头标
+		iconType = {
+			name = "FCF_topbar_politics_CGF_vs_CSP_icon"
+			position = { x = 98 y = -3 }
+			spriteType = "GFX_pol_power_icon"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "FCF_topbar_politics_ii_europe_icon"
+			position = { x = 98 y = 2 }
+			spriteType = "GFX_international_europe_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_politics_ii_asia_icon"
+			position = { x = 98 y = 2 }
+			spriteType = "GFX_international_asia_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_politics_ii_middle_east_icon"
+			position = { x = 98 y = 2 }
+			spriteType = "GFX_international_middle_east_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_politics_ii_africa_icon"
+			position = { x = 98 y = 2 }
+			spriteType = "GFX_international_africa_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_politics_ii_america_icon"
+			position = { x = 98 y = 2 }
+			spriteType = "GFX_international_america_texticon"
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "FCF_topbar_politics_text"
+			position = { x = 111 y = 2 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[gui_politics]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		instantTextBoxType = {
+			name = "FCF_topbar_politics_vote_text"
+			position = { x = 100 y = 2 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?agreement_vote_count|.0G]/650"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+	#社会
+		iconType = {
+			name = "FCF_society_influence_background"
+			position = { x = 189 y = 0 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		buttonType = {
+			name = "FCF_society_influence_list_show_button"
+			position = { x = 259 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "FCF_society_influence_list_hide_button"
+			position = { x = 259 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+	#头标
+	#workers
+		iconType = {
+			name = "FCF_topbar_society_pop_workers_icon"
+			position = { x = 192 y = 2 }
+			spriteType = "GFX_pop_worker_texticon"
+			alwaystransparent = yes
+		}
+	#peasants
+		iconType = {
+			name = "FCF_topbar_society_pop_peasants_icon"
+			position = { x = 192 y = 2 }
+			spriteType = "GFX_pop_peasant_texticon"
+			alwaystransparent = yes
+		}
+	#merchants
+		iconType = {
+			name = "FCF_topbar_society_pop_merchants_icon"
+			position = { x = 192 y = 2 }
+			spriteType = "GFX_pop_merchant_texticon"
+			alwaystransparent = yes
+		}
+	#scholars
+		iconType = {
+			name = "FCF_topbar_society_pop_scholars_icon"
+			position = { x = 192 y = 2 }
+			spriteType = "GFX_pop_scholar_texticon"
+			alwaystransparent = yes
+		}
+	#bureaucrats
+		iconType = {
+			name = "FCF_topbar_society_pop_bureaucrats_icon"
+			position = { x = 192 y = 2 }
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			alwaystransparent = yes
+		}
+	#armys
+		iconType = {
+			name = "FCF_topbar_society_pop_army_icon"
+			position = { x = 192 y = 2 }
+			spriteType = "GFX_pop_army_texticon"
+			alwaystransparent = yes
+		}
+	#popsatiftion
+		iconType = {
+			name = "FCF_topbar_society_pop_satisfaction_icon"
+			position = { x = 192 y = -3 }
+			spriteType = "GFX_pol_power_icon"
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "FCF_topbar_society_text"
+			position = { x = 205 y = 2 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[gui_society]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+	#经济
+		iconType = {
+			name = "FCF_economy_variable_background"
+			position = { x = 283 y = 0 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		buttonType = {
+			name = "FCF_economy_variable_list_show_button"
+			position = { x = 353 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "FCF_economy_variable_list_hide_button"
+			position = { x = 353 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+	#头标
+		iconType = {
+			name = "FCF_topbar_economy_values_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_value_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_industry_basic_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_industry_basic_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_industry_process_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_industry_process_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_industry_arms_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_industry_arms_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_agriculture_mechanized_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_agriculture_mechanized_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_agriculture_chemical_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_agriculture_chemical_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_agriculture_chain_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_agriculture_chain_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_society_equality_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_society_equality_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_society_integration_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_society_integration_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_economy_society_innovation_icon"
+			position = { x = 286 y = 2 }
+			spriteType = "GFX_economy_society_innovation_texticon"
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "FCF_topbar_economy_text"
+			position = { x = 299 y = 2 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[gui_economy]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+		instantTextBoxType = {
+			name = "FCF_topbar_economy_focus_text"
+			position = { x = 288 y = 2 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_focus_slots_used|G.0]/[?economy_focus_slots_max|R.0]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+	#军事
+		iconType = {
+			name = "FCF_military_reform_variable_background"
+			position = { x = 377 y = 0 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		buttonType = {
+			name = "FCF_military_reform_variable_list_show_button"
+			position = { x = 447 y = 0 }
+			quadTextureSprite = "GFX_arrow_down_small"
+		}
+		buttonType = {
+			name = "FCF_military_reform_variable_list_hide_button"
+			position = { x = 447 y = 0 }
+			quadTextureSprite = "GFX_arrow_up_small"
+		}
+
+	#头标
+		iconType = {
+			name = "FCF_topbar_military_pop_officers_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_pop_officer_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_military_pop_NCOs_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_pop_nco_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_military_pop_soldiers_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_pop_soldier_texticon"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "FCF_topbar_military_army_autonomy_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_army_autonomy_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_military_army_willingness_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_army_willing_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_military_army_training_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_army_training_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_military_army_equipment_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_army_equipment_texticon"
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "FCF_topbar_military_army_enlistment_enthusiasm_icon"
+			position = { x = 380 y = 2 }
+			spriteType = "GFX_army_passionate_texticon"
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "FCF_topbar_military_text"
+			position = { x = 393 y = 2 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[gui_military]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+
+	#隐藏显示
+		buttonType = {
+			name = "FCF_hidden_top_bar_button"
+			position = { x = 470 y = -2 }
+			spriteType = "button_left"
+			Orientation = "UPPER_LEFT"
+			scale = 1.3
+		}
+		buttonType = {
+			name = "FCF_show_top_bar_button"
+			position = { x = 95 y = -2 }
+			spriteType = "button_right"
+			Orientation = "UPPER_LEFT"
+			scale = 1.3
+		}
+	}
+
+### 顶部栏展开列表：各类别数值明细
+# 政治数值
+	containerWindowType = {
+		name = "FCF_politics_variable_list"
+		position = { x = 1150 y = 30 }
+		size = { width = 92 height = 240 }
+
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+	#cgf vs csp
+		buttonType = {
+			name = "FCF_politics_CGF_vs_CSP_button"
+			position = { x = 10 y = 10 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_politics_CGF_vs_CSP_icon"
+			position = { x = 12 y = 8 }
+			spriteType = "GFX_pol_power_icon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_politics_CGF_vs_CSP_text"
+			position = { x = 24 y = 12 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?politics_CGF_CSP_balance|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_politics_CGF_vs_CSP_icon_selected"
+			position = { x = 70 y = 9 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#议会
+		buttonType = {
+			name = "FCF_vote_button"
+			position = { x = 10 y = 40 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		instantTextBoxType = {
+			name = "FCF_vote_text"
+			position = { x = 14 y = 42 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?agreement_vote_count|.0G]/650"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_vote_icon_selected"
+			position = { x = 70 y = 39 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#国际
+		buttonType = {
+			name = "FCF_international_intervention_europe_button"
+			position = { x = 10 y = 80 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_international_intervention_eu_icon"
+			position = { x = 12 y = 82 }
+			spriteType = "GFX_international_europe_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_international_intervention_europe_text"
+			position = { x = 24 y = 82 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?global.ii_europe_influence|C.0]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_international_intervention_eu_icon_selected"
+			position = { x = 70 y = 79 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_international_intervention_asia_button"
+			position = { x = 10 y = 110 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_international_intervention_as_icon"
+			position = { x = 12 y = 112 }
+			spriteType = "GFX_international_asia_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_international_intervention_asia_text"
+			position = { x = 24 y = 112 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?global.ii_asia_influence|C.0]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_international_intervention_as_icon_selected"
+			position = { x = 70 y = 109 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_international_intervention_middle_east_button"
+			position = { x = 10 y = 140 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_international_intervention_me_icon"
+			position = { x = 12 y = 142 }
+			spriteType = "GFX_international_middle_east_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_international_intervention_middle_east_text"
+			position = { x = 24 y = 142 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?global.ii_middle_east_influence|C.0]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_international_intervention_me_icon_selected"
+			position = { x = 70 y = 139 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_international_intervention_africa_button"
+			position = { x = 10 y = 170 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_international_intervention_af_icon"
+			position = { x = 12 y = 172 }
+			spriteType = "GFX_international_africa_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_international_intervention_africa_text"
+			position = { x = 24 y = 172 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?global.ii_africa_influence|C.0]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_international_intervention_af_icon_selected"
+			position = { x = 70 y = 169 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_international_intervention_america_button"
+			position = { x = 10 y = 200 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_international_intervention_am_icon"
+			position = { x = 12 y = 202 }
+			spriteType = "GFX_international_america_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_international_intervention_america_text"
+			position = { x = 24 y = 202 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?global.ii_america_influence|C.0]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_international_intervention_am_icon_selected"
+			position = { x = 70 y = 199 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+
+# 社会数值
+	containerWindowType = {
+		name = "FCF_society_influence_list"
+		position = { x = 1244 y = 30 }
+		size = { width = 92 height = 420 }
+
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+	#影响力
+	#workers
+		buttonType = {
+			name = "FCF_society_pop_workers_button"
+			position = { x = 10 y = 10 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_workers_icon"
+			position = { x = 12 y = 12 }
+			spriteType = "GFX_pop_worker_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_workers_text"
+			position = { x = 24 y = 12 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_workers|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_workers_icon_selected"
+			position = { x = 70 y = 9 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#peasants
+		buttonType = {
+			name = "FCF_society_pop_peasants_button"
+			position = { x = 10 y = 40 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_peasants_icon"
+			position = { x = 12 y = 42 }
+			spriteType = "GFX_pop_peasant_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_peasants_text"
+			position = { x = 24 y = 42 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_peasants|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_peasants_icon_selected"
+			position = { x = 70 y = 39 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#merchants
+		buttonType = {
+			name = "FCF_society_pop_merchants_button"
+			position = { x = 10 y = 70 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_merchants_icon"
+			position = { x = 12 y = 72 }
+			spriteType = "GFX_pop_merchant_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_merchants_text"
+			position = { x = 24 y = 72 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_merchants|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_merchants_icon_selected"
+			position = { x = 70 y = 69 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#scholars
+		buttonType = {
+			name = "FCF_society_pop_scholars_button"
+			position = { x = 10 y = 100 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_scholars_icon"
+			position = { x = 12 y = 102 }
+			spriteType = "GFX_pop_scholar_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_scholars_text"
+			position = { x = 24 y = 102 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_scholars|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_scholars_icon_selected"
+			position = { x = 70 y = 99 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#bureaucrats
+		buttonType = {
+			name = "FCF_society_pop_bureaucrats_button"
+			position = { x = 10 y = 130 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_bureaucrats_icon"
+			position = { x = 12 y = 132 }
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_bureaucrats_text"
+			position = { x = 24 y = 132 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_bureaucrats|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_bureaucrats_icon_selected"
+			position = { x = 70 y = 129 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#armys
+		buttonType = {
+			name = "FCF_society_pop_army_button"
+			position = { x = 10 y = 160 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_army_icon"
+			position = { x = 12 y = 162 }
+			spriteType = "GFX_pop_army_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_army_text"
+			position = { x = 24 y = 162 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_army|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_army_icon_selected"
+			position = { x = 70 y = 159 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#满意度
+		buttonType = {
+			name = "FCF_society_pop_satisfaction_total_button"
+			position = { x = 10 y = 200 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_total_icon"
+			position = { x = 10 y = 198 }
+			spriteType = "GFX_pol_power_icon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_satisfaction_total_text"
+			position = { x = 24 y = 202 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_total_icon_selected"
+			position = { x = 70 y = 199 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#workers
+		buttonType = {
+			name = "FCF_society_pop_satisfaction_workers_button"
+			position = { x = 10 y = 230 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_workers_icon"
+			position = { x = 12 y = 232 }
+			spriteType = "GFX_pop_worker_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_satisfaction_workers_text"
+			position = { x = 24 y = 232 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_workers|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_workers_icon_selected"
+			position = { x = 70 y = 229 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#peasants
+		buttonType = {
+			name = "FCF_society_pop_satisfaction_peasants_button"
+			position = { x = 10 y = 260 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_peasants_icon"
+			position = { x = 12 y = 262 }
+			spriteType = "GFX_pop_peasant_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_satisfaction_peasants_text"
+			position = { x = 24 y = 262 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_peasants|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_peasants_icon_selected"
+			position = { x = 70 y = 259 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#merchants
+		buttonType = {
+			name = "FCF_society_pop_satisfaction_merchants_button"
+			position = { x = 10 y = 290 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_merchants_icon"
+			position = { x = 12 y = 292 }
+			spriteType = "GFX_pop_merchant_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_satisfaction_merchants_text"
+			position = { x = 24 y = 292 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_merchants|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_merchants_icon_selected"
+			position = { x = 70 y = 289 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#scholars
+		buttonType = {
+			name = "FCF_society_pop_satisfaction_scholars_button"
+			position = { x = 10 y = 320 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_scholars_icon"
+			position = { x = 12 y = 322 }
+			spriteType = "GFX_pop_scholar_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_satisfaction_scholars_text"
+			position = { x = 24 y = 322 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_scholars|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_scholars_icon_selected"
+			position = { x = 70 y = 319 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#bureaucrats
+		buttonType = {
+			name = "FCF_society_pop_satisfaction_bureaucrats_button"
+			position = { x = 10 y = 350 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_bureaucrats_icon"
+			position = { x = 12 y = 352 }
+			spriteType = "GFX_pop_bureaucrat_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_satisfaction_bureaucrats_text"
+			position = { x = 24 y = 352 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_bureaucrats|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_bureaucrats_icon_selected"
+			position = { x = 70 y = 349 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#armys
+		buttonType = {
+			name = "FCF_society_pop_satisfaction_army_button"
+			position = { x = 10 y = 380 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_army_icon"
+			position = { x = 12 y = 382 }
+			spriteType = "GFX_pop_army_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_society_pop_satisfaction_army_text"
+			position = { x = 24 y = 382 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_satisfaction_army|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_society_pop_satisfaction_army_icon_selected"
+			position = { x = 70 y = 379 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+
+# 经济数值
+	containerWindowType = {
+		name = "FCF_economy_variable_list"
+		position = { x = 1338 y = 30 }
+		size = { width = 92 height = 360 }
+
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+	#经济指标
+	#ev
+		buttonType = {
+			name = "FCF_economy_values_button"
+			position = { x = 10 y = 10 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_values_icon"
+			position = { x = 12 y = 12 }
+			spriteType = "GFX_economy_value_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_values_text"
+			position = { x = 24 y = 12 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_values|.1+=]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_values_icon_selected"
+			position = { x = 70 y = 9 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#eib
+		buttonType = {
+			name = "FCF_economy_industry_basic_button"
+			position = { x = 10 y = 40 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_industry_basic_icon"
+			position = { x = 12 y = 42 }
+			spriteType = "GFX_economy_industry_basic_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_industry_basic_text"
+			position = { x = 24 y = 42 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_industry_basic|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_industry_basic_icon_selected"
+			position = { x = 70 y = 39 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#eip
+		buttonType = {
+			name = "FCF_economy_industry_process_button"
+			position = { x = 10 y = 70 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_industry_process_icon"
+			position = { x = 12 y = 72 }
+			spriteType = "GFX_economy_industry_process_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_industry_process_text"
+			position = { x = 24 y = 72 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_industry_process|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_industry_process_icon_selected"
+			position = { x = 70 y = 69 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#eia
+		buttonType = {
+			name = "FCF_economy_industry_arms_button"
+			position = { x = 10 y = 100 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_industry_arms_icon"
+			position = { x = 12 y = 102 }
+			spriteType = "GFX_economy_industry_arms_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_industry_arms_text"
+			position = { x = 24 y = 102 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_industry_arms|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_industry_arms_icon_selected"
+			position = { x = 70 y = 99 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#eam
+		buttonType = {
+			name = "FCF_economy_agriculture_mechanized_button"
+			position = { x = 10 y = 130 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_agriculture_mechanized_icon"
+			position = { x = 12 y = 132 }
+			spriteType = "GFX_economy_agriculture_mechanized_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_agriculture_mechanized_text"
+			position = { x = 24 y = 132 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_agriculture_mechanized|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_agriculture_mechanized_icon_selected"
+			position = { x = 70 y = 129 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#eae
+		buttonType = {
+			name = "FCF_economy_agriculture_chemical_button"
+			position = { x = 10 y = 160 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_agriculture_chemical_icon"
+			position = { x = 12 y = 162 }
+			spriteType = "GFX_economy_agriculture_chemical_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_agriculture_chemical_text"
+			position = { x = 24 y = 162 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_agriculture_chemical|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_agriculture_chemical_icon_selected"
+			position = { x = 70 y = 159 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#eaa
+		buttonType = {
+			name = "FCF_economy_agriculture_chain_button"
+			position = { x = 10 y = 190 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_agriculture_chain_icon"
+			position = { x = 12 y = 192 }
+			spriteType = "GFX_economy_agriculture_chain_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_agriculture_chain_text"
+			position = { x = 24 y = 192 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_agriculture_chain|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_agriculture_chain_icon_selected"
+			position = { x = 70 y = 189 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#eq
+		buttonType = {
+			name = "FCF_economy_society_equality_button"
+			position = { x = 10 y = 220 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_society_equality_icon"
+			position = { x = 12 y = 222 }
+			spriteType = "GFX_economy_society_equality_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_society_equality_text"
+			position = { x = 24 y = 222 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_society_equality|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_society_equality_icon_selected"
+			position = { x = 70 y = 219 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#el
+		buttonType = {
+			name = "FCF_economy_society_integration_button"
+			position = { x = 10 y = 250 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_society_integration_icon"
+			position = { x = 12 y = 252 }
+			spriteType = "GFX_economy_society_integration_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_society_integration_text"
+			position = { x = 24 y = 252 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_society_integration|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_society_integration_icon_selected"
+			position = { x = 70 y = 249 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#ei
+		buttonType = {
+			name = "FCF_economy_society_innovation_button"
+			position = { x = 10 y = 280 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_economy_society_innovation_icon"
+			position = { x = 12 y = 282 }
+			spriteType = "GFX_economy_society_innovation_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_society_innovation_text"
+			position = { x = 24 y = 282 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_society_innovation|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_society_innovation_icon_selected"
+			position = { x = 70 y = 279 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_economy_focus_button"
+			position = { x = 10 y = 320 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		instantTextBoxType = {
+			name = "FCF_economy_focus_text"
+			position = { x = 14 y = 322 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?economy_focus_slots_used|G.0]/[?economy_focus_slots_max|R.0]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_economy_focus_icon_selected"
+			position = { x = 70 y = 319 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	}
+
+# 军事数值
+	containerWindowType = {
+		name = "FCF_military_reform_variable_list"
+		position = { x = 1434 y = 30 }
+		size = { width = 92 height = 270 }
+
+		background = {
+			name = "Background"
+			quadTextureSprite = "GFX_tiled_plain_bg"
+		}
+
+	#军事数值
+		buttonType = {
+			name = "FCF_military_army_autonomy_button"
+			position = { x = 10 y = 10 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_army_autonomy_icon"
+			position = { x = 12 y = 12 }
+			spriteType = "GFX_army_autonomy_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_army_autonomy_text"
+			position = { x = 24 y = 12 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?army_autonomy|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_army_autonomy_icon_selected"
+			position = { x = 70 y = 9 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_military_army_willingness_button"
+			position = { x = 10 y = 40 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_army_willingness_icon"
+			position = { x = 12 y = 42 }
+			spriteType = "GFX_army_willing_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_army_willingness_text"
+			position = { x = 24 y = 42 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?army_willingness|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_army_willingness_icon_selected"
+			position = { x = 70 y = 39 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_military_army_training_button"
+			position = { x = 10 y = 70 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_army_training_icon"
+			position = { x = 12 y = 72 }
+			spriteType = "GFX_army_training_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_army_training_text"
+			position = { x = 24 y = 72 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?army_training|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_army_training_icon_selected"
+			position = { x = 70 y = 69 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_military_army_equipment_button"
+			position = { x = 10 y = 100 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_army_equipment_icon"
+			position = { x = 12 y = 102 }
+			spriteType = "GFX_army_equipment_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_army_equipment_text"
+			position = { x = 24 y = 102 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?army_equipment|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_army_equipment_icon_selected"
+			position = { x = 70 y = 99 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+		buttonType = {
+			name = "FCF_military_army_enlistment_enthusiasm_button"
+			position = { x = 10 y = 130 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_army_enlistment_enthusiasm_icon"
+			position = { x = 12 y = 132 }
+			spriteType = "GFX_army_passionate_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_army_enlistment_enthusiasm_text"
+			position = { x = 24 y = 132 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?army_enlistment_enthusiasm|Y.1]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_army_enlistment_enthusiasm_icon_selected"
+			position = { x = 70 y = 129 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#officers
+		buttonType = {
+			name = "FCF_military_pop_officers_button"
+			position = { x = 10 y = 170 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_pop_officers_icon"
+			position = { x = 12 y = 172 }
+			spriteType = "GFX_pop_officer_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_pop_officers_text"
+			position = { x = 24 y = 172 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_army_officers|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_pop_officers_icon_selected"
+			position = { x = 70 y = 169 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#ncos
+		buttonType = {
+			name = "FCF_military_pop_NCOs_button"
+			position = { x = 10 y = 200 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_pop_NCOs_icon"
+			position = { x = 12 y = 202 }
+			spriteType = "GFX_pop_nco_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_pop_NCOs_text"
+			position = { x = 24 y = 202 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_army_ncos|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_pop_NCOs_icon_selected"
+			position = { x = 70 y = 199 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+
+	#soldiers
+		buttonType = {
+			name = "FCF_military_pop_soldiers_button"
+			position = { x = 10 y = 230 }
+			spriteType = "GFX_generic_box_smallest"
+			Orientation = "UPPER_LEFT"
+		}
+		iconType = {
+			name = "FCF_military_pop_soldiers_icon"
+			position = { x = 12 y = 232 }
+			spriteType = "GFX_pop_soldier_texticon"
+			alwaystransparent = yes
+		}
+		instantTextBoxType = {
+			name = "FCF_military_pop_soldiers_text"
+			position = { x = 24 y = 232 }
+			alwaystransparent = yes
+			font = "hoi_18mbs"
+			text = "[?pop_army_soldiers|Y.1%%]"
+			format = center
+			maxWidth = 60
+			maxHeight = 24
+			fixedsize = yes
+		}
+		iconType = {
+			name = "FCF_military_pop_soldiers_icon_selected"
+			position = { x = 70 y = 249 }
+			spriteType = "GFX_BoP_left_texticon"
+			scale = 2
+			alwaystransparent = yes
+		}
+	}
+### 地块窗口：地区经济态势与投资策略
+	containerWindowType = {
+		name = "FCF_economy_state_situation_window"
+		position = { x = 420 y = -50 }
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "state_bg"
+			quadTextureSprite = "GFX_FCF_economy_state_situation_window"
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "FCF_selected_state_flag"
+			position = { x = 250 y = 210 }
+			spriteType = "GFX_FCF_economy_state_1_flag"
+		}
+		containerWindowType = {
+			name = "FCF_economy_state_strategy_context_window"
+			position = { x = 40 y = 215 }
+			size = { width = 215 height = 340 }
+			verticalScrollbar = "right_vertical_slider"
+			background = {
+				name = "Background"
+				quadTextureSprite = "GFX_tiled_window_1b_thin_border"
+			}
+			gridboxtype = {
+				name = FCF_economy_state_strategy_context_list
+				position = { x = 5 y = 0 }
+				size = { width = 440 height = 100% }
+				slotsize = { width = 440 height = 1 }
+				add_horizontal = no
+			}
+		}
+
+		instantTextboxType = {
+			name = "FCF_state_information"
+			position = { x = 55 y = 55 }
+			font = "hoi_16mbs"
+			text = FCF_state_information
+			format = left
+			maxWidth = 169
+			maxHeight = 150
+			fixedsize = no
+			scrollbarType = "standardtext_slider"
+		}
+		instantTextboxType = {
+			name = "FCF_economy_state_local_information"
+			position = { x = 245 y = 55 }
+			font = "hoi_18mbs"
+			text = FCF_economy_state_local_information
+			format = left
+			maxWidth = 90
+			maxHeight = 150
+			fixedsize = no
+		}
+
+		containerWindowType = {
+			name = "FCF_invest_state_button_list"
+			position = { x = 251 y = 266 }
+
+			buttonType = {
+				name = "FCF_invest_state_civilian_button"
+				position = { x = 0 y = 0 }
+				spriteType = "GFX_buildings_strip"
+				frame = 1
+				clicksound = click_default
+				pdx_tooltip = FCF_invest_state_civilian_button
+			}
+			buttonType = {
+				name = "FCF_invest_state_arms_button"
+				position = { x = 0 y = 45 }
+				spriteType = "GFX_buildings_strip"
+				frame = 2
+				clicksound = click_default
+				pdx_tooltip = FCF_invest_state_arms_button
+			}
+			buttonType = {
+				name = "FCF_invest_state_dockyard_button"
+				position = { x = 0 y = 90 }
+				spriteType = "GFX_buildings_strip"
+				frame = 4
+				clicksound = click_default
+				pdx_tooltip = FCF_invest_state_dockyard_button
+			}
+			buttonType = {
+				name = "FCF_invest_more_button"
+				position = { x = 0 y = 135 }
+				spriteType = "GFX_no_building"
+				clicksound = click_default
+				pdx_tooltip = FCF_invest_more_button
+			}
+		}
+	}
+	containerWindowType = {
+		name = "FCF_economy_state_strategy_container"
+		size = { width = 200 height = 85 }
+		clipping = bi
+		background = {
+			name = "background"
+			quadTextureSprite = "GFX_FCF_economy_state_strategy_container"
+		}
+		instantTextboxType = {
+			name = "FCF_economy_state_strategy_title"
+			position = { x = 10 y = 13 }
+			font = "hoi_16mbs"
+			text = economy_state_strategy_name
+			format = centre
+			maxWidth = 170
+			maxHeight = 20
+			pdx_tooltip = state_strategy_modifier
+		}
+	}
+}
