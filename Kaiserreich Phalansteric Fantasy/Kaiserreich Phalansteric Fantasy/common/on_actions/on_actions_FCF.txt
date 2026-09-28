@@ -1,7 +1,10 @@
 on_actions = {
 	on_startup = {
 		effect = {
-			NFA = { retire_character = NFA_antoine_bethouart }
+			NFA = { 
+				retire_character = NFA_antoine_bethouart 
+				retire_character = NFA_anatole_de_monzie
+			}
 			FRA = {
 			#设定
 				add_victory_points = { province = 9644 value = 1 }
@@ -149,8 +152,8 @@ on_actions = {
 				set_country_flag = PCSP_URSRS
 				set_variable = { current_CE = 200 }
 				set_country_flag = CE_CGT
-				set_variable = { current_CSI = 300 }
-				set_country_flag = CSI_URSRS
+				set_variable = { current_CI = 300 }
+				set_country_flag = CI_URSRS
 				set_variable = { current_CC = 400 }
 				set_country_flag = CC_URSRS
 				set_variable = { current_CGFF = 501 }
@@ -158,34 +161,34 @@ on_actions = {
 
 				set_variable = { CAE_attitude = -2 }
 				set_variable = { CE_attitude = -2 }
-				set_variable = { CSI_attitude = 3 }
+				set_variable = { CI_attitude = 3 }
 				set_variable = { CC_attitude = 0 }
 				set_variable = { CGFF_attitude = 2 }
 				politics_CSP_attitude_change = yes
 
 				politics_CSP_member_tendency_set = yes
 			#CGF
-				set_variable = { seat_CNS = 61 }
+				set_variable = { seat_CNS = 51 }
 				set_variable = { seat_PSF = 78 }
-				set_variable = { seat_POU = 94 }
-				set_variable = { seat_CGT = 162 }
+				set_variable = { seat_POU = 105 }
+				set_variable = { seat_CGT = 176 }
 				set_variable = { seat_PCOP = 90 }
-				set_variable = { seat_UA = 56 }
-				set_variable = { seat_LJR = 36 }
+				set_variable = { seat_UA = 41 }
+				set_variable = { seat_LND = 36 }
 				set_variable = { seat_URSRS = 36 }
 				set_variable = { seat_PAPF = 15 }
 				set_variable = { seat_ETC = 22 }
 				politics_CGF_seats_refresh = yes
 
-				set_variable = { agreement_CNS = 61 }
+				set_variable = { agreement_CNS = 51 }
 				set_variable = { agreement_PSF = 78 }
-				set_variable = { agreement_POU = 91 }
-				set_variable = { agreement_CGT = 3 }
+				set_variable = { agreement_POU = 104 }
+				set_variable = { agreement_CGT = 102 }
 				set_variable = { agreement_PCOP = 90 }
-				set_variable = { agreement_UA = 56 }
-				set_variable = { agreement_LJR = 9 }
-				set_variable = { agreement_URSRS = 4 }
-				set_variable = { agreement_PAPF = 15 }
+				set_variable = { agreement_UA = 36 }
+				set_variable = { agreement_LND = 19 }
+				set_variable = { agreement_URSRS = 31 }
+				set_variable = { agreement_PAPF = 12 }
 				set_variable = { agreement_ETC = 22 }
 				politics_CGF_agreement_count = yes
 
@@ -196,13 +199,13 @@ on_actions = {
 				set_variable = { PCOP_attitude = -9 }
 				set_variable = { UA_attitude = -10 }
 				set_variable = { URSRS_attitude = 9 }
-				set_variable = { LJR_attitude = 8 }
+				set_variable = { LND_attitude = 8 }
 				set_variable = { PAPF_attitude = -8 }
 
 				set_country_flag = POU_in_gov
 				set_country_flag = CGT_in_gov
 				set_country_flag = URSRS_in_gov
-				set_country_flag = LJR_in_gov
+				set_country_flag = LND_in_gov
 
 				set_variable = { CNS_faction^0 = 1 }
 				set_variable = { CNS_faction^1 = 41 }
@@ -211,9 +214,9 @@ on_actions = {
 				set_variable = { CNS_faction^4 = 5 }
 
 				set_variable = { PSF_faction^0 = 1 }
-				set_variable = { PSF_faction^1 = 45 }
+				set_variable = { PSF_faction^1 = 40 }
 				set_variable = { PSF_faction^2 = 25 }
-				set_variable = { PSF_faction^3 = 15 }
+				set_variable = { PSF_faction^3 = 20 }
 				set_variable = { PSF_faction^4 = 15 }
 
 				set_variable = { POU_faction^0 = 1 }
@@ -242,9 +245,9 @@ on_actions = {
 				set_variable = { URSRS_faction^1 = 70 }
 				set_variable = { URSRS_faction^2 = 30 }
 
-				set_variable = { LJR_faction^0 = 1 }
-				set_variable = { LJR_faction^1 = 65 }
-				set_variable = { LJR_faction^2 = 35 }
+				set_variable = { LND_faction^0 = 1 }
+				set_variable = { LND_faction^1 = 65 }
+				set_variable = { LND_faction^2 = 35 }
 
 				set_variable = { PAPF_faction^0 = 1 }
 				set_variable = { PAPF_faction^1 = 55 }
@@ -252,7 +255,6 @@ on_actions = {
 			#议案
 				activate_mission = FCF_politics_impeachment
 				set_country_flag = voting_for_bill
-				set_country_flag = bill_pass_need_434
 			#社会
 				set_country_flag = FCF_gui_society_pop_workers_selected
 			#人群
@@ -604,6 +606,124 @@ on_actions = {
 					set_country_flag = FCF_gui_international_intervention_africa_southern_visible
 				}
 			}
+
+			MAF = {
+				set_variable = { MAF_territory_list^1 = 965 } #德属东非
+				set_variable = { MAF_territory_list^2 = 927 } #喀麦隆保护领
+				set_variable = { MAF_territory_list^3 = 295 } #刚果保护领
+				set_variable = { MAF_territory_list^4 = 539 } #加蓬保护领
+				set_variable = { MAF_territory_list^5 = 877 } #多哥保护领
+				set_variable = { MAF_territory_list^6 = 876 } #达荷美保护领
+				set_variable = { MAF_territory_list^7 = 541 } #德属西南非洲
+				set_variable = { MAF_territory_list^8 = 973 } #尼日利亚殖民地/保护领
+				set_variable = { MAF_territory_list^9 = 274 } #黄金海岸殖民地
+				set_variable = { MAF_territory_list^10 = 547 } #肯尼亚殖民地/保护领
+				set_variable = { MAF_territory_list^11 = 548 } #乌干达保护领
+				set_variable = { MAF_territory_list^12 = 813 } #北罗得西亚
+				set_variable = { MAF_territory_list^13 = 871 } #尼亚萨兰保护领
+				
+				#德属东非
+				#既有铁路和种植园经济仍能运转，但领土辽阔、行政力量分散
+				set_variable = { MAF_territory_stability^965 = 56 }
+				set_variable = { MAF_territory_economy^965 = 51 }
+
+				#喀麦隆保护领
+				#族群和行政区划复杂，南部出口经济尚可，内陆控制较弱
+				set_variable = { MAF_territory_stability^927 = 48 }
+				set_variable = { MAF_territory_economy^927 = 46 }
+
+				#刚果保护领
+				#矿业产出庞大，但属于高度集中的飞地经济，强制劳动和地方暴力严重
+				set_variable = { MAF_territory_stability^295 = 37 }
+				set_variable = { MAF_territory_economy^295 = 68 }
+
+				#加蓬保护领
+				#人口稀少、反抗能力有限，但交通和产业开发程度较低
+				set_variable = { MAF_territory_stability^539 = 61 }
+				set_variable = { MAF_territory_economy^539 = 34 }
+
+				#多哥保护领
+				#面积较小、行政相对集中，出口农业和基础设施较为完整
+				set_variable = { MAF_territory_stability^877 = 65 }
+				set_variable = { MAF_territory_economy^877 = 55 }
+
+				#达荷美保护领
+				#行政控制尚可，但地方社会复杂，经济主要依赖有限的出口农业
+				set_variable = { MAF_territory_stability^876 = 54 }
+				set_variable = { MAF_territory_economy^876 = 41 }
+
+				#德属西南非洲
+				#铁路、矿业和白人定居区较为发达，但土地问题和族群敌意长期存在
+				set_variable = { MAF_territory_stability^541 = 43 }
+				set_variable = { MAF_territory_economy^541 = 58 }
+
+				#尼日利亚殖民地/保护领
+				#拥有最完整的旧英国行政和商业网络，但规模庞大、南北差异明显
+				set_variable = { MAF_territory_stability^973 = 58 }
+				set_variable = { MAF_territory_economy^973 = 63 }
+
+				#黄金海岸殖民地
+				#可可出口、港口和铁路体系成熟，是少数能够稳定提供实际收益的地区
+				set_variable = { MAF_territory_stability^274 = 68 }
+				set_variable = { MAF_territory_economy^274 = 70 }
+
+				#肯尼亚殖民地/保护领
+				#殖民农业和交通建设较强，但土地剥夺和白人定居政策制造严重矛盾
+				set_variable = { MAF_territory_stability^547 = 45 }
+				set_variable = { MAF_territory_economy^547 = 61 }
+
+				#乌干达保护领
+				#依靠布干达等地方政权实行间接统治，秩序较稳，出口经济规模有限
+				set_variable = { MAF_territory_stability^548 = 66 }
+				set_variable = { MAF_territory_economy^548 = 49 }
+
+				#北罗得西亚
+				#铜矿带迅速发展，但经济结构单一，行政薄弱并依赖外来劳动力
+				set_variable = { MAF_territory_stability^813 = 49 }
+				set_variable = { MAF_territory_economy^813 = 66 }
+
+				#尼亚萨兰保护领
+				#总体贫困且主要充当劳动力输出地，殖民机关尚能维持有限秩序
+				set_variable = { MAF_territory_stability^871 = 52 }
+				set_variable = { MAF_territory_economy^871 = 29 }
+
+				set_variable = { MAF_territory_construction_cost^965 = 1 } #德属东非
+				set_variable = { MAF_territory_suppress_cost^965 = 1 }
+				set_variable = { MAF_territory_construction_cost^927 = 1 } #喀麦隆保护领
+				set_variable = { MAF_territory_suppress_cost^927 = 1 }
+				set_variable = { MAF_territory_construction_cost^295 = 1 } #刚果保护领
+				set_variable = { MAF_territory_suppress_cost^295 = 1 }
+				set_variable = { MAF_territory_construction_cost^539 = 1 } #加蓬保护领
+				set_variable = { MAF_territory_suppress_cost^539 = 1 }
+				set_variable = { MAF_territory_construction_cost^877 = 1 } #多哥保护领
+				set_variable = { MAF_territory_suppress_cost^877 = 1 }
+				set_variable = { MAF_territory_construction_cost^876 = 1 } #达荷美保护领
+				set_variable = { MAF_territory_suppress_cost^876 = 1 }
+				set_variable = { MAF_territory_construction_cost^541 = 1 } #德属西南非洲
+				set_variable = { MAF_territory_suppress_cost^541 = 1 }
+				set_variable = { MAF_territory_construction_cost^973 = 1 } #尼日利亚殖民地/保护领
+				set_variable = { MAF_territory_suppress_cost^973 = 1 }
+				set_variable = { MAF_territory_construction_cost^274 = 1 } #黄金海岸殖民地
+				set_variable = { MAF_territory_suppress_cost^274 = 1 }
+				set_variable = { MAF_territory_construction_cost^547 = 1 } #肯尼亚殖民地/保护领
+				set_variable = { MAF_territory_suppress_cost^547 = 1 }
+				set_variable = { MAF_territory_construction_cost^548 = 1 } #乌干达保护领
+				set_variable = { MAF_territory_suppress_cost^548 = 1 }
+				set_variable = { MAF_territory_construction_cost^813 = 1 } #北罗得西亚
+				set_variable = { MAF_territory_suppress_cost^813 = 1 }
+				set_variable = { MAF_territory_construction_cost^871 = 1 } #尼亚萨兰保护领
+				set_variable = { MAF_territory_suppress_cost^871 = 1 }
+				
+				set_variable = { MAF_colonial_report_adjustment = 80 }
+				
+				set_variable = { MAF_report_padding = 50 }
+				set_variable = { MAF_true_stability = 25 }
+				set_variable = { GER.GER_MAF_credibility = 0 }
+				set_variable = { GER.GER_colonial_illusion_investment = 1 }
+				MAF_colonial_illusion_modifier_update = yes
+				add_dynamic_modifier = { modifier = MAF_colonial_illusion_modifier }
+			}
+			GER = { add_dynamic_modifier = { modifier = MAF_colonial_illusion_modifier } }
 		}
 	}
 	on_daily_FRA = {
@@ -934,10 +1054,10 @@ on_actions = {
 			}
 
 			if = {
-				limit = { any_owned_state = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } }
+				limit = { any_owned_state = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } }
 				every_owned_state = {
 					if = {
-						limit = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } }
+						limit = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } }
 						set_variable = { international_intervention_state_ireland_revolution_local_factories = international_intervention_state_ireland_revolution_control }
 						multiply_variable = { international_intervention_state_ireland_revolution_local_factories = -0.3 }
 						set_variable = { international_intervention_state_ireland_revolution_recruitable_population_factor = international_intervention_state_ireland_revolution_control }
@@ -946,14 +1066,14 @@ on_actions = {
 					if = {
 						limit = {
 							is_demilitarized_zone = yes
-							NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } }
+							NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } }
 						}
 						set_demilitarized_zone = no
 					}
 					if = {
 						limit = {
 							is_demilitarized_zone = no
-							has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id }
+							has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id }
 						}
 						set_demilitarized_zone = yes
 					}
@@ -972,8 +1092,71 @@ on_actions = {
 				add_to_variable = { all_gone_times = 1 }
 				if = {
 					limit = { NOT = { check_variable = { all_gone_times < 14 } } }
+					country_event = fcf_international_events.10
 					country_event = fcf_international_events.146
 					set_variable = { all_gone_times = 0 }
+				}
+			}
+		}
+	}
+	on_daily_MAF = {
+		effect = {
+			set_variable = { MAF_stable_territory_count = 0 }
+			for_loop_effect = {
+				start = 1
+				end = 14
+				value = idx
+				set_temp_variable = { territory_id = MAF_territory_list^idx }
+				if = {
+					limit = { check_variable = { MAF.MAF_territory_stability^territory_id > 70 } }
+					add_to_variable = { MAF_stable_territory_count = 1 }
+				}
+			}
+		}
+	}
+	on_weekly_MAF = { 
+		effect = { 
+			MAF_colonial_illusion_modifier_update = yes 
+		} 
+	}
+	on_monthly_MAF = {
+		effect = {
+			add_to_variable = { MAF_construction_points = { value = MAF_construction_points_monthly add = GER.MAF_construction_points_monthly } }
+			add_to_variable = { MAF_suppress_points = { value = MAF_suppress_points_monthly add = GER.MAF_suppress_points_monthly } }
+			MAF_construction_and_suppress_points_change = yes
+		}
+	}
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = { has_country_flag = GER_boost_market_confidence_activating }
+				if = {
+					limit = { NOT = { check_variable = { GER_boost_market_confidence_activating_count > 1 } } }
+					add_to_variable = { MAF.MAF_colonial_report_adjustment = { value = GER_boost_market_confidence_activating_count multiply = -1 } }
+					clr_country_flag = GER_boost_market_confidence_activating
+				}
+				else = {
+					add_to_variable = { GER_boost_market_confidence_activating_count = -1 }
+					add_to_variable = { MAF.MAF_colonial_report_adjustment = -1 }
+				}
+			}
+
+			if = {
+				limit = { has_dynamic_modifier = { modifier = GER_colonial_illusion_collapsed_modifier } }
+				add_to_variable = { colonial_illusion_collapsed_political_power_gain = 0.002 }
+				add_to_variable = { colonial_illusion_collapsed_stability_factor = 0.008 }
+				add_to_variable = { colonial_illusion_collapsed_production_factory_max_efficiency_factor = 0.0006 }
+				add_to_variable = { colonial_illusion_collapsed_industrial_capacity_factory = 0.0006 }
+				add_to_variable = { colonial_illusion_collapsed_production_speed_buildings_factor = 0.0006 }
+				add_to_variable = { colonial_illusion_collapsed_consumer_goods_factor = -0.001 }
+				if = {
+					limit = { has_country_flag = GER_has_evacuate_africa }
+					add_to_variable = { colonial_illusion_collapsed_political_power_gain = 0.002 }
+					add_to_variable = { colonial_illusion_collapsed_stability_factor = 0.008 }
+					add_to_variable = { colonial_illusion_collapsed_production_factory_max_efficiency_factor = 0.0006 }
+					add_to_variable = { colonial_illusion_collapsed_industrial_capacity_factory = 0.0006 }
+					add_to_variable = { colonial_illusion_collapsed_production_speed_buildings_factor = 0.0006 }
+					add_to_variable = { colonial_illusion_collapsed_consumer_goods_factor = -0.001 }
 				}
 			}
 		}
@@ -1008,7 +1191,7 @@ on_actions = {
 							}
 						}
 					}
-					set_global_flag = TEMPORARY_CSIABLED_FACTION_POPUP
+					set_global_flag = TEMPORARY_CIABLED_FACTION_POPUP
 					var:ii_previous_faction_leader = {
 						diplomatic_relation = {
 							country = PREV

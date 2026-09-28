@@ -56,7 +56,16 @@ FCF_economy_state_general_modifier = {
 # 作用域：地块。承载当前地块经济状况、建设速度、资源与投资成本修正。
 FCF_economy_state_situation_modifier = {
 	icon = "GFX_decision_gre_paying_ifc_debt"
-	enable = { is_controlled_by = FRA }
+	enable = { 
+		OR = {
+			is_owned_and_controlled_by = FRA 
+			AND = {
+				is_owned_and_controlled_by = FRP
+				FRP = { has_idea = FCF_french_region_of_switzerland }
+				SWI = { has_country_flag = SWI_special_relationship_with_france_autonomy }
+			}
+		}
+	}
 #国家
 	industrial_factory_donations = economy_state_situation_modifier_industrial_factory_donations
 	military_factory_donations = economy_state_situation_modifier_military_factory_donations

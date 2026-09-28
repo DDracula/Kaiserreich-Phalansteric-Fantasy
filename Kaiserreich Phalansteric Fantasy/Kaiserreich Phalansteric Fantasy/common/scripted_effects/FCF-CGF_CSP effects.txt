@@ -201,7 +201,7 @@
 		resize_array = { array = array_f_array value = 2 size = cumulative_seat_count }
 		add_to_temp_variable = { cumulative_seat_count = seat_URSRS }
 		resize_array = { array = array_f_array value = 8 size = cumulative_seat_count }
-		add_to_temp_variable = { cumulative_seat_count = seat_LJR }
+		add_to_temp_variable = { cumulative_seat_count = seat_LND }
 		resize_array = { array = array_f_array value = 7 size = cumulative_seat_count }
 		add_to_temp_variable = { cumulative_seat_count = seat_PAPF }
 		resize_array = { array = array_f_array value = 11 size = cumulative_seat_count }
@@ -1536,7 +1536,7 @@
 	#set_temp_variable = { seat_change_PCOP = 0 }
 	#set_temp_variable = { seat_change_UA = 0 }
 	#set_temp_variable = { seat_change_URSRS = 0 }
-	#set_temp_variable = { seat_change_LJR = 0 }
+	#set_temp_variable = { seat_change_LND = 0 }
 	#set_temp_variable = { seat_change_PAPF = 0 }
 	#set_temp_variable = { seat_change_ETC = 0 }
 	#politics_CGF_seat_change = yes
@@ -1548,7 +1548,7 @@
 			text = {
 				for_loop_effect = {
 					start = 1
-					end = 11
+					end = 12
 					value = target_party_id
 					set_temp_variable = { current_seat_array^target_party_id = seat_[PARTY] }
 					set_temp_variable = { seat_change_array^target_party_id = seat_change_[PARTY] }
@@ -1584,7 +1584,7 @@
 			text = {
 				for_loop_effect = {
 					start = 1
-					end = 11
+					end = 12
 					value = target_party_id
 					set_temp_variable = { seat_change_[PARTY] = seat_change_array^target_party_id }
 				}
@@ -1628,9 +1628,9 @@
 			custom_effect_tooltip = politics_CGF_seat_change_URSRS_tt
 		}
 		if = {
-			limit = { NOT = { check_variable = { seat_change_LJR = 0 } } }
-			add_to_variable = { seat_LJR = seat_change_LJR }
-			custom_effect_tooltip = politics_CGF_seat_change_LJR_tt
+			limit = { NOT = { check_variable = { seat_change_LND = 0 } } }
+			add_to_variable = { seat_LND = seat_change_LND }
+			custom_effect_tooltip = politics_CGF_seat_change_LND_tt
 		}
 		if = {
 			limit = { NOT = { check_variable = { seat_change_PAPF = 0 } } }
@@ -1688,9 +1688,9 @@
 			set_temp_variable = { seat_change_URSRS = seat_change }
 		}
 		if = {
-			limit = { has_country_flag = LJR_in_gov }
+			limit = { has_country_flag = LND_in_gov }
 			add_to_temp_variable = { coalition_party_count = 1 }
-			set_temp_variable = { seat_change_LJR = seat_change }
+			set_temp_variable = { seat_change_LND = seat_change }
 		}
 		if = {
 			limit = { has_country_flag = PAPF_in_gov }
@@ -1772,11 +1772,11 @@
 			}
 		}
 		if = {
-			limit = { NOT = { has_country_flag = LJR_in_gov } }
-			set_temp_variable = { seat_change_LJR = opposition_base_change }
+			limit = { NOT = { has_country_flag = LND_in_gov } }
+			set_temp_variable = { seat_change_LND = opposition_base_change }
 			if = {
 				limit = { check_variable = { remaining_seat_change > 0 } }
-				add_to_temp_variable = { seat_change_LJR = { value = 1 if = { limit = { value = seat_change_sign greater_than = 0 } multiply = -1 } } }
+				add_to_temp_variable = { seat_change_LND = { value = 1 if = { limit = { value = seat_change_sign greater_than = 0 } multiply = -1 } } }
 				add_to_temp_variable = { remaining_seat_change = -1 }
 			}
 		}
@@ -1800,7 +1800,7 @@
 	#set_temp_variable = { agreement_change_PCOP = 0 }
 	#set_temp_variable = { agreement_change_UA = 0 }
 	#set_temp_variable = { agreement_change_URSRS = 0 }
-	#set_temp_variable = { agreement_change_LJR = 0 }
+	#set_temp_variable = { agreement_change_LND = 0 }
 	#set_temp_variable = { agreement_change_PAPF = 0 }
 	#set_temp_variable = { agreement_change_ETC = 0 }
 	#politics_CGF_agreement_change = yes
@@ -1898,17 +1898,17 @@
 			custom_effect_tooltip = politics_CGF_agreement_change_URSRS_tt
 		}
 		if = {
-			limit = { NOT = { check_variable = { agreement_change_LJR = 0 } } }
+			limit = { NOT = { check_variable = { agreement_change_LND = 0 } } }
 			if = {
-				limit = { check_expr = { value = agreement_change_LJR add = agreement_LJR subtract = seat_LJR greater_than = 0 } }
-				set_temp_variable = { agreement_change_LJR = { value = seat_LJR subtract = agreement_LJR } }
+				limit = { check_expr = { value = agreement_change_LND add = agreement_LND subtract = seat_LND greater_than = 0 } }
+				set_temp_variable = { agreement_change_LND = { value = seat_LND subtract = agreement_LND } }
 			}
 			else_if = {
-				limit = { check_expr = { value = agreement_change_LJR add = agreement_LJR subtract = seat_LJR less_than = 0 } }
-				set_temp_variable = { agreement_change_LJR = { value = agreement_LJR multiply = -1 } }
+				limit = { check_expr = { value = agreement_change_LND add = agreement_LND subtract = seat_LND less_than = 0 } }
+				set_temp_variable = { agreement_change_LND = { value = agreement_LND multiply = -1 } }
 			}
-			add_to_variable = { agreement_LJR = agreement_change_LJR }
-			custom_effect_tooltip = politics_CGF_agreement_change_LJR_tt
+			add_to_variable = { agreement_LND = agreement_change_LND }
+			custom_effect_tooltip = politics_CGF_agreement_change_LND_tt
 		}
 		if = {
 			limit = { NOT = { check_variable = { agreement_change_PAPF = 0 } } }
@@ -1950,7 +1950,7 @@
 		add_to_variable = { agreement_vote_count = agreement_PCOP }
 		add_to_variable = { agreement_vote_count = agreement_UA }
 		add_to_variable = { agreement_vote_count = agreement_URSRS }
-		add_to_variable = { agreement_vote_count = agreement_LJR }
+		add_to_variable = { agreement_vote_count = agreement_LND }
 		add_to_variable = { agreement_vote_count = agreement_PAPF }
 		add_to_variable = { agreement_vote_count = agreement_ETC }
 
@@ -1986,7 +1986,7 @@
 	#set_temp_variable = { PCOP_bill_support_score = 0 }
 	#set_temp_variable = { UA_bill_support_score = 0 }
 	#set_temp_variable = { URSRS_bill_support_score = 0 }
-	#set_temp_variable = { LJR_bill_support_score = 0 }
+	#set_temp_variable = { LND_bill_support_score = 0 }
 	#set_temp_variable = { PAPF_bill_support_score = 0 }
 	#set_temp_variable = { ETC_bill_support_score = 0 }
 	#politics_CGF_vote_set = yes
@@ -2394,14 +2394,14 @@
 			divide_variable = { agreement_URSRS = 10 }
 			round_variable = agreement_URSRS
 		}
-	### LJR
+	### LND
 		if = {
 			limit = {
 				set_temp_variable = { target_party_id = 8 }
 				set_temp_variable = { target_attitude_level = 5 }
 				politics_party_attitude_evaluate = yes
 			}
-			add_to_temp_variable = { LJR_bill_support_score = 3 }
+			add_to_temp_variable = { LND_bill_support_score = 3 }
 		}
 		else_if = {
 			limit = {
@@ -2409,7 +2409,7 @@
 				set_temp_variable = { target_attitude_level = 4 }
 				politics_party_attitude_evaluate = yes
 			}
-			add_to_temp_variable = { LJR_bill_support_score = 1 }
+			add_to_temp_variable = { LND_bill_support_score = 1 }
 		}
 		else_if = {
 			limit = {
@@ -2417,7 +2417,7 @@
 				set_temp_variable = { target_attitude_level = 2 }
 				politics_party_attitude_evaluate = yes
 			}
-			add_to_temp_variable = { LJR_bill_support_score = -1 }
+			add_to_temp_variable = { LND_bill_support_score = -1 }
 		}
 		else_if = {
 			limit = {
@@ -2425,31 +2425,31 @@
 				set_temp_variable = { target_attitude_level = 1 }
 				politics_party_attitude_evaluate = yes
 			}
-			add_to_temp_variable = { LJR_bill_support_score = -3 }
+			add_to_temp_variable = { LND_bill_support_score = -3 }
 		}
 		if = {
-			limit = { has_country_flag = LJR_in_gov }
-			add_to_temp_variable = { LJR_bill_support_score = 2 }
+			limit = { has_country_flag = LND_in_gov }
+			add_to_temp_variable = { LND_bill_support_score = 2 }
 		}
 		set_temp_variable = { voting_group_is_party = 0 }
-		set_temp_variable = { party_attitude_to_bill = LJR_bill_support_score }
+		set_temp_variable = { party_attitude_to_bill = LND_bill_support_score }
 		custom_effect_tooltip = {
 			localization_key = party_attitude_to_bill_text
-			PARTY = party_LJR
+			PARTY = party_LND
 		}
 		if = {
-			limit = { check_variable = { LJR_bill_support_score < 1 } }
-			set_variable = { agreement_LJR = 0 }
+			limit = { check_variable = { LND_bill_support_score < 1 } }
+			set_variable = { agreement_LND = 0 }
 		}
 		else_if = {
-			limit = { check_variable = { LJR_bill_support_score > 9 } }
-			set_variable = { agreement_LJR = seat_LJR }
+			limit = { check_variable = { LND_bill_support_score > 9 } }
+			set_variable = { agreement_LND = seat_LND }
 		}
 		else = {
-			set_variable = { agreement_LJR = seat_LJR }
-			multiply_variable = { agreement_LJR = LJR_bill_support_score }
-			divide_variable = { agreement_LJR = 10 }
-			round_variable = agreement_LJR
+			set_variable = { agreement_LND = seat_LND }
+			multiply_variable = { agreement_LND = LND_bill_support_score }
+			divide_variable = { agreement_LND = 10 }
+			round_variable = agreement_LND
 		}
 	### PAPF
 		if = {
@@ -2540,7 +2540,7 @@
 	#set_temp_variable = { PCOP_attitude_change = 0 }
 	#set_temp_variable = { UA_attitude_change = 0 }
 	#set_temp_variable = { URSRS_attitude_change = 0 }
-	#set_temp_variable = { LJR_attitude_change = 0 }
+	#set_temp_variable = { LND_attitude_change = 0 }
 	#set_temp_variable = { PAPF_attitude_change = 0 }
 	#politics_party_attitude_change = yes
 	### 作用域：国家；主要作用：按各党派输入变化量更新党派态度并限制取值范围。
@@ -2588,10 +2588,10 @@
 			clamp_variable = { var = URSRS_attitude max = 10 min = -10 }
 		}
 		if = {
-			limit = { NOT = { check_variable = { LJR_attitude_change = 0 } } }
-			add_to_variable = { LJR_attitude = LJR_attitude_change }
-			custom_effect_tooltip = politics_party_attitude_change_LJR_tt
-			clamp_variable = { var = LJR_attitude max = 10 min = -10 }
+			limit = { NOT = { check_variable = { LND_attitude_change = 0 } } }
+			add_to_variable = { LND_attitude = LND_attitude_change }
+			custom_effect_tooltip = politics_party_attitude_change_LND_tt
+			clamp_variable = { var = LND_attitude max = 10 min = -10 }
 		}
 		if = {
 			limit = { NOT = { check_variable = { PAPF_attitude_change = 0 } } }
@@ -2744,7 +2744,7 @@
 		set_temp_variable = { election_bloc_seats^1 = seat_POU }
 		add_to_temp_variable = { election_bloc_seats^1 = seat_CGT }
 		add_to_temp_variable = { election_bloc_seats^1 = seat_URSRS }
-		add_to_temp_variable = { election_bloc_seats^1 = seat_LJR }
+		add_to_temp_variable = { election_bloc_seats^1 = seat_LND }
 
 		set_temp_variable = { election_bloc_seats^2 = seat_PCOP }
 		add_to_temp_variable = { election_bloc_seats^2 = seat_UA }
@@ -2812,9 +2812,9 @@
 			if = {
 				limit = {
 					check_variable = { seat_CNS > seat_CGT }
-					has_country_flag = CNS_cooperate_with_LJR
+					has_country_flag = CNS_cooperate_with_LND
 				}
-				add_to_temp_variable = { election_bloc_seats^4 = seat_LJR }
+				add_to_temp_variable = { election_bloc_seats^4 = seat_LND }
 			}
 			if = {
 				limit = {
@@ -2936,7 +2936,7 @@
 		clr_country_flag = POU_in_gov
 		clr_country_flag = CGT_in_gov
 		clr_country_flag = URSRS_in_gov
-		clr_country_flag = LJR_in_gov
+		clr_country_flag = LND_in_gov
 		set_country_flag = PCOP_in_gov
 		set_country_flag = UA_in_gov
 
@@ -2947,7 +2947,7 @@
 		set_variable = { PCOP_attitude = 10 }
 		set_variable = { UA_attitude = 9 }
 		set_variable = { URSRS_attitude = 2 }
-		set_variable = { LJR_attitude = 2 }
+		set_variable = { LND_attitude = 2 }
 		set_variable = { PAPF_attitude = -3 }
 		custom_effect_tooltip = tooltip_dividing_line
 		add_stability = 0.03
@@ -2968,6 +2968,7 @@
 		hidden_effect = {
 			news_event = { id = fcf_politics_events.34 days = 1 }
 			country_event = { id = fcf_society_events.5 days = 20 }
+			country_event = { id = fcf_politics_events.41 days = 30 }
 		}
 	}
 	### 作用域：国家；主要作用：落实工农联盟未过半时的联合政府与后续事件。
@@ -2977,7 +2978,7 @@
 		clr_country_flag = POU_in_gov
 		clr_country_flag = CGT_in_gov
 		clr_country_flag = URSRS_in_gov
-		clr_country_flag = LJR_in_gov
+		clr_country_flag = LND_in_gov
 		set_country_flag = PCOP_in_gov
 		set_country_flag = UA_in_gov
 
@@ -2988,7 +2989,7 @@
 		set_variable = { PCOP_attitude = 10 }
 		set_variable = { UA_attitude = 9 }
 		set_variable = { URSRS_attitude = 2 }
-		set_variable = { LJR_attitude = 2 }
+		set_variable = { LND_attitude = 2 }
 		set_variable = { PAPF_attitude = -3 }
 		custom_effect_tooltip = tooltip_dividing_line
 
@@ -3010,6 +3011,7 @@
 		hidden_effect = {
 			news_event = { id = fcf_politics_events.34 days = 1 }
 			country_event = { id = fcf_society_events.5 days = 20 }
+			country_event = { id = fcf_politics_events.41 days = 30 }
 		}
 	}
 
@@ -3020,7 +3022,7 @@
 		clr_country_flag = POU_in_gov
 		clr_country_flag = CGT_in_gov
 		clr_country_flag = URSRS_in_gov
-		clr_country_flag = LJR_in_gov
+		clr_country_flag = LND_in_gov
 		set_country_flag = PSF_in_gov
 		set_country_flag = PAPF_in_gov
 
@@ -3031,7 +3033,7 @@
 		set_variable = { PCOP_attitude = -9 }
 		set_variable = { UA_attitude = -10 }
 		set_variable = { URSRS_attitude = 2 }
-		set_variable = { LJR_attitude = -2 }
+		set_variable = { LND_attitude = -2 }
 		set_variable = { PAPF_attitude = 9 }
 		custom_effect_tooltip = tooltip_dividing_line
 		add_stability = 0.04
@@ -3073,7 +3075,7 @@
 		clr_country_flag = POU_in_gov
 		clr_country_flag = CGT_in_gov
 		clr_country_flag = URSRS_in_gov
-		clr_country_flag = LJR_in_gov
+		clr_country_flag = LND_in_gov
 		set_country_flag = PSF_in_gov
 		set_country_flag = PAPF_in_gov
 
@@ -3084,7 +3086,7 @@
 		set_variable = { PCOP_attitude = -9 }
 		set_variable = { UA_attitude = -10 }
 		set_variable = { URSRS_attitude = 3 }
-		set_variable = { LJR_attitude = -2 }
+		set_variable = { LND_attitude = -2 }
 		set_variable = { PAPF_attitude = 9 }
 		custom_effect_tooltip = tooltip_dividing_line
 		add_stability = 0.01
@@ -3144,7 +3146,7 @@
 		}
 		custom_effect_tooltip = party_attitude_will_reset
 		clr_country_flag = POU_in_gov
-		clr_country_flag = LJR_in_gov
+		clr_country_flag = LND_in_gov
 		set_country_flag = PSF_in_gov
 		set_country_flag = PAPF_in_gov
 
@@ -3153,7 +3155,7 @@
 		set_variable = { POU_attitude = -7 }
 		set_variable = { PCOP_attitude = -9 }
 		set_variable = { UA_attitude = -10 }
-		set_variable = { LJR_attitude = -2 }
+		set_variable = { LND_attitude = -2 }
 		set_variable = { PAPF_attitude = 9 }
 		custom_effect_tooltip = tooltip_dividing_line
 		add_stability = 0.04
@@ -3240,7 +3242,7 @@
 		}
 		custom_effect_tooltip = party_attitude_will_reset
 		clr_country_flag = POU_in_gov
-		clr_country_flag = LJR_in_gov
+		clr_country_flag = LND_in_gov
 		set_country_flag = PSF_in_gov
 		set_country_flag = PAPF_in_gov
 
@@ -3249,7 +3251,7 @@
 		set_variable = { POU_attitude = -7 }
 		set_variable = { PCOP_attitude = -9 }
 		set_variable = { UA_attitude = -10 }
-		set_variable = { LJR_attitude = -2 }
+		set_variable = { LND_attitude = -2 }
 		set_variable = { PAPF_attitude = 9 }
 		custom_effect_tooltip = tooltip_dividing_line
 		add_stability = 0.06
@@ -3315,25 +3317,25 @@
 		if = {
 			limit = {
 				has_country_flag = CNS_cooperate_with_POU
-				has_country_flag = CNS_cooperate_with_LJR
+				has_country_flag = CNS_cooperate_with_LND
 			}
 			custom_effect_tooltip = FCF_politics_election_1936_winner_pure_syndicalism_with_all
 			set_variable = { POU_attitude = 9 }
-			set_variable = { LJR_attitude = 9 }
+			set_variable = { LND_attitude = 9 }
 		}
 		else_if = {
 			limit = { has_country_flag = CNS_cooperate_with_POU }
 			custom_effect_tooltip = FCF_politics_election_1936_winner_pure_syndicalism_with_POU
-			clr_country_flag = LJR_in_gov
+			clr_country_flag = LND_in_gov
 			set_variable = { POU_attitude = 5 }
-			set_variable = { LJR_attitude = 9 }
+			set_variable = { LND_attitude = 9 }
 		}
 		else_if = {
-			limit = { has_country_flag = CNS_cooperate_with_LJR }
-			custom_effect_tooltip = FCF_politics_election_1936_winner_pure_syndicalism_with_LJR
+			limit = { has_country_flag = CNS_cooperate_with_LND }
+			custom_effect_tooltip = FCF_politics_election_1936_winner_pure_syndicalism_with_LND
 			clr_country_flag = POU_in_gov
 			set_variable = { POU_attitude = 9 }
-			set_variable = { LJR_attitude = 5 }
+			set_variable = { LND_attitude = 5 }
 		}
 		custom_effect_tooltip = party_attitude_will_reset
 		clr_country_flag = CGT_in_gov
@@ -3355,7 +3357,7 @@
 			add_popularity = { ideology = syndicalist popularity = 0.02 }
 		}
 		if = {
-			limit = { has_country_flag = CNS_cooperate_with_LJR }
+			limit = { has_country_flag = CNS_cooperate_with_LND }
 			add_popularity = { ideology = social_democrat popularity = 0.01 }
 			add_popularity = { ideology = social_conservative popularity = 0.01 }
 		}
@@ -3378,7 +3380,7 @@
 			hidden_effect = { country_event = { id = fcf_politics_events.25 days = 10 } }
 		}
 		if = {
-			limit = { has_country_flag = CNS_cooperate_with_LJR }
+			limit = { has_country_flag = CNS_cooperate_with_LND }
 			set_temp_variable = { coalition_partner_var = token:social_democrat }
 			add_to_coalition = yes
 			set_temp_variable = { coalition_partner_var = token:social_conservative }
@@ -3397,7 +3399,7 @@
 		clr_country_flag = CGT_in_gov
 		clr_country_flag = POU_in_gov
 		clr_country_flag = URSRS_in_gov
-		clr_country_flag = LJR_in_gov
+		clr_country_flag = LND_in_gov
 		set_country_flag = CNS_in_gov
 
 		set_variable = { CNS_attitude = 10 }
@@ -3407,7 +3409,7 @@
 		set_variable = { PCOP_attitude = -3 }
 		set_variable = { UA_attitude = 2 }
 		set_variable = { URSRS_attitude = 1 }
-		set_variable = { LJR_attitude = 5 }
+		set_variable = { LND_attitude = 5 }
 		set_variable = { PAPF_attitude = 2 }
 
 		custom_effect_tooltip = tooltip_dividing_line
@@ -3452,12 +3454,12 @@
 		hidden_effect = {
 			clr_country_flag = CAE_CNS
 			clr_country_flag = CAE_PSF
-			clr_country_flag = CAE_POU
+			clr_country_flag = FRA_maurice_thorez
 			clr_country_flag = CAE_CGT
 			clr_country_flag = CAE_PCOP
 			clr_country_flag = CAE_UA
 			clr_country_flag = CAE_URSRS
-			clr_country_flag = CAE_LJR
+			clr_country_flag = CAE_LND
 			clr_country_flag = CAE_PAPF
 			clr_country_flag = CAE_ETC
 
@@ -3484,7 +3486,7 @@
 			clr_country_flag = CE_PCOP
 			clr_country_flag = CE_UA
 			clr_country_flag = CE_URSRS
-			clr_country_flag = CE_LJR
+			clr_country_flag = CE_LND
 			clr_country_flag = CE_PAPF
 			clr_country_flag = CE_ETC
 
@@ -3504,32 +3506,32 @@
 			deactivate_advisor = CE_henri_dorgeres
 		}
 	}
-	### 作用域：国家；主要作用：清除 CSI 成员旗帜并停用对应顾问。
-	clr_CSI_flag = {
+	### 作用域：国家；主要作用：清除 CI 成员旗帜并停用对应顾问。
+	clr_CI_flag = {
 		hidden_effect = {
-			clr_country_flag = CSI_CNS
-			clr_country_flag = CSI_PSF
-			clr_country_flag = CSI_POU
-			clr_country_flag = CSI_CGT
-			clr_country_flag = CSI_PCOP
-			clr_country_flag = CSI_UA
-			clr_country_flag = CSI_URSRS
-			clr_country_flag = CSI_LJR
-			clr_country_flag = CSI_PAPF
-			clr_country_flag = CSI_ETC
+			clr_country_flag = CI_CNS
+			clr_country_flag = CI_PSF
+			clr_country_flag = CI_POU
+			clr_country_flag = CI_CGT
+			clr_country_flag = CI_PCOP
+			clr_country_flag = CI_UA
+			clr_country_flag = CI_URSRS
+			clr_country_flag = CI_LND
+			clr_country_flag = CI_PAPF
+			clr_country_flag = CI_ETC
 
-			deactivate_advisor = CSI_charles_pomaret
-			deactivate_advisor = CSI_eugene_frot
-			deactivate_advisor = CSI_charles_tillon
-			deactivate_advisor = CSI_roger_salengro
-			deactivate_advisor = CSI_adrien_marquet
-			deactivate_advisor = CSI_henri_barbe
-			deactivate_advisor = CSI_simon_sabiani
-			deactivate_advisor = CSI_maurice_treand
-			deactivate_advisor = CSI_marx_dormoy
-			deactivate_advisor = CSI_may_picqueray
-			deactivate_advisor = CSI_jacques_doriot
-			deactivate_advisor = CSI_paul_ramadier
+			deactivate_advisor = CI_charles_pomaret
+			deactivate_advisor = CI_eugene_frot
+			deactivate_advisor = CI_charles_tillon
+			deactivate_advisor = CI_roger_salengro
+			deactivate_advisor = CI_adrien_marquet
+			deactivate_advisor = CI_henri_barbe
+			deactivate_advisor = CI_simon_sabiani
+			deactivate_advisor = CI_maurice_treand
+			deactivate_advisor = CI_marx_dormoy
+			deactivate_advisor = CI_may_picqueray
+			deactivate_advisor = CI_jacques_doriot
+			deactivate_advisor = CI_paul_ramadier
 		}
 	}
 	### 作用域：国家；主要作用：清除 CC 成员旗帜并停用对应顾问。
@@ -3542,7 +3544,7 @@
 			clr_country_flag = CC_PCOP
 			clr_country_flag = CC_UA
 			clr_country_flag = CC_URSRS
-			clr_country_flag = CC_LJR
+			clr_country_flag = CC_LND
 			clr_country_flag = CC_PAPF
 			clr_country_flag = CC_ETC
 
@@ -3572,7 +3574,7 @@
 			clr_country_flag = CGFF_CGT
 			clr_country_flag = CGFF_PCOP
 			clr_country_flag = CGFF_UA
-			clr_country_flag = CGFF_LJR
+			clr_country_flag = CGFF_LND
 			clr_country_flag = CGFF_ETC
 
 			deactivate_advisor = CGFF_maurice_gamelin
@@ -3586,7 +3588,7 @@
 		}
 	}
 ###CSP态度变化
-	#set_temp_variable = { target_CSP_group = 0 } # 1-CAE 2-CE 3-CSI 4-CC 5-CGFF
+	#set_temp_variable = { target_CSP_group = 0 } # 1-CAE 2-CE 3-CI 4-CC 5-CGFF
 	#set_temp_variable = { politics_CSP_attitude_change = 0 } #+-1-3
 	#politics_CSP_attitude_change = yes
 	### 作用域：国家；主要作用：按目标 CSP 组与输入变化量修改成员态度并刷新态度民族精神。
@@ -3603,8 +3605,8 @@
 		}
 		else_if = {
 			limit = { check_variable = { target_CSP_group = 3 } }
-			add_to_variable = { CSI_attitude = politics_CSP_attitude_change }
-			clamp_variable = { var = CSI_attitude max = 5 min = -5 }
+			add_to_variable = { CI_attitude = politics_CSP_attitude_change }
+			clamp_variable = { var = CI_attitude max = 5 min = -5 }
 		}
 		else_if = {
 			limit = { check_variable = { target_CSP_group = 4 } }
@@ -3621,7 +3623,7 @@
 			limit = { is_ai = yes }
 			clamp_variable = { var = CAE_attitude max = 5 min = 2 }
 			clamp_variable = { var = CE_attitude max = 5 min = 2 }
-			clamp_variable = { var = CSI_attitude max = 5 min = 2 }
+			clamp_variable = { var = CI_attitude max = 5 min = 2 }
 			clamp_variable = { var = CC_attitude max = 5 min = 2 }
 			clamp_variable = { var = CGFF_attitude max = 5 min = 2 }
 		}
@@ -3724,48 +3726,48 @@
 			if = {
 				limit = {
 					OR = {
-						check_variable = { CSI_attitude = 5 }
-						check_variable = { CSI_attitude = 4 }
+						check_variable = { CI_attitude = 5 }
+						check_variable = { CI_attitude = 4 }
 					}
 				}
-				add_ideas = FCF_politics_CSI_attitude_support
+				add_ideas = FCF_politics_CI_attitude_support
 			}
 			else_if = {
 				limit = {
 					OR = {
-						check_variable = { CSI_attitude = 3 }
-						check_variable = { CSI_attitude = 2 }
+						check_variable = { CI_attitude = 3 }
+						check_variable = { CI_attitude = 2 }
 					}
 				}
-				add_ideas = FCF_politics_CSI_attitude_cooperation
+				add_ideas = FCF_politics_CI_attitude_cooperation
 			}
 			else_if = {
 				limit = {
 					OR = {
-						check_variable = { CSI_attitude = 1 }
-						check_variable = { CSI_attitude = 0 }
-						check_variable = { CSI_attitude = -1 }
+						check_variable = { CI_attitude = 1 }
+						check_variable = { CI_attitude = 0 }
+						check_variable = { CI_attitude = -1 }
 					}
 				}
-				add_ideas = FCF_politics_CSI_attitude_neutral
+				add_ideas = FCF_politics_CI_attitude_neutral
 			}
 			else_if = {
 				limit = {
 					OR = {
-						check_variable = { CSI_attitude = -3 }
-						check_variable = { CSI_attitude = -2 }
+						check_variable = { CI_attitude = -3 }
+						check_variable = { CI_attitude = -2 }
 					}
 				}
-				add_ideas = FCF_politics_CSI_attitude_dissatisfied
+				add_ideas = FCF_politics_CI_attitude_dissatisfied
 			}
 			else_if = {
 				limit = {
 					OR = {
-						check_variable = { CSI_attitude = -4 }
-						check_variable = { CSI_attitude = -5 }
+						check_variable = { CI_attitude = -4 }
+						check_variable = { CI_attitude = -5 }
 					}
 				}
-				add_ideas = FCF_politics_CSI_attitude_opposition
+				add_ideas = FCF_politics_CI_attitude_opposition
 			}
 
 			if = {
@@ -3946,7 +3948,7 @@
 		set_temp_variable = { PCOP_bill_support_score = 5 }
 		set_temp_variable = { UA_bill_support_score = 5 }
 		set_temp_variable = { URSRS_bill_support_score = 5 }
-		set_temp_variable = { LJR_bill_support_score = 5 }
+		set_temp_variable = { LND_bill_support_score = 5 }
 		set_temp_variable = { PAPF_bill_support_score = 5 }
 		set_temp_variable = { ETC_bill_support_score = 5 }
 	### 原本
@@ -3966,8 +3968,8 @@
 						has_country_flag = CE_CNS
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_CNS
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_CNS
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4010,8 +4012,8 @@
 					add_to_temp_variable = { CGT_bill_support_score = -2 }
 				}
 				if = {
-					limit = { check_variable = { LJR_faction^0 = 2 } }
-					add_to_temp_variable = { LJR_bill_support_score = -3 }
+					limit = { check_variable = { LND_faction^0 = 2 } }
+					add_to_temp_variable = { LND_bill_support_score = -3 }
 				}
 			}
 		}
@@ -4031,8 +4033,8 @@
 						has_country_flag = CE_PSF
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_PSF
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_PSF
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4079,15 +4081,15 @@
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CAE_selected
-						has_country_flag = CAE_POU
+						has_country_flag = FRA_maurice_thorez
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CE_selected
 						has_country_flag = CE_POU
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_POU
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_POU
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4129,12 +4131,12 @@
 				if = {
 					limit = { check_variable = { POU_faction^0 = 1 } }
 					add_to_temp_variable = { URSRS_bill_support_score = -3 }
-					add_to_temp_variable = { LJR_bill_support_score = -3 }
+					add_to_temp_variable = { LND_bill_support_score = -3 }
 				}
 				else = {
 					add_to_temp_variable = { CNS_bill_support_score = -3 }
 					add_to_temp_variable = { URSRS_bill_support_score = -2 }
-					add_to_temp_variable = { LJR_bill_support_score = -2 }
+					add_to_temp_variable = { LND_bill_support_score = -2 }
 				}
 			}
 		}
@@ -4154,8 +4156,8 @@
 						has_country_flag = CE_CGT
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_CGT
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_CGT
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4193,11 +4195,11 @@
 					limit = { check_variable = { CGT_faction^0 = 2 } }
 					add_to_temp_variable = { CNS_bill_support_score = -3 }
 					add_to_temp_variable = { URSRS_bill_support_score = -3 }
-					add_to_temp_variable = { LJR_bill_support_score = -3 }
+					add_to_temp_variable = { LND_bill_support_score = -3 }
 				}
 				else = {
 					add_to_temp_variable = { URSRS_bill_support_score = -4 }
-					add_to_temp_variable = { LJR_bill_support_score = -4 }
+					add_to_temp_variable = { LND_bill_support_score = -4 }
 				}
 				if = {
 					limit = { check_variable = { POU_faction^0 = 1 } }
@@ -4222,8 +4224,8 @@
 						has_country_flag = CE_PCOP
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_PCOP
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_PCOP
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4273,8 +4275,8 @@
 						has_country_flag = CE_UA
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_UA
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_UA
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4324,8 +4326,8 @@
 						has_country_flag = CE_URSRS
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_URSRS
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_URSRS
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4375,33 +4377,33 @@
 				OR = {
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_PCSP_selected
-						has_country_flag = PCSP_LJR
+						has_country_flag = PCSP_LND
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CAE_selected
-						has_country_flag = CAE_LJR
+						has_country_flag = CAE_LND
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CE_selected
-						has_country_flag = CE_LJR
+						has_country_flag = CE_LND
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_LJR
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_LND
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
-						has_country_flag = CC_LJR
+						has_country_flag = CC_LND
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CGFF_selected
-						has_country_flag = CGFF_LJR
+						has_country_flag = CGFF_LND
 					}
 				}
 			}
-			add_to_temp_variable = { LJR_bill_support_score = -5 }
+			add_to_temp_variable = { LND_bill_support_score = -5 }
 			if = {
-				limit = { has_country_flag = LJR_in_gov }
+				limit = { has_country_flag = LND_in_gov }
 				for_loop_effect = {
 					start = 1
 					end = 10
@@ -4448,8 +4450,8 @@
 						has_country_flag = CE_PAPF
 					}
 					AND = {
-						has_country_flag = FCF_gui_politics_CSP_CSI_selected
-						has_country_flag = CSI_PAPF
+						has_country_flag = FCF_gui_politics_CSP_CI_selected
+						has_country_flag = CI_PAPF
 					}
 					AND = {
 						has_country_flag = FCF_gui_politics_CSP_CC_selected
@@ -4520,8 +4522,8 @@
 					add_to_temp_variable = { POU_bill_support_score = 2 }
 				}
 				if = {
-					limit = { check_variable = { LJR_faction^0 = 2 } }
-					add_to_temp_variable = { LJR_bill_support_score = 3 }
+					limit = { check_variable = { LND_faction^0 = 2 } }
+					add_to_temp_variable = { LND_bill_support_score = 3 }
 				}
 			}
 		}
@@ -4585,12 +4587,12 @@
 				if = {
 					limit = { check_variable = { POU_faction^0 = 1 } }
 					add_to_temp_variable = { URSRS_bill_support_score = 3 }
-					add_to_temp_variable = { LJR_bill_support_score = 3 }
+					add_to_temp_variable = { LND_bill_support_score = 3 }
 				}
 				else = {
 					add_to_temp_variable = { CNS_bill_support_score = 3 }
 					add_to_temp_variable = { URSRS_bill_support_score = 2 }
-					add_to_temp_variable = { LJR_bill_support_score = 2 }
+					add_to_temp_variable = { LND_bill_support_score = 2 }
 				}
 			}
 		}
@@ -4622,11 +4624,11 @@
 					limit = { check_variable = { CGT_faction^0 = 2 } }
 					add_to_temp_variable = { CNS_bill_support_score = 3 }
 					add_to_temp_variable = { URSRS_bill_support_score = 3 }
-					add_to_temp_variable = { LJR_bill_support_score = 3 }
+					add_to_temp_variable = { LND_bill_support_score = 3 }
 				}
 				else = {
 					add_to_temp_variable = { URSRS_bill_support_score = 4 }
-					add_to_temp_variable = { LJR_bill_support_score = 4 }
+					add_to_temp_variable = { LND_bill_support_score = 4 }
 				}
 				if = {
 					limit = { check_variable = { POU_faction^0 = 1 } }
@@ -4719,10 +4721,10 @@
 			}
 		}
 		if = {
-			limit = { LJR_target_change_member = yes }
-			add_to_temp_variable = { LJR_bill_support_score = 5 }
+			limit = { LND_target_change_member = yes }
+			add_to_temp_variable = { LND_bill_support_score = 5 }
 			if = {
-				limit = { has_country_flag = LJR_in_gov }
+				limit = { has_country_flag = LND_in_gov }
 				for_loop_effect = {
 					start = 1
 					end = 10
@@ -4789,7 +4791,7 @@
 			add_to_temp_variable = { PCOP_bill_support_score = -3 }
 			add_to_temp_variable = { UA_bill_support_score = -3 }
 			add_to_temp_variable = { URSRS_bill_support_score = -3 }
-			add_to_temp_variable = { LJR_bill_support_score = -3 }
+			add_to_temp_variable = { LND_bill_support_score = -3 }
 			add_to_temp_variable = { PAPF_bill_support_score = -3 }
 			add_to_temp_variable = { ETC_bill_support_score = -3 }
 		}
@@ -4918,6 +4920,17 @@
 		set_country_flag = PCSP_PCOP
 		add_ideas = FCF_politics_PCSP_jean_zyromski
 	}
+	### 作用域：国家；主要作用：任命编号 11 的 PCSP 成员并同步成员旗帜与顾问。
+	CSP_appoint_11_effect = {
+		set_country_flag = CSP_member_change_cd
+		custom_effect_tooltip = CSP_appoint_11
+		set_variable = { current_PCSP = 11 }
+
+		custom_effect_tooltip = tooltip_white_line
+		clr_PCSP_flag = yes
+		set_country_flag = PCSP_PCOP
+		add_ideas = FCF_politics_PCSP_vincent_auriol
+	}
 
 ### CAE
 	### 作用域：国家；主要作用：任命编号 100 的 CAE 成员并同步成员旗帜、顾问与态度。
@@ -4960,7 +4973,7 @@
 
 		custom_effect_tooltip = tooltip_white_line
 		clr_CAE_flag = yes
-		set_country_flag = CAE_POU
+		set_country_flag = FRA_maurice_thorez
 		activate_advisor = CAE_alfred_rosmer
 		set_variable = { CAE_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
@@ -5050,7 +5063,7 @@
 
 		custom_effect_tooltip = tooltip_white_line
 		clr_CAE_flag = yes
-		set_country_flag = CAE_POU
+		set_country_flag = FRA_maurice_thorez
 		activate_advisor = CAE_jacques_duclos
 		set_variable = { CAE_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
@@ -5080,7 +5093,7 @@
 
 		custom_effect_tooltip = tooltip_white_line
 		clr_CAE_flag = yes
-		set_country_flag = CAE_LJR
+		set_country_flag = CAE_LND
 		activate_advisor = CAE_marc_sangnier
 		set_variable = { CAE_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
@@ -5277,7 +5290,7 @@
 
 		custom_effect_tooltip = tooltip_white_line
 		clr_CE_flag = yes
-		set_country_flag = CE_LJR
+		set_country_flag = CE_LND
 		activate_advisor = CE_marcel_poimboeuf
 		set_variable = { CE_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
@@ -5298,185 +5311,185 @@
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
 
-### CSI
-	### 作用域：国家；主要作用：任命编号 300 的 CSI 成员并同步成员旗帜、顾问与态度。
+### CI
+	### 作用域：国家；主要作用：任命编号 300 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_300_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_300
-		set_variable = { current_CSI = 300 }
+		set_variable = { current_CI = 300 }
 		set_temp_variable = { csp_member_id = 300 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_URSRS
-		activate_advisor = CSI_charles_pomaret
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_URSRS
+		activate_advisor = CI_charles_pomaret
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 301 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 301 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_301_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_301
-		set_variable = { current_CSI = 301 }
+		set_variable = { current_CI = 301 }
 		set_temp_variable = { csp_member_id = 301 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_URSRS
-		activate_advisor = CSI_eugene_frot
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_URSRS
+		activate_advisor = CI_eugene_frot
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 302 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 302 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_302_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_302
-		set_variable = { current_CSI = 302 }
+		set_variable = { current_CI = 302 }
 		set_temp_variable = { csp_member_id = 302 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_POU
-		activate_advisor = CSI_charles_tillon
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_POU
+		activate_advisor = CI_charles_tillon
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 303 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 303 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_303_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_303
-		set_variable = { current_CSI = 303 }
+		set_variable = { current_CI = 303 }
 		set_temp_variable = { csp_member_id = 303 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_PCOP
-		activate_advisor = CSI_roger_salengro
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_PCOP
+		activate_advisor = CI_roger_salengro
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 304 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 304 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_304_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_304
-		set_variable = { current_CSI = 304 }
+		set_variable = { current_CI = 304 }
 		set_temp_variable = { csp_member_id = 304 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_PSF
-		activate_advisor = CSI_adrien_marquet
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_PSF
+		activate_advisor = CI_adrien_marquet
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 305 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 305 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_305_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_305
-		set_variable = { current_CSI = 305 }
+		set_variable = { current_CI = 305 }
 		set_temp_variable = { csp_member_id = 305 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_PSF
-		activate_advisor = CSI_henri_barbe
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_PSF
+		activate_advisor = CI_henri_barbe
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 306 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 306 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_306_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_306
-		set_variable = { current_CSI = 306 }
+		set_variable = { current_CI = 306 }
 		set_temp_variable = { csp_member_id = 306 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_CNS
-		activate_advisor = CSI_simon_sabiani
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_CNS
+		activate_advisor = CI_simon_sabiani
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 307 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 307 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_307_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_307
-		set_variable = { current_CSI = 307 }
+		set_variable = { current_CI = 307 }
 		set_temp_variable = { csp_member_id = 307 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_POU
-		activate_advisor = CSI_maurice_treand
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_POU
+		activate_advisor = CI_maurice_treand
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 308 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 308 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_308_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_308
-		set_variable = { current_CSI = 308 }
+		set_variable = { current_CI = 308 }
 		set_temp_variable = { csp_member_id = 308 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_PCOP
-		activate_advisor = CSI_marx_dormoy
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_PCOP
+		activate_advisor = CI_marx_dormoy
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 309 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 309 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_309_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_309
-		set_variable = { current_CSI = 309 }
+		set_variable = { current_CI = 309 }
 		set_temp_variable = { csp_member_id = 309 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_UA
-		activate_advisor = CSI_may_picqueray
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_UA
+		activate_advisor = CI_may_picqueray
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 310 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 310 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_310_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_310
-		set_variable = { current_CSI = 310 }
+		set_variable = { current_CI = 310 }
 		set_temp_variable = { csp_member_id = 310 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_PSF
-		activate_advisor = CSI_jacques_doriot
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_PSF
+		activate_advisor = CI_jacques_doriot
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
-	### 作用域：国家；主要作用：任命编号 311 的 CSI 成员并同步成员旗帜、顾问与态度。
+	### 作用域：国家；主要作用：任命编号 311 的 CI 成员并同步成员旗帜、顾问与态度。
 	CSP_appoint_311_effect = {
 		set_country_flag = CSP_member_change_cd
 		custom_effect_tooltip = CSP_appoint_311
-		set_variable = { current_CSI = 311 }
+		set_variable = { current_CI = 311 }
 		set_temp_variable = { csp_member_id = 311 }
 		politics_CSP_member_tendency_display_update = yes
 
 		custom_effect_tooltip = tooltip_white_line
-		clr_CSI_flag = yes
-		set_country_flag = CSI_PSF
-		activate_advisor = CSI_paul_ramadier
-		set_variable = { CSI_attitude = 3 }
+		clr_CI_flag = yes
+		set_country_flag = CI_PSF
+		activate_advisor = CI_paul_ramadier
+		set_variable = { CI_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
 	}
 
@@ -5671,7 +5684,7 @@
 
 		custom_effect_tooltip = tooltip_white_line
 		clr_CC_flag = yes
-		set_country_flag = CC_LJR
+		set_country_flag = CC_LND
 		activate_advisor = CC_georges_bertier
 		set_variable = { CC_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
@@ -5867,7 +5880,7 @@
 
 		custom_effect_tooltip = tooltip_white_line
 		clr_CGFF_flag = yes
-		set_country_flag = CGFF_LJR
+		set_country_flag = CGFF_LND
 		activate_advisor = CGFF_gabriel_bougrain
 		set_variable = { CGFF_attitude = 3 }
 		hidden_effect = { politics_CSP_attitude_change = yes }
@@ -6071,78 +6084,78 @@
 		set_variable = { CE_213^5 = -1 }
 		set_variable = { CE_213^6 = 1 }
 		set_variable = { CE_213^7 = -1 }
-	### CSI
-		set_variable = { CSI_300^1 = 0  }
-		set_variable = { CSI_300^2 = 0 }
-		set_variable = { CSI_300^3 = 0 }
-		set_variable = { CSI_300^4 = 0 }
-		set_variable = { CSI_300^5 = 0 }
+	### CI
+		set_variable = { CI_300^1 = 0  }
+		set_variable = { CI_300^2 = 0 }
+		set_variable = { CI_300^3 = 0 }
+		set_variable = { CI_300^4 = 0 }
+		set_variable = { CI_300^5 = 0 }
 
-		set_variable = { CSI_301^1 = 0 }
-		set_variable = { CSI_301^2 = 0 }
-		set_variable = { CSI_301^3 = 0 }
-		set_variable = { CSI_301^4 = 0 }
-		set_variable = { CSI_301^5 = 0 }
+		set_variable = { CI_301^1 = 0 }
+		set_variable = { CI_301^2 = 0 }
+		set_variable = { CI_301^3 = 0 }
+		set_variable = { CI_301^4 = 0 }
+		set_variable = { CI_301^5 = 0 }
 
-		set_variable = { CSI_302^1 = 0 }
-		set_variable = { CSI_302^2 = 0 }
-		set_variable = { CSI_302^3 = 0 }
-		set_variable = { CSI_302^4 = 0 }
-		set_variable = { CSI_302^5 = 0 }
+		set_variable = { CI_302^1 = 0 }
+		set_variable = { CI_302^2 = 0 }
+		set_variable = { CI_302^3 = 0 }
+		set_variable = { CI_302^4 = 0 }
+		set_variable = { CI_302^5 = 0 }
 
-		set_variable = { CSI_303^1 = 0 }
-		set_variable = { CSI_303^2 = 0 }
-		set_variable = { CSI_303^3 = 0 }
-		set_variable = { CSI_303^4 = 0 }
-		set_variable = { CSI_303^5 = 0 }
+		set_variable = { CI_303^1 = 0 }
+		set_variable = { CI_303^2 = 0 }
+		set_variable = { CI_303^3 = 0 }
+		set_variable = { CI_303^4 = 0 }
+		set_variable = { CI_303^5 = 0 }
 
-		set_variable = { CSI_304^1 = 0 }
-		set_variable = { CSI_304^2 = 0 }
-		set_variable = { CSI_304^3 = 0 }
-		set_variable = { CSI_304^4 = 0 }
-		set_variable = { CSI_304^5 = 0 }
+		set_variable = { CI_304^1 = 0 }
+		set_variable = { CI_304^2 = 0 }
+		set_variable = { CI_304^3 = 0 }
+		set_variable = { CI_304^4 = 0 }
+		set_variable = { CI_304^5 = 0 }
 
-		set_variable = { CSI_305^1 = 0 }
-		set_variable = { CSI_305^2 = 0 }
-		set_variable = { CSI_305^3 = 0 }
-		set_variable = { CSI_305^4 = 0 }
-		set_variable = { CSI_305^5 = 0 }
+		set_variable = { CI_305^1 = 0 }
+		set_variable = { CI_305^2 = 0 }
+		set_variable = { CI_305^3 = 0 }
+		set_variable = { CI_305^4 = 0 }
+		set_variable = { CI_305^5 = 0 }
 
-		set_variable = { CSI_306^1 = 0 }
-		set_variable = { CSI_306^2 = 0 }
-		set_variable = { CSI_306^3 = 0 }
-		set_variable = { CSI_306^4 = 0 }
-		set_variable = { CSI_306^5 = 0 }
+		set_variable = { CI_306^1 = 0 }
+		set_variable = { CI_306^2 = 0 }
+		set_variable = { CI_306^3 = 0 }
+		set_variable = { CI_306^4 = 0 }
+		set_variable = { CI_306^5 = 0 }
 
-		set_variable = { CSI_307^1 = 0 }
-		set_variable = { CSI_307^2 = 0 }
-		set_variable = { CSI_307^3 = 0 }
-		set_variable = { CSI_307^4 = 0 }
-		set_variable = { CSI_307^5 = 0 }
+		set_variable = { CI_307^1 = 0 }
+		set_variable = { CI_307^2 = 0 }
+		set_variable = { CI_307^3 = 0 }
+		set_variable = { CI_307^4 = 0 }
+		set_variable = { CI_307^5 = 0 }
 
-		set_variable = { CSI_308^1 = 0 }
-		set_variable = { CSI_308^2 = 0 }
-		set_variable = { CSI_308^3 = 0 }
-		set_variable = { CSI_308^4 = 0 }
-		set_variable = { CSI_308^5 = 0 }
+		set_variable = { CI_308^1 = 0 }
+		set_variable = { CI_308^2 = 0 }
+		set_variable = { CI_308^3 = 0 }
+		set_variable = { CI_308^4 = 0 }
+		set_variable = { CI_308^5 = 0 }
 
-		set_variable = { CSI_309^1 = 0 }
-		set_variable = { CSI_309^2 = 0 }
-		set_variable = { CSI_309^3 = 0 }
-		set_variable = { CSI_309^4 = 0 }
-		set_variable = { CSI_309^5 = 0 }
+		set_variable = { CI_309^1 = 0 }
+		set_variable = { CI_309^2 = 0 }
+		set_variable = { CI_309^3 = 0 }
+		set_variable = { CI_309^4 = 0 }
+		set_variable = { CI_309^5 = 0 }
 
-		set_variable = { CSI_310^1 = 0 }
-		set_variable = { CSI_310^2 = 0 }
-		set_variable = { CSI_310^3 = 0 }
-		set_variable = { CSI_310^4 = 0 }
-		set_variable = { CSI_310^5 = 0 }
+		set_variable = { CI_310^1 = 0 }
+		set_variable = { CI_310^2 = 0 }
+		set_variable = { CI_310^3 = 0 }
+		set_variable = { CI_310^4 = 0 }
+		set_variable = { CI_310^5 = 0 }
 
-		set_variable = { CSI_311^1 = 0 }
-		set_variable = { CSI_311^2 = 0 }
-		set_variable = { CSI_311^3 = 0 }
-		set_variable = { CSI_311^4 = 0 }
-		set_variable = { CSI_311^5 = 0 }
+		set_variable = { CI_311^1 = 0 }
+		set_variable = { CI_311^2 = 0 }
+		set_variable = { CI_311^3 = 0 }
+		set_variable = { CI_311^4 = 0 }
+		set_variable = { CI_311^5 = 0 }
 	### CC
 		set_variable = { CC_400^1 = 1 }
 		set_variable = { CC_400^2 = 0 }
@@ -6323,16 +6336,16 @@
 				ID = "[?csp_member_id]"
 			}
 		}
-	### CSI
+	### CI
 		else_if = {
 			limit = { check_variable = { csp_member_id < 400 } }
 			meta_effect = {
 				text = {
-					set_temp_variable = { society_education_preference = CSI_[ID]^1 }
-					set_temp_variable = { society_regulation_preference = CSI_[ID]^2 }
-					set_temp_variable = { society_womens_rights_preference = CSI_[ID]^3 }
-					set_temp_variable = { society_immigration_preference = CSI_[ID]^4 }
-					set_temp_variable = { society_religion_preference = CSI_[ID]^5 }
+					set_temp_variable = { society_education_preference = CI_[ID]^1 }
+					set_temp_variable = { society_regulation_preference = CI_[ID]^2 }
+					set_temp_variable = { society_womens_rights_preference = CI_[ID]^3 }
+					set_temp_variable = { society_immigration_preference = CI_[ID]^4 }
+					set_temp_variable = { society_religion_preference = CI_[ID]^5 }
 					custom_effect_tooltip = {
 						localization_key = society_tendency_prefer
 						SRTEDU = society_reform_education_tt
@@ -6440,17 +6453,17 @@
 			ID = "[?csp_member_id]"
 		}
 	}
-	### 作用域：国家；主要作用：按社会改革变化与 CSI、CC 成员偏好分别计算并应用态度变化。
+	### 作用域：国家；主要作用：按社会改革变化与 CI、CC 成员偏好分别计算并应用态度变化。
 	politics_CSP_member_society_attitude_update = {
-		set_temp_variable = { csp_member_id1 = current_CSI }
+		set_temp_variable = { csp_member_id1 = current_CI }
 		set_temp_variable = { csp_member_id2 = current_CC }
 		meta_effect = {
 			text = {
-				set_temp_variable = { education_attitude_change = { value = CSI_[ID1]^1 multiply = society_reform_education_change } }
-				set_temp_variable = { regulation_attitude_change = { value = CSI_[ID1]^2 multiply = society_reform_regulation_change } }
-				set_temp_variable = { womens_rights_attitude_change = { value = CSI_[ID1]^3 multiply = society_reform_womens_rights_change } }
-				set_temp_variable = { immigration_attitude_change = { value = CSI_[ID1]^4 multiply = society_reform_immigration_change } }
-				set_temp_variable = { religion_attitude_change = { value = CSI_[ID1]^5 multiply = society_reform_religion_change } }
+				set_temp_variable = { education_attitude_change = { value = CI_[ID1]^1 multiply = society_reform_education_change } }
+				set_temp_variable = { regulation_attitude_change = { value = CI_[ID1]^2 multiply = society_reform_regulation_change } }
+				set_temp_variable = { womens_rights_attitude_change = { value = CI_[ID1]^3 multiply = society_reform_womens_rights_change } }
+				set_temp_variable = { immigration_attitude_change = { value = CI_[ID1]^4 multiply = society_reform_immigration_change } }
+				set_temp_variable = { religion_attitude_change = { value = CI_[ID1]^5 multiply = society_reform_religion_change } }
 				set_temp_variable = { total_attitude_change = {
 						value = education_attitude_change
 						add = regulation_attitude_change

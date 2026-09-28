@@ -174,9 +174,9 @@ scripted_gui = {
 				NOT = { has_country_flag = FCF_gui_society_extremist_group_visible }
 			}
 
-			FCF_society_CSI_portrait_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
-			FCF_society_CSI_text_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
-			FCF_politics_CSP_CSI_portrait_frame_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
+			FCF_society_CI_portrait_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
+			FCF_society_CI_text_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
+			FCF_politics_CSP_CI_portrait_frame_visible = { NOT = { has_country_flag = FCF_gui_society_surrealism_visible } }
 
 			FCF_society_CC_portrait_visible = { NOT = { has_country_flag = FCF_gui_society_extremist_group_visible } }
 			FCF_society_CC_text_visible = { NOT = { has_country_flag = FCF_gui_society_extremist_group_visible } }
@@ -434,7 +434,7 @@ scripted_gui = {
 			FCF_society_pop_total_display_army_icon = { frame = gui_army_cumulative }
 			FCF_society_pop_total_display_s_icon = { frame = pop_satisfaction }
 
-			FCF_society_CSI_portrait = { image = "[gui_CSP_CSI_loc]" }
+			FCF_society_CI_portrait = { image = "[gui_CSP_CI_loc]" }
 			FCF_society_CC_portrait = { image = "[gui_CSP_CC_loc]" }
 
 			FCF_society_reform_tendency_education_background = { image = "[gui_society_reform_tendency_education]" }
@@ -1145,6 +1145,28 @@ scripted_gui = {
 				value = military_bill_id
 				change_scope = yes
 				entry_container = FCF_military_bill_box_window
+			}
+		}
+	}
+###殖民幻梦
+	GER_MAF_colonial_illusion_decision_gui = {
+		context_type = decision_category
+		window_name = GER_MAF_colonial_illusion_decision_window
+
+		effects = {
+			GER_MAF_colonial_illusion_dynamic_modifier_icon_click = {
+				if = {
+					limit = { ROOT = { tag = GER } }
+					effect_tooltip = { 
+						add_dynamic_modifier = { modifier = GER_colonial_illusion_true_cost_modifier } 
+					}
+				}
+				else_if = {
+					limit = { ROOT = { tag = MAF } }
+					effect_tooltip = { 
+						add_dynamic_modifier = { modifier = MAF_colonial_illusion_true_stability_modifier } 
+					}
+				}
 			}
 		}
 	}

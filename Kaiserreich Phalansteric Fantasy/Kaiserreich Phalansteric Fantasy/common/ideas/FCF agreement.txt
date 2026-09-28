@@ -186,6 +186,17 @@ ideas = {
 			#
 			}
 		}
+		FCF_politics_PCSP_vincent_auriol = {
+			name = PCSP
+			cancel = { NOT = { check_variable = { current_PCSP = 10 } } }
+			modifier = {
+			#默认PCSP特质
+				political_power_factor = 0.1
+				economy_power_factor = 0.1
+				stability_factor = 0.05
+			#
+			}
+		}
 
 	# CAE
 		FCF_politics_CAE_attitude_support = {
@@ -356,13 +367,13 @@ ideas = {
 				economy_values_monthly_change = -0.5
 			}
 		}
-	# CSI
-		FCF_politics_CSI_attitude_support = {
-			name = CSI
+	# CI
+		FCF_politics_CI_attitude_support = {
+			name = CI
 			cancel = {
 				NOT = {
-					check_variable = { CSI_attitude = 5 }
-					check_variable = { CSI_attitude = 4 }
+					check_variable = { CI_attitude = 5 }
+					check_variable = { CI_attitude = 4 }
 				}
 			}
 			modifier = {
@@ -374,12 +385,12 @@ ideas = {
 				society_pop_bureaucrats_satisfaction_monthly_change = 0.2
 			}
 		}
-		FCF_politics_CSI_attitude_cooperation = {
-			name = CSI
+		FCF_politics_CI_attitude_cooperation = {
+			name = CI
 			cancel = {
 				NOT = {
-					check_variable = { CSI_attitude = 3 }
-					check_variable = { CSI_attitude = 2 }
+					check_variable = { CI_attitude = 3 }
+					check_variable = { CI_attitude = 2 }
 				}
 			}
 			modifier = {
@@ -391,13 +402,13 @@ ideas = {
 				society_pop_bureaucrats_satisfaction_monthly_change = 0.1
 			}
 		}
-		FCF_politics_CSI_attitude_neutral = {
-			name = CSI
+		FCF_politics_CI_attitude_neutral = {
+			name = CI
 			cancel = {
 				NOT = {
-					check_variable = { CSI_attitude = 1 }
-					check_variable = { CSI_attitude = 0 }
-					check_variable = { CSI_attitude = -1 }
+					check_variable = { CI_attitude = 1 }
+					check_variable = { CI_attitude = 0 }
+					check_variable = { CI_attitude = -1 }
 				}
 			}
 			modifier = {
@@ -408,12 +419,12 @@ ideas = {
 				society_pop_peasants_satisfaction_monthly_change = 0.1
 			}
 		}
-		FCF_politics_CSI_attitude_dissatisfied = {
-			name = CSI
+		FCF_politics_CI_attitude_dissatisfied = {
+			name = CI
 			cancel = {
 				NOT = {
-					check_variable = { CSI_attitude = -3 }
-					check_variable = { CSI_attitude = -2 }
+					check_variable = { CI_attitude = -3 }
+					check_variable = { CI_attitude = -2 }
 				}
 			}
 			modifier = {
@@ -421,12 +432,12 @@ ideas = {
 				enemy_operative_intel_extraction_rate = 0.025
 			}
 		}
-		FCF_politics_CSI_attitude_opposition = {
-			name = CSI
+		FCF_politics_CI_attitude_opposition = {
+			name = CI
 			cancel = {
 				NOT = {
-					check_variable = { CSI_attitude = -4 }
-					check_variable = { CSI_attitude = -5 }
+					check_variable = { CI_attitude = -4 }
+					check_variable = { CI_attitude = -5 }
 				}
 			}
 			modifier = {
@@ -4099,8 +4110,56 @@ ideas = {
 			}
 		}
 	#28
+		FCF_society_bill_militia_policeization = {
+			modifier = {
+				political_power_factor = -0.06
 
+				modifier_army_sub_unit_militia_attack_factor = 0.05
+				modifier_army_sub_unit_militia_defence_factor = 0.1
+				modifier_army_sub_unit_militia_max_org_factor = 0.1
+
+				society_pop_workers_satisfaction_monthly_change = 0.2
+				society_pop_merchants_satisfaction_monthly_change = -0.2
+				society_pop_bureaucrats_satisfaction_monthly_change = -0.2
+				society_pop_army_satisfaction_monthly_change = 0.4
+
+				military_army_training_monthly_change = 0.2
+				military_army_enlistment_enthusiasm_monthly_change = 0.3
+			}
+		}
 	#29
+		FCF_society_bill_autonomous_police = {
+			modifier = {
+				stability_factor = 0.02
+				political_power_factor = 0.04
+				economy_power_factor = 0.05
+
+				army_core_defence_factor = 0.04
+
+				politics_CGF_CSP_balance_monthly_change = -0.5
+
+				society_pop_workers_satisfaction_monthly_change = 0.2
+				society_pop_merchants_satisfaction_monthly_change = 0.4
+				society_pop_bureaucrats_satisfaction_monthly_change = 0.2
+				society_pop_army_satisfaction_monthly_change = -0.3
+			}
+		}
+	#30
+		FCF_society_bill_federal_police = {
+			modifier = {
+				stability_factor = 0.04
+				political_power_factor = 0.12
+				economy_power_factor = -0.1
+
+				politics_CGF_CSP_balance_monthly_change = 1
+
+				society_pop_workers_satisfaction_monthly_change = 0.1
+				society_pop_merchants_satisfaction_monthly_change = 0.1
+				society_pop_bureaucrats_satisfaction_monthly_change = 0.4
+				society_pop_army_satisfaction_monthly_change = 0.1
+			}
+		}
+	#31
 
 	############################################
 		FCF_society_bill_universal_basic_benefits_level_1 = {

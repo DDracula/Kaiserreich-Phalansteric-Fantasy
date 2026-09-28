@@ -150,6 +150,18 @@ defined_text = {
 		trigger = { check_variable = { current_bill_id = 27 } }
 		localization_key = FCF_society_bill_soldier_benefits
 	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 28 } }
+		localization_key = FCF_society_bill_militia_policeization
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 29 } }
+		localization_key = FCF_society_bill_autonomous_police
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 30 } }
+		localization_key = FCF_society_bill_federal_police
+	}
 }
 
 defined_text = {
@@ -282,6 +294,18 @@ defined_text = {
 		}
 		localization_key = idea_desc|FCF_society_bill_soldier_benefits_strengthened
 	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 28 } }
+		localization_key = idea_desc|FCF_society_bill_militia_policeization
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 29 } }
+		localization_key = idea_desc|FCF_society_bill_autonomous_police
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 30 } }
+		localization_key = idea_desc|FCF_society_bill_federal_police
+	}
 }
 
 defined_text = {
@@ -394,6 +418,18 @@ defined_text = {
 		trigger = { check_variable = { current_bill_id = 27 } }
 		localization_key = FCF_society_bill_soldier_benefits_desc
 	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 28 } }
+		localization_key = FCF_society_bill_militia_policeization_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 29 } }
+		localization_key = FCF_society_bill_autonomous_police_desc
+	}
+	text = {
+		trigger = { check_variable = { current_bill_id = 30 } }
+		localization_key = FCF_society_bill_federal_police_desc
+	}
 }
 
 ###
@@ -407,5 +443,34 @@ defined_text = {
 ###政治图景
 defined_text = {
 	name = FCF_politics_landscape_text
+	text = {
+		trigger = { has_country_flag = landscape_PCOP_UA_aganist_CGT }
+		localization_key = politics_landscape_PCOP_UA_aganist_CGT
+	}
+	text = {
+		trigger = { has_country_flag = landscape_PCOP_demoplanned_eocnomy }
+		localization_key = politics_landscape_PCOP_demoplanned_eocnomy
+	}
+	text = {
+		trigger = { has_country_flag = landscape_PCOP_jaures_socialism }
+		localization_key = politics_landscape_PCOP_jaures_socialism
+	}
 	text = { localization_key = no_politics_landscape }
+}
+
+defined_text = {
+	name = landscape_PCOP_UA_aganist_CGT_response
+	text = {
+		trigger = { check_variable = { CGT_confidence > 7 } }
+		localization_key = landscape_PCOP_UA_aganist_CGT_response_more_than_7
+	}
+	text = {
+		trigger = { check_variable = { CGT_confidence > 3 } }
+		localization_key = landscape_PCOP_UA_aganist_CGT_response_more_than_3
+	}
+	text = {
+		trigger = { check_variable = { CGT_confidence > 0 } }
+		localization_key = landscape_PCOP_UA_aganist_CGT_response_more_than_0
+	}
+	text = { localization_key = landscape_PCOP_UA_aganist_CGT_response_equals_or_less_than_0 }
 }

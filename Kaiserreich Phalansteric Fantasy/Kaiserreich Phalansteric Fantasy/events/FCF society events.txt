@@ -201,3 +201,41 @@ country_event = {
 		ai_chance = { base = 10 }
 	}
 }
+
+country_event = {
+	id = fcf_society_events.8
+	title = fcf_society_events.8.title
+	desc = fcf_society_events.8.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_society_events.8.a
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { target_extremist_group_id = 5 }
+		set_temp_variable = { extremist_group_status_change = 2 }
+		set_temp_variable = { extremist_group_attitude_change = 0 }
+		society_extremist_group_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		21 = {
+			custom_effect_tooltip = {
+				localization_key = state_strategy_take_what
+				ZONE = local_zone
+				STATE_STRATEGY = state_strategy_prosperity_under_smuggling
+			}
+			state_strategy_38_get = yes
+			add_to_array = { array = FCF_state_strategy value = 38 }
+		}
+		ai_chance = { base = 10 }
+	}
+}
+
+country_event = {
+	id = fcf_society_events.9
+	title = fcf_society_events.9.title
+	desc = fcf_society_events.9.desc
+	is_triggered_only = yes
+	option = {
+		name = fcf_society_events.9.a
+
+	}
+}

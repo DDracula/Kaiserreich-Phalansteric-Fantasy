@@ -734,6 +734,7 @@
 					limit = { check_variable = { CGT_confidence > 0 } }
 					country_event = { id = fcf_economy_events.73 days = 10 random_days = 7 }
 				}
+				else = { set_country_flag = CGT_already_responded_to_bill }
 			}
 		}
 	}
@@ -767,6 +768,9 @@
 				limit = { check_variable = { CGT_confidence > 0 } }
 				country_event = { id = fcf_economy_events.73 days = 10 random_days = 7 }
 			}
+			else = { set_country_flag = CGT_already_responded_to_bill }
+
+			country_event = { id = fcf_politics_events.39 days = 14 }
 		}
 	}
 	### 作用域：国家；主要作用：执行新 CGT 法案并调整党派派系、阶层影响力与经济改革倾向。

@@ -562,9 +562,9 @@
 		if = {
 			limit = { has_global_flag = phalanstere_cooperation_resource }
 			add_to_variable = { international_phalanstere_modifier_local_resources_factor = 0.25 }
-			set_variable = { INT_production_lack_of_resource_penalty_factor = -0.05 }
+			set_variable = { international_phalanstere_modifier_production_lack_of_resource_penalty_factor = -0.05 }
 		}
-		else = { set_variable = { INT_production_lack_of_resource_penalty_factor = 0 } }
+		else = { set_variable = { international_phalanstere_modifier_production_lack_of_resource_penalty_factor = 0 } }
 
 		if = {
 			limit = { has_global_flag = phalanstere_cooperation_language }
@@ -586,12 +586,12 @@
 
 		if = {
 			limit = { has_global_flag = phalanstere_cooperation_command }
-			set_variable = { INT_max_planning_factor = 0.05 }
-			set_variable = { INT_army_org_factor = 0.1 }
+			set_variable = { international_phalanstere_modifier_max_planning_factor = 0.05 }
+			set_variable = { international_phalanstere_modifier_army_org_factor = 0.1 }
 		}
 		else = {
-			set_variable = { INT_max_planning_factor = 0 }
-			set_variable = { INT_army_org_factor = 0 }
+			set_variable = { international_phalanstere_modifier_max_planning_factor = 0 }
+			set_variable = { international_phalanstere_modifier_army_org_factor = 0 }
 		}
 
 		if = {
@@ -599,6 +599,12 @@
 			set_variable = { international_phalanstere_modifier_send_volunteer_size = 4 }
 		}
 		else = { set_variable = { international_phalanstere_modifier_send_volunteer_size = 0 } }
+
+		if = {
+			limit = { SWI = { has_idea = FCF_SWI_special_relationship_with_france_economy } }
+			add_to_variable = { international_phalanstere_modifier_political_power_factor = 0.1 }
+			add_to_variable = { international_phalanstere_modifier_consumer_goods_factor = -0.1 }
+		}
 
 	###########################
 		if = {
@@ -1012,7 +1018,7 @@
 				}
 				add_to_variable = {
 					international_phalanstere_modifier_stability_factor = 0.05
-					tooltip = stability_factor_tt
+					tooltip = stability_factor_tooltip
 				}
 				add_to_variable = {
 					international_phalanstere_modifier_war_support_factor = 0.05
@@ -3167,3 +3173,1080 @@
 			}
 		}
 	}
+###法瑞特殊关系
+	SWI_special_relationship_with_france_effect = {
+		if = {
+			limit = { has_country_flag = SWI_special_relationship_with_france_autonomy }
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {	
+							state = 943
+							state = 760
+						}
+					}
+					add_core_of = FSW
+				}
+				every_state = {
+					limit = {
+						OR = {	
+							state = 943
+							state = 760
+						}
+						is_owned_by = FRA
+					}
+					transfer_state_to = SWI
+				}
+			}
+			release_puppet = FSW
+			hidden_effect = {
+				FSW = {
+					meta_effect = {
+						text = {
+							set_politics = {
+								ruling_party = syndicalist
+								last_election = "[CURRENT_DATE]"
+								elections_allowed = yes
+							}
+						}
+						CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+					}
+					set_popularities = {
+						totalist = 13
+						syndicalist = 40
+						radical_socialist = 26
+						social_democrat = 6
+						social_liberal = 3
+						market_liberal = 4
+						social_conservative = 2
+						authoritarian_democrat = 3
+						paternal_autocrat = 1
+						national_populist = 2
+					}
+				
+					set_temp_variable = { coalition_partner_var = token:totalist }
+					add_to_coalition = yes
+					set_temp_variable = { coalition_partner_var = token:radical_socialist }
+					add_to_coalition = yes
+					set_temp_variable = { coalition_partner_var = token:social_democrat }
+					add_to_coalition = yes
+
+					add_ideas = FCF_french_region_of_switzerland
+
+					reverse_add_opinion_modifier = { target = FRA modifier = KR_approves_of_govt }
+					reverse_add_opinion_modifier = { target = FRA modifier = KR_pleased }
+					FRA = { 
+						reverse_add_opinion_modifier = { target = FSW modifier = KR_approves_of_govt } 
+						reverse_add_opinion_modifier = { target = FSW modifier = KR_pleased }
+					}
+					reverse_add_opinion_modifier = { target = SWI modifier = KR_approves_of_govt }
+					reverse_add_opinion_modifier = { target = SWI modifier = KR_pleased }
+					SWI = { 
+						reverse_add_opinion_modifier = { target = FSW modifier = KR_approves_of_govt }
+						reverse_add_opinion_modifier = { target = FSW modifier = KR_pleased } 
+					}
+
+					every_owned_state = {
+						add_dynamic_modifier = { modifier = FCF_economy_state_situation_modifier scope = THIS.id }
+						add_to_array = { array = FCF_state_strategy value = 35 }
+
+						if = {
+							limit = { industrial_complex > 1 }
+							remove_building = { type = industrial_complex level = 2 }
+							set_temp_variable = { state_industrial_complex_change = 2 }
+							set_temp_variable = { state_arms_factory_change = 0 }
+							set_temp_variable = { state_dockyard_change = 0 }
+							FCF_economy_state_situation_change = yes
+						}
+						else_if = {
+							limit = { industrial_complex > 0 }
+							remove_building = { type = industrial_complex level = 1 }
+							set_temp_variable = { state_industrial_complex_change = 1 }
+							set_temp_variable = { state_arms_factory_change = 0 }
+							set_temp_variable = { state_dockyard_change = 0 }
+							FCF_economy_state_situation_change = yes
+						}
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = { has_country_flag = SWI_special_relationship_with_france_economy }
+			add_ideas = FCF_SWI_special_relationship_with_france_economy
+		}
+
+		if = {
+			limit = { has_country_flag = SWI_special_relationship_with_france_open_borders }
+			add_ideas = FCF_SWI_special_relationship_with_france_open_borders
+		}
+	}
+###殖民幻梦
+	MAF_colonial_illusion_modifier_update = {
+		clamp_variable = { var = MAF.MAF_report_padding max = 100 min = 0 }
+		clamp_variable = { var = MAF.MAF_true_stability max = 100 min = -100 }
+		clamp_variable = { var = GER.GER_MAF_credibility max = 100 min = 0 }
+
+		set_temp_variable_to_random = { var = MAF.MAF_falsification_margin max = 100 min = 70 }
+		set_temp_variable = { MAF.GER_MAF_credibility_factor = { value = GER.GER_MAF_credibility divide = -100 add = 1 } }
+		multiply_temp_variable = { MAF.MAF_falsification_margin = { value = MAF.MAF_report_padding divide = 100 multiply = MAF.GER_MAF_credibility_factor } }
+
+		set_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^965 multiply = MAF.MAF_territory_economy^965 divide = 100 multiply = 0.13 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^927 multiply = MAF.MAF_territory_economy^927 divide = 100 multiply = 0.07 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^295 multiply = MAF.MAF_territory_economy^295 divide = 100 multiply = 0.18 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^539 multiply = MAF.MAF_territory_economy^539 divide = 100 multiply = 0.02 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^877 multiply = MAF.MAF_territory_economy^877 divide = 100 multiply = 0.03 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^876 multiply = MAF.MAF_territory_economy^876 divide = 100 multiply = 0.03 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^541 multiply = MAF.MAF_territory_economy^541 divide = 100 multiply = 0.05 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^973 multiply = MAF.MAF_territory_economy^973 divide = 100 multiply = 0.18 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^274 multiply = MAF.MAF_territory_economy^274 divide = 100 multiply = 0.10 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^547 multiply = MAF.MAF_territory_economy^547 divide = 100 multiply = 0.08 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^548 multiply = MAF.MAF_territory_economy^548 divide = 100 multiply = 0.05 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^813 multiply = MAF.MAF_territory_economy^813 divide = 100 multiply = 0.07 } }
+		add_to_temp_variable = { MAF.MAF_territory_situation = { value = MAF.MAF_territory_stability^871 multiply = MAF.MAF_territory_economy^871 divide = 100 multiply = 0.01 } }
+		set_variable = { MAF.MAF_colonial_report = { value = MAF.MAF_territory_situation multiply = 2 add = -100 add = MAF.MAF_colonial_report_adjustment add = MAF.MAF_falsification_margin clamp = { min = -100 max = 100 } } }
+
+		set_temp_variable = { MAF.stability_100 = { value = MAF.stability multiply = 100 } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 965 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^965 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^965 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 927 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^927 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^927 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 295 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^295 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^295 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 539 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^539 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^539 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 877 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^877 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^877 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 876 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^876 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^876 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 541 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^541 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^541 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 973 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^973 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^973 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 274 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^274 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^274 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 547 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^547 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^547 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 548 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^548 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^548 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 813 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^813 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^813 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		if = { limit = { any_owned_state = { check_variable = { mittelafrika_territory_capital_state = 871 } } } if = { limit = { check_variable = { MAF.MAF_territory_stability^871 > 70 } } add_to_variable = { MAF.MAF_true_stability = 0.5 } } else_if = { limit = { NOT = { check_variable = { MAF.MAF_territory_stability^871 > 30 } } } add_to_variable = { MAF.MAF_true_stability = -0.5 } } }
+		clamp_variable = { var = MAF.MAF_true_stability min = -100 max = MAF.stability_100 }
+
+		set_variable = { GER.GER_MAF_stability = { value = MAF.MAF_true_stability subtract = MAF.stability_100 multiply = GER.GER_MAF_credibility divide = 100 add = MAF.stability_100 } }
+
+		GER = {
+			set_variable = { colonial_illusion_political_power_gain = { value = MAF.MAF_colonial_report multiply = 0.01 multiply = GER_colonial_illusion_investment } }
+			set_variable = { colonial_illusion_stability_factor = { value = MAF.MAF_colonial_report multiply = 0.002 multiply = GER_colonial_illusion_investment } }
+			set_variable = { colonial_illusion_consumer_goods_factor = { value = MAF.MAF_colonial_report multiply = -0.005 multiply = GER_colonial_illusion_investment } }
+		}
+
+		MAF = {
+			set_variable = { colonial_illusion_stability_factor = { value = MAF.MAF_colonial_report multiply = 0.0025 } }
+			set_variable = { colonial_illusion_industrial_capacity_factory = { value = MAF.MAF_colonial_report multiply = 0.002 } }
+			set_variable = { colonial_illusion_local_resources_factor = { value = MAF.MAF_colonial_report multiply = 0.002 } }
+			set_variable = { colonial_illusion_production_speed_buildings_factor = { value = MAF.MAF_colonial_report multiply = 0.002 } }
+			set_variable = { colonial_illusion_industrial_factory_donations = { value = MAF.MAF_colonial_report multiply = 0.2 round = yes } }
+		
+			if = {
+				limit = { has_global_flag = GER_MAF_colonial_illusion_activating }
+				set_variable = { colonial_illusion_true_stability_political_power_factor = { value = MAF_true_stability multiply = 0.01 subtract = MAF.stability multiply = 0.2 } }
+				set_variable = { colonial_illusion_true_stability_industrial_capacity_factory = { value = MAF_true_stability multiply = 0.01 subtract = MAF.stability multiply = 0.4 } }
+				if = {
+					limit = { check_variable = { THIS.stability > 0.5 } }
+					set_variable = { colonial_illusion_true_stability_consumer_goods_factor = { value = 0.5 subtract = MAF.stability multiply = -0.4 } }
+				}
+				else_if = {
+					limit = { check_variable = { MAF_true_stability < 0 } }
+					set_variable = { colonial_illusion_true_stability_consumer_goods_factor = { value = MAF_true_stability multiply = -0.004 } }
+				}
+
+				if = {
+					limit = { check_variable = { MAF_true_stability < 50 } }
+					set_variable = { colonial_illusion_true_stability_local_resources_factor = { value = MAF_true_stability subtract = 50 multiply = 0.002 } }
+					set_variable = { colonial_illusion_true_stability_production_speed_buildings_factor = { value = MAF_true_stability subtract = 50 multiply = 0.001 } }
+
+					set_variable = { colonial_illusion_true_stability_compliance_gain = { value = MAF_true_stability subtract = 50 multiply = 0.01 } }
+					set_variable = { colonial_illusion_true_stability_compliance_growth = { value = MAF_true_stability subtract = 50 multiply = 0.01 multiply = 0.4 } }
+
+					set_variable = { colonial_illusion_true_stability_resistance_growth = { value = MAF_true_stability subtract = 50 multiply = 0.01 multiply = -0.4 } }
+
+					set_variable = { colonial_illusion_true_stability_industrial_factory_donations = { value = MAF_true_stability subtract = 50 multiply = 0.01 multiply = 20 } }
+				}
+
+				if = {
+					limit = { check_variable = { MAF_true_stability < 0 } }
+					#德属东非
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^965 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^965 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^965 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_965_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_965_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 965 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#喀麦隆保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^927 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^927 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^927 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_927_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_927_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 927 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#刚果保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^295 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^295 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^295 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_295_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_295_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 295 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#加蓬保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^539 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^539 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^539 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_539_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_539_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 539 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#多哥保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^877 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^877 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^877 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_877_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_877_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 877 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#达荷美保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^876 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^876 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^876 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_876_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_876_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 876 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#德属西南非洲
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^541 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^541 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^541 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_541_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_541_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 541 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#尼日利亚殖民地/保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^973 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^973 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^973 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_973_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_973_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 973 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#黄金海岸殖民地
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^274 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^274 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^274 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_274_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_274_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 274 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#肯尼亚殖民地/保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^547 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^547 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^547 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_547_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_547_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 547 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#乌干达保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^548 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^548 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^548 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_548_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_548_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 548 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#北罗得西亚
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^813 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^813 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^813 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_813_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_813_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 813 }
+							country_event = fcf_international_events.270
+						}
+					}
+					#尼亚萨兰保护领
+                    if = {
+						limit = { NOT = { check_variable = { MAF_territory_stability^871 > 30 } } }
+						add_to_variable = { MAF_territory_crisis^871 = 1 }
+						if = {
+							limit = { 
+								NOT = { check_variable = { MAF_territory_crisis^871 < 4 } } 
+								NOT = { has_country_flag = MAF_territory_871_crisis }
+								NOT = { has_country_flag = MAF_territory_crisis_event_flag }
+							}
+							add_to_variable = { MAF_territory_crisis_count = 1 }
+							set_country_flag = MAF_territory_871_crisis
+							set_country_flag = MAF_territory_crisis_event_flag
+							set_variable = { MAF_targeted_territory = 871 }
+							country_event = fcf_international_events.270
+						}
+					}
+				}
+
+				if = {
+					limit = { 
+						OR = {
+							check_variable = { MAF_true_stability < -50 } 
+							check_variable = { MAF_territory_crisis_count > 6 } 
+						}
+						check_variable = { MAF_true_stability = -100 } 
+					}
+					country_event = fcf_international_events.271
+					GER = { country_event = fcf_international_events.272 }
+				}
+
+				#德属东非
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_965_crisis 
+						check_variable = { MAF_territory_stability^965 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^965 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^965 > 0 } } }
+						clr_country_flag = MAF_territory_965_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 965 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#喀麦隆保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_927_crisis 
+						check_variable = { MAF_territory_stability^927 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^927 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^927 > 0 } } }
+						clr_country_flag = MAF_territory_927_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 927 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#刚果保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_295_crisis 
+						check_variable = { MAF_territory_stability^295 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^295 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^295 > 0 } } }
+						clr_country_flag = MAF_territory_295_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 295 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#加蓬保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_539_crisis 
+						check_variable = { MAF_territory_stability^539 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^539 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^539 > 0 } } }
+						clr_country_flag = MAF_territory_539_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 539 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#多哥保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_877_crisis 
+						check_variable = { MAF_territory_stability^877 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^877 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^877 > 0 } } }
+						clr_country_flag = MAF_territory_877_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 877 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#达荷美保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_876_crisis 
+						check_variable = { MAF_territory_stability^876 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^876 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^876 > 0 } } }
+						clr_country_flag = MAF_territory_876_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 876 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#德属西南非洲
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_541_crisis 
+						check_variable = { MAF_territory_stability^541 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^541 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^541 > 0 } } }
+						clr_country_flag = MAF_territory_541_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 541 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#尼日利亚殖民地/保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_973_crisis 
+						check_variable = { MAF_territory_stability^973 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^973 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^973 > 0 } } }
+						clr_country_flag = MAF_territory_973_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 973 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#黄金海岸殖民地
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_274_crisis 
+						check_variable = { MAF_territory_stability^274 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^274 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^274 > 0 } } }
+						clr_country_flag = MAF_territory_274_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 274 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#肯尼亚殖民地/保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_547_crisis 
+						check_variable = { MAF_territory_stability^547 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^547 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^547 > 0 } } }
+						clr_country_flag = MAF_territory_547_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 547 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#乌干达保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_548_crisis 
+						check_variable = { MAF_territory_stability^548 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^548 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^548 > 0 } } }
+						clr_country_flag = MAF_territory_548_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 548 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#北罗得西亚
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_813_crisis 
+						check_variable = { MAF_territory_stability^813 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^813 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^813 > 0 } } }
+						clr_country_flag = MAF_territory_813_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 813 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+				#尼亚萨兰保护领
+                if = {
+					limit = { 
+						has_country_flag = MAF_territory_871_crisis 
+						check_variable = { MAF_territory_stability^871 > 30 }
+					}
+					add_to_variable = { MAF_territory_crisis^871 = -1 }
+					if = {
+						limit = { NOT = { check_variable = { MAF_territory_crisis^871 > 0 } } }
+						clr_country_flag = MAF_territory_871_crisis 
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						every_owned_state = {
+							limit = { check_variable = { mittelafrika_territory_capital_state = 871 } }
+							if = {
+								limit = { has_state_flag = MAF_demilitarized_zone }
+								clr_state_flag = MAF_demilitarized_zone
+								set_demilitarized_zone = no
+							}
+							if = {
+								limit = { has_state_flag = MAF_not_cored_zone }
+								clr_state_flag = MAF_not_cored_zone
+								add_compliance = 15
+								add_resistance = -25
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	#set_temp_variable = { MAF_construction_points_change = 0 }
+	#set_temp_variable = { MAF_suppress_points_change = 0 }
+	#MAF_construction_and_suppress_points_change = yes
+	MAF_construction_and_suppress_points_change = {
+		if = {
+			limit = { NOT = { check_variable = { MAF_construction_points_change = 0 } } }
+			add_to_variable = {
+				MAF.MAF_construction_points = MAF_construction_points_change
+				tooltip = MAF_construction_points_change_tt
+			}
+		}
+		if = {
+			limit = { NOT = { check_variable = { MAF_suppress_points_change = 0 } } }
+			add_to_variable = {
+				MAF.MAF_suppress_points = MAF_suppress_points_change
+				tooltip = MAF_suppress_points_change_tt
+			}
+		}
+
+		if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_points < 5 } } }
+			set_variable = { MAF.MAF_construction_points_50 = 0 } 
+			set_variable = { MAF.MAF_construction_points_40 = 0 } 
+			set_variable = { MAF.MAF_construction_points_30 = 0 } 
+			set_variable = { MAF.MAF_construction_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_points < 4 } } }
+			set_variable = { MAF.MAF_construction_points_50 = 10 } 
+			set_variable = { MAF.MAF_construction_points_40 = 0 } 
+			set_variable = { MAF.MAF_construction_points_30 = 0 } 
+			set_variable = { MAF.MAF_construction_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_points < 3 } } }
+			set_variable = { MAF.MAF_construction_points_50 = 20 } 
+			set_variable = { MAF.MAF_construction_points_40 = 10 } 
+			set_variable = { MAF.MAF_construction_points_30 = 0 } 
+			set_variable = { MAF.MAF_construction_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_points < 2 } } }
+			set_variable = { MAF.MAF_construction_points_50 = 30 } 
+			set_variable = { MAF.MAF_construction_points_40 = 20 } 
+			set_variable = { MAF.MAF_construction_points_30 = 10 } 
+			set_variable = { MAF.MAF_construction_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_points < 1 } } }
+			set_variable = { MAF.MAF_construction_points_50 = 40 } 
+			set_variable = { MAF.MAF_construction_points_40 = 30 } 
+			set_variable = { MAF.MAF_construction_points_30 = 20 } 
+			set_variable = { MAF.MAF_construction_points_20 = 10 } 
+			set_variable = { MAF.MAF_construction_points_10 = 0 } 
+		}
+		else = {
+			set_variable = { MAF.MAF_construction_points_50 = 50 } 
+			set_variable = { MAF.MAF_construction_points_40 = 40 } 
+			set_variable = { MAF.MAF_construction_points_30 = 30 } 
+			set_variable = { MAF.MAF_construction_points_20 = 20 } 
+			set_variable = { MAF.MAF_construction_points_10 = 10 } 
+		}
+
+		if = {
+			limit = { NOT = { check_variable = { MAF.MAF_suppress_points < 5 } } }
+			set_variable = { MAF.MAF_suppress_points_50 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_40 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_30 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_suppress_points < 4 } } }
+			set_variable = { MAF.MAF_suppress_points_50 = 10 } 
+			set_variable = { MAF.MAF_suppress_points_40 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_30 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_suppress_points < 3 } } }
+			set_variable = { MAF.MAF_suppress_points_50 = 20 } 
+			set_variable = { MAF.MAF_suppress_points_40 = 10 } 
+			set_variable = { MAF.MAF_suppress_points_30 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_suppress_points < 2 } } }
+			set_variable = { MAF.MAF_suppress_points_50 = 30 } 
+			set_variable = { MAF.MAF_suppress_points_40 = 20 } 
+			set_variable = { MAF.MAF_suppress_points_30 = 10 } 
+			set_variable = { MAF.MAF_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_suppress_points < 1 } } }
+			set_variable = { MAF.MAF_suppress_points_50 = 40 } 
+			set_variable = { MAF.MAF_suppress_points_40 = 30 } 
+			set_variable = { MAF.MAF_suppress_points_30 = 20 } 
+			set_variable = { MAF.MAF_suppress_points_20 = 10 } 
+			set_variable = { MAF.MAF_suppress_points_10 = 0 } 
+		}
+		else = {
+			set_variable = { MAF.MAF_suppress_points_50 = 50 } 
+			set_variable = { MAF.MAF_suppress_points_40 = 40 } 
+			set_variable = { MAF.MAF_suppress_points_30 = 30 } 
+			set_variable = { MAF.MAF_suppress_points_20 = 20 } 
+			set_variable = { MAF.MAF_suppress_points_10 = 10 } 
+		}
+
+		set_variable = { MAF.MAF_construction_or_suppress_points = { value = MAF.MAF_construction_points add = MAF.MAF_suppress_points } }
+		if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_or_suppress_points < 5 } } }
+			set_variable = { MAF.MAF_construction_or_suppress_points_50 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_40 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_30 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_or_suppress_points < 4 } } }
+			set_variable = { MAF.MAF_construction_or_suppress_points_50 = 10 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_40 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_30 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_or_suppress_points < 3 } } }
+			set_variable = { MAF.MAF_construction_or_suppress_points_50 = 20 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_40 = 10 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_30 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_or_suppress_points < 2 } } }
+			set_variable = { MAF.MAF_construction_or_suppress_points_50 = 30 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_40 = 20 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_30 = 10 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_20 = 0 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_10 = 0 } 
+		}
+		else_if = {
+			limit = { NOT = { check_variable = { MAF.MAF_construction_or_suppress_points < 1 } } }
+			set_variable = { MAF.MAF_construction_or_suppress_points_50 = 40 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_40 = 30 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_30 = 20 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_20 = 10 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_10 = 0 } 
+		}
+		else = {
+			set_variable = { MAF.MAF_construction_or_suppress_points_50 = 50 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_40 = 40 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_30 = 30 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_20 = 20 } 
+			set_variable = { MAF.MAF_construction_or_suppress_points_10 = 10 } 
+		}
+	}
+	#set_temp_variable = { points_type = 0 } 1-construction 2-supress 3-or
+	#set_temp_variable = { points_cost = 0 } 10 20 30 40 50
+	#MAF_construction_and_suppress_points_decision_cost = yes
+	MAF_construction_and_suppress_points_decision_cost = {
+		if = {
+			limit = { check_variable = { points_type = 1 } }
+			meta_effect = {
+				text = {
+					set_temp_variable = { MAF_construction_points_change = { value = MAF.MAF_construction_points_[NUM] subtract = [NUM] multiply = 0.1 } }
+					set_temp_variable = { MAF_suppress_points_change = 0 }
+					MAF_construction_and_suppress_points_change = yes
+				}
+				NUM = "[?points_cost]"
+			}
+		}
+		else_if = {
+			limit = { check_variable = { points_type = 2 } }
+			meta_effect = {
+				text = {
+					set_temp_variable = { MAF_construction_points_change = 0 }
+					set_temp_variable = { MAF_suppress_points_change = { value = MAF.MAF_suppress_points_[NUM] subtract = [NUM] multiply = 0.1 } }
+					MAF_construction_and_suppress_points_change = yes
+				}
+				NUM = "[?points_cost]"
+			}
+		}
+		else_if = {
+			limit = { check_variable = { points_type = 3 } }
+			meta_effect = {
+				text = {
+					set_temp_variable = { change_num = { value = MAF.MAF_construction_or_suppress_points_[NUM] subtract = [NUM] multiply = 0.1 } }
+					if = {
+						limit = { check_expr = { value = MAF_construction_points add = change_num less_than = 0 } }
+						set_temp_variable = { MAF_construction_points_change = { value = MAF_construction_points multiply = -1 } }
+						set_temp_variable = { MAF_suppress_points_change = { value = change_num add = MAF_construction_points } }
+					}
+					else = {
+						set_temp_variable = { MAF_construction_points_change = change_num }
+						set_temp_variable = { MAF_suppress_points_change = 0 }
+					}
+					MAF_construction_and_suppress_points_change = yes
+				}
+				NUM = "[?points_cost]"
+			}
+		}
+	}
+	#set_temp_variable = { territory_id = 0 }
+	#set_temp_variable = { territory_stability_change = 0 }
+	#set_temp_variable = { territory_economy_change = 0 }
+	#MAF_territory_stability_or_economy_change = yes
+	MAF_territory_stability_or_economy_change = {
+		meta_effect = {
+			text = {
+				custom_effect_tooltip = {
+					localization_key = MAF_territory_name
+					NAME = mittelafrika_territory_[ID]
+				}
+				if = {
+					limit = { check_variable = { territory_stability_change > 0 } }
+					add_to_variable = {
+						MAF.MAF_territory_stability^[ID] = territory_stability_change
+						tooltip = MAF_territory_stability_improve_tt
+					}
+				}
+				else_if = {
+					limit = { check_variable = { territory_stability_change < 0 } }
+					add_to_variable = {
+						MAF.MAF_territory_stability^[ID] = territory_stability_change
+						tooltip = MAF_territory_stability_reduce_tt
+					}
+				}
+				clamp_variable = { var = MAF.MAF_territory_stability^[ID] min = 0 max = 100 }
+
+				if = {
+					limit = { NOT = { check_variable = { territory_economy_change = 0 } } }
+					add_to_variable = {
+						MAF.MAF_territory_economy^[ID] = territory_economy_change
+						tooltip = MAF_territory_economy_change_tt
+					}
+				}
+				clamp_variable = { var = MAF.MAF_territory_economy^[ID] min = 0 max = 100 }
+			}
+			ID = "[?territory_id]"
+		}
+		custom_effect_tooltip = tooltip_white_line
+	}
+	MAF_territory_randomly_pick = {
+		set_temp_variable_to_random = { var = temp_index max = 13 min = 1 integer = yes }
+		set_temp_variable = { territory_id = MAF_territory_list^temp_index }
+
+		custom_effect_tooltip = MAF_territory_randomly_pick_tt
+	}
+	#set_temp_variable = { territory_stability_change = 0 }
+	#set_temp_variable = { territory_economy_change = 0 }
+	#MAF_all_territory_effect = yes
+	MAF_all_territory_effect = {	
+		for_loop_effect = {
+			start = 1
+			end = 14
+			value = idx
+			set_temp_variable = { territory_id = MAF_territory_list^idx }
+			add_to_variable = { MAF.MAF_territory_stability^territory_id = territory_stability_change }
+			clamp_variable = { var = MAF.MAF_territory_stability^territory_id min = 0 max = 100 }
+			add_to_variable = { MAF.MAF_territory_economy^territory_id = territory_economy_change }
+			clamp_variable = { var = MAF.MAF_territory_economy^territory_id min = 0 max = 100 }
+		}
+
+		custom_effect_tooltip = MAF_all_territory_tt
+		if = {
+			limit = { check_variable = { territory_stability_change > 0 } }
+			add_to_variable = {
+				tooltip_variable = territory_stability_change
+				tooltip = MAF_territory_stability_improve_tt
+			}
+		}
+		else_if = {
+			limit = { check_variable = { territory_stability_change < 0 } }
+			add_to_variable = {
+				tooltip_variable = territory_stability_change
+				tooltip = MAF_territory_stability_reduce_tt
+			}
+		}
+
+		if = {
+			limit = { NOT = { check_variable = { territory_economy_change = 0 } } }
+			add_to_variable = {
+				tooltip_variable = territory_economy_change
+				tooltip = MAF_territory_economy_change_tt
+			}
+		}
+	}
+###

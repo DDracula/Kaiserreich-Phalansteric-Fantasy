@@ -11,7 +11,7 @@ FCF_politics_category = {
 }
 
 ############
-### 社会 ###
+### 社会 ###  
 ############
 # 法国社会阶层、法案与社会改革主决议组。
 FCF_society_category = {
@@ -74,6 +74,38 @@ FCF_international_intervention_countermeasures_category = {
 				}
 				IRE = { has_country_flag = ii_ireland_revolution }
 			}
+			AND = {
+				OR = {
+					tag = COR
+					tag = NFA
+				}
+				COR = {
+					is_puppet_of = NFA
+					has_idea = FCF_state_of_mafia
+				}
+			}
+		}  
+	}
+	visible_when_empty = yes        
+}
+ 
+# 殖民幻梦 for GER and MAF
+GER_MAF_colonial_illusion_category = {
+	icon = ETH_orginization_of_african_unity
+	priority = 9
+	scripted_gui = GER_MAF_colonial_illusion_decision_gui
+	allowed = { 
+		OR = {
+			tag = GER
+			tag = MAF
 		}
 	}
+	visible = { 
+		has_global_flag = GER_MAF_colonial_illusion_activating 
+		if = {
+			limit = { tag = GER }
+			NOT = { has_country_flag = GER_let_MAF_care_of_self_activating }
+		}
+	}
+	visible_when_empty = yes
 }

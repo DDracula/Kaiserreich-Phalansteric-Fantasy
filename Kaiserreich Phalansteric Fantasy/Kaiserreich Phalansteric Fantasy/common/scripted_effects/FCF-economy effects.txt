@@ -2871,9 +2871,9 @@
 			add_to_variable = { FRA.economy_state_general_modifier_economy_power_factor = economy_state_situation_modifier_economy_power_factor }
 			add_to_variable = { FRA.economy_state_general_modifier_research_speed_factor = economy_state_situation_modifier_research_speed_factor }
 
-			add_to_variable = { FRA.economy_state_general_modifier_consumer_goods_factor = state_economy_consumer_goods_factor }
-			add_to_variable = { FRA.economy_state_general_modifier_industrial_capacity_factory = state_economy_industrial_capacity_factory }
-			add_to_variable = { FRA.economy_state_general_modifier_industrial_capacity_dockyard = state_economy_industrial_capacity_dockyard }
+			add_to_variable = { FRA.economy_state_general_modifier_consumer_goods_factor = economy_state_situation_modifier_consumer_goods_factor }
+			add_to_variable = { FRA.economy_state_general_modifier_industrial_capacity_factory = economy_state_situation_modifier_industrial_capacity_factory }
+			add_to_variable = { FRA.economy_state_general_modifier_industrial_capacity_dockyard = economy_state_situation_modifier_industrial_capacity_dockyard }
 
 			add_to_variable = { FRA.economy_state_general_modifier_factory_energy_consumption = economy_state_situation_modifier_factory_energy_consumption }
 			add_to_variable = { FRA.economy_state_general_modifier_local_resources_factor = economy_state_situation_modifier_local_resources_factor }
@@ -3841,13 +3841,118 @@
 			}
 		}
 	}
+	state_strategy_35_get = {
+		custom_effect_tooltip = economy_state_strategy_name
+		custom_effect_tooltip = state_strategy_french_region_of_switzerland_tt
+		add_to_variable = {
+			economy_state_situation_modifier_economy_state_invest_civilian_cost_modifier = -10
+			tooltip = economy_state_invest_civilian_cost_modifier_tt
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_economy_state_invest_arms_cost_modifier = 15
+			tooltip = economy_state_invest_arms_cost_modifier_tt
+		}
+		custom_effect_tooltip = {
+			localization_key = state_strategy_monthly_develop
+			NUM = "0.4"
+			VAR = economy_values
+		}
+		hidden_effect = {
+			FRA = {
+				set_temp_variable = { target_state_strategy_id = 35 }
+				economy_state_strategy_national_distribute = yes
+				add_to_variable = { economy_state_general_modifier_values_monthly_change = { value = 0.4 multiply = 100000 divide = FRA.state_strategy_target_count round = yes multiply = 0.00001 } }
+			}
+		}
+	}
+	state_strategy_36_get = {
+		custom_effect_tooltip = economy_state_strategy_name
+		add_to_variable = {
+			economy_state_situation_modifier_monthly_population = 0.01
+			tooltip = monthly_population_tooltip
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_production_speed_buildings_factor = 0.04
+			tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_economy_state_invest_civilian_cost_modifier = -15
+			tooltip = economy_state_invest_civilian_cost_modifier_tt
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_economy_state_invest_arms_cost_modifier = -5
+			tooltip = economy_state_invest_arms_cost_modifier_tt
+		}
+		custom_effect_tooltip = {
+			localization_key = state_strategy_monthly_develop
+			NUM = "0.1"
+			VAR = economy_values
+		}
+		hidden_effect = {
+			FRA = {
+				set_temp_variable = { target_state_strategy_id = 36 }
+				economy_state_strategy_national_distribute = yes
+				add_to_variable = { economy_state_general_modifier_values_monthly_change = { value = 0.1 multiply = 100000 divide = FRA.state_strategy_target_count round = yes multiply = 0.00001 } }
+			}
+		}
+	}
+	state_strategy_37_get = {
+		custom_effect_tooltip = economy_state_strategy_name
+		add_to_variable = {
+			economy_state_situation_modifier_stability_factor = -0.04
+			tooltip = stability_factor_tooltip
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_political_power_factor = 0.03
+			tooltip = political_power_factor_tooltip
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_economy_power_factor = 0.03
+			tooltip = economy_power_factor_tt
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_consumer_goods_factor = -0.05
+			tooltip = consumer_goods_factor_tooltip
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_production_speed_buildings_factor = 0.025
+			tooltip = MODIFIER_STATE_PRODUCTION_SPEED_BUILDINGS_FACTOR_tt
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_economy_state_invest_civilian_cost_modifier = -10
+			tooltip = economy_state_invest_civilian_cost_modifier_tt
+		}
+		custom_effect_tooltip = {
+			localization_key = state_strategy_monthly_develop
+			NUM = "0.3"
+			VAR = economy_values
+		}
+		hidden_effect = { FRA = { add_to_variable = { economy_state_general_modifier_values_monthly_change = 0.3 } } }
+	}
+	state_strategy_38_get = {
+		custom_effect_tooltip = economy_state_strategy_name
+		add_to_variable = {
+			economy_state_situation_modifier_stability_factor = -0.03
+			tooltip = stability_factor_tooltip
+		}
+		add_to_variable = {
+			economy_state_situation_modifier_consumer_goods_factor = -0.04
+			tooltip = consumer_goods_factor_tooltip
+		}
+		custom_effect_tooltip = {
+			localization_key = state_strategy_monthly_develop
+			NUM = "0.2"
+			VAR = economy_values
+		}
+		hidden_effect = { FRA = { add_to_variable = { economy_state_general_modifier_values_monthly_change = 0.2 } } }
+	}
 ###地区政策发展/消耗误差抵消
 	#set_temp_variable = { target_state_strategy_id = 1 }
 	#economy_state_strategy_national_distribute = yes
 	### 作用域：国家；主要作用：统计采用指定地区策略的地块数量，以分配国家级月度收益。
 	economy_state_strategy_national_distribute = {
 		set_temp_variable = { FRA.state_strategy_target_count = 0 }
-		every_owned_state = {
+		every_state = {
 			limit = { is_in_array = { array = THIS.FCF_state_strategy value = target_state_strategy_id } }
 			add_to_temp_variable = { FRA.state_strategy_target_count = 1 }
 		}
@@ -4059,7 +4164,7 @@
 	### 作用域：国家；主要作用：增加被地区策略忽略的国家计数并同步相关地块效果。
 	economy_ignored_country_count_increase = {
 		if = {
-			limit = { NOT = {  check_variable = { ignored_country_count = 0 } } }
+			limit = { NOT = { check_variable = { ignored_country_count = 0 } } }
 			add_to_variable = { ignored_country_count = 1 }
 			every_core_state = {
 				limit = { FCF_is_rural_zone = yes }

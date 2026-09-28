@@ -629,48 +629,48 @@
 		if = {
 			limit = {
 				OR = {
-					check_variable = { CSI_attitude = 5 }
-					check_variable = { CSI_attitude = 4 }
+					check_variable = { CI_attitude = 5 }
+					check_variable = { CI_attitude = 4 }
 				}
 			}
-			set_variable = { pop_satisfaction_change_from_CSI_attitude = 0.3 }
+			set_variable = { pop_satisfaction_change_from_CI_attitude = 0.3 }
 		}
 		else_if = {
 			limit = {
 				OR = {
-					check_variable = { CSI_attitude = 3 }
-					check_variable = { CSI_attitude = 2 }
+					check_variable = { CI_attitude = 3 }
+					check_variable = { CI_attitude = 2 }
 				}
 			}
-			set_variable = { pop_satisfaction_change_from_CSI_attitude = 0.2 }
+			set_variable = { pop_satisfaction_change_from_CI_attitude = 0.2 }
 		}
 		else_if = {
 			limit = {
 				OR = {
-					check_variable = { CSI_attitude = 1 }
-					check_variable = { CSI_attitude = 0 }
-					check_variable = { CSI_attitude = -1 }
+					check_variable = { CI_attitude = 1 }
+					check_variable = { CI_attitude = 0 }
+					check_variable = { CI_attitude = -1 }
 				}
 			}
-			set_variable = { pop_satisfaction_change_from_CSI_attitude = 0.1 }
+			set_variable = { pop_satisfaction_change_from_CI_attitude = 0.1 }
 		}
 		else_if = {
 			limit = {
 				OR = {
-					check_variable = { CSI_attitude = -2 }
-					check_variable = { CSI_attitude = -3 }
+					check_variable = { CI_attitude = -2 }
+					check_variable = { CI_attitude = -3 }
 				}
 			}
-			set_variable = { pop_satisfaction_change_from_CSI_attitude = 0 }
+			set_variable = { pop_satisfaction_change_from_CI_attitude = 0 }
 		}
 		else_if = {
 			limit = {
 				OR = {
-					check_variable = { CSI_attitude = -5 }
-					check_variable = { CSI_attitude = -4 }
+					check_variable = { CI_attitude = -5 }
+					check_variable = { CI_attitude = -4 }
 				}
 			}
-			set_variable = { pop_satisfaction_change_from_CSI_attitude = -0.1 }
+			set_variable = { pop_satisfaction_change_from_CI_attitude = -0.1 }
 		}
 	###
 		set_variable = { pop_satisfaction_change_from_economy_values = economy_values }
@@ -700,32 +700,32 @@
 		set_variable = { workers_satisfaction_change_from_other_modifiers = modifier@society_pop_workers_satisfaction_monthly_change }
 		subtract_from_variable = { workers_satisfaction_change_from_other_modifiers = society_pop_workers_satisfaction_monthly_change_value }
 		subtract_from_variable = { workers_satisfaction_change_from_other_modifiers = economy_state_general_modifier_society_pop_workers_satisfaction_monthly_change }
-		subtract_from_variable = { workers_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CSI_attitude }
+		subtract_from_variable = { workers_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CI_attitude }
 
 		set_variable = { peasants_satisfaction_change_from_other_modifiers = modifier@society_pop_peasants_satisfaction_monthly_change }
 		subtract_from_variable = { peasants_satisfaction_change_from_other_modifiers = society_pop_peasants_satisfaction_monthly_change_value }
 		subtract_from_variable = { peasants_satisfaction_change_from_other_modifiers = economy_state_general_modifier_society_pop_peasants_satisfaction_monthly_change }
-		subtract_from_variable = { peasants_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CSI_attitude }
+		subtract_from_variable = { peasants_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CI_attitude }
 
 		set_variable = { merchants_satisfaction_change_from_other_modifiers = modifier@society_pop_merchants_satisfaction_monthly_change }
 		subtract_from_variable = { merchants_satisfaction_change_from_other_modifiers = society_pop_merchants_satisfaction_monthly_change_value }
 		subtract_from_variable = { merchants_satisfaction_change_from_other_modifiers = economy_state_general_modifier_society_pop_merchants_satisfaction_monthly_change }
-		subtract_from_variable = { merchants_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CSI_attitude }
+		subtract_from_variable = { merchants_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CI_attitude }
 
 		set_variable = { scholars_satisfaction_change_from_other_modifiers = modifier@society_pop_scholars_satisfaction_monthly_change }
 		subtract_from_variable = { scholars_satisfaction_change_from_other_modifiers = society_pop_scholars_satisfaction_monthly_change_value }
 		subtract_from_variable = { scholars_satisfaction_change_from_other_modifiers = economy_state_general_modifier_society_pop_scholars_satisfaction_monthly_change }
-		subtract_from_variable = { scholars_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CSI_attitude }
+		subtract_from_variable = { scholars_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CI_attitude }
 
 		set_variable = { bureaucrats_satisfaction_change_from_other_modifiers = modifier@society_pop_bureaucrats_satisfaction_monthly_change }
 		subtract_from_variable = { bureaucrats_satisfaction_change_from_other_modifiers = society_pop_bureaucrats_satisfaction_monthly_change_value }
 		subtract_from_variable = { bureaucrats_satisfaction_change_from_other_modifiers = economy_state_general_modifier_society_pop_bureaucrats_satisfaction_monthly_change }
-		subtract_from_variable = { bureaucrats_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CSI_attitude }
+		subtract_from_variable = { bureaucrats_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CI_attitude }
 
 		set_variable = { army_satisfaction_change_from_other_modifiers = modifier@society_pop_army_satisfaction_monthly_change }
 		subtract_from_variable = { army_satisfaction_change_from_other_modifiers = society_pop_army_satisfaction_monthly_change_value }
 		subtract_from_variable = { army_satisfaction_change_from_other_modifiers = economy_state_general_modifier_society_pop_army_satisfaction_monthly_change }
-		subtract_from_variable = { army_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CSI_attitude }
+		subtract_from_variable = { army_satisfaction_change_from_other_modifiers = pop_satisfaction_change_from_CI_attitude }
 	}
 	### 作用域：国家；主要作用：按人口影响力与满意度计算并刷新社会阶层动态修正。
 	FCF_society_pop_influence_modifier_update = {

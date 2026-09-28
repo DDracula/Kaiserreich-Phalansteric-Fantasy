@@ -80,7 +80,7 @@ country_event = {
 	option = {
 		name = fcf_politics_events.1.a
 		hidden_effect = { FCF_economy_supply_chain_modifier_update = yes }
-		ai_chance = { base = 50 }
+		ai_chance = { base = 100 }
 	}
 	option = {
 		name = fcf_politics_events.1.b
@@ -88,7 +88,7 @@ country_event = {
 			set_cosmetic_tag = FRA_rouge
 			FCF_economy_supply_chain_modifier_update = yes
 		}
-		ai_chance = { base = 50 }
+		ai_chance = { base = 0 }
 	}
 }
 
@@ -107,7 +107,7 @@ country_event = {
 			set_temp_variable = { seat_change_PCOP = 2 }
 			set_temp_variable = { seat_change_UA = 1 }
 			set_temp_variable = { seat_change_URSRS = 0 }
-			set_temp_variable = { seat_change_LJR = 0 }
+			set_temp_variable = { seat_change_LND = 0 }
 			set_temp_variable = { seat_change_PAPF = 0 }
 			set_temp_variable = { seat_change_ETC = 0 }
 			politics_CGF_seat_change = yes
@@ -119,7 +119,7 @@ country_event = {
 			set_temp_variable = { agreement_change_PCOP = 2 }
 			set_temp_variable = { agreement_change_UA = 1 }
 			set_temp_variable = { agreement_change_URSRS = 0 }
-			set_temp_variable = { agreement_change_LJR = 0 }
+			set_temp_variable = { agreement_change_LND = 0 }
 			set_temp_variable = { agreement_change_PAPF = 0 }
 			set_temp_variable = { agreement_change_ETC = 0 }
 			politics_CGF_agreement_change = yes
@@ -215,7 +215,7 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.6.a
-		custom_effect_tooltip = election_alliance_POU_CGT_URSRS_LJR
+		custom_effect_tooltip = election_alliance_POU_CGT_URSRS_LND
 		ai_chance = { base = 100 }
 	}
 }
@@ -247,10 +247,21 @@ country_event = {
 	option = {
 		name = fcf_politics_events.7.a
 		add_stability = 0.05
+
+		custom_effect_tooltip = effect_society
+		set_temp_variable = { pop_satisfaction_workers_change = 3 }
+		set_temp_variable = { pop_satisfaction_peasants_change = 3 }
+		set_temp_variable = { pop_satisfaction_merchants_change = 3 }
+		set_temp_variable = { pop_satisfaction_scholars_change = 3 }
+		set_temp_variable = { pop_satisfaction_bureaucrats_change = 3 }
+		set_temp_variable = { pop_satisfaction_army_change = 3 }
+		society_pop_satisfaction_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
 		activate_decision = FCF_politics_election
 		set_country_flag = election_time_1936
 		unlock_decision_tooltip = FCF_politics_election_1936_CNS_cooperate_with_POU
-		unlock_decision_tooltip = FCF_politics_election_1936_CNS_cooperate_with_LJR
+		unlock_decision_tooltip = FCF_politics_election_1936_CNS_cooperate_with_LND
 		unlock_decision_tooltip = FCF_politics_election_1936_PSF_cooperate_with_CGT
 		unlock_decision_tooltip = FCF_politics_election_1936_PSF_cooperate_with_URSRS
 		unlock_decision_tooltip = FCF_politics_election_1936_CGT_faction_struggle
@@ -269,13 +280,13 @@ country_event = {
 		name = fcf_politics_events.8.a
 		custom_effect_tooltip = effect_politics
 		set_temp_variable = { seat_change_CNS = -6 }
-		set_temp_variable = { seat_change_PSF = 24 }
+		set_temp_variable = { seat_change_PSF = 26 }
 		set_temp_variable = { seat_change_POU = -3 }
 		set_temp_variable = { seat_change_CGT = -4 }
 		set_temp_variable = { seat_change_PCOP = -5 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = -2 }
-		set_temp_variable = { seat_change_LJR = -1 }
+		set_temp_variable = { seat_change_LND = -1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = -2 }
 		politics_CGF_seat_change = yes
@@ -285,13 +296,13 @@ country_event = {
 		name = fcf_politics_events.8.b
 		custom_effect_tooltip = effect_politics
 		set_temp_variable = { seat_change_CNS = -6 }
-		set_temp_variable = { seat_change_PSF = 24 }
+		set_temp_variable = { seat_change_PSF = 26 }
 		set_temp_variable = { seat_change_POU = -3 }
 		set_temp_variable = { seat_change_CGT = -4 }
 		set_temp_variable = { seat_change_PCOP = -5 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = -2 }
-		set_temp_variable = { seat_change_LJR = -1 }
+		set_temp_variable = { seat_change_LND = -1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = -2 }
 		politics_CGF_seat_change = yes
@@ -323,7 +334,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -2 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = -2 }
 		politics_CGF_seat_change = yes
@@ -347,7 +358,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 17 }
 		set_temp_variable = { seat_change_UA = 0 }
 		set_temp_variable = { seat_change_URSRS = -3 }
-		set_temp_variable = { seat_change_LJR = -3 }
+		set_temp_variable = { seat_change_LND = -3 }
 		set_temp_variable = { seat_change_PAPF = -2 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -363,7 +374,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -2 }
 		set_temp_variable = { seat_change_UA = 0 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 1 }
+		set_temp_variable = { seat_change_LND = 1 }
 		set_temp_variable = { seat_change_PAPF = -2 }
 		set_temp_variable = { seat_change_ETC = -1 }
 		politics_CGF_seat_change = yes
@@ -379,7 +390,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -5 }
 		set_temp_variable = { seat_change_UA = 0 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 13 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -395,7 +406,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -6 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = -2 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -419,7 +430,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -2 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 10 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -435,7 +446,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 12 }
 		set_temp_variable = { seat_change_UA = -1 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = -1 }
+		set_temp_variable = { seat_change_LND = -1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -451,7 +462,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -4 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 4 }
+		set_temp_variable = { seat_change_LND = 4 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -467,7 +478,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -5 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = 1 }
-		set_temp_variable = { seat_change_LJR = 1 }
+		set_temp_variable = { seat_change_LND = 1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -491,7 +502,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 19 }
 		set_temp_variable = { seat_change_UA = 8 }
 		set_temp_variable = { seat_change_URSRS = -4 }
-		set_temp_variable = { seat_change_LJR = -3 }
+		set_temp_variable = { seat_change_LND = -3 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -507,7 +518,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 2 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -523,7 +534,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -4 }
 		set_temp_variable = { seat_change_UA = 0 }
 		set_temp_variable = { seat_change_URSRS = -1 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -547,7 +558,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = -2 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -563,7 +574,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = 6 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -595,7 +606,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 16 }
 		set_temp_variable = { seat_change_UA = 0 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -611,7 +622,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 2 }
 		set_temp_variable = { seat_change_UA = -5 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -635,7 +646,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -4 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -651,7 +662,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -1 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -667,7 +678,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = -2 }
-		set_temp_variable = { seat_change_LJR = -2 }
+		set_temp_variable = { seat_change_LND = -2 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -683,7 +694,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 11 }
 		set_temp_variable = { seat_change_UA = 2 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -707,7 +718,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = 3 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -723,7 +734,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -5 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = 2 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -739,7 +750,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 8 }
 		set_temp_variable = { seat_change_UA = 3 }
 		set_temp_variable = { seat_change_URSRS = 2 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -763,7 +774,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -779,7 +790,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 10 }
 		set_temp_variable = { seat_change_UA = 2 }
 		set_temp_variable = { seat_change_URSRS = -1 }
-		set_temp_variable = { seat_change_LJR = -1 }
+		set_temp_variable = { seat_change_LND = -1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -795,7 +806,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -4 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 2 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -819,7 +830,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -4 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = 2 }
-		set_temp_variable = { seat_change_LJR = 2 }
+		set_temp_variable = { seat_change_LND = 2 }
 		set_temp_variable = { seat_change_PAPF = -2 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -835,7 +846,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 17 }
 		set_temp_variable = { seat_change_UA = 5 }
 		set_temp_variable = { seat_change_URSRS = -2 }
-		set_temp_variable = { seat_change_LJR = -1 }
+		set_temp_variable = { seat_change_LND = -1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -851,7 +862,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -6 }
 		set_temp_variable = { seat_change_UA = -8 }
 		set_temp_variable = { seat_change_URSRS = -2 }
-		set_temp_variable = { seat_change_LJR = -2 }
+		set_temp_variable = { seat_change_LND = -2 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -860,14 +871,14 @@ country_event = {
 	option = {
 		name = fcf_politics_events.18.d
 		custom_effect_tooltip = effect_politics
-		set_temp_variable = { seat_change_CNS = 20 }
+		set_temp_variable = { seat_change_CNS = 24 }
 		set_temp_variable = { seat_change_PSF = -6 }
 		set_temp_variable = { seat_change_POU = -2 }
 		set_temp_variable = { seat_change_CGT = -4 }
 		set_temp_variable = { seat_change_PCOP = -6 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = -2 }
 		politics_CGF_seat_change = yes
@@ -891,7 +902,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 15 }
 		set_temp_variable = { seat_change_UA = 0 }
 		set_temp_variable = { seat_change_URSRS = -3 }
-		set_temp_variable = { seat_change_LJR = -2 }
+		set_temp_variable = { seat_change_LND = -2 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -907,7 +918,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 1 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = 1 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -931,7 +942,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -947,7 +958,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 12 }
 		set_temp_variable = { seat_change_UA = 4 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -963,7 +974,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = -1 }
-		set_temp_variable = { seat_change_LJR = -1 }
+		set_temp_variable = { seat_change_LND = -1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -979,7 +990,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -3 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1003,7 +1014,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -4 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1019,7 +1030,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 13 }
 		set_temp_variable = { seat_change_UA = 3 }
 		set_temp_variable = { seat_change_URSRS = -2 }
-		set_temp_variable = { seat_change_LJR = -1 }
+		set_temp_variable = { seat_change_LND = -1 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1035,7 +1046,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -2 }
 		set_temp_variable = { seat_change_UA = 2 }
 		set_temp_variable = { seat_change_URSRS = -3 }
-		set_temp_variable = { seat_change_LJR = -3 }
+		set_temp_variable = { seat_change_LND = -3 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1059,7 +1070,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1083,7 +1094,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 6 }
 		set_temp_variable = { seat_change_UA = 7 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1099,7 +1110,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -3 }
 		set_temp_variable = { seat_change_UA = -4 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1115,7 +1126,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = -4 }
 		set_temp_variable = { seat_change_UA = -2 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1258,7 +1269,7 @@ country_event = {
 		set_temp_variable = { seat_change_PCOP = 0 }
 		set_temp_variable = { seat_change_UA = 0 }
 		set_temp_variable = { seat_change_URSRS = 0 }
-		set_temp_variable = { seat_change_LJR = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
 		set_temp_variable = { seat_change_PAPF = 0 }
 		set_temp_variable = { seat_change_ETC = 0 }
 		politics_CGF_seat_change = yes
@@ -1374,9 +1385,20 @@ country_event = {
 			}
 		}
 		CSP_appoint_6_effect = yes
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = POU_in_gov }
+				country_event = { id = fcf_politics_events.32 days = 14 }
+			}
+		}
 		ai_chance = { base = 30 }
 	}
-	after = { hidden_effect = { country_event = { id = fcf_politics_events.27 days = 2 } } }
+	after = { 
+		hidden_effect = { 
+			country_event = { id = fcf_politics_events.27 days = 2 } 
+			country_event = { id = fcf_politics_events.37 days = 14 }
+		} 
+	}
 }
 
 country_event = {
@@ -1438,7 +1460,7 @@ country_event = {
 	}
 	option = {
 		name = fcf_politics_events.27.i
-		trigger = { has_country_flag = LJR_in_gov }
+		trigger = { has_country_flag = LND_in_gov }
 		CSP_appoint_110_effect = yes
 		ai_chance = { base = 30 }
 	}
@@ -1513,7 +1535,7 @@ country_event = {
 	}
 	option = {
 		name = fcf_politics_events.28.i
-		trigger = { has_country_flag = LJR_in_gov }
+		trigger = { has_country_flag = LND_in_gov }
 		CSP_appoint_212_effect = yes
 		ai_chance = { base = 30 }
 	}
@@ -1632,7 +1654,7 @@ country_event = {
 	}
 	option = {
 		name = fcf_politics_events.30.i
-		trigger = { has_country_flag = LJR_in_gov }
+		trigger = { has_country_flag = LND_in_gov }
 		CSP_appoint_412_effect = yes
 		ai_chance = { base = 30 }
 	}
@@ -1708,7 +1730,12 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.32.a
-		trigger = { check_variable = { current_PCSP = 2 } }
+		trigger = { 
+			OR = { 
+				check_variable = { current_PCSP = 2 }  
+				has_country_flag = CNS_in_gov
+			}
+		}
 		add_political_power = 10
 		custom_effect_tooltip = effect_politics
 		set_temp_variable = { target_party_id = 3 }
@@ -1819,10 +1846,26 @@ country_event = {
 	id = fcf_politics_events.37
 	title = fcf_politics_events.37.title
 	desc = fcf_politics_events.37.desc
-
+	trigger = {
+		NOT = { has_country_flag = POU_in_gov }
+	}
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.37.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { target_party_id = 3 }
+		set_temp_variable = { faction_1_change = { value = POU_faction^1 multiply = -1 } }
+		set_temp_variable = { faction_2_change = { value = POU_faction^1 multiply = 0.3 } }
+		set_temp_variable = { faction_3_change = { value = POU_faction^1 multiply = 0.2 } }
+		set_temp_variable = { faction_4_change = { value = POU_faction^1 multiply = 0.5 } }
+		politics_party_faction_change = yes
+
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = CNS_in_gov }
+				country_event = { id = fcf_politics_events.38 days = 10 }
+			}
+		}
 		ai_chance = { base = 10 }
 	}
 }
@@ -1831,12 +1874,30 @@ country_event = {
 	id = fcf_politics_events.38
 	title = fcf_politics_events.38.title
 	desc = fcf_politics_events.38.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.38.a
-		ai_chance = { base = 10 }
+		custom_effect_tooltip = effect_politics
+		set_country_flag = POU_in_gov
+		custom_effect_tooltip = {
+			localization_key = party_will_join_in_gov
+			PARTY = party_POU
+		}
+		set_temp_variable = { coalition_partner_var = token:syndicalist }
+		add_to_coalition = yes
 
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { CNS_attitude_change = 0 }
+		set_temp_variable = { PSF_attitude_change = 0 }
+		set_temp_variable = { POU_attitude_change = 4 }
+		set_temp_variable = { CGT_attitude_change = 0 }
+		set_temp_variable = { PCOP_attitude_change = 0 }
+		set_temp_variable = { UA_attitude_change = 0 }
+		set_temp_variable = { URSRS_attitude_change = 0 }
+		set_temp_variable = { LND_attitude_change = 0 }
+		set_temp_variable = { PAPF_attitude_change = 0 }
+		politics_party_attitude_change = yes
+		ai_chance = { base = 10 }
 	}
 }
 
@@ -1844,12 +1905,25 @@ country_event = {
 	id = fcf_politics_events.39
 	title = fcf_politics_events.39.title
 	desc = fcf_politics_events.39.desc
-
+	trigger = { has_idea = FCF_society_bill_competitive_syndicats }
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.39.a
-		ai_chance = { base = 10 }
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seat_change_CNS = 0 }
+		set_temp_variable = { seat_change_PSF = 0 }
+		set_temp_variable = { seat_change_POU = { value = seat_CGT multiply = CGT_faction^2 multiply = 0.01 round = yes } }
+		set_temp_variable = { seat_change_CGT = { value = seat_CGT multiply = -1 } }
+		set_temp_variable = { seat_change_PCOP = 0 }
+		set_temp_variable = { seat_change_UA = 0 }
+		set_temp_variable = { seat_change_URSRS = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
+		set_temp_variable = { seat_change_PAPF = 0 }
+		set_temp_variable = { seat_change_ETC = { value = 100 subtract = CGT_faction^2 multiply = 0.01 multiply = seat_CGT round = yes } }
+		politics_CGF_seat_change = yes
 
+		hidden_effect = { country_event = { id = fcf_politics_events.40 days = 60 } }
+		ai_chance = { base = 10 }
 	}
 }
 
@@ -1857,12 +1931,22 @@ country_event = {
 	id = fcf_politics_events.40
 	title = fcf_politics_events.40.title
 	desc = fcf_politics_events.40.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.40.a
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seat_change_CNS = 0 }
+		set_temp_variable = { seat_change_PSF = 0 }
+		set_temp_variable = { seat_change_POU = { value = seat_POU multiply = -0.2 round = yes } }
+		set_temp_variable = { seat_change_CGT = { value = seat_POU multiply = 0.2 round = yes add = { value = seat_ETC multiply = 0.7 round = yes } } }
+		set_temp_variable = { seat_change_PCOP = 0 }
+		set_temp_variable = { seat_change_UA = 0 }
+		set_temp_variable = { seat_change_URSRS = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
+		set_temp_variable = { seat_change_PAPF = 0 }
+		set_temp_variable = { seat_change_ETC = { value = seat_ETC multiply = -0.7 round = yes } }
+		politics_CGF_seat_change = yes
 		ai_chance = { base = 10 }
-
 	}
 }
 
@@ -1870,12 +1954,16 @@ country_event = {
 	id = fcf_politics_events.41
 	title = fcf_politics_events.41.title
 	desc = fcf_politics_events.41.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.41.a
-		ai_chance = { base = 10 }
+		add_stability = 0.01
+		set_variable = { CGT_confidence = 10 }
+		set_country_flag = landscape_PCOP_UA_aganist_CGT
+		custom_effect_tooltip = change_landscape_tt
 
+		activate_decision = FCF_politics_PCOP_UA_against_CGT_mission
+		ai_chance = { base = 10 }
 	}
 }
 
@@ -1883,12 +1971,32 @@ country_event = {
 	id = fcf_politics_events.42
 	title = fcf_politics_events.42.title
 	desc = fcf_politics_events.42.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.42.a
-		ai_chance = { base = 10 }
+		custom_effect_tooltip = effect_politics
+		set_temp_variable = { seat_change_CNS = 0 }
+		set_temp_variable = { seat_change_PSF = -5 }
+		set_temp_variable = { seat_change_POU = -4 }
+		set_temp_variable = { seat_change_CGT = -6 }
+		set_temp_variable = { seat_change_PCOP = 18 }
+		set_temp_variable = { seat_change_UA = -3 }
+		set_temp_variable = { seat_change_URSRS = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
+		set_temp_variable = { seat_change_PAPF = 0 }
+		set_temp_variable = { seat_change_ETC = 0 }
+		politics_CGF_seat_change = yes
 
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { target_party_id = 5 }
+		set_temp_variable = { faction_1_change = 10 }
+		set_temp_variable = { faction_2_change = -10 }
+		set_temp_variable = { faction_3_change = 0 }
+		set_temp_variable = { faction_4_change = 0 }
+		politics_party_faction_change = yes
+
+		hidden_effect = { country_event = { id = fcf_politics_events.44 days = 10 } }
+		ai_chance = { base = 10 }
 	}
 }
 
@@ -1896,12 +2004,39 @@ country_event = {
 	id = fcf_politics_events.43
 	title = fcf_politics_events.43.title
 	desc = fcf_politics_events.43.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.43.a
-		ai_chance = { base = 10 }
+		custom_effect_tooltip = effect_politics
+		clr_country_flag = UA_in_gov
+		custom_effect_tooltip = {
+			localization_key = party_will_leave_gov
+			PARTY = party_UA
+		}
 
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { seat_change_CNS = 6 }
+		set_temp_variable = { seat_change_PSF = 19 }
+		set_temp_variable = { seat_change_POU = 8 }
+		set_temp_variable = { seat_change_CGT = 3 }
+		set_temp_variable = { seat_change_PCOP = -41 }
+		set_temp_variable = { seat_change_UA = 5 }
+		set_temp_variable = { seat_change_URSRS = 0 }
+		set_temp_variable = { seat_change_LND = 0 }
+		set_temp_variable = { seat_change_PAPF = 0 }
+		set_temp_variable = { seat_change_ETC = 0 }
+		politics_CGF_seat_change = yes
+
+		custom_effect_tooltip = tooltip_white_line
+		set_temp_variable = { target_party_id = 5 }
+		set_temp_variable = { faction_1_change = -15 }
+		set_temp_variable = { faction_2_change = 15 }
+		set_temp_variable = { faction_3_change = 0 }
+		set_temp_variable = { faction_4_change = 0 }
+		politics_party_faction_change = yes
+
+		hidden_effect = { country_event = { id = fcf_politics_events.45 days = 10 } }
+		ai_chance = { base = 10 }
 	}
 }
 
@@ -1909,12 +2044,13 @@ country_event = {
 	id = fcf_politics_events.44
 	title = fcf_politics_events.44.title
 	desc = fcf_politics_events.44.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.44.a
-		ai_chance = { base = 10 }
+		set_country_flag = landscape_PCOP_demoplanned_eocnomy
+		custom_effect_tooltip = change_landscape_tt
 
+		ai_chance = { base = 10 }
 	}
 }
 
@@ -1922,22 +2058,49 @@ country_event = {
 	id = fcf_politics_events.45
 	title = fcf_politics_events.45.title
 	desc = fcf_politics_events.45.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.45.a
+		trigger = {
+			set_temp_variable = { target_party_id = 4 }
+			set_temp_variable = { target_faction_id = 2 }
+			politics_party_dominant_faction_evaluate = yes
+		}
+		CSP_appoint_3_effect = yes
+
 		ai_chance = { base = 10 }
 	}
+	option = {
+		name = fcf_politics_events.45.b
+		trigger = {
+			NOT = {
+				set_temp_variable = { target_party_id = 4 }
+				set_temp_variable = { target_faction_id = 2 }
+				politics_party_dominant_faction_evaluate = yes
+			}
+		}
+		CSP_appoint_11_effect = yes
+
+		ai_chance = { base = 10 }
+	}
+	after = { hidden_effect = { country_event = { id = fcf_politics_events.46 days = 3 } } }
 }
 
 country_event = {
 	id = fcf_politics_events.46
 	title = fcf_politics_events.46.title
 	desc = fcf_politics_events.46.desc
-
 	is_triggered_only = yes
 	option = {
 		name = fcf_politics_events.46.a
+		set_country_flag = landscape_PCOP_jaures_socialism
+		custom_effect_tooltip = change_landscape_tt
+
+		custom_effect_tooltip = tooltip_white_line
+		uncomplete_national_focus = {
+			focus = FCF_against_CGT
+			uncomplete_children = yes
+		}
 		ai_chance = { base = 10 }
 	}
 }

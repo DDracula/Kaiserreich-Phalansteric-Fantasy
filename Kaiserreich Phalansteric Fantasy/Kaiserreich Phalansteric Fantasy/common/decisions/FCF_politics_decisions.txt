@@ -9,7 +9,6 @@ FCF_politics_category = {
 		fixed_random_seed = no
 		timeout_effect = {
 			clr_country_flag = voting_for_bill
-			clr_country_flag = bill_pass_need_434
 			custom_effect_tooltip = bill_agree_vote_count
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = FCF_politics_impeachment_effect
@@ -135,15 +134,15 @@ FCF_politics_category = {
 		}
 		ai_will_do = { base = 10 }
 	}
-	FCF_politics_election_1936_CNS_cooperate_with_LJR = {
+	FCF_politics_election_1936_CNS_cooperate_with_LND = {
 		icon = ger_mefo_bills
 		cost = 20
 		allowed = { tag = FRA }
 		visible = { has_country_flag = election_time_1936 }
 		fire_only_once = yes
 		complete_effect = {
-			custom_effect_tooltip = CNS_cooperate_with_LJR_tt
-			set_country_flag = CNS_cooperate_with_LJR
+			custom_effect_tooltip = CNS_cooperate_with_LND_tt
+			set_country_flag = CNS_cooperate_with_LND
 		}
 		ai_will_do = { base = 10 }
 	}
@@ -202,6 +201,84 @@ FCF_politics_category = {
 			set_temp_variable = { faction_3_change = 0 }
 			set_temp_variable = { faction_4_change = 0 }
 			politics_party_faction_change = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+#PCOP-UA
+	FCF_politics_PCOP_UA_against_CGT_mission = {
+		icon = ger_mefo_bills
+		days_mission_timeout = 200
+		activation = { has_country_flag = landscape_PCOP_UA_aganist_CGT }
+		available = { 
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = bill_has_passed
+					BILL = FCF_society_bill_competitive_syndicats
+				}
+				has_idea = FCF_society_bill_competitive_syndicats
+			}
+			has_country_flag = CGT_already_responded_to_bill
+		}
+		is_good = no
+		fixed_random_seed = no
+		complete_effect = {
+			clr_country_flag = landscape_PCOP_UA_aganist_CGT
+			country_event = fcf_politics_events.42
+			effect_tooltip = {
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { seat_change_CNS = 0 }
+				set_temp_variable = { seat_change_PSF = -5 }
+				set_temp_variable = { seat_change_POU = -4 }
+				set_temp_variable = { seat_change_CGT = -6 }
+				set_temp_variable = { seat_change_PCOP = 18 }
+				set_temp_variable = { seat_change_UA = -3 }
+				set_temp_variable = { seat_change_URSRS = 0 }
+				set_temp_variable = { seat_change_LND = 0 }
+				set_temp_variable = { seat_change_PAPF = 0 }
+				set_temp_variable = { seat_change_ETC = 0 }
+				politics_CGF_seat_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { target_party_id = 5 }
+				set_temp_variable = { faction_1_change = 10 }
+				set_temp_variable = { faction_2_change = -10 }
+				set_temp_variable = { faction_3_change = 0 }
+				set_temp_variable = { faction_4_change = 0 }
+				politics_party_faction_change = yes
+			}
+		}
+		timeout_effect = {
+			clr_country_flag = landscape_PCOP_UA_aganist_CGT
+			country_event = fcf_politics_events.43
+			effect_tooltip = {
+				custom_effect_tooltip = effect_politics
+				clr_country_flag = UA_in_gov
+				custom_effect_tooltip = {
+					localization_key = party_will_leave_gov
+					PARTY = party_UA
+				}
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { seat_change_CNS = 6 }
+				set_temp_variable = { seat_change_PSF = 19 }
+				set_temp_variable = { seat_change_POU = 8 }
+				set_temp_variable = { seat_change_CGT = 3 }
+				set_temp_variable = { seat_change_PCOP = -41 }
+				set_temp_variable = { seat_change_UA = 5 }
+				set_temp_variable = { seat_change_URSRS = 0 }
+				set_temp_variable = { seat_change_LND = 0 }
+				set_temp_variable = { seat_change_PAPF = 0 }
+				set_temp_variable = { seat_change_ETC = 0 }
+				politics_CGF_seat_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { target_party_id = 5 }
+				set_temp_variable = { faction_1_change = -15 }
+				set_temp_variable = { faction_2_change = 15 }
+				set_temp_variable = { faction_3_change = 0 }
+				set_temp_variable = { faction_4_change = 0 }
+				politics_party_faction_change = yes
+			}
 		}
 		ai_will_do = { base = 10 }
 	}

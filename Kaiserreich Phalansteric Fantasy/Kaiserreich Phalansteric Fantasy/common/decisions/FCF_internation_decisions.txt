@@ -312,7 +312,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 10 } } }
 		custom_cost_text = cost_ii_eui_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				INT_can_be_interfered = yes
@@ -357,7 +357,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_asia_influence < 10 } } }
 		custom_cost_text = cost_ii_asi_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				INT_can_be_interfered = yes
@@ -408,7 +408,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_middle_east_influence < 10 } } }
 		custom_cost_text = cost_ii_mei_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				INT_can_be_interfered = yes
@@ -460,7 +460,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_africa_influence < 10 } } }
 		custom_cost_text = cost_ii_afi_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				INT_can_be_interfered = yes
@@ -509,7 +509,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_america_influence < 10 } } }
 		custom_cost_text = cost_ii_ami_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				INT_can_be_interfered = yes
@@ -555,7 +555,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_asia_influence < 10 } } }
 		custom_cost_text = cost_ii_asi_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				INT_can_be_interfered = yes
@@ -604,7 +604,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_africa_influence < 10 } } }
 		custom_cost_text = cost_ii_afi_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				INT_can_be_interfered = yes
@@ -2294,6 +2294,8 @@ FCF_international_category = {
 			check_variable = { dip_third_internationale = 2 }
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
+
+			has_completed_focus = FCF_barcelona_agreement
 		}
 		available = {
 			FROM = {
@@ -2361,6 +2363,8 @@ FCF_international_category = {
 			check_variable = { dip_third_internationale = 2 }
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
+
+			has_completed_focus = FCF_barcelona_agreement
 		}
 		available = {
 			FROM = {
@@ -2371,7 +2375,7 @@ FCF_international_category = {
 
 				has_country_leader = { character = POR_duarte_braganca }
 
-				any_neighbor_state = { is_controlled_by = SWF }
+				any_owned_state = { any_neighbor_state = { is_controlled_by = SWF } }
 			}
 		}
 		fire_only_once = yes
@@ -2407,6 +2411,7 @@ FCF_international_category = {
 				country_event = fcf_international_events.160
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = if_assassinate_success
+				custom_effect_tooltip = tooltip_white_line
 				effect_tooltip = {
 					add_stability = -0.1
 
@@ -2485,7 +2490,7 @@ FCF_international_category = {
 							level = 1
 							instant_build = yes
 						}
-						add_dynamic_modifier = { modifier = FCF_international_intervention_state_catalonia_modifier }
+						add_dynamic_modifier = { modifier = FCF_international_state_catalonia_modifier }
 					}
 					167 = {
 						add_building_construction = {
@@ -2493,7 +2498,7 @@ FCF_international_category = {
 							level = 1
 							instant_build = yes
 						}
-						add_dynamic_modifier = { modifier = FCF_international_intervention_state_catalonia_modifier }
+						add_dynamic_modifier = { modifier = FCF_international_state_catalonia_modifier }
 					}
 				}
 			}
@@ -2506,7 +2511,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 10 } } }
 		custom_cost_text = cost_ii_eui_10
 		days_remove = 30
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				has_war_with = SWF
@@ -2561,7 +2566,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
 		days_remove = 50
-		days_re_enable = 100
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				has_war_with = SWF
@@ -2694,7 +2699,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 20 } } }
 		custom_cost_text = cost_ii_eui_20
 		days_remove = 30
-		days_re_enable = 70
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = IRE
@@ -2781,12 +2786,12 @@ FCF_international_category = {
 		icon = generic_civil_support
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
-		days_re_enable = 60
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } }
 			}
 		}
 		allowed = { tag = FRA }
@@ -2837,7 +2842,7 @@ FCF_international_category = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } }
 			}
 		}
 		allowed = { tag = FRA }
@@ -2898,6 +2903,7 @@ FCF_international_category = {
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
 
+			has_completed_focus = FCF_red_haired_nation
 			HOL = { NOT = { has_completed_focus = HOL_left_list_victorious } }
 		}
 		available = {
@@ -2975,6 +2981,7 @@ FCF_international_category = {
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
 
+			has_completed_focus = FCF_red_haired_nation
 			HOL = { NOT = { has_completed_focus = HOL_left_list_victorious } }
 		}
 		available = {
@@ -3037,6 +3044,8 @@ FCF_international_category = {
 			check_variable = { dip_third_internationale = 2 }
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
+
+			has_completed_focus = FCF_red_haired_nation
 		}
 		available = {
 			FROM = {
@@ -3072,7 +3081,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
 		days_remove = 60
-		days_re_enable = 80
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = BEL
@@ -3129,6 +3138,7 @@ FCF_international_category = {
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
 
+			has_completed_focus = FCF_against_the_empire
 			FROM = { NOT = { has_country_flag = ii_bel_cooperate_with_socialists } }
 		}
 		available = {
@@ -3149,7 +3159,6 @@ FCF_international_category = {
 			FROM = {
 				country_event = fcf_international_events.202
 
-				custom_effect_tooltip = tooltip_dividing_line
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = if_they_accept
 				effect_tooltip = {
@@ -3158,7 +3167,6 @@ FCF_international_category = {
 					add_popularity = { ideology = totalist popularity = 0.05 }
 				}
 
-				custom_effect_tooltip = tooltip_dividing_line
 				custom_effect_tooltip = tooltip_white_line
 				custom_effect_tooltip = if_they_reject
 				effect_tooltip = {
@@ -3187,7 +3195,7 @@ FCF_international_category = {
 		icon = generic_civil_support
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 10 } } }
 		custom_cost_text = cost_ii_eui_10
-		days_re_enable = 30
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = BEL
@@ -3237,7 +3245,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
 		days_remove = 40
-		days_re_enable = 40
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = BEL
@@ -3303,6 +3311,7 @@ FCF_international_category = {
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
 
+			has_completed_focus = FCF_against_the_empire
 			FROM = { NOT = { has_country_flag = ii_bel_cooperate_with_wallonia } }
 		}
 		available = {
@@ -3350,11 +3359,7 @@ FCF_international_category = {
 		available = { always = no }
 		is_good = no
 		fixed_random_seed = no
-		timeout_effect = {
-			set_global_flag = ii_bel_independent_plan_start
-			custom_effect_tooltip = belgium_independence_plan_start
-			hidden_effect = { BEL = { country_event = fcf_international_events.218 } }
-		}
+		timeout_effect = { custom_effect_tooltip = belgium_independence_plan_start }
 		ai_will_do = { base = 10 }
 	}
 	ii_euw_BEL_cooperate_with_republic = {
@@ -3551,7 +3556,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 10 } } }
 		custom_cost_text = cost_ii_eui_10
 		days_remove = 30
-		days_re_enable = 80
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				
@@ -3620,7 +3625,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
 		days_remove = 50
-		days_re_enable = 100
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				NOT = { has_idea = FCF_international_infiltrated_command_chain }
@@ -3666,6 +3671,168 @@ FCF_international_category = {
 				effect_tooltip = {
 					add_stability = -0.025
 					add_timed_idea = { idea = FCF_international_infiltrated_command_chain days = 30 }
+				}
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+#科西嘉
+	ii_euw_COR_courting_mafia = {
+		icon = generic_civil_supholt
+		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 10 } } }
+		custom_cost_text = cost_ii_eui_10
+		days_remove = 30
+		days_re_enable = 0
+		target_trigger = {
+			FROM = {
+				tag = COR
+				is_subject_of = NFA
+				has_idea = FCF_state_of_mafia
+			}
+		}
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { dip_third_internationale = 2 }
+			has_country_flag = FCF_gui_international_intervention_target_selected
+			check_variable = { var:ROOT.ii_targeted^0 = FROM }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = economy_power
+					JUDGE = more_than
+					TAGNUM = "30"
+				}
+				check_variable = { economy_power > 30 }
+			}
+		}
+		complete_effect = {
+			add_to_variable = {
+				economy_power = -30
+				tooltip = economy_power_change_tt
+			}
+			custom_effect_tooltip = effect_internation
+			set_temp_variable = { ii_europe_influence_change = -10 }
+			set_temp_variable = { ii_asia_influence_change = 0 }
+			set_temp_variable = { ii_middle_east_influence_change = 0 }
+			set_temp_variable = { ii_africa_influence_change = 0 }
+			set_temp_variable = { ii_america_influence_change = 0 }
+			ii_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			COR = {
+				add_political_power = 20
+
+				add_popularity = { ideology = paternal_autocrat popularity = 0.02 }
+				add_to_variable = { 
+					state_of_mafia_result = 1
+					tooltip = state_of_mafia_final_result_change_to_FCF
+				}
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+	ii_euw_COR_tap_into_veteran_network = {
+		icon = generic_civil_supholt
+		cost = 20
+		target_trigger = {
+			FROM = {
+				tag = COR
+				is_subject_of = NFA
+				has_idea = FCF_state_of_mafia
+			}
+		}
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { dip_third_internationale = 2 }
+			has_country_flag = FCF_gui_international_intervention_target_selected
+			check_variable = { var:ROOT.ii_targeted^0 = FROM }
+
+			check_variable = { legions_status > 0 }
+		}
+		available = {
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = extremists_attitude_trigger
+						EXMIST = extremist_legions
+						ATTITUDE = extremists_attitude_1
+					}
+					check_variable = { legions_attitude = -1 }
+				}
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { target_extremist_group_id = 1 }
+			set_temp_variable = { extremist_group_status_change = 2 }
+			set_temp_variable = { extremist_group_attitude_change = 0 }
+			society_extremist_group_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			COR = {
+				set_temp_variable = { num_of_syndicalist_ideology = { value = party_popularity@syndicalist multiply = -1 } }
+				add_popularity = { ideology = syndicalist popularity = num_of_syndicalist_ideology }
+				set_temp_variable = { num_of_radical_socialist_ideology = { value = party_popularity@radical_socialist multiply = -1 } }
+				add_popularity = { ideology = radical_socialist popularity = num_of_radical_socialist_ideology }
+				set_temp_variable = { change_num_of_totalist_ideology = { value = num_of_syndicalist_ideology add = num_of_radical_socialist_ideology multiply = -1 } }
+				add_popularity = { ideology = totalist popularity = change_num_of_totalist_ideology }
+
+				add_to_variable = { 
+					state_of_mafia_result = 2
+					tooltip = state_of_mafia_final_result_change_to_FCF
+				}
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+	ii_euw_COR_using_connections = {
+		icon = generic_civil_supholt
+		cost = 20
+		target_trigger = {
+			FROM = {
+				tag = COR
+				is_subject_of = NFA
+				has_idea = FCF_state_of_mafia
+			}
+		}
+		allowed = { tag = FRA }
+		visible = {
+			check_variable = { dip_third_internationale = 2 }
+			has_country_flag = FCF_gui_international_intervention_target_selected
+			check_variable = { var:ROOT.ii_targeted^0 = FROM }
+
+			check_variable = { phalanges_status > 0 }
+		}
+		available = {
+			NOT = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = extremists_attitude_trigger
+						EXMIST = extremist_phalanges
+						ATTITUDE = extremists_attitude_1
+					}
+					check_variable = { phalanges_attitude = -1 }
+				}
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { target_extremist_group_id = 5 }
+			set_temp_variable = { extremist_group_status_change = 2 }
+			set_temp_variable = { extremist_group_attitude_change = 0 }
+			society_extremist_group_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			COR = {
+				set_country_flag = COR_contact_marseille_success
+				add_popularity = { ideology = paternal_autocrat popularity = 0.04 }
+				add_to_variable = { 
+					state_of_mafia_result = 2
+					tooltip = state_of_mafia_final_result_change_to_FCF
 				}
 			}
 		}
@@ -3784,7 +3951,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
 		days_remove = 60
-		days_re_enable = 80
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = GER
@@ -3828,7 +3995,7 @@ FCF_international_category = {
 		icon = generic_civil_support
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 10 } } }
 		custom_cost_text = cost_ii_eui_10
-		days_re_enable = 90
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = SWI
@@ -3841,6 +4008,7 @@ FCF_international_category = {
 			has_country_flag = FCF_gui_international_intervention_target_selected
 			check_variable = { var:ROOT.ii_targeted^0 = FROM }
 
+			NOT = { has_completed_focus = FCF_special_relationship_with_switzerland }
 			SWI = { owns_state = 943 }
 		}
 		available = {
@@ -3856,9 +4024,10 @@ FCF_international_category = {
 			}
 		}
 		complete_effect = {
+			set_country_flag = fund_SWI_separatists
 			add_to_variable = {
 				economy_power = -15
-				tooltip = eocnomy_power_change_tt
+				tooltip = economy_power_change_tt
 			}
 			custom_effect_tooltip = effect_internation
 			set_temp_variable = { ii_europe_influence_change = -10 }
@@ -3946,7 +4115,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
 		days_remove = 60
-		days_re_enable = 80
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = GER
@@ -3991,7 +4160,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 10 } } }
 		custom_cost_text = cost_ii_eui_10
 		days_remove = 30
-		days_re_enable = 50
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				OR = {
@@ -4057,7 +4226,7 @@ FCF_international_category = {
 		custom_cost_trigger = { NOT = { check_variable = { global.ii_europe_influence < 15 } } }
 		custom_cost_text = cost_ii_eui_15
 		days_remove = 60
-		days_re_enable = 80
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = GER
@@ -4157,9 +4326,12 @@ FCF_international_intervention_countermeasures_category = {
 		icon = generic_civil_support
 		cost = 20
 		days_remove = 60
-		days_re_enable = 60
+		days_re_enable = 0
 		allowed = { always = yes }
-		visible = { has_socialist_government = no }
+		visible = { 
+			has_socialist_government = no 
+			has_country_flag = FCF_II_HAD
+		}
 		available = {
 			set_temp_variable = { target_popularity_threshold = 10 }
 			pan_socialist_ideology_more_than_x = yes
@@ -4222,9 +4394,12 @@ FCF_international_intervention_countermeasures_category = {
 		icon = generic_civil_support
 		cost = 40
 		days_remove = 90
-		days_re_enable = 90
+		days_re_enable = 0
 		allowed = { always = yes }
-		visible = { has_socialist_government = no }
+		visible = { 
+			has_socialist_government = no 
+			has_country_flag = FCF_II_HAD
+		}
 		available = {
 			set_temp_variable = { target_popularity_threshold = 20 }
 			pan_socialist_ideology_more_than_x = yes
@@ -4273,12 +4448,13 @@ FCF_international_intervention_countermeasures_category = {
 		}
 		ai_will_do = { base = 10 }
 	}
-	ii_countermeasure_limited_benefits_reformn = {
+	ii_countermeasure_limited_benefits_reform = {
 		icon = generic_civil_support
 		cost = 60
 		allowed = { always = yes }
 		visible = { 
 			has_socialist_government = no 
+			has_country_flag = FCF_II_HAD
 			OR = {
 				has_government = social_democrat
 				has_government = social_liberal
@@ -4331,6 +4507,7 @@ FCF_international_intervention_countermeasures_category = {
 		visible = { 
 			has_socialist_government = no 
 			has_dictatorship_government = no
+			has_country_flag = FCF_II_HAD
 			NOT = {
 				has_government = social_democrat
 				has_government = social_liberal
@@ -4360,6 +4537,7 @@ FCF_international_intervention_countermeasures_category = {
 		allowed = { always = yes }
 		visible = { 
 			has_dictatorship_government = yes
+			has_country_flag = FCF_II_HAD
 		}
 		available = {
 			set_temp_variable = { target_popularity_threshold = 20 }
@@ -4401,12 +4579,12 @@ FCF_international_intervention_countermeasures_category = {
 		icon = generic_civil_support
 		cost = 20
 		days_remove = 60
-		days_re_enable = 60
+		days_re_enable = 0
 		target_trigger = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } }
 			}
 		}
 		allowed = { tag = ENG }
@@ -4441,7 +4619,7 @@ FCF_international_intervention_countermeasures_category = {
 			FROM = {
 				tag = IRE
 				has_socialist_government = no
-				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } }
+				all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } }
 			}
 		}
 		allowed = { tag = ENG }
@@ -4474,7 +4652,7 @@ FCF_international_intervention_countermeasures_category = {
 		icon = generic_civil_support
 		cost = 20
 		days_remove = 40
-		days_re_enable = 40
+		days_re_enable = 0
 		allowed = { tag = IRE }
 		visible = { IRE = { has_country_flag = ii_ireland_revolution } }
 		available = {
@@ -4499,13 +4677,13 @@ FCF_international_intervention_countermeasures_category = {
 	ii_countermeasure_IRE_contend_for_state = {
 		icon = generic_civil_support
 		cost = 20
-		days_re_enable = 40
-		target_trigger = { FROM = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } }
+		days_re_enable = 0
+		target_trigger = { FROM = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } }
 		state_target = yes
 		allowed = { tag = IRE }
 		visible = {
 			IRE = { has_country_flag = ii_ireland_revolution }
-			any_owned_state = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } }
+			any_owned_state = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } }
 		}
 		available = { has_equipment = { infantry_equipment > 499 } }
 		complete_effect = {
@@ -4526,7 +4704,7 @@ FCF_international_intervention_countermeasures_category = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } } }
+					limit = { all_owned_state = { NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } } }
 					country_event = { id = fcf_international_events.180 days = 6 }
 				}
 			}
@@ -4538,7 +4716,7 @@ FCF_international_intervention_countermeasures_category = {
 		days_remove = 40
 		allowed = { tag = IRE }
 		visible = { always = no }
-		available = { any_owned_state = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } } }
+		available = { any_owned_state = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } } }
 		fixed_random_seed = no
 		remove_effect = {
 			random_owned_state = {
@@ -4556,9 +4734,9 @@ FCF_international_intervention_countermeasures_category = {
 					if = {
 						limit = {
 							check_variable = { international_intervention_state_ireland_revolution_control >  0 }
-							NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } }
+							NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } }
 						}
-						add_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id }
+						add_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id }
 					}
 				}
 			}
@@ -4582,9 +4760,9 @@ FCF_international_intervention_countermeasures_category = {
 						if = {
 							limit = {
 								check_variable = { international_intervention_state_ireland_revolution_control >  0 }
-								NOT = { has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id } }
+								NOT = { has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id } }
 							}
-							add_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id }
+							add_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id }
 						}
 					}
 				}
@@ -4594,7 +4772,7 @@ FCF_international_intervention_countermeasures_category = {
 				every_owned_state = {
 					limit = {
 						check_variable = { international_intervention_state_ireland_revolution_control > 1 }
-						has_dynamic_modifier = { modifier = FCF_international_intervention_state_ireland_revolution_modifier scope = THIS.id }
+						has_dynamic_modifier = { modifier = FCF_international_state_ireland_revolution_modifier scope = THIS.id }
 					}
 					add_to_temp_variable = { IRE.controlled_revolution_state_count = 1 }
 				}
@@ -4623,7 +4801,7 @@ FCF_international_intervention_countermeasures_category = {
 		icon = generic_civil_support
 		cost = 25
 		days_remove = 60
-		days_re_enable = 60
+		days_re_enable = 0
 		allowed = { tag = BEL }
 		available = { has_equipment = { infantry_equipment > 499 } }
 		modifier = {
@@ -4653,7 +4831,11 @@ FCF_international_intervention_countermeasures_category = {
 		available = { always = no }
 		is_good = no
 		fixed_random_seed = no
-		timeout_effect = { custom_effect_tooltip = belgium_independence_plan_start }
+		timeout_effect = { 
+			set_global_flag = ii_bel_independent_plan_start
+			custom_effect_tooltip = belgium_independence_plan_start
+			hidden_effect = { country_event = fcf_international_events.218 }
+		}
 		ai_will_do = { base = 10 }
 	}
 	ii_countermeasure_BEL_independence_cooperate_with_republic = {
@@ -4727,4 +4909,1238 @@ FCF_international_intervention_countermeasures_category = {
 		}
 		ai_will_do = { base = 0	}
 	}
+
+#科西嘉
+	ii_countermeasure_COR_state_of_mafia_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 90
+		activation = { always = no }
+		available = { 
+			NOT = { paternal_autocrat < 0.6 }
+		}
+		is_good = no
+		fixed_random_seed = no
+		complete_effect = {
+			FRA = { 
+				country_event = fcf_international_events.17 
+				country_event = { id = fcf_international_events.40 days = 3 }
+			}
+			NFA = { 
+				country_event = fcf_international_events.17 
+				country_event = { id = fcf_international_events.40 days = 3 } 
+			}
+			country_event = { id = fcf_international_events.40 days = 3 } 
+			NFA = { end_puppet = COR }
+			set_politics = {
+				ruling_party = paternal_autocrat
+				elections_allowed = no
+			}
+			swap_ideas = {
+				remove_idea = FCF_state_of_mafia
+				add_idea = FCF_state_of_mafia_independence
+			}
+		}
+		timeout_effect = { 
+			add_popularity = { ideology = paternal_autocrat popularity = 0.03 }
+			activate_mission = ii_countermeasure_COR_state_of_mafia_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+	ii_countermeasure_COR_smuggling = {
+		icon = generic_civil_supholt
+		cost = 20
+		days_remove = 30
+		days_re_enable = 0
+		allowed = { tag = COR }
+		visible = {
+			is_subject_of = NFA
+			has_idea = FCF_state_of_mafia
+		}
+		modifier = {
+			political_power_factor = 0.1
+		}
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = COR_contact_marseille_success }
+				add_to_variable = { 
+					state_of_mafia_result = 2
+					tooltip = state_of_mafia_final_result_change_to_FCF
+				}
+			}
+			else = {
+				add_to_variable = { 
+					state_of_mafia_result = 1
+					tooltip = state_of_mafia_final_result_change_to_FCF
+				}
+			}
+		}
+		remove_effect = {
+			add_political_power = 40
+			add_popularity = { ideology = paternal_autocrat popularity = 0.03 }
+			if = {
+				limit = { has_country_flag = COR_contact_algiers_success }
+				add_to_variable = { 
+					state_of_mafia_result = -2
+					tooltip = state_of_mafia_final_result_change_to_NFA
+				}
+			}
+			else = {
+				add_to_variable = { 
+					state_of_mafia_result = -1
+					tooltip = state_of_mafia_final_result_change_to_NFA
+				}
+			}
+		}
+		ai_will_do = { base = 100 }
+	}
+	ii_countermeasure_COR_contact_marseille = {
+		icon = generic_civil_supholt
+		cost = 30
+		allowed = { tag = COR }
+		visible = {
+			is_subject_of = NFA
+			has_idea = FCF_state_of_mafia
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = COR_contact_marseille
+			FRA = { country_event = fcf_international_events.11 }
+		}
+		ai_will_do = { base = 40 }
+	}
+	ii_countermeasure_COR_contact_algiers = {
+		icon = generic_civil_supholt
+		cost = 30
+		allowed = { tag = COR }
+		visible = {
+			is_subject_of = NFA
+			has_idea = FCF_state_of_mafia
+		}
+		fire_only_once = yes
+		complete_effect = {
+			NFA = { country_event = fcf_international_events.12 }
+		}
+		ai_will_do = { base = 40 }
+	}
+
+	ii_countermeasure_NFA_courting_mafia = {
+		icon = generic_civil_supholt
+		cost = 20
+		days_remove = 30
+		days_re_enable = 0
+		allowed = { tag = NFA }
+		visible = {
+			COR = {
+				is_subject_of = NFA
+				has_idea = FCF_state_of_mafia
+			}
+		}
+		complete_effect = {
+			COR = {
+				add_political_power = 20
+
+				add_popularity = { ideology = paternal_autocrat popularity = 0.02 }
+				add_to_variable = { 
+					state_of_mafia_result = -1
+					tooltip = state_of_mafia_final_result_change_to_NFA
+				}
+			}
+		}
+		ai_will_do = { 
+			base = 40 
+			modifier = {
+				factor = 0
+				COR = { check_variable = { state_of_mafia_result < 3 } }
+			}
+		}
+	}
+	ii_countermeasure_NFA_send_in_more_troops = {
+		icon = generic_civil_supholt
+		custom_cost_trigger = { NOT = { has_equipment = { infantry_equipment < 500 } } }
+		custom_cost_text = 500_guns
+		allowed = { tag = NFA }
+		visible = {
+			COR = {
+				is_subject_of = NFA
+				has_idea = FCF_state_of_mafia
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -500
+				}
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			COR = {
+				add_popularity = { ideology = paternal_autocrat popularity = -0.02 }
+				add_to_variable = { 
+					state_of_mafia_result = -1
+					tooltip = state_of_mafia_final_result_change_to_NFA
+				}
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+}
+
+###
+GER_MAF_colonial_illusion_category = {
+	#GER
+	GER_let_MAF_care_of_self = {
+		icon = generic_orginization_of_african_unity
+		cost = 20
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_global_flag = GER_refuse_to_help_MAF
+			set_country_flag = GER_let_MAF_care_of_self_activating
+			custom_effect_tooltip = GER_let_MAF_care_of_self_tt
+			
+			custom_effect_tooltip = tooltip_white_line
+			remove_dynamic_modifier = { modifier = GER_colonial_illusion_true_cost_modifier }
+			MAF = { country_event = fcf_international_events.273 }
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_stop_providing_support = {
+		icon = generic_break_treaty
+		cost = 20
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_global_flag = GER_refuse_to_help_MAF
+			custom_effect_tooltip = GER_stop_providing_support_tt
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = GER_colonial_illusion_true_cost_modifier
+			}
+			effect_tooltip = {
+				add_to_variable = { 
+					colonial_illusion_true_cost_political_power_gain = -0.05 
+					tooltip = political_power_gain_tt
+				}
+				add_to_variable = { 
+					colonial_illusion_true_cost_industrial_factory_donations = -1 
+					tooltip = industrial_factory_donations_tooltip
+				}
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_boost_market_confidence = {
+		icon = gre_paying_ifc_debt
+		cost = 10
+		days_re_enable = 0
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = GER_boost_market_confidence_activating }
+		}
+		available = {
+			NOT = { has_country_flag = GER_boost_market_confidence_activating }
+		}
+		complete_effect = {
+			custom_effect_tooltip = GER_boost_market_confidence_tt
+			set_country_flag = GER_boost_market_confidence_activating
+			set_variable = { GER_boost_market_confidence_activating_count = GER_MAF_credibility }
+			
+			add_to_variable = {
+				MAF.MAF_colonial_report_adjustment = GER_MAF_credibility
+				tooltip = MAF_colonial_report_improve_tt
+			}
+
+			set_temp_variable = { change_num = GER_MAF_credibility }
+			multiply_temp_variable = { change_num = -1 }
+			add_to_variable = {
+				GER_MAF_credibility = change_num
+				tooltip = GER_MAF_credibility_reduce_tt
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_review_MAFs_report = {
+		icon = eng_trade_unions_support
+		cost = 20
+		days_remove = 30
+		days_re_enable = 0
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		modifier = {
+			political_power_factor = -0.1
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			set_temp_variable_to_random = { var = change_num max = 0 min = -3 }
+			add_to_variable = {
+				MAF.MAF_colonial_report_adjustment = -1
+				tooltip = MAF_colonial_report_reduce_tt
+			}
+		}
+		remove_effect = {
+			set_temp_variable_to_random = { var = change_num max = 13 min = 3 }
+			add_to_variable = {
+				GER_MAF_credibility = change_num
+				tooltip = GER_MAF_credibility_improve_tt
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_provide_administrative_support_for_MAF = {
+		icon = ger_mefo_bills
+		cost = 20
+		days_remove = 7
+		days_re_enable = 0
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			MAF = {
+				set_temp_variable = { MAF_construction_points_change = 3 }
+				set_temp_variable = { MAF_suppress_points_change = 0 }
+				MAF_construction_and_suppress_points_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable_to_random = { var = change_num max = 10 min = 5 }
+				MAF_territory_randomly_pick = yes
+				set_temp_variable = { territory_stability_change = change_num }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+ 
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = GER_colonial_illusion_true_cost_modifier
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_political_power_gain = -0.03
+				tooltip = political_power_gain_tt
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_secretly_pulling_out_of_investment = {
+		icon = generic_political_discourse
+		cost = 50
+		days_remove = 90
+		days_re_enable = 0
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		modifier = {
+			political_power_factor = -0.15
+		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = GER_secretly_pulling_out_of_investment_tt
+		}
+		remove_effect = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = MAF_colonial_illusion_modifier
+			}
+			set_variable = { GER_colonial_illusion_investment = 0.5 }
+			set_temp_variable = { change_num = colonial_illusion_political_power_gain }
+			multiply_temp_variable = { change_num = -0.5 }
+			add_to_variable = { 
+				colonial_illusion_political_power_gain = change_num
+				tooltip = political_power_gain_tt
+			}
+			set_temp_variable = { change_num = colonial_illusion_stability_factor }
+			multiply_temp_variable = { change_num = -0.5 }
+			add_to_variable = { 
+				colonial_illusion_stability_factor = change_num
+				tooltip = stability_factor_tooltip
+			}
+			set_temp_variable = { change_num = colonial_illusion_consumer_goods_factor }
+			multiply_temp_variable = { change_num = -0.5 }
+			add_to_variable = { 
+				colonial_illusion_consumer_goods_factor = change_num
+				tooltip = consumer_goods_factor_tt
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = GER_colonial_illusion_true_cost_modifier
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_political_power_gain = 0.1
+				tooltip = political_power_gain_tt
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_consumer_goods_factor = -0.1
+				tooltip = consumer_goods_factor_tt
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_industrial_factory_donations = 3
+				tooltip = industrial_factory_donations_tooltip
+			}
+		}
+		ai_will_do = { 
+			base = 40 
+			modifier = {
+				factor = 0
+				check_variable = { MAF.MAF_colonial_report > 0 }
+			}
+			modifier = {
+				factor = 2
+				check_variable = { MAF.MAF_colonial_report < -10 }
+			}
+		}
+	}
+	GER_intervene_in_MFAs_affairs = {
+		icon = infiltrate_state
+		cost = 20
+		days_remove = 60
+		days_re_enable = 0
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		modifier = {
+			political_power_factor = -0.15
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = GER_colonial_illusion_true_cost_modifier
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_political_power_gain = -0.1
+				tooltip = political_power_gain_tt
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_industrial_factory_donations = -2
+				tooltip = industrial_factory_donations_tooltip
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				set_temp_variable_to_random = { var = change_num max = 15 min = 5 }
+				set_temp_variable = { territory_stability_change = change_num }
+
+				set_temp_variable_to_random = { var = change_num max = 10 min = 5 }
+				set_temp_variable = { territory_economy_change = change_num }
+				MAF_all_territory_effect = yes
+			}
+			MAF = { 
+				effect_tooltip = {
+					set_temp_variable = { MAF_construction_points_change = 3 }
+					set_temp_variable = { MAF_suppress_points_change = 3 }
+					MAF_construction_and_suppress_points_change = yes
+				}
+				custom_effect_tooltip = tooltip_white_line
+				country_event = fcf_international_events.277 
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_pour_hot_money_into_MAF = {
+		icon = gre_investment_decisions
+		cost = 70
+		days_remove = 30
+		days_re_enable = 0
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			set_temp_variable_to_random = { var = change_num max = 20 min = 5 }
+			add_to_variable = {
+				MAF.MAF_colonial_report_adjustment = change_num
+				tooltip = MAF_colonial_report_improve_tt
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = GER_colonial_illusion_true_cost_modifier
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_consumer_goods_factor = 0.1
+				tooltip = consumer_goods_factor_tt
+			}
+		}
+		remove_effect = {
+			set_temp_variable_to_random = { var = change_num max = 20 min = -20 }
+			if = {
+				limit = { check_variable = { change_num > 0 } }
+				add_to_variable = {
+					MAF.MAF_colonial_report_adjustment = change_num
+					tooltip = MAF_colonial_report_improve_tt
+				}
+			}
+			else = {
+				add_to_variable = {
+					MAF.MAF_colonial_report_adjustment = change_num
+					tooltip = MAF_colonial_report_reduce_tt
+				}
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_send_more_colonial_troops = {
+		icon = generic_military
+		custom_cost_trigger = { NOT = { has_equipment = { infantry_equipment < 1000 } } }
+		custom_cost_text = 1000_guns
+		days_remove = 14
+		days_re_enable = 0
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		available = {
+			set_temp_variable = { target_stability_num = GER_colonial_troops_scale }
+			multiply_temp_variable = { target_stability_num = -20 }
+			add_to_temp_variable = { target_stability_num = 40 }
+			custom_trigger_tooltip = {
+				tooltip = GER_MAF_stability_judge_trigger
+				NOT = { check_variable = { GER_MAF_stability > target_stability_num } }
+			}
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			hidden_effect = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -1000
+				}
+			}
+
+			set_temp_variable_to_random = { var = change_num max = 20 min = 5 }
+			add_to_variable = {
+				GER_MAF_credibility = change_num
+				tooltip = GER_MAF_credibility_improve_tt
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = { GER_colonial_troops_scale = 1 }
+			custom_effect_tooltip = {
+				localization_key = tooltip_modify_dynmod
+				DYNMOD = GER_colonial_illusion_true_cost_modifier
+			}
+			add_to_variable = { 
+				colonial_illusion_true_cost_unit_limit_bonus = -2
+				tooltip = unit_limit_bonus_tooltip
+			}
+		}
+		remove_effect = {
+			effect_tooltip = {
+				set_temp_variable_to_random = { var = change_num max = 20 min = 7 }
+				set_temp_variable = { territory_stability_change = change_num }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_all_territory_effect = yes
+			}
+			MAF = {
+				effect_tooltip = {
+					set_temp_variable = { MAF_construction_points_change = 0 }
+					set_temp_variable = { MAF_suppress_points_change = 6 }
+					MAF_construction_and_suppress_points_change = yes
+				}
+				custom_effect_tooltip = tooltip_white_line
+				country_event = fcf_international_events.278
+			}
+		}
+		ai_will_do = { base = 40 }
+	}
+	GER_evacuate_africa = {
+		icon = eng_blackshirt_march
+		cost = 100
+		allowed = { tag = GER }
+		visible = {
+			country_exists = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		available = {
+			set_temp_variable = { target_stability_num = -50 }
+			custom_trigger_tooltip = {
+				tooltip = GER_MAF_stability_judge_trigger
+				NOT = { check_variable = { GER_MAF_stability > target_stability_num } }
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = GER_evacuate_africa_tt
+			set_country_flag = GER_has_evacuate_africa
+			hidden_effect = { MAF = { country_event = fcf_international_events.279 } }
+		}
+		ai_will_do = { base = 40 }
+	}
+	#MAF
+	MAF_anticolonial_forces_taking_action_mission = {
+		icon = generic_civil_support
+		days_mission_timeout = 14
+		activation = { 
+			tag = MAF
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		available = { 
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = MAF_true_stability
+						JUDGE = more_than_or_equal_to
+						TAGNUM = "50"
+					}
+					NOT = { check_variable = { MAF.MAF_true_stability < 50 } }
+				}
+
+				custom_trigger_tooltip = {
+					tooltip = MAF_half_territory_is_stable_trigger
+					check_variable = { MAF_stable_territory_count > 6 }
+				}
+			}
+		}
+		is_good = no
+		fixed_random_seed = no
+		complete_effect = {
+			country_event = fcf_international_events.281
+		}
+		timeout_effect = { 
+			set_temp_variable_to_random = { var = change_num max = -1 min = MAF_anticolonial_forces_taking_action_limit_min }
+			MAF_territory_randomly_pick = yes
+			set_temp_variable = { territory_stability_change = change_num }
+			set_temp_variable = { territory_economy_change = 0 }
+			MAF_territory_stability_or_economy_change = yes
+
+			if = {
+				limit = { check_variable = { MAF_anticolonial_forces_taking_action_mission_scale = 2 } }
+				set_temp_variable_to_random = { var = change_num max = -2 min = MAF_anticolonial_forces_taking_action_limit_min }
+				MAF_territory_randomly_pick = yes
+				add_to_temp_variable = { temp_index = 1 }
+				clamp_variable = { var = temp_index max = 13 min = 1 }
+				set_temp_variable = { territory_id = MAF_territory_list^temp_index }
+				set_temp_variable = { territory_stability_change = change_num }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			activate_mission = MAF_anticolonial_forces_taking_action_mission
+		}
+		ai_will_do = { base = 10 }
+	}
+	MAF_request_german_support = {
+		icon = hol_attract_foreign_investors
+		cost = MAF_construction_or_suppress_points_40
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_global_flag = GER_refuse_to_help_MAF }
+		}
+		available = {
+			NOT = { has_global_flag = GER_refuse_to_help_MAF }
+
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = MAF_construction_or_suppress_points
+						JUDGE = more_than_or_equal_to
+						TAGNUM = "4"
+					}
+					NOT = { check_variable = { MAF.MAF_construction_or_suppress_points < 4 } }
+				}
+				custom_trigger_tooltip = {
+					tooltip = MAF_have_enough_alternative_pp_tt
+					NOT = { has_political_power < MAF.MAF_construction_or_suppress_points_40 }
+				}
+			}
+		}
+		complete_effect = {
+			set_temp_variable = { points_type = 3 }
+			set_temp_variable = { points_cost = 40 }
+			MAF_construction_and_suppress_points_decision_cost = yes
+
+			set_temp_variable_to_random = { var = change_num max = 15 min = 5 }
+			add_to_variable = {
+				GER.GER_MAF_credibility = change_num
+				tooltip = GER_MAF_credibility_improve_tt
+			}
+			add_to_variable = {
+				GER.MAF_construction_points_monthly = 1
+				tooltip = GER_MAF_construction_points_monthly_change_tt
+			}
+			add_to_variable = {
+				GER.MAF_suppress_points_monthly = 1
+				tooltip = GER_MAF_suppress_points_monthly_change_tt
+			}
+			hidden_effect = {  
+				GER = {
+					add_to_variable = { colonial_illusion_true_cost_political_power_gain = -0.05 }
+					add_to_variable = { colonial_illusion_true_cost_industrial_factory_donations = -1 }
+				}
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+	MAF_fictitious_report = {
+		icon = eng_trade_unions_support
+		cost = 20
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		complete_effect = {
+			add_to_variable = {
+				MAF_report_padding = 10
+				tooltip = MAF_report_padding_change_tt
+			}
+			custom_effect_tooltip = MAF_report_padding_warning_tt
+
+			custom_effect_tooltip = tooltip_white_line
+			add_to_variable = {
+				MAF_colonial_report_adjustment = 1
+				tooltip = MAF_colonial_report_improve_tt
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+	MAF_expand_colonial_armed_forces = {
+		icon = generic_police_action
+		cost = MAF_construction_points_40
+		days_remove = 90
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = MAF_construction_points
+						JUDGE = more_than_or_equal_to
+						TAGNUM = "4"
+					}
+					NOT = { check_variable = { MAF_construction_points < 4 } }
+				}
+				custom_trigger_tooltip = {
+					tooltip = MAF_have_enough_alternative_pp_tt
+					NOT = { has_political_power < MAF.MAF_construction_points_40 }
+				}
+			}
+			has_equipment = { infantry_equipment > 499 }
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			set_temp_variable = { points_type = 1 }
+			set_temp_variable = { points_cost = 40 }
+			MAF_construction_and_suppress_points_decision_cost = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable_to_random = { var = change_num max = 10 min = 5 }
+			MAF_territory_randomly_pick = yes
+			set_temp_variable = { territory_stability_change = change_num }
+			set_temp_variable = { territory_economy_change = 0 }
+			MAF_territory_stability_or_economy_change = yes
+		}
+		remove_effect = {
+			custom_effect_tooltip = MAF_expand_colonial_armed_forces_tt
+			add_to_variable = { improve_territory_stability_min = 2 }
+
+			add_to_variable = {
+				MAF_suppress_points_monthly = 1
+				tooltip = MAF_suppress_points_monthly_change_tt
+			}
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable_to_random = { var = change_num max = 10 min = 5 }
+			MAF_territory_randomly_pick = yes 
+			set_temp_variable = { territory_stability_change = change_num }
+			set_temp_variable = { territory_economy_change = 0 }
+			MAF_territory_stability_or_economy_change = yes
+		}
+		ai_will_do = { base = 0	}
+	} 
+	MAF_authorize_local_lord = {
+		icon = eng_trade_unions_demand
+		cost = MAF_construction_points_20
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = MAF_construction_or_suppress_points
+						JUDGE = more_than_or_equal_to
+						TAGNUM = "2"
+					}
+					NOT = { check_variable = { MAF.MAF_construction_points < 2 } }
+				}
+				custom_trigger_tooltip = {
+					tooltip = MAF_have_enough_alternative_pp_tt
+					NOT = { has_political_power < MAF.MAF_construction_points_20 }
+				}
+			}
+			
+			custom_trigger_tooltip = {
+				tooltip = MAF_any_territory_is_uncontrol_trigger
+				any_of = {
+					array = MAF.MAF_territory_list
+					value = territory_id
+					NOT = { check_variable = { MAF.MAF_territory_stability^territory_id > 30 } }
+				}
+			}
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			set_temp_variable = { points_type = 1 }
+			set_temp_variable = { points_cost = 20 }
+			MAF_construction_and_suppress_points_decision_cost = yes
+
+			clear_array = MAF.MAF_uncontrol_territory_list 
+			for_loop_effect = {
+				start = 1
+				end = 14
+				value = idx
+				set_temp_variable = { territory_id = MAF_territory_list^idx }
+				if = {
+					limit = { NOT = { check_variable = { MAF.MAF_territory_stability^territory_id > 30 } } }
+					add_to_array = { MAF.MAF_uncontrol_territory_list = territory_id }
+				}
+			}
+			country_event = fcf_international_events.280
+			custom_effect_tooltip = MAF_authorize_local_lord_tt
+			effect_tooltip = {
+				add_to_variable = {
+					tooltip_variable = 20
+					tooltip = MAF_territory_stability_improve_tt
+				}
+				
+				custom_effect_tooltip = tooltip_white_line
+				add_to_variable = {
+					MAF_construction_points_monthly = -1
+					tooltip = MAF_construction_points_monthly_change_tt
+				}
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+	MAF_squeeze_harder = {
+		icon = oppression
+		cost = MAF_construction_or_suppress_points_20
+		days_remove = 30
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_global_flag = GER_refuse_to_help_MAF }
+		}
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = MAF_construction_or_suppress_points
+						JUDGE = more_than_or_equal_to
+						TAGNUM = "2"
+					}
+					NOT = { check_variable = { MAF.MAF_construction_or_suppress_points < 2 } }
+				}
+				
+				custom_trigger_tooltip = {
+					tooltip = MAF_have_enough_alternative_pp_tt
+					NOT = { has_political_power < MAF.MAF_construction_or_suppress_points_20 }
+				}
+			}
+		}
+		modifier = {
+			industrial_capacity_factory = 0.15
+			industrial_capacity_dockyard = 0.2
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			set_temp_variable = { points_type = 3 }
+			set_temp_variable = { points_cost = 20 }
+			MAF_construction_and_suppress_points_decision_cost = yes
+
+			MAF_territory_randomly_pick = yes
+			set_temp_variable_to_random = { var = change_num max = -5 min = -20 }
+			set_temp_variable = { territory_stability_change = change_num }
+			multiply_temp_variable = { change_num = -2 }
+			set_temp_variable = { territory_economy_change = change_num }
+			MAF_territory_stability_or_economy_change = yes
+		}
+		remove_effect = {
+			set_temp_variable_to_random = { var = change_num max = 20 min = 5 }
+			add_to_variable = {
+				MAF_colonial_report_adjustment = change_num
+				tooltip = MAF_colonial_report_improve_tt
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+	MAF_invite_GER_study_tour = {
+		icon = eng_propaganda_campaigns
+		cost = MAF_construction_points_10
+		days_remove = 30
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+		}
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = MAF_construction_points
+						JUDGE = more_than_or_equal_to
+						TAGNUM = "1"
+					}
+					NOT = { check_variable = { MAF.MAF_construction_points < 1 } }
+				}
+				custom_trigger_tooltip = {
+					tooltip = MAF_have_enough_alternative_pp_tt
+					NOT = { has_political_power < MAF.MAF_construction_or_suppress_points_10 }
+				}
+			}
+
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = var_judge_num
+						TAGVAR = MAF_colonial_report_MAF
+						JUDGE = more_than_or_equal_to
+						TAGNUM = "10.0"
+					}
+					NOT = { check_variable = { MAF.MAF_construction_points < 10 } }
+				}
+
+				custom_trigger_tooltip = {
+					tooltip = MAF_any_territory_is_stable_trigger
+					any_of = {
+						array = MAF.MAF_territory_list
+						value = territory_id
+						check_variable = { MAF.MAF_territory_stability^territory_id > 70 } 
+					}
+				}
+			}
+		}
+		fixed_random_seed = no
+		complete_effect = {
+			set_temp_variable = { points_type = 1 }
+			set_temp_variable = { points_cost = 10 }
+			MAF_construction_and_suppress_points_decision_cost = yes
+
+			set_temp_variable_to_random = { var = change_num max = -5 min = -10 }
+			add_to_variable = {
+				GER.GER_MAF_credibility = change_num
+				tooltip = GER_MAF_credibility_reduce_tt
+			}
+		}
+		remove_effect = {
+			set_temp_variable_to_random = { var = change_num max = -5 min = -20 }
+			add_to_variable = {
+				GER.GER_MAF_credibility = change_num
+				tooltip = GER_MAF_credibility_reduce_tt
+			}
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	MAF_dealing_with_local_situations_category = {
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+		}
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+				clr_country_flag = MAF_dealing_with_local_situations_category_hidden
+			}
+			else = { set_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#德属东非
+    MAF_dealing_with_local_situations_965 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 965 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#喀麦隆保护领
+    MAF_dealing_with_local_situations_927 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 927 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#刚果保护领
+    MAF_dealing_with_local_situations_295 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 295 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#加蓬保护领
+    MAF_dealing_with_local_situations_539 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 539 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#多哥保护领
+    MAF_dealing_with_local_situations_877 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 877 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#达荷美保护领
+    MAF_dealing_with_local_situations_876 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 876 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#德属西南非洲
+    MAF_dealing_with_local_situations_541 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 541 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#尼日利亚殖民地/保护领
+    MAF_dealing_with_local_situations_973 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 973 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#黄金海岸殖民地
+    MAF_dealing_with_local_situations_274 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 274 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#肯尼亚殖民地/保护领
+    MAF_dealing_with_local_situations_547 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 547 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#乌干达保护领
+    MAF_dealing_with_local_situations_548 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 548 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#北罗得西亚
+    MAF_dealing_with_local_situations_813 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 813 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
+	#尼亚萨兰保护领
+    MAF_dealing_with_local_situations_871 = {
+		icon = infiltrate_state
+		days_re_enable = 0
+		allowed = { tag = MAF }
+		visible = {
+			country_exists = GER
+			has_global_flag = GER_MAF_colonial_illusion_activating
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
+			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
+		}
+		complete_effect = {
+			set_country_flag = MAF_dealing_with_local_situations_activating
+			set_variable = { MAF_targeted_territory = 871 }
+			country_event = fcf_international_events.269
+		}
+		ai_will_do = { base = 0	}
+	}
+
 }

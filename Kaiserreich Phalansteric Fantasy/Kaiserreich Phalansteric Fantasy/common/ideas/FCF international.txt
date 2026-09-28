@@ -1921,6 +1921,89 @@ ideas = {
 				defense_bonus_against = 0.05
 			}
 		}
+	#法瑞合作
+		FCF_SWI_special_relationship_with_france_economy = {
+			picture = FRA_phalanstere
+			cancel = { NOT = { country_exists = FRA } }
+			modifier = {
+				political_power_gain = 0.4
+				production_speed_buildings_factor = 0.02
+				industrial_capacity_factory = 0.03
+				research_speed_factor = 0.05
+
+				totalist_drift = 0.01
+				syndicalist_drift = 0.01
+				radical_socialist_drift = 0.01
+			}
+		}
+		FCF_SWI_special_relationship_with_france_open_borders = {
+			picture = SWI_FRA_coop
+			cancel = { NOT = { country_exists = FRA } }
+			modifier = {
+				stability_factor = -0.04
+
+				production_speed_buildings_factor = 0.02
+				production_factory_max_efficiency_factor = 0.02
+				production_factory_efficiency_gain_factor = 0.05
+
+				totalist_drift = 0.02
+				syndicalist_drift = 0.02
+				radical_socialist_drift = 0.02
+			}
+		}
+
+	#瑞士法裔自治区
+		FCF_french_region_of_switzerland = {
+			picture = government
+			cancel = { NOT = { is_subject_of = SWI } }
+			modifier = {
+				autonomy_manpower_share = -0.5
+
+				extra_trade_to_overlord_factor = -0.5
+				overlord_trade_cost_factor = 0.25
+
+				cic_to_overlord_factor = -0.5
+				mic_to_overlord_factor = -0.5
+			}
+		}
+	
+	#科西嘉
+		FCF_state_of_mafia = {
+			picture = generic_government_reconciliation
+			modifier = {
+				custom_modifier_tooltip = FCF_state_of_mafia_tt
+				autonomy_manpower_share = -0.8
+				cic_to_overlord_factor = -0.8
+				mic_to_overlord_factor = -0.5
+
+				paternal_autocrat_drift = 0.03
+			}
+		}
+		FCF_state_of_mafia_independence = {
+			name = FCF_state_of_mafia
+			picture = generic_government_reconciliation
+			modifier = {
+				custom_modifier_tooltip = FCF_state_of_mafia_tt
+				stability_factor = -0.15
+				war_support_factor = -0.3
+				political_power_gain = 0.5
+
+				industrial_capacity_factory = 0.1
+				production_speed_buildings_factor = 0.05
+				consumer_goods_factor = -0.4
+
+				paternal_autocrat_drift = 0.05
+			}
+		}
+		FCF_NFA_winner_of_state_of_mafia = {
+			picture = generic_government_reconciliation
+			do_effect = { controls_state = 1 }
+			cancel = { NOT = { owns_state = 1 } }
+			modifier = {
+				political_power_gain = 0.3
+				consumer_goods_factor = -0.1
+			}
+		}
 
 	###亚洲
 	#中国
