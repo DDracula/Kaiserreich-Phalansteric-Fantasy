@@ -100,6 +100,40 @@ FCF_politics_category = {
 		}
 		ai_will_do = { base = 10 }
 	}
+	FCF_politics_spring_election = {
+		icon = ger_mefo_bills
+		priority = 9
+		days_remove = 212
+		allowed = { tag = FRA }
+		available = {
+			always = no
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable_to_random = { var = change_num max = -10 min = -40 integer = yes }
+			set_temp_variable = { seat_change = change_num }
+			politics_CGF_coalition_seat_change = yes
+			hidden_effect = { activate_decision = FCF_politics_autumn_election }
+		}
+		ai_will_do = { base = 10 }
+	}
+	FCF_politics_autumn_election = {
+		icon = ger_mefo_bills
+		priority = 9
+		days_remove = 153
+		allowed = { tag = FRA }
+		available = {
+			always = no
+		}
+		remove_effect = {
+			custom_effect_tooltip = effect_politics
+			set_temp_variable_to_random = { var = change_num max = -10 min = -40 integer = yes }
+			set_temp_variable = { seat_change = change_num }
+			politics_CGF_coalition_seat_change = yes
+			hidden_effect = { activate_decision = FCF_politics_spring_election }
+		}
+		ai_will_do = { base = 10 }
+	}
 #大选
 	FCF_politics_election = {
 		icon = ger_mefo_bills
@@ -117,6 +151,7 @@ FCF_politics_category = {
 					limit = { has_country_flag = election_time_1936 }
 					clr_country_flag = election_time_1936
 					FCF_1936_election_result_effect = yes
+					activate_decision = FCF_politics_autumn_election 
 				}
 			}
 		}

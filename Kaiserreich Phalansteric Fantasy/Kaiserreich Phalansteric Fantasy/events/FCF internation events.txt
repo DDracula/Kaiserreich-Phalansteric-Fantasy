@@ -7722,10 +7722,29 @@ country_event = {
 country_event = {
 	id = fcf_international_events.129
 	title = fcf_international_events.129.title
-	desc = fcf_international_events.129.desc
+	desc = {
+		text = fcf_international_events.129.desc.a
+		trigger = { has_country_flag = MAF_anti_colonial_forces_united }
+	}
+	desc = {
+		text = fcf_international_events.129.desc.b
+		trigger = { has_country_flag = MAF_anti_colonial_forces_socialist }
+	}
 	is_triggered_only = yes
 	option = {
 		name = fcf_international_events.129.a
+		if = {
+			limit = { has_country_flag = MAF_anti_colonial_forces_united }
+			custom_effect_tooltip = MAF_anticolonial_forces_taking_action_mission_more_powerful
+			custom_effect_tooltip = MAF_anti_colonial_forces_united_tt
+			add_to_variable = { MAF_anticolonial_forces_taking_action_mission_scale = 1 }
+		}
+		else_if = {
+			limit = { has_country_flag = MAF_anti_colonial_forces_socialist }
+			custom_effect_tooltip = MAF_anticolonial_forces_taking_action_mission_more_powerful
+			custom_effect_tooltip = MAF_anti_colonial_forces_socialist_tt
+			add_to_variable = { MAF_anticolonial_forces_taking_action_limit_min = -3 }
+		}
 		ai_chance = { base = 10 }
 	}
 }
@@ -8172,6 +8191,25 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = fcf_international_events.141.a
+		if = {
+			limit = { has_country_flag = MAF_anti_colonial_forces_united }
+			set_temp_variable = { change_num_limit_max = MAF_uncontrol_territory_count }
+			multiply_temp_variable = { change_num_limit_max = -5 }
+			add_to_temp_variable =  { change_num_limit_max = -10 }
+			set_temp_variable_to_random = { var = change_num max = -1 min = change_num_limit_max }
+		}
+		else_if = {
+			limit = { has_country_flag = MAF_anti_colonial_forces_socialist }
+			set_temp_variable = { pan_socialist_popularity = var:THIS.party_popularity_100@syndicalist }
+			add_to_temp_variable = { pan_socialist_popularity = var:THIS.party_popularity_100@totalist }
+			add_to_temp_variable = { pan_socialist_popularity = var:THIS.party_popularity_100@radical_socialist }
+			multiply_temp_variable = { pan_socialist_popularity = -0.05 }
+			set_temp_variable_to_random = { var = change_num max = pan_socialist_popularity min = -10 }
+		}
+		MAF_territory_randomly_pick = yes
+		set_temp_variable = { territory_stability_change = change_num }
+		set_temp_variable = { territory_economy_change = 0 }
+		MAF_territory_stability_or_economy_change = yes
 		ai_chance = { base = 10 }
 	}
 }
@@ -8183,6 +8221,25 @@ country_event = {
 	is_triggered_only = yes
 	option = {
 		name = fcf_international_events.142.a
+		if = {
+			limit = { has_country_flag = MAF_anti_colonial_forces_united }
+			set_temp_variable = { change_num_limit_max = MAF_uncontrol_territory_count }
+			multiply_temp_variable = { change_num_limit_max = -5 }
+			add_to_temp_variable =  { change_num_limit_max = -15 }
+			set_temp_variable_to_random = { var = change_num max = -1 min = change_num_limit_max }
+		}
+		else_if = {
+			limit = { has_country_flag = MAF_anti_colonial_forces_socialist }
+			set_temp_variable = { pan_socialist_popularity = var:THIS.party_popularity_100@syndicalist }
+			add_to_temp_variable = { pan_socialist_popularity = var:THIS.party_popularity_100@totalist }
+			add_to_temp_variable = { pan_socialist_popularity = var:THIS.party_popularity_100@radical_socialist }
+			multiply_temp_variable = { pan_socialist_popularity = -0.05 }
+			set_temp_variable_to_random = { var = change_num max = pan_socialist_popularity min = -15 }
+		}
+		MAF_territory_randomly_pick = yes
+		set_temp_variable = { territory_stability_change = 0 }
+		set_temp_variable = { territory_economy_change = change_num }
+		MAF_territory_stability_or_economy_change = yes
 		ai_chance = { base = 10 }
 	}
 }

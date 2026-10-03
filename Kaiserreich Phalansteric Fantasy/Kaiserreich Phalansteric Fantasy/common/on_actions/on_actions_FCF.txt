@@ -1112,6 +1112,18 @@ on_actions = {
 					add_to_variable = { MAF_stable_territory_count = 1 }
 				}
 			}
+
+			set_variable = { MAF_uncontrol_territory_count = 0 }
+			for_loop_effect = {
+				start = 1
+				end = 14
+				value = idx
+				set_temp_variable = { territory_id = MAF_territory_list^idx }
+				if = {
+					limit = { NOT = { check_variable = { MAF.MAF_territory_stability^territory_id > 30 }  }}
+					add_to_variable = { MAF_uncontrol_territory_count = 1 }
+				}
+			}
 		}
 	}
 	on_weekly_MAF = { 

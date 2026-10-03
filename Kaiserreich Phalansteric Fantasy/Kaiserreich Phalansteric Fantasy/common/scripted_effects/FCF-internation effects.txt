@@ -3586,15 +3586,25 @@
 							country_event = fcf_international_events.270
 						}
 					}
+					else_if = {
+						limit = { 
+							check_variable = { MAF_territory_stability^871 > 30 } 
+							has_country_flag = MAF_territory_871_crisis
+						}
+						add_to_variable = { MAF_territory_crisis_count = -1 }
+						clr_country_flag = MAF_territory_871_crisis
+					}
 				}
 
 				if = {
 					limit = { 
 						OR = {
-							check_variable = { MAF_true_stability < -50 } 
-							check_variable = { MAF_territory_crisis_count > 6 } 
+							AND = {
+								check_variable = { MAF_true_stability < -50 } 
+								check_variable = { MAF_territory_crisis_count > 6 } 
+							}
+							check_variable = { MAF_true_stability = -100 } 
 						}
-						check_variable = { MAF_true_stability = -100 } 
 					}
 					country_event = fcf_international_events.271
 					GER = { country_event = fcf_international_events.272 }
