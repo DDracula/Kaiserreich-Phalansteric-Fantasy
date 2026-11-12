@@ -781,7 +781,7 @@
 	}
 ###经济事件
 	### 作用域：国家；主要作用：从尚未触发的经济事件中随机抽取并触发一项。
-	economy_random_event_trigger = {
+	economy_random_event_effect = {
 		random_list = {
 			1 = {
 				modifier = {
@@ -4223,6 +4223,520 @@
 		else_if = {
 			limit = { has_idea = FCF_economy_CGT_reform_protest_calm }
 			remove_ideas = FCF_economy_CGT_reform_protest_calm
+		}
+	}
+###总工会改革成果
+	economy_CGT_reform_results_effect_tooltip = {
+		custom_effect = CGT_reform_results_effect_tooltip
+		if = {
+			limit = {
+				NOT = { check_variable = { CGT_moderate_members < CGT_radical_members } }
+				NOT = { check_variable = { CGT_bureaucracy_points < CGT_radicalness_points } }
+			}
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_bureaucracy
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 2 }
+			set_temp_variable = { seat_change_CGT = 14 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = -2.5 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = 0.5 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = 2 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = -2 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 4 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 3 }
+			set_temp_variable = { economy_industry_process_change = 3 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 0 }
+			set_temp_variable = { economy_society_integration_change = 3 }
+			set_temp_variable = { economy_society_innovation_change = 0 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -2 }
+			set_temp_variable = { economy_reform_structure_change = 1 }
+			set_temp_variable = { economy_reform_management_change = 1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+
+		if = {
+			limit = {
+				NOT = { check_variable = { CGT_moderate_members < CGT_radical_members } }
+				check_variable = { CGT_bureaucracy_points < CGT_radicalness_points } 
+			}
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_people
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 7 }
+			set_temp_variable = { seat_change_CGT = 9 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = 1 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 1 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 2 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 2 }
+			set_temp_variable = { economy_industry_process_change = 2 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 1 }
+			set_temp_variable = { economy_society_integration_change = 2 }
+			set_temp_variable = { economy_society_innovation_change = 2 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -1 }
+			set_temp_variable = { economy_reform_structure_change = 1 }
+			set_temp_variable = { economy_reform_management_change = -1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+
+		if = {
+			limit = {
+				check_variable = { CGT_moderate_members < CGT_radical_members } 
+				NOT = { check_variable = { CGT_bureaucracy_points < CGT_radicalness_points } }
+			}
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_professional
+			}
+		
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 9 }
+			set_temp_variable = { seat_change_CGT = 7 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = 1.5 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = 0.5 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = -2 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 2 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 1 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = -2 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 3 }
+			set_temp_variable = { economy_industry_process_change = 1 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 1 }
+			set_temp_variable = { economy_society_integration_change = 2 }
+			set_temp_variable = { economy_society_innovation_change = 2 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -2 }
+			set_temp_variable = { economy_reform_structure_change = -1 }
+			set_temp_variable = { economy_reform_management_change = 1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+
+		if = {
+			limit = {
+				check_variable = { CGT_moderate_members < CGT_radical_members } 
+				check_variable = { CGT_bureaucracy_points < CGT_radicalness_points } 
+			}
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_workers
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 14 }
+			set_temp_variable = { seat_change_CGT = 2 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = 3 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = -1 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = -2 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 4 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = -1 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = -2 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 4 }
+			set_temp_variable = { economy_industry_process_change = 1 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 0 }
+			set_temp_variable = { economy_society_integration_change = 1 }
+			set_temp_variable = { economy_society_innovation_change = 3 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -2 }
+			set_temp_variable = { economy_reform_structure_change = -1 }
+			set_temp_variable = { economy_reform_management_change = -1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+	}
+	economy_CGT_reform_results_effect = {
+		#温和派+专业化
+		if = { 
+			limit = { has_country_flag = CGT_stage_reform_results_bureaucracy }
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_bureaucracy
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 2 }
+			set_temp_variable = { seat_change_CGT = 14 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = -2.5 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = 0.5 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = 2 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = -2 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 4 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 3 }
+			set_temp_variable = { economy_industry_process_change = 3 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 0 }
+			set_temp_variable = { economy_society_integration_change = 3 }
+			set_temp_variable = { economy_society_innovation_change = 0 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -2 }
+			set_temp_variable = { economy_reform_structure_change = 1 }
+			set_temp_variable = { economy_reform_management_change = 1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+
+		#温和派+激进化
+		if = { 
+			limit = { has_country_flag = CGT_stage_reform_results_people }
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_people
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 7 }
+			set_temp_variable = { seat_change_CGT = 9 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_satisfaction_workers_change = 1 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 1 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = 2 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 2 }
+			set_temp_variable = { economy_industry_process_change = 2 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 1 }
+			set_temp_variable = { economy_society_integration_change = 2 }
+			set_temp_variable = { economy_society_innovation_change = 2 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -1 }
+			set_temp_variable = { economy_reform_structure_change = 1 }
+			set_temp_variable = { economy_reform_management_change = -1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+
+		#激进派+专业化
+		if = { 
+			limit = { has_country_flag = CGT_stage_reform_results_professional }
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_professional
+			}
+		
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 9 }
+			set_temp_variable = { seat_change_CGT = 7 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = 1.5 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = 0.5 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = -2 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 2 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = 1 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = -2 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 3 }
+			set_temp_variable = { economy_industry_process_change = 1 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 1 }
+			set_temp_variable = { economy_society_integration_change = 2 }
+			set_temp_variable = { economy_society_innovation_change = 2 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -2 }
+			set_temp_variable = { economy_reform_structure_change = -1 }
+			set_temp_variable = { economy_reform_management_change = 1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
+		}
+
+		#激进派+激进化
+		if = { 
+			limit = { has_country_flag = CGT_stage_reform_results_workers }
+			swap_ideas = {
+				remove_idea = FCF_economy_CGT_special_status
+				add_idea = FCF_economy_CGT_special_status_workers
+			}
+
+			custom_effect_tooltip = effect_politics
+			set_temp_variable = { seat_change_CNS = -2 }
+			set_temp_variable = { seat_change_PSF = -2 }
+			set_temp_variable = { seat_change_POU = 14 }
+			set_temp_variable = { seat_change_CGT = 2 }
+			set_temp_variable = { seat_change_PCOP = -2 }
+			set_temp_variable = { seat_change_UA = -2 }
+			set_temp_variable = { seat_change_URSRS = -2 }
+			set_temp_variable = { seat_change_LND = -2 }
+			set_temp_variable = { seat_change_PAPF = -2 }
+			set_temp_variable = { seat_change_ETC = -2 }
+			politics_CGF_seat_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_society
+			set_temp_variable = { pop_workers_change = 3 }
+			set_temp_variable = { pop_peasants_change = 0 }
+			set_temp_variable = { pop_merchants_change = -1 }
+			set_temp_variable = { pop_scholars_change = 0 }
+			set_temp_variable = { pop_bureaucrats_change = -2 }
+			set_temp_variable = { pop_army_change = 0 }
+			society_pop_influence_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { pop_satisfaction_workers_change = 4 }
+			set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+			set_temp_variable = { pop_satisfaction_merchants_change = -1 }
+			set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+			set_temp_variable = { pop_satisfaction_bureaucrats_change = -2 }
+			set_temp_variable = { pop_satisfaction_army_change = 0 }
+			society_pop_satisfaction_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = effect_economy
+			set_temp_variable = { economy_values_change = 0 }
+			set_temp_variable = { economy_industry_basic_change = 4 }
+			set_temp_variable = { economy_industry_process_change = 1 }
+			set_temp_variable = { economy_industry_arms_change = 0 }
+			set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+			set_temp_variable = { economy_agriculture_chemical_change = 0 }
+			set_temp_variable = { economy_agriculture_chain_change = 0 }
+			set_temp_variable = { economy_society_equality_change = 0 }
+			set_temp_variable = { economy_society_integration_change = 1 }
+			set_temp_variable = { economy_society_innovation_change = 3 }
+			economy_indicators_change = yes
+
+			custom_effect_tooltip = tooltip_white_line
+			set_temp_variable = { economy_reform_dominance_change = -2 }
+			set_temp_variable = { economy_reform_structure_change = -1 }
+			set_temp_variable = { economy_reform_management_change = -1 }
+			set_temp_variable = { economy_reform_production_change = 0 }
+			set_temp_variable = { economy_reform_exchange_change = 0 }
+			set_temp_variable = { economy_reform_consumption_change = 0 }
+			set_temp_variable = { economy_reform_development_change = 0 }
+			economy_reform_tendency_change = yes
 		}
 	}
 ###

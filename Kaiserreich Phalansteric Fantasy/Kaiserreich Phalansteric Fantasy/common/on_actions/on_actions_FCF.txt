@@ -205,7 +205,6 @@ on_actions = {
 				set_country_flag = POU_in_gov
 				set_country_flag = CGT_in_gov
 				set_country_flag = URSRS_in_gov
-				set_country_flag = LND_in_gov
 
 				set_variable = { CNS_faction^0 = 1 }
 				set_variable = { CNS_faction^1 = 41 }
@@ -252,6 +251,10 @@ on_actions = {
 				set_variable = { PAPF_faction^0 = 1 }
 				set_variable = { PAPF_faction^1 = 55 }
 				set_variable = { PAPF_faction^2 = 45 }
+
+				set_temp_variable = { CGT_members = { value = POU_faction^2 add = POU_faction^3 multiply = 0.01 multiply = seat_POU add = seat_CGT } }
+				set_variable = { CGT_moderate_members = { value = CGT_faction^1 add = CGT_faction^3 multiply = 0.01 multiply = seat_CGT divide = CGT_members } }
+				set_variable = { CGT_radical_members = { value = 1 subtract = CGT_moderate_members } }
 			#议案
 				activate_mission = FCF_politics_impeachment
 				set_country_flag = voting_for_bill
@@ -774,6 +777,15 @@ on_actions = {
 			multiply_variable = { society_bill_cost_modifier_1 = -0.01 }
 
 			FCF_economy_supply_chain_modifier_update = yes
+
+			set_temp_variable = { CGT_members = { value = POU_faction^2 add = POU_faction^3 multiply = 0.01 multiply = seat_POU add = seat_CGT } }
+			set_variable = { CGT_moderate_members = { value = CGT_faction^1 add = CGT_faction^3 multiply = 0.01 multiply = seat_CGT divide = CGT_members } }
+			set_variable = { CGT_radical_members = { value = 1 subtract = CGT_moderate_members } }
+			if = {
+				limit = { check_variable = { CGT_moderate_members = CGT_radical_members } }
+				add_to_variable = { CGT_moderate_members = 0.1 }
+				add_to_variable = { CGT_radical_members = -0.1 }
+			}
 		#地块
 			every_state = {
 				limit = {
@@ -794,6 +806,177 @@ on_actions = {
 				}
 			}
 			FCF_economy_state_general_modifier_update = yes
+
+		#选举承诺
+			if = {
+				limit = { has_country_flag = FCF_politics_midterm_election_promised_politics }
+				set_variable = { num_of_CSP_members_attitude_cooerate_or_support = 0 }
+				if = {
+					limit = { 
+						set_temp_variable = { target_CSP_group = 1 }
+						CSP_attitude_trigger_support = yes
+					}
+					add_to_variable = { num_of_CSP_members_attitude_cooerate_or_support = 1 }
+				}
+				if = {
+					limit = { 
+						set_temp_variable = { target_CSP_group = 2 }
+						CSP_attitude_trigger_support = yes
+					}
+					add_to_variable = { num_of_CSP_members_attitude_cooerate_or_support = 1 }
+				}
+				if = {
+					limit = { 
+						set_temp_variable = { target_CSP_group = 3 }
+						CSP_attitude_trigger_support = yes
+					}
+					add_to_variable = { num_of_CSP_members_attitude_cooerate_or_support = 1 }
+				}
+				if = {
+					limit = { 
+						set_temp_variable = { target_CSP_group = 4 }
+						CSP_attitude_trigger_support = yes
+					}
+					add_to_variable = { num_of_CSP_members_attitude_cooerate_or_support = 1 }
+				}
+				if = {
+					limit = { 
+						set_temp_variable = { target_CSP_group = 5 }
+						CSP_attitude_trigger_support = yes
+					}
+					add_to_variable = { num_of_CSP_members_attitude_cooerate_or_support = 1 }
+				}
+			}
+			if = {
+				limit = { has_country_flag = FCF_politics_midterm_election_promised_society }
+				set_variable = { growth_of_pop_satisfation_after_promising = { value = pop_satisfation subtract = pop_satisfation_when_promising } }
+
+				set_variable = { num_of_pop_meeting_the_conditions = 0 }
+				if = {
+					limit = { check_expr = { value = pop_satisfaction_workers subtract = pop_satisfaction_workers_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_pop_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = { check_expr = { value = pop_satisfaction_peasants subtract = pop_satisfaction_peasants_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_pop_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = { check_expr = { value = pop_satisfaction_merchants subtract = pop_satisfaction_merchants_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_pop_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = { check_expr = { value = pop_satisfaction_scholars subtract = pop_satisfaction_scholars_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_pop_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = { check_expr = { value = pop_satisfaction_bureaucrats subtract = pop_satisfaction_bureaucrats_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_pop_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = { check_expr = { value = pop_satisfaction_army subtract = pop_satisfaction_army_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_pop_meeting_the_conditions = 1 }
+				}
+
+				set_variable = { num_of_extremists_meeting_the_conditions = 0 }
+				if = {
+					limit = {
+						OR = {
+							check_variable = { legions_status = 0 }
+							check_variable = { legions_attitude = 1 }
+						}
+					}
+					add_to_variable = { num_of_extremists_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = {
+						OR = {
+							check_variable = { TPPS_status = 0 }
+							check_variable = { TPPS_attitude = 1 }
+						}
+					}
+					add_to_variable = { num_of_extremists_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = {
+						OR = {
+							check_variable = { bonnot_status = 0 }
+							check_variable = { bonnot_attitude = 1 }
+						}
+					}
+					add_to_variable = { num_of_extremists_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = {
+						OR = {
+							check_variable = { phalanges_status = 0 }
+							check_variable = { phalanges_attitude = 1 }
+						}
+					}
+					add_to_variable = { num_of_extremists_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = {
+						OR = {
+							check_variable = { vertes_status = 0 }
+							check_variable = { vertes_attitude = 1 }
+						}
+					}
+					add_to_variable = { num_of_extremists_meeting_the_conditions = 1 }
+				}
+				if = {
+					limit = {
+						OR = {
+							check_variable = { gardes_status = 0 }
+							check_variable = { gardes_attitude = 1 }
+						}
+					}
+					add_to_variable = { num_of_extremists_meeting_the_conditions = 1 }
+				}
+			}
+			if = {
+				limit = { has_country_flag = FCF_politics_midterm_election_promised_economy }
+				set_variable = { growth_of_economy_values_after_promising = { value = economy_values subtract = economy_values_when_promising } }
+
+				set_variable = { num_of_economy_variables_meeting_the_conditions = 0 }
+				if = {
+					limit = { check_expr = { value = economy_industry_basic subtract = economy_industry_basic_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_industry_process subtract = economy_industry_process_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_industry_arms subtract = economy_industry_arms_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_agriculture_mechanized subtract = economy_agriculture_mechanized_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_agriculture_chemical subtract = economy_agriculture_chemical_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_agriculture_chain subtract = economy_agriculture_chain_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_society_equality subtract = economy_society_equality_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_society_integration subtract = economy_society_integration_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+				if = {
+					limit = { check_expr = { value = economy_society_innovation subtract = economy_society_innovation_when_promising greater_than_or_equals = 5 } }
+					add_to_variable = { num_of_economy_variables_meeting_the_conditions= 1 }
+				}
+
+				set_variable = { num_of_new_factories_after_promising = { value = num_of_factories subtract = num_of_factories_when_promising } }
+			}
 		###################
 
 		#国际

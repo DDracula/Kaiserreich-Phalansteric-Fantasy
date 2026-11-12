@@ -1834,6 +1834,16 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 20
 			economy_anti_CGT_record_idea_update = yes
+
+			custom_effect_tooltip = decisions_will_be_different_due_to_landscape
+			if = {
+				limit = { 
+					has_country_flag = PSF_in_gov 
+					NOT = { has_country_flag = PSF_cooperate_with_CGT }
+					NOT = { has_country_flag = CGT_refuse_to_cooperate_with_PSF }
+				}
+				unlock_decision_tooltip = FCF_politics_PSF_cooperate_with_CGT
+			}
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -1849,22 +1859,6 @@ focus_tree = {
 		prerequisite = { focus = FCF_CGT_issues }
 		mutually_exclusive = { focus = FCF_against_CGT }
 		available = {
-			NOT = {
-				custom_trigger_tooltip = {
-					tooltip = {
-						localization_key = trigger_party_in_gov
-						PARTY = party_PCOP
-					}
-					has_country_flag = PCOP_in_gov
-				}
-				custom_trigger_tooltip = {
-					tooltip = {
-						localization_key = trigger_party_in_gov
-						PARTY = party_UA
-					}
-					has_country_flag = UA_in_gov
-				}
-			}
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = {
@@ -1890,14 +1884,37 @@ focus_tree = {
 				add_idea = FCF_economy_CGT_authority_contested_reduced
 			}
 
-			set_variable = { CGT_bureaucracy_level = 0 }
-			set_variable = { CGT_radicalness_level = 0 }
+			set_variable = { CGT_bureaucracy_points = 1 }
+			set_variable = { CGT_radicalness_points = 1 }
 
-			unlock_decision_tooltip = FCF_society_CGT_reform_simplify_management
-			unlock_decision_tooltip = FCF_society_CGT_reform_strengthen_management
-			unlock_decision_tooltip = FCF_society_CGT_reform_criticize_decentralization
-			unlock_decision_tooltip = FCF_society_CGT_reform_criticize_centralization
-			custom_effect_tooltip = unlock_in_society
+			custom_effect_tooltip = decisions_will_be_different_due_to_landscape
+			set_variable = { PSF_reform_CGT_mission_days_needed = { value = 706956 subtract = global.num_days } }
+			activate_mission = FCF_politics_CGT_reform_mission
+			unlock_decision_tooltip = FCF_politics_CGT_reform_summary
+			unlock_decision_tooltip = FCF_politics_CGT_reform_expand_workers_eduction
+			unlock_decision_tooltip = FCF_politics_CGT_reform_strengthen_auditing
+			if = {
+				limit = { has_country_flag = CGT_in_gov }
+				unlock_decision_tooltip = FCF_politics_CGT_moderate_unify_standard
+				set_variable = { FCF_politics_CGT_moderate_unify_standard_days_remove = 50 }
+				unlock_decision_tooltip = FCF_politics_CGT_moderate_train_professional_bureaucrats
+				set_variable = { FCF_politics_CGT_moderate_train_professional_bureaucrats_days_remove = 40 }
+			}
+			if = {
+				limit = { has_country_flag = PSF_in_gov }
+				unlock_decision_tooltip = FCF_politics_CGT_PSF_restructure_member_mutual_aid_business
+				set_variable = { FCF_politics_CGT_PSF_restructure_member_mutual_aid_business_days_remove = 55 }
+			}
+
+			if = {
+				limit = { has_country_flag = POU_in_gov }
+				
+			}
+			if = {
+				limit = { has_country_flag = CNS_in_gov }
+
+			}
+			custom_effect_tooltip = unlock_in_politics
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -1911,40 +1928,48 @@ focus_tree = {
 		relative_position_id = FCF_reform_CGT
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		prerequisite = { focus = FCF_reform_CGT }
-		mutually_exclusive = { focus = FCF_professional_governance }
 		available = {
-			OR = {
-				set_temp_variable = { target_party_id = 4 }
-				set_temp_variable = { target_faction_id = 2 }
-				politics_party_dominant_faction_evaluate = yes
-
-				AND = {
-					custom_trigger_tooltip = {
-						tooltip = {
-							localization_key = trigger_party_in_gov
-							PARTY = party_POU
-						}
-						has_country_flag = POU_in_gov
+			NOT = { 
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = trigger_party_in_gov
+						PARTY = party_PSF
 					}
-
-					OR = {
-						set_temp_variable = { target_party_id = 3 }
-						set_temp_variable = { target_faction_id = 2 }
-						politics_party_dominant_faction_evaluate = yes
-
-						set_temp_variable = { target_party_id = 3 }
-						set_temp_variable = { target_faction_id = 3 }
-						politics_party_dominant_faction_evaluate = yes
-					}
+					has_country_flag = PSF_in_gov
 				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = CGT_radicalness_points
+					JUDGE = more_than_or_equal_to
+					TAGNUM = "3"
+				}
+				NOT = { check_variable = { CGT_radicalness_points < 3 } }
 			}
 		}
 		completion_reward = {
 			economy_anti_CGT_record_idea_update = yes
 
-			swap_ideas = {
-				remove_idea = FCF_economy_CGT_authority_contested_reduced
-				add_idea = FCF_economy_CGT_authority_contested_severely_reduced
+			if = {
+				limit = { has_idea = FCF_economy_CGT_authority_contested_reduced }
+				swap_ideas = {
+					remove_idea = FCF_economy_CGT_authority_contested_reduced
+					add_idea = FCF_economy_CGT_authority_contested_severely_reduced
+				}
+			}
+			else_if = {
+				limit = { 
+					NOT = { has_completed_focus = FCF_new_CGT }
+					NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+					NOT = { has_idea = FCF_economy_CGT_authority_contested_severely_reduced } 
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = FCF_economy_CGT_authority_contested_reduced
+						add_idea = FCF_economy_CGT_authority_contested_severely_reduced
+					}
+				}
 			}
 
 			custom_effect_tooltip = effect_society
@@ -1968,11 +1993,7 @@ focus_tree = {
 			economy_reform_tendency_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_society_CGT_reform_encourage_workers_reporting
-			unlock_decision_tooltip = FCF_society_CGT_reform_democratize_management
-			unlock_decision_tooltip = FCF_society_CGT_reform_coordination_mechanism
-			unlock_decision_tooltip = FCF_society_CGT_reform_connect_with_CNS
-			custom_effect_tooltip = unlock_in_society
+			custom_effect_tooltip = decisions_will_be_different_due_to_landscape
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -1985,20 +2006,48 @@ focus_tree = {
 		relative_position_id = FCF_reform_CGT
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		prerequisite = { focus = FCF_reform_CGT }
-		mutually_exclusive = { focus = FCF_self_supervised_syndicats }
 		available = {
 			NOT = {
-				set_temp_variable = { target_party_id = 4 }
-				set_temp_variable = { target_faction_id = 2 }
-				politics_party_dominant_faction_evaluate = yes
+				custom_trigger_tooltip = {
+					tooltip = {
+						localization_key = trigger_party_in_gov
+						PARTY = party_CNS
+					}
+					has_country_flag = CNS_in_gov
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = {
+					localization_key = var_judge_num
+					TAGVAR = CGT_bureaucracy_points
+					JUDGE = more_than_or_equal_to
+					TAGNUM = "3"
+				}
+				NOT = { check_variable = { CGT_bureaucracy_points < 3 } }
 			}
 		}
 		completion_reward = {
 			economy_anti_CGT_record_idea_update = yes
 
-			swap_ideas = {
-				remove_idea = FCF_economy_CGT_authority_contested_reduced
-				add_idea = FCF_economy_CGT_authority_contested_severely_reduced
+			if = {
+				limit = { has_idea = FCF_economy_CGT_authority_contested_reduced }
+				swap_ideas = {
+					remove_idea = FCF_economy_CGT_authority_contested_reduced
+					add_idea = FCF_economy_CGT_authority_contested_severely_reduced
+				}
+			}
+			else_if = {
+				limit = { 
+					NOT = { has_completed_focus = FCF_new_CGT }
+					NOT = { has_completed_focus = FCF_focus_on_work_syndicats }
+					NOT = { has_idea = FCF_economy_CGT_authority_contested_severely_reduced } 
+				}
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = FCF_economy_CGT_authority_contested_reduced
+						add_idea = FCF_economy_CGT_authority_contested_severely_reduced
+					}
+				}
 			}
 
 			custom_effect_tooltip = effect_society
@@ -2022,11 +2071,20 @@ focus_tree = {
 			economy_reform_tendency_change = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_society_CGT_reform_professional_bureaucrats
-			unlock_decision_tooltip = FCF_society_CGT_reform_unified_branch_standards
-			unlock_decision_tooltip = FCF_society_CGT_reform_strengthen_internal_incentive
-			unlock_decision_tooltip = FCF_society_CGT_reform_connect_with_PSF
-			custom_effect_tooltip = unlock_in_society
+			custom_effect_tooltip = decisions_will_be_different_due_to_landscape
+			if = {
+				limit = { has_country_flag = CGT_in_gov }
+				unlock_decision_tooltip = FCF_politics_CGT_moderate_reorganize_economic_coordination_system
+				set_variable = { FCF_politics_CGT_moderate_reorganize_economic_coordination_system_days_remove = 60 }
+				unlock_decision_tooltip = FCF_politics_CGT_moderate_end_investment_chaos
+				set_variable = { FCF_politics_CGT_moderate_end_investment_chaos_days_remove = 30 }
+			}
+			if = {
+				limit = { has_country_flag = PSF_in_gov }
+				unlock_decision_tooltip = FCF_politics_CGT_PSF_reshape_union_enterprises_relations
+				set_variable = { FCF_politics_CGT_PSF_reshape_union_enterprises_relations_days_remove = 70 }
+			}
+			custom_effect_tooltip = unlock_in_politics
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -2057,10 +2115,6 @@ focus_tree = {
 					}
 					has_country_flag = CGT_in_gov
 				}
-
-				set_temp_variable = { target_party_id = 5 }
-				set_temp_variable = { target_faction_id = 2 }
-				politics_party_dominant_faction_evaluate = yes
 			}
 		}
 		completion_reward = {
@@ -2071,11 +2125,7 @@ focus_tree = {
 			set_variable = { CGT_confidence = 10 }
 
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_society_CGT_opposition_investigation_committee
-			unlock_decision_tooltip = FCF_society_CGT_opposition_independent_unions
-			unlock_decision_tooltip = FCF_society_CGT_opposition_independent_delegate
-			unlock_decision_tooltip = FCF_society_CGT_opposition_reversal_of_verdict
-			custom_effect_tooltip = unlock_in_society
+			custom_effect_tooltip = decisions_will_be_different_due_to_landscape
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -2096,10 +2146,7 @@ focus_tree = {
 			economy_anti_CGT_record_idea_update = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			unlock_decision_tooltip = FCF_society_CGT_opposition_antitrust_law
-			unlock_decision_tooltip = FCF_society_CGT_opposition_investigate_leaders
-			unlock_decision_tooltip = FCF_society_CGT_opposition_encourage_grassroots_reporting
-			custom_effect_tooltip = unlock_in_society
+			custom_effect_tooltip = decisions_will_be_different_due_to_landscape
 		}
 		ai_will_do = { factor = 1 }
 	}
@@ -2214,77 +2261,31 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FCF_focus_on_work_syndicats
+			focus = FCF_diverse_syndicats_strategies
 		}
 		available = {
-			has_political_power > 50
 			has_country_flag = CGT_stage_reform_results
-			NOT = { has_country_flag = CGT_centralists_cooperate_with_PSF }
+			NOT = { has_country_flag = CGT_stage_reform_results_split }
 		}
 		completion_reward = {
-			add_political_power = -50
-
-			custom_effect_tooltip = {
-				localization_key = society_bill_vote_tt
-				BILL = FCF_society_bill_syndicats_unification
-			}
-			set_country_flag = voting_for_bill
-			set_variable = { bill_var = 26 }
-
-			if = {
-				limit = {
-					OR = {
-						set_temp_variable = { target_party_id = 4 }
-						set_temp_variable = { target_faction_id = 2 }
-						politics_party_dominant_faction_evaluate = yes
-
-						AND = {
-							has_country_flag = POU_in_gov
-
-							OR = {
-								set_temp_variable = { target_party_id = 3 }
-								set_temp_variable = { target_faction_id = 2 }
-								politics_party_dominant_faction_evaluate = yes
-
-								set_temp_variable = { target_party_id = 3 }
-								set_temp_variable = { target_faction_id = 3 }
-								politics_party_dominant_faction_evaluate = yes
-							}
-						}
-					}
-				}
-				if = {
-					limit = { has_country_flag = CGT_radicals_cooperate_with_CNS }
-					set_temp_variable = { CNS_bill_support_score = 10 }
-				}
-				else = { set_temp_variable = { CNS_bill_support_score = 7 } }
-				set_temp_variable = { PSF_bill_support_score = 1 }
-				set_temp_variable = { POU_bill_support_score = 8 }
-				set_temp_variable = { CGT_bill_support_score = 8 }
-				set_temp_variable = { PCOP_bill_support_score = 2 }
-				set_temp_variable = { UA_bill_support_score = 6 }
-				set_temp_variable = { URSRS_bill_support_score = 4 }
-				set_temp_variable = { LND_bill_support_score = 4 }
-				set_temp_variable = { PAPF_bill_support_score = 0 }
-				set_temp_variable = { ETC_bill_support_score = 4 }
-			}
-			else = {
-				set_temp_variable = { CNS_bill_support_score = 2 }
-				set_temp_variable = { PSF_bill_support_score = 7 }
-				set_temp_variable = { POU_bill_support_score = 5 }
-				set_temp_variable = { CGT_bill_support_score = 10 }
-				set_temp_variable = { PCOP_bill_support_score = 6 }
-				set_temp_variable = { UA_bill_support_score = 0 }
-				set_temp_variable = { URSRS_bill_support_score = 8 }
-				set_temp_variable = { LND_bill_support_score = 6 }
-				set_temp_variable = { PAPF_bill_support_score = 3 }
-				set_temp_variable = { ETC_bill_support_score = 5 }
-			}
-			politics_CGF_vote_set = yes
-
+			custom_effect_tooltip = effects_will_change_due_to_CGT_stage_reform_results
+			
 			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = if_bill_pass
-			effect_tooltip = {
-				bill_26_pass_effect = yes
+			remove_ideas = FCF_economy_CGT_authority_contested_severely_reduced
+			custom_effect_tooltip = tooltip_white_line
+
+			effect_tooltip = { economy_CGT_reform_results_effect_tooltip = yes }
+			hidden_effect = { 
+				economy_CGT_reform_results_effect = yes 
+				
+				if = {
+					limit = { has_country_flag = landscape_PSF_rank_1 }
+					if = {
+						limit = { has_country_flag = CGT_stage_reform_results_workers }
+						country_event = { id = fcf_politics_events.61 days = 5 }
+					}
+					else = { country_event = { id = fcf_politics_events.60 days = 5 } }
+				}
 			}
 		}
 		ai_will_do = { factor = 1 }
@@ -2298,8 +2299,13 @@ focus_tree = {
 		relative_position_id = FCF_antitrust_investigation
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		prerequisite = { focus = FCF_antitrust_investigation }
+		mutually_exclusive = {
+			focus = FCF_focus_on_work_syndicats
+			focus = FCF_new_CGT
+		}
 		available = {
 			NOT = { has_country_flag = voting_for_bill }
+			
 			NOT = {
 				custom_trigger_tooltip = {
 					tooltip = {
@@ -2373,85 +2379,159 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FCF_new_CGT
+			focus = FCF_diverse_syndicats_strategies
 		}
 		available = {
-			NOT = { has_country_flag = voting_for_bill }
-			NOT = {
-				custom_trigger_tooltip = {
-					tooltip = {
-						localization_key = bill_has_passed
-						BILL = FCF_society_bill_competitive_syndicats
-					}
-					has_idea = FCF_society_bill_competitive_syndicats
-				}
-			}
-
-			OR = {
-				custom_trigger_tooltip = {
-					tooltip = {
-						localization_key = trigger_party_in_gov
-						PARTY = party_PSF
-					}
-					has_country_flag = PSF_in_gov
-				}
-
-				AND = {
-					OR = {
-						set_temp_variable = { target_party_id = 4 }
-						set_temp_variable = { target_faction_id = 1 }
-						politics_party_dominant_faction_evaluate = yes
-
-						set_temp_variable = { target_party_id = 4 }
-						set_temp_variable = { target_faction_id = 3 }
-						politics_party_dominant_faction_evaluate = yes
-					}
-					has_country_flag = CGT_centralists_cooperate_with_PSF
-				}
-			}
-
 			custom_trigger_tooltip = {
 				tooltip = {
-					localization_key = var_judge_num
-					TAGVAR = economy_power
-					JUDGE = more_than
-					TAGNUM = "100"
+					localization_key = trigger_party_in_gov
+					PARTY = party_PSF
 				}
-				check_variable = { economy_power > 100 }
+				has_country_flag = PSF_in_gov
+			}
+			OR = {
+				AND = {
+					has_country_flag = PSF_cooperate_with_CGT
+					has_country_flag = CGT_stage_reform_results_split
+				}
+
 			}
 		}
 		completion_reward = {
-			add_to_variable = {
-				economy_power = -100
-				tooltip = economy_power_change_tt
-			}
-
-			custom_effect_tooltip = {
-				localization_key = society_bill_vote_tt
-				BILL = FCF_society_bill_federal_syndicats
-			}
-			set_country_flag = voting_for_bill
-			set_variable = { bill_var = 24 }
-
-			set_temp_variable = { CNS_bill_support_score = 2 }
-			set_temp_variable = { PSF_bill_support_score = 10 }
-			set_temp_variable = { POU_bill_support_score = 1 }
+			custom_effect_tooltip = effects_will_change_due_to_strategies_for_CGT
 			if = {
-				limit = { has_country_flag = CGT_centralists_cooperate_with_PSF }
-				set_temp_variable = { CGT_bill_support_score = 8 }
+				limit = { has_completed_focus = FCF_reform_CGT } 
+				custom_effect_tooltip = tooltip_white_line
+				remove_ideas = FCF_economy_CGT_authority_contested_severely_reduced
+				custom_effect_tooltip = tooltip_white_line 
 			}
-			else = { set_temp_variable = { CGT_bill_support_score = 4 } }
-			set_temp_variable = { PCOP_bill_support_score = 5 }
-			set_temp_variable = { UA_bill_support_score = 0 }
-			set_temp_variable = { URSRS_bill_support_score = 6 }
-			set_temp_variable = { LND_bill_support_score = 6 }
-			set_temp_variable = { PAPF_bill_support_score = 6 }
-			set_temp_variable = { ETC_bill_support_score = 6 }
-			politics_CGF_vote_set = yes
+			else = { custom_effect_tooltip = tooltip_white_line  }
 
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = if_bill_pass
-			effect_tooltip = {
-				bill_24_pass_effect = yes
+			if = {
+				limit = { has_country_flag = PSF_cooperate_with_CGT }
+				country_event = fcf_politics_events.59
+				swap_ideas = {
+					remove_idea = FCF_economy_CGT_special_status
+					add_idea = FCF_economy_CGT_special_status_cooperate
+				}
+
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { seat_change_CNS = -2 }
+				set_temp_variable = { seat_change_PSF = 5 }
+				set_temp_variable = { seat_change_POU = -4 }
+				set_temp_variable = { seat_change_CGT = 13 }
+				set_temp_variable = { seat_change_PCOP = -2 }
+				set_temp_variable = { seat_change_UA = -2 }
+				set_temp_variable = { seat_change_URSRS = -2 }
+				set_temp_variable = { seat_change_LND = -2 }
+				set_temp_variable = { seat_change_PAPF = -2 }
+				set_temp_variable = { seat_change_ETC = -2 }
+				politics_CGF_seat_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_workers_change = -3 }
+				set_temp_variable = { pop_peasants_change = 0 }
+				set_temp_variable = { pop_merchants_change = 1 }
+				set_temp_variable = { pop_scholars_change = 0 }
+				set_temp_variable = { pop_bureaucrats_change = 2 }
+				set_temp_variable = { pop_army_change = 0 }
+				society_pop_influence_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { pop_satisfaction_workers_change = -2 }
+				set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+				set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+				set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+				set_temp_variable = { pop_satisfaction_bureaucrats_change = 4 }
+				set_temp_variable = { pop_satisfaction_army_change = 0 }
+				society_pop_satisfaction_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { economy_values_change = 1 }
+				set_temp_variable = { economy_industry_basic_change = 2 }
+				set_temp_variable = { economy_industry_process_change = 2 }
+				set_temp_variable = { economy_industry_arms_change = 0 }
+				set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+				set_temp_variable = { economy_agriculture_chemical_change = 0 }
+				set_temp_variable = { economy_agriculture_chain_change = 0 }
+				set_temp_variable = { economy_society_equality_change = 0 }
+				set_temp_variable = { economy_society_integration_change = 2 }
+				set_temp_variable = { economy_society_innovation_change = 0 }
+				economy_indicators_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { economy_reform_dominance_change = 0 }
+				set_temp_variable = { economy_reform_structure_change = 1 }
+				set_temp_variable = { economy_reform_management_change = 1 }
+				set_temp_variable = { economy_reform_production_change = 0 }
+				set_temp_variable = { economy_reform_exchange_change = 0 }
+				set_temp_variable = { economy_reform_consumption_change = 0 }
+				set_temp_variable = { economy_reform_development_change = 0 }
+				economy_reform_tendency_change = yes
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = FCF_economy_CGT_special_status
+					add_idea = FCF_economy_CGT_special_status_obedient
+				}
+
+				custom_effect_tooltip = effect_politics
+				set_temp_variable = { seat_change_CNS = -2 }
+				set_temp_variable = { seat_change_PSF = 11 }
+				set_temp_variable = { seat_change_POU = -4 }
+				set_temp_variable = { seat_change_CGT = 7 }
+				set_temp_variable = { seat_change_PCOP = -2 }
+				set_temp_variable = { seat_change_UA = -2 }
+				set_temp_variable = { seat_change_URSRS = -2 }
+				set_temp_variable = { seat_change_LND = -2 }
+				set_temp_variable = { seat_change_PAPF = -2 }
+				set_temp_variable = { seat_change_ETC = -2 }
+				politics_CGF_seat_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_society
+				set_temp_variable = { pop_workers_change = -4 }
+				set_temp_variable = { pop_peasants_change = 0 }
+				set_temp_variable = { pop_merchants_change = 1 }
+				set_temp_variable = { pop_scholars_change = 0 }
+				set_temp_variable = { pop_bureaucrats_change = 3 }
+				set_temp_variable = { pop_army_change = 0 }
+				society_pop_influence_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { pop_satisfaction_workers_change = -4 }
+				set_temp_variable = { pop_satisfaction_peasants_change = 0 }
+				set_temp_variable = { pop_satisfaction_merchants_change = 2 }
+				set_temp_variable = { pop_satisfaction_scholars_change = 0 }
+				set_temp_variable = { pop_satisfaction_bureaucrats_change = 5 }
+				set_temp_variable = { pop_satisfaction_army_change = 0 }
+				society_pop_satisfaction_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = effect_economy
+				set_temp_variable = { economy_values_change = 0 }
+				set_temp_variable = { economy_industry_basic_change = 2 }
+				set_temp_variable = { economy_industry_process_change = 4 }
+				set_temp_variable = { economy_industry_arms_change = 0 }
+				set_temp_variable = { economy_agriculture_mechanized_change = 0 }
+				set_temp_variable = { economy_agriculture_chemical_change = 0 }
+				set_temp_variable = { economy_agriculture_chain_change = 0 }
+				set_temp_variable = { economy_society_equality_change = 0 }
+				set_temp_variable = { economy_society_integration_change = 4 }
+				set_temp_variable = { economy_society_innovation_change = -2 }
+				economy_indicators_change = yes
+
+				custom_effect_tooltip = tooltip_white_line
+				set_temp_variable = { economy_reform_dominance_change = 1 }
+				set_temp_variable = { economy_reform_structure_change = 1 }
+				set_temp_variable = { economy_reform_management_change = 1 }
+				set_temp_variable = { economy_reform_production_change = 0 }
+				set_temp_variable = { economy_reform_exchange_change = 0 }
+				set_temp_variable = { economy_reform_consumption_change = 0 }
+				set_temp_variable = { economy_reform_development_change = 0 }
+				economy_reform_tendency_change = yes
 			}
 		}
 		ai_will_do = { factor = 1 }

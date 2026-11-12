@@ -173,7 +173,7 @@
   CSP_appoint_6:0 "\n§Y$FRA_edouard_berth$§!\n§g(隶属：$party_CNS$($CNS_faction_2$))§!\n成为新任$PCSP$"
   CSP_appoint_7:0 "\n§Y$FRA_robert_bothereau$§!\n§g(隶属：$party_CGT$($CGT_faction_1$))§!\n成为新任$PCSP$"
   CSP_appoint_8:0 "\n§Y$FRA_paul_faure$§!\n§g(隶属：$party_PCOP$($PCOP_faction_1$))§!\n成为新任$PCSP$"
-  CSP_appoint_9:0 "\n§Y$FRA_barthelemy_montagnon$§!\n§g(隶属：$party_PSF$($PSF_faction_1$)\)§!\n成为新任$PCSP$"
+  CSP_appoint_9:0 "\n§Y$FRA_paul_ramadier$§!\n§g(隶属：$party_PSF$($PSF_faction_3$)\)§!\n成为新任$PCSP$"
   CSP_appoint_10:0 "\n§Y$FRA_jean_zyromski$§!\n§g(隶属：$party_PCOP$($PCOP_faction_1$))§!\n成为新任$PCSP$"
   CSP_appoint_11:0 "\n§Y$FRA_vincent_auriol$§!\n§g(隶属：$party_PCOP$)§!\n成为新任$PCSP$"
 
@@ -344,7 +344,7 @@
   FCF_politics_CGF_party_detail_text:0 "[party_name]"
   party_CNS:0 "§o国家工团主义联盟§!"
   party_PSF:0 "§x法国社会党§!"
-  party_POU:0 "§r联合工人党§!"
+  party_POU:0 "§r统一工人党§!"
   party_CGT:0 "§O总工会§!"
   party_PCOP:0 "§t工农共产党§!"
   party_UA:0 "§g无政府主义联盟§!"
@@ -356,7 +356,7 @@
 
   party_CNS_short:0 "§o国工联§!"
   party_PSF_short:0 "§x社会党§!"
-  party_POU_short:0 "§r联工党§!"
+  party_POU_short:0 "§r统工党§!"
   party_CGT_short:0 "§O总工会§!"
   party_PCOP_short:0 "§t工农共§!"
   party_UA_short:0 "§g安联§!"
@@ -407,7 +407,7 @@
   CGF_seat_intro:0 "[party_intro]"
   seat_CNS:0 "§Y国家工团主义联盟§!([show_agree_CNS][?seat_CNS|.0Y]席)"
   seat_PSF:0 "§Y法国社会党§!([show_agree_PSF][?seat_PSF|.0Y]席)"
-  seat_POU:0 "§Y联合工人党§!([show_agree_POU][?seat_POU|.0Y]席)"
+  seat_POU:0 "§Y统一工人党§!([show_agree_POU][?seat_POU|.0Y]席)"
   seat_CGT:0 "§Y总工会§!([show_agree_CGT][?seat_CGT|.0Y]席)"
   seat_PCOP:0 "§Y工农共产党§!([show_agree_PCOP][?seat_PCOP|.0Y]席)"
   seat_UA:0 "§Y无政府主义联盟§!([show_agree_UA][?seat_UA|.0Y]席)"
@@ -419,7 +419,7 @@
   CGF_seat_intro_long:0 "[party_intro_long]"
   seat_CNS_long:0 "§L国家工团主义联盟(Confédération Nationale-Syndicaliste)\n§!"
   seat_PSF_long:0 "§L法国社会党(Parti Socialiste de France)\n§!"
-  seat_POU_long:0 "§L联合工人党(Parti Ouvrier Unifié)\n§!"
+  seat_POU_long:0 "§L统一工人党(Parti Ouvrier Unifié)\n§!"
   seat_CGT_long:0 "§L总工会(Confédération Générale du Travail)\n§!"
   seat_PCOP_long:0 "§L工农共产党(Parti Communiste Ouvrier et Paysan)\n§!"
   seat_UA_long:0 "§L无政府主义联盟(Association des Fédéralistes Anarchistes)\n§!"
@@ -462,6 +462,9 @@
   show_agree_LND_loc:0 "[?agreement_LND|G.0]/"
   show_agree_PAPF_loc:0 "[?agreement_PAPF|G.0]/"
   show_agree_ETC_loc:0 "[?agreement_ETC|G.0]/"
+
+  CGT_moderate_members_dominant:0 "总工会由温和派主导"
+  CGT_radical_members_dominant:0 "总工会由激进派主导"
 
   FCF_party_faction_information:0 "[party_faction_detail]" 
   tooltip_party_faction_change:0 "$PARTY$内派系变化："
@@ -658,7 +661,7 @@
 
   FCF_society_pop_workers_ui_tt:0 "[FCF_society_pop_workers_ui_loc]"
   FCF_society_pop_workers_ui_text:0 "$FCF_society_pop_workers_name$：[?pop_workers|Y.1%%]\n满意度：[?pop_satisfaction_workers|Y.1%%]\n每月变化：[?modifier@society_pop_workers_satisfaction_monthly_change|+=.1%%]\n\n[?workers_satisfaction_natural_decay|+=.1%%] 源于自然衰退\n[?pop_satisfaction_change_from_CI_attitude|+=.1%%] 源于[CI_attitude]的§Y$CI$§!\n[?pop_satisfaction_change_from_economy_values|.1%%+=] 源于$economy_values$：[?economy_values|.1+=]\n[?pop_satisfaction_change_from_society_equality|.1%%+=] 源于$economy_society_equality$：[?economy_society_equality|.1Y]\n[?workers_satisfaction_change_from_other_modifiers|+=.1%%] 源于顾问、社会法案或民族精神\n[?economy_state_general_modifier_society_pop_workers_satisfaction_monthly_change|+=.1%%] 源于地方政策$tooltip_dividing_line$\n由于[?pop_workers|Y.1%%]影响力的[?pop_satisfaction_workers|Y.1%%]满意度\n- $MODIFIER_PRODUCTION_FACTORY_START_EFFICIENCY_FACTOR$：[?society_pop_workers_modifier_1_show|.2%+=]\n- $MODIFIER_PRODUCTION_FACTORY_EFFICIENCY_GAIN_FACTOR$：[?society_pop_workers_modifier_2_show|.2%+=][FCF_society_pop_workers_extra]$FCF_society_pop_workers_impact_extra$"
-  FCF_society_pop_workers_text:0 "§g£pop_worker_texticon §O工人§!是公社体制下最大的收益群体，并且展现出对政治的浓厚兴趣，虽然大多数£pop_worker_texticon §O工人§!都会拥护§Y总工会§!的统治，但也有一部分工人，特别是在其他派系执政地区的工人，则会表现出明显的地域主义倾向。不过，在§Y“诉CGT案”§!后，£pop_worker_texticon §O工人§!群体也产生了一部分分化，尤其是不是§Y总工会§!成员的£pop_worker_texticon §O工人§!，开始转向其他的解决方案§!"
+  FCF_society_pop_workers_text:0 "§g£pop_worker_texticon §O工人§!是公社体制下最大的收益群体，并且展现出对政治的浓厚兴趣，虽然大多数£pop_worker_texticon §O工人§!都会拥护§Y总工会§!的统治，但也有一部分工人，特别是在其他派系执政地区的工人，则会表现出明显的地域主义倾向。不过，在§Y马丁案§!后，£pop_worker_texticon §O工人§!群体也产生了一部分分化，尤其是不是§Y总工会§!成员的£pop_worker_texticon §O工人§!，开始转向其他的解决方案§!"
 
   FCF_society_pop_peasants_ui_tt:0 "[FCF_society_pop_peasants_ui_loc]"
   FCF_society_pop_peasants_ui_text:0 "$FCF_society_pop_peasants_name$：[?pop_peasants|Y.1%%]\n满意度：[?pop_satisfaction_peasants|Y.1%%]\n每月变化：[?modifier@society_pop_peasants_satisfaction_monthly_change|+=.1%%]\n\n[?peasants_satisfaction_natural_decay|+=.1%%] 源于自然衰退\n[?pop_satisfaction_change_from_CI_attitude|+=.1%%] 源于[CI_attitude]的§Y$CI$§!\n[?pop_satisfaction_change_from_economy_values|.1%%+=] 源于$economy_values$：[?economy_values|.1+=]\n[?pop_satisfaction_change_from_society_equality|.1%%+=] 源于$economy_society_equality$：[?economy_society_equality|.1Y]\n[?peasants_satisfaction_change_from_other_modifiers|+=.1%%] 源于顾问、社会法案或民族精神\n[?economy_state_general_modifier_society_pop_peasants_satisfaction_monthly_change|+=.1%%] 源于地方政策$tooltip_dividing_line$\n由于[?pop_peasants|Y.1%%]影响力的[?pop_satisfaction_peasants|Y.1%%]满意度\n- $MODIFIER_LOCAL_RESOURCES_FACTOR$：[?society_pop_peasants_modifier_1_show|.2%+=]\n- $MODIFIER_CONSCRIPTION_TOTAL_FACTOR$：[?society_pop_peasants_modifier_2_show|.0%+=]$FCF_society_pop_peasants_impact_extra$[FCF_society_pop_peasants_extra]"
@@ -746,10 +749,10 @@
   surrealism_movement_acceptance_change_tt:0 "$surrealism_movement_acceptance$：$RIGHT|+=.1%%$"
   FCF_society_surrealism_movement_monthly_effect_text:0 "-----------------------\n§0超现实主义运动§!每月效果\n§g(光标置于此获得提示)§!\n-----------------------\n$surrealism_movement_passion$：[?surrealism_movement_passion|G.1%%]\n$surrealism_movement_acceptance$：[?surrealism_movement_acceptance|G.1%%]\n§0超现实主义运动§!活跃角色：[?FRA.surrealism_character_enabled^num|G.0]/[?surrealism_character_enabled_max|.0R]"
   surrealism_movement_monthly_effect_tt:0 "§0超现实主义运动§!每月效果\n-----------------------\n[!FCF_society_surrealism_movement_monthly_effect_text_click]"
-#激进派系
+#激进团体
   FCF_society_extremist_group_modifier:0 "过于激进的政治团体"
-  FCF_society_extremist_group_modifier_desc:0 "革命并不是解决一切问题的良药，旧共和国的问题同样会在公社出现。“国王的报贩”等极右翼政治团体虽然在本土早已偃旗息鼓，但并不妨碍新的政治激进派系出现。他们大多对公社现有的政治不满，亦或是对于自己的处境感到愤懑，当然也存在单纯希望通过公社的灰色地带来谋取利益的。\n\n但总而言之，即使这些群体并没有在明面上威胁或反对公社的革命性质，但却实打实地影响到了公社人民的生活。甚至有足购影响力的派系已经开始了对基层政治的干预，对这种事态的坐视不管显然有违于人民政府的定义。当然，这些派系在一些人眼里看起来是眼中钉，但在另一部分人眼里，可能就是务实的盟友了。"
-  FCF_society_extremist_group_modifier_tt:0 "目前活跃的激进派系：[legions_information][gardes_information][TPPS_information][bonnot_information][phalanges_information][vertes_information]\n§G打击这些极端派将有利于我们国家的稳定§!"
+  FCF_society_extremist_group_modifier_desc:0 "革命并不是解决一切问题的良药，旧共和国的问题同样会在公社出现。“国王的报贩”等极右翼政治团体虽然在本土早已偃旗息鼓，但并不妨碍新的政治激进团体出现。他们大多对公社现有的政治不满，亦或是对于自己的处境感到愤懑，当然也存在单纯希望通过公社的灰色地带来谋取利益的。\n\n但总而言之，即使这些群体并没有在明面上威胁或反对公社的革命性质，但却实打实地影响到了公社人民的生活。甚至有足购影响力的派系已经开始了对基层政治的干预，对这种事态的坐视不管显然有违于人民政府的定义。当然，这些派系在一些人眼里看起来是眼中钉，但在另一部分人眼里，可能就是务实的盟友了。"
+  FCF_society_extremist_group_modifier_tt:0 "目前活跃的激进团体：[legions_information][gardes_information][TPPS_information][bonnot_information][phalanges_information][vertes_information]\n§G打击这些激进团体将有利于我们国家的稳定§!"
   extremists_status0:0 "§G停止活动§!"
   extremists_status1:0 "§7零星§!"
   extremists_status2:0 "§R活跃§!"
@@ -757,7 +760,7 @@
   extremists_attitude1:0 "§G合作§!"
   extremists_attitude0:0 "§Y中立§!"
   extremists_attitude_1:0 "§R敌对§!"
-  extreme_political_group_window_open_tt:0 "打开/关闭激进派系界面\n§g仅在存在激进派系时可用§!"  
+  extreme_political_group_window_open_tt:0 "打开/关闭激进团体界面\n§g仅在存在激进团体时可用§!"  
 
   extremists_status_trigger:0 "$EXMIST$的活动状况为$STATUS$"
   extremists_status_trigger_NOT:0 "$EXMIST$的活动状况不为$STATUS$"

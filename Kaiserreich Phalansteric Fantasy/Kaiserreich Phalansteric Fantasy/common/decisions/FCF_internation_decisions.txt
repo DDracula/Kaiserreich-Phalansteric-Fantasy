@@ -4332,7 +4332,7 @@ FCF_international_category = {
 			has_global_flag = GER_MAF_colonial_illusion_activating
 		}
 		available = {
-			MAF = { has_country_flag = MAF_anti_colonial_forces_socialist }
+			MAF = { NOT = { has_country_flag = MAF_anti_colonial_forces_socialist} }
 		}
 		fire_only_once = yes
 		complete_effect = {
@@ -4373,7 +4373,7 @@ FCF_international_category = {
 			has_global_flag = GER_MAF_colonial_illusion_activating
 		}
 		available = {
-			MAF = { has_country_flag = MAF_anti_colonial_forces_united }
+			MAF = { NOT = { has_country_flag = MAF_anti_colonial_forces_united } }
 		}
 		fire_only_once = yes
 		complete_effect = {
@@ -4396,8 +4396,8 @@ FCF_international_category = {
 	}
 	ii_afm_MAF_transporting_weapons_to_MAF = {
 		icon = generic_civil_support
-		custom_cost_trigger = { NOT = { has_equipment = { infantry_equipment < 500 } } }
-		custom_cost_text = 500_guns
+		custom_cost_trigger = { NOT = { check_variable = { global.ii_africa_influence < 10 } } }
+		custom_cost_text = cost_ii_afi_10
 		days_remove = 30
 		days_re_enable = 0
 		target_trigger = {
@@ -4420,18 +4420,20 @@ FCF_international_category = {
 				}
 			}
 		}
+		available = {
+			has_equipment = { infantry_equipment > 999 }
+		}
 		complete_effect = {
-			hidden_effect = {
-				add_equipment_to_stockpile = {
-					type = infantry_equipment
-					amount = -500
-				}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -1000
 			}
+		
 			custom_effect_tooltip = effect_internation
 			set_temp_variable = { ii_europe_influence_change = 0 }
 			set_temp_variable = { ii_asia_influence_change = 0 }
 			set_temp_variable = { ii_middle_east_influence_change = 0 }
-			set_temp_variable = { ii_africa_influence_change = 5 }
+			set_temp_variable = { ii_africa_influence_change = -10 }
 			set_temp_variable = { ii_america_influence_change = 0 }
 			ii_influence_change = yes
 		}
@@ -5405,14 +5407,14 @@ GER_MAF_colonial_illusion_category = {
 			political_power_factor = -0.1
 		}
 		fixed_random_seed = no
-		complete_effect = {
+		remove_effect = {
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			set_temp_variable_to_random = { var = change_num max = 0 min = -3 }
 			add_to_variable = {
 				MAF.MAF_colonial_report_adjustment = -1
 				tooltip = MAF_colonial_report_reduce_tt
 			}
-		}
-		remove_effect = {
+
 			set_temp_variable_to_random = { var = change_num max = 13 min = 3 }
 			add_to_variable = {
 				GER_MAF_credibility = change_num
@@ -5432,7 +5434,8 @@ GER_MAF_colonial_illusion_category = {
 			has_global_flag = GER_MAF_colonial_illusion_activating
 		}
 		fixed_random_seed = no
-		complete_effect = {
+		remove_effect = {
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			MAF = {
 				set_temp_variable = { MAF_construction_points_change = 3 }
 				set_temp_variable = { MAF_suppress_points_change = 0 }
@@ -5558,6 +5561,7 @@ GER_MAF_colonial_illusion_category = {
 			}
 		}
 		remove_effect = {
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			effect_tooltip = {
 				set_temp_variable_to_random = { var = change_num max = 15 min = 5 }
 				set_temp_variable = { territory_stability_change = change_num }
@@ -5590,9 +5594,8 @@ GER_MAF_colonial_illusion_category = {
 		}
 		fixed_random_seed = no
 		complete_effect = {
-			set_temp_variable_to_random = { var = change_num max = 20 min = 5 }
 			add_to_variable = {
-				MAF.MAF_colonial_report_adjustment = change_num
+				MAF.MAF_colonial_report_adjustment = 10
 				tooltip = MAF_colonial_report_improve_tt
 			}
 
@@ -5607,6 +5610,7 @@ GER_MAF_colonial_illusion_category = {
 			}
 		}
 		remove_effect = {
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			set_temp_variable_to_random = { var = change_num max = 20 min = -20 }
 			if = {
 				limit = { check_variable = { change_num > 0 } }
@@ -5653,9 +5657,8 @@ GER_MAF_colonial_illusion_category = {
 				}
 			}
 
-			set_temp_variable_to_random = { var = change_num max = 20 min = 5 }
 			add_to_variable = {
-				GER_MAF_credibility = change_num
+				GER_MAF_credibility = 8
 				tooltip = GER_MAF_credibility_improve_tt
 			}
 
@@ -5671,6 +5674,7 @@ GER_MAF_colonial_illusion_category = {
 			}
 		}
 		remove_effect = {
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			effect_tooltip = {
 				set_temp_variable_to_random = { var = change_num max = 20 min = 7 }
 				set_temp_variable = { territory_stability_change = change_num }
@@ -5805,6 +5809,7 @@ GER_MAF_colonial_illusion_category = {
 	MAF_request_german_support = {
 		icon = hol_attract_foreign_investors
 		cost = MAF_construction_or_suppress_points_40
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -5831,11 +5836,13 @@ GER_MAF_colonial_illusion_category = {
 				}
 			}
 		}
-		complete_effect = {
+		remove_effect = {
 			set_temp_variable = { points_type = 3 }
 			set_temp_variable = { points_cost = 40 }
 			MAF_construction_and_suppress_points_decision_cost = yes
+			custom_effect_tooltip = tooltip_white_line
 
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			set_temp_variable_to_random = { var = change_num max = 15 min = 5 }
 			add_to_variable = {
 				GER.GER_MAF_credibility = change_num
@@ -5917,9 +5924,8 @@ GER_MAF_colonial_illusion_category = {
 			MAF_construction_and_suppress_points_decision_cost = yes
 
 			custom_effect_tooltip = tooltip_white_line
-			set_temp_variable_to_random = { var = change_num max = 10 min = 5 }
 			MAF_territory_randomly_pick = yes
-			set_temp_variable = { territory_stability_change = change_num }
+			set_temp_variable = { territory_stability_change = 7 }
 			set_temp_variable = { territory_economy_change = 0 }
 			MAF_territory_stability_or_economy_change = yes
 		}
@@ -5933,6 +5939,7 @@ GER_MAF_colonial_illusion_category = {
 			}
 
 			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			set_temp_variable_to_random = { var = change_num max = 10 min = 5 }
 			MAF_territory_randomly_pick = yes 
 			set_temp_variable = { territory_stability_change = change_num }
@@ -6048,15 +6055,16 @@ GER_MAF_colonial_illusion_category = {
 			set_temp_variable = { points_type = 3 }
 			set_temp_variable = { points_cost = 20 }
 			MAF_construction_and_suppress_points_decision_cost = yes
-
+		}
+		remove_effect = {
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			MAF_territory_randomly_pick = yes
 			set_temp_variable_to_random = { var = change_num max = -5 min = -20 }
 			set_temp_variable = { territory_stability_change = change_num }
-			multiply_temp_variable = { change_num = -2 }
+			multiply_temp_variable = { change_num = -2.5 }
 			set_temp_variable = { territory_economy_change = change_num }
 			MAF_territory_stability_or_economy_change = yes
-		}
-		remove_effect = {
+
 			set_temp_variable_to_random = { var = change_num max = 20 min = 5 }
 			add_to_variable = {
 				MAF_colonial_report_adjustment = change_num
@@ -6119,13 +6127,13 @@ GER_MAF_colonial_illusion_category = {
 			set_temp_variable = { points_cost = 10 }
 			MAF_construction_and_suppress_points_decision_cost = yes
 
-			set_temp_variable_to_random = { var = change_num max = -5 min = -10 }
 			add_to_variable = {
-				GER.GER_MAF_credibility = change_num
+				GER.GER_MAF_credibility = -5
 				tooltip = GER_MAF_credibility_reduce_tt
 			}
 		}
 		remove_effect = {
+			custom_effect_tooltip = tooltip_uncontrol_random_change
 			set_temp_variable_to_random = { var = change_num max = -5 min = -20 }
 			add_to_variable = {
 				GER.GER_MAF_credibility = change_num
@@ -6136,6 +6144,7 @@ GER_MAF_colonial_illusion_category = {
 	}
 
 	MAF_dealing_with_local_situations_category = {
+		icon = ger_mefo_bills
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6156,6 +6165,7 @@ GER_MAF_colonial_illusion_category = {
 	#德属东非
     MAF_dealing_with_local_situations_965 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6164,17 +6174,39 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 965 }
 			country_event = fcf_international_events.269
 		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_965_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 965 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_965_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 965 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
+		}
 		ai_will_do = { base = 0	}
 	}
+
 
 	#喀麦隆保护领
     MAF_dealing_with_local_situations_927 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6183,10 +6215,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 927 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_927_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 927 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_927_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 927 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6194,6 +6246,7 @@ GER_MAF_colonial_illusion_category = {
 	#刚果保护领
     MAF_dealing_with_local_situations_295 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6202,10 +6255,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 295 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_295_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 295 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_295_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 295 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6213,6 +6286,7 @@ GER_MAF_colonial_illusion_category = {
 	#加蓬保护领
     MAF_dealing_with_local_situations_539 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6221,10 +6295,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 539 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_539_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 539 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_539_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 539 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6232,6 +6326,7 @@ GER_MAF_colonial_illusion_category = {
 	#多哥保护领
     MAF_dealing_with_local_situations_877 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6240,10 +6335,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 877 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_877_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 877 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_877_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 877 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6251,6 +6366,7 @@ GER_MAF_colonial_illusion_category = {
 	#达荷美保护领
     MAF_dealing_with_local_situations_876 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6259,10 +6375,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 876 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_876_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 876 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_876_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 876 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6270,6 +6406,7 @@ GER_MAF_colonial_illusion_category = {
 	#德属西南非洲
     MAF_dealing_with_local_situations_541 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6278,10 +6415,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 541 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_541_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 541 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_541_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 541 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6289,6 +6446,7 @@ GER_MAF_colonial_illusion_category = {
 	#尼日利亚殖民地/保护领
     MAF_dealing_with_local_situations_973 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6297,10 +6455,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 973 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_973_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 973 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_973_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 973 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6308,6 +6486,7 @@ GER_MAF_colonial_illusion_category = {
 	#黄金海岸殖民地
     MAF_dealing_with_local_situations_274 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6316,10 +6495,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 274 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_274_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 274 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_274_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 274 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6327,6 +6526,7 @@ GER_MAF_colonial_illusion_category = {
 	#肯尼亚殖民地/保护领
     MAF_dealing_with_local_situations_547 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6335,10 +6535,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 547 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_547_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 547 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_547_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 547 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6346,6 +6566,7 @@ GER_MAF_colonial_illusion_category = {
 	#乌干达保护领
     MAF_dealing_with_local_situations_548 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6354,10 +6575,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 548 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_548_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 548 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_548_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 548 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6365,6 +6606,7 @@ GER_MAF_colonial_illusion_category = {
 	#北罗得西亚
     MAF_dealing_with_local_situations_813 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6373,10 +6615,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 813 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_813_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 813 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_813_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 813 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}
@@ -6384,6 +6646,7 @@ GER_MAF_colonial_illusion_category = {
 	#尼亚萨兰保护领
     MAF_dealing_with_local_situations_871 = {
 		icon = infiltrate_state
+		days_remove = 7
 		days_re_enable = 0
 		allowed = { tag = MAF }
 		visible = {
@@ -6392,10 +6655,30 @@ GER_MAF_colonial_illusion_category = {
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_activating }
 			NOT = { has_country_flag = MAF_dealing_with_local_situations_category_hidden }
 		}
+		fixed_random_seed = no
 		complete_effect = {
 			set_country_flag = MAF_dealing_with_local_situations_activating
 			set_variable = { MAF_targeted_territory = 871 }
 			country_event = fcf_international_events.269
+		}
+		remove_effect = {
+			if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_871_construction }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 871 }
+				set_temp_variable = { territory_stability_change = 0 }
+				set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else_if = {
+				limit = { has_country_flag = MAF_dealing_with_local_situations_871_suppress }
+				custom_effect_tooltip = tooltip_uncontrol_random_change
+				set_temp_variable = { territory_id = 871 }
+				set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
+				set_temp_variable = { territory_economy_change = 0 }
+				MAF_territory_stability_or_economy_change = yes
+			}
+			else = { custom_effect_tooltip = MAF_dealing_with_local_situations_tt }
 		}
 		ai_will_do = { base = 0	}
 	}

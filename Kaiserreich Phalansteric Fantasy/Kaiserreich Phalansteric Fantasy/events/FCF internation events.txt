@@ -12324,10 +12324,10 @@ country_event = {
 			add_political_power = pp_cost
 		}
 
-		set_temp_variable = { territory_id = MAF_targeted_territory }
-		set_temp_variable = { territory_stability_change = 0 }
-		set_temp_variable_to_random = { var = territory_economy_change max = improve_territory_economy_max min = improve_territory_economy_min }
-		MAF_territory_stability_or_economy_change = yes
+		meta_effect = {
+			text = { set_country_flag = MAF_dealing_with_local_situations_[ID]_construction }
+			ID = "[?MAF_targeted_territory]"
+		}
 
 		add_to_variable = { MAF_territory_construction_cost^MAF_targeted_territory = 1 }
 		clamp_variable = { var = MAF_territory_construction_cost^MAF_targeted_territory max = 3 min = 1 }
@@ -12355,10 +12355,10 @@ country_event = {
 			add_political_power = pp_cost
 		}
 
-		set_temp_variable = { territory_id = MAF_targeted_territory }
-		set_temp_variable_to_random = { var = territory_stability_change max = improve_territory_stability_max min = improve_territory_stability_min }
-		set_temp_variable = { territory_economy_change = 0 }
-		MAF_territory_stability_or_economy_change = yes
+		meta_effect = {
+			text = { set_country_flag = MAF_dealing_with_local_situations_[ID]_suppress }
+			ID = "[?MAF_targeted_territory]"
+		}
 
 		add_to_variable = { MAF_territory_suppress_cost^MAF_targeted_territory = 1 }
 		clamp_variable = { var = MAF_territory_suppress_cost^MAF_targeted_territory max = 3 min = 1 }
@@ -12366,7 +12366,12 @@ country_event = {
 	}
 	option = {
 		name = fcf_international_events.269.c
-
+		hidden_effect = {
+			meta_effect = {
+				text = { add_days_remove = { decision = MAF_dealing_with_local_situations_[ID] days = -7 } }
+				ID = "[?MAF_targeted_territory]"
+			}
+		}
 		ai_chance = { base = 10 }
 	}
 	after = { hidden_effect = { clr_country_flag = MAF_dealing_with_local_situations_activating } }

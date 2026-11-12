@@ -689,54 +689,6 @@
 			add_idea = FCF_society_bill_federal_syndicats
 		}
 		add_to_array = { array = FRA.FCF_social_bills value = 24 }
-
-		if = {
-			limit = { has_idea = FCF_economy_CGT_authority_contested_severely_reduced }
-			remove_ideas = FCF_economy_CGT_authority_contested_severely_reduced
-		}
-
-		custom_effect_tooltip = effect_politics
-		set_temp_variable = { pop_workers_change = -2 }
-		set_temp_variable = { pop_peasants_change = 0 }
-		set_temp_variable = { pop_merchants_change = -1 }
-		set_temp_variable = { pop_scholars_change = 0 }
-		set_temp_variable = { pop_bureaucrats_change = 3 }
-		set_temp_variable = { pop_army_change = 0 }
-		society_pop_influence_change = yes
-
-		custom_effect_tooltip = tooltip_white_line
-		custom_effect_tooltip = effect_economy
-		set_temp_variable = { economy_reform_dominance_change = 1 }
-		set_temp_variable = { economy_reform_structure_change = 1 }
-		set_temp_variable = { economy_reform_management_change = 1 }
-		set_temp_variable = { economy_reform_production_change = 0 }
-		set_temp_variable = { economy_reform_exchange_change = 0 }
-		set_temp_variable = { economy_reform_consumption_change = 0 }
-		set_temp_variable = { economy_reform_development_change = 0 }
-		economy_reform_tendency_change = yes
-
-		hidden_effect = {
-			if = {
-				limit = { has_completed_focus = FCF_against_CGT }
-				if = {
-					limit = { check_variable = { CGT_confidence > 7 } }
-					if = {
-						limit = { has_country_flag = independent_delegate_in_syndicats }
-						country_event = { id = fcf_economy_events.70 days = 10 random_days = 7 }
-					}
-					else = { country_event = { id = fcf_economy_events.71 days = 10 random_days = 7 } }
-				}
-				else_if = {
-					limit = { check_variable = { CGT_confidence > 3 } }
-					country_event = { id = fcf_economy_events.72 days = 10 random_days = 7 }
-				}
-				else_if = {
-					limit = { check_variable = { CGT_confidence > 0 } }
-					country_event = { id = fcf_economy_events.73 days = 10 random_days = 7 }
-				}
-				else = { set_country_flag = CGT_already_responded_to_bill }
-			}
-		}
 	}
 	### 作用域：国家；主要作用：执行工会多元战略法案并调整阶层影响力。
 	bill_25_pass_effect = {
@@ -780,71 +732,6 @@
 			add_idea = FCF_society_bill_syndicats_unification
 		}
 		add_to_array = { array = FRA.FCF_social_bills value = 26 }
-
-		remove_ideas = FCF_economy_CGT_authority_contested_severely_reduced
-
-		custom_effect_tooltip = tooltip_white_line
-		if = {
-			limit = {
-				set_temp_variable = { target_party_id = 4 }
-				set_temp_variable = { target_faction_id = 2 }
-				politics_party_dominant_faction_evaluate = yes
-
-				AND = {
-					has_country_flag = POU_in_gov
-
-					OR = {
-						set_temp_variable = { target_party_id = 3 }
-						set_temp_variable = { target_faction_id = 2 }
-						politics_party_dominant_faction_evaluate = yes
-
-						set_temp_variable = { target_party_id = 3 }
-						set_temp_variable = { target_faction_id = 3 }
-						politics_party_dominant_faction_evaluate = yes
-					}
-				}
-			}
-			custom_effect_tooltip = effect_politics
-			set_temp_variable = { pop_workers_change = 3 }
-			set_temp_variable = { pop_peasants_change = -0.5 }
-			set_temp_variable = { pop_merchants_change = -0.5 }
-			set_temp_variable = { pop_scholars_change = -1 }
-			set_temp_variable = { pop_bureaucrats_change = -1 }
-			set_temp_variable = { pop_army_change = 0 }
-			society_pop_influence_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { economy_reform_dominance_change = -1 }
-			set_temp_variable = { economy_reform_structure_change = -1 }
-			set_temp_variable = { economy_reform_management_change = -1 }
-			set_temp_variable = { economy_reform_production_change = 0 }
-			set_temp_variable = { economy_reform_exchange_change = 0 }
-			set_temp_variable = { economy_reform_consumption_change = 0 }
-			set_temp_variable = { economy_reform_development_change = 0 }
-			economy_reform_tendency_change = yes
-		}
-		else = {
-			custom_effect_tooltip = effect_politics
-			set_temp_variable = { pop_workers_change = -2 }
-			set_temp_variable = { pop_peasants_change = -0.5 }
-			set_temp_variable = { pop_merchants_change = -0.5 }
-			set_temp_variable = { pop_scholars_change = 0 }
-			set_temp_variable = { pop_bureaucrats_change = 3 }
-			set_temp_variable = { pop_army_change = 0 }
-			society_pop_influence_change = yes
-
-			custom_effect_tooltip = tooltip_white_line
-			custom_effect_tooltip = effect_economy
-			set_temp_variable = { economy_reform_dominance_change = -1 }
-			set_temp_variable = { economy_reform_structure_change = 1 }
-			set_temp_variable = { economy_reform_management_change = 1 }
-			set_temp_variable = { economy_reform_production_change = 0 }
-			set_temp_variable = { economy_reform_exchange_change = 0 }
-			set_temp_variable = { economy_reform_consumption_change = 0 }
-			set_temp_variable = { economy_reform_development_change = 0 }
-			economy_reform_tendency_change = yes
-		}
 	}
 	### 作用域：国家；主要作用：执行强化士兵福利法案并调整阶层影响力、满意度与军事改革倾向。
 	bill_27_pass_effect = {

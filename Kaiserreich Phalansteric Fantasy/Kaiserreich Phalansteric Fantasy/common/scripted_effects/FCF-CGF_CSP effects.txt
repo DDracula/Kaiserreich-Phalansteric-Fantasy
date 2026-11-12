@@ -1574,9 +1574,12 @@
 				value = seat_change_value
 				index = party_index
 				if = {
-					limit = { check_variable = { seat_change_value > 0 } }
-					add_to_variable = { seat_change_array^party_index = -1 }
-					add_to_variable = { unallocated_seat_deficit = 1 }
+					limit = { 
+						check_variable = { seat_change_value > 0 } 
+						check_variable = { unallocated_seat_deficit < 0 }
+					}
+					add_to_temp_variable = { seat_change_array^party_index = -1 }
+					add_to_temp_variable = { unallocated_seat_deficit = 1 }
 				}
 			}
 		}
@@ -3043,7 +3046,7 @@
 		add_popularity = { ideology = national_populist popularity = 0.01 }
 
 		promote_character = {
-			character = FRA_marcel_deat
+			character = FRA_pierre_renaudel
 			ideology = totalist_subtype
 		}
 		meta_effect = {
@@ -3066,6 +3069,7 @@
 		hidden_effect = {
 			news_event = { id = fcf_politics_events.35 days = 1 }
 			country_event = { id = fcf_society_events.6 days = 20 }
+			country_event = { id = fcf_politics_events.47 days = 30 }
 		}
 	}
 	### 作用域：国家；主要作用：落实法国革命阵营未过半时的联合政府与后续事件。
@@ -3094,7 +3098,7 @@
 		add_popularity = { ideology = social_democrat popularity = 0.01 }
 
 		promote_character = {
-			character = FRA_marcel_deat
+			character = FRA_pierre_renaudel
 			ideology = totalist_subtype
 		}
 		meta_effect = {
@@ -3117,6 +3121,7 @@
 		hidden_effect = {
 			news_event = { id = fcf_politics_events.35 days = 1 }
 			country_event = { id = fcf_society_events.5 days = 20 }
+			country_event = { id = fcf_politics_events.47 days = 30 }
 		}
 	}
 	### 作用域：国家；主要作用：落实法国革命阵营妥协组阁结果并同步联盟、政治与后续事件。
@@ -3174,7 +3179,7 @@
 		add_popularity = { ideology = national_populist popularity = 0.01 }
 
 		promote_character = {
-			character = FRA_marcel_deat
+			character = FRA_pierre_renaudel
 			ideology = totalist_subtype
 		}
 		meta_effect = {
@@ -3193,7 +3198,7 @@
 			add_to_coalition = yes
 			hidden_effect = {
 				promote_character = FRA_leon_jouhaux
-				country_event = { id = fcf_politics_events.25 days = 10 }
+				country_event = { id = fcf_politics_events.25 days = 15 }
 			}
 		}
 		set_temp_variable = { coalition_partner_var = token:social_democrat }
@@ -3213,6 +3218,7 @@
 		hidden_effect = {
 			news_event = { id = fcf_politics_events.35 days = 1 }
 			country_event = { id = fcf_society_events.6 days = 20 }
+			country_event = { id = fcf_politics_events.47 days = 30 }
 		}
 	}
 	### 作用域：国家；主要作用：落实法国革命阵营大胜结果并同步政府、联盟与后续事件。
@@ -3270,7 +3276,7 @@
 		add_popularity = { ideology = national_populist popularity = 0.01 }
 
 		promote_character = {
-			character = FRA_marcel_deat
+			character = FRA_pierre_renaudel
 			ideology = totalist_subtype
 		}
 		meta_effect = {
@@ -3289,7 +3295,7 @@
 			add_to_coalition = yes
 			hidden_effect = {
 				promote_character = FRA_leon_jouhaux
-				country_event = { id = fcf_politics_events.25 days = 10 }
+				country_event = { id = fcf_politics_events.25 days = 15 }
 			}
 		}
 		set_temp_variable = { coalition_partner_var = token:social_democrat }
@@ -3309,6 +3315,7 @@
 		hidden_effect = {
 			news_event = { id = fcf_politics_events.35 days = 1 }
 			country_event = { id = fcf_society_events.6 days = 20 }
+			country_event = { id = fcf_politics_events.47 days = 30 }
 		}
 	}
 
@@ -3377,7 +3384,7 @@
 			limit = { has_country_flag = CNS_cooperate_with_POU }
 			set_temp_variable = { coalition_partner_var = token:syndicalist }
 			add_to_coalition = yes
-			hidden_effect = { country_event = { id = fcf_politics_events.25 days = 10 } }
+			hidden_effect = { country_event = { id = fcf_politics_events.25 days = 15 } }
 		}
 		if = {
 			limit = { has_country_flag = CNS_cooperate_with_LND }
@@ -3433,7 +3440,58 @@
 			country_event = { id = fcf_society_events.7 days = 20 }
 		}
 	}
+#政治承诺
+	FCF_politics_midterm_election_promise_effect = {
+		custom_effect_tooltip = FCF_politics_midterm_election_promised_tt
 
+		set_temp_variable = { seat_loss_coefficient = 1 }
+		if = {
+			limit = { has_country_flag = FCF_politics_midterm_election_promised_politics }
+			custom_effect_tooltip = FCF_politics_midterm_election_promised_politics
+			#CSP委员合作或支持
+			add_to_temp_variable = { seat_loss_coefficient = { value = num_of_CSP_members_attitude_cooerate_or_support multiply = -0.1 } }
+			#稳定大于60
+			if = {
+				limit = { NOT = { has_stability < 0.6 } }
+				add_to_temp_variable = { seat_loss_coefficient = -0.2 }
+			}
+			#和平
+			if = {
+				limit = { has_war = no }
+				add_to_temp_variable = { seat_loss_coefficient = -0.1 }
+			}
+		}	
+		else_if = {
+			limit = { has_country_flag = FCF_politics_midterm_election_promised_society }
+			custom_effect_tooltip = FCF_politics_midterm_election_promised_society
+			#社会满意度增长3
+			if = {
+				limit = { NOT = { check_variable = { growth_of_pop_satisfation_after_promising < 3 } } }
+				add_to_temp_variable = { seat_loss_coefficient = -0.2 }
+			}
+			#阶层满意度增长5
+			add_to_temp_variable = { seat_loss_coefficient = { value = num_of_pop_meeting_the_conditions multiply = -0.05 } }
+			#停止活动或合作的激进团体
+			add_to_temp_variable = { seat_loss_coefficient = { value = num_of_extremists_meeting_the_conditions multiply = -0.05 } }
+		}
+		else_if = {
+			limit = { has_country_flag = FCF_politics_midterm_election_economy }
+			custom_effect_tooltip = FCF_politics_midterm_election_economy
+			#经济现状增长5
+			if = {
+				limit = { NOT = { check_variable = { growth_of_economy_values_after_promising < 5 } } }
+				add_to_temp_variable = { seat_loss_coefficient = -0.2 }
+			}
+			#任一经济指标增长5
+			add_to_temp_variable = { seat_loss_coefficient = { value = num_of_economy_variables_meeting_the_conditions multiply = -0.05 } }
+			#工厂增长15座
+			if = {
+				limit = { NOT = { check_variable = { num_of_new_factories_after_promising < 15 } } }
+				add_to_temp_variable = { seat_loss_coefficient = -0.15 }
+			}
+		}
+		else = { custom_effect_tooltip = FCF_politics_midterm_election_promise_no }
+	}
 #############
 ###  CSP  ###
 #############
@@ -4907,7 +4965,7 @@
 		custom_effect_tooltip = tooltip_white_line
 		clr_PCSP_flag = yes
 		set_country_flag = PCSP_PSF
-		add_ideas = FCF_politics_PCSP_barthelemy_montagnon
+		add_ideas = FCF_politics_PCSP_paul_ramadier
 	}
 	### 作用域：国家；主要作用：任命编号 10 的 PCSP 成员并同步成员旗帜与顾问。
 	CSP_appoint_10_effect = {
